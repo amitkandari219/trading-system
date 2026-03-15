@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_16_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit 'price deviation from estimated fundamental value' measurement (3.0% threshold) and 'liquidity demand indicator' with specific strength levels. No direct fundamental value or liquidity demand indicators available in allowed set. Used proxies: Bollinger Band width for volatility/deviation, volume ratio for liquidity demand, and SMA crossovers for mean reversion, but these do not precisely capture the intended microstructure logic.",
+  "translation_notes": "Translated using available proxies: (1) Price deviation approximated via Bollinger Bands bandwidth exceeding 3% threshold, (2) Liquidity demand proxied by volume ratio > 1.5x and bandwidth expansion, (3) Reversion toward fundamental value approximated by SMA crossover logic. Direction is CONTEXT_DEPENDENT (long on upside deviations, short on downside). Exit conditions use mean-reversion framework with 0.5% proximity approximated by SMA_20 crossover. This is a best-effort translation given microstructure indicator constraints."
+}

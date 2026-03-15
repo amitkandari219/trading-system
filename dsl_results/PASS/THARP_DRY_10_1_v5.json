@@ -1,0 +1,148 @@
+{
+  "signal_id": "THARP_DRY_10_1",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_10_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_10"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "crosses_above",
+        "right": "50"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      },
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_10"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "crosses_below",
+        "right": "50"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      },
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_10"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_10"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses context-dependent direction based on trend. Mapped 10-period MA to sma_10. RSI crosses 50 used as primary momentum confirmation (MACD momentum indicator not in allowed list, so RSI substituted). Volume confirmation uses vol_ratio_20 at 1.2x multiple. Stop loss set at 1.0x ATR expressed as 1.0% of entry price (atr_14 conversion). Entry requires one confirming bar represented by body direction. Exit on trend reversal (close crossing MA)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "crosses_above",
+        "value": 50.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      },
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "crosses_below",
+        "value": 50.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      },
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_10"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_10"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses context-dependent direction based on trend. Mapped 10-period MA to sma_10. RSI crosses 50 used as primary momentum confirmation (MACD momentum indicator not in allowed list, so RSI substituted). Volume confirmation uses vol_ratio_20 at 1.2x multiple. Stop loss set at 1.0x ATR expressed as 1.0% of entry price (atr_14 conversion). Entry requires one confirming bar represented by body direction. Exit on trend reversal (close crossing MA)."
+  },
+  "source_rule_text": "Enter trades at the moment of trend change, when the reward-to-risk ratio is most favorable, rather than focusing on perfect entry mechanics."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'fundamental supply/demand imbalance' and 'unexpected repeated data points' from external fundamental data (not price/technical indicators). The entry condition 'Fundamental supply metric exceeds consensus for 1 period' cannot be expressed using only the allowed price-based and technical indicators. Additionally, the 'No prior uptrend in spread' condition requires external spread pricing data and trend detection not available in the standard indicator set.",
+  "translation_notes": "Partial translation: Translated the spread percentile range condition (40th-60th) using price_pos_20 as a proxy for position within recent range. Exit at 80th percentile (price_pos_20 >= 0.8) is translatable. Stop loss of 2 standard deviations converted to 2.0% (reasonable approximation). Hold period set to 28 days (4 weeks). However, the core fundamental supply/demand signal cannot be operationalized without external data feeds."
+}

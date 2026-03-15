@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This strategy requires ranking stocks by absolute price and selecting the 10 lowest across a universe. The allowed indicators list does not include cross-sectional ranking, relative valuation, or universe-wide filtering functions. The entry condition 'select 10 lowest-priced stocks' cannot be expressed as a single-security technical indicator condition using the allowed operators (>, <, >=, <=, ==, crosses_above, crosses_below, is). This requires a portfolio-level rank operation that is outside the scope of per-security indicator rules.",
+  "translation_notes": "Signal requires ranking/selection logic across a stock universe, which is a portfolio construction problem rather than a technical indicator condition. The exit is a fixed 12-month calendar hold (252 trading days). To implement this strategy, the backtest engine would need additional portfolio-level functions: rank_by(close, ascending) and select_top_n(10)."
+}

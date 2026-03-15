@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting 'price gap lower' which cannot be expressed with available indicators. A gap would require comparing close[i-1] to open[i], but indexed array access is not permitted. Additionally, 'black candle' is a visual property not available in the indicator set (would need color classification). The pattern is context-dependent (reversal in bull, continuation in bear) which requires regime detection not fully expressible in the condition syntax.",
+  "translation_notes": "Attempted partial translation using close < prev_close to detect downward movement and body property for black candle, but the explicit gap detection and regime-dependent logic cannot be properly encoded. Recommend: (1) Add gap_pct or gap_size indicator, (2) Add candle_color indicator, (3) Enhance condition syntax to support regime-conditional logic branches."
+}

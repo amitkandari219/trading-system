@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Abandoned Baby candlestick pattern detection requires multi-candle formation analysis (3-candle pattern with specific gap and body characteristics) that cannot be expressed with single-bar price/indicator conditions. Measure rule divisor selection (6 vs 3) is context-dependent on breakout direction which requires pattern state tracking. Volume performance clues reference external lookup table (Table 6.4) not quantifiable as inline rules.",
+  "translation_notes": "Signal is fundamentally a multi-candle pattern recognition rule that requires: (1) Detection of 3-candle Abandoned Baby formation (bullish candle, gap down, small body, gap up), (2) Dynamic measure rule based on breakout direction post-pattern. Regime-dependent behavior noted: 69% reversal success in bull markets, 52% continuation success in bear markets. No single-bar indicators can replicate the pattern identification logic. Recommend implementing as custom pattern detector in backtest engine rather than rule-based conditions."
+}

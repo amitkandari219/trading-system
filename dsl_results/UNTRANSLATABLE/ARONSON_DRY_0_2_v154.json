@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires tracking 'downside volume to upside volume ratio' as a custom breadth indicator and counting threshold violations (num_instances_required=1) within a time window (42 days). The allowed indicator vol_ratio_20 is a generic volume ratio but does not specifically measure downside-to-upside volume breadth on an exchange level. Additionally, the multi-instance detection logic (1 occurrence within 6 weeks) and the 3-consecutive-day reversal condition for exit cannot be expressed with the simple 3-field condition structure provided. This requires event-state tracking across multiple bars.",
+  "translation_notes": "Attempted mapping: vol_ratio_20 as proxy for downside/upside volume ratio, with threshold 7.0 for entry and reversal <1.0 for exit. However, the core signal logic (counting discrete violation events over time windows and requiring N instances) is not supported by the structured rule engine. A custom breadth indicator or event-counter state machine would be needed for proper implementation."
+}

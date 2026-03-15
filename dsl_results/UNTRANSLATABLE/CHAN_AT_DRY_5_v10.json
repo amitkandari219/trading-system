@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detecting whether price decline is driven by 'liquidity demand rather than fundamental news'. This distinction cannot be operationalized using only price, volume, and technical indicators. Fundamental vs. liquidity-driven moves require sentiment analysis, order flow data, or news classification that are not available in the allowed indicator set.",
+  "translation_notes": "Translated the gap-down entry condition (open < prev_close) using available price data. Exit condition set to basic mean reversion (close > open) as placeholder since AUTHOR_SILENT. The core challenge is the signal's reliance on distinguishing liquidity-driven from fundamental-driven declines, which requires external data sources not in the allowed indicator list."
+}

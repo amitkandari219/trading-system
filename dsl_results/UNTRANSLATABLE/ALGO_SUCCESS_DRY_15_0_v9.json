@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This strategy requires rolling OLS regression residuals and ADF stationarity tests on cointegrated pairs, which are not available in the allowed indicator set. The core signals depend on: (1) calculating residuals from a 60-bar rolling OLS regression between two cointegrated assets, (2) computing z-scores of those residuals, (3) confirming mean reversion via ADF test (p<0.05), and (4) trading when z-score exceeds \u00b12.0. None of these derived metrics (residuals, rolling regression coefficients, z-scores on residuals, ADF p-values) exist in the allowed indicators. This requires a multi-asset statistical arbitrage framework not expressible with single-asset OHLCV-based indicators.",
+  "translation_notes": "Signal is a sophisticated pairs trading strategy using cointegration and OLS regression. The allowed indicator set only supports single-asset technical analysis. Would require: (a) residual_zscore indicator, (b) adf_pvalue indicator, (c) multi-asset regression framework. Recommend implementing as custom strategy module outside the standard backtest engine."
+}

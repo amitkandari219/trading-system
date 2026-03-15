@@ -1,0 +1,92 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      },
+      {
+        "left": "open",
+        "operator": ">=",
+        "right": "high"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "low"
+      },
+      {
+        "left": "body_pct",
+        "operator": ">",
+        "right": "0.7"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Belt Hold (Bearish) pattern: Entry requires a black candle (close < open) with open near/at high and close near low, with large body relative to range. The uptrend context is assumed to be pre-validated by the backtest engine. Exit uses a reversal condition (close crosses above open) since AUTHOR_SILENT was specified. Body_pct > 0.7 ensures the candle is predominantly body with minimal wicks (marubozu characteristic). Open >= high is approximated as open at the high since exact equality is difficult to achieve in real data."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      },
+      {
+        "indicator": "open",
+        "op": ">=",
+        "value": "high"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "low"
+      },
+      {
+        "indicator": "body_pct",
+        "op": ">",
+        "value": 0.7
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Belt Hold (Bearish) pattern: Entry requires a black candle (close < open) with open near/at high and close near low, with large body relative to range. The uptrend context is assumed to be pre-validated by the backtest engine. Exit uses a reversal condition (close crosses above open) since AUTHOR_SILENT was specified. Body_pct > 0.7 ensures the candle is predominantly body with minimal wicks (marubozu characteristic). Open >= high is approximated as open at the high since exact equality is difficult to achieve in real data."
+  },
+  "source_rule_text": "Belt Hold: A candlestick pattern that opens at the high and closes near the low, forming a black opening marubozu candle, occurring after an uptrend"
+}

@@ -1,0 +1,73 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_5"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 8,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used Donchian Channel (dc_upper, dc_lower) to represent the n-period channel breakout mechanism. dc_upper approximates the 'maximum close over past n periods' and dc_lower the minimum. The 10-period lookback is implicit in Donchian Channel calculation. Entry requires break above upper band AND confirmation via sma_5. Exit triggers on close below lower band OR after 8 bars. Direction is LONG based on 'enter long position' statement. Target regime includes TRENDING_UP (primary trend-following context) and ANY to allow flexibility."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_5"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 8,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Used Donchian Channel (dc_upper, dc_lower) to represent the n-period channel breakout mechanism. dc_upper approximates the 'maximum close over past n periods' and dc_lower the minimum. The 10-period lookback is implicit in Donchian Channel calculation. Entry requires break above upper band AND confirmation via sma_5. Exit triggers on close below lower band OR after 8 bars. Direction is LONG based on 'enter long position' statement. Target regime includes TRENDING_UP (primary trend-following context) and ANY to allow flexibility."
+  },
+  "source_rule_text": "Enter a long position when price breaks above the maximum value of a lookback channel; the simplicity and effectiveness of channel breakouts makes them viable as a core trend-following mechanism."
+}

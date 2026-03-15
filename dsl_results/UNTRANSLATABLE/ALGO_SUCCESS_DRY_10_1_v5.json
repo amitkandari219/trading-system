@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Hurst Exponent is not available in the allowed indicators list. The signal requires calculating a custom rolling Hurst Exponent over a 126-period window with thresholds at 0.45 and 0.55 to classify market regimes (mean reversion vs trending vs random walk). This metric cannot be replicated using only the provided technical indicators (Moving Averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Returns, and Bar Properties). To implement this signal, Hurst Exponent calculation must be added as a custom indicator to the backtest engine.",
+  "translation_notes": "Signal requires Hurst Exponent calculation which is a complex statistical measure not derivable from standard technical indicators. The regime classification logic (H <= 0.45 for mean reversion, H >= 0.55 for trending, 0.45 < H < 0.55 for neutral) is theoretically sound but cannot be implemented without access to rolling Hurst Exponent values."
+}

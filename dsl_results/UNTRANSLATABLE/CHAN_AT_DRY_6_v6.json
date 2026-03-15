@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires mean-reverting pair trading on AUD.CAD with overnight rollover interest cost adjustment (formula 5.6). This requires: (1) dual-symbol pair construction not supported by single-symbol indicator set, (2) interest rate differential modeling (i_BQ(t)) not available in allowed indicators, (3) specific entry/exit thresholds marked AUTHOR_SILENT, (4) half-life parameter for mean-reversion decay not computable from allowed indicators, (5) log-return spread calculation with interest adjustments requires custom pair construction logic unavailable in backtest engine. The formula-driven approach cannot be translated into discrete indicator conditions.",
+  "translation_notes": "The source material (equation 5.6) defines a position return incorporating log price changes and overnight interest costs: r(t+1) = {log(y_BQ(t+1)) - log(y_BQ(t)) - log(1+i_BQ(t)) - log(1+i_Q(t))}. This is a sophisticated pair-trading mechanism requiring dual-currency feeds, interest rate data, and spread-based mean-reversion logic. The signal author has not provided concrete entry triggers, exit rules, lookback periods, or thresholds (all marked AUTHOR_SILENT). Without these parameters and without pair-construction or interest-rate indicators in the allowed set, this signal cannot be operationalized."
+}

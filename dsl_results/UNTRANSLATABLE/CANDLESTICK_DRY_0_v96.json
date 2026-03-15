@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires trendline detection and dynamic trendline piercing logic, which cannot be expressed using only the allowed point-in-time indicators. The core requirement is 'trendline drawn along bottoms is pierced by last candle' and 'price closes below trendline' \u2014 this requires historical trendline state and multi-bar geometric analysis not available in the indicator set. Additionally, 'next day confirmation: black candle' requires forward-looking confirmation that should be handled separately in the backtest engine's multi-bar logic.",
+  "translation_notes": "Translated detectable components: (1) tall upper shadow via upper_wick > body, (2) price reversal via close < prev_close. However, the critical trendline piercing condition and multi-candle confirmation sequence cannot be reliably encoded in this rule format. Recommend implementing trendline detection as a separate pre-processor or custom indicator before using this signal in production."
+}

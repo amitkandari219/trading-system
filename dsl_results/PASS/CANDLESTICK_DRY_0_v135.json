@@ -1,0 +1,60 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 10.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry condition: price crosses above 50-day SMA. Exit condition inferred as reversal (price crosses below SMA) since original exit was marked AUTHOR_SILENT. Stop loss set to 10.47% based on failure_rate_5pct parameter. Performance metrics from source: bull market 7.23%, bear market 12.16%, average decline -5.28%."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.1,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Entry condition: price crosses above 50-day SMA. Exit condition inferred as reversal (price crosses below SMA) since original exit was marked AUTHOR_SILENT. Stop loss set to 10.47% based on failure_rate_5pct parameter. Performance metrics from source: bull market 7.23%, bear market 12.16%, average decline -5.28%."
+  },
+  "source_rule_text": "Breakout above 50-day moving average"
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ADF/KPSS statistical stationarity test (p < 0.05) to confirm mean-reverting behaviour. This test is not available in the allowed indicators list. Additionally, price deviation from rolling mean measured in standard deviations requires a custom volatility calculation not directly supported. The sma_126 (closest proxy for 126-period rolling mean) is available, but the statistical confirmation and standard deviation distance metrics cannot be properly expressed with allowed indicators alone.",
+  "translation_notes": "Attempted to translate using sma_126 as proxy for 126-period rolling mean, but core statistical validation (ADF/KPSS stationarity test) and standard deviation distance measurement from mean are untranslatable with available indicators. Direction set to CONTEXT_DEPENDENT as signal logic would be long when price is below mean and short when above mean, but this requires the statistical test to first confirm mean-reversion behaviour."
+}

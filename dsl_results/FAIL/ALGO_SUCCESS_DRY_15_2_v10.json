@@ -1,0 +1,49 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_2",
+  "entry_long": [
+    {
+      "left": "price_pos_20",
+      "operator": ">",
+      "right": "1.5"
+    }
+  ],
+  "entry_short": [
+    {
+      "left": "price_pos_20",
+      "operator": "<",
+      "right": "-1.5"
+    }
+  ],
+  "exit_long": [
+    {
+      "left": "price_pos_20",
+      "operator": "<",
+      "right": "0.0"
+    }
+  ],
+  "exit_short": [
+    {
+      "left": "price_pos_20",
+      "operator": ">",
+      "right": "0.0"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "TRENDING_UP",
+    "TRENDING_DOWN",
+    "RANGING"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Z-score calculation approximated using price_pos_20 (normalized price position over 20-period lookback). Upper threshold of +1.5 std devs mapped to price_pos_20 > 1.5; lower threshold of 0.0 std devs mapped to price_pos_20 < 0.0. Signal is direction-agnostic (CONTEXT_DEPENDENT), so both long and short entry/exit conditions are provided. Lookback window of 20 periods aligns with price_pos_20 indicator calculation window.",
+  "validation_issues": [
+    "exit_short: phantom condition 'price_pos_20 > 0.0' is always true",
+    "entry_long: impossible condition 'price_pos_20 > 1.5' is always false",
+    "entry_short: impossible condition 'price_pos_20 < -1.5' is always false"
+  ]
+}

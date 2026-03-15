@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of 'tall candle formation' and 'yearly range' which cannot be precisely expressed with allowed indicators. 'Tall candle' typically requires historical candle height comparison over a year-long lookback period, and 'lowest third of yearly range' requires 252-bar yearly high/low calculation not available in the indicator set. Used approximations: range > atr_14 for tall candle proxy, price_pos_20 < 0.33 for lowest third of recent range proxy, but true yearly range calculation is untranslatable.",
+  "translation_notes": "Approximated 'tall candle' as current candle range exceeding 14-period ATR; approximated 'lowest third of yearly range' as price_pos_20 < 0.33 (lowest third of 20-bar range as proxy since 252-bar yearly range unavailable); used close > prev_close as reversal confirmation after the tall candle formation; exit on reversal with close < prev_close. Original signal lacks specific exit conditions (AUTHOR_SILENT) so reasonable reversal-based exit applied."
+}

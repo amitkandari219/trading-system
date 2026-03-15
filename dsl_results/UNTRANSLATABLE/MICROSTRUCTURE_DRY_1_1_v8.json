@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_1_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of limit orders on the book (order book microstructure data: 'limit order sits >20s', 'limit order price deviation', 'order size percentile', 'limit order cancellation'). These require order book state and real-time order tracking, not available in standard OHLCV/technical indicator set. Additionally, 'well-informed traders' identification requires information asymmetry detection beyond technical indicators. Signal is fundamentally a market microstructure play requiring Level 2+ data.",
+  "translation_notes": "Attempted approximation using volatility expansion (hvol_20), volume anomaly (vol_ratio_20), price deviation from MA (close vs sma_20), and returns-based profit target (25 bps \u2248 0.25%). However, core logic\u2014identifying stale limit orders and avoiding informed traders\u2014cannot be translated to technical indicators alone. Requires order book, order duration tracking, and order cancellation events."
+}

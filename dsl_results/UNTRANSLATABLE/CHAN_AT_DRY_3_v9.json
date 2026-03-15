@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires calculation of an autoregression coefficient \u03bb from linear regression of \u0394y(t) against y(t-1). The allowed indicator set does not include autoregression analysis, regression coefficients, or mean-reversion statistical tests. The signal fundamentally requires: (1) computing price changes \u0394y(t), (2) performing linear regression against lagged price y(t-1), (3) extracting the regression coefficient \u03bb, and (4) testing if \u03bb < 0. These operations are not available in the allowed indicators list (which contains only pre-calculated technical indicators like RSI, MACD, Bollinger Bands, etc.). A backtest engine would need to support custom statistical calculations or regression-based indicators to implement this signal.",
+  "translation_notes": "Signal CHAN_AT_DRY_3 is a regime identification rule based on mean-reversion detection via autoregression analysis. While conceptually sound for identifying mean-reverting vs trending regimes, it cannot be expressed using only standard technical indicators. To implement this signal, the backtest engine would need to support: (1) returns/log_returns calculation (available), (2) lagged price series (partially available via prev_close), but critically (3) linear regression computation and coefficient extraction (not available). Recommend either: adding an 'autoregression_coefficient' indicator to the allowed list, or translating to an approximate proxy using mean-reversion indicators like RSI mean-reversion patterns or Bollinger Band mean-reversion logic."
+}

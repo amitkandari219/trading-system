@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic cross-sectional stock selection, intelligent reweighting criteria, and cointegration-based portfolio formation\u2014none of which can be expressed as simple single-instrument indicator conditions. The original source text references a fixed instrument set with mean reversion via cointegration, but the signal description emphasizes dynamic daily selection and reweighting across a universe of stocks. This requires multi-asset ranking/selection logic, cointegration analysis, and portfolio optimization that are beyond single-instrument technical indicator rules.",
+  "translation_notes": "Attempted partial translation using daily returns as a mean reversion proxy (long when returns are negative, short when positive, exit on reversal). However, this is a significant simplification that misses the core mechanism: cross-sectional selection of multiple instruments with intelligent reweighting. The signal also references undefined parameters (lookback_period, threshold, half_life) marked AUTHOR_SILENT. A proper implementation would require a custom backtest module supporting multi-asset cointegration analysis and dynamic portfolio rebalancing."
+}

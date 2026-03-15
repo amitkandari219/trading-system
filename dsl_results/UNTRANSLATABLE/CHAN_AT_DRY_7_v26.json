@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Cross-sectional ranking and portfolio construction (long top 50, short bottom 50 by 252-day returns) cannot be expressed using single-stock indicator conditions. This strategy requires: (1) calculation of 252-day returns across entire universe, (2) ranking mechanism across all stocks, (3) portfolio-level selection and weighting logic. The backtest engine rules allow only individual indicator comparisons on a per-stock basis, not cross-sectional ranking or universe-wide aggregation.",
+  "translation_notes": "Signal CHAN_AT_DRY_7 is a portfolio-level, cross-sectional momentum strategy that fundamentally requires ranking all stocks by 252-day returns and selecting extreme deciles. This cannot be decomposed into per-stock entry/exit rules using the allowed single-indicator operators. Implementation requires a custom ranking module outside the scope of these rule definitions."
+}

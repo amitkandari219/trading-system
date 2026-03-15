@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires detection of external news events (earnings, regulatory announcements, litigation, guidance changes) which are NOT market-based indicators. The rule depends on fundamental event detection that cannot be expressed using price, volume, or technical indicators alone. News materiality assessment also requires semantic analysis outside the scope of quantitative indicators.",
+  "translation_notes": "SCHWAGER_DRY_0_0 is a fundamental thesis invalidation rule based on news/events, not technical signals. The core logic is: IF position_held AND material_news_announced THEN exit_immediately. This requires an external news feed integration and event classification system that is not available in the allowed indicator set. A backtest engine would need to: (1) incorporate a news event data source, (2) classify news materiality, and (3) timestamp events to trigger exits within 5 minutes. Standard OHLCV technical indicators cannot capture this decision rule."
+}

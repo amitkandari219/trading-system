@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic position sizing inversely weighted to volume decline severity and a 25% volume decline threshold relative to 20-day MA. These require calculated metrics (volume_decline_pct = (sma_20 - volume) / sma_20 * 100) and position sizing logic that cannot be expressed in simple 3-field condition tuples. The ATR exclusion threshold of 3\u00d7 ATR is approximated using true_range < atr_14 as a proxy, but the volume severity weighting for position sizing is not supported by the backtest engine schema.",
+  "translation_notes": "Attempted translation approximates the signal intent: bullish days on low volume (entry_long) and bearish days on low volume (entry_short). Stop-loss derived from 1.5 \u00d7 atr_14 \u2248 2.27% and take-profit from 2 \u00d7 atr_14 \u2248 3.03%. Volume reversion exit triggered when volume > sma_20. However, the core logic of inverse position sizing based on volume decline percentage cannot be implemented without custom position sizing functions."
+}

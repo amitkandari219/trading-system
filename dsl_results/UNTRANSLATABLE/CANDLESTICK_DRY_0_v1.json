@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Descending Triangle pattern detection requires multi-bar price structure analysis (flat bottom support + descending resistance line) that cannot be expressed using only the allowed point-in-time indicators and operators. Pattern recognition requires historical price sequence validation and trend line fitting, which are not available in the allowed indicator set.",
+  "translation_notes": "This is a pure candlestick/chart pattern that requires visual/structural pattern detection. The allowed indicators (RSI, MACD, Donchian, etc.) are all lagging/oscillator based and cannot detect the geometric formation of a descending triangle. A custom pattern detector function would be needed in the backtest engine to identify: (1) a horizontal support line with multiple touches, and (2) a downward-sloping resistance line with multiple touches. The 64% bear success rate suggests downward breakout is more probable, but entry direction remains CONTEXT_DEPENDENT pending breakout direction confirmation."
+}

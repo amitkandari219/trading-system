@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires volatility percentile ranking against 252-day historical range (IV rank calculation) and volatility expansion confirmation logic. Available ATR indicators (atr_7, atr_14, atr_20) do not support percentile thresholding or historical percentile comparison. Signal also requires directional confirmation that volatility 'confirms' rather than 'contradicts' trend, which requires comparative logic not expressible in the allowed operator set.",
+  "translation_notes": "Attempted translation using atr_20 as proxy for volatility with arbitrary thresholds (65 for high, 40 for contraction), and sma_20 for trend direction with 2-bar confirmation. However, the core signal intent\u2014using volatility percentile diagnostics relative to a 252-day rolling window\u2014cannot be accurately represented without percentile ranking or conditional statistical functions. The signal is fundamentally context-dependent and diagnostic rather than rule-based."
+}

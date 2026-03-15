@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires parameter optimization to determine 'single optimal Bollinger Band level (N)' which is a meta-optimization task external to rule definition. The optimal entry/exit threshold levels cannot be expressed as fixed constants in this rule schema\u2014they must be discovered via walk-forward optimization on training data. Source text is incomplete and does not specify the actual entry/exit logic beyond the conceptual statement that single-level outperforms multi-level scaling.",
+  "translation_notes": "This signal describes a methodology (optimize single entry/exit levels) rather than a concrete trading rule. The rule schema requires concrete indicator values/thresholds, but this signal explicitly states thresholds are 'determined via parameter optimization' and are unknown a priori. Generic Bollinger Band reversal conditions were provided as a fallback, but do not reflect the optimized single-level strategy described. To implement: (1) run hyperparameter search on training data to find optimal bb_pct_b or standard deviation multiple, (2) substitute that discovered value into the rule above."
+}

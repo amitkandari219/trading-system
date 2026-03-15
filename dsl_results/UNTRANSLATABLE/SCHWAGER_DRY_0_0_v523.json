@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Cannot precisely calculate 'price rise from recent swing low' using only allowed indicators. Swing low detection requires multi-bar lookback logic and local minima identification not available in indicator set. The signal requires tracking (close - swing_low) / swing_low over a 5-10 bar window, which exceeds the scope of single-bar indicator comparisons. Additionally, 'Entry signal from analyst/system is present' is a meta-condition external to price/volume data.",
+  "translation_notes": "Attempted partial translation using returns (as proxy for price move) and rsi_14 for overbought detection. Exit uses s1 (pivot support) as proxy for swing low with ATR buffer, but this is an approximation. The core filtering rule (avoid late entry after prolonged move) requires advanced pattern recognition beyond the allowed indicator vocabulary."
+}

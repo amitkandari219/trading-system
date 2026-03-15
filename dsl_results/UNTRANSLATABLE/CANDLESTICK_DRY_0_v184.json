@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of 'candlestick pattern' type (unnamed in source), yearly low/high positions, and market regime classification (BULL_MARKET vs BEAR_MARKET) which are not available as atomic indicators. Entry condition 'Breakout occurs near yearly low' requires 52-week range context not provided by allowed indicators. Specific candlestick pattern recognition logic cannot be expressed with standard OHLC indicators alone.",
+  "translation_notes": "Approximated breakout logic using Donchian channels (52-period proxy for yearly range) with directional body confirmation. Performance metrics (6.04%, 9.61%, -5.06%, -6.28%) suggest asymmetric returns by market regime; cannot encode without explicit market regime detection. Exit conditions marked AUTHOR_SILENT in source; used reversal to opposite Donchian extreme as reasonable default. Hold period set to 10 days based on source data time horizons (10-day, 3-day, 5-day returns shown)."
+}

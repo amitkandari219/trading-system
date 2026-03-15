@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Z-score calculation on a correlated pair (AREX and WLL components), which is not available in the allowed indicator list. Z-score is a statistical measure requiring mean and standard deviation computation across a pair relationship. The allowed indicators do not include pair correlation metrics, z-score values, or statistical spread calculations. Approximated entry/exit using price vs SMA as a mean-reversion proxy, but this does not capture the true paired z-score logic specified in the original signal.",
+  "translation_notes": "Original signal requires z-score thresholds (-2.0 for long, +2.0 for short) with reversion target at 0.0 on paired instruments. Since z-score calculation is not supported, used SMA_20 as a simplified mean-reversion substitute. True implementation requires custom z-score computation on the AREX/WLL pair correlation. Signal is marked CONTEXT_DEPENDENT per original specification but cannot be fully translated without z-score support."
+}

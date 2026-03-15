@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires z-score calculation (deviation from 5-period moving average in terms of 5-period standard deviation). The ALLOWED_INDICATORS list does not include raw standard deviation or z-score calculations. Bollinger Bands (bb_upper, bb_lower, bb_pct_b, bb_bandwidth) provide similar mean-reversion logic but are typically 20-period lookback, not 5-period. The exact threshold parameter and half_life parameter are marked AUTHOR_SILENT and cannot be determined. Dynamic z-score thresholding is not expressible with the available operators and indicators.",
+  "translation_notes": "This is a mean reversion strategy on portfolio market value with z-score based entries. The signal requires: (1) calculation of 5-period moving average and standard deviation, (2) z-score computation (deviation / std dev), (3) configurable threshold for entry. None of these statistical computations are available in the ALLOWED_INDICATORS. A simplified approximation would use bb_pct_b (Bollinger Band %B) as a proxy for normalized deviation, but this uses different lookback periods and methodology. The exit conditions are marked AUTHOR_SILENT, so a reversal condition (price crossing back to moving average) was inferred."
+}

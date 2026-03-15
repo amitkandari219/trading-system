@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Kalman filter with recursive coefficient estimation (\u03b2(t|t)), prediction error thresholds (e(t)), and state covariance confidence measures (R(t|t)) are not implementable using the allowed indicator set. The signal requires real-time Kalman filtering on pair relationships and internal state covariance tracking, which cannot be expressed through standard technical indicators (RSI, MACD, Bollinger Bands, etc.). Additionally, entry conditions reference 'AUTHOR_SILENT' parameters (lookback_period, threshold, half_life) that are not specified, and exit conditions are entirely unspecified.",
+  "translation_notes": "This is a sophisticated statistical arbitrage signal based on Kalman filtering for pairs trading. It requires: (1) multi-security correlation analysis not available in single-instrument indicators, (2) dynamic state estimation and covariance matrices, (3) unspecified critical parameters. A proper implementation would require a custom Kalman filter module outside the standard indicator framework. The EWA-EWC pair example suggests relative value trading between two securities, which cannot be captured with the available single-asset indicators."
+}

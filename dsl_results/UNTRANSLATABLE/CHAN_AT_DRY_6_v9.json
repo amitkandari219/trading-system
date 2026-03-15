@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit comparison between near-term and far-term futures contract prices (spread analysis). The allowed indicator set does not include contract-specific price data, spread pricing, curve positioning, or term structure metrics. Requires: near_contract_price, far_contract_price, or a futures_spread indicator. The signal is fundamentally a futures curve strategy that cannot be expressed with single-contract OHLCV indicators.",
+  "translation_notes": "This is a futures curve roll strategy requiring multi-contract spread analysis. The entry condition 'near-term contract price > far-term contract price' cannot be translated using the available single-contract indicators (open, high, low, close, volume). A proper implementation would need access to: (1) Term structure data, (2) Contract-specific pricing for different maturities, or (3) A pre-calculated futures_spread indicator. Signal marked untranslatable per Rule 5."
+}

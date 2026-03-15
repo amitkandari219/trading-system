@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of index composition changes (stock additions/removals) and identification of forced index fund trading activity. These are corporate action/market microstructure events that cannot be expressed using only price-based technical indicators. The signal depends on external event data (index rebalance announcements) and institutional flow identification, which are not available in the ALLOWED INDICATORS list.",
+  "translation_notes": "Attempted proxy using volume spike detection, but this does not capture the true signal requirement: timing forced buying/selling pressure from index fund rebalancing around announced composition changes. A proper implementation requires: (1) index rebalance calendar data, (2) institutional ownership tracking, (3) forced trading volume quantification. Current technical indicators alone cannot identify this event-driven alpha."
+}

@@ -1,0 +1,80 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Double Bottom pattern requires identifying two distinct lows with a rise between them. Operationalized as: (1) price closing above prior low indicating bounce from second bottom, (2) volume surge above 20-period historical average marking end of downward plunge per source text, (3) RSI below 50 confirming oversold conditions typical of bottoms. Exit when price breaks below prior low. Pattern-specific spacing/separation checks (distance between bottoms, adequacy of rise) cannot be directly encoded in single-bar indicators and would require multi-bar lookback logic, so approximated through volume and momentum confirmation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 50.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Double Bottom pattern requires identifying two distinct lows with a rise between them. Operationalized as: (1) price closing above prior low indicating bounce from second bottom, (2) volume surge above 20-period historical average marking end of downward plunge per source text, (3) RSI below 50 confirming oversold conditions typical of bottoms. Exit when price breaks below prior low. Pattern-specific spacing/separation checks (distance between bottoms, adequacy of rise) cannot be directly encoded in single-bar indicators and would require multi-bar lookback logic, so approximated through volume and momentum confirmation."
+  },
+  "source_rule_text": "Double Bottom: A retest of a prior low after a downward price trend, with two bottoms separated sufficiently and a rise between them adequate to delineate two minor lows, with small price variation between the two bottoms"
+}

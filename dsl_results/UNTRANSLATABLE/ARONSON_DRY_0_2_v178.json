@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires pair trading with cointegration analysis (ADF test p-value), spread calculation between two instruments, and statistical mean-reversion mechanics that are not supported by single-instrument indicators. The allowed indicator set does not include: (1) cointegration testing functionality, (2) cross-instrument spread calculations, (3) dynamic equilibrium relationship monitoring, or (4) multi-leg position management. Implementation requires external cointegration framework and pairs dataset.",
+  "translation_notes": "Signal ARONSON_DRY_0_2 is a pairs trading strategy using cointegrated instruments (e.g., Ford vs GM). Core logic: when spread exceeds 2.5 std devs from mean, take opposing positions; exit on mean reversion to 0 std devs, 1% profit, or spread exceeding 3.5 std devs. This requires: (a) pre-screening pairs for cointegration (ADF p < 0.15), (b) real-time spread monitoring across two correlated instruments, (c) context-dependent directional entry based on which leg diverges, and (d) pair-level position sizing (3.5% per leg). Single-instrument candlestick/technical indicators cannot capture inter-instrument relationships needed for this strategy. Recommend: implement as separate pairs module with statsmodels.tsa.stattools.coint() and maintain spread series per cointegrated pair."
+}

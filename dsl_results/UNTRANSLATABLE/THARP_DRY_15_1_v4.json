@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) 'Last 2 closes show increasing volume relative to 5-period volume average' \u2014 no 5-period volume MA in allowed indicators; (2) 'Allow entry 4+ hours after major news release' \u2014 no news event timestamp or time-based logic supported; (3) Demand-level detection is qualitative and cannot be expressed with available quantitative indicators alone",
+  "translation_notes": "Translated core volume-demand conditions using available indicators (volume > sma_10, close > sma_20, vol_ratio_20 as proxy for rising demand). The consecutive volume increases over 2 bars and post-news timing constraints cannot be expressed with the allowed indicator set and require custom logic or additional data sources."
+}

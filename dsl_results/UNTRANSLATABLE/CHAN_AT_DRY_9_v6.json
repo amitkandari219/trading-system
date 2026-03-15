@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "CPPI is a dynamic portfolio insurance algorithm requiring real-time portfolio value tracking, floor value calculations, leverage multiplier adjustments based on cushion ratios, and position sizing proportional to (Portfolio Value - Floor Value) / (D \u00d7 Portfolio Value). These require stateful portfolio-level computations and dynamic leverage allocation that cannot be expressed as simple indicator-based entry/exit conditions. The signal requires: (1) tracking cumulative portfolio value relative to a dynamic floor, (2) calculating leverage = (Portfolio Value - Floor) / (Cushion), and (3) rebalancing position size continuously. Standard OHLCV indicators and technical overlays cannot replicate this algorithm without portfolio state management.",
+  "translation_notes": "CPPI is a sophisticated portfolio insurance mechanism that operates at the portfolio allocation level rather than individual security signals. It requires: Current Portfolio Value tracking, Floor Value = Initial Value \u00d7 (1 - D), Cushion = Portfolio Value - Floor, and Multiplier = Allocation / (D \u00d7 Current Value). The stop_loss_pct of 50% corresponds to the D=0.5 example parameter. Direction is CONTEXT_DEPENDENT because CPPI dynamically adjusts long exposure based on portfolio cushion. Backtest period noted as 100,000 days simulated."
+}

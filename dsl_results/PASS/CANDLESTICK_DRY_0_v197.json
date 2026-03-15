@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Pattern 'Below the Stomach': (1) Tall white candle detected via body > ATR (volatility-adjusted); (2) Next candle opens lower than prior close; (3) Next candle closes below midpoint of prior candle body (approximated as close < pivot). Exit when price recovers above SMA_20 or bulls regain control. Behavioral rank 20/103 in bear markets suggests moderate reliability; success_rate_bull 60% noted. Exit conditions were AUTHOR_SILENT so reversal-based exit logic applied."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Pattern 'Below the Stomach': (1) Tall white candle detected via body > ATR (volatility-adjusted); (2) Next candle opens lower than prior close; (3) Next candle closes below midpoint of prior candle body (approximated as close < pivot). Exit when price recovers above SMA_20 or bulls regain control. Behavioral rank 20/103 in bear markets suggests moderate reliability; success_rate_bull 60% noted. Exit conditions were AUTHOR_SILENT so reversal-based exit logic applied."
+  },
+  "source_rule_text": "Pattern name: Below the Stomach. A tall white candle in an uptrend followed by a candle that opens lower and stays below the midpoint of the white candle's body."
+}

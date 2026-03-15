@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegration testing with SPY benchmark and advanced mean-reversion statistical framework (linear mean reversion signal generation, half-life calculation, Johansen cointegration test). These are portfolio-level statistical tests and regime identifiers not available in the allowed indicator list. The signal also references internal methodology ('Chapter 2') without specifying exact parameter values (lookback_period, threshold, half_life marked as AUTHOR_SILENT). A proper implementation requires custom cointegration module and mean-reversion signal generator outside standard technical indicators.",
+  "translation_notes": "Attempted translation uses price crossing SMA_20 as proxy for mean reversion entry/exit, but this fundamentally misrepresents the signal's statistical cointegration framework. CONTEXT_DEPENDENT direction reflects that long/short decision depends on portfolio-SPY spread position, not fixed directional bias. Recommend implementing custom cointegration-based strategy module rather than forcing into standard technical indicator schema."
+}

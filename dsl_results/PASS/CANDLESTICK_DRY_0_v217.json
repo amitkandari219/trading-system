@@ -1,0 +1,82 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      },
+      {
+        "left": "open",
+        "operator": ">=",
+        "right": "high"
+      },
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Belt Hold is a reversal pattern that appears in uptrends. Entry conditions: (1) black candle (close < open), (2) opens near/at high (approximated by open >= high threshold), (3) tall body relative to ATR. The uptrend context is captured by targeting TRENDING_UP regime. Exit on close above open (reversal of pattern). The low success rates in parameters suggest this is a weak signal, reflected in conservative 2% stop loss and 5-day hold max."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      },
+      {
+        "indicator": "open",
+        "op": ">=",
+        "value": "high"
+      },
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Belt Hold is a reversal pattern that appears in uptrends. Entry conditions: (1) black candle (close < open), (2) opens near/at high (approximated by open >= high threshold), (3) tall body relative to ATR. The uptrend context is captured by targeting TRENDING_UP regime. Exit on close above open (reversal of pattern). The low success rates in parameters suggest this is a weak signal, reflected in conservative 2% stop loss and 5-day hold max."
+  },
+  "source_rule_text": "Belt Hold candlestick: A single candleline in an upward price trend where price opens at the high and closes near the low, creating a tall black candle."
+}

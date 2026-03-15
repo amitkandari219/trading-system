@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires peak/trough detection and divergence magnitude measurement across multiple bars with historical comparison. The allowed indicator set does not include prior bar indicator values (prev_rsi_14 does not exist in allowed list), nor does it support the multi-bar peak/trough identification and relative divergence magnitude calculation (0.5% threshold) required by the signal specification. A proper implementation would require custom divergence detection logic beyond the 3-field condition structure.",
+  "translation_notes": "Divergence analysis fundamentally requires comparing indicator extrema (peaks/troughs) across multiple prior bars and measuring divergence magnitude relative to prior peaks/troughs. The constraint of using only single-bar comparisons with allowed indicators makes precise translation impossible. The attempted translation above uses RSI as a proxy confirming indicator but cannot implement the core divergence detection mechanics (peak/trough identification, magnitude thresholds, bar separation requirements) specified in the original signal."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires dynamic price target calculation based on candle pattern measurement (height / 6 + breakout_price). This requires custom order-generation logic beyond static indicator comparisons. The 'range' indicator approximates candle height but the formula-driven target calculation and breakout direction detection cannot be expressed using only the allowed operators and indicators.",
+  "translation_notes": "Signal uses a measure rule that computes candle height (high - low) and derives targets via division and addition. While 'range' captures candle height, the dynamic target calculation logic (dividing height by 6 and adding to breakout price) requires custom calculation functions not available in the standard indicator set. The breakout_direction parameter should be evaluated externally to determine LONG vs SHORT entry direction. The median performance statistics provided (12.69%, 16.01%, etc.) appear to be historical backtesting results rather than entry/exit conditions."
+}

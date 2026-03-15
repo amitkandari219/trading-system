@@ -1,0 +1,72 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "book_id": "ALGO_SUCCESS",
+  "dsl_rule": {
+    "signal_id": "ALGO_SUCCESS_DRY_15_0",
+    "entry_long": [
+      {
+        "left": "sma_40",
+        "operator": "crosses_above",
+        "right": "sma_100"
+      },
+      {
+        "left": "sma_40",
+        "operator": ">",
+        "right": "sma_100"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "sma_40",
+        "operator": "crosses_below",
+        "right": "sma_100"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires short_window=30 and long_window=120. Mapped to closest available SMAs: sma_40 (30-period proxy) and sma_100 (120-period proxy). Used 'crosses_above' and 'crosses_below' operators to detect the crossover events. Entry requires both crossover confirmation and price level confirmation (sma_40 > sma_100). Position state conditions (position_state == OUT/LONG) are handled by the backtest engine's position management, not in the rule itself."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_40",
+        "op": "crosses_above",
+        "value": "sma_100"
+      },
+      {
+        "indicator": "sma_40",
+        "op": ">",
+        "value": "sma_100"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "sma_40",
+        "op": "crosses_below",
+        "value": "sma_100"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal requires short_window=30 and long_window=120. Mapped to closest available SMAs: sma_40 (30-period proxy) and sma_100 (120-period proxy). Used 'crosses_above' and 'crosses_below' operators to detect the crossover events. Entry requires both crossover confirmation and price level confirmation (sma_40 > sma_100). Position state conditions (position_state == OUT/LONG) are handled by the backtest engine's position management, not in the rule itself."
+  },
+  "source_rule_text": "Generate a long entry signal when the short-term moving average crosses above the long-term moving average (bullish crossover), and generate an exit signal when the short-term moving average crosses below the long-term moving average (bearish crossover)."
+}

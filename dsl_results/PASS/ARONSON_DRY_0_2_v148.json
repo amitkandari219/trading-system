@@ -1,0 +1,110 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "15"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "15"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses 3-bar lookback for breakouts: entry_long triggers when close exceeds previous bar high (simplified to prev_high for practical use with ADX confirmation). Entry_short mirrors for downtrend. Exit uses 1-bar reversal as specified. ADX(14) > 15 confirms trend presence. 'Price momentum > 0' condition omitted as momentum indicator not in allowed list; ADX alone provides trend confirmation. Entry conditions use AND logic (both breakout AND ADX required); exits use OR logic (any reversal OR ADX drop triggers exit)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 15.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 15.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "HIGH_VOL"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses 3-bar lookback for breakouts: entry_long triggers when close exceeds previous bar high (simplified to prev_high for practical use with ADX confirmation). Entry_short mirrors for downtrend. Exit uses 1-bar reversal as specified. ADX(14) > 15 confirms trend presence. 'Price momentum > 0' condition omitted as momentum indicator not in allowed list; ADX alone provides trend confirmation. Entry conditions use AND logic (both breakout AND ADX required); exits use OR logic (any reversal OR ADX drop triggers exit)."
+  },
+  "source_rule_text": "A trader should follow the price trend (buy in uptrends, sell short in downtrends) because market structure requires trend-following speculators to fulfill commercial hedger imbalances, and the market compensates this behavior through trend persistence."
+}

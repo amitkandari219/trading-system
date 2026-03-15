@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit 52-week high/low values and proximity calculation (95% of 52-week high). Available Donchian indicator (dc_upper) approximates recent highs but does not guarantee 52-week window. Momentum lookback over 20 days cannot be directly expressed without access to historical return series or dedicated 20-day momentum indicator. Volume confirmation uses available sma_50 but signal specifies 50-day average of volume which is not directly available as an indicator.",
+  "translation_notes": "Approximation using Donchian Channel upper band (dc_upper) as proxy for recent highs instead of explicit 52-week high. Entry condition uses positive returns (log_returns > 0) over lookback period as proxy for positive 20-day momentum. Volume condition compares current volume to sma_50 (price SMA) rather than vol_sma_50 which is unavailable. Stop loss set to 5% decline from entry as proxy for 52-week high breakdown. Take profit threshold of 10% gain implemented as exit condition using returns > 0.10."
+}

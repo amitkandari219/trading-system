@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires valuation metrics (P/E, P/B, Shiller CAPE) and detection of structural market anomalies (margin debt levels, index concentration, derivative strategy adoption). These are macro/fundamental indicators not present in the allowed technical indicator set. The signal also requires z-score calculations against 20-year historical means, which cannot be computed from the available price-action and volatility indicators alone. This is a regime-detection signal that requires external data feeds and statistical analysis beyond standard OHLCV-derived technical indicators.",
+  "translation_notes": "SCHWAGER_DRY_0_1 is a macro regime-shift signal focused on valuation extremes and systemic structural anomalies. It operates at the portfolio/market-level rather than individual security level. To implement this signal would require: (1) valuation ratio feeds (P/E, P/B, CAPE), (2) margin debt data, (3) concentration indices, (4) derivative positioning data, and (5) rolling z-score calculations. The exposure reduction action (65%) and cautious stance are also position-sizing directives rather than entry/exit signals. Recommend implementing this as a separate regime filter outside the backtest engine using a dedicated macro data pipeline."
+}

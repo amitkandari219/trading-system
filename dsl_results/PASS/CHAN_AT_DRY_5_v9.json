@@ -1,0 +1,83 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "book_id": "CHAN_AT",
+  "dsl_rule": {
+    "signal_id": "CHAN_AT_DRY_5",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_200"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "-0.05"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Condition 1: Price above long-term MA (sma_200) ensures stocks above long-term moving average. Condition 2 & 3: returns between -5% and 0% approximates 'small intraday drop' vs 'large drop'. Exit uses sma_20 crossover as reversal confirmation when price recovers. Author did not specify parameters (lookback, threshold, half_life, sharpe, backtest_period) so reasonable defaults applied: 5-day hold window, 2% stop-loss. The 'liquidity-driven vs news-driven' distinction and 'long-only fund selling pressure' cannot be directly encoded with allowed indicators."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": -0.05
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Condition 1: Price above long-term MA (sma_200) ensures stocks above long-term moving average. Condition 2 & 3: returns between -5% and 0% approximates 'small intraday drop' vs 'large drop'. Exit uses sma_20 crossover as reversal confirmation when price recovers. Author did not specify parameters (lookback, threshold, half_life, sharpe, backtest_period) so reasonable defaults applied: 5-day hold window, 2% stop-loss. The 'liquidity-driven vs news-driven' distinction and 'long-only fund selling pressure' cannot be directly encoded with allowed indicators."
+  },
+  "source_rule_text": "Buy stocks that have experienced small intraday drops from their long-term moving average, as small reversions are more likely than large ones caused by fundamental news."
+}

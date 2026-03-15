@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit 52-week high price level and 10-day momentum confirmation. The 52-week high is not directly available as an indicator in the allowed list (dc_upper is 20-period Donchian, not 252-period). Momentum over last 10 trading days cannot be precisely expressed without custom lookback indexing or a dedicated momentum indicator. Volume confirmation threshold (30-day average) approximated with vol_ratio_20.",
+  "translation_notes": "Attempted translation uses dc_upper as proxy for recent highs, but this significantly deviates from the intended 52-week high anchoring effect. The signal's core thesis (proximity to 52-week high creating momentum mispricing) cannot be accurately captured without a 252-bar high indicator or explicit historical price level access. Recommend adding hl_52week (52-week high) and momentum_10d to the allowed indicators list, or accept reduced signal fidelity."
+}

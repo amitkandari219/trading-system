@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_12_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a meta-rule about sample collection and system validation prior to live trading, not a market condition-based entry/exit rule. It requires: (1) tracking historical sample statistics (minimum 75 trades, directional split >=40% up and >=40% down), (2) out-of-sample validation logic, and (3) a pre-trading gate condition. These are portfolio/meta-strategy constraints rather than indicator-based conditions on price/volume/technicals. No combination of the allowed indicators can express 'sample size >= 75' or 'directional outcome distribution' since these operate at the strategy level, not the bar level. This rule belongs in strategy initialization/validation logic, not in per-bar entry/exit conditions.",
+  "translation_notes": "THARP_DRY_12_1 is a pre-deployment validation rule (from Van Tharp's 'Trade Your Way to Financial Freedom'). It mandates collecting sufficient historical data with balanced directional outcomes before live trading. The signal should be enforced via backtester configuration (minimum sample size, walk-forward testing, or out-of-sample validation) rather than via real-time indicator conditions. Consider implementing as a strategy-level validator or pre-trade gate in the backtest engine initialization phase."
+}

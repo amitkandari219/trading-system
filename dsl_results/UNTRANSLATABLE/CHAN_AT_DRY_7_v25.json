@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking all stocks by 12-month lagged returns and selecting top/bottom deciles. This is a cross-sectional portfolio construction rule that cannot be expressed as a single-stock technical indicator condition. The engine would need to: (1) compute 12-month lagged returns across the entire universe, (2) rank by percentile, and (3) filter by decile membership. These operations require universe-level aggregation and are outside the scope of single-instrument indicator logic.",
+  "translation_notes": "This is a momentum/trend-following signal based on relative performance ranking (decile analysis) rather than absolute technical indicators. Standard backtest engines operating on individual securities cannot implement decile-based selection without custom portfolio construction logic. Recommend: (1) preprocessing universe returns into decile flags, or (2) using a portfolio-level backtest engine with ranking capabilities."
+}

@@ -1,0 +1,72 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Rounding bottom pattern characterized by: (1) slow accumulation phase represented by price action above medium-term MA (sma_50) showing gradual uptrend, (2) breakout from consolidation on relatively high volume (volume > hvol_20). Exit on trend line break below (close crosses below sma_50). Pattern parameters (62% success rate, 54% average rise) documented but not operationalized in rules. Throwback/pullback percentage not specified by author; stop loss set conservatively at 3%. Hold period extended to 180 days to accommodate multi-month pattern formation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Rounding bottom pattern characterized by: (1) slow accumulation phase represented by price action above medium-term MA (sma_50) showing gradual uptrend, (2) breakout from consolidation on relatively high volume (volume > hvol_20). Exit on trend line break below (close crosses below sma_50). Pattern parameters (62% success rate, 54% average rise) documented but not operationalized in rules. Throwback/pullback percentage not specified by author; stop loss set conservatively at 3%. Hold period extended to 180 days to accommodate multi-month pattern formation."
+  },
+  "source_rule_text": "Rounding bottom: A turn in trend characterized by slow, gradual price movement higher over months, forming a curved bottom pattern that signals a reversal to higher prices"
+}

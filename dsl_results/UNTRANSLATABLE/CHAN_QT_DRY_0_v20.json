@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a position sizing/leverage rule, not a directional entry/exit signal. It requires: (1) calculation of strategy win rate and risk/reward ratio from backtest results (not available as real-time indicators), (2) dynamic computation of half-Kelly leverage, (3) historical worst-case one-period drawdown analysis (meta-level backtest statistic), and (4) maximum acceptable drawdown threshold (AUTHOR_SILENT \u2014 not specified). The allowed indicators cannot express these portfolio-level leverage calculations or access backtest performance metrics. This rule belongs in a portfolio management module, not entry/exit conditions.",
+  "translation_notes": "Signal CHAN_QT_DRY_0 is a risk management overlay that dynamically adjusts position size based on Kelly criterion and historical tail risk. Recommend implementing as a separate position_sizing() function that: (a) calculates half_kelly = (win_rate * avg_win - (1 - win_rate) * avg_loss) / avg_win, (b) retrieves max_historical_one_period_loss from backtest equity curve, (c) sets max_leverage = max_acceptable_drawdown / max_historical_one_period_loss, (d) applies leverage = min(half_kelly, max_leverage) to all positions, and (e) rebalances at period end (frequency TBD). Exit on max_tolerable_drawdown breach is a hard stop that must be monitored at portfolio level."
+}

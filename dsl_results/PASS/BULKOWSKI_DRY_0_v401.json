@@ -1,0 +1,88 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes a breakout pattern with context-dependent direction (bullish in bull markets, bearish in bear markets). Modeled as Donchian Channel breakouts as a proxy for breakout detection. Success rates provided in source are statistical references for backtesting evaluation (20-75+ days), not actionable entry/exit rules. Formation end to breakout within 2-3 days is a timing constraint typically handled by the backtest engine separately. Exit conditions treated as reversal of entry condition per AUTHOR_SILENT convention."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal describes a breakout pattern with context-dependent direction (bullish in bull markets, bearish in bear markets). Modeled as Donchian Channel breakouts as a proxy for breakout detection. Success rates provided in source are statistical references for backtesting evaluation (20-75+ days), not actionable entry/exit rules. Formation end to breakout within 2-3 days is a timing constraint typically handled by the backtest engine separately. Exit conditions treated as reversal of entry condition per AUTHOR_SILENT convention."
+  },
+  "source_rule_text": "Breakout and Post-Breakout statistics for Bull Market, Bear Market, Up Breakout, and Down Breakout patterns"
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal relies on an external predictive model (model prediction > 0.0 / <= 0.0) that is not part of the allowed technical indicators list. The confirmation requirement of '2 consecutive positive predictions' and lookback window of '3 bars' cannot be expressed using only standard OHLCV-based indicators. This requires custom model output integration not supported by the allowed indicator set.",
+  "translation_notes": "Signal references a proprietary predictive model with custom prediction thresholds and multi-bar confirmation logic. The entry condition 'Model prediction > 0.0' and exit condition 'Model prediction <= 0.0' cannot be mapped to any allowed indicator. To make this backtest-compatible, the model predictions would need to be pre-computed and injected as a custom indicator (e.g., 'model_signal') or the rule would need to be rewritten using standard technical indicators (RSI, MACD, moving averages, etc.)."
+}

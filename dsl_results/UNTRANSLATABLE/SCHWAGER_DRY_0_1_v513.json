@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting '2+ consecutive decline periods' and '18-month historical percentile ranking' \u2014 consecutive period counting and multi-month lookback percentile calculations are not directly available as atomic indicators. The signal also references 'deterioration reversal' as a sub-metric with convergence logic ('2 out of N metrics align') which cannot be expressed without explicit deterioration metric definitions. price_pos_20 only provides 20-period range position, not 18-month range. A proper implementation would require custom indicator development for: (1) consecutive_declines counter, (2) percentile_rank_18m function, and (3) deterioration_score aggregator.",
+  "translation_notes": "Attempted partial translation using price_pos_20 as proxy for percentile position within available lookback, and returns < 0 as proxy for decline detection. However, the core logic\u2014detecting sustained multi-period deterioration at the extreme tail of an 18-month distribution with sub-metric convergence\u2014cannot be accurately expressed with the allowed indicator set. The signal is fundamentally a pattern-recognition rule requiring custom lookback depth and statistical aggregation."
+}

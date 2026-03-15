@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Entry condition 'Price opens at the low' and 'Price closes near the high' cannot be precisely quantified without parameters. The pattern requires relative measurements (e.g., close within X% of high, open exactly at low) but exact thresholds are marked AUTHOR_SILENT. Additionally, 'No lower shadow' (lower_wick == 0) is extremely strict and may be impractical; typical interpretation would be 'very small lower shadow' requiring a threshold parameter not provided.",
+  "translation_notes": "Approximated 'no lower shadow' as lower_wick == 0 and 'short upper shadow' as upper_wick < body. Exit condition set to close below open as a reversal signal per rule 8. Hold period set to 4 days (upper bound of '2-4 days' range). Stop loss conservatively estimated at 2% due to AUTHOR_SILENT guidance."
+}

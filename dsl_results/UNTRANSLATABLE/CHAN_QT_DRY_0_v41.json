@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires stationarity detection and mean-reversion confirmation via statistical tests (ADF test, half-life calculation, cointegration analysis). These quantitative measures are not available in the allowed indicator set. The entry/exit conditions use SMA crossovers as a practical proxy for mean-reversion, but true stationarity regime identification requires advanced time-series analysis not expressible with the provided indicators.",
+  "translation_notes": "CHAN_QT_DRY_0 is a meta-signal about regime identification rather than a direct trading rule. Implemented a practical mean-reversion proxy using SMA crossovers: enter when price deviates from and then reverts to the 20-period mean. Direction is context-dependent (long when price overshoots below mean, short when overshoots above). Actual parameters (lookback_period, threshold, half_life) are author-silent and require empirical optimization. The 'STATIONARY_REGIME' target indicates this signal should only trade in confirmed stationary market regimes, which requires external regime detection."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal relies on order book microstructure data (bid/ask orders, cancellation rates, order flow detection from 'flippers') which cannot be expressed using only OHLCV-derived indicators. The core logic requires: (1) real-time order book monitoring for large bids, (2) order cancellation rate tracking, (3) identification of specific trader behavior patterns. None of these can be reconstructed from standard price/volume indicators alone.",
+  "translation_notes": "This is a market microstructure / order book spoofing detection strategy that requires access to Level 2/3 data and order event streams. The attempted translation uses volume spikes as a weak proxy for 'large orders' and price momentum reversal for 'flipper capitulation', but this is NOT equivalent to the original signal logic. For proper backtesting, this strategy requires an order book replay engine with tick-level data and order lifecycle tracking (placement, cancellation, fill events)."
+}

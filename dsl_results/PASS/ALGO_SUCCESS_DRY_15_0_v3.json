@@ -1,0 +1,82 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "book_id": "ALGO_SUCCESS",
+  "dsl_rule": {
+    "signal_id": "ALGO_SUCCESS_DRY_15_0",
+    "entry_long": [
+      {
+        "left": "sma_50",
+        "operator": "crosses_above",
+        "right": "sma_200"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_200"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "sma_200",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Converted short_window=50 to sma_50 and long_window=200 to sma_200. Entry requires SMA 50 to cross above SMA 200, price above both MAs, and position OUT state (implicit in entry logic). Exit triggered when SMA 200 crosses above SMA 50 (reversal signal). CONTEXT_DEPENDENT direction resolved to LONG based on entry conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_50",
+        "op": "crosses_above",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "sma_200",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Converted short_window=50 to sma_50 and long_window=200 to sma_200. Entry requires SMA 50 to cross above SMA 200, price above both MAs, and position OUT state (implicit in entry logic). Exit triggered when SMA 200 crosses above SMA 50 (reversal signal). CONTEXT_DEPENDENT direction resolved to LONG based on entry conditions."
+  },
+  "source_rule_text": "Enter long positions when a short-period moving average crosses above a long-period moving average; exit when the long-period moving average crosses above the short-period moving average."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_5_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'tranches across 2-3 hour window' and 'order book imbalance (sell/buy ratio)' which cannot be expressed using only the allowed indicators. Order book depth data and intra-hour order sequencing analysis are not available in the indicator set. The 2.5% intraday decline threshold was approximated using close relative to entry, but tranche detection requires order-level microstructure data.",
+  "translation_notes": "Translated volume spike using vol_ratio_20 > 1.8. Approximated directional selling constraint with close price movements (2.5% \u2248 0.975 multiplier for short, 1.025 for long). Used volume > 1.5 as proxy for order imbalance since order book ratio unavailable. Direction set to CONTEXT_DEPENDENT to reflect both long and short entry conditions based on market direction. Hard stop of 2.0% honored. Exit conditions partially translated: 1% recovery/decline and volume normalization to 1.3x. Tranche window detection cannot be implemented without order timestamp data."
+}

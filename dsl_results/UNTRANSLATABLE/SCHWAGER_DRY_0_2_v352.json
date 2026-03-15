@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Base consolidation detection (20-30 day range-bound period) cannot be expressed with available indicators. Donchian channels approximate breakout detection but do not capture the explicit consolidation base formation requirement. A custom indicator tracking price range extrema over a rolling window would be needed to fully implement this signal.",
+  "translation_notes": "Used dc_upper (Donchian upper band over ~20 days) to approximate breakout above consolidation base. vol_ratio_20 captures volume confirmation requirement. Stop loss set to 4% per original parameters. Exit conditions use price closure below upper band (reversal) and a volatility-based trailing stop proxy using ATR. The signal's core logic of identifying multi-week consolidation patterns is not fully translatable with standard OHLCV-derived indicators alone."
+}

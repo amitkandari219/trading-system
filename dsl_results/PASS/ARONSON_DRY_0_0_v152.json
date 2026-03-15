@@ -1,0 +1,83 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.08"
+      },
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "price_pos_20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_lower"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "0.05"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry condition 1: 14-day returns >= -8% (price decline threshold). Entry condition 2: volume compared against price_pos_20 as proxy for volume percentile rank (volume at or below 40th percentile). Entry condition 3: close > dc_lower (Donchian 14-day low) confirms reversal initiation after decline period. Exit at 5% gain uses returns >= 0.05. Exit at 3% stop-loss and 5-day hold max captured in stop_loss_pct and hold_days_max. Note: Exact volume percentile calculation (40th percentile of 20-day average) cannot be precisely replicated with allowed indicators; price_pos_20 provides relative position approximation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.08
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "price_pos_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_lower"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": 0.05
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Entry condition 1: 14-day returns >= -8% (price decline threshold). Entry condition 2: volume compared against price_pos_20 as proxy for volume percentile rank (volume at or below 40th percentile). Entry condition 3: close > dc_lower (Donchian 14-day low) confirms reversal initiation after decline period. Exit at 5% gain uses returns >= 0.05. Exit at 3% stop-loss and 5-day hold max captured in stop_loss_pct and hold_days_max. Note: Exact volume percentile calculation (40th percentile of 20-day average) cannot be precisely replicated with allowed indicators; price_pos_20 provides relative position approximation."
+  },
+  "source_rule_text": "Buy stocks that have declined sharply on declining volume over a recent period, as the low volume indicates insufficient buyers for distressed sellers, creating a systematic tendency for mean reversion in the following period."
+}

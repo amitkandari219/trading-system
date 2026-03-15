@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_11_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit 'sentiment measure' and 'retail/uninformed positioning' which are not available in the allowed indicator list. The concept of detecting uninformed trader behavior patterns requires proprietary sentiment data or order flow analysis not present in standard OHLCV indicators. Substituted rsi_14 percentile thresholds as a proxy for sentiment extremes, but this does not capture the true microstructure signal of uninformed trader positioning.",
+  "translation_notes": "Translated price persistence using close > prev_close for directional movement; volume surge using vol_ratio_20 > 1.3; sentiment measure approximated with rsi_14 > 65 (overbought/retail bullish) and < 35 (oversold/retail bearish) as proxies. No institutional order flow signals are available, so this condition was omitted. Exit at 3% loss from entry mapped to returns operator; volume reversion to average mapped to vol_ratio_20 < 1.0; 7-period hold mapped to hold_days_max."
+}

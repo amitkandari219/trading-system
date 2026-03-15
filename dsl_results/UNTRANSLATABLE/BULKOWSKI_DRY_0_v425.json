@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern detection requires multi-bar lookback analysis to identify two distinct bottom lows, measure their separation distance, and calculate price variation percentage between them. This requires pattern-matching logic beyond simple indicator-based rules. Specific requirements: (1) identifying left bottom low and right bottom low positions across multiple bars, (2) calculating vertical distance between pattern top and bottoms (pattern height), (3) measuring price variation % between the two lows. Standard indicators cannot reliably encode this shape-recognition logic without explicit bar indexing or pattern-matching functions.",
+  "translation_notes": "BULKOWSKI's AADB pattern is primarily a visual/structural pattern requiring multi-bar context analysis. The encoded conditions attempt to approximate: price variation between bottoms (using 2-5% range relative to a baseline), right bottom lower than left (prev_low comparison), and bullish breakout direction. However, a proper implementation would require: (a) explicit identification of swing lows across 5-10+ bar windows, (b) pattern height measurement, (c) consolidation range detection between bottoms. Recommend implementing as a dedicated pattern scanner module rather than rule-based indicator conditions. Success rate cited as 78% in bull markets with 40% average rise."
+}

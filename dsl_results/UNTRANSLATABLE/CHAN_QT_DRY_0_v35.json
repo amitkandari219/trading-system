@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pairs trading strategy requires: (1) cointegration/stationarity testing on a linear combination of two stocks, (2) spread calculation between paired instruments, (3) statistical mean-reversion metrics (half-life, Hurst exponent, ADF test). The allowed indicator set contains only single-instrument technical indicators and cannot express multi-instrument relationships, spread calculations, or stationarity tests required for this strategy. Lookback period, threshold, half-life, and backtest parameters are marked AUTHOR_SILENT and cannot be inferred.",
+  "translation_notes": "This is a pairs trading/statistical arbitrage signal requiring cointegration analysis and spread-based entry/exit logic. The backtest engine would need: (a) pairs identification module with cointegration testing, (b) spread indicator calculation, (c) mean and standard deviation tracking for the spread, (d) entry triggers based on spread deviation (e.g., >1.5 SD), and (e) exit on mean reversion. Cannot be translated to single-instrument technical indicators."
+}

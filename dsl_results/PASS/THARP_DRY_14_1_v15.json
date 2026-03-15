@@ -1,0 +1,128 @@
+{
+  "signal_id": "THARP_DRY_14_1",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_14_1",
+    "entry_long": [
+      {
+        "left": "sma_50",
+        "operator": "crosses_above",
+        "right": "sma_200"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "atr_14",
+        "operator": ">",
+        "right": "0.015"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_50",
+        "operator": "crosses_below",
+        "right": "sma_200"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "atr_14",
+        "operator": ">",
+        "right": "0.015"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_50",
+        "operator": "crosses_below",
+        "right": "sma_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_50",
+        "operator": "crosses_above",
+        "right": "sma_200"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal calls for longer-term trend-following on 50-period timeframe with regime shifts and abnormal price moves. Implemented using SMA crossover (50/200) as the primary trend-following mechanism. ATR > 1.5% (scaled to decimal) proxies for abnormal price volatility (>1.5 std devs). Entry requires both trend confirmation and volatility spike. Exit triggers on trend reversal. Context-dependent direction reflects both LONG and SHORT applicability based on regime shift direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_50",
+        "op": "crosses_above",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "atr_14",
+        "op": ">",
+        "value": 0.015
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_50",
+        "op": "crosses_below",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "atr_14",
+        "op": ">",
+        "value": 0.015
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_50",
+        "op": "crosses_below",
+        "value": "sma_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_50",
+        "op": "crosses_above",
+        "value": "sma_200"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal calls for longer-term trend-following on 50-period timeframe with regime shifts and abnormal price moves. Implemented using SMA crossover (50/200) as the primary trend-following mechanism. ATR > 1.5% (scaled to decimal) proxies for abnormal price volatility (>1.5 std devs). Entry requires both trend confirmation and volatility spike. Exit triggers on trend reversal. Context-dependent direction reflects both LONG and SHORT applicability based on regime shift direction."
+  },
+  "source_rule_text": "A trader should use longer-term trend-following indicators to reduce transaction costs and capture abnormally large price moves that occur during major market shifts, rather than relying on shorter-term indicators that generate more frequent signals."
+}

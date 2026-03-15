@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) detection of 'futures down before market open' \u2014 no futures data in allowed indicators; (2) ranking stocks by 'lowest returns from previous day's lows' \u2014 requires cross-sectional ranking logic not expressible in single-stock condition format; (3) intraday mean reversion detection \u2014 not directly available without intraday bar data; (4) market close liquidation \u2014 'market_close' is not an allowed regime value",
+  "translation_notes": "Translated available components: close > sma_20 (price above 20-day MA) and returns < 0 (panic selling proxy). Cannot express: futures pre-market condition, cross-sectional ranking of 10 lowest stocks, intraday reversion mechanics, or strict market-close exit timing in current rule engine constraints."
+}

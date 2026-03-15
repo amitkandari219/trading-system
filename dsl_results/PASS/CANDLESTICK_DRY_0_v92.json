@@ -1,0 +1,108 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Opening gap confirmation detected by comparing open vs prev_close (gap) and close vs open (confirmation direction). Entry conditions require both gap occurrence and directional confirmation. Exit conditions use reversal logic (close crossing open). Success rates (61% bull, 43% bear) are documented in parameters but not encoded as hard filters since they represent historical statistics rather than entry/exit rules. Context-dependent direction allows signal to trigger both long (bullish gap confirmed) and short (bearish gap confirmed) entries based on gap direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Opening gap confirmation detected by comparing open vs prev_close (gap) and close vs open (confirmation direction). Entry conditions require both gap occurrence and directional confirmation. Exit conditions use reversal logic (close crossing open). Success rates (61% bull, 43% bear) are documented in parameters but not encoded as hard filters since they represent historical statistics rather than entry/exit rules. Context-dependent direction allows signal to trigger both long (bullish gap confirmed) and short (bearish gap confirmed) entries based on gap direction."
+  },
+  "source_rule_text": "Opening Gap Confirmation: Price gap at open; reversal occurs 61% in bull market, 43% in bear market"
+}

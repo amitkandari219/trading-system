@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'yearly high' position and 'breakout' event. The allowed indicators include price_pos_20 (20-day position) but not yearly position. Yearly highs would require 252-bar lookback or a dedicated 'yearly_high' indicator not in the allowed list. 'Breakout' detection is pattern-based and not directly expressible with allowed operators. BARR pattern itself is a named candlestick/bar pattern requiring pattern recognition logic beyond basic technical indicators.",
+  "translation_notes": "Attempted proxy: Used price_pos_20 < 0.5 to represent 'low or middle of range' position away from highs. Entry is CONTEXT_DEPENDENT per original signal (both LONG and SHORT entries included). Exit conditions set to simple reversal (close crosses previous close) since AUTHOR_SILENT. This is a partial translation; proper implementation requires pattern recognition for BARR identification and yearly high calculation."
+}

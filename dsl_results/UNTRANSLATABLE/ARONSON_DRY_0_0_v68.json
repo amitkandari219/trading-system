@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-scale head-and-shoulders pattern detection and dynamic ATR percentile calculations (25th, 50th, 75th percentiles) across 3 filter thresholds with confirmation across 2+ scales. These pattern recognition and statistical percentile operations are not available in the allowed indicator set. The engine would need custom pattern detection logic and rolling percentile calculations that exceed basic indicator comparisons.",
+  "translation_notes": "The core requirement is instrument-specific zigzag filter thresholds calibrated to ATR volatility percentiles and head-and-shoulders pattern confirmation across multiple scales. This is a sophisticated multi-scale pattern detection rule that cannot be reduced to simple indicator threshold comparisons. The allowed indicators include atr_20 for volatility measurement, but lack: (1) percentile calculations of rolling ATR, (2) zigzag filter implementation, (3) head-and-shoulders pattern detection logic, and (4) multi-scale pattern confirmation framework. A partial approximation using ATR > 0 as entry trigger and pivot-based exit is provided, but this does not capture the intended signal logic."
+}

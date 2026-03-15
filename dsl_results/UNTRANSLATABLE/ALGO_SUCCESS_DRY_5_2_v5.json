@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_5_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'tranche signature visible across 60+ minute window' and 'order book imbalance (sell/buy ratio) > 1.2'. Order book imbalance ratio and intraday tranche pattern detection are not available in the allowed indicator set. The signal also requires multi-timeframe analysis (60-minute window tranche signatures) which cannot be expressed with single-bar indicators. Volume spike and price decline can be approximated using vol_ratio_20 and returns, but core market microstructure requirements are untranslatable.",
+  "translation_notes": "Attempted translation uses vol_ratio_20 as proxy for volume spike detection and returns for intraday price decline. However, the core signal depends on order book imbalance ratios and tranche signature detection across specific time windows, which require market microstructure data not in the allowed indicator set. Direction set to CONTEXT_DEPENDENT as original signal indicates it should trade ahead of liquidations in either direction depending on context. Exit conditions partially inferred: 70% exit on 0.6% recovery and 30% exit on volume normalization. Hard stop loss of 1.2% implemented. Hold period set to 1 day as this appears to be an intraday/short-term tactical signal."
+}

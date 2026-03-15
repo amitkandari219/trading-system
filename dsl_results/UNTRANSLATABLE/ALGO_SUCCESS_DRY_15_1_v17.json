@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom z-score calculation on spread residuals from pairs trading (hedge ratio-based OLS residuals). This requires: (1) dual-asset spread construction, (2) dynamic mean/stdev calculation from residual series over lookback window, (3) z-score computation from residuals. None of these derived metrics (z_score, spread_residuals, hedge_ratio) are in the ALLOWED INDICATORS list. The signal is fundamentally a pairs trading rule that cannot be expressed using single-asset price/technical indicators.",
+  "translation_notes": "This is a sophisticated pairs trading signal requiring external hedge ratio calculation and residual series tracking. It would need custom indicator support for: residual_zscore, spread_mean_60, spread_stdev_60. Entry would trigger when |residual_zscore| >= 2.0 (bullish if zscore > 2.0 for long, bearish if zscore < -2.0 for short). Exit when zscore reverts within \u00b11.0 or hits \u00b13.0 stop. Regime target is RANGING as spread mean-reversion works best in non-trending conditions."
+}

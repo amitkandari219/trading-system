@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Original signal specifies SMA(30) and SMA(100) for crossover, but allowed indicators only include sma_50 and sma_100 (no sma_30). Also, 'at least 2 consecutive higher highs over past 15 bars' requires bar-by-bar comparison logic (close[i] > close[i-1] for multiple bars) which cannot be expressed with single-bar comparisons. Volume confirmation threshold (0.8 * 15-bar average) cannot be precisely replicated with vol_ratio_20 which uses 20-bar average.",
+  "translation_notes": "Attempted translation uses sma_50 as closest approximation to sma_30, and vol_ratio_20 as proxy for volume threshold. The consecutive higher highs requirement and precise volume multiplier logic are not translatable to allowed operators. Signal direction inferred as LONG (trend-following in uptrend). Hold period set to 15 bars as specified in exit conditions."
+}

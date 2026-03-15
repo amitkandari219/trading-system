@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_11_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'block shopping activity by brokers' and 'order flow acceleration' \u2014 these are real-time market microstructure events that cannot be reliably encoded using only OHLCV and standard technical indicators. Broker order inquiry frequency, block order detection, and bid-ask spread changes are not available in the allowed indicator set. Position entry should be triggered by external market data feeds or broker API signals, not backward-looking price/volume data.",
+  "translation_notes": "Attempted partial translation using volume anomalies and directional price confirmation as proxies for block shopping detection, but this significantly misrepresents the signal's intent. The core mechanism (detecting and front-running block orders via broker shopping) requires real-time order book and broker communication data unavailable in standard backtesting engines. Manual review and external data integration required."
+}

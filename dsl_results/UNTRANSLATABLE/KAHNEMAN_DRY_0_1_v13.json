@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAHNEMAN_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'surprise events that contradict 2+ prior quarters of baseline behavior' \u2014 this requires historical regime analysis and multi-quarter comparison logic not expressible in single-bar indicator conditions. The 2.0\u03c3 deviation and 200% volume threshold can be approximated using price_pos_20 and vol_ratio_20, but the quarterly contradiction detection requires external event flagging or regime-shift detection unavailable in allowed indicators.",
+  "translation_notes": "Partial translation: Approximated 2.0\u03c3 deviation using price_pos_20 (distance from 20-day SMA as fraction of range; values <0 or >1 indicate 2\u03c3 extremes). Approximated >200% volume deviation using vol_ratio_20 >3.0. Context-dependent direction: entry conditions structured for both long (price oversold + high volume) and short (price overbought + high volume) scenarios. Position reduction (50%) and analysis hold should be implemented at execution layer. Surprise event detection requires manual/external flagging."
+}

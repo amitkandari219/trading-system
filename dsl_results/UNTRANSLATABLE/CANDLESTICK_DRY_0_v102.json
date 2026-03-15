@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The pattern requires identification of exactly 13 consecutive candles with each upper shadow higher than the prior one. This requires historical bar-by-bar pattern matching logic (count=13 AND for i=1..13: high[i] > high[i-1]) which cannot be expressed using only the allowed single-bar indicators and operators. A proper implementation would need a dedicated 13-candle pattern matcher or custom lookback logic.",
+  "translation_notes": "Attempted to capture the essence of 13 consecutively higher highs with upper shadows, but the strict constraint of checking exactly 13 bars in sequence with comparative logic across the entire series exceeds the capability of single-bar condition syntax. The entry conditions shown represent a simplified approximation (higher highs, higher upper wicks) but do not enforce the 13-bar requirement. Recommend implementing as a custom pattern detector or candlestick pattern library function."
+}

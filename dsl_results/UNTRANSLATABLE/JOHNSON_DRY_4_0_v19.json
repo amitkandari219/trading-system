@@ -1,0 +1,18 @@
+{
+  "signal_id": "JOHNSON_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tick-direction detection (strict downtick vs uptick vs zero-tick discrimination) and dynamic limit price adjustment logic. These are order execution mechanics not representable as price/indicator conditions. The 'tick_type_buy', 'tick_type_sell', 'zero_tick_inclusion', and 'limit_price_adjustment' parameters require tick-level order management outside standard OHLCV indicators.",
+  "translation_notes": "Translated directional tick conditions using close vs prev_close as proxy for uptick/downtick. Entry conditions represent buy on downtick (close < prev_close) and sell on uptick (close > prev_close). Exit conditions reverse on tick direction change. However, the core signal intent around dynamic limit price latching and order-level tick discrimination cannot be fully captured in indicator-based rules and requires implementation at the order execution layer."
+}

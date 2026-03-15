@@ -1,0 +1,128 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "sma_50",
+        "operator": "<",
+        "right": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "sma_50",
+        "operator": ">",
+        "right": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires identification of chart pattern breakouts in direction of prevailing trend. Used Donchian breakouts (dc_upper/dc_lower) as proxy for pattern breakout detection. ADX > 25 confirms trending market. Trend direction determined by SMA 50/200 crossover: uptrend when SMA50 < SMA200 for long entries, downtrend when SMA50 > SMA200 for short entries. Exit on reversal through SMA 20. Author silent on exits, so reversal-based exits applied. Parameters note: actual success rates from source (32%, 20%, 21%) are reference metrics only and not directly translatable to rules engine."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "sma_50",
+        "op": "<",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "sma_50",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires identification of chart pattern breakouts in direction of prevailing trend. Used Donchian breakouts (dc_upper/dc_lower) as proxy for pattern breakout detection. ADX > 25 confirms trending market. Trend direction determined by SMA 50/200 crossover: uptrend when SMA50 < SMA200 for long entries, downtrend when SMA50 > SMA200 for short entries. Exit on reversal through SMA 20. Author silent on exits, so reversal-based exits applied. Parameters note: actual success rates from source (32%, 20%, 21%) are reference metrics only and not directly translatable to rules engine."
+  },
+  "source_rule_text": "Pattern: Chart pattern with breakout performance context. Trade in direction of prevailing market trend - upward breakouts in bull markets and downward breakouts in bear markets. Up breakouts in bull markets show strong performance with 25% climbing over 45%."
+}

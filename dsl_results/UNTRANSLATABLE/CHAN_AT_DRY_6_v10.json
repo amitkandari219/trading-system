@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires calculation of 'expected future spot price' which is a derived fundamental/forward pricing metric not available in the allowed indicators list. Normal backwardation detection and roll return calculation require term structure data (futures curve comparison) that is not available. Specific parameters (lookback_period, threshold, half_life) are marked AUTHOR_SILENT and cannot be determined.",
+  "translation_notes": "This signal is fundamentally about futures term structure (backwardation/contango) and roll returns. These concepts require: (1) multiple contract expirations to compare, (2) forward pricing models, and (3) cost-of-carry calculations. The allowed indicators are limited to single-contract technical analysis and do not include term structure, basis, or roll return metrics. To implement this signal, custom indicators for basis analysis and roll return calculation would be required."
+}

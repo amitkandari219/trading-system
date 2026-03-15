@@ -1,0 +1,63 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_lower"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Broadening bottom identified by Donchian channels; entry on close below formation low (dc_lower). Exit when price reverses above the breakout point or fails to move down 5% (stop_loss). Success rate varies significantly by market regime (62% bull vs 34% bear), so ANY regime allowed. Pattern typically forms during recovery from dead-cat bounce."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_lower"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Broadening bottom identified by Donchian channels; entry on close below formation low (dc_lower). Exit when price reverses above the breakout point or fails to move down 5% (stop_loss). Success rate varies significantly by market regime (62% bull vs 34% bear), so ANY regime allowed. Pattern typically forms during recovery from dead-cat bounce."
+  },
+  "source_rule_text": "Broadening Bottom: Price closes below the formation low, signaling a downward breakout"
+}

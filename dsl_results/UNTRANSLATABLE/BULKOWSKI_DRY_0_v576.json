@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Double top pattern detection requires multi-bar pattern recognition (identifying two peaks at similar levels with valley between them). This structural pattern analysis cannot be expressed using only single-bar price/volume indicators and standard technical indicators. Pattern requires: (1) peak identification logic, (2) multi-bar comparison of peak heights, (3) valley detection. Additionally, regime classification (BULL_MARKET/BEAR_MARKET) is not in ALLOWED_REGIMES list.",
+  "translation_notes": "Attempted to capture the rising volume trend component using vol_ratio_20 > 1.0 as a proxy for volume strength. Exit condition uses price crossing SMA as a reversal signal per rules for AUTHOR_SILENT exit conditions. However, the core double-top pattern formation cannot be translated without pattern detection capabilities. Regimes BULL_MARKET and BEAR_MARKET should be mapped to TRENDING_UP and TRENDING_DOWN respectively by the backtest engine."
+}

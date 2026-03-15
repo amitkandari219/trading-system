@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a pairs trading strategy requiring: (1) OLS regression computation across two assets (GLD and GDX) to derive a dynamic hedge ratio, (2) construction of a synthetic spread variable (Spread = GLD - hedge_ratio \u00d7 GDX), and (3) mean reversion detection on that spread. The allowed indicator set contains only single-asset technical indicators and does not support multi-asset regression, cross-asset spread construction, or mean reversion statistics (e.g., Augmented Dickey-Fuller test, half-life calculation). Entry/exit thresholds are marked AUTHOR_SILENT and cannot be inferred. This strategy requires a custom pairs trading module outside the scope of single-asset indicator-based rules.",
+  "translation_notes": "Signal requires quantitative modeling (OLS hedge ratio estimation, spread construction, stationarity testing) unavailable in the allowed indicator library. Recommend implementing as a separate strategy module with explicit regression engine and spread analytics."
+}

@@ -1,0 +1,72 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Double Bottom pattern entry: close crosses above confirmation line (modeled as Donchian upper band tracking recent swing high between two bottoms). ADX > 25 confirms bullish trend strength. Exit uses Donchian lower band as support break. Pattern height calculation (adding to breakout price for target) is a position management rule, not a condition, so handled outside this rule structure. Success rate 78% in bull markets per Bulkowski study."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Double Bottom pattern entry: close crosses above confirmation line (modeled as Donchian upper band tracking recent swing high between two bottoms). ADX > 25 confirms bullish trend strength. Exit uses Donchian lower band as support break. Pattern height calculation (adding to breakout price for target) is a position management rule, not a condition, so handled outside this rule structure. Success rate 78% in bull markets per Bulkowski study."
+  },
+  "source_rule_text": "Double Bottom: Wait for price to close above the highest high between the two bottoms (confirmation) before entering the trade. Trade in bull market for better performance."
+}

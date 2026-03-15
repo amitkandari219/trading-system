@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'contradictory evidence accumulation' at 70% frequency over 20 candles, which requires statistical tracking of signal contradictions across a lookback window. This meta-level regime detection logic (monitoring belief contradictions and switching bias) cannot be expressed as simple indicator thresholds without custom accumulators or state machines not available in the allowed indicator set.",
+  "translation_notes": "Attempted proxy using ADX (trend strength) and RSI (mean reversion vs trend indicators) to detect regime switches, but the core requirement\u2014tracking accumulated contradictory signals over time\u2014exceeds the capability of static threshold comparisons. The signal's true logic requires tracking historical signal conflicts and computing contradiction frequency, which is a backtest engine feature, not an indicator condition."
+}

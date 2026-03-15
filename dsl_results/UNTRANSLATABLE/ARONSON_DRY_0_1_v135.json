@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) detection of consecutive same-direction moves (3-4 periods) \u2014 requires multi-bar sequence logic not expressible with allowed operators; (2) 'estimated fair value' \u2014 not defined and no fair value indicator available; (3) 'fundamental catalyst' \u2014 requires external fundamental data not in allowed indicators. Approximation used Bollinger Bands as proxy for overshoot detection and consecutive logic cannot be properly encoded.",
+  "translation_notes": "Attempted translation uses bb_upper/bb_lower as proxy for 1.5 std dev overshoot concept. True consecutive-move detection (3-4 bars same direction) cannot be implemented without array indexing or sequence operators. Fundamental catalyst check cannot be performed with available indicators. Recommend manual signal filtering or custom indicator development."
+}

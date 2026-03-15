@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_1_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-market price divergence detection and cross-market bid-ask spread comparison. Current indicator set does not support: (1) price divergence between two distinct markets/exchanges, (2) separate bid-ask spread tracking per market, (3) spread ratio comparison to divergence threshold. The signal logic is fundamentally multi-venue arbitrage which cannot be expressed with single-market OHLCV-based indicators.",
+  "translation_notes": "This is a statistical arbitrage/market microstructure signal that requires real-time multi-exchange price and order book data. Attempted mapping of divergence_threshold (0.25%) and convergence_threshold (0.05%) to close price movements, but this is a lossy approximation. The core requirement\u2014detecting price divergences across separate markets and comparing spreads proportionally to divergence\u2014cannot be implemented with the provided single-market indicator set."
+}

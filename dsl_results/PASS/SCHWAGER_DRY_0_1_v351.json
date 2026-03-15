@@ -1,0 +1,73 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped '26-week high' to Donchian upper band (dc_upper) as the closest available indicator for highest price over a lookback period. Volume condition uses vol_ratio_20 which measures volume relative to 20-day average. Entry on close with no confirmation bars (confirmation_bars: 0). Stop loss set at 5% below entry as specified. Exit uses sma_50 crossbelow as primary exit condition per stated rules."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Mapped '26-week high' to Donchian upper band (dc_upper) as the closest available indicator for highest price over a lookback period. Volume condition uses vol_ratio_20 which measures volume relative to 20-day average. Entry on close with no confirmation bars (confirmation_bars: 0). Stop loss set at 5% below entry as specified. Exit uses sma_50 crossbelow as primary exit condition per stated rules."
+  },
+  "source_rule_text": "Buy stocks when they reach new highs, not when they are near their lows or consolidation levels, as this correlates with superior market performance."
+}

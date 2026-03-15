@@ -1,0 +1,148 @@
+{
+  "signal_id": "THARP_DRY_10_0",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_10_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "crosses_above",
+        "right": "50"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "crosses_below",
+        "right": "50"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires context-dependent direction (LONG/SHORT based on trend). Used rsi_14 as closest match for RSI threshold at 50. Vol_ratio_20 represents the 1.5x volume multiple. Fourth entry condition uses prev_close to confirm second consecutive bar in direction of move. ATR-based stop loss of 1.5x ATR converted to percentage equivalent (1.5%) as schema requires pct format. MA crossover serves as both entry trigger and trend reversal exit confirmation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "crosses_above",
+        "value": 50.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "crosses_below",
+        "value": 50.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires context-dependent direction (LONG/SHORT based on trend). Used rsi_14 as closest match for RSI threshold at 50. Vol_ratio_20 represents the 1.5x volume multiple. Fourth entry condition uses prev_close to confirm second consecutive bar in direction of move. ATR-based stop loss of 1.5x ATR converted to percentage equivalent (1.5%) as schema requires pct format. MA crossover serves as both entry trigger and trend reversal exit confirmation."
+  },
+  "source_rule_text": "Enter trades at the moment of trend change, when the reward-to-risk ratio is most favorable, rather than focusing on perfect entry mechanics."
+}

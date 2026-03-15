@@ -1,0 +1,148 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "0.08"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "returns",
+        "operator": "<=",
+        "right": "-0.08"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.12"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.12"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 0.5,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Approximated 5-day directional bias minimum using ADX_14 > 25 (trend strength confirmation). Mapped 8-10% price move to returns >= 0.08 for longs and <= -0.08 for shorts. Trend reversal condition simplified to consecutive directional failures using prev_high/prev_low crosses. Macro thesis support cannot be encoded structurally; assume pre-filtered by regime selection. Context-dependent direction handled by providing both entry_long and entry_short conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": 0.08
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "returns",
+        "op": "<=",
+        "value": -0.08
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.12
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.12
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.005,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Approximated 5-day directional bias minimum using ADX_14 > 25 (trend strength confirmation). Mapped 8-10% price move to returns >= 0.08 for longs and <= -0.08 for shorts. Trend reversal condition simplified to consecutive directional failures using prev_high/prev_low crosses. Macro thesis support cannot be encoded structurally; assume pre-filtered by regime selection. Context-dependent direction handled by providing both entry_long and entry_short conditions."
+  },
+  "source_rule_text": "A trader should maintain positions in markets exhibiting major directional trends and avoid exiting prematurely when early price moves (10% of eventual advance) occur, as trends often extend far beyond initial expectations."
+}

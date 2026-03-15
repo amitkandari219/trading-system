@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a 'consensus indicator' that measures participant alignment percentage, which is not available in the allowed indicator set. The concept of detecting consensus at 60-65% and early price rejection requires a proprietary or custom consensus/sentiment indicator not provided. Additionally, the signal's emphasis on contrarian positioning relative to undefined consensus lacks a quantifiable benchmark. india_vix was used as a proxy for sentiment extremes, but this does not capture true consensus alignment.",
+  "translation_notes": "This signal is fundamentally about contrarian positioning relative to market consensus, which cannot be accurately modeled without an explicit consensus/sentiment indicator. The entry uses india_vix (sentiment proxy) combined with reversal candle logic (body_pct > 0.5 and close opposite to prev_close) as a weak substitute. The exit targets 3x risk (modeled as 3% return) and the stop is set at 1% (approximately 1/3 of target). Direction is CONTEXT_DEPENDENT because the signal trades contrarian to whatever consensus exists, requiring bidirectional rules."
+}

@@ -1,0 +1,90 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "bb_pct_b",
+        "operator": "crosses_above",
+        "right": "0.65"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "bb_pct_b",
+        "operator": "crosses_below",
+        "right": "0.35"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "bb_pct_b",
+        "operator": "<",
+        "right": "0.50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "bb_pct_b",
+        "operator": ">",
+        "right": "0.50"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "The multi-layer channel normalization with divergence indicators is approximated using Bollinger Bands %B (bb_pct_b), which normalizes price position within a channel (0-1 scale). Upper threshold 65 maps to 0.65, lower threshold 35 maps to 0.35, and midpoint exit at 50 maps to 0.50. The 60-day first-layer and 600-day second-layer lookbacks are inherent to the Bollinger Bands calculation parameters. This is a reasonable proxy for the intended divergence-based channel normalization strategy when exact divergence indicators are not available."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "bb_pct_b",
+        "op": "crosses_above",
+        "value": 0.65
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "bb_pct_b",
+        "op": "crosses_below",
+        "value": 0.35
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "bb_pct_b",
+        "op": "<",
+        "value": 0.5
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "bb_pct_b",
+        "op": ">",
+        "value": 0.5
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "The multi-layer channel normalization with divergence indicators is approximated using Bollinger Bands %B (bb_pct_b), which normalizes price position within a channel (0-1 scale). Upper threshold 65 maps to 0.65, lower threshold 35 maps to 0.35, and midpoint exit at 50 maps to 0.50. The 60-day first-layer and 600-day second-layer lookbacks are inherent to the Bollinger Bands calculation parameters. This is a reasonable proxy for the intended divergence-based channel normalization strategy when exact divergence indicators are not available."
+  },
+  "source_rule_text": "Use multi-layer channel normalization with a 10-fold look-back span ratio to establish reliable fluctuation ranges for divergence indicators, then apply upper/lower thresholds to generate bullish and bearish signals."
+}

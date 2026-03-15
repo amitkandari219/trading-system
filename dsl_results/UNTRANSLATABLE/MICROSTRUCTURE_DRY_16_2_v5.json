@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_16_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Order book depth depletion monitoring (>40% of typical depth) \u2014 not available in price/technical indicators; (2) Bid-ask spread percentile ranking \u2014 only bandwidth available, not spread percentile; (3) One-sided volume detection \u2014 vol_ratio_20 measures overall volume ratio, not directional order book imbalance. These microstructure conditions require Level 2/3 order book data not present in allowed indicator set.",
+  "translation_notes": "Attempted proxy mapping: price_pos_20 approximates price deviation from 20-day MA in standard deviations; bb_bandwidth approximates spread widening; vol_ratio_20 approximates volume surge. However, the core signal depends on order book microstructure (depth depletion, bid-ask spread percentiles, one-sided liquidity exhaustion) which cannot be derived from OHLCV price action alone. A proper implementation requires Level 2 order book data, order flow imbalance metrics, or custom liquidity depth indicators."
+}

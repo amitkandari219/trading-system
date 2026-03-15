@@ -1,0 +1,104 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "book_id": "CHAN_QT",
+  "dsl_rule": {
+    "signal_id": "CHAN_QT_DRY_0",
+    "entry_long": [
+      {
+        "left": "dc_upper",
+        "operator": "crosses_above",
+        "right": "close"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.03"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "dc_lower",
+        "operator": "crosses_below",
+        "right": "close"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.03"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used Donchian Channel (dc_upper/dc_lower) as proxy for N-day highs/lows. Large percent change threshold parameterized as 3% (0.03 decimal) \u2014 requires optimization via backtesting. Entry requires both N-day extreme AND large price move in close temporal proximity. Exit uses SMA crossover as reversal signal since optimal holding period was not specified (AUTHOR_SILENT). Direction set to CONTEXT_DEPENDENT to allow both long and short entries depending on whether price reaches high or low."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "dc_upper",
+        "op": "crosses_above",
+        "value": "close"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.03
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "dc_lower",
+        "op": "crosses_below",
+        "value": "close"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.03
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used Donchian Channel (dc_upper/dc_lower) as proxy for N-day highs/lows. Large percent change threshold parameterized as 3% (0.03 decimal) \u2014 requires optimization via backtesting. Entry requires both N-day extreme AND large price move in close temporal proximity. Exit uses SMA crossover as reversal signal since optimal holding period was not specified (AUTHOR_SILENT). Direction set to CONTEXT_DEPENDENT to allow both long and short entries depending on whether price reaches high or low."
+  },
+  "source_rule_text": "Enter a trade when a stock reaches an N-day high or low coinciding with a large percentage price change, signaling an imminent regime switch."
+}

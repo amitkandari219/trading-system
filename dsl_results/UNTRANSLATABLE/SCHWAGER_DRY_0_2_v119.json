@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 1-standard-deviation breakout from 10-day mean with real-time auto-execution trigger. Standard deviation calculation and 'breakout breach' detection logic are not available in the allowed indicator set. The signal also specifies pre-authorized position sizing and simultaneous alert/execution mechanics which are operational/risk-management rules outside the scope of price-action indicators.",
+  "translation_notes": "Attempted to approximate using sma_10 as the 10-day mean reference and atr_14 as volatility proxy, but this does not capture the exact 1-std-dev range threshold required. The core 'breakout outside range' condition cannot be precisely translated without a rolling standard deviation indicator. Direction set to CONTEXT_DEPENDENT as the signal uses bidirectional breakout logic. Exit condition uses range mean (approximated as sma_10) with trailing stop concept partially captured via stop_loss_pct."
+}

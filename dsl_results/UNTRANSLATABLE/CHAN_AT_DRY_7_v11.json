@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'lagged roll return' and 'roll return' indicators which are not in the allowed indicators list. Roll returns are specific to futures contracts and require data not standardized in the provided indicator set. The exact threshold values and lookback period are marked AUTHOR_SILENT and cannot be determined. Substituted log_returns as a proxy for return momentum, but this does not accurately capture futures-specific roll return semantics.",
+  "translation_notes": "Used log_returns as a proxy for momentum-based signal, but this is not equivalent to lagged roll returns. True implementation requires: (1) custom roll return calculation, (2) specification of lookback_period, (3) specification of threshold value, (4) half-life parameter. Neutral band exit thresholds set to \u00b10.5% as reasonable estimate, but should be calibrated to actual roll return magnitudes."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_8_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of 'primary volume driver' and matching against 'strategy model dependency' \u2014 these are qualitative, multi-factor attribution concepts that cannot be expressed using only price/technical indicators. The signal depends on causal interpretation of volume (why people trade) rather than quantifiable volume measurements. Parameters like 'driver_confidence_threshold', 'max_secondary_factor_contribution', and 'minimum_volume_samples_for_factor_analysis' require external volume driver classification logic not available in standard OHLCV technical indicators.",
+  "translation_notes": "Translated detectable volume spike (volume > vol_ratio_20) as proxy for entry, with confidence threshold approximated as vol_ratio_20 > 0.5. Exit on driver misalignment approximated as vol_ratio_20 < 0.5. However, the core signal \u2014 identifying and matching specific volume drivers to strategy dependency \u2014 requires qualitative analysis beyond technical indicators."
+}

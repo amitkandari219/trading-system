@@ -1,0 +1,73 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "1.20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "0.85"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 10.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry condition models 20% advance from entry level held for 2 consecutive closes using relative price comparison (1.20x and close > prev_close). Exit models 15% decline from entry (0.85x multiplier) or 40-day time decay. The 'buy signal confirmed' and 'sell signal given' references are abstracted as price action thresholds since no explicit signal generator is defined in allowed indicators. Direction is LONG based on signal intent."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": 1.2
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 0.85
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.1,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Entry condition models 20% advance from entry level held for 2 consecutive closes using relative price comparison (1.20x and close > prev_close). Exit models 15% decline from entry (0.85x multiplier) or 40-day time decay. The 'buy signal confirmed' and 'sell signal given' references are abstracted as price action thresholds since no explicit signal generator is defined in allowed indicators. Direction is LONG based on signal intent."
+  },
+  "source_rule_text": "A trader should enter a position when a clear buy signal is generated, and exit only when a corresponding sell signal is generated, with gains/losses measured between these two definitional points."
+}

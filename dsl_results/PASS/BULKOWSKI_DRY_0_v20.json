@@ -1,0 +1,108 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "s1"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "r1"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "r1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Double Bottom pattern detected via pivot support/resistance (s1/r1) breakouts. Entry uses ADX > 25 to confirm trend strength. Bull market entries are long breakouts above resistance; bear market entries are short breakouts below support. Exit on reversal through entry level. Target is set to 120 days (4 months) per author guidance. Volume trend and specific success rates (78% bull, failure rates) are noted in source but not encoded as they require pattern recognition beyond available indicators. Pattern detection itself (identifying the double bottom formation) is assumed to occur prior to rule evaluation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "s1"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "r1"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "r1"
+      }
+    ],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Double Bottom pattern detected via pivot support/resistance (s1/r1) breakouts. Entry uses ADX > 25 to confirm trend strength. Bull market entries are long breakouts above resistance; bear market entries are short breakouts below support. Exit on reversal through entry level. Target is set to 120 days (4 months) per author guidance. Volume trend and specific success rates (78% bull, failure rates) are noted in source but not encoded as they require pattern recognition beyond available indicators. Pattern detection itself (identifying the double bottom formation) is assumed to occur prior to rule evaluation."
+  },
+  "source_rule_text": "Double Bottom (BB) pattern: Trade with market trend - bullish breakouts in bull markets and bearish breakouts in bear markets for best performance"
+}

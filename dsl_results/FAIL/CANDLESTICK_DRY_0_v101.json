@@ -1,0 +1,49 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [
+    {
+      "left": "body",
+      "operator": ">",
+      "right": "prev_body"
+    },
+    {
+      "left": "body",
+      "operator": "<",
+      "right": "prev_body"
+    },
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "prev_low"
+    },
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "prev_high"
+    }
+  ],
+  "exit_long": [],
+  "exit_short": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "prev_high"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 3.0,
+  "hold_days_max": 14,
+  "direction": "SHORT",
+  "target_regime": [
+    "TRENDING_UP"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Bearish Harami pattern approximated using candle body comparisons: previous candle has larger body (uptrend), current candle has smaller body contained within previous candle's range. Exit on close above previous high (reversal signal). Hold period set to 14 days per source description of 'approximately two weeks'. Stop loss set conservatively at 3% for pattern failure.",
+  "validation_issues": [
+    "entry_short: unknown right value 'prev_body'",
+    "entry_short: unknown right value 'prev_body'"
+  ]
+}

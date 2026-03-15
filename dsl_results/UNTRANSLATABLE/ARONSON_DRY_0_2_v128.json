@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires measurement of autocorrelation of returns and Ljung-Box statistical test for volatility clustering. Neither autocorrelation lag nor Ljung-Box test results are available in the allowed indicator set. Approximations used (hvol_20 as proxy for volatility clustering, returns as proxy for momentum), but the core diffusion-lag measurement cannot be expressed with allowed indicators.",
+  "translation_notes": "Attempted proxy mapping: (1) 'Information diffusion lag' approximated using returns autocorrelation behavior (proxy: low hvol_20 < 0.25 as inverse of clustering); (2) 'Volatility clustering (Ljung-Box p < 0.25)' approximated using hvol_20 threshold; (3) 'Momentum persistence' mapped to directional close moves; (4) 'Volume activity' as volume > 0. Exit includes volume spike rule (vol_ratio_20) where available. Maximum 3-bar hold enforced. Signal is inherently direction-agnostic, so both LONG and SHORT entries provided."
+}

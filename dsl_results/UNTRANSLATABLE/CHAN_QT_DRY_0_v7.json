@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit Z-score calculation on a pairs spread (cl1 - hedge_ratio*cl2), which is not available as a pre-computed indicator. The spread itself must be constructed from two separate instruments with a calculated hedge ratio. bb_pct_b was used as a proxy for normalized deviation, but this does not replicate the exact mean-reversion pairs logic described in the original rule.",
+  "translation_notes": "Original signal uses custom spread Z-score from pairs trading. Approximated using bb_pct_b (Bollinger Band %B) as a mean-reversion proxy, where values <-2 or >2 represent extreme deviations and values within \u00b11 represent mean reversion. However, this does not account for the dual-instrument hedge ratio and custom spread calculation. True implementation requires custom spread construction outside standard indicator set."
+}

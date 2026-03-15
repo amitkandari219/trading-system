@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'unusually tall candlestick' and 'overhead resistance' (rising/falling windows, congestion areas) which are not directly available as indicators. The 'range > atr_14' approximates tall candle detection, but precise pattern recognition for window/congestion identification requires custom pattern logic not available in allowed indicators. Pivot levels (r1) used as proxy for overhead resistance.",
+  "translation_notes": "Interpreted 'established uptrend' as close > sma_20. 'Unusually tall candlestick' approximated using range > atr_14 (candle range exceeds average volatility). Overhead resistance proxied with close < r1 (first resistance level). Exit condition set to close > prev_high (candle closes above tall candle's high, invalidating reversal). Source performance data (67% success rate) noted but not directly encodable in rule format. Pattern requires manual validation of congestion areas and window formations."
+}

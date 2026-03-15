@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Cup with Handle pattern requires multi-bar pattern recognition (identification of two widely spaced minor highs at similar levels, handle formation pullback, and breakout confirmation). This cannot be expressed as a single-bar conditional rule using only point-in-time indicator comparisons. The pattern requires historical price structure analysis and relative extrema detection across multiple bars, which is beyond the scope of the allowed operators and indicators.",
+  "translation_notes": "The allowed indicator set and operators do not support pattern detection algorithms. A proper implementation would require: (1) swing point detection to identify the two cup lips, (2) handle pullback validation, (3) breakout confirmation logic. A simplified proxy using close > prev_high for breakout and close < sma_20 for exit was provided, but this does not capture the full Cup with Handle semantics. Recommend implementing this as a custom pattern detector outside the rule engine. Success rate: 68% bull, Average rise: 34%, Failure rate at 5% target: 9%."
+}

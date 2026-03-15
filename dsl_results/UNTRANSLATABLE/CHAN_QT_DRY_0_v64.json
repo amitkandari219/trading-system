@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal relies on calendar-based entry/exit (mid-April entry, end-of-April exit) and contract expiration logic (May gasoline futures). These are temporal/contract-specification constraints that cannot be expressed using price action indicators. The backtest engine would need explicit calendar logic and futures contract selection rules to implement this seasonal trade correctly.",
+  "translation_notes": "This is a pure calendar/seasonal play with no technical indicators specified in the source. The conditions provided (price above SMA_20 for entry, below for exit) are placeholder technical rules. True implementation requires: (1) calendar date checks (April 15\u00b13 days for entry, April 28\u00b12 days for exit), (2) futures contract expiration filtering (select May contract), and (3) seasonal regime detection. Parameters marked 'AUTHOR_SILENT' indicate backtesting was done but methodology not disclosed."
+}

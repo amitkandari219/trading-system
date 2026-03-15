@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'artificial price ceiling legally enforced' and 'supply fundamentals show tightness OR shortage conditions' \u2014 these are external regime/fundamental states not measurable via OHLCV price/technical indicators. The core concept (price constrained near a hard ceiling with supply tightness) cannot be operationalized without external data feeds (regulatory database, commodity supply reports) or a custom regime indicator. Entry proximity (0.95 of ceiling) and momentum toward ceiling are translatable in principle, but without an explicit ceiling price level input or fundamental tightness metric, the rule is incomplete.",
+  "translation_notes": "This signal describes a market microstructure arbitrage during price controls (Nixon-era plywood freeze). The three entry conditions shown represent proximity to an assumed normalized ceiling (1.0) and positive momentum, but the signal fundamentally requires: (1) an explicit exogenous ceiling price input, (2) a fundamental supply tightness indicator (not in allowed set), and (3) regime detection of 'constraint in force'. Exit logic uses the +1% buffer above ceiling as stated. Without external constraint data, this rule cannot be reliably backtested."
+}

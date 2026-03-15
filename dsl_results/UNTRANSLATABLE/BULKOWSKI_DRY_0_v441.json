@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pattern recognition (Double Bottom formation identification) and ratio calculations ((highest_high - lowest_low) / breakout_price) which cannot be expressed using only the allowed indicators and operators. The signal also requires market regime detection (BULL_MARKET vs BEAR_MARKET) which maps to TRENDING_UP/TRENDING_DOWN but the conditional logic (height discriminator in bull markets, width discriminator in bear markets) requires pattern geometry measurements unavailable in the indicator set. The height-to-breakout ratio threshold and width measurements are not computable from available indicators.",
+  "translation_notes": "This signal is fundamentally a pattern-based rule that requires candlestick pattern recognition and geometric measurements of the pattern's dimensions relative to price levels. The core logic\u2014'tall patterns outperform in bull markets, narrow patterns outperform in bear markets'\u2014requires measurement of pattern height and width, neither of which can be derived from the available price/indicator set without custom pattern detection functions. Recommendation: implement this as a custom pattern detector outside the rules engine, or add pattern-specific indicators (pattern_height, pattern_width) to the allowed indicator list."
+}

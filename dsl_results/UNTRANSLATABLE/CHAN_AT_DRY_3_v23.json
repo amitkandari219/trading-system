@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires cointegration analysis, eigenvalue decomposition, eigenvector calculation, and synthetic portfolio construction (yport) from multiple ETF pairs. These are advanced multivariate statistical operations that cannot be expressed using the allowed indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Returns). The signal also requires calculation of half-life of mean reversion for pair selection. Standard technical indicators cannot replicate cointegration matrices, eigenvector weights, or portfolio-level mean reversion characteristics. This requires custom preprocessing and statistical modeling outside the backtest engine's indicator scope.",
+  "translation_notes": "Signal CHAN_AT_DRY_3 is a pairs trading / statistical arbitrage strategy requiring: (1) cointegration testing of ETF pairs, (2) eigenvalue decomposition of cointegration matrix, (3) eigenvector-based portfolio weight construction, (4) half-life calculation for mean reversion decay, (5) portfolio-level z-score or deviation thresholding. None of these operations map to the allowed technical indicators. Implementation would require a custom module for cointegration detection and eigenvector-weighted portfolio construction upstream of the standard backtest engine."
+}

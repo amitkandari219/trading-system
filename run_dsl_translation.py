@@ -51,6 +51,8 @@ def main():
                         help='Retranslate only FIXABLE signals from previous run')
     parser.add_argument('--workers', type=int, default=6,
                         help='Number of parallel workers')
+    parser.add_argument('--books', nargs='+', default=None,
+                        help='Only translate signals from these books')
     args = parser.parse_args()
 
     if args.consolidate:
@@ -75,6 +77,12 @@ def run_full_translation(translator, validator, compiler, args):
     with open(ALL_SIGNALS_PATH) as f:
         all_signals = json.load(f)
     print(f"Total approved signals: {len(all_signals)}")
+
+    # Filter by books if specified
+    if args.books:
+        book_set = set(b.upper() for b in args.books)
+        all_signals = [s for s in all_signals if s.get('book_id', '').upper() in book_set]
+        print(f"Filtered to books: {', '.join(book_set)} ({len(all_signals)} signals)")
 
     if args.limit > 0:
         all_signals = all_signals[:args.limit]

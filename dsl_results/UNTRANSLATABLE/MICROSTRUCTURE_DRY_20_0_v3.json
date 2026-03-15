@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_20_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires domain-specific commodity metrics not available in standard OHLCV indicators: (1) inventory levels as percentage of historical range, (2) days-to-cover calculation (inventory/daily demand rate), (3) production schedule lead times (supply arrival dates), (4) storage cost index. These are fundamental commodity data points not derivable from price/volume alone. Best approximation used price_pos_20 for relative positioning and hvol_20 for volatility regime, but core logic cannot be accurately expressed without commodity-specific data feeds.",
+  "translation_notes": "The signal fundamentally describes a commodity microstructure arbitrage based on supply-demand imbalances and carrying costs. Attempted mapping: price_pos_20 < 0.25 approximates 'inventory at 25th percentile' (price at bottom of range suggests tight supply), volume < 20 approximates 'days-to-cover < 20' (sparse turnover suggests low availability), hvol_20 > 0.75 approximates 'high storage cost burden' (elevated volatility). However, without actual inventory data, supply schedules, and storage cost indices, this is a weak proxy. Recommend implementing custom data connectors for commodity fundamentals."
+}

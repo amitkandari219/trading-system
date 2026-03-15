@@ -1,0 +1,148 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      },
+      {
+        "left": "atr_14",
+        "operator": ">",
+        "right": "0.75"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      },
+      {
+        "left": "atr_14",
+        "operator": ">",
+        "right": "0.75"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires context-dependent directional bias. Mapped 'swing high/low breaks' to close > prev_high (long) and close < prev_low (short). Volume increase >50% mapped to vol_ratio_20 > 1.5 (50% above baseline). Price acceleration (>0.75 ATR) mapped directly to atr_14 > 0.75. Directional bias (3+ period trend) approximated with ADX_14 > 25 indicating established trend strength. Exit conditions use 3-period swing reversal as close crossing previous swing extremes."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      },
+      {
+        "indicator": "atr_14",
+        "op": ">",
+        "value": 0.75
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      },
+      {
+        "indicator": "atr_14",
+        "op": ">",
+        "value": 0.75
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires context-dependent directional bias. Mapped 'swing high/low breaks' to close > prev_high (long) and close < prev_low (short). Volume increase >50% mapped to vol_ratio_20 > 1.5 (50% above baseline). Price acceleration (>0.75 ATR) mapped directly to atr_14 > 0.75. Directional bias (3+ period trend) approximated with ADX_14 > 25 indicating established trend strength. Exit conditions use 3-period swing reversal as close crossing previous swing extremes."
+  },
+  "source_rule_text": "Trend-following strategies are most profitable when positive feedback dominates market behavior, characterized by imitative investor decisions that amplify initial price movements into large-scale trends rather than mean reversion."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'fundamental concern about systemic stability' and 'policy maker statement/action' \u2014 these are qualitative market events not available as quantitative indicators. Also requires sentiment gauge beyond VIX (e.g., fear index) and tracking of policy intervention effectiveness over time, which are not in the allowed indicator set.",
+  "translation_notes": "Translated intraday_decline_threshold (0.15 or 15%) using returns indicator in decimal scale. Used india_vix as available volatility/fear proxy for VIX >40 threshold. Entry conditions partially translatable: price decline and extreme fear/volatility can be captured, but fundamental stress articulation and policy announcements are qualitative events requiring manual market regime detection or external data feeds. Exit condition 'position up 5% from entry' mapped to returns >= 0.05. Exit condition 'policy intervention ineffective after 48 hours' and 'risk-on sentiment returns to neutral' cannot be quantified without external regime data. Recommend implementing as hybrid rule with manual regime override for CRISIS detection."
+}

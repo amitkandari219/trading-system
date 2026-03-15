@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires monitoring divergence across 8+ correlated time series pairs with directional tracking over 20+ periods and 75% divergence threshold. This requires multi-series correlation analysis, cross-pair direction tracking, and divergence detection across a portfolio of instruments. The allowed indicators list contains only single-series technical indicators (RSI, MACD, ADX, etc.) and price-based metrics. There is no mechanism to: (1) define and track 8 monitored time series pairs, (2) measure correlation between series, (3) track shared directional trends across multiple instruments, (4) calculate divergence as a percentage across instrument pairs, or (5) apply a 75% threshold to divergence counts. This requires portfolio-level analysis beyond single-series indicator logic.",
+  "translation_notes": "The Aronson DRY 0_0 signal is fundamentally a multi-instrument divergence detector that cannot be expressed using single-series technical indicators. A proper implementation would require: (a) a multi-instrument correlation module, (b) directional agreement tracking across instrument pairs, (c) divergence detection logic comparing price directions between paired series, and (d) aggregation logic to count divergence occurrence. Recommend implementing as a custom module outside the standard indicator framework or expanding the engine to support cross-instrument comparison operators."
+}

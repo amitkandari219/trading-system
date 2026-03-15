@@ -1,0 +1,148 @@
+{
+  "signal_id": "THARP_DRY_14_1",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_14_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "ema_20"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "ema_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "ema_20"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "ema_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "ema_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "25"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "ema_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "25"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires trend confirmation via EMA(20) and ADX(14). Entry conditions split into LONG and SHORT contexts. The 'minimum_consecutive_bars_beyond_ma' of 1 bar is implicitly satisfied by the crosses_above/crosses_below operators. Exit occurs on MA crossover OR ADX drop below threshold (OR logic). Direction is context-dependent: use entry_long for bullish setups, entry_short for bearish setups."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "ema_20"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "ema_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "ema_20"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "ema_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "ema_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 25.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "ema_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 25.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires trend confirmation via EMA(20) and ADX(14). Entry conditions split into LONG and SHORT contexts. The 'minimum_consecutive_bars_beyond_ma' of 1 bar is implicitly satisfied by the crosses_above/crosses_below operators. Exit occurs on MA crossover OR ADX drop below threshold (OR logic). Direction is context-dependent: use entry_long for bullish setups, entry_short for bearish setups."
+  },
+  "source_rule_text": "A trader must only enter positions when a trend exists in the direction of the intended trade, because without a trend following entry, the position cannot be exited profitably."
+}

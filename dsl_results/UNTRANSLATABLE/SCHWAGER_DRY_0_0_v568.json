@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires real-time monitoring of peer sentiment, communication tone, and directional bias statements over a 5+ day observation period. These are qualitative, behavioral inputs (tone analysis, conviction levels, public statements) that cannot be expressed using only price-based technical indicators (RSI, moving averages, ATR, etc.). The rule explicitly depends on: (1) detecting 'coldness' or 'lack of conviction' in peer communication, (2) tracking stated directional bias from external sources, and (3) monitoring tone shifts across multiple days. None of these can be quantified from OHLCV data alone. To implement this signal, a separate sentiment/communication feed and NLP pipeline would be required.",
+  "translation_notes": "Signal SCHWAGER_DRY_0_0 is a contrarian peer-sentiment rule based on qualitative assessment of trader psychology and conviction. Entry requires: peer shows bias but lacks conviction (coldness). Exit requires: peer demonstrates strong conviction in original direction. This is fundamentally a behavioral/social signal, not a technical one. Recommend: (1) Create external peer_sentiment data feed with fields like [peer_conviction_score, peer_stated_direction, peer_tone], (2) Add custom conditions like peer_conviction_score < 40 for entry and peer_conviction_score > 75 for exit, or (3) Map peer statements to a manual overlay channel rather than automated backtesting."
+}

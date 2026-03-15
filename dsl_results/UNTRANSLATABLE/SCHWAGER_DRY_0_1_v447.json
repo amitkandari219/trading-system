@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) confirmed panic/liquidation events, (2) cascade through 2 specific support levels, (3) bid-ask spread widening, and (4) order flow analysis with collapsing offers. These are qualitative market microstructure conditions that cannot be expressed using only the provided OHLCV-derived indicators. Bid-ask spread, order book depth, and order flow data are not available in the indicator set. Approximated with vol_ratio and bb_bandwidth as proxies for market dislocation, but this is insufficient for the full signal logic.",
+  "translation_notes": "Attempted approximation: vol_ratio_20 > 2.0 proxies for volume spike >100% of 20-day average; bb_bandwidth > 0.015 proxies for extreme volatility/wide spreads. Returns > 0.04 (4%) approximates 40% recovery from panic decline. However, the core signal\u2014detecting panic cascades through specific support levels and order flow collapse\u2014requires market microstructure data (bid-ask, order book, order flow) not present in allowed indicators. This rule cannot be reliably backtested with the given indicator set."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "52-week high is not available in allowed indicators. The signal requires tracking a 52-week lookback period (252 trading days) to identify the highest close, which cannot be expressed with the provided indicator set limited to recent technical indicators (5-200 period SMAs/EMAs, Donchian channels, etc.). A workaround using dc_upper was attempted but does not accurately capture the anchoring bias at the 52-week high specifically. Additional indicators needed: highest_close_252 or similar historical high tracker.",
+  "translation_notes": "Signal fundamentally requires 52-week (252-day) highest close tracking, which is not available. Attempted substitute using Donchian upper band as price proximity anchor, but this does not reflect the behavioral anchoring at 52-week highs described in the source material. Consolidation duration (3 days) and momentum lookback (5 days) cannot be directly encoded in condition-based rules without temporal state tracking. For proper implementation, extend allowed indicators to include: highest_close_N_periods, bar_counter, days_in_zone trackers."
+}

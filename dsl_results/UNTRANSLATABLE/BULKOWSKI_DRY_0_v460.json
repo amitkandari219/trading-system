@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Double Bottom pattern requires identification of two distinct price bottoms at approximately the same level and tracking the highest high between them (confirmation price). This requires multi-bar pattern recognition and relative price level comparison across a lookback window, which cannot be expressed using single-bar indicator comparisons and the allowed operators. Specific requirements that cannot be translated: (1) identification of two local minima at similar price levels, (2) measurement of the rise between bottoms, (3) validation that price closes above the highest high between bottoms, (4) tracking whether price drops below right bottom before confirmation. These are pattern-based rules requiring candlestick sequence analysis rather than indicator-based rules.",
+  "translation_notes": "Attempted proxy using Donchian breakout (close crosses above 20-period upper band) as a substitute for breakout confirmation, but this does NOT capture the specific double-bottom pattern structure. Volume comparison between left and right bottoms also cannot be expressed with available indicators. Author silent on stop placement and target price rules; used conservative 2% stop loss and max 60-day hold (approximately 1-month rise time). This signal requires custom pattern recognition logic outside standard indicator framework."
+}

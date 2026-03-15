@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This pairs trading strategy requires multi-asset cointegration analysis, spread calculation between two price series, and stationarity testing. These operations require: (1) access to multiple asset price series simultaneously, (2) cointegration coefficient estimation, (3) spread series construction and mean/standard deviation tracking, (4) ADF or similar stationarity tests. The backtest engine structure supports only single-asset technical indicators from the ALLOWED INDICATORS list. Pairs trading requires cross-asset portfolio construction logic that is not expressible through the available single-asset indicator set and basic comparison operators.",
+  "translation_notes": "Signal requires: cointegration detection between two assets, spread mean-reversion mechanics, and dynamic capital allocation ratios. These are multi-asset portfolio operations outside the scope of single-asset technical indicator rules. The 'AUTHOR_SILENT' parameters (lookback_period, threshold, half_life) would be essential for operationalizing this strategy but were not provided. Recommend implementing this as a custom multi-asset strategy module rather than a single-asset rules engine."
+}

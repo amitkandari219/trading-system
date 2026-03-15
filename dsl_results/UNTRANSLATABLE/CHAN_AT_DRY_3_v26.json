@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires z-score calculation (yport - movingAvg) / movingStd for position sizing, which requires dynamic volatility-adjusted scaling not available in standard indicator set. Also requires cointegration half-life parameter determination and 'lookback_period' calculation from preceding analysis. Position size scaling inversely proportional to z-score deviation cannot be expressed as binary entry/exit conditions using allowed operators.",
+  "translation_notes": "Approximated mean reversion logic using price crossings of SMA_20 as a proxy for moving average deviation. True implementation requires: (1) custom z-score indicator for dynamic position sizing, (2) half-life from cointegration analysis, (3) volatility-adjusted position scaling. The 'CONTEXT_DEPENDENT' direction indicates long/short based on price position relative to MA, which has been translated as separate entry conditions for each direction. Actual numUnits scaling cannot be captured in this schema."
+}

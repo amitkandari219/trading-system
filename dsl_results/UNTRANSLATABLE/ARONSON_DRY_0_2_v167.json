@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal describes a parameter optimization meta-rule (balancing lag vs false signals) rather than a concrete entry/exit condition. The source text references 'CBO' (Chandelier Breakout or similar), which is not in the allowed indicator list. The rule requires dynamic parameter tuning logic (signal_accuracy_threshold >= 50%) that cannot be expressed as static threshold conditions. The 'Trend indicator generates signal' entry condition is vague and does not map to specific allowed indicators.",
+  "translation_notes": "Attempted fallback: Used sma_20 with lookback_periods=12 as a proxy for trend-following behavior with lag tolerance. The false_signal_tolerance (0.35) and lag_tolerance_bars (2) parameters cannot be directly encoded in condition logic. This translation sacrifices signal fidelity; the original rule requires a parameter optimization framework, not a static backtest rule."
+}

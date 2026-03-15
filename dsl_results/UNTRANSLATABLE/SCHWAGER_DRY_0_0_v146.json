@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'consecutive limit-up days' and 'positive expected value assessment' \u2014 neither are standard indicators. Limit moves and consecutive bar patterns require custom logic beyond the allowed indicator set. The core mechanic (avoid entries after 2+ consecutive limit-ups) cannot be expressed using only OHLCV and technical indicators without custom bar-sequence counters.",
+  "translation_notes": "Attempted to capture reversion logic using limit-bid proxy (close near lower Bollinger Band) and reversal target (pivot R1), but the signal's essential feature \u2014 counting consecutive limit moves and dynamically disabling entries based on that count \u2014 requires untranslatable state tracking. A production implementation would need a custom consecutive_limit_up_counter and conditional entry gate."
+}

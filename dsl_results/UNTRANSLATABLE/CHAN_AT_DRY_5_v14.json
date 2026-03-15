@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'gap up by one standard deviation' which requires comparing today's open to previous close and calculating standard deviation over the lookback period. Standard deviation as a standalone indicator is not in the allowed indicators list. While ATR_14 approximates volatility, it does not directly measure standard deviation, and the signal specifically requires a standard deviation-based gap measurement.",
+  "translation_notes": "Approximated the intent with: (1) close > prev_close to detect upward movement, and (2) close < sma_20 to ensure price remains below 20-day MA. Exit condition uses mean reversion logic: close crosses above sma_20. However, the precise 'one standard deviation gap' threshold cannot be expressed with available indicators."
+}

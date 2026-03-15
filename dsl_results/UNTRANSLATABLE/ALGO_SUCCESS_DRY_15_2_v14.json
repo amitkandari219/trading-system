@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Z-score calculation is not available in the allowed indicators list. Z-score requires computing (price - mean) / standard_deviation, which is a derived statistical measure not provided as a pre-calculated indicator. The signal specification requires paired correlation analysis between AREX and WLL components, which requires multivariate statistical functions not supported by the allowed indicator set.",
+  "translation_notes": "Signal requires z-score thresholds (-1.5, +1.5, reversion target 0.0) for a correlated pair trading strategy (AREX/WLL). This is a mean-reversion strategy designed for ranging markets. The entry conditions are based on z-score extremes, and exits occur at mean-reversion (zscore=0). Without a z-score indicator, this cannot be accurately translated. A practical approximation would require adding z-score or standardized price deviation as a calculated indicator."
+}

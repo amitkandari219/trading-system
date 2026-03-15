@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detection of: (1) a consolidation period with 3+ bars of decreasing volume (requires multi-bar historical volume comparison not available as single indicator), (2) volume exceeding 50th percentile of 20-bar average (vol_ratio_20 approximates this but does not precisely measure percentile rank), and (3) failed swing low with exact tolerance matching. vol_ratio_20 is a ratio indicator, not a percentile-ranked measure. Multi-bar volume trend analysis requires sequential logic unavailable in this framework.",
+  "translation_notes": "Attempted translation uses vol_ratio_20 as proxy for volume threshold, but this is imperfect. The core weakness is inability to: detect multi-bar volume decay patterns during consolidation, precisely rank current volume against 20-bar percentiles, and verify exact price pattern matching (failed low by specific tolerance). A more sophisticated rule engine with look-back arrays and percentile calculations would be required for accurate translation."
+}

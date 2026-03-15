@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires OLS regression-based zscore calculation and rolling spread mean-reversion analysis. These derived metrics (zscore of spread, OLS regression coefficients) are not available in the allowed indicator list. The signal fundamentally depends on a pairs trading framework with custom statistical modeling that cannot be expressed using only the provided technical indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume ratios, and basic bar properties).",
+  "translation_notes": "This is a pairs trading strategy (e.g., spread = price_1 - beta*price_2) with OLS regression to determine beta over a 20-bar window. Entry/exit rules are based on zscore thresholds of the spread. Without access to: (1) multiple symbol price series, (2) OLS regression indicator, (3) zscore calculation on custom spreads, this signal cannot be accurately translated into the allowed indicator framework. A pairs trading backtest engine would need native support for multi-leg instruments and statistical spread modeling."
+}

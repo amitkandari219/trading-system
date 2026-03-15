@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparing current candle height to maximum of prior 22 candles (lookback window comparison). Allowed indicators do not include a rolling max function or 22-period highest high indicator. Donchian Channel upper band (dc_upper) is available but uses different periods and calculation. Signal also requires detection of 'minor high/low within one day' which requires forward-looking logic not supported by backtest engine.",
+  "translation_notes": "The core requirement\u2014'last candle taller than all prior 22 trading days'\u2014cannot be expressed with available indicators. This would require a custom indicator like highest_high_22 or max_range_22. The retracement exit levels (38%, 50%, 62%) are mentioned but cannot be calculated without pivot point logic. Direction is CONTEXT_DEPENDENT per the signal (67% success on minor highs in uptrends, 72% on minor lows), but the engine does not support conditional direction logic."
+}

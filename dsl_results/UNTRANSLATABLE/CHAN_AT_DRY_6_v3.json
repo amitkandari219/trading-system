@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegration-based spread analysis between two currency pairs (CAD.USD vs AUD.USD). No allowed indicators support multi-pair spread computation, z-score normalization, or cointegration coefficients. The 20-day mean/std dev of a synthetic spread cannot be expressed using only single-pair price indicators. Critical parameters (threshold, half_life) marked AUTHOR_SILENT are undefined.",
+  "translation_notes": "Attempted proxy using price_pos_20 (position within 20-day range) and bb_pct_b (normalized to mean) to approximate mean reversion, but this does not capture the core pair-trading logic. Original signal is fundamentally untranslatable without multi-pair spread indicators."
+}

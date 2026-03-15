@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) limit-up/limit-down moves (not directly available as indicator), (2) exactly 3+ consecutive directional bars (requires bar-by-bar sequencing logic not supported), (3) forced liquidation identification (not available as direct indicator). Translated core concept using ADX for trend confirmation, vol_ratio_20 for volume spike proxy, and SMA positioning for trend direction, but cannot fully capture the specific forced-liquidation contrarian timing mechanism.",
+  "translation_notes": "Used adx_14 > 25 for strong trend confirmation (approximate 3+ consecutive directional movement). Used vol_ratio_20 > 1.5 as proxy for volume spike indicating forced liquidations (profit_taking_volume_spike_threshold: 150 approximated). Exits use recent support/resistance (s1/r1) as swing low/high proxies and log returns to detect consecutive closes against trend. Direction set to CONTEXT_DEPENDENT to allow both long and short entries based on trend direction."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Belt Hold pattern requires dynamic market regime classification (BULL_MARKET_UP_BREAKOUT, BEAR_MARKET_UP_BREAKOUT, etc.) and context-dependent median comparisons that cannot be expressed with allowed indicators. The signal also requires real-time candle height classification against rolling median statistics, which is not available in the allowed indicator set. Approximated with basic candle dimension checks using range and wick properties.",
+  "translation_notes": "Approximation only: Used 'range' (High-Low) normalized to ~2.6% as proxy for candle height measurement. Used upper_wick and lower_wick for shadow analysis. True Belt Hold pattern requires market regime context (bull vs bear) and median-based candle height classification not available in indicator library. Exit conditions use pattern reversal logic since AUTHOR_SILENT on explicit stops. Performance parameters from signal cannot be directly encoded as they require regime-specific statistical comparisons."
+}

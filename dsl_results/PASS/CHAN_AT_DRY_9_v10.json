@@ -1,0 +1,108 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "book_id": "CHAN_AT",
+  "dsl_rule": {
+    "signal_id": "CHAN_AT_DRY_9",
+    "entry_long": [
+      {
+        "left": "macd",
+        "operator": ">",
+        "right": "macd_signal"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "macd",
+        "operator": "<",
+        "right": "macd_signal"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "macd",
+        "operator": "<",
+        "right": "macd_signal"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.02"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "macd",
+        "operator": ">",
+        "right": "macd_signal"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.02"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses abstract 'momentum signal' concept. Mapped to MACD crossovers as a standard momentum indicator: positive momentum = MACD > signal line, negative/reversal = MACD < signal line. Exit conditions include both momentum reversal and position loss (2% threshold as reasonable proxy for loss detection). Direction set to CONTEXT_DEPENDENT to support both long and short momentum trades. Stop loss mechanism is implicit in the momentum reversal exit condition rather than a fixed percentage."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "macd",
+        "op": ">",
+        "value": "macd_signal"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "macd",
+        "op": "<",
+        "value": "macd_signal"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "macd",
+        "op": "<",
+        "value": "macd_signal"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.02
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "macd",
+        "op": ">",
+        "value": "macd_signal"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.02
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses abstract 'momentum signal' concept. Mapped to MACD crossovers as a standard momentum indicator: positive momentum = MACD > signal line, negative/reversal = MACD < signal line. Exit conditions include both momentum reversal and position loss (2% threshold as reasonable proxy for loss detection). Direction set to CONTEXT_DEPENDENT to support both long and short momentum trades. Stop loss mechanism is implicit in the momentum reversal exit condition rather than a fixed percentage."
+  },
+  "source_rule_text": "Momentum strategies benefit from stop losses because a losing position signals momentum reversal, making the continuously updated momentum signal itself act as a de facto stop loss mechanism."
+}

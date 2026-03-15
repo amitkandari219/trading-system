@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires time-of-day filtering (06:00-18:00 CET European trading hours) and forward-looking policy event detection (24-hour lookahead), neither of which can be expressed using only the allowed indicators and operators. The signal also requires institutional flow detection and regime-specific entry logic that depends on external event calendars, which are not available in the indicator set.",
+  "translation_notes": "Attempted to capture the volume anomaly detection (volume > 120% of 20-day average) using vol_ratio_20, but the core logic depends on: (1) time-of-day context that cannot be parametrized in indicator conditions, (2) external policy event calendar data, and (3) institutional flow analysis. The 1.5x ATR stop loss and profit target are structural parameters rather than tradeable conditions. Direction marked CONTEXT_DEPENDENT as the signal logic varies by market structure and event proximity."
+}

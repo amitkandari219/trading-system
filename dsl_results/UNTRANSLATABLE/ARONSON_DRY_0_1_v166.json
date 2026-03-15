@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "CBO operator is not in the ALLOWED_INDICATORS list. The signal references a custom 'CBO operator' that produces binary trend signals (+1/-1) with configurable sensitivity. This indicator is not available in the standard set. Substituted with price/SMA crossovers as a reasonable approximation of trend confirmation, but the original CBO-based logic with sensitivity_lookback=12 and trend_confirmation_bars=2 cannot be precisely translated.",
+  "translation_notes": "Signal requires CBO (a custom trend confirmation operator) which is not in allowed indicators. Attempted translation uses SMA_30 crossovers as a proxy for trend direction detection. The original logic incorporated CBO sensitivity tuning (lookback=12) to reduce lag at the cost of false signals\u2014this trade-off is not captured by standard moving average crossovers. ATR-based exit condition (1.5 ATR below MA) was also not translated as it would require dynamic threshold calculation. For proper implementation, the CBO indicator must be added to the backtester's indicator library."
+}

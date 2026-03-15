@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Belt Hold pattern requires candlestick pattern recognition (gap detection, congestion zone identification, specific multi-candle sequencing) which cannot be expressed using only the allowed OHLCV and technical indicators. The source text references 'Table 13.6' performance indicators but provides no specific numerical thresholds. Parameters like 'success_rate_bull', 'average_rise_pct', 'failure_rate_5pct', and 'throwback_pullback_pct' are marked AUTHOR_SILENT and cannot be quantified.",
+  "translation_notes": "Approximated the Belt Hold pattern using opening gap (open > prev_high) combined with downtrend context (SMA relationship) and a breakout confirmation (close > prev_close). This is a simplified mechanical proxy for the actual candlestick pattern which requires visual/shape-based pattern detection unavailable in the allowed indicators. Exit condition uses SMA crossover as a reasonable reversal signal per Rule 8."
+}

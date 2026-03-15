@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires tracking 'recent swing high/low' (requires n-bar lookback window), '3 consecutive lower lows with no new highs' (requires multi-bar pattern matching across an unknown window), and dynamic ATR-based stops relative to swing points. These require state management and pattern recognition beyond simple point-in-time indicator comparisons. The 'trend_confirmation_bars' parameter also implies a confirmation window that cannot be expressed as a single condition. Additionally, 'price structure shows 3 consecutive lower lows' requires historical comparison logic not supported by the allowed operators.",
+  "translation_notes": "Entry logic approximated as: price breaks above previous high AND 20-MA above 50-MA (uptrend configuration). Exit uses pivot S1 as proxy for swing low area with ATR multiple, plus MA crossover. A full implementation would require custom indicator for swing detection and multi-bar pattern recognition."
+}

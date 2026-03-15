@@ -1,0 +1,74 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.25"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses volume surge (vol_ratio_20 > 1.25 represents 25% increase vs 20-day average) as confirmation filter for breakout validity. Entry requires price break above recent swing high (approximated as pivot level) with simultaneous volume confirmation. Exit on close below breakout level (pivot). The 20% retracement exit condition cannot be precisely expressed without custom indicator, so primary exit is breakout level breach. Signal is direction-dependent (LONG bias from context), same-day entry preference noted in parameters but not enforced in rule logic as backtest engine timing is deterministic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.25
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "HIGH_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal uses volume surge (vol_ratio_20 > 1.25 represents 25% increase vs 20-day average) as confirmation filter for breakout validity. Entry requires price break above recent swing high (approximated as pivot level) with simultaneous volume confirmation. Exit on close below breakout level (pivot). The 20% retracement exit condition cannot be precisely expressed without custom indicator, so primary exit is breakout level breach. Signal is direction-dependent (LONG bias from context), same-day entry preference noted in parameters but not enforced in rule logic as backtest engine timing is deterministic."
+  },
+  "source_rule_text": "Use volume surge as a filter to confirm breakout validity before entry, avoiding whipsaw trades on breakouts lacking conviction."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cross-sectional ranking across a universe of futures contracts (identify highest/lowest 1-month return among all contracts). The allowed indicators are designed for single-instrument analysis. This strategy requires: (1) multi-contract comparison logic, (2) dynamic daily rebalancing with position rotation, and (3) universe-relative ranking that cannot be expressed as single-instrument conditions using only the provided indicators and operators. The 'returns' indicator measures single-contract returns but cannot encode the 'rank highest' and 'rank lowest' operations needed for this pairs-trading momentum strategy.",
+  "translation_notes": "This is a classic pairs-trading/statistical-arbitrage signal that requires portfolio-level optimization and cross-sectional analysis. Implementation requires: universe ranking engine, daily contract selection logic, and position lifecycle management at the portfolio level\u2014all beyond single-instrument rule syntax. Recommend implementing as custom strategy class rather than rule-based backtest engine."
+}

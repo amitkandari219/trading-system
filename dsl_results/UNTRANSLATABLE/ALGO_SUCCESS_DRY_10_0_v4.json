@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Hurst Exponent is not available in the allowed indicators list. The signal fundamentally requires calculation of the Hurst Exponent to measure mean-reversion vs. trending behavior. Without this indicator, the regime detection logic cannot be properly implemented. As a fallback, log_returns variance has been approximated, but this does not capture the true Hurst Exponent measurement described in the original rule.",
+  "translation_notes": "The Hurst Exponent threshold (0.40, 0.45) cannot be directly translated. The rule requires a specialized statistical measure not in the allowed indicator set. The entry/exit conditions have been approximated using log_returns as a proxy for detecting stationary diffusion, but this is fundamentally incomplete. ADX_14 could be considered as a trend-strength proxy, but would not directly measure mean-reversion characteristics as intended by the original signal."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires dynamic Bollinger Band construction with a specific lookback period and half-life (both marked AUTHOR_SILENT), as well as precise entry at \u00b12 standard deviations and exit at \u00b11 standard deviation from a moving average. The allowed indicator set provides static bb_upper/bb_lower/bb_middle (likely 20-period default) but does not expose the underlying moving average period, standard deviation multipliers, or ability to define custom bands with author-specified parameters. Cannot accurately translate without knowing the exact lookback_period, half_life, and whether these bands use SMA or EMA.",
+  "translation_notes": "Approximation using standard Bollinger Bands (bb_upper/bb_lower/bb_middle) provided in allowed indicators. True signal requires configurable Bollinger Band parameters (lookback, standard deviation multipliers) that are not exposed. The exit condition targets \u00b11 std dev but allowed indicators only provide \u00b12 std dev bands. Sharpe ratio degradation (-3.0 with 1bp costs) suggests this is a high-frequency, transaction-cost-sensitive strategy that may not be reliably backtestable without precise parameter matching."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The double top pattern requires explicit peak detection, valley depth measurement (10-20% decline), and inter-peak spacing validation. These require multi-bar pattern recognition and relative price comparisons across variable lookback windows that cannot be expressed using single-bar indicator conditions and the allowed operators (>, <, >=, <=, ==, crosses_above, crosses_below, is). Specifically: (1) identifying 'twin peaks at near same price level' requires peak-finding logic; (2) measuring 'valley declining 10-20%' requires comparing three specific swing points; (3) validating 'widely spaced' peaks requires measuring bar distance between peaks. No combination of ALLOWED_INDICATORS can encode this pattern structure.",
+  "translation_notes": "This is a classic candlestick/bar pattern from Bulkowski that fundamentally requires pattern-matching logic beyond point-in-time indicator evaluation. A proper backtest implementation would need: (1) A swing high/low detector to identify the two peaks and intervening valley; (2) Logic to confirm peaks are within 2-3% of each other; (3) Logic to measure valley decline as percentage of first peak; (4) Logic to confirm spacing is 'wide' (typically 10+ bars); (5) Break of valley floor as entry trigger. Consider using a dedicated pattern recognition library or implementing custom pattern logic outside the indicator-based rule engine."
+}

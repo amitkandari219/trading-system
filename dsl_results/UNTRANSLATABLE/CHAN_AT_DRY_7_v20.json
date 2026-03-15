@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of VX front contract price vs VIX spot price with dynamic threshold (0.1 points \u00d7 days to settlement). Available indicators do not include: (1) VX front contract price, (2) days to settlement calculation, (3) dynamic roll return threshold. India_vix is used as a proxy but this is a fundamental mismatch. The signal also requires paired position sizing (0.3906 VX contracts + 1 ES contract) which cannot be expressed in the condition structure. Days-to-settlement is a time-dependent calculation not available as a pre-computed indicator.",
+  "translation_notes": "This pairs trading strategy exploits mean reversion in volatility futures using roll return (backwardation vs contango). The core logic requires real-time calculation of: (1) VX front contract pricing vs spot VIX, (2) days remaining to contract settlement, (3) dynamic threshold adjustment. These are not available in the standard indicator set. Used india_vix as a weak proxy for spot volatility but this fundamentally misses the VX front/spot spread mechanic. The 1-day hold and position sizing cannot be captured in the standard condition schema."
+}

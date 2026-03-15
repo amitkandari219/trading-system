@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of shadow percentages to median values stored in a lookup table (0.44%, 0.90%, 0.92%) and regime-specific volume logic (volume wins in 2 of 3 columns for bull/up breakouts vs. falling volume for bull/down breakouts). The backtest engine lacks: (1) table lookup capability, (2) multi-regime conditional volume logic, (3) breakout detection indicators, and (4) performance metric comparison. Shadow ratios must be normalized by 'breakout price' which is not a standard indicator. Recommend implementing custom indicator for shadow_pct_upper and shadow_pct_lower with regime-aware volume filters.",
+  "translation_notes": "Used upper_wick and lower_wick as proxies for shadow measurements; converted median percentages (0.44%, 0.90%) to decimal scale (0.0044, 0.0090). Volume condition simplified to vol_ratio_20 > 1 as approximation. Original signal requires implementation of breakout regime detection and multi-column performance table matching logic not available in standard indicators."
+}

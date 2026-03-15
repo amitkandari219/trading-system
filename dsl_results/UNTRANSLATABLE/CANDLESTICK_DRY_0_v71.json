@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern recognition for '10 New Price Lines' (a sequence of higher highs with specific candlestick geometry) cannot be fully expressed using only allowed price and technical indicators. The pattern requires multi-bar sequential analysis (comparing highs across multiple bars) and detection of convergence to an old resistance level. Additionally, 'string of higher highs' and 'top peaks near the same price as old high' require pattern-matching logic not available in the allowed indicator set. The entry conditions attempt an approximation using pivot points and prior bar comparisons, but this is not a true representation of the original signal.",
+  "translation_notes": "Attempted approximation: Used pivot point (r1) as proxy for old high resistance, and modeled 'recovery with higher highs' as current high > previous high. Entry logic assumes we're exiting a decline (low < prev_low) and entering recovery (high > prev_high). Exit set at resistance breakout (close > r1). This is a simplification; the authentic pattern requires candlestick shape analysis and multi-bar pattern confirmation not supported by available indicators."
+}

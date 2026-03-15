@@ -1,0 +1,94 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.035"
+      },
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "0.035"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "30"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "-0.0175"
+      },
+      {
+        "left": "hvol_20",
+        "operator": "<",
+        "right": "0.02"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 14,
+    "direction": "LONG",
+    "target_regime": [
+      "HIGH_VOL",
+      "CRASH"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry: Extreme single-day decline (3.5% threshold) detected via negative returns and elevated volatility; RSI < 30 confirms oversold/panic condition. Exit: 50% reversion of initial decline or volatility normalization. Psychological confirmation of emotional-driven move cannot be coded mechanically\u2014assumed when extreme vol + RSI extreme occur together. Position sizing (add 5% on move) and reduction schedule (10% per week over 2 weeks) are execution parameters not encoded in rule conditions. Max exposure capped at 75% via position management layer."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.035
+      },
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 0.035
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 30.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": -0.0175
+      },
+      {
+        "indicator": "hvol_20",
+        "op": "<",
+        "value": 0.02
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "HIGH_VOL",
+      "CRASH"
+    ],
+    "hold_days": 14,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Entry: Extreme single-day decline (3.5% threshold) detected via negative returns and elevated volatility; RSI < 30 confirms oversold/panic condition. Exit: 50% reversion of initial decline or volatility normalization. Psychological confirmation of emotional-driven move cannot be coded mechanically\u2014assumed when extreme vol + RSI extreme occur together. Position sizing (add 5% on move) and reduction schedule (10% per week over 2 weeks) are execution parameters not encoded in rule conditions. Max exposure capped at 75% via position management layer."
+  },
+  "source_rule_text": "A trader should increase exposure to contrarian positions during extreme market moves, maintaining emotional distance from the panic/euphoria driving the move, and then systematically reduce exposure as the magnitude of decline continues."
+}

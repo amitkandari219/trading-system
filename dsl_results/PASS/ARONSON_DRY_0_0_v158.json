@@ -1,0 +1,86 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 25,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses n-period maximum/minimum breakout strategy. Mapped to Donchian Channel indicators (dc_upper/dc_lower) with lookback_period_n=50, which creates a dynamically redrawn channel matching the signal specification. Exit condition uses reverse channel crossing (primary exit) with optional time-based exit set to n/2=25 periods via hold_days_max. Volume/volatility confirmation filter mentioned in entry conditions but not explicitly encoded as specific thresholds were not provided in source material."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING"
+    ],
+    "hold_days": 25,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses n-period maximum/minimum breakout strategy. Mapped to Donchian Channel indicators (dc_upper/dc_lower) with lookback_period_n=50, which creates a dynamically redrawn channel matching the signal specification. Exit condition uses reverse channel crossing (primary exit) with optional time-based exit set to n/2=25 periods via hold_days_max. Volume/volatility confirmation filter mentioned in entry conditions but not explicitly encoded as specific thresholds were not provided in source material."
+  },
+  "source_rule_text": "Enter long positions when price exceeds the n-period maximum; enter short positions when price falls below the n-period minimum, using a dynamically redrawn channel that adjusts to recent price range."
+}

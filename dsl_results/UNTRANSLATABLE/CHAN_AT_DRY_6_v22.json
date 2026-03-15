@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires tracking a cointegrated portfolio of two assets (ES and VX with fixed 0.3906:1 ratio) and measuring deviations of the portfolio value from its mean relative to training-set residual standard deviation. The allowed indicators do not include multivariate cointegration metrics, residual tracking, or cross-asset portfolio deviation measurement. The signal fundamentally requires custom calculation of (ES_price \u00d7 1 + VX_price \u00d7 0.3906) and comparison against historical residual statistics, which cannot be expressed using only the provided single-asset technical indicators.",
+  "translation_notes": "Signal requires pairs trading infrastructure with cointegration relationship tracking. The threshold of '1 standard deviation of residuals ($2,047)' and the specific hedge ratio (0.3906) cannot be mapped to standard technical indicators. Entry/exit structure shown above is a placeholder approximation only and does NOT correctly implement the intended signal logic."
+}

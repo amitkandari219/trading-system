@@ -1,0 +1,108 @@
+{
+  "signal_id": "THARP_DRY_14_0",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_14_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Translated 'market direction shifts' as price crossing the 20-period MA (trend confirmation indicator). Used ADX_14 > 25 as secondary trend confirmation. Stop-loss and profit-target multiples (1.5x and 2.0x ATR) must be converted to percentage equivalents by the backtest engine based on current ATR and position size. Entry is bidirectional (LONG on uptrend shift, SHORT on downtrend shift) based on CONTEXT_DEPENDENT direction. Exit triggers on MA crossback (trend reversal confirmation)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Translated 'market direction shifts' as price crossing the 20-period MA (trend confirmation indicator). Used ADX_14 > 25 as secondary trend confirmation. Stop-loss and profit-target multiples (1.5x and 2.0x ATR) must be converted to percentage equivalents by the backtest engine based on current ATR and position size. Entry is bidirectional (LONG on uptrend shift, SHORT on downtrend shift) based on CONTEXT_DEPENDENT direction. Exit triggers on MA crossback (trend reversal confirmation)."
+  },
+  "source_rule_text": "Enter trades when the market direction shifts in your intended direction, then let profits run while cutting losses short."
+}

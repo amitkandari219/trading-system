@@ -1,0 +1,102 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_upper"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">=",
+        "right": "85"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">=",
+        "right": "1.2"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "bb_upper"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.05"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped 'base resistance level' to Bollinger Band upper (bb_upper) as a proxy for consolidation breakout. RSI >= 85 indicates strong momentum post-breakout. Volume confirmation uses vol_ratio_20 >= 1.2 (20% above 20-day average). Close remaining above resistance is confirmed by requiring close > bb_upper at bar end. Exit on close below resistance or -5% loss. The signal is CONTEXT_DEPENDENT but entry is fundamentally LONG (breakout entry). Breakout confirmation requirement absorbed into entry conditions. Target regime set to TRENDING_UP based on post-breakout behavior."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_upper"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">=",
+        "value": 85.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">=",
+        "value": 1.2
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "bb_upper"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.05
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Mapped 'base resistance level' to Bollinger Band upper (bb_upper) as a proxy for consolidation breakout. RSI >= 85 indicates strong momentum post-breakout. Volume confirmation uses vol_ratio_20 >= 1.2 (20% above 20-day average). Close remaining above resistance is confirmed by requiring close > bb_upper at bar end. Exit on close below resistance or -5% loss. The signal is CONTEXT_DEPENDENT but entry is fundamentally LONG (breakout entry). Breakout confirmation requirement absorbed into entry conditions. Target regime set to TRENDING_UP based on post-breakout behavior."
+  },
+  "source_rule_text": "Enter a position at the breakout point from a consolidation pattern rather than anticipating the breakout, to minimize the probability of loss and avoid being shaken out by normal intra-pattern fluctuation."
+}

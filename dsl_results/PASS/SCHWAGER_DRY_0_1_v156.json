@@ -1,0 +1,120 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_50",
+        "operator": ">",
+        "right": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_50",
+        "operator": "<",
+        "right": "sma_200"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">=",
+        "right": "15"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes trend-following over counter-trend trades. Entry conditions enforce trend confirmation via price > SMA(50) > SMA(200). Counter-trend entries (short during uptrend/long during downtrend) are allowed only in weakening trends (ADX 15-25) but this is controlled via position sizing multiplier (0.5) rather than hard entry gate. Exit conditions use trend-line crossovers. Stop loss set to 1.5x normal (1.5% default). Original source emphasizes liquidating positions that align with trend direction quickly\u2014this is captured in the trend-following bias of entry rules."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_50",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_50",
+        "op": "<",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">=",
+        "value": 15.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes trend-following over counter-trend trades. Entry conditions enforce trend confirmation via price > SMA(50) > SMA(200). Counter-trend entries (short during uptrend/long during downtrend) are allowed only in weakening trends (ADX 15-25) but this is controlled via position sizing multiplier (0.5) rather than hard entry gate. Exit conditions use trend-line crossovers. Stop loss set to 1.5x normal (1.5% default). Original source emphasizes liquidating positions that align with trend direction quickly\u2014this is captured in the trend-following bias of entry rules."
+  },
+  "source_rule_text": "A trader should avoid initiating trades counter to the prevailing trend, as they statistically underperform trend-aligned trades, despite occasional outlier successes."
+}

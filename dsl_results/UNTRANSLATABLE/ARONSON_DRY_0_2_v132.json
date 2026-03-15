@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'news event announcement' and 'material directional content' which are external market events, not calculable from OHLCV data. Also requires 'estimated fair-value gap' calculation (90%+ threshold) which depends on fundamental valuation models not available in the indicator set. The core 'conservatism bias' / price underreaction mechanism cannot be reliably quantified from technical indicators alone without external news/sentiment data.",
+  "translation_notes": "Attempted proxy: Used small returns (< 3.5% in direction) combined with elevated implied volatility (hvol_20 spike) to approximate 'minimal initial market reaction despite IV spike'. Exit set to 3% in favorable direction (90%+ gap approximation). However, without explicit news events and fair-value estimates, this is a heuristic approximation only. The signal is fundamentally untranslatable without external data feeds."
+}

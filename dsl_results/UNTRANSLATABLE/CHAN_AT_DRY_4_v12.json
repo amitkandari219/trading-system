@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires pair-trading logic with dynamic OLS hedge ratio calculation between two separate assets (USO and GLD). The rule demands: (1) cross-asset regression analysis to compute hedge ratios from log prices, (2) construction of a synthetic spread portfolio across multiple instruments, (3) mean-reversion detection on the spread, and (4) context-dependent directional entry. The allowed indicator set supports single-asset technical analysis only and lacks: cross-asset correlation operators, multi-instrument portfolio construction, OLS regression outputs, spread statistics (z-scores, mean, std dev of synthetic spreads), and regime-dependent position scaling. The backtest engine appears designed for single-asset rules, not pairs trading strategies.",
+  "translation_notes": "Signal involves sophisticated quantitative techniques (OLS hedge ratios, log-price spreads, market-neutral positioning) that fall outside the scope of single-asset indicator-based rules. Implementation would require custom pair-trading module with vector operations, rolling regression, and multi-leg position management. Critical missing parameters: lookback_period, deviation threshold, half_life. Source backtest shows 0.59 Sharpe ratio but insufficient detail to reconstruct entry/exit logic from excerpt alone."
+}

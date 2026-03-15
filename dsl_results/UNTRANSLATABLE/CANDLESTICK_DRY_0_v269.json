@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires computing normalized candle height by dividing range by 'breakout price' and comparing to median. 'Breakout price' is not defined as a standard indicator in allowed list, and median calculation across historical bars is not expressible with allowed operators. The precise measure rule for projecting targets (75% and 80% multipliers on candle height) cannot be translated to simple 3-field conditions without dynamic reference levels.",
+  "translation_notes": "Attempted partial translation using range (high-low) as candle height proxy and hvol_20 as light volume indicator. Entry conditions reflect tall vs short classification via normalized height comparison. Exit targets (upward: height\u00d775% + breakout; downward: breakout - height\u00d780%) require dynamic calculation not supported by rule engine. Stop placement marked AUTHOR_SILENT in original; set conservatively at 5%. Bull/bear success rates were AUTHOR_SILENT and not translated."
+}

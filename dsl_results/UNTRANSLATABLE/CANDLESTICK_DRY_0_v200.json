@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires comparing current bar's open/close to the midpoint of the previous bar's body (calculated as (prev_open + prev_close) / 2). The allowed indicators do not include computed midpoint values or support arithmetic operations between indicators. While prev_open and prev_close are available, the midpoint calculation and multi-condition logic (opens below midpoint AND closes at or below midpoint) cannot be precisely expressed within the constraint of simple binary comparisons.",
+  "translation_notes": "This is a two-candle reversal/continuation pattern (Dragonfly Doji variant). Day 1 must be a full white candle (close > open). Day 2 must open below the midpoint of Day 1's body and close at or below that midpoint. The pattern is context-dependent as it can signal both continuation and reversal depending on market regime. Exact midpoint logic is untranslatable with available operators."
+}

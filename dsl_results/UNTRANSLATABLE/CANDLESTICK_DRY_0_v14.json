@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of 'candle height divided by breakout price percentage compared to median' \u2014 this requires dynamic statistical computation (median calculation per candle type) and a custom derived metric not available in the allowed indicator set. The concept of 'tall vs short candles' relative to a rolling median of height/breakout ratios cannot be expressed using only the provided indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Position, Bar Props). A workaround using 'range > sma_20' approximates tall candles but does not capture the precise median-relative logic.",
+  "translation_notes": "Attempted approximation: Used 'range > sma_20' as a proxy for tall candles, but this is NOT equivalent to the original rule. The original signal requires: (1) calculation of median candle height for each candle type, (2) per-candle ratio of height to breakout price, (3) comparison of individual candle ratio to that median. This multi-step statistical requirement exceeds the capability of the allowed indicator set and requires custom feature engineering or a dedicated candle-classification engine."
+}

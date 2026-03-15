@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegration analysis and spread calculation between paired assets, which are not available in the allowed indicators list. Cointegration testing, spread construction, and Z-score thresholds for mean reversion cannot be expressed using only price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, and standard technical indicators. A proper implementation requires statistical pair analysis (ADF test, hedge ratio calculation, spread normalization).",
+  "translation_notes": "Attempted approximation using SMA crossover as a crude proxy for mean reversion, but this does NOT capture the true cointegration logic. The original signal specifically requires: (1) cointegration identification between two assets, (2) spread calculation, (3) stationarity testing, and (4) Z-score-based entry/exit thresholds. None of these can be reliably implemented with the available indicator set."
+}

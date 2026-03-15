@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_14_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting 'trend shift confirmation' and 'prior opposite direction confirmed' which cannot be expressed with single-bar indicator comparisons. The rule needs multi-bar trend directionality assessment (e.g., ADX or slope analysis over lookback period) not available in allowed operators. Entry condition '5-period moving average in direction of trend' is ambiguous without explicit trend state detection. No allowed indicator can directly confirm trend direction reversal without custom logic.",
+  "translation_notes": "Attempted to translate using sma_5 crosses as proxy for trend confirmation per entry conditions, but the core requirement of confirming prior trend reversal (using 3-bar lookback) cannot be properly expressed. ADX_14 could help if slope/trend strength operators were available. Consider adding trend detection indicators or multi-bar comparison operators for full implementation."
+}

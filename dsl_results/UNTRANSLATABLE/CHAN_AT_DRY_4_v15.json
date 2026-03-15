@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic position sizing proportional to deviation magnitude and precise entryZscore threshold value, which is not specified. The exact standard deviation threshold (entryZscore) is marked AUTHOR_SILENT and cannot be quantified. Dynamic position sizing based on deviation magnitude requires custom logic beyond rule-based condition translation.",
+  "translation_notes": "Translated the core mean reversion concept using Bollinger Bands (bb_pct_b) as proxy for deviation from moving average in standard deviations. bb_pct_b > 1.0 indicates price above upper band (positive deviation), bb_pct_b < 0.0 indicates price below lower band (negative deviation). Entry conditions scaled proportionally to deviation magnitude cannot be expressed in this rule engine without custom position sizing logic. Exit conditions set to reversal of moving average crossover (AUTHOR_SILENT fallback)."
+}

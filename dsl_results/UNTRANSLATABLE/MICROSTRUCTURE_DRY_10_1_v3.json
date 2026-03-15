@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_10_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of price to 'estimated fundamental value', which is not a calculable technical indicator available in the allowed list. Fundamental value estimation requires external valuation models (DCF, P/E multiples, etc.) not derivable from OHLCV data alone. The 10% discount and 5% convergence thresholds cannot be operationalized without an explicit fundamental value input or calculation method.",
+  "translation_notes": "Attempted workaround: Used close price as proxy with 0.9 multiplier for entry (90% of some reference) and 1.05 for exit, but this is arbitrary without true fundamental value. The core thesis of mean reversion to intrinsic value cannot be encoded without external valuation data. Parameters map: entry_discount=0.1\u21920.9x, max_drawdown=15%, hold_period=12 months\u2192252 days."
+}

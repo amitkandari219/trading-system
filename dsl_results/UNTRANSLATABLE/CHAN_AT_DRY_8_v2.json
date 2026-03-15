@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires definition of 'significantly higher/lower' gap threshold which is marked AUTHOR_SILENT. Gap magnitude threshold cannot be determined without explicit parameter values. Additionally, exit conditions are AUTHOR_SILENT with no clear reversal logic provided.",
+  "translation_notes": "Translated core logic: long entry when open > prev_close (gap up), short entry when open < prev_close (gap down). Exit conditions implemented as reversal signals (close out longs on gap down, close out shorts on gap up) as reasonable default for momentum-continuation strategy. However, without the 'threshold' parameter specifying what constitutes a 'significant' gap, this rule is incomplete. Backtest period: July 16, 2004 to May 17, 2012; Target instrument: FSTX (Dow Jones STOXX 50 index futures on Eurex); Backtest Sharpe: 1.4"
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires z-score calculation on paired instruments (AREX vs WLL correlation pair). Z-score is not available in the allowed indicators list. The signal needs: (1) z-score computation across two correlated assets, (2) paired/spread logic comparing component 1 and component 2, (3) thresholds at zscore < -2.5 and zscore > +2.5. These require a custom z-score indicator that tracks the normalized spread between two assets, which is not provided in the standard indicator set.",
+  "translation_notes": "Attempted to proxy the mean-reversion z-score logic using moving averages (long when price < SMA_20 as proxy for below negative threshold, short when price > SMA_20 as proxy for above positive threshold, exit near SMA_10 as proxy for reversion target). However, this is NOT a true z-score based pair trading strategy and loses the essential correlation/spread mechanics. A proper implementation requires a z-score or spread indicator comparing AREX and WLL instruments."
+}

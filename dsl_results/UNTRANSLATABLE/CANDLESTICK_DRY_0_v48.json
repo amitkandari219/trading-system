@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references specific candlestick pattern name not identified in source text. Price position logic for bear markets vs bull markets (middle third vs lowest third) cannot be precisely mapped without explicit pattern definition and regime detection. 'Closing position in lowest/middle third' requires candlestick pattern recognition logic not available in indicator set.",
+  "translation_notes": "Interpreted upward breakout as close > sma_50 (LONG) and downward breakout as close < sma_50 (SHORT). Used price_pos_20 as proxy for closing position within candle range (0=lowest, 1=highest). Closing position < 0.33 approximates 'lowest third'. Regime-dependent closing position logic (middle third for bear/up scenarios) cannot be accurately encoded without explicit regime detection and pattern confirmation. Exit conditions set as reversal of entry conditions due to AUTHOR_SILENT specification."
+}

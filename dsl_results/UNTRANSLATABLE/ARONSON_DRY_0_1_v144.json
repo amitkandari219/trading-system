@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'recent high' lookback over 60 days to define 10-15% weakness threshold. No Donchian or highest-high indicator over 60-period available. Used price_pos_20 as approximation for weakness detection, but this does not precisely capture the 60-day lookback requirement. ADX or trend-strength confirmation would improve regime detection but is not explicitly parameterized in signal.",
+  "translation_notes": "TREND-FOLLOWING ENTRY: price > sma_50 AND rsi_14 > 50. COUNTERTREND ENTRY: price < sma_50 (weakness proxy via price_pos_20 < 0.15 for bottom-quintile positioning) AND vol_ratio_20 > 1.2 for liquidity. TREND EXIT: close crosses below sma_50 OR rsi_14 < 40. COUNTERTREND EXIT: returns > 6% profit target OR close crosses above sma_10 (10-day MA return). Direction set CONTEXT_DEPENDENT to capture both long (trending) and short (countertrend) logic. Regime targets set to TRENDING_UP, TRENDING_DOWN, RANGING per signal specification."
+}

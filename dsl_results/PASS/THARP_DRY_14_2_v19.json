@@ -1,0 +1,88 @@
+{
+  "signal_id": "THARP_DRY_14_2",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_14_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 10.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes accepting trades during unfavorable periods to capture infrequent trends. Entry uses simple moving average crossover (minimum_trend_confirmation_indicators=1 satisfies single indicator requirement). Exit triggers on trend reversal (crossover) or 30% drawdown threshold. Direction is CONTEXT_DEPENDENT because rule applies to both trending up and trending down regimes. No lookback profitability check is enforced (lookback_trades_for_profitability_check=0). Position holding uses trend-following principle (let profits run on reversals)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.1,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes accepting trades during unfavorable periods to capture infrequent trends. Entry uses simple moving average crossover (minimum_trend_confirmation_indicators=1 satisfies single indicator requirement). Exit triggers on trend reversal (crossover) or 30% drawdown threshold. Direction is CONTEXT_DEPENDENT because rule applies to both trending up and trending down regimes. No lookback profitability check is enforced (lookback_trades_for_profitability_check=0). Position holding uses trend-following principle (let profits run on reversals)."
+  },
+  "source_rule_text": "A trend follower must accept trading through unfavorable market periods to avoid missing major trends, because trends occur infrequently (15-25% of the time) and the cost of sitting out is missing the profitable moves."
+}

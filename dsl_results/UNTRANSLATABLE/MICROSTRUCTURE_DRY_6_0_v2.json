@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires order book microstructure data (current best bid/offer, quote confirmation, time precedence, aggressive buying/selling pressure detection) which are NOT available in the allowed indicator list. The signal is fundamentally about high-frequency quote positioning and time-priority mechanics that cannot be expressed using only OHLCV and technical indicators. Parameters like 'hold_duration_seconds' (2 seconds), 'min_price_improvement_ticks' (1 tick), and detection of 'another trader showing interest' require real-time market microstructure data.",
+  "translation_notes": "This is a microstructure/market-making signal requiring order book state, quote status, and time-priority tracking. It cannot be translated to a backtestable technical rule using only price and volume indicators. Recommend implementing as a separate market microstructure module if order book data is available."
+}

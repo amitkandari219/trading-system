@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires VX-ES calendar spread (ratio of VX futures to ES futures) which is not available in the allowed indicator list. The spread itself, roll return dynamics, and cross-asset relative value metrics cannot be constructed from single-instrument indicators. Additionally, specific lookback_period, threshold, half_life, and backtest parameters are marked AUTHOR_SILENT and cannot be inferred from the allowed indicators.",
+  "translation_notes": "Attempted proxy using india_vix as volatility mean-reversion proxy and returns as ES mean-reversion indicator, but this does not capture the true VX-ES calendar spread logic. A proper implementation would require: (1) VX futures price series, (2) ES futures price series, (3) ability to compute spread ratio/difference, (4) statistical parameters for the specific spread normalization method."
+}

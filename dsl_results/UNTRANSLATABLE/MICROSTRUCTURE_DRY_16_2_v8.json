@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_16_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'estimated fundamental value' and 'market resiliency indicator' which are not available in the allowed indicator list. These are derived/composite metrics requiring external calculation or ML models. The 'dealer volume detection' and precise deviation thresholds from fundamental value cannot be directly translated to standard technical indicators.",
+  "translation_notes": "Approximated using: (1) Price deviation from MA20 as proxy for fundamental value deviation, (2) Bollinger Band percentile (bb_pct_b) to detect extreme deviations, (3) Volume decline relative to 20-period SMA to detect momentum exhaustion, (4) ATR expansion as proxy for market resiliency loss (widening spreads). Entry conditions use AND logic for confluence. Exit uses OR logic with time-based stop of 5 periods. Position sizing set to 5% per parameters. Direction set to CONTEXT_DEPENDENT to support both long and short counter-trend entries."
+}

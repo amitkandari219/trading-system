@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking multi-year baseline P&L average and comparing current period P&L to 70% of that average over 2+ consecutive periods. This requires custom P&L state management and lookback window aggregation beyond allowed indicators. No direct indicator maps to 'trader P&L performance' or 'baseline comparison over multiple years'. The core mechanism (edge deterioration via regime shift in market microstructure: depth, volume per participant, spread dynamics) cannot be expressed with price/volume/momentum indicators alone.",
+  "translation_notes": "This is a meta-rule about position management and edge validity rather than a directional trading signal. It requires: (1) external P&L tracking system, (2) baseline calculation over 10+ periods, (3) regime detection via market microstructure (bid-ask spread, order book depth, participation metrics) which are not in the allowed indicator set. Attempted partial translation using returns as proxy for deterioration, but this does not capture the intended signal logic around market structure changes making swing trading obsolete."
+}

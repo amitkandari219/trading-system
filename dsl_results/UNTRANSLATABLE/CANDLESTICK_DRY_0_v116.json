@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "13-candle series pattern completion cannot be expressed with available indicators. Pattern detection requires custom lookback logic to identify the specific 13-candle sequence. Additionally, last candle close position (upper/middle/lowest third of range) requires relative range positioning logic not available in the indicator set. Performance parameters (3.77%, 5.76%, -4.46%, -7.00%) appear context-dependent on candle position and market regime but lack sufficient detail for conditional mapping.",
+  "translation_notes": "This pattern requires a custom pattern recognition engine to detect 13-candle series formations. The signal is regime-dependent (BULL_MARKET vs BEAR_MARKET) and confirmation requires black candle in bull markets or lower close in bear markets. Performance varies significantly based on last candle close position: upper third (3.77%/5.76%), middle third (5.87%/4.04%), lowest third (7.75%/0.00%). Recommend implementing pattern detection as a separate module before entry conditions."
+}

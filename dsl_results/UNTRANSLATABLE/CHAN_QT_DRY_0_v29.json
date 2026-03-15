@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires N-day high/low extremes with large percent change in close temporal proximity. The exact lookback period (N), percent change threshold magnitude, and temporal proximity window are marked AUTHOR_SILENT and require optimization. Used Donchian channels (dc_upper/dc_lower) as proxy for N-day extremes and returns threshold as proxy for large percent change, but optimal parameters cannot be determined without backtesting specifications.",
+  "translation_notes": "Translated 'N-day high or low' to Donchian channel crossovers (assumes standard 20-day lookback as placeholder). Percent change threshold set to 3% as reasonable placeholder but requires optimization. Exit conditions use SMA_20 mean reversion as reasonable reversal signal given regime transition thesis. Holding period set to 20 days as placeholder. Signal direction is bidirectional (long on upside extremes, short on downside extremes)."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Johansen cointegration eigenvector hedge ratio calculation between two currency pairs (USD.AUD and USD.CAD), which is not available in the allowed indicators list. The strategy also requires explicit spread calculation, cointegration testing, and mean-reversion threshold definition based on statistical measures not present in the allowed indicator set. Translated approximation uses 20-day SMA crossover as a proxy for mean-reversion entry, but this does not capture the core pair trading logic.",
+  "translation_notes": "This is a statistical arbitrage pair trading strategy that fundamentally requires cointegration analysis and hedge ratio estimation via Johansen method. The allowed indicator set does not support pair relationships, spread calculations, or cointegration metrics. The approximation using sma_20 crossovers is a simplified directional interpretation only and does NOT replicate the intended pair trading logic. A proper implementation would require custom indicators for: (1) spread calculation between two assets, (2) Johansen cointegration test, (3) eigenvector-derived hedge ratio, and (4) mean-reversion thresholds based on spread z-scores."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking multiple non-price indicators not in allowed set: (1) 'Leading stocks' performance identification (top 30% YTD performers) \u2014 requires cross-asset screening unavailable in single-instrument indicator list; (2) 'Advance/decline line' \u2014 market breadth indicator not in allowed set; (3) 'Federal Reserve rate hike tracking' \u2014 macro policy data not in allowed set; (4) Requires 3-day consecutive close pattern AND concurrent trigger of 3 separate conditions with specific position sizing rules (50%/50% split) that cannot be expressed in the simplified condition schema.",
+  "translation_notes": "Attempted proxy translation uses price action (close below SMAs) and volume expansion as market weakness signals, with support levels as exits. However, this loses the critical regime context: the original signal is a macro regime filter requiring advance/decline breadth data and Fed policy state\u2014not a tradeable price pattern. The 'confirmation_required: 3' parameter and concurrent trigger logic cannot be fully represented. Recommend: (1) Add advance_decline_line indicator; (2) Add fed_rate_cycle regime state; (3) Enhance condition schema to support multi-condition concurrency with AND_ALL_3 logic and weighted position exit rules."
+}

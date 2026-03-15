@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires tracking an external 'trading model' state and comparing current model signals against previous signals. The model's signal direction is not derivable from price/technical indicators alone. The rule depends on: (1) storing the direction of the previous model signal, (2) detecting when a new opposite signal is generated, and (3) executing reversal logic. This requires external signal injection and state management beyond the allowed indicator set.",
+  "translation_notes": "CHAN_QT_DRY_0 is a meta-rule for position reversal based on external model signals, not a technical pattern. It requires the backtest engine to: (a) accept trading model signals as external inputs, (b) maintain position state, and (c) execute reversals when signal polarity flips. Recommend implementing this as a separate signal handler in the backtest engine rather than as a technical indicator rule."
+}

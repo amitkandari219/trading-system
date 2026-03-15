@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires computing candle height as (highest_high - lowest_low) / breakout_price and comparing to median. The 'range' indicator provides (high - low) but: (1) no median calculation mechanism exists in the rule engine, (2) 'breakout_price' is not defined in allowed indicators and varies by market direction, (3) the divisor selection logic (highest_high vs lowest_low) is dynamic based on breakout direction. These calculations cannot be expressed with allowed operators and indicators.",
+  "translation_notes": "Attempted approximation using range > sma_20 to capture 'tall candles', but this does not accurately represent the normalized height metric described. Exit conditions defaulted to mean-reversion since author provided no guidance. Bear market success rate of 83% noted but cannot be encoded. Signal shows 'dismal performance' overall with sideways price action noted."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegration analysis and OLS regression statistics (residual z-score, R-squared coefficient from pair regression). These are advanced multivariate statistical measures not available in the standard indicator library. The signal requires: (1) calculation of residual spread from cointegrated pair using OLS regression, (2) z-score normalization of that residual using 100-bar lookback, (3) R-squared validation (>0.60). Standard price/technical indicators cannot replicate this derivation.",
+  "translation_notes": "This is a pairs trading signal using statistical cointegration that requires external calculation of the cointegrated residual and its z-score. The allowed indicator set does not include: residual_zscore, cointegration_ratio, pair_spread, or regression_r_squared. Implementation would require a custom indicator pre-calculated in the data pipeline before backtest engine processes it."
+}

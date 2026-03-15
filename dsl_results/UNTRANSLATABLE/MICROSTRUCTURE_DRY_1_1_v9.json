@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_1_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires monitoring of strategy-level profit compression metrics over rolling 30-day windows and comparison of 10-day vs 30-day average returns. This requires custom performance tracking and percentile-based thresholds that cannot be expressed using only the allowed price/technical indicators. Specifically: (1) 'profit_compression_threshold_percentile' and 'rolling_profit_window_days' are meta-strategy parameters not available as indicators; (2) The exit trigger logic '10-day average profit < 65% of prior 30-day average' requires custom ratio calculations of strategy returns that exceed indicator-based rule definitions; (3) Position sizing adjustments (30-40% reduction) are portfolio-level decisions, not entry/exit conditions.",
+  "translation_notes": "This signal describes a meta-strategy adaptation rule tied to strategy performance degradation due to market competition, not a traditional technical entry/exit setup. It requires a custom performance monitoring system outside the scope of indicator-based backtesting rules. The signal is fundamentally about regime detection (erosion of edge) rather than price action or technical signals."
+}

@@ -1,0 +1,110 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "prev_close",
+        "operator": "<=",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "prev_close",
+        "operator": ">=",
+        "right": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Converted fixed percentage offset (2.5%) into direct SMA comparison. Entry conditions check price crosses above/below the SMA with confirmation that prior bar was on opposite side. The 2.5% band offset is approximated as a stop_loss_pct since the exact volatility-adjusted band calculation is not available in the indicator set. Band type specified as fixed_percentage with ma_period=20 maps to sma_20."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "prev_close",
+        "op": "<=",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "prev_close",
+        "op": ">=",
+        "value": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Converted fixed percentage offset (2.5%) into direct SMA comparison. Entry conditions check price crosses above/below the SMA with confirmation that prior bar was on opposite side. The 2.5% band offset is approximated as a stop_loss_pct since the exact volatility-adjusted band calculation is not available in the indicator set. Band type specified as fixed_percentage with ma_period=20 maps to sma_20."
+  },
+  "source_rule_text": "Generate buy signals when price breaches an upper threshold band surrounding a moving average, and generate sell signals when price breaches a lower threshold band, using either fixed percentage offsets or volatility-adjusted bands."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires constructing synthetic cross-rates by calculating ratios of two USD pairs (e.g., USD.NOK / USD.MXN) and detecting mean-reversion deviations from rolling mean. This requires: (1) custom pair construction logic not supported by standard indicators, (2) explicit ratio calculation between two separate instruments, (3) rolling mean deviation detection on constructed synthetic series. The allowed indicator set does not include synthetic pair construction, ratio computation between multiple instruments, or mean-deviation thresholds. The signal is fundamentally incompatible with single-instrument technical analysis.",
+  "translation_notes": "CHAN_AT_DRY_4 describes a multi-instrument synthetic construction strategy. While mean-reversion can be approximated using returns-based conditions, the core signal\u2014constructing a ratio of two USD pairs and detecting deviations from mean\u2014cannot be expressed using standard single-instrument indicators. A proper implementation requires a custom synthetic instrument builder and rolling mean deviation metric."
+}

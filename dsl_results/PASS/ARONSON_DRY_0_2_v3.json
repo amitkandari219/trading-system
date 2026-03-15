@@ -1,0 +1,82 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">=",
+        "right": "0.30"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.40"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped 'momentum indicator (price > SMA)' to close > sma_20 using the 20-period momentum lookback. Mapped 'relative strength rank in top 30th percentile' to price_pos_20 >= 0.30 (price position indicator approximates relative strength ranking). Exit on momentum turn uses close < sma_20 crossover. Exit on RS falling below 40th percentile uses price_pos_20 < 0.40. Hold period set to 63 days (approximately 3 months). Signal is CONTEXT_DEPENDENT but source emphasizes uptrends, so direction set to LONG with TRENDING_UP regime."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">=",
+        "value": 0.3
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.4
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Mapped 'momentum indicator (price > SMA)' to close > sma_20 using the 20-period momentum lookback. Mapped 'relative strength rank in top 30th percentile' to price_pos_20 >= 0.30 (price position indicator approximates relative strength ranking). Exit on momentum turn uses close < sma_20 crossover. Exit on RS falling below 40th percentile uses price_pos_20 < 0.40. Hold period set to 63 days (approximately 3 months). Signal is CONTEXT_DEPENDENT but source emphasizes uptrends, so direction set to LONG with TRENDING_UP regime."
+  },
+  "source_rule_text": "A trader should use momentum and relative strength indicators to identify and trade persistent trends in stocks and sectors, because these signals have statistically significant predictive power over medium-term horizons."
+}

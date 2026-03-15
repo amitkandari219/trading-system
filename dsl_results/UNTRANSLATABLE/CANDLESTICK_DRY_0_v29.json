@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detection of eight consecutive higher highs, which necessitates lookback to 8 previous candles (high[0] > high[1] > high[2] > high[3] > high[4] > high[5] > high[6] > high[7]). The allowed indicators only support prev_high (1 bar lookback), not extended historical array indexing. A proper implementation would require either: (1) adding indicators like high_8_bars_ago through high_1_bar_ago, or (2) enabling array syntax like high[-8:-1]. Cannot reliably express this pattern with current allowed indicators.",
+  "translation_notes": "Attempted partial translation using single-bar comparison logic, but this does not capture the full eight-bar consecutive pattern required by the rule. The source material references this as a 'Rising Window' variant with 7.74% average performance across 100 samples. Exit condition set to reversal of entry (lower high) as a proxy for pattern failure."
+}

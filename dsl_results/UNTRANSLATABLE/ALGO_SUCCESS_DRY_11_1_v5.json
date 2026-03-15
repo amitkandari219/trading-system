@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_11_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires model-level metrics (true positive rate by directional class and asymmetry ratio) that are not available in the standard technical indicator set. These are predictive model performance statistics (down_tpr, up_tpr, asymmetry_ratio) that must be computed externally from a trained classifier and fed into the backtest engine as custom metrics, not derived from price/volume data.",
+  "translation_notes": "This is a meta-signal that conditions trading on model performance characteristics rather than market microstructure. It requires: (1) A trained directional prediction model with separate TPR calculations for up/down classes, (2) External computation of asymmetry_ratio = down_tpr / up_tpr, (3) Real-time monitoring and retraining checks. The signal cannot be expressed using only standard technical indicators. Implementation requires a custom adapter layer that feeds model performance metrics into the rule engine."
+}

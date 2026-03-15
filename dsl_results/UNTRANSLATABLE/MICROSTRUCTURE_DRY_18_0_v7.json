@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_18_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) 'spread' as a direct indicator \u2014 only bb_bandwidth (Bollinger Band spread proxy) available; (2) 'limit order execution probability estimate' \u2014 no order-flow or microstructure probability indicator in allowed set; (3) 'news/event detection' \u2014 no economic calendar or news sentiment indicator available. Used bb_bandwidth as narrow-spread proxy and price_pos_20 as execution-probability proxy, but these are approximations only.",
+  "translation_notes": "Mapped 'abnormally narrow spreads' to bb_bandwidth < 30th percentile threshold. Mapped 'limit order execution probability < 40%' to price_pos_20 < 0.4 as a position-in-range proxy. Unable to encode news buffer condition directly. Direction is CONTEXT_DEPENDENT per signal spec, suggesting entry is either LONG or SHORT depending on bid-ask imbalance direction (not specified in entry conditions). Hold period set to 1 day (immediate fill assumption). Exit when spread normalizes (bb_bandwidth > 50th percentile)."
+}

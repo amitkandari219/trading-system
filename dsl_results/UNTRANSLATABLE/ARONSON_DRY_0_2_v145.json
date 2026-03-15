@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires measurement of 'price decline >= 1 standard deviation below 10-day moving average' which requires direct standard deviation calculation not available in allowed indicators. Also requires explicit 'reversal pattern' detection which is not a named allowed indicator. Approximated with RSI < 40 as momentum/oscillator threshold, but the exact statistical deviation condition cannot be expressed with allowed indicators.",
+  "translation_notes": "Translated 'countertrend entry signal' as RSI < 40 (momentum oscillator below threshold). Translated 'volume on down days >= 110% of 10-day average' as vol_ratio_20 >= 1.1. Direction set to LONG (countertrend buy during selling pressure). Exit conditions use returns >= 0.03 (3% profit) as primary exit; stop_loss_pct set to 2.5%; hold_days_max set to 3. The precise 1-sigma deviation below SMA10 cannot be computed from allowed indicators."
+}

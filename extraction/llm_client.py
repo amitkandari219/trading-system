@@ -45,7 +45,9 @@ class LLMClient:
 
         if self.backend == 'anthropic':
             import anthropic
-            self.anthropic_client = anthropic.Anthropic()
+            self.anthropic_client = anthropic.Anthropic(
+                timeout=30.0,  # 30s timeout to prevent hanging
+            )
         elif self.backend == 'ollama':
             import requests
             self._requests = requests
@@ -67,12 +69,13 @@ class LLMClient:
             return self._call_ollama(prompt, OLLAMA_HALLUCINATION_MODEL)
 
     def _call_anthropic(self, prompt: str, model: str) -> dict:
-        """Call Anthropic Claude API."""
+        """Call Anthropic Claude API with 30s timeout."""
         try:
             message = self.anthropic_client.messages.create(
                 model=model,
                 max_tokens=1500,
-                messages=[{'role': 'user', 'content': prompt}]
+                messages=[{'role': 'user', 'content': prompt}],
+                timeout=30.0,
             )
             raw = message.content[0].text.strip()
             return self._parse_json(raw)

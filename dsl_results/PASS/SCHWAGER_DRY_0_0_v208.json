@@ -1,0 +1,148 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.95"
+      },
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "60"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "40"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 0.8,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Extreme condition modeled as price_pos_20 < 0.05 (below 5th percentile) or > 0.95 (above 95th percentile) equivalent to 2+ std devs from 20-period MA. Reversal pattern approximated using wick ratios (hammer/pin bar = lower_wick > body; engulfing = upper_wick > body). Volume confirmation via vol_ratio_20. Exit at mean via sma_20 crossover or RSI mean-reversion threshold. Stop loss set to 0.8 ATR as decimal equivalent (0.8% of entry price as proxy for 0.8x ATR multiple)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.95
+      },
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 60.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 40.0
+      }
+    ],
+    "regime_filter": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.008,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Extreme condition modeled as price_pos_20 < 0.05 (below 5th percentile) or > 0.95 (above 95th percentile) equivalent to 2+ std devs from 20-period MA. Reversal pattern approximated using wick ratios (hammer/pin bar = lower_wick > body; engulfing = upper_wick > body). Volume confirmation via vol_ratio_20. Exit at mean via sma_20 crossover or RSI mean-reversion threshold. Stop loss set to 0.8 ATR as decimal equivalent (0.8% of entry price as proxy for 0.8x ATR multiple)."
+  },
+  "source_rule_text": "A trader should adopt a mean-reversion or turning-point strategy with tight stops rather than a trend-following strategy with wide stops, because markets trend only ~15% of the time and the best risk-adjusted returns come from capturing reversals at extremes."
+}

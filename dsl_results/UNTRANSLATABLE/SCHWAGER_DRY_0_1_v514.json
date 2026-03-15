@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cross-market scenario alignment (currencies, stock market, bond market, agriculture) which cannot be expressed as single-instrument indicator conditions. The rule demands meta-level consensus across 4 separate markets with minimum 3 aligned + 2-3 day confirmation period. This requires multi-asset correlation logic and scenario state tracking not available in single-instrument technical indicators. ADX proxy used as alignment strength measure, but cannot capture the multi-market consensus requirement.",
+  "translation_notes": "SCHWAGER_DRY_0_1 is a regime/confluence rule requiring multiple market observations. In single-instrument backtest context, substituted ADX_14 > 25 (trend confirmation) as proxy for 'scenarios aligned' and ADX < 20 (trend weakness) for 'alignment breaking.' However, this fundamentally misses the signal's core intent: cross-market scenario mesh. Original source text fragment does not contain actionable entry/exit mechanics. Recommend implementing as custom multi-asset correlated backtest module rather than single-instrument rule."
+}

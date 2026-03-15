@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_6_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires microstructure-level order book data (best bid/offer, price improvement by exact ticks, quote confirmation, volume fill tracking, and time precedence rules). These require order book state, execution confirmation, and notional volume matching\u2014none of which are available in the ALLOWED INDICATORS list (which contains only OHLCV and technical indicators). The signal is fundamentally about order placement strategy and time priority in limit order markets, not price action patterns.",
+  "translation_notes": "This signal describes a market microstructure and order placement tactic rather than a tradeable price pattern. It requires real-time order book access, execution confirmation at specific price levels, and tracking of time precedence\u2014capabilities not present in a backtester using only OHLCV and technical indicators. A partial proxy using pivot levels and directional bias was provided, but does not capture the core logic of price improvement and time priority sequencing."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires calculating standard deviations from a 20-period rolling mean and determining statistical reversion probability (>90%), which are not available as pre-built indicators in the allowed set. The price_pos_20 indicator provides normalized position within a range but does not directly measure multi-standard-deviation extremes or reversion probability. A custom indicator for rolling std_dev calculation would be needed.",
+  "translation_notes": "Attempted approximation using price_pos_20 (price position within 20-period range) as a proxy for statistical extremes, with entry at extreme positions (0.15 or below for long, 0.85+ for short). However, this does not capture the precise 1.5+ standard deviation threshold or the >90% reversion probability condition specified in the original signal. Stop loss correctly set at 3.0% of account equity as specified."
+}

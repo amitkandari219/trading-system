@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of current candle range to the 22-day average range (not including current candle), then multiply by 146%. The allowed indicators do not include a pre-calculated 22-day average range metric. To properly implement, would need either: (1) a custom indicator like avg_range_22_excl_current, or (2) ability to compute sma(range, 22) excluding the current bar. Additionally, the signal requires checking if current candle is above the highs of 2 and 3 days prior (or below lows for shorts), which requires prev_high[2] and prev_high[3] indexing not available in the indicator set.",
+  "translation_notes": "Attempted partial translation using range as a proxy for candle height, but cannot accurately implement the 22-day historical average exclusion logic or multi-bar lookback required. Signal is CONTEXT_DEPENDENT (bullish above prior highs, bearish below prior lows). Exit conditions marked as reversal based on 67-72% success rate indicating mean reversion within 1 day. Stop loss and target price computation marked AUTHOR_SILENT in source, so set to null."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks within a decile relative to peer group (small-cap universe) and identifying calendar month (January). The allowed indicators lack: (1) cross-sectional ranking capability, (2) market-cap filtering, (3) explicit calendar month detection. The '1 calendar year' lookback and decile-based selection are portfolio-construction rules, not single-instrument technical conditions. Additionally, AUTHOR_SILENT on threshold, half_life, and sharpe metrics prevents precise parameterization.",
+  "translation_notes": "Attempted approximation using negative 1-year returns as a proxy for 'worst prior-year performers', but this loses the critical decile-ranking and small-cap universe filtering logic. Entry restricted to early January (hold_days_max=31) and exit uses 20-day SMA crossover as a mechanical reversal proxy. This translation is incomplete without portfolio ranking infrastructure."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The pattern requires precise identification of two distinct bottoms at equal price levels and the highest high between them. This requires multi-bar pattern recognition logic (detecting local minima and maxima) that cannot be expressed using only single-bar indicators and comparison operators. The measure rule for price target calculation also requires state tracking across multiple bars to store pattern height and compute dynamic targets.",
+  "translation_notes": "Attempted proxy: entry uses Donchian breakout (dc_upper) as a rough substitute for 'breakout above highest high between bottoms'. Exit uses pivot as a rough approximation for target-based exit. However, this loses the critical double-bottom pattern detection and measure rule logic. A proper implementation would require: (1) local minimum detection on bars N and N-M; (2) pattern validation that both lows are within ~2% of each other; (3) identification of highest high between the two bottoms; (4) dynamic price target = highest_high + (highest_high - lowest_low). None of these can be expressed in the current rules framework."
+}

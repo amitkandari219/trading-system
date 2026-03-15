@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires directional performance metrics (success_rate_bull, success_rate_bear, average_rise_pct, average_decline_pct) and pattern-specific logic (lower shadow as percentage of breakout price, volume trend downward leading to pattern) that cannot be expressed with available indicators. The 'breakout direction BOTH' and context-dependent nature require machine learning or multi-regime branching logic not supported in rule engine.",
+  "translation_notes": "Approximated lower shadow analysis using lower_wick indicator (0.13%-0.58% range converted to 0.0013-0.0058 decimal scale). Volume confirmation uses vol_ratio_20 and hvol_20. Exit uses pivot reversal as proxy for breakout failure. Performance variation by shadow length and market regime cannot be encoded without performance data stratification."
+}

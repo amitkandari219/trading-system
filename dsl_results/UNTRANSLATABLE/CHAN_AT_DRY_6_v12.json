@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit contango detection (forward prices > spot prices) which cannot be derived from the allowed indicator set. The momentum condition can be approximated with price crossing above SMA, but the contango regime detection requires direct access to term structure data (front contract vs. deferred contract or basis spread) not available in the allowed indicators list.",
+  "translation_notes": "Entry condition approximated as price above 20-day MA to detect upward momentum. Exit condition set as reversal below MA. True implementation requires: (1) contango/backwardation detector using VX term structure, (2) roll return calculation across contract months. The signal's core insight about exploiting negative roll returns in contango cannot be fully operationalized without custom indicators for basis/term structure analysis."
+}

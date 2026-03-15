@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires channel-normalized smoothed price (CN operator applied to 4-day LMA with 20-day lookback). The exact channel normalization transformation is not available in the allowed indicator set. Used price_pos_20 (20-day price position/percentile) as the closest proxy, but this does not replicate the LMA(4) smoothing + CN transformation specified in the original signal. The LMA (linearly weighted moving average with period 4) is not in the allowed indicators list.",
+  "translation_notes": "Interpreted channel-normalized smoothed series crossovers as price position (price_pos_20) threshold crossings at \u00b11.5 normalized levels. Exit conditions include threshold reversal (as specified) plus directional bias confirmation. ATR-based exit (2 ATR from entry) could not be implemented without entry price tracking. Signal is bidirectional (LONG on upper threshold cross, SHORT on lower threshold cross)."
+}

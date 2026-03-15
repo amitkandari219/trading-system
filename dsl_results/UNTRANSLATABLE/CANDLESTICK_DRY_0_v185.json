@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires computation of candle height as (high - low) / breakout_price and comparison to market median\u2014neither 'breakout_price' nor 'median candle height' are available indicators. The rule describes a classification metric (TALL vs SHORT) rather than a tradeable entry/exit condition. No actionable price levels, indicator thresholds, or regime conditions can be derived from the available indicator set.",
+  "translation_notes": "CANDLESTICK_DRY_0 defines a candle classification heuristic (Advance Block pattern height analysis) but lacks concrete entry/exit triggers. The source text is incomplete ('divide by the breakout pr...'). To make this actionable, the signal would need: (1) explicit breakout price reference, (2) median baseline values for each regime, or (3) mapping of TALL/SHORT classifications to buy/sell actions. Without these, the rule cannot be expressed as a backtest condition."
+}

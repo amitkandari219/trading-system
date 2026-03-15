@@ -1,0 +1,110 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "macd_hist",
+        "operator": "crosses_above",
+        "right": "0"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "macd_hist",
+        "operator": "crosses_below",
+        "right": "0"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "macd_hist",
+        "operator": "crosses_below",
+        "right": "0"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "macd_hist",
+        "operator": "crosses_above",
+        "right": "0"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes reactive entry after technical confirmation (no anticipation). Used MACD histogram crossing zero as primary signal for trend confirmation combined with ADX >25 for trend strength validation. Exit when signal reverses (MACD crosses back). Stop-loss set to 2x ATR as specified (approximated as 2.0% per parameters). CONTEXT_DEPENDENT direction because rule applies to both long and short based on signal direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "macd_hist",
+        "op": "crosses_above",
+        "value": 0.0
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "macd_hist",
+        "op": "crosses_below",
+        "value": 0.0
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "macd_hist",
+        "op": "crosses_below",
+        "value": 0.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "macd_hist",
+        "op": "crosses_above",
+        "value": 0.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "HIGH_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes reactive entry after technical confirmation (no anticipation). Used MACD histogram crossing zero as primary signal for trend confirmation combined with ADX >25 for trend strength validation. Exit when signal reverses (MACD crosses back). Stop-loss set to 2x ATR as specified (approximated as 2.0% per parameters). CONTEXT_DEPENDENT direction because rule applies to both long and short based on signal direction."
+  },
+  "source_rule_text": "A trader should enter positions only after receiving a technical signal that confirms market direction, rather than predicting direction before the signal occurs."
+}

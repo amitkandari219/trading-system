@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires three indicators not in the allowed list: (1) 'Instrument trading volume percentile ranking within asset class' \u2014 requires cross-asset relative ranking unavailable in single-instrument indicators; (2) 'Bid-ask spread percentile' \u2014 bid-ask spread data not provided in allowed indicators; (3) 'Social media mentions, analyst coverage, and news sentiment' \u2014 sentiment/coverage metrics not available. These are fundamental data inputs that cannot be synthesized from price/volume/technical indicators alone. The signal is regime-agnostic (works in ANY regime) and context-dependent (direction depends on other factors), making it unsuitable for a purely technical backtest without external data feeds.",
+  "translation_notes": "This signal is fundamentally about market microstructure and information asymmetry rather than technical patterns. It requires: (1) relative liquidity metrics across instrument universe, (2) market microstructure data (bid-ask spreads), and (3) alternative data (sentiment, media coverage). None of these can be derived from OHLCV and standard technical indicators. To implement this signal, a backtest engine would need to integrate: external market data APIs for relative volume rankings, level-2 order book data for spread analysis, and sentiment/news APIs. The 'minimum_days_observation_period' of 126 days suggests a lookback window for calculating percentiles, but percentile calculations themselves require universe-level data."
+}

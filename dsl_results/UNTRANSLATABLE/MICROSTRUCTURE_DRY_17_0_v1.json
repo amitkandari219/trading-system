@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_17_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires microstructure-level order book analysis (quantity imbalance tracking, cross-market order flow correlation, intra-second timing windows, and specific order size deviation metrics) which cannot be constructed from OHLCV candle-based indicators. Required inputs: real-time order imbalance magnitude, multi-venue order flow synchronization, tick-level quantity tracking across >1 market simultaneously, and sub-5-second cross-venue latency confirmation\u2014none available in the allowed indicator set.",
+  "translation_notes": "MICROSTRUCTURE_DRY_17_0 is a high-frequency microstructure arbitrage signal designed for tick-by-tick execution. The core logic depends on: (1) detecting quantity imbalances at 2\u03c3 threshold in real-time order book, (2) confirming matching imbalances in correlated markets within 5 seconds, (3) verifying 3 consecutive updates of directional consistency, (4) correlating with visible price dislocation \u226550bps. No single OHLCV indicator (volume, vol_ratio_20, hvol_20) can capture order imbalance state or cross-venue order flow dynamics. This signal requires direct order book access and cannot be meaningfully backtested on candle data."
+}

@@ -1,0 +1,84 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped 'midpoint of daily range' to pivot point indicator, which represents (high + low + close) / 3 and serves as the daily midpoint. Entry occurs when close crosses above (long) or below (short) this midpoint. Exit is a 1-bar reversal through the midpoint. Stop loss set to 1 ATR equivalent (~1%) based on intraday ATR stop specification. No volume filter applied per signal parameters."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mapped 'midpoint of daily range' to pivot point indicator, which represents (high + low + close) / 3 and serves as the daily midpoint. Entry occurs when close crosses above (long) or below (short) this midpoint. Exit is a 1-bar reversal through the midpoint. Stop loss set to 1 ATR equivalent (~1%) based on intraday ATR stop specification. No volume filter applied per signal parameters."
+  },
+  "source_rule_text": "A trader should initiate long positions when the market closes above the midpoint of its daily range (indicating accumulation dominance) and short positions when it closes below the midpoint (indicating distribution dominance), as these closings predict directional price movement."
+}

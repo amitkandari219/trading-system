@@ -1,0 +1,72 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Broadening Formation breakout detected via Donchian upper band breakout (price_pos_20 alternative would be price_pos_20 > 0.8). Entry requires uptrend confirmation via ADX > 25. Average rise of 28% suggests ~60 day holding period. Exit on Donchian lower band breach (pattern failure). Stop loss set conservatively at 5% given 20% failure rate within 5% move. Pattern-specific statistical data (failure rates at various levels) noted but not directly translatable to entry/exit rules."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Broadening Formation breakout detected via Donchian upper band breakout (price_pos_20 alternative would be price_pos_20 > 0.8). Entry requires uptrend confirmation via ADX > 25. Average rise of 28% suggests ~60 day holding period. Exit on Donchian lower band breach (pattern failure). Stop loss set conservatively at 5% given 20% failure rate within 5% move. Pattern-specific statistical data (failure rates at various levels) noted but not directly translatable to entry/exit rules."
+  },
+  "source_rule_text": "Broadening Formation, Right-Angled and Descending - Bull Market Up Breakout"
+}

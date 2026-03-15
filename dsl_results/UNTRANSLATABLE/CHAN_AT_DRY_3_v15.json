@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires half-life calculation of mean reversion from in-sample data and dynamic position sizing based on this calculation. Half-life is a time-series statistical measure (derived from AR(1) model fitting) that cannot be expressed using the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Returns). The signal also lacks explicit exit conditions (marked AUTHOR_SILENT) and threshold parameters. Mean reversion detection requires stationarity testing and autocorrelation analysis, which are not available in the allowed indicator set.",
+  "translation_notes": "This signal is a methodological approach to mean reversion trading that fundamentally relies on econometric calculations (half-life estimation via ADF/KPSS tests and AR coefficient fitting) rather than technical indicators. It cannot be accurately translated into a rules-based condition set without access to custom statistical functions. The source mentions look-ahead bias from in-sample half-life calculation, indicating this would require forward-looking optimization that violates backtesting integrity. Recommend implementing as custom strategy code with proper walk-forward validation."
+}

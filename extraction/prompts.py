@@ -398,3 +398,80 @@ BOOK_SPECIFIC_PROMPTS = {
     'VINCE': VINCE_EXTRACTION_PROMPT,
     # All other books use default prompts based on abstraction level
 }
+
+
+# ================================================================
+# PATTERN → INDICATOR DSL CONVERSION PROMPT
+# Used AFTER extraction, BEFORE DSL translation
+# Specifically for Bulkowski/Candlestick pattern signals
+# ================================================================
+
+PATTERN_TO_INDICATOR_PROMPT = """You are converting a chart pattern description into indicator-based entry/exit conditions for a backtest engine.
+
+PATTERN SIGNAL:
+  Pattern name: {pattern_name}
+  Entry conditions (text): {entry_conditions}
+  Exit conditions (text): {exit_conditions}
+  Direction: {direction}
+  Pattern type: {pattern_type}
+  Average rise: {avg_rise}
+  Success rate: {success_rate}
+
+AVAILABLE INDICATORS for the backtest engine:
+  Price: open, high, low, close, volume
+  Moving Averages: sma_5, sma_10, sma_20, sma_50, sma_100, sma_200
+  Previous Bar: prev_close, prev_high, prev_low, prev_open, prev_volume
+  Bollinger: bb_upper, bb_middle, bb_lower, bb_pct_b, bb_bandwidth
+  Donchian: dc_upper, dc_lower, dc_middle
+  RSI: rsi_7, rsi_14, rsi_21
+  Stochastic: stoch_k, stoch_d, stoch_k_5, stoch_d_5
+  ADX: adx_14
+  ATR: atr_7, atr_14, atr_20
+  Volume: vol_ratio_20
+  Volatility: hvol_6, hvol_20, hvol_100
+  Price Position: price_pos_20 (0=low, 1=high of 20-day range)
+  Returns: returns, log_returns
+  Bar: body, body_pct, upper_wick, lower_wick, range
+  Pivots: pivot, r1, s1, r2, s2
+
+CONVERSION RULES:
+  "Higher highs" → high > prev_high
+  "Higher lows" → low > prev_low
+  "Lower lows" → low < prev_low
+  "Lower highs" → high < prev_high
+  "Breakout above resistance" → close > dc_upper
+  "Breakout below support" → close < dc_lower
+  "Volume confirmation" → vol_ratio_20 > 1.5
+  "Volume declining" → volume < prev_volume
+  "Inside bar" → high < prev_high AND low > prev_low
+  "Outside bar" → high > prev_high AND low < prev_low
+  "Gap up" → open > prev_close
+  "Gap down" → open < prev_close
+  "Price above MA" → close > sma_50
+  "Price below MA" → close < sma_50
+  "Narrow range" → bb_bandwidth < 0.03
+  "Wide range" → bb_bandwidth > 0.06
+  "Overbought" → rsi_14 > 70
+  "Oversold" → rsi_14 < 30
+  "Strong trend" → adx_14 > 25
+  "Weak trend" → adx_14 < 20
+
+Convert the pattern to JSON with indicator conditions.
+If the pattern CANNOT be expressed with these indicators, set untranslatable=true.
+
+Return ONLY valid JSON:
+{{
+  "entry_long": [{{"left": "indicator", "operator": "op", "right": "value_or_indicator"}}],
+  "entry_short": [],
+  "exit_long": [{{"left": "indicator", "operator": "op", "right": "value_or_indicator"}}],
+  "exit_short": [],
+  "stop_loss_pct": {stop_loss},
+  "take_profit_pct": {take_profit},
+  "hold_days_max": 20,
+  "direction": "{direction}",
+  "target_regime": ["ANY"],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "How the pattern was converted to indicators"
+}}"""
+

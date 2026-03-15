@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Hurst exponent and Variance Ratio test calculations, which are not available in the allowed indicators list. These are advanced statistical tests that measure serial autocorrelation and fractional Brownian motion properties. The allowed indicator set contains only standard technical indicators (RSI, MACD, ATR, moving averages, etc.) and does not support custom statistical tests or regime detection based on Hurst exponent values or Variance Ratio test results. The signal cannot be operationalized without access to these specific computational methods.",
+  "translation_notes": "This is a regime detection signal at the meta-strategy level rather than a direct entry/exit signal. It serves as a prerequisite filter to determine whether to apply mean reversion or momentum strategies. Without access to Hurst exponent and Variance Ratio test indicators, this rule cannot be implemented in the backtest engine. A workaround would require implementing these statistical tests as custom indicators first."
+}

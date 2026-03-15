@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires rolling OLS regression, dynamic hedge ratio computation, and z-score of residuals from paired asset spread \u2014 these are multi-asset derivations not available in single-asset indicator library. The signal also requires maintenance of hedge ratios between paired assets which is not supported by the indicator set. Approximated using log_returns as proxy for residual z-score behavior, but this is not a true translation of the original logic.",
+  "translation_notes": "This is a pairs trading strategy requiring OLS regression on two correlated assets and z-score analysis of the spread residuals. The provided indicator set only supports single-asset technical analysis. Used log_returns as a rough approximation of mean-reversion behavior with zscore_high=3.0 mapped to absolute returns threshold and zscore_low=0.5 for exit, but this does not capture the true paired-asset hedge ratio dynamics. For proper implementation, a custom indicator for OLS-based pair spread z-score is required."
+}

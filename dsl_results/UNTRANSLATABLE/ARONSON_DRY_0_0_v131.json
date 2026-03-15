@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'news event' and 'at least 2 bars of sustained deviation before entry' \u2014 neither can be expressed with allowed indicators. News event detection requires external data unavailable in the indicator set. The 2-bar confirmation requirement cannot be implemented without bar-indexing or lookback arrays (close[1], close[2]), which are prohibited. Used price_pos_20 as approximation for deviation from 20-period MA (where <0.025 \u2248 -2.5\u03c3 and >0.975 \u2248 +2.5\u03c3), but this is a rough proxy.",
+  "translation_notes": "Direction set to CONTEXT_DEPENDENT to reflect mean-reversion logic (long on overshoots below MA, short on overshoots above MA). Entry uses price_pos_20 to approximate extreme deviations from the 20-period moving average. Vol_ratio_20 approximates volume confirmation. Exit at sma_10 matches reversion target. Hold_days_max set to 10 per time stop specification. Critical limitations: news event cannot be detected; 2-bar confirmation logic cannot be implemented within constraint rules."
+}

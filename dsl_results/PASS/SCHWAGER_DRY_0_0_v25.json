@@ -1,0 +1,128 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.05"
+      },
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.05"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.08"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.08"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 0.5,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Translated 'price moved 5% in primary trend direction' using returns > 0.05 for long and < -0.05 for short. Used dc_lower (20-bar Donchian low) as proxy for '20-bar low' exit condition. Higher highs/lower lows pattern captured via high > prev_high and low < prev_low comparisons. Macro regime alignment requires external context not expressible in indicator syntax. Signal is context-dependent, so both entry_long and entry_short are provided with directionally appropriate conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.05
+      },
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.05
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.08
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.08
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.005,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Translated 'price moved 5% in primary trend direction' using returns > 0.05 for long and < -0.05 for short. Used dc_lower (20-bar Donchian low) as proxy for '20-bar low' exit condition. Higher highs/lower lows pattern captured via high > prev_high and low < prev_low comparisons. Macro regime alignment requires external context not expressible in indicator syntax. Signal is context-dependent, so both entry_long and entry_short are provided with directionally appropriate conditions."
+  },
+  "source_rule_text": "A trader should maintain positions in markets exhibiting major directional trends and avoid exiting prematurely when early price moves (10% of eventual advance) occur, as trends often extend far beyond initial expectations."
+}

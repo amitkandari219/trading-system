@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegration testing (cadf test), hedge ratio calculation, and spread construction between two securities. These are portfolio-level operations requiring two separate price series, optimal weighting via statistical cointegration analysis, and spread stationarity verification. The allowed indicator set does not include cointegration metrics, spread construction, or multi-leg portfolio operations. Standard single-price indicators cannot express this pairs trading logic.",
+  "translation_notes": "This is a pairs trading/statistical arbitrage strategy that fundamentally requires: (1) cointegration confirmation between two securities, (2) dynamic hedge ratio calculation, (3) spread construction as a new synthetic series, and (4) mean-reversion detection on the spread. None of these operations are expressible using single-price indicators. A workaround using sma_20 is provided for illustrative purposes only but does not capture the actual signal intent. A proper implementation requires a dedicated pairs trading engine outside the scope of this single-instrument backtester."
+}

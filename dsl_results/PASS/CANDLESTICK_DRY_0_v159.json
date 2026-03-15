@@ -1,0 +1,93 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "0"
+      },
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Pattern detection: (1) Downtrend confirmed by close below sma_20; (2) First candle is black (body < 0); (3) Second candle is white (open > prev_close AND close > prev_close); (4) Entry assumes second candle opens and closes above midpoint of first candle body via price strength indicators. Exit on reversal (close below previous close). Pattern ranked 31/103 overall; conservative 2% stop-loss and 5-day hold applied given moderate success rate."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": 0.0
+      },
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Pattern detection: (1) Downtrend confirmed by close below sma_20; (2) First candle is black (body < 0); (3) Second candle is white (open > prev_close AND close > prev_close); (4) Entry assumes second candle opens and closes above midpoint of first candle body via price strength indicators. Exit on reversal (close below previous close). Pattern ranked 31/103 overall; conservative 2% stop-loss and 5-day hold applied given moderate success rate."
+  },
+  "source_rule_text": "Above the Stomach: A bullish reversal candlestick pattern appearing in a downtrend, beginning with a black candle followed by a white candle where price opens above the middle of the black candle's body and closes above the middle, indicating bulls have wrested control with no ground ceded to bears."
+}

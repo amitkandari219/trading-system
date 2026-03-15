@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of prior congestion/consolidation ranges and measurement of their width for dynamic target calculation. This requires range detection logic and historical range width storage that cannot be expressed with single-bar indicators. The 0.75x and 0.5x multipliers reference a calculated 'range_width' value that is not available as a standard indicator and would require custom bar-range analysis.",
+  "translation_notes": "Used Donchian Channels (dc_upper, dc_lower, dc_middle) as a proxy for detecting breakouts from congestion, with volume confirmation. However, the core logic of measuring prior congestion range width and using it as a scaling multiplier for targets/stops cannot be fully translated without custom range-detection indicators. The entry conditions detect breakouts with pullback hold (close crossing DC bands), and exit conditions detect reversal back into range. Stop loss is set to 0.5% as placeholder for the 0.5x range width specification."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'voice intensity' and multi-bar activity trend tracking which cannot be directly mapped to available indicators. The concept of 'activity drops by \u226520% from 3-bar average' and 'activity spikes by \u226525% from baseline' requires custom composite volatility indicators or multi-bar comparisons not supported by allowed indicators. hvol_20 is used as a proxy for volatility intensity, but cannot capture the specific 3-bar rolling comparison or the requirement to detect sudden changes in activity conviction.",
+  "translation_notes": "Translated 'activity decrease' to hvol_20 < baseline and range contraction. Translated 'failed follow-through' to close failing to exceed prior range. Direction set to CONTEXT_DEPENDENT as signal is reversal-based. Exit conditions use pivot point as neutral reversal zone per 38.2% retracement concept. Position size reduction parameter (25%) noted but not directly implementable in standard backtest JSON schema."
+}

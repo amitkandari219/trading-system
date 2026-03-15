@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a 'channel-normalized value' metric that is not in the allowed indicators list. The concept of normalizing two separate price series within their individual channels and measuring divergence between them requires custom indicator calculation. Attempted approximation using bb_pct_b (Bollinger Band %B) and price_pos_20 as proxies for normalized channel positions, but this does not accurately capture the dual-series divergence logic described in the original signal.",
+  "translation_notes": "SIGNAL ID: ARONSON_DRY_0_2. Approximated 'channel-normalized values' using bb_pct_b (normalized within Bollinger Bands) for Series A and price_pos_20 (20-bar Donchian position) for Series B. Entry thresholds converted to 0-1 decimal scale (65 \u2192 0.65, 35 \u2192 0.35). Divergence spread of \u226530 approximated as combined extreme conditions on both series. Exit conditions use crosses_below/crosses_above at 0.50 midpoint. True implementation would require a custom 'channel_normalized' indicator accepting two price series as parameters."
+}

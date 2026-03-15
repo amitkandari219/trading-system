@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_11_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires real-time access to model confusion matrices and true positive rates (TPR by directional class), which are not available as price/technical indicators. The core logic demands comparing 'Model TPR(down) vs Model TPR(up)' and calculating 'asymmetry_ratio = down_TPR / up_TPR >= 1.05'. These are meta-model performance metrics that cannot be expressed using standard OHLCV-derived technical indicators. Implementation requires external model performance monitoring, not backtestable price conditions.",
+  "translation_notes": "This is a meta-strategy rule that requires live model retraining and performance tracking. It cannot be converted to a technical indicator-based rule. To implement: (1) Run predictive model on each retraining cycle, (2) Extract confusion matrices, (3) Calculate TPR for up/down moves separately, (4) Toggle trading direction based on asymmetry_ratio >= 1.05, (5) Exit at end of day or on model retraining. Suggested workaround: Use directional bias indicators (ADX, MACD direction) as proxies, but this does not capture the actual model performance asymmetry."
+}

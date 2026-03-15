@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pattern recognition (head-and-shoulders detection) with multi-point coordinate tracking (shoulders A, B, D, E; troughs; midpoints X, Y; neckline slope calculation in degrees). These require: (1) explicit candle-by-candle pattern identification logic not available in indicator set, (2) geometric calculations (midpoint references, percentage proximity validation, slope degree measurement) that cannot be expressed as simple indicator comparisons. The entry conditions reference custom pattern geometry (e.g., 'Right shoulder price (E) > Left midpoint (X)') that requires prior pattern detection and pivot point identification beyond standard technical indicators. Neckline slope in degrees cannot be computed from allowed indicators.",
+  "translation_notes": "This is a structural pattern recognition signal that requires multi-candle pattern detection and geometric validation. It cannot be reduced to simple indicator crossovers or threshold comparisons. A proper implementation would require: (1) pattern detection module to identify H&S formation, (2) coordinate system to track shoulder/trough/midpoint positions, (3) geometric validation functions for symmetry and slope. Exit conditions provided are placeholder approximations using neckline proxy (pivot point). For backtesting, consider using a dedicated pattern recognition library or implementing custom pattern detection logic outside this rule engine."
+}

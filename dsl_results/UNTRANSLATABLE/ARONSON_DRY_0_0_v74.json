@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of specific Head-and-Shoulders pattern structure (right shoulder peak point E, neckline geometry, zigzag validation with 1.0% threshold). These require multi-bar pattern recognition and geometric validation logic that cannot be expressed as simple indicator crossovers or threshold comparisons. The 'confirmation_bars_after_shoulder' and 'price_distance_ratio_max' parameters require pattern-state tracking beyond allowed operators.",
+  "translation_notes": "This is a structural pattern validation rule rather than a technical indicator signal. It emphasizes preventing look-ahead bias in backtests by ensuring pattern completion is confirmed before signal generation. The core logic (close below shoulder, neckline penetration, exit on neckline retest) can be approximated using pivot support/resistance, but the geometric zigzag threshold validation and multi-bar shoulder confirmation cannot be implemented with allowed indicators alone. A custom pattern detector would be required."
+}

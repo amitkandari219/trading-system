@@ -1,0 +1,87 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Aronson breakout strategy using Donchian channels (20-period) as the n-period maximum/minimum. dc_upper represents the highest high over the lookback period; dc_lower represents the lowest low. Entry conditions are bidirectional (long on breakout above upper band, short on breakdown below lower band). Exit uses reversal logic (exit long when price closes below dc_lower, exit short when price closes above dc_upper). Stop loss set to 50% of the 20-period range approximation (ATR-based trailing stop would be ~2.5% of typical range). Position size parameter (1.5 units) is noted but not encoded in JSON schema."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Aronson breakout strategy using Donchian channels (20-period) as the n-period maximum/minimum. dc_upper represents the highest high over the lookback period; dc_lower represents the lowest low. Entry conditions are bidirectional (long on breakout above upper band, short on breakdown below lower band). Exit uses reversal logic (exit long when price closes below dc_lower, exit short when price closes above dc_upper). Stop loss set to 50% of the 20-period range approximation (ATR-based trailing stop would be ~2.5% of typical range). Position size parameter (1.5 units) is noted but not encoded in JSON schema."
+  },
+  "source_rule_text": "Enter long positions when price exceeds the n-period maximum; enter short positions when price falls below the n-period minimum, using a dynamically redrawn channel that adjusts to recent price range."
+}

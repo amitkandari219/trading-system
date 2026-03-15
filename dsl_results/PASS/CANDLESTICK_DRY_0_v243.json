@@ -1,0 +1,72 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "prev_high"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "DOWNTREND_REVERSAL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Belt Hold Bullish reversal pattern: Entry requires close near top of previous candle (close >= prev_high) AND confirmation with higher closing price the next day (close > prev_close). Exit on reversal signal when price closes below the pattern low. Pattern targets downtrend reversals with 96% confirmation rate."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "DOWNTREND_REVERSAL"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Belt Hold Bullish reversal pattern: Entry requires close near top of previous candle (close >= prev_high) AND confirmation with higher closing price the next day (close > prev_close). Exit on reversal signal when price closes below the pattern low. Pattern targets downtrend reversals with 96% confirmation rate."
+  },
+  "source_rule_text": "Belt Hold, Bullish: A reversal pattern confirmed by a higher closing price the next day, indicating price has broken out upward and reversed the downtrend"
+}

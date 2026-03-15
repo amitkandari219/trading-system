@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pairs trading with adaptive hedge ratio based on price spreads between two correlated assets (GLD and USO). This requires: (1) cross-asset spread calculation not available in single-asset indicator set, (2) z-score threshold calculation on spread series (not a native indicator), (3) adaptive hedge ratio computation based on price relationships (not supported), (4) specific parameter values marked AUTHOR_SILENT (lookback_period, threshold, half_life). The allowed indicators only support single-asset technical analysis, not multi-asset correlation analysis or dynamic hedging ratio calculations.",
+  "translation_notes": "This is a pairs trading/statistical arbitrage strategy that fundamentally requires multi-asset correlation analysis and spread modeling. The engine's indicator set is limited to single-asset price/volume metrics. To implement this strategy, the backtest engine would need to support: (1) spread calculation between asset pairs, (2) rolling z-score or standardization functions, (3) adaptive ratio computation, (4) explicit parameter specification for all AUTHOR_SILENT values."
+}

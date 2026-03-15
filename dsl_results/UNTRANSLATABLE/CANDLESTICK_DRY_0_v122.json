@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Bearish Abandoned Baby is a three-candle pattern requiring precise identification of: (1) white candle on bar[i-2], (2) doji with lower shadow gap on bar[i-1], and (3) black candle on bar[i]. The pattern requires multi-bar lookback and doji detection (close \u2248 open) which cannot be fully expressed with single-bar indicator conditions. ALLOWED_REGIMES does not include 'BULL_MARKET' \u2014 only TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY are permitted.",
+  "translation_notes": "Attempted approximation using body, lower_wick, and close comparisons, but true candlestick pattern recognition requires bar-by-bar sequence validation across 3 candles. The target regime 'BULL_MARKET' is not in the allowed regime list and should be mapped to 'TRENDING_UP'. Breakout window is 4 days. Exit condition was inferred as reversal (close above previous close) since author provided no exit guidance."
+}

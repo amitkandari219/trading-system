@@ -1,0 +1,128 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "price_pos_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "price_pos_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gap confirmation modeled as open price gap relative to previous close. Breakout direction set to BOTH (bullish and bearish). Entry uses gap + MA50 crossover + position in candle body. Exits triggered by MA50 reversals. Success rates and volume trends marked as AUTHOR_SILENT were not translatable to specific conditions. Maximum hold period set to 20 days as a reasonable reversal timeframe for candlestick patterns."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "price_pos_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "price_pos_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Gap confirmation modeled as open price gap relative to previous close. Breakout direction set to BOTH (bullish and bearish). Entry uses gap + MA50 crossover + position in candle body. Exits triggered by MA50 reversals. Success rates and volume trends marked as AUTHOR_SILENT were not translatable to specific conditions. Maximum hold period set to 20 days as a reasonable reversal timeframe for candlestick patterns."
+  },
+  "source_rule_text": "Candlestick pattern with breakout confirmation: Bullish or bearish reversals using opening price gaps and moving average crossovers"
+}

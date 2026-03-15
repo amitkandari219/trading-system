@@ -1,0 +1,18 @@
+{
+  "signal_id": "JOHNSON_DRY_4_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of historical hidden order concentration at support/resistance levels and execution latency metrics (<1ms to exchange), which are not available in the allowed indicator set. Also requires IOC order execution logic, order fill tracking, and multi-ping sequencing that cannot be expressed as simple price/indicator conditions. The 'CONTEXT_DEPENDENT' direction and regime-dependent entry logic exceed the structured rule capability.",
+  "translation_notes": "This signal is fundamentally a high-frequency liquidity detection strategy that relies on: (1) order book microstructure analysis not available in price/volume indicators, (2) network latency monitoring, (3) execution order sequencing and fill tracking, and (4) adaptive pinging logic. The allowed indicator set captures only volume volatility spike (vol_ratio_20 > 2.0) and absorption via volume increase, but cannot model hidden liquidity, ping sequences, or execution priority. Recommend implementing as custom strategy module rather than backtest rule."
+}

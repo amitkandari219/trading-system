@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_14_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal is a meta-rule about strategy selection and risk management philosophy rather than a mechanically tradeable signal. Key untranslatable concepts: (1) 'match strategy type to market regime' requires dynamic strategy switching logic not expressible in entry/exit conditions; (2) 'avoid trend-following when markets spend significant time in non-trending conditions' requires regime duration/persistence measurement (requires lookback_periods=63 ADX analysis); (3) 'trader's operational style misaligned with trend persistence' is subjective trader psychology, not a market condition; (4) 'last 10% of calendar month volatility filter' requires date/calendar logic not available; (5) 'whipsaw tolerance of 4+ consecutive small losses' requires trade history tracking and sequential loss counting logic; (6) The signal emphasizes what NOT to do (mechanical negation/avoidance) rather than actionable entry/exit triggers. This is a risk management framework, not a trading rule.",
+  "translation_notes": "This signal from THARP_DRY_14_2 encodes a trader education principle about regime awareness and strategy alignment rather than a discrete entry/exit system. To mechanically implement this would require: (a) regime detection via ADX (trending_condition_threshold=0.15 suggests ADX<15 = non-trending); (b) loss sequencing logic (unavailable); (c) calendar logic for month-end avoidance (unavailable); (d) strategy selector logic (unavailable). The 'passive observation only' regime filter strength indicates the author intended this as guidance, not hard rules. Best practice: Use this as qualitative overlay on a primary trend-following system, manually disabling entries during regime misalignment rather than encoding as JSON rules."
+}

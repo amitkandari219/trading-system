@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Johansen cointegration test and portfolio-level statistical arbitrage logic that cannot be expressed using only the allowed price-based indicators (close, sma, rsi, atr, bb, macd, adx, stochastic, donchian, pivots, volume, returns). Cointegration analysis requires multivariate time-series modeling across multiple assets simultaneously, which is beyond the scope of single-asset technical indicator comparisons. The spread calculation between a dynamically selected stock portfolio and SPY also requires cross-asset correlation tracking not available in the allowed indicator set.",
+  "translation_notes": "This is a pairs/cointegration trading strategy that requires statistical testing (Johansen test) to identify which SPY constituent stocks cointegrate with the ETF, then forms a portfolio and trades the spread. The core logic (equal-weight portfolio selection based on cointegration probability, spread mean-reversion) cannot be reduced to standard technical indicators. A proper implementation would require a custom cointegration module outside the standard backtest engine framework. The placeholder entry/exit uses price crossing SMA as a rough directional proxy only."
+}

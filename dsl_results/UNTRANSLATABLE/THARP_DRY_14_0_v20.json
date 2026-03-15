@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_14_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'percentage of assets in uptrend falls below 30%' and 'signal frequency drops 40% below baseline' \u2014 these are portfolio-level/meta-metrics requiring cross-asset comparison and historical signal frequency analysis, which are not supported by single-instrument indicators. The 'delayed activation lag' condition also requires time-state tracking beyond standard rule evaluation.",
+  "translation_notes": "Attempted approximation using price_pos_20 (position within 20-bar range) as proxy for market regime strength. Entry_short triggered when price falls to bottom 30% of range AND trend strength confirmed via ADX. This captures the directional flexibility intent but cannot fully replicate the original cross-asset portfolio conditions and signal degradation triggers specified in the source rule."
+}

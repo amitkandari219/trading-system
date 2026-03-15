@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'maximum selling pressure over 4-1 quarters' and distinction between liquidity-driven vs fundamental selling pressure. No allowed indicators directly measure quarterly selling pressure accumulation, fund redemption cycles, or liquidity regime classification. The 4-quarter lookback period also exceeds typical bar-based technical indicator capabilities.",
+  "translation_notes": "Attempted proxy: vol_ratio_20 (elevated volume on down days) and negative returns over recent period (price suppression). However, this cannot reliably distinguish liquidity-driven selling from fundamental deterioration. True implementation requires custom factor for cumulative selling pressure and fund flow regime detection. Exit condition uses mean reversion signal (price bounce back +5%) as proxy for 'AUTHOR_SILENT'."
+}

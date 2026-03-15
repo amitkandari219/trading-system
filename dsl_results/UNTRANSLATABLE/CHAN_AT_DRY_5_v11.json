@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires z-score adjusted buy price calculation based on 90-day standard deviation of close-to-close returns and gap ranking by magnitude. The allowed indicators do not include: (1) a custom z-score adjusted price indicator that combines previous day's low with 1 * 90-day volatility; (2) ranking/sorting capability to select top N stocks by gap magnitude. These require dynamic calculation of 90-day rolling std dev of returns and cross-asset ranking logic not available in the allowed indicator set.",
+  "translation_notes": "The core gap-down reversion logic (open < prev_low AND open > sma_20) is translatable, but the signal's sophisticated entry mechanism (z-score adjusted threshold AND top-10 ranking by gap size) cannot be fully expressed. Would require: hvol_20 or hvol_100 for volatility proxy (but not 90-day), and a custom ranking engine outside indicator scope. The intraday exit (same-day close) is represented as a market-on-close logic."
+}

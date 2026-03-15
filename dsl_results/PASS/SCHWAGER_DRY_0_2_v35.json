@@ -1,0 +1,92 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.8"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.03"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 4,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes early breakout entry before institutional arrival and exit into retail/short-covering wave. Entry uses pivot level as 'key chart point' proxy and volume confirmation. Exit conditions include volume multiplier (vol_ratio_20), close below prior low (gap down proxy), and 3% loss threshold. Intrabar execution requirement cannot be enforced at rule level (execution layer concern). Holding period capped at 4 calendar days via hold_days_max."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.8
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.03
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 4,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal describes early breakout entry before institutional arrival and exit into retail/short-covering wave. Entry uses pivot level as 'key chart point' proxy and volume confirmation. Exit conditions include volume multiplier (vol_ratio_20), close below prior low (gap down proxy), and 3% loss threshold. Intrabar execution requirement cannot be enforced at rule level (execution layer concern). Holding period capped at 4 calendar days via hold_days_max."
+  },
+  "source_rule_text": "Enter early-stage breakouts before the crowd arrives, and exit into the subsequent wave of late-arriving uninformed buying rather than hold for major moves."
+}

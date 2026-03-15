@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires complex candle pattern classification (short/tall candle relative to median, shadow ratio analysis) and measure rule calculations with dynamic percentage factors from a lookup table. These require multi-candle median calculations, relative classifications, and conditional percentage selection logic that cannot be expressed using only simple binary comparisons with allowed indicators. The price target calculation depends on identifying candle height thresholds and applying context-dependent multipliers (4.13%-5.38%, 7.74%-10.78%) that require pattern recognition beyond basic indicator comparisons.",
+  "translation_notes": "Entry conditions attempt to detect candle presence with body and wicks, but cannot implement the required median-relative classification, shadow ratio thresholds (1.00%-1.35% for upper, 0.31%-0.60% for lower), or measure rule logic. Exit conditions use pivot as a breakout proxy but cannot calculate the height \u00d7 percentage factor multiplication. The CONTEXT_DEPENDENT direction and BOTH breakout directions cannot be simultaneously expressed in the binary entry/exit structure."
+}

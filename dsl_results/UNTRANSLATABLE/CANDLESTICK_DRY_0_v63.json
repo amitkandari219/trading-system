@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires regime-specific volume thresholds and conditional logic (heavy volume preferred in bull markets for up/down breakouts; light volume preferred in bear markets for down breakouts). No single condition set can capture this context-dependent switching behavior without explicit regime detection and conditional branching not supported by the rule engine syntax.",
+  "translation_notes": "Translated base logic: heavy volume on breakout (volume > hvol_20) with price breakout (close > prev_high for long, close < prev_low for short). Exit on volume contraction. However, the original signal's performance variance by market regime (bull/bear) and breakout direction cannot be fully expressed without multi-branch conditional logic. hvol_20 approximates 'heavy volume' vs light volume baseline."
+}

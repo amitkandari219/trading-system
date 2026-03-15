@@ -1,0 +1,128 @@
+{
+  "signal_id": "THARP_DRY_14_2",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_14_2",
+    "entry_long": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "atr_14",
+        "operator": ">",
+        "right": "0.05"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "atr_14",
+        "operator": ">",
+        "right": "0.05"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses trend-following principle: ADX_14 > 25 confirms trend presence; price vs SMA_20 determines trend direction. Exit triggers on trend reversal (price crosses SMA) or trailing stop breach approximated via ATR expansion. The 15-bar reversal pattern and 20-period trailing stop are operationalized through price-to-moving-average crossover logic and ATR volatility thresholds. The 5% reversal threshold is implemented as stop_loss_pct."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "atr_14",
+        "op": ">",
+        "value": 0.05
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "atr_14",
+        "op": ">",
+        "value": 0.05
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses trend-following principle: ADX_14 > 25 confirms trend presence; price vs SMA_20 determines trend direction. Exit triggers on trend reversal (price crosses SMA) or trailing stop breach approximated via ATR expansion. The 15-bar reversal pattern and 20-period trailing stop are operationalized through price-to-moving-average crossover logic and ATR volatility thresholds. The 5% reversal threshold is implemented as stop_loss_pct."
+  },
+  "source_rule_text": "A trader should remain in a position and allow profits to run as long as the identified trend continues in the trader's favor, exiting only when the trend direction shifts."
+}

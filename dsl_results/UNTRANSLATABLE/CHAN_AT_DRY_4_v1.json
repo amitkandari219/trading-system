@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires proportional position sizing based on deviation magnitude and mean-reversion half-life analysis (< 10 years), which are portfolio-level risk management features not expressible in entry/exit conditions. Specific lookback_period, threshold, backtest_sharpe, and backtest_period marked as AUTHOR_SILENT. Seasonal regime conditions (specific periods of day/specific conditions) cannot be expressed with available indicators.",
+  "translation_notes": "Used bb_pct_b (Bollinger Band %B) to detect deviation from mean: values < 0.2 indicate price near lower band (oversold/mean reversion opportunity), values > 0.8 indicate price near upper band. Exit when price returns to middle band (bb_pct_b \u2248 0.5). Direction set to CONTEXT_DEPENDENT per original signal. Target regime RANGING as stationary/mean-reverting conditions are typical of range-bound markets. Position scaling logic and half-life filtering must be implemented at portfolio level."
+}

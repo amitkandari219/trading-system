@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) market cap screening (not available in indicator list), (2) 12-month relative strength percentile ranking (no relative strength or percentile rank indicator available), (3) 150-day moving average (only sma/ema up to 200-day provided). Substituted rsi_14 as proxy for relative momentum strength in exit condition, but market cap filter and percentile-based entry cannot be expressed with allowed indicators.",
+  "translation_notes": "This signal fundamentally requires external data (market cap) and statistical ranking (percentile of relative strength) that are not available in the standard price-action indicator set. The core momentum concept was partially preserved using RSI and moving average crossovers, but the original intent cannot be fully captured. Recommend implementing market cap screening and relative strength percentile calculations in the backtest engine separately, then applying this rule only to filtered universe of small-cap stocks."
+}

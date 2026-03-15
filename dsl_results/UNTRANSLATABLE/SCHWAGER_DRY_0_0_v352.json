@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of multi-day consolidation base formation (90+ day range identification) and breakout threshold (3% above base upper boundary). These require custom pattern recognition logic not available in the allowed indicators. Specifically: (1) identifying base upper/lower boundaries over a 120-day lookback period, (2) confirming 90+ day consolidation duration, (3) calculating 3% breakout threshold from identified base boundary. The Donchian channel (dc_upper) approximates recent highs but does not capture the historical base formation logic. Volume confirmation via vol_ratio_20 > 1.5 is translatable but incomplete without base boundary detection.",
+  "translation_notes": "Partial translation: Used dc_upper to approximate the 'upper boundary of base' and vol_ratio_20 as volume confirmation. However, the core signal logic\u2014identifying a consolidation base over 90+ days and measuring a 3% breakout from that base\u2014requires custom pattern recognition beyond standard indicators. Entry conditions simplified to: price breaks above recent highs (dc_upper proxy) with volume confirmation. Exit uses close below dc_upper as reversal signal. Trailing stop of 8% below highest point translated to stop_loss_pct. Time-based exit of 180 days captured in hold_days_max."
+}

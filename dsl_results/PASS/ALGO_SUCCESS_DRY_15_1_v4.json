@@ -1,0 +1,74 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "book_id": "ALGO_SUCCESS",
+  "dsl_rule": {
+    "signal_id": "ALGO_SUCCESS_DRY_15_1",
+    "entry_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_80"
+      },
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_80"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_80"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses 20-period SMA (short_window) and 80-period SMA (long_window) as specified in parameters. Entry requires bullish crossover confirmed by short_sma > long_sma. Exit triggers on bearish crossover. Direction marked CONTEXT_DEPENDENT as signal generates both long entries and exits but no explicit short entries."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_80"
+      },
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_80"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_80"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses 20-period SMA (short_window) and 80-period SMA (long_window) as specified in parameters. Entry requires bullish crossover confirmed by short_sma > long_sma. Exit triggers on bearish crossover. Direction marked CONTEXT_DEPENDENT as signal generates both long entries and exits but no explicit short entries."
+  },
+  "source_rule_text": "Generate a long entry signal when the short-term moving average crosses above the long-term moving average (bullish crossover), and generate an exit signal when the short-term moving average crosses below the long-term moving average (bearish crossover)."
+}

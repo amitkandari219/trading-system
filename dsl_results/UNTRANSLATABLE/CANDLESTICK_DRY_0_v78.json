@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detection of '12 consecutive new highs' which cannot be expressed using only single-bar indicators and the allowed operators. This pattern requires multi-bar lookback logic and a counter/sequence detector not available in the allowed indicator set. Additionally, 'price moves in a trading range' requires range detection across multiple bars. The allowed indicators do not support sequential pattern counting or explicit consecutive bar comparisons beyond prev_* references.",
+  "translation_notes": "Attempted partial translation using trend confirmation (close > sma_20) and new high detection (high > prev_high) as proxies, but this does not capture the specific '12 consecutive' requirement. A custom pattern detector would be needed for proper implementation. Exit condition inferred as retracement below prior close when pattern fails (61% continuation rate implies 39% failure rate)."
+}

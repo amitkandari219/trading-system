@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_20_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires domain-specific inputs not in allowed indicator set: 'inventory_percentile_threshold', 'days_to_cover_threshold', 'supply_arrival_lead_days', and 'storage_cost_percentile'. These are microstructure/fundamental data points (inventory levels, supply schedules, storage costs) that are not technical price/volume indicators. Partial translation uses price_pos_20 as proxy for inventory depletion (low percentile position) and hvol_20 for volatility spike anticipation, but cannot capture the core logic: inventory < 50th percentile, days-to-cover < 45, supply gap > 15 days, storage cost > 50th percentile.",
+  "translation_notes": "The signal is fundamentally based on commodity microstructure (inventory, supply schedules, storage costs) rather than technical indicators. Attempted mapping: price_pos_20 < 0.5 approximates 'inventory below median', hvol_20 > 0.5 captures 'volatility spike'. Exit at 5% return gain and 8% trailing stop are translatable. However, the 'days-to-cover < 45' and 'supply gap > 15 days' conditions cannot be expressed without external fundamental data feeds. This signal requires custom data connectors outside the technical indicator framework."
+}

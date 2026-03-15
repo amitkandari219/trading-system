@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking and confirming '8 out of 10 scenario elements' across '3+ mutually exclusive market scenarios' with a 5-bar confirmation window. This is a multi-hypothesis framework requiring scenario state tracking, probability weighting, and confirmation counting logic that cannot be expressed as simple indicator threshold comparisons. The core mechanic (empirical confirmation against competing mental models before conviction) requires domain logic beyond available indicator operators.",
+  "translation_notes": "Attempted proxy using ADX (trend confirmation) and SMA crossover (directional signal) to approximate the 'wait for confirmation' principle, but this fundamentally misses the multi-scenario hypothesis-testing methodology. A proper implementation requires custom backtester logic to maintain scenario states and track confirmation counts. Parameters min_scenarios=3, confirmation_threshold_pct=80, confirmation_bars_required=5, initial_position_size_pct=25 cannot be operationalized through standard indicator conditions."
+}

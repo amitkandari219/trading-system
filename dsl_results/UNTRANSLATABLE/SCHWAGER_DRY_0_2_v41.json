@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires time-of-day window filtering (Asian-European overlap 02:00-18:00 CET) and policy event calendar lookhead (48 hours before announcement), which cannot be expressed using only price/technical indicators. Position sizing multiplier (1.5x) and leverage factor are also external parameters not translatable to indicator-based conditions. The core flow detection is approximated with vol_ratio_20 and hvol_20, but the temporal and event-driven context is lost.",
+  "translation_notes": "Attempted to capture elevated volume/volatility detection using vol_ratio_20 > 1.1 (equivalent to 110% of 20-day average) and hvol_20 > 0.2 (1.2x baseline volatility approximation). Exit uses simple reversal logic. The strategic alpha of this signal depends critically on time-aware execution and calendar-driven policy windows that are not available in the indicator set. Recommend implementing as a separate module with datetime filtering and external event data."
+}

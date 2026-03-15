@@ -1,0 +1,108 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "30"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "30"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes trend-following (avoid counter-trend trades) with strong directional confirmation (ADX > 30). Entry aligns price with trend direction using SMA_20 as trend baseline. Exit triggers on trend exhaustion (ADX < 20). Direction is CONTEXT_DEPENDENT to allow both long and short entries depending on which direction the trend is moving. Counter-trend position size multiplier of 0.0 is noted but not implementable in this JSON schema."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 30.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 30.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes trend-following (avoid counter-trend trades) with strong directional confirmation (ADX > 30). Entry aligns price with trend direction using SMA_20 as trend baseline. Exit triggers on trend exhaustion (ADX < 20). Direction is CONTEXT_DEPENDENT to allow both long and short entries depending on which direction the trend is moving. Counter-trend position size multiplier of 0.0 is noted but not implementable in this JSON schema."
+  },
+  "source_rule_text": "A trader should avoid initiating trades counter to the prevailing trend, as they statistically underperform trend-aligned trades, despite occasional outlier successes."
+}

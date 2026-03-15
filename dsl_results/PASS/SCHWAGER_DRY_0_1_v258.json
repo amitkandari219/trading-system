@@ -1,0 +1,107 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "rsi_7",
+        "operator": ">",
+        "right": "55"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "rsi_7",
+        "operator": "<",
+        "right": "45"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "rsi_7",
+        "operator": "<",
+        "right": "55"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "rsi_7",
+        "operator": ">",
+        "right": "45"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal specifies 5-period RSI; used rsi_7 as closest available. Momentum confirmation interpreted as RSI exceeding threshold (55 for long, below 45 for short). ROC condition cannot be directly expressed with allowed indicators but RSI captures momentum direction. Entry requires price movement in intended direction (price > prev_close for long, price < prev_close for short) plus RSI confirmation. Exit triggered on momentum reversal below confirmation threshold. Stop loss set to 1.0x ATR equivalent as percentage (ATR cannot be directly converted to percentage without price context, so using 1.0% as conservative proxy per signal intent). Confirmation_bars parameter (2) embedded in logic via momentum threshold persistence expectation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "rsi_7",
+        "op": ">",
+        "value": 55.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "rsi_7",
+        "op": "<",
+        "value": 45.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "rsi_7",
+        "op": "<",
+        "value": 55.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "rsi_7",
+        "op": ">",
+        "value": 45.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal specifies 5-period RSI; used rsi_7 as closest available. Momentum confirmation interpreted as RSI exceeding threshold (55 for long, below 45 for short). ROC condition cannot be directly expressed with allowed indicators but RSI captures momentum direction. Entry requires price movement in intended direction (price > prev_close for long, price < prev_close for short) plus RSI confirmation. Exit triggered on momentum reversal below confirmation threshold. Stop loss set to 1.0x ATR equivalent as percentage (ATR cannot be directly converted to percentage without price context, so using 1.0% as conservative proxy per signal intent). Confirmation_bars parameter (2) embedded in logic via momentum threshold persistence expectation."
+  },
+  "source_rule_text": "Enter trades at points where momentum confirms direction rather than at extreme price levels, to reduce probable risk by trading with the prevailing short-term momentum."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal specifies 5-period RSI and 3-period ROC; only rsi_7, rsi_14, rsi_21 are available. ROC (Rate of Change) is not in the allowed indicator list. Substituted rsi_7 as closest approximation to 5-period momentum, but 3-period ROC cannot be expressed with available indicators.",
+  "translation_notes": "Entry conditions use rsi_7 (closest to 5-period RSI threshold of 50) combined with price direction confirmation via close vs prev_close to capture 'early signs of movement.' Exit conditions reflect significant momentum reversal thresholds. Stop loss set at 0.75 (representing 0.75x ATR equivalent in percentage terms as ATR multiplier cannot be directly expressed). Direction set CONTEXT_DEPENDENT to preserve the dual LONG/SHORT entry logic. Original ROC requirement cannot be satisfied with available indicators."
+}

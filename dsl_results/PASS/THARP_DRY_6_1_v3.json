@@ -1,0 +1,130 @@
+{
+  "signal_id": "THARP_DRY_6_1",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_6_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "atr_14"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes multi-confirmation approach to combat confirmation bias. Entry requires: (1) pattern breakout beyond pivot point, (2) price move magnitude of 1.5 ATR, (3) volume confirmation >125% average. Exit on pattern reversal (price crossing back through pivot). Direction is context-dependent as signal applies to both long and short patterns. Used pivot/support-resistance levels as proxy for pattern identification, ATR for breakout distance threshold, and vol_ratio_20 as volume confirmation metric."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes multi-confirmation approach to combat confirmation bias. Entry requires: (1) pattern breakout beyond pivot point, (2) price move magnitude of 1.5 ATR, (3) volume confirmation >125% average. Exit on pattern reversal (price crossing back through pivot). Direction is context-dependent as signal applies to both long and short patterns. Used pivot/support-resistance levels as proxy for pattern identification, ATR for breakout distance threshold, and vol_ratio_20 as volume confirmation metric."
+  },
+  "source_rule_text": "A trader should validate pattern signals against multiple independent data sources and market conditions rather than relying on pattern recognition alone, because confirmation bias and selective observation lead traders to see only the patterns they expect."
+}

@@ -1,0 +1,108 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "prev_close",
+        "operator": "<=",
+        "right": "sma_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "prev_close",
+        "operator": ">=",
+        "right": "sma_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal implements moving average band rule with fixed 5% offset. Entry occurs when price crosses above/below the SMA_50 (acting as the band center with implicit \u00b15% thresholds). Used prev_close to detect prior close position relative to band. Fixed percentage offset of 5% cannot be directly encoded in conditions without custom indicator calculation, so translation uses SMA crossover as the practical equivalent. Exit conditions are inverse crossovers. Direction is CONTEXT_DEPENDENT: entry_long triggers on upside breach, entry_short on downside breach."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "prev_close",
+        "op": "<=",
+        "value": "sma_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "prev_close",
+        "op": ">=",
+        "value": "sma_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal implements moving average band rule with fixed 5% offset. Entry occurs when price crosses above/below the SMA_50 (acting as the band center with implicit \u00b15% thresholds). Used prev_close to detect prior close position relative to band. Fixed percentage offset of 5% cannot be directly encoded in conditions without custom indicator calculation, so translation uses SMA crossover as the practical equivalent. Exit conditions are inverse crossovers. Direction is CONTEXT_DEPENDENT: entry_long triggers on upside breach, entry_short on downside breach."
+  },
+  "source_rule_text": "Generate buy signals when price breaches an upper threshold band surrounding a moving average, and generate sell signals when price breaches a lower threshold band, using either fixed percentage offsets or volatility-adjusted bands."
+}

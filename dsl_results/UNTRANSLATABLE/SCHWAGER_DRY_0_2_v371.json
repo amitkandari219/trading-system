@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires P/E ratio evaluation (max_pe_threshold: 40, expansion_end: 45), quality characteristics assessment (management, growth, market position), and emerging stage identification. These fundamental and qualitative filters cannot be expressed using only the allowed technical indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Returns). The rule explicitly states 'Never use P/E cheapness as primary criterion' and requires 'minimum_fundamental_filters: 3', which are outside the scope of technical indicator-based conditions.",
+  "translation_notes": "Attempted translation uses trend confirmation (ADX > 25 for established uptrend) and price position above SMA_50 as proxies for 'uptrend established' and quality entry. Exit uses momentum reversal (RSI < 30) and price breakdown below SMA_50. However, this translation loses the core logic: the signal prohibits using valuation cheapness as a criterion and mandates quality assessment\u2014neither of which can be implemented with technical indicators alone. A proper implementation requires fundamental data feeds (P/E ratio, earnings growth, management quality scores) and ML-based quality scoring not available in the allowed indicator set."
+}

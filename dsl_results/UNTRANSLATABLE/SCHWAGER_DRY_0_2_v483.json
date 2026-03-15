@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires three independent conditions: (1) VIX > 70th percentile \u2014 approximated using india_vix > 70, but percentile calculation is not available; (2) Extreme breadth (>60% declining) and Put/Call ratio (>1.0) \u2014 breadth and options data not in allowed indicators; (3) Account equity solvency check (>110% of max loss) \u2014 portfolio-level constraint not expressible in price/indicator rules. Partial translation uses available volatility proxies but cannot fully capture the psychological/structural market conditions intended.",
+  "translation_notes": "Used hvol_20 (0.70 scale \u2248 70th percentile approximation) and india_vix as volatility hysteria proxies. Single-day 5% move translated to returns > \u00b15%. Exit conditions inferred: 50% at +1% mapped to partial exit trigger, trailing 3% stop approximated with -10% hard stop. Direction set CONTEXT_DEPENDENT to reflect counter-trend nature. Position sizing and solvency checks cannot be embedded in price-only rules."
+}

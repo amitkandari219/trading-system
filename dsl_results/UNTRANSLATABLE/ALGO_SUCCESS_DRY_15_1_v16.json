@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires z-score of OLS residuals from pairs trading (spread measurement via linear regression hedge ratio and residual time series). Z-score calculation on custom residuals is not available in the allowed indicator set. The signal specifically calls for abs(zscore_last) <= 1.0, which cannot be expressed using only the provided indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Position, Returns, Bar Properties). This is a pairs/statistical arbitrage signal requiring custom quantitative inputs.",
+  "translation_notes": "Original signal is a pairs trading mean-reversion exit rule. It requires: (1) OLS regression between two assets to calculate hedge ratio, (2) residuals time series construction, (3) z-score normalization of residuals. None of these intermediate calculations are available as pre-computed indicators. A generic mean-reversion approximation using price and moving average crossover has been provided as a fallback, but it does not capture the true pairs trading logic."
+}

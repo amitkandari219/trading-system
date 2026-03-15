@@ -1,0 +1,168 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_10"
+      },
+      {
+        "left": "sma_10",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "price_pos_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_10"
+      },
+      {
+        "left": "sma_10",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "price_pos_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_10"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "18"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_10"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "18"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses context-dependent direction (long in uptrends, short in downtrends). Entry conditions use sma_10 and sma_20 as closest match to '10-period MA' and '20-period MA'. 'Close near recent highs' approximated using price_pos_20 (position in 20-period range). ADX threshold set at 20 as specified. Exit uses ADX < 18 threshold. Stop loss set to 1.0 ATR equivalent (1.0%). Position sizing logic (initial 3%, scale factor 1.5) should be implemented in backtest engine separately."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "sma_10",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "price_pos_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "sma_10",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "price_pos_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 18.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 18.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses context-dependent direction (long in uptrends, short in downtrends). Entry conditions use sma_10 and sma_20 as closest match to '10-period MA' and '20-period MA'. 'Close near recent highs' approximated using price_pos_20 (position in 20-period range). ADX threshold set at 20 as specified. Exit uses ADX < 18 threshold. Stop loss set to 1.0 ATR equivalent (1.0%). Position sizing logic (initial 3%, scale factor 1.5) should be implemented in backtest engine separately."
+  },
+  "source_rule_text": "Trade in the direction of the trend, with position sizing and conviction increasing as trend strength increases."
+}

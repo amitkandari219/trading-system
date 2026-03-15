@@ -1,0 +1,92 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "prev_close",
+        "operator": "<",
+        "right": "prev_open"
+      },
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_open"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Translated 'Above the Stomach' pattern: Entry requires previous black candle (close < open) followed by white candle (close > open) with white candle opening above midpoint of black candle body (open > prev_open) and closing above midpoint (close > prev_open). Exit condition assumes reversal (close < open) since author did not specify. Pattern assumes downtrend context is validated at strategy level."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "prev_close",
+        "op": "<",
+        "value": "prev_open"
+      },
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_open"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Translated 'Above the Stomach' pattern: Entry requires previous black candle (close < open) followed by white candle (close > open) with white candle opening above midpoint of black candle body (open > prev_open) and closing above midpoint (close > prev_open). Exit condition assumes reversal (close < open) since author did not specify. Pattern assumes downtrend context is validated at strategy level."
+  },
+  "source_rule_text": "Pattern name: Above the Stomach. A two-bar candlestick pattern where price enters after a downtrend, forms a black candle as the first line, followed by a white candle that opens and closes above the middle of the black candle's body, resulting in an upward breakout."
+}

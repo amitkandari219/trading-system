@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) minimum 20-bar consolidation period (not directly expressible), (2) absence of major news/earnings/economic data within 48 hours (no news calendar indicator available), (3) breakout volume confirmation >= 120% of consolidation average (would require historical consolidation period volume averaging), and (4) 3x risk target calculation (requires dynamic stop-loss reference). The Donchian channels approximate range breakout detection, but cannot enforce the 20-bar minimum consolidation requirement or news catalyst filter. Volume ratio and hvol_20 are used as proxies but do not capture the specific consolidation-period volume comparison required.",
+  "translation_notes": "Used dc_upper/dc_lower as proxies for consolidation range breakout detection. Range indicator approximates tight consolidation width check. hvol_20 used as volume percentile proxy. However, this translation loses critical elements: the mandatory 20-bar consolidation period validation, the 48-hour no-news requirement, and the specific breakout volume calculation relative to the consolidation period average. A complete implementation would require custom consolidation detection logic and external news data integration."
+}

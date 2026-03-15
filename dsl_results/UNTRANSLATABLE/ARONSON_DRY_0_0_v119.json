@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of momentum as Z-score deviation (price momentum > +2.0 standard deviations over 20-period lookback) and volume percentile thresholds (75th percentile of 60-period rolling average). These derived statistical measures are not available as pre-computed indicators in the allowed list. Available volume indicator 'vol_ratio_20' approximates high-volume confirmation but cannot precisely implement the specified percentile-based and Z-score momentum thresholds.",
+  "translation_notes": "Attempted approximation uses vol_ratio_20 (volume ratio over 20 periods) as a proxy for high-volume confirmation. Price crossing sma_20 serves as a directional momentum proxy for CONTEXT_DEPENDENT entry/exit. Precise implementation would require custom momentum Z-score calculation and volume percentile computation not supported by current indicator set."
+}

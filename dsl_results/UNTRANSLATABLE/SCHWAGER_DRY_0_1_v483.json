@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multiple untranslatable conditions: (1) VIX percentile rank calculation not available\u2014only india_vix level used as proxy; (2) Market breadth indicator (% declining stocks) not in allowed list; (3) Put/Call ratio not in allowed list; (4) Account equity-based position sizing rules (125% of max loss requirement) cannot be expressed in indicator-based rules; (5) Partial exit at +2% with trailing stop and equity-conditional full exit require position management logic beyond condition operators.",
+  "translation_notes": "Translated core counter-trend reversion signal using available volatility and price action indicators. hvol_20 > 0.80 approximates 80th percentile volatility threshold. india_vix > 80 captures extreme panic. returns < -0.07 captures 7% single-day move. Exit at +2% profit translatable; trailing stop and equity-based exit conditions are not. Market breadth (>70% declining) and Put/Call ratio (>1.2) lack direct equivalents in allowed indicators and should be added as external filters or data sources. Position sizing rules require portfolio management integration outside indicator conditions."
+}

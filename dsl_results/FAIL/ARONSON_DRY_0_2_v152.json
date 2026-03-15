@@ -1,0 +1,46 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [
+    {
+      "left": "returns",
+      "operator": "<",
+      "right": "-0.03"
+    },
+    {
+      "left": "volume",
+      "operator": "<",
+      "right": "vol_ratio_20"
+    }
+  ],
+  "entry_short": [],
+  "exit_long": [
+    {
+      "left": "returns",
+      "operator": ">=",
+      "right": "0.10"
+    },
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "-0.05"
+    }
+  ],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 5.0,
+  "hold_days_max": 10,
+  "direction": "LONG",
+  "target_regime": [
+    "TRENDING_UP",
+    "TRENDING_DOWN",
+    "RANGING",
+    "ANY"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Signal requires 14-day price decline and low volume over 20-day lookback. Translated price decline >= 3% using returns < -0.03 (14-day return). Volume condition uses vol_ratio_20 (current volume vs 20-day average) as proxy for the 60th percentile threshold. Exit on 10% gain uses returns >= 0.10; stop-loss at -5% uses close relative to entry. Hold max 10 trading days enforced via hold_days_max parameter.",
+  "validation_issues": [
+    "exit_long: impossible condition 'close < -0.05' is always false"
+  ]
+}

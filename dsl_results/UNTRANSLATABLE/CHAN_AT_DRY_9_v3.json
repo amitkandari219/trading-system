@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires mathematical operations (covariance matrix calculation, matrix inversion, Kelly formula computation) that cannot be expressed using the allowed indicator-based condition format. It is a portfolio-level allocation strategy requiring multi-asset covariance analysis and optimization, not a single-asset price action rule. The signal needs a dedicated portfolio allocation engine rather than entry/exit conditions.",
+  "translation_notes": "Signal CHAN_AT_DRY_9 is a Kelly-formula-based capital allocation rule for multiple portfolios. It requires: (1) calculating covariance matrix C of returns across portfolios, (2) computing mean excess returns M, (3) solving F = C^(-1) * M, and (4) weighting allocations by F values. This is an optimization problem requiring matrix algebra, not comparable to single-asset technical indicator conditions. The backtest engine would need to compute these statistics at each rebalance point and dynamically adjust portfolio weights. All parameters marked AUTHOR_SILENT indicate incomplete specification."
+}

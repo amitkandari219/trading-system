@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'important fundamental development' which is a news/sentiment event not expressible in technical indicators. Also requires identification of 'initial directional move within first 2 bars after news' which requires external news timestamp detection. Volume percentile threshold (60th) is approximated using hvol_20 but true percentile-rank calculation is not available.",
+  "translation_notes": "Attempted to capture the essence using: (1) volume above recent average as proxy for 60th percentile threshold, (2) returns >0.25% magnitude for directional move confirmation, (3) exit on reversal beyond 1.5 ATR, (4) 15-day hold limit. However, the core signal requires external fundamental/news data which cannot be expressed in technical indicators alone. This translation captures only the market reaction component, not the catalyst detection."
+}

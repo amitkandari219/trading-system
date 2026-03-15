@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires a Kalman filter implementation to dynamically estimate the slope (\u03b2) of a linear regression between two cointegrated ETFs (EWC vs EWA), and to track deviations of the estimated slope from equilibrium (\u03b2=1). The allowed indicator set does not include: (1) Kalman filter state estimation, (2) dynamic linear regression slope tracking, (3) multi-asset cointegration analysis, (4) measurement prediction errors from state-space models. The signal also references parameters (lookback_period, threshold, half_life, kalman_process_noise) that are marked AUTHOR_SILENT, making entry/exit conditions incompletely specified. This requires custom algorithmic implementation beyond the scope of the allowed indicators.",
+  "translation_notes": "Signal CHAN_AT_DRY_4 is a sophisticated pairs trading strategy from mean reversion literature that cannot be reduced to simple indicator thresholds. It requires: (a) real-time Kalman filtering on a state-space model, (b) cointegration testing and slope estimation between two separate ETF price streams, (c) threshold determination for 'significant deviation' from \u03b2=1. The source code snippet references Equation 3.7 and state covariance prediction (R=P+Vw), confirming the state-space filtering requirement. Recommend implementing as custom strategy module rather than rule-based backtest engine condition."
+}

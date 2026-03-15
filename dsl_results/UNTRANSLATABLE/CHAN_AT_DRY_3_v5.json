@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Hurst exponent (H) is not available in the allowed indicators list. The signal requires computing H < 0.5, H > 0.5, and H \u2248 0.5 thresholds to determine regime and strategy suitability. This is a statistical measure derived from price series analysis that cannot be replicated using the available technical indicators (RSI, ATR, MACD, Bollinger Bands, ADX, Stochastic, Donchian, Pivots, Moving Averages, or Volume metrics). A custom indicator plugin would be needed to calculate Hurst exponent.",
+  "translation_notes": "Signal CHAN_AT_DRY_3 is a regime classification rule based on mean-reversion analysis using Hurst exponent. The rule directs strategy selection (favor mean reversion when H < 0.5, avoid when H > 0.5) but cannot be operationalized as entry/exit conditions without the Hurst exponent calculation. Parameters for lookback_period, half_life, backtest_sharpe, and backtest_period were marked AUTHOR_SILENT and thus not included in the JSON structure."
+}

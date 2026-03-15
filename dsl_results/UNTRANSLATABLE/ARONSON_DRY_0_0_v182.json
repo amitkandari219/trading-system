@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a custom 'divergence indicator' with multi-layer channel normalization using a 10-fold lookback ratio, which is not available in the allowed indicator set. The signal references a proprietary normalized oscillator (0-100 scale) that combines two distinct channel normalization layers (20-day and 200-day). While bb_pct_b was used as a conceptual proxy, it does not replicate the exact two-layer channel normalization logic with 10x lookback span ratio described in the original source.",
+  "translation_notes": "Attempted mapping using Bollinger Band %B (bb_pct_b) as a normalized 0-1 scale oscillator proxy, scaled to 0-100 equivalent thresholds (0.75 \u2248 75, 0.25 \u2248 25, 0.5 \u2248 50). However, this does not capture the multi-layer channel normalization methodology or the 10:1 lookback span ratio specified in the original rule. First-layer lookback (20 days) and second-layer lookback (200 days) parameters documented but not directly implementable with standard indicators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegration analysis (CADF/Johansen test), optimal portfolio weighting construction, and z-score deviation thresholds on a synthetic spread \u2014 none of which are expressible through single-instrument indicators or standard technical operators. The core mechanism (identifying cointegrating pairs, constructing optimal weighted portfolios, detecting stationary spread deviations) requires multivariate statistical analysis unavailable in the indicator set. Approximated with Bollinger Band mean-reversion proxy, but this does not capture the true cointegration logic.",
+  "translation_notes": "This signal fundamentally requires multivariate cointegration testing and portfolio construction. The entry/exit conditions provided use Bollinger Bands as a crude mean-reversion proxy: price deviation from middle band (mean) with upper/lower bands as extremes. However, this is NOT equivalent to the cointegrated spread approach described. Actual implementation would require: (1) correlation/cointegration analysis across asset pairs, (2) Johansen eigenvector computation for optimal weights, (3) ADF test verification of spread stationarity, (4) z-score threshold specification for entry. Parameters like lookback_period, threshold (z-score units), and half_life are undefined per AUTHOR_SILENT. Backtest period and Sharpe ratio targets are also unspecified."
+}

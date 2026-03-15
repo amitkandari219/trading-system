@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires: (1) exact count of '13 consecutive new price lines' \u2014 no allowed indicator directly counts consecutive bars making new highs; (2) detection of 'overhead resistance' as a qualitative feature \u2014 would need custom resistance detection logic not in allowed indicators; (3) identification of a candlestick 'taller than 146% of average height of past 22 days' \u2014 requires custom calculation (range > 1.46 * avg(range, 22)) which cannot be expressed with allowed indicator names. Used proxy conditions (Donchian upper, high price position, tall candle via ATR) but cannot precisely replicate the 13-bar consecutive new high pattern.",
+  "translation_notes": "Approximated entry conditions using: (1) dc_upper for new highs detection, (2) price_pos_20 > 0.9 for price near top of 20-day range (simulating overhead resistance context), (3) range > atr_20 to detect abnormally tall candlestick. Exit uses sma_20 crossover as reversal signal per AUTHOR_SILENT guidance. Pattern counting logic is not expressible with allowed indicators."
+}

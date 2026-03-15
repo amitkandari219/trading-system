@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking a specific reference candle's high/low over a multi-day lookback period and counting days elapsed since that candle closed. The indicator 'days_since_signal_candle' is not available in the allowed indicator list. A proper implementation would need either: (1) a mechanism to anchor to a reference candle and measure elapsed days, or (2) explicit reference to candle history (e.g., close[5], high[3]) which violates Rule 6. The pattern also notes 'upward breakouts take longer than downward breakouts' which cannot be expressed without conditional logic on direction.",
+  "translation_notes": "This candle breakout pattern is inherently time-dependent and reference-candle dependent. It requires: (1) identifying a setup candle, (2) tracking its high/low as reference levels, (3) counting calendar days until breakout occurs, and (4) applying asymmetric time windows by direction. The allowed indicator set lacks temporal anchoring capabilities needed for this pattern. A workaround would require storing the reference candle's OHLC values as external state or using a more sophisticated rule engine with lookback/state management."
+}

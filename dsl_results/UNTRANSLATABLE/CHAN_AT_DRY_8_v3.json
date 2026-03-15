@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a 90-day rolling standard deviation of close-to-close returns scaled by entry z-score (0.1). The allowed indicator set includes hvol_20 (20-day historical volatility) but does not include a 90-day rolling volatility measure or the ability to dynamically scale thresholds by a z-score multiplier. The exact volatility calculation (smartMovingStd with 90-day lookback) cannot be replicated with available indicators.",
+  "translation_notes": "Translated the gap-reversion logic using open vs previous high/low as gap detection. Used hvol_20 as a proxy for recent volatility scaling, though this does not match the specified 90-day rolling standard deviation of close-to-close returns scaled by 0.1 z-score. Exit condition set to intraday reversal (close crosses entry price). Hold period capped at 1 day to enforce same-day exit requirement. The precise volatility threshold calculation is not expressible within the allowed indicator set."
+}

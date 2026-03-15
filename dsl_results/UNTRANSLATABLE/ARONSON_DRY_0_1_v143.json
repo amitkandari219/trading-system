@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'price trend established for 2-3 bars' (requires multi-bar trend confirmation logic not expressible as single conditions), 'momentum indicator crosses threshold 2-3 bars ago' (requires historical lookback cross detection), 'volume spike followed by contraction' (requires sequential volume pattern matching), and 'price reaches 2x ATR from entry' (requires tracking entry price and calculating dynamic distance). The ALLOWED INDICATORS and OPERATORS do not support: (1) multi-bar trend duration checks, (2) historical crosses (only current bar crosses supported), (3) sequential pattern matching, or (4) dynamic distance from entry price. Partial translation provided using available indicators (RSI as momentum proxy, volume ratio, price-MA relationship), but full signal semantics cannot be captured.",
+  "translation_notes": "Used rsi_14 > 50 as proxy for momentum threshold crossing (closest available indicator to momentum confirmation). Used vol_ratio_20 > 1.0 as proxy for volume above 20-period MA. Exit condition uses rsi_14 < 45 for momentum diffusion slowing. Cannot capture: trend duration requirement, lookback cross logic, volume spike/contraction pattern, or ATR-based dynamic exit from entry price."
+}

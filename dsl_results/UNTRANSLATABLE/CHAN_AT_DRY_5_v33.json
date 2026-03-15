@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires market-neutral pairs logic with dynamic weight calculation (inversely proportional to deviation from equal-weighted market return, normalized across portfolio). This requires cross-sectional relative comparisons and portfolio-level weight normalization that cannot be expressed as individual stock conditions using the allowed 3-field condition schema. The strategy requires: (1) calculating equal-weighted market return across all stocks, (2) comparing each stock's return to this dynamic benchmark, (3) generating inverse deviation weights, (4) normalizing weights across the full portfolio. Standard technical indicators cannot capture this multi-asset relative value logic.",
+  "translation_notes": "Attempted partial translation using returns indicator for intraday (open-to-close) direction, but core signal logic is fundamentally untranslatable. The strategy is a sophisticated statistical arbitrage approach requiring cross-sectional analysis and portfolio optimization that exceeds single-security rule expression capability."
+}

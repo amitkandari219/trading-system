@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of log calendar spread \u03b3(T\u2082 - T\u2081) between two futures contracts (near vs far leg) with specific mean-reversion deviation thresholds and half-life parameters. The exact threshold for mean deviation, lookback period, and half-life decay factor are marked AUTHOR_SILENT and cannot be determined. The allowed indicator set does not include spread calculations, statistical mean measures, or spread-specific mean-reversion tests. A proper translation would require: (1) spread construction logic not available in standard price/indicator form, (2) dynamic mean calculation over lookback period, (3) volatility normalization for threshold, and (4) explicit half-life estimation for mean-reverting decay.",
+  "translation_notes": "This is a pairs/spread trading strategy requiring multileg futures construction and mean-reversion statistical measures. The basic entry/exit shown uses log_returns as a proxy, but this does not capture the calendar spread behavior, the two-contract structure, or the mean-reversion confirmation required. Critical parameters are author-silent. Recommend implementing in a dedicated pairs trading or spread analysis engine."
+}

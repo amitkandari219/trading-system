@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fundamental data (Price-to-Book ratio, Price-to-Earnings ratio, 5-year historical returns ranking, earnings release calendar data) which are not available in the ALLOWED INDICATORS list. The backtest engine only has access to technical price/volume indicators. The core logic\u2014exploiting mean reversion around earnings announcements in undervalued stocks\u2014cannot be fully expressed with available indicators. Partial translation uses volume spike as a proxy for event-driven activity, but this is insufficient without earnings calendar and valuation metrics.",
+  "translation_notes": "Only volume condition (vol_ratio_20 > 1.0) can be translated from the available indicators. Missing required data: Price-to-Book percentile, Price-to-Earnings percentile, historical return ranking, earnings release dates, and fundamental valuation screens. Direction set to CONTEXT_DEPENDENT as signal intent is to trade reversals (long weak stocks or short strong ones) based on behavioral reversals. Hold period set to 5 days matching post-earnings window. Stop loss set to 3% as specified."
+}

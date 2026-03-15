@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'fundamental news contradicts market direction' and 'hysterical blowoff' \u2014 neither can be expressed with OHLCV technical indicators alone. These require external fundamental data feeds and sentiment analysis not available in the allowed indicator set. The 'N consecutive periods without pullback >4%' also requires multi-period state tracking beyond single-bar conditions.",
+  "translation_notes": "Approximated using price extension from 20-period MA (via price_pos_20 > \u00b11.5 standard deviations as proxy for blowoff), volume confirmation (vol_ratio_20), and mean reversion exit to MA crossover. This captures the statistical setup but cannot encode the critical fundamental divergence and news sentiment components that define this signal's core logic."
+}

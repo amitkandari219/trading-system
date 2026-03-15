@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Core signal logic requires detecting official statements and comparing them to subsequent data releases\u2014this is event-based external data (Fed announcements, economic data calendars) that cannot be expressed using only price/technical indicators. The contradiction magnitude threshold and official statement detection require external data sources and NLP/event parsing not available in the technical indicator set. Position sizing escalation multiplier and conviction mechanics also require external state management beyond indicator-based rules.",
+  "translation_notes": "Attempted proxy: Used elevated volume (vol_ratio_20) and volatility (hvol_20 > 0.20) as proxies for the elevated volatility preceding market dislocations. Exit conditions use modest return threshold (2%) and ADX decline to signal reversal of trending conviction. However, this is a severely degraded translation\u2014the signal fundamentally requires event detection (official statements + data contradictions) which cannot be replicated with technical indicators alone. A proper implementation would need: (1) event calendar integration, (2) sentiment/NLP parsing of official statements, (3) economic data surprise indexing, and (4) external data validation layer."
+}

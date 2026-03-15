@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) detection of 'above-the-stomach' candlestick pattern (not available in allowed indicators), (2) yearly high/low position calculation (not provided), (3) explicit breakout direction identification logic, (4) performance metrics (success_rate_bull, average_rise_pct, etc.) that are backtesting outputs not entry conditions. The pattern name and yearly position context cannot be expressed with available OHLC and technical indicators alone.",
+  "translation_notes": "Attempted translation uses tall candle proxy (range > atr_14), price position near yearly low proxy (price_pos_20 < 0.33 for bull breakouts), and reversal exits. However, the core 'above-the-stomach' pattern recognition and yearly high/low positioning require custom pattern detection unavailable in the allowed indicator set. Author was silent on exit conditions and multiple parameters, limiting precise rule construction."
+}

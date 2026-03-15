@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_11_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires monitoring of directional forecaster accuracy metrics (hit_rate >= 60%, p-value <= 0.01, MAE <= 0.5%, min_sample_size = 500) which are meta-model performance statistics, not price-action indicators. These cannot be expressed using only the allowed price, technical, and volume indicators. The signal fundamentally requires backtesting a separate directional prediction model and evaluating its statistical performance before entering trades\u2014this is an ensemble/meta-strategy requirement rather than a technical indicator rule.",
+  "translation_notes": "This signal is a meta-rule about when to deploy a trading strategy based on forecaster validation metrics. It requires: (1) building a directional prediction model, (2) validating it achieves 60%+ accuracy on 500+ samples with p-value < 0.01 and MAE < 0.5%, and (3) only then entering trades when these thresholds are met. No single-indicator equivalent exists in the allowed set. The entry/exit skeleton provided is a placeholder using returns as a proxy for directional moves, but this does not capture the statistical validation logic required by the original signal."
+}

@@ -1,0 +1,88 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Dual moving average crossover with short-term MA (sma_10 approximates 10-period lookback) and long-term MA (sma_50 approximates 50-period lookback as specified). Signal is context-dependent, generating both long and short entries/exits based on crossover direction. Exit conditions are opposite crossovers as specified. Target regimes set to TRENDING as specified in signal requirements."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Dual moving average crossover with short-term MA (sma_10 approximates 10-period lookback) and long-term MA (sma_50 approximates 50-period lookback as specified). Signal is context-dependent, generating both long and short entries/exits based on crossover direction. Exit conditions are opposite crossovers as specified. Target regimes set to TRENDING as specified in signal requirements."
+  },
+  "source_rule_text": "Optimize dual-moving-average crossover rules by systematically searching parameter space to identify the short-term and long-term lookback period pair that produces the highest historical performance."
+}

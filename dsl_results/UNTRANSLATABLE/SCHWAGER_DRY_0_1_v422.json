@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking of (1) 'market leader' performance as a distinct security relative to broader market, (2) advance/decline line divergence (requires cross-market data aggregation), and (3) consecutive stopout tracking across multiple positions. These require portfolio-level state and multi-security correlation that cannot be expressed with single-instrument indicators. The core logic of 'leader weakness signals regime change' has been approximated using price crossing below SMA_50 with ADX confirmation, but this is a simplified proxy.",
+  "translation_notes": "Original signal is portfolio/regime-level and requires tracking leader stocks and A/D line. Translated to single-instrument level: entry when price closes below 50-day MA (leader weakness proxy) with ADX > 25 (trend confirmation). Exit when price recovers above SMA_50. The consecutive_weakness_days=3 and consecutive_stopouts_threshold=3 parameters cannot be directly encoded without state machine logic. Recommend implementing as a regime filter overlay rather than discrete signal rules."
+}

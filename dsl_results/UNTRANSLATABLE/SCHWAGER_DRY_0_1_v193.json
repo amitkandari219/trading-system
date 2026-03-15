@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) price break below 2-week low with immediate rebound of 30-40 points within 1-2 hours (intraday precision not available in daily OHLCV indicators), (2) 'removal of known resistance (stops)' concept which is not measurable without order flow data, (3) directional exhaustion signal which requires market microstructure not captured in allowed indicators. The 30-40 point rebound threshold and 1-2 hour timeframe cannot be reliably encoded with daily bars. Donchian/ATR proxies are insufficient substitutes for the intended stop-hunt reversal logic.",
+  "translation_notes": "Attempted to approximate using dc_lower (range low proxy), price rebound (close > prev_close), and ATR contraction (post-liquidation volatility drop), but these are weak proxies. The core signal depends on intraday stop-level penetration mechanics and order flow dynamics not available in standard OHLCV datasets. Recommend: (1) use intraday data with explicit stop-level tracking, (2) add order flow/volume profile analysis, or (3) use the original Schwager source text for validation."
+}

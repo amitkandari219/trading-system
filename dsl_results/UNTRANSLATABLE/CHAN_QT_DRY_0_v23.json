@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a capital allocation and leverage management rule, not a directional trading signal. It requires: (1) dynamic Kelly formula calculations based on model win/loss ratio and historical performance (not available as standard indicators), (2) tracking of cumulative model performance across multiple trades (requires external performance metrics), (3) time-series volatility and Sharpe ratio computations from backtest results (not available as real-time indicators), and (4) regime detection for PROFIT_PERIOD vs LOSS_PERIOD which are not standard market regimes. The core logic is meta-level position sizing management rather than price-action based entry/exit conditions.",
+  "translation_notes": "Signal CHAN_QT_DRY_0 describes a money management overlay that should be implemented as a separate position-sizing module in the backtest engine, parameterized by: (1) rolling win rate and expected value from the underlying strategy, (2) historical volatility or Sharpe ratio threshold, and (3) Kelly fraction (typically 0.25x for safety). Exit conditions are modeled as basic return thresholds as a placeholder, but true implementation requires tracking model performance metrics externally and adjusting allocation dynamically based on cumulative P&L regimes."
+}

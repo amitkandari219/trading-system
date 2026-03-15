@@ -1,0 +1,148 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "18"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "18"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal follows dual-regime trend-following logic: enters longs above both 20 and 50-period SMAs with ADX confirmation; enters shorts below both MAs with same ADX filter. Exits on 20-period MA crossover or ADX weakness. ADX thresholds match signal parameters (min 20 entry, 18 exit). Cross operators used for MA exit conditions per signal specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 18.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 18.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal follows dual-regime trend-following logic: enters longs above both 20 and 50-period SMAs with ADX confirmation; enters shorts below both MAs with same ADX filter. Exits on 20-period MA crossover or ADX weakness. ADX thresholds match signal parameters (min 20 entry, 18 exit). Cross operators used for MA exit conditions per signal specification."
+  },
+  "source_rule_text": "A trader should follow the price trend (buy in uptrends, sell short in downtrends) because market structure requires trend-following speculators to fulfill commercial hedger imbalances, and the market compensates this behavior through trend persistence."
+}

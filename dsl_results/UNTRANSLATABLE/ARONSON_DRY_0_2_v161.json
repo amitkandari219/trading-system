@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a market breadth indicator (e.g., advance/decline line, breadth ratio) which is not available in the allowed indicator list. price_pos_20 was used as a proxy for price channel normalization, but vol_ratio_20 is not a true breadth indicator. A proper implementation requires access to external breadth data not in the current toolkit.",
+  "translation_notes": "Mapped price channel-normalized position to price_pos_20 (0-1 scale). Attempted to use vol_ratio_20 as breadth proxy, but this is imperfect. The divergence logic (opposite quartiles) was translated to conditions where price_pos and breadth occupy opposite halves of their ranges. Entry is immediate on formation (confirmation_bars=0). Exit on divergence reversal (price_pos crossing 0.50 midpoint) OR 5% adverse move OR 20-bar hold max."
+}

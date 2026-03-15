@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) identification of 'apparent support/low level' which requires prior context/regime detection not expressible with allowed operators; (2) 'bounce_threshold_percent': 2.5 (price bounces upward by minimum 2.5%) requires percentage change calculation from low to current price, not available as single indicator; (3) 'retest and holds above initial low' requires multi-bar memory and conditional logic beyond allowed operators; (4) 'price retests' requires comparison to a dynamically-set level across multiple bars. The signal is fundamentally about pattern recognition (double confirmation, retest structure) that exceeds point-in-time indicator comparisons.",
+  "translation_notes": "Attempted partial translation using RSI >30 as reversal confirmation and 3 consecutive up closes (represented as close > prev_close). However, core logic of 'support level identification', 'bounce measurement from specific low', and 'retest without break' cannot be expressed without multi-bar lookback arrays or dynamic level memory. Direction inferred as LONG from 'bounces upward' and 'holds above'. Regime set to TRENDING_UP as most consistent with reversal after support."
+}

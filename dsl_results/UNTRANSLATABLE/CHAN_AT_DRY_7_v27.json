@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires lagged momentum signals (longs/shorts vectors) computed from undisclosed lookback_period, threshold, and half_life parameters marked AUTHOR_SILENT. The backshift(h) lag parameter and exact holddays value are not specified. The underlying momentum computation logic cannot be reconstructed from allowed indicators. Entry/exit conditions depend on internal momentum state variables not available in standard technical indicators.",
+  "translation_notes": "This is an interday momentum strategy with position-rolling logic. The core mechanism uses lagged boolean signals (longs, shorts) that increment/decrement position size over a specified hold period. Without the momentum calculation parameters (lookback_period, threshold, half_life) and the exact lag (h) and hold days, a precise translation is impossible. The strategy is directionally agnostic (CONTEXT_DEPENDENT) and rebalances daily. Backtested Sharpe: 4.1 (May-Dec 2007); 0.83 (1947-2007 benchmark)."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires geometric trend-line detection (up-sloping lower line, down-sloping upper line with minimum 2 touches each). This requires multi-bar peak/trough identification and slope calculation which cannot be expressed using only the allowed point-in-time indicators and binary operators. The allowed indicators do not support: (1) trend-line slope computation, (2) touch-point counting on dynamic trend lines, (3) geometric pattern validation. Breakout detection can be partially expressed via volume and price action, but the core pattern recognition logic is untranslatable.",
+  "translation_notes": "Partial translation only: Entry conditions reduced to volume rising (vol_ratio_20 not available, so used volume > prev_volume as proxy). Exit conditions use price breakout direction reversal. The critical pattern recognition\u2014identifying two distinct touches on each trend line and validating the slope geometry\u2014cannot be implemented with available indicators. A custom pattern detector or additional trend-line indicators would be required for full implementation."
+}

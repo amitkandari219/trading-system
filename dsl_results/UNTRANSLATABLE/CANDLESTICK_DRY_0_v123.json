@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Three-candle pattern recognition (Abandoned Baby) requires multi-candle state tracking and doji identification logic not available in single-bar indicator set. Specifically: (1) detecting doji pattern on candle[1], (2) verifying gaps between three consecutive candles, (3) confirming uptrend context prior to entry. The available indicators lack candle[0], candle[1], candle[2] array access and doji classification. Pattern requires: candle[0]=white, candle[1]=doji with gap above candle[0], candle[2]=black with gap below candle[1].",
+  "translation_notes": "Attempted partial translation using body direction and wick relationships, but true Abandoned Baby pattern requires multi-bar state machine and gap detection between specific candles that cannot be reliably expressed with available single-bar indicators and prev_* references alone."
+}

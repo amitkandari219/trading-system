@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of correlation coefficient between primary and companion series, pair-specific threshold generation based on 40th percentile of historical divergence magnitude with correlation adjustment factor, and a custom 'divergence indicator' value. These are composite derived indicators requiring multi-asset correlation analysis and dynamic percentile calculations that cannot be expressed using only the allowed indicators (which operate on single-asset OHLCV data). The signal requires a bespoke indicator unavailable in the standard toolkit.",
+  "translation_notes": "ARONSON_DRY_0_2 describes a regime-detection signal for normalizing divergence thresholds across asset pairs. The core requirement\u2014correlation-adjusted pair-specific thresholds\u2014cannot be implemented without: (1) multi-asset correlation computation, (2) rolling percentile calculations of divergence magnitude, (3) a 'divergence indicator' not in the allowed set. A simplified version using mean-reversion around SMA_50 is shown above, but this does NOT capture the intended double-channel normalization logic. Requires custom indicator development."
+}

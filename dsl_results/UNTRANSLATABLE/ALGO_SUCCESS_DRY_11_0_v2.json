@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_11_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires logistic regression model predictions which cannot be directly expressed using only the allowed indicators and operators. The signal calls for a trained probabilistic classifier using lagged returns as features, which is a machine learning model output rather than a technical indicator. The entry/exit conditions reference 'predicted probability' which is not available in the allowed indicator set. A backtest engine would need to integrate external ML model predictions or implement logistic regression internally.",
+  "translation_notes": "Attempted to approximate using returns as a proxy for directional bias, but this does not capture the probabilistic predictions from a logistic regression model. The true signal requires: (1) training a logistic regression model on historical lagged returns, (2) generating probability predictions for each bar, and (3) comparing predictions to thresholds (0.65 for entry, 0.55 for exit). This cannot be properly translated without ML model integration."
+}

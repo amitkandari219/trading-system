@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic regime detection (momentum vs mean-reversion classification) and conditional stop-loss width adjustment based on regime. The allowed indicators cannot directly distinguish between momentum and mean-reversion regimes or programmatically switch between tight and relaxed stop losses. ADX alone is insufficient to capture the nuanced fundamental deterioration trigger or the adaptive stop-loss logic described in the signal.",
+  "translation_notes": "Attempted partial translation: Used ADX_14 > 25 as a proxy for momentum/trending regime detection and negative returns as a proxy for fundamental deterioration/price movement. However, this signal fundamentally requires: (1) classification of market regime type (not just trend strength), (2) detection of news/fundamental events (not available in price data), and (3) dynamic stop-loss management that varies by regime\u2014none of which can be fully expressed with the allowed indicators. A complete implementation would require external regime classifier and news sentiment input."
+}

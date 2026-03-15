@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires peer market comparison (relative performance across correlated group, peer lagging >3 days, peer strength measurement >2 std devs), which requires cross-instrument analysis not supported by single-instrument indicator library. The core requirement to compare target market vs peer markets cannot be expressed using only allowed indicators.",
+  "translation_notes": "Translated the intraday reversal component (opens limit-up, falls back, fails to close above open) using upper_wick > lower_wick and close < open as proxy. Volume ratio condition translates directly to vol_ratio_20 < 0.7. Exit at sma_20 (20-day moving average close). Stop loss at 2% per parameters. However, the critical peer comparison logic (lagging >3 days despite positive fundamentals, peer outperformance threshold, peer strength in std devs) cannot be implemented without cross-market data feed."
+}

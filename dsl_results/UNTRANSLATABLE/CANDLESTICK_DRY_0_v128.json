@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Candlestick pattern recognition (Abandoned Baby three-candle sequence) which cannot be expressed with single-bar indicators; (2) Dynamic shadow classification against market median percentages (0.00%, 0.57%, 0.00%, 1.12%) requiring historical distribution analysis; (3) Conditional price targets based on breakout direction and shadow classification (54% vs 53% multipliers) that cannot be pre-computed without pattern state tracking; (4) No allowed indicators for pattern detection, median shadow calculation, or breakout direction determination.",
+  "translation_notes": "The Abandoned Baby pattern is a three-candle formation requiring sequence recognition and shadow length classification against market conditions. This requires: (a) identifying a specific candlestick pattern across multiple bars (not available in single-bar indicator set), (b) computing dynamic thresholds from market distributions (not available), and (c) stateful rule execution based on pattern context (not supported by condition-based engine). The exit conditions reference computed targets (breakout_high + candle_height \u00d7 54%) that are functions of pattern-specific state. A custom pattern detector or indicator preprocessing step would be required."
+}

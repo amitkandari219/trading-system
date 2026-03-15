@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'accumulation of contradictory evidence' and 'regime assumption belief state' which are subjective, dynamic constructs requiring external state management. The quantitative threshold of '50% contradictory signals over 8 bars' cannot be precisely operationalized without an external signal enumeration system. Additionally, 'intrabar close breaks key moving average' suggests intrabar resolution not supported by bar-level indicators. Substituted with standard MA crossover + RSI confirmation as proxy for regime shift detection.",
+  "translation_notes": "This signal is inherently discretionary and belief-based per Aronson's source text on underreaction to contradictory news. Operationalized as: (1) Entry when price crosses MA in new direction with RSI confirmation, indicating regime shift; (2) Exit when original direction reasserts (single strong signal); (3) Stop at 2% per specified parameters. The 'accumulation of contradictory evidence' concept cannot be mechanically encoded without external state tracking. A production implementation would require custom logic for signal counting or a separate contradiction detector module."
+}

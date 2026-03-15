@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) 12-month lookback period classification (L/C/H) which requires historical extrema analysis not available as single indicator, (2) gap vs non-gap breakout differentiation requiring intraday/previous-close comparison logic, (3) pullback percentage analysis (61%/48% occurrence rates) requiring multi-bar pattern recognition, (4) specific direction-dependent average returns (H31%, H21%, L19%, C18%, L21%, C18%, H20%, H18%) mapped to lookback regime, (5) precise timing of pullback end (9-10 days) as exit trigger. These require custom pattern detection functions beyond allowed indicator set.",
+  "translation_notes": "Attempted proxy: used Donchian channels (dc_upper/dc_lower) to detect breakouts and pivot points for pullback reversal. However, this loses critical semantics: the 12-month reference point classification, gap analysis, and lookback-regime-specific return profiles cannot be expressed with allowed indicators. The signal fundamentally requires pattern state machine logic (track entry type, gap presence, 12-month reference, days since entry) unavailable in the indicator-based rule engine."
+}

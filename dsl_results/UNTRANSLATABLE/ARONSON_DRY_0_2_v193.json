@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal specifies fast_ma_period=8 and slow_ma_period=20, but only standard SMA periods (5, 10, 20, 40, 50, 80, 100, 200) are available. SMA_8 does not exist in allowed indicators. Additionally, exit condition requires RSI to rise above (rsi_max + 5) = 75, and the signal describes a regime filter to 'remain in cash' which requires a cash/no-position state not expressible in entry/exit conditions alone. RSI comparison scale and exact moving average periods cannot be matched to allowed indicators.",
+  "translation_notes": "This is a regime-filter rule that uses momentum (RSI) to prevent countertrend entries. The core concept is: on a sell signal (fast MA crosses below slow MA), only enter short if RSI is not overbought (\u226470). Exit when MA crosses back up or RSI recovers significantly. However, the exact parameter values (fast_ma_8, slow_ma_20) and the 'stay in cash' logic cannot be faithfully represented with the constrained indicator set. Recommend using sma_5/sma_20 or sma_10/sma_20 as closest approximations, or extending allowed indicators to include sma_8."
+}

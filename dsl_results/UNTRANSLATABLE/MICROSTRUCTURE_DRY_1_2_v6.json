@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_1_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires detection of order flow patterns, counterparty sophistication, speculative vs non-speculative intent, and information asymmetry \u2014 none of which can be directly measured from the allowed price/volume/technical indicators. The core logic (trading WITH uninformed traders AGAINST informed ones) requires order book microstructure data (order flow direction, execution algorithm fingerprinting, counterparty classification) that is not available in the standard OHLCV+technical indicator set. Additionally, 'confidence_of_non_speculative_motive' and 'info_advantage_threshold' are qualitative assessments requiring market microstructure analysis beyond technical indicators.",
+  "translation_notes": "This is a behavioral/information-asymmetry signal rooted in market microstructure theory. It cannot be operationalized using only price, volume, and standard technical indicators. Implementation would require: (1) order flow classification (buy/sell imbalance), (2) execution pattern analysis (detecting algorithmic vs retail behavior), (3) information content estimation, and (4) counterparty profiling \u2014 all requiring tick-level or order-book data."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Central bank/institutional intervention detection requires external news feed or order book imbalance data not available in standard OHLCV indicators. The signal relies on detecting 'public statements or observable large bid/ask imbalance against trend' which cannot be expressed using only price action, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, or bar properties. Substituted vol_ratio_20 spike as proxy for intervention-driven market disruption, but this is imperfect.",
+  "translation_notes": "Signal is context-dependent (applies to both long and short trends). Entry requires trend confirmation via ADX > 25 (20+ bars of directional movement). Exit uses elevated volume ratio as proxy for intervention-driven market dislocation/regime change, since true intervention detection is not available in allowed indicators. A production system would need external data feeds for central bank statement detection or real-time order flow analysis."
+}

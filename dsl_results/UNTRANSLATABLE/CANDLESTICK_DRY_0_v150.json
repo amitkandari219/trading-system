@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal is CONTEXT_DEPENDENT with BOTH breakout directions and requires regime-specific logic (bull vs bear market, up vs down breakouts). The performance metrics vary significantly by market regime (-15.69% to +7.94%), but the rule engine cannot dynamically switch entry thresholds or exit strategies based on detected market regime. Additionally, the signal requires distinguishing 'tall' vs 'short' shadows using relative thresholds (median upper shadow = 0.31% to 1.00%) which are not deterministically defined in absolute terms. A proper implementation would need conditional regime detection (ADX, trend filters) combined with dynamic shadow ratio thresholds.",
+  "translation_notes": "Attempted conservative interpretation: Entry on tall upper_wick AND tall lower_wick AND rising volume. Exit on short upper_wick reversal. However, this loses the critical context-dependent regime logic. The source data shows tall shadows perform WORSE in downbreakouts (-9.83% to -15.69%) versus bull markets (+7.08% to +7.94%), suggesting this pattern requires explicit market regime filtering that cannot be adequately captured in a simple rule structure."
+}

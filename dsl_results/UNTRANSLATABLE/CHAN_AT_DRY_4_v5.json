@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pair-ratio calculations and multi-asset spread indicators (price_ratio, ratio_zscore, ratio_deviation_from_mean) which are not available in the allowed indicators list. The strategy specifically trades the RATIO of two assets against its moving average and standard deviation, but no pair-ratio or spread indicators are supported. Additionally, the signal references 'truly cointegrating' detection and half-life parameters which require specialized cointegration testing not available in standard OHLCV indicators.",
+  "translation_notes": "This is a pairs trading strategy that fundamentally requires: (1) calculation of price ratios between two correlated assets, (2) mean and standard deviation of that ratio over a lookback period, (3) z-score or standardized deviation of current ratio from historical mean. The provided indicator set lacks these multi-asset and ratio-based calculations. A proper implementation would need custom pair_ratio indicators or access to cointegration analysis tools."
+}

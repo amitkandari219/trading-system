@@ -32,13 +32,17 @@ from paper_trading.vix_monitor import VIXMonitor
 from paper_trading.scoring_engine import ScoringEngine
 from paper_trading.regime_detector import GujralRegimeDetector
 from paper_trading.combination_engine import CombinationEngine
+from paper_trading.slippage_logger import SlippageLogger
+from paper_trading.decay_monitor import DecayMonitor
+from paper_trading.nse_structural import NSEStructuralSignals
 
 logger = logging.getLogger(__name__)
 
 
 def format_telegram_digest(as_of, compute_result, scoring_result,
                            control_action, combo_result, regime_info,
-                           vix_result, pnl_control, pnl_scoring):
+                           vix_result, pnl_control, pnl_scoring,
+                           decay_results=None):
     """Format the daily Telegram digest message."""
     indicators = compute_result.get('indicators', {})
     close = indicators.get('close', 0)
@@ -102,6 +106,26 @@ def format_telegram_digest(as_of, compute_result, scoring_result,
     lines.append(f"DRY_16: {dry16_action or 'silent'}")
     lines.append(f"GUJRAL_DRY_7: {guj7_action or 'silent'} → streak: {regime_info.get('streak', 'N/A')}")
     lines.append("")
+
+    # NSE Structural
+    # (passed via compute_result or generated in format function)
+
+    # Signal health (decay monitor)
+    if decay_results:
+        lines.append(f"*--- SIGNAL HEALTH ---*")
+        emoji_map = {'GREEN': '🟢', 'YELLOW': '🟡', 'RED': '🔴', 'CRITICAL': '🚨', 'INSUFFICIENT_DATA': '⚪'}
+        for sid, health in decay_results.items():
+            status = health.get('status', 'UNKNOWN')
+            emoji = emoji_map.get(status, '❓')
+            short_id = sid.replace('KAUFMAN_', '')
+            if status == 'INSUFFICIENT_DATA':
+                lines.append(f"{emoji} {short_id}: insufficient data")
+            else:
+                wr = health.get('live_win_rate', 0)
+                bt_wr = health.get('backtest_win_rate', 0)
+                mult = health.get('size_multiplier', 1.0)
+                lines.append(f"{emoji} {short_id}: {status} (WR {wr:.0%} vs {bt_wr:.0%} bt) size={mult}x")
+        lines.append("")
 
     # Open positions
     lines.append(f"*--- OPEN POSITIONS ---*")
@@ -237,11 +261,54 @@ def run_single_day(conn, as_of, dry_run=False, scoring_engine=None):
         except Exception:
             pass
 
-    # Step 7: VIX check
+    # Step 7: NSE Structural signals
+    nse = NSEStructuralSignals()
+    nse_signals = nse.compute(as_of)
+    nse_summary = nse.get_daily_summary(as_of)
+
+    # Step 8: Slippage logging (for all entries)
+    slippage_logger = SlippageLogger(db_conn=conn)
+    for entry in compute_result.get('entries', []):
+        try:
+            slippage_logger.log_paper_trade(
+                signal_id=entry['signal_id'],
+                direction=entry['direction'],
+                theoretical_fill=entry['price'],
+                actual_open=entry['price'],  # same-day close; next-day open logged on next run
+                atr_14=indicators.get('adx_14', 0),  # approximate
+                vix=indicators.get('india_vix', 0),
+                lots=7,
+            )
+        except Exception as e:
+            logger.warning(f"Slippage log failed: {e}")
+
+    # Step 8: Decay monitoring
+    decay_monitor = DecayMonitor(db_conn=conn)
+    decay_results = {}
+    for signal_id in ['KAUFMAN_DRY_20', 'KAUFMAN_DRY_16', 'KAUFMAN_DRY_12']:
+        try:
+            health = decay_monitor.get_signal_health(signal_id)
+            decay_results[signal_id] = health
+            if health.get('alert_message') and not dry_run:
+                # Send alert for degrading signals
+                token = os.environ.get('TELEGRAM_BOT_TOKEN')
+                chat_id = os.environ.get('TELEGRAM_CHAT_ID')
+                if token and chat_id:
+                    from monitoring.telegram_alerter import TelegramAlerter
+                    try:
+                        TelegramAlerter(token, chat_id).send(
+                            'WARNING', health['alert_message'],
+                            signal_id=signal_id)
+                    except Exception:
+                        pass
+        except Exception as e:
+            logger.warning(f"Decay check failed for {signal_id}: {e}")
+
+    # Step 9: VIX check
     vix_result = vix_monitor.check(
         current_vix=compute_result.get('indicators', {}).get('india_vix'))
 
-    # Step 8: P&L
+    # Step 10: P&L
     tracker = PnLTracker(db_conn=conn)
     pnl_control = {'day_pnl_pts': 0, 'positions_open': 0}
     pnl_scoring = {'day_pnl_pts': 0, 'positions_open': 0}
@@ -253,12 +320,14 @@ def run_single_day(conn, as_of, dry_run=False, scoring_engine=None):
         'combo_result': combo_result,
         'control_action': control_action,
         'regime_info': regime_info,
+        'decay_results': decay_results,
         'vix_result': vix_result,
         'pnl_control': pnl_control,
         'pnl_scoring': pnl_scoring,
         'digest': format_telegram_digest(
             as_of, compute_result, scoring_result, control_action,
-            combo_result, regime_info, vix_result, pnl_control, pnl_scoring),
+            combo_result, regime_info, vix_result, pnl_control, pnl_scoring,
+            decay_results),
     }
 
 

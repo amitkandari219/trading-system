@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires real-time bid-ask spread data and tick-level pricing which are not available in the standard indicator list. The core logic depends on: (1) detecting bid-ask spread > 2 ticks, (2) executing limit orders at specific bid/ask offset levels (bid+1 tick, ask-1 tick), and (3) dynamic exit logic based on order fill status and spread comparison to commission. These market microstructure features cannot be accurately modeled using OHLCV candle-based indicators alone. ATR was used as a proxy for spread volatility but does not capture actual spread width.",
+  "translation_notes": "This is a market-making/scalping strategy that exploits bid-ask spreads. It requires Level 2 market data (order book) and tick-by-tick execution, which are outside the scope of standard backtesting indicators. A proper implementation would need: (1) bid/ask spread indicator, (2) tick-level order management, and (3) commission/slippage modeling. The entry condition 'bid-ask spread > 2 ticks' was approximated with atr_14 > 2 as a volatility proxy, but this is NOT equivalent to actual spread measurement."
+}

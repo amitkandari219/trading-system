@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal contains non-quantifiable subjective elements: (1) 'Stock has held above its most recent swing low when broader market penetrated its most recent low (bullish divergence)' requires tracking swing points and comparing relative divergence between two instruments, which is not supported by available indicators; (2) 'Trader subjective confirmation: Do I really want this position? (must pass emotional conviction test)' is purely behavioral and cannot be encoded as a mechanical rule. Translated the core quantifiable elements: price alignment with 50-period MA and price-MA crossovers.",
+  "translation_notes": "Encoded the primary quantifiable condition (price vs sma_50 alignment) as entry rules for both long and short directions given CONTEXT_DEPENDENT signal. Exit conditions use crosses_above/crosses_below for MA crossovers. Swing low divergence and emotional conviction test cannot be mechanically represented without custom multi-instrument tracking logic and behavioral metrics not in the allowed indicator set."
+}

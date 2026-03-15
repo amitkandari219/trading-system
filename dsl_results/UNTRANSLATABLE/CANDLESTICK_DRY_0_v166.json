@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic pattern height calculation (highest high - lowest low over a variable lookback window) and conditional target price computation based on market regime and candle classification. The backtest engine lacks: (1) a 'pattern_height' indicator computed from rolling extrema, (2) conditional operators to apply different multipliers (61% for bull up, 53% for bear down, etc.) based on regime and candle type, (3) ability to set dynamic exit targets as functions of calculated pattern height. Standard indicators cannot express 'highest high of pattern' or 'lowest low of pattern' without explicit lookback specification.",
+  "translation_notes": "This candlestick pattern analysis signal is fundamentally incompatible with the provided indicator set. It requires: (a) custom pattern recognition logic that identifies multi-candle formations and measures their statistical properties; (b) regime-aware exit target calculation where the target price is a function of pattern height \u00d7 context-specific percentage; (c) real-time pattern classification (short vs tall candle) based on percentile thresholds. To implement, the engine would need: a 'pattern_height' indicator, conditional exit rules (e.g., 'IF BULL_UP THEN target = high + 0.61\u00d7pattern_height'), or a custom pattern module outside standard OHLCV indicators."
+}

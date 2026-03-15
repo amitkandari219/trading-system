@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Calendar spread strategy requires multi-leg futures contract analysis with log price ratios between near (T2) and far (T1) contracts. The allowed indicators do not include: (1) support for multiple contract pairs/legs, (2) spread-specific calculations (log_price_diff between T1 and T2), (3) roll return metrics, (4) equal market value weighting across legs, or (5) equilibrium deviation thresholds for spreads. This is a multi-asset derivatives strategy that cannot be expressed using single-leg price indicators. Critical parameters (lookback_period, threshold, half_life) are marked AUTHOR_SILENT and cannot be inferred.",
+  "translation_notes": "Signal describes a calendar/roll spread strategy requiring: (1) simultaneous tracking of two futures contracts at different expiration dates, (2) calculation of log price differences between contracts, (3) mean reversion signals based on spread deviation from equilibrium. The backtest engine appears designed for single-leg, single-contract analysis. To implement this signal, the engine would need: spread indicators, multi-leg position support, roll return calculations, and cointegration/mean reversion metrics specific to the spread pair."
+}

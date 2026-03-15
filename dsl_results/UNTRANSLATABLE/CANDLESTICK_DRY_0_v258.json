@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The pattern requires multi-candle sequence validation (5-candle specific positions, gap detection between candle bodies on specific days, close-within-gap validation on day 5) that cannot be expressed using single-bar indicators and basic comparison operators. Proper implementation requires candle indexing (close[1], close[2], etc.) or a custom pattern recognition function.",
+  "translation_notes": "This is a complex 5-candle pattern recognition signal. The entry conditions require: Day 1 black candle, Day 2 black candle with gap, Day 3 lower close, Day 4 black candle with lower close, Day 5 white candle closing in the gap. Standard indicators cannot validate the specific sequence across multiple prior bars or compute gap positioning. The partial conditions shown represent only the current candle reversal characteristics and would require custom pattern matching logic in the backtest engine."
+}

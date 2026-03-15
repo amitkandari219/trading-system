@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires meta-level statistical validation (long vs. short trigger count symmetry analysis, Sharpe ratio comparison across uptrends vs. downtrends, and directional regime backtesting) that cannot be expressed as simple indicator conditions. The core requirement is a bias-detection filter that compares aggregate trigger frequencies and regime-specific performance metrics\u2014this requires external statistical computation, not real-time bar-by-bar conditions. The parameters (symmetry_tolerance_pct=15, baseline_period_bars=252, required_directional_tests=2) define a pre-backtest validation framework, not entry/exit logic.",
+  "translation_notes": "ARONSON_DRY_0_1 is a meta-rule about detecting spurious edges caused by directional bias in entry conditions. It does not define specific price/indicator thresholds for entry/exit. Instead, it prescribes: (1) calculate long trigger rate vs. short trigger rate over 252 bars; (2) ensure they differ by \u226415%; (3) backtest the underlying rule separately on uptrends and downtrends; (4) require positive Sharpe in both. This is a pre-trade validation filter, not a signal generator. To use this rule, apply it as a rule-acceptance gate in backtest configuration, not as entry conditions. The entry/exit fields above are placeholder logic only."
+}

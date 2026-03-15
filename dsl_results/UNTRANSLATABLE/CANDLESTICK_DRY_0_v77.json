@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The pattern requires detecting 'twelve consecutive candlesticks with new price lines (higher highs)', which necessitates lookback logic to count consecutive bars meeting a condition. The available indicator set does not include a consecutive bar counter or pattern detection mechanism. The schema only supports single-bar comparisons and does not allow indexing like close[1..12] or bar-counting functions. A proper implementation would require a custom pattern detector or loop logic not expressible in this 3-field condition format.",
+  "translation_notes": "Attempted simplified translation using single higher-high condition, but this does not capture the core requirement of TWELVE CONSECUTIVE higher highs. The source text references '8 or 10 new price lines' suggesting this is a multi-bar confirmation pattern. Parameters like success_rate_bull (51%), success_rate_bear (61%), and average_rise_pct are author-silent and cannot be used. Entry/exit conditions would require bar-counting logic unavailable in the allowed operator set."
+}

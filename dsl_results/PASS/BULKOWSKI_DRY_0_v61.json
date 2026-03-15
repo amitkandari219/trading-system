@@ -1,0 +1,91 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "prev_volume"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "prev_volume"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires detection of 'rising volume trend leading into breakout'. Approximated using bar-by-bar volume comparison (volume > prev_volume) as proxy for rising trend confirmation. Bulkowski's success rates vary significantly by market regime (27% bull-up, 16% bull-down, -13% bear-up, -23% bear-down), indicating low predictive power in bear markets. No specific exit criteria provided (AUTHOR_SILENT), so implemented volume reversal (declining volume) as reasonable mean-reversion exit. Direction marked CONTEXT_DEPENDENT per source, allowing both long and short entries based on market regime."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires detection of 'rising volume trend leading into breakout'. Approximated using bar-by-bar volume comparison (volume > prev_volume) as proxy for rising trend confirmation. Bulkowski's success rates vary significantly by market regime (27% bull-up, 16% bull-down, -13% bear-up, -23% bear-down), indicating low predictive power in bear markets. No specific exit criteria provided (AUTHOR_SILENT), so implemented volume reversal (declining volume) as reasonable mean-reversion exit. Direction marked CONTEXT_DEPENDENT per source, allowing both long and short entries based on market regime."
+  },
+  "source_rule_text": "Rising volume trend at breakout"
+}

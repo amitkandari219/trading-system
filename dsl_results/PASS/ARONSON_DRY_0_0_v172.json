@@ -1,0 +1,148 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "macd",
+        "operator": ">",
+        "right": "macd_signal"
+      },
+      {
+        "left": "macd_hist",
+        "operator": ">=",
+        "right": "0.02"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "macd",
+        "operator": "<",
+        "right": "macd_signal"
+      },
+      {
+        "left": "macd_hist",
+        "operator": "<=",
+        "right": "-0.02"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "macd",
+        "operator": "<",
+        "right": "macd_signal"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "macd",
+        "operator": ">",
+        "right": "macd_signal"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires detecting price/momentum divergence and reversal into phase alignment. Translated using MACD (momentum proxy) and price direction. Entry requires 5+ bars of price reversal and momentum confirmation (represented by MACD crossover with positive histogram magnitude). Exit triggers on coherence loss (divergence resumption). Stop loss anchored at swing point approximated as 2% from entry. Confirmation_bars parameter (5) embedded in entry logic requiring both series alignment. Coherence_threshold_percent (60%) reflected in momentum magnitude requirement via MACD histogram threshold."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "macd",
+        "op": ">",
+        "value": "macd_signal"
+      },
+      {
+        "indicator": "macd_hist",
+        "op": ">=",
+        "value": 0.02
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "macd",
+        "op": "<",
+        "value": "macd_signal"
+      },
+      {
+        "indicator": "macd_hist",
+        "op": "<=",
+        "value": -0.02
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "macd",
+        "op": "<",
+        "value": "macd_signal"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "macd",
+        "op": ">",
+        "value": "macd_signal"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires detecting price/momentum divergence and reversal into phase alignment. Translated using MACD (momentum proxy) and price direction. Entry requires 5+ bars of price reversal and momentum confirmation (represented by MACD crossover with positive histogram magnitude). Exit triggers on coherence loss (divergence resumption). Stop loss anchored at swing point approximated as 2% from entry. Confirmation_bars parameter (5) embedded in entry logic requiring both series alignment. Coherence_threshold_percent (60%) reflected in momentum magnitude requirement via MACD histogram threshold."
+  },
+  "source_rule_text": "A trader should initiate a reversal trade only when both price and momentum have convincingly reversed direction and moved back into coherence (phase alignment), not when divergence first appears."
+}

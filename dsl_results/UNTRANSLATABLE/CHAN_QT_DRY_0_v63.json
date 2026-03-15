@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cross-sectional ranking and percentile calculation across entire stock universe (top/bottom decile identification). The allowed indicators are time-series based and do not support: (1) dynamic percentile threshold computation, (2) relative ranking across multiple securities, (3) monthly rebalancing logic with rank-based position allocation. This is a portfolio-level strategy requiring custom cross-sectional logic not expressible in single-security indicator conditions.",
+  "translation_notes": "This is a classic Jegadeesh-Titman momentum strategy requiring: (1) calculation of 12-month returns for all stocks, (2) ranking by decile position, (3) portfolio construction from ranked groups. The backtest engine needs portfolio-level rule support with cross-sectional rank aggregation, not individual security indicator conditions. Recommend implementing as custom portfolio rule rather than individual signal conditions."
+}

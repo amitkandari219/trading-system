@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of candle height ratio to median value: (high - low) / breakout_price vs median. The 'breakout_price' is not defined in allowed indicators, and median calculation across historical candles is not supported. Additionally, the exact exit conditions are marked AUTHOR_SILENT with incomplete measurement rules. The pattern requires dynamic threshold comparison (median) which cannot be expressed with static allowed operators and indicators.",
+  "translation_notes": "Belt Hold pattern identifies tall vs short candles by height ratio. Attempted approximation using range > atr_14 as proxy for 'tall candle' detection, but this does not accurately capture the (high-low)/breakout_price ratio comparison to median threshold specified in the rule. Exit conditions are incomplete per source material. Success rates and volume trends are all marked AUTHOR_SILENT. Recommend manual implementation or clarification of breakout_price definition and median calculation methodology."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a meta-rule about evidence evaluation bias rather than a price-action pattern. It requires tracking win-rate statistics (min_disconfirming_ratio, required_out_of_sample_winrate, max_confirmatory_threshold, rolling 50-trade window performance) which are portfolio/pattern-level metrics, not bar-level indicator conditions. The backtest engine must implement statistical validation logic external to indicator-based entry/exit rules. Specific requirements: (1) Pattern win-rate >= 55% on out-of-sample data; (2) Disconfirming evidence >= 50% of pattern occurrences; (3) Reject if confirmatory cases <= 60%; (4) Exit if rolling 50-trade win rate < 52%; (5) Disable if disconfirming evidence >= 45% of recent occurrences. These cannot be expressed as simple indicator comparisons.",
+  "translation_notes": "Signal ARONSON_DRY_0_0 encodes a cognitive bias correction framework requiring statistical hypothesis testing and evidence weighting at the pattern portfolio level. No valid entry/exit indicator conditions can be mechanically derived from this rule. A backtest harness would need to: (1) Track all pattern occurrences and outcomes in a dedicated statistics module; (2) Implement quarterly evidence reviews comparing confirming vs disconfirming cases; (3) Dynamically enable/disable patterns based on accumulated evidence ratios; (4) Monitor rolling win-rate windows to enforce minimum 52% threshold. This is architectural meta-logic, not a tradeable signal."
+}

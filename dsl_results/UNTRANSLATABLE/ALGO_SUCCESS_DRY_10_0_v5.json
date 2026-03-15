@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Hurst Exponent is not available in the allowed indicators list. The signal requires calculation of rolling Hurst Exponent (H) over a 252-period window with thresholds at H<=0.40 (mean reversion), 0.40<H<0.60 (random walk/neutral), and H>=0.60 (trending). ADX_14 was used as a partial proxy for trend detection, but this does not accurately represent the Hurst Exponent regime classification logic specified in the original signal.",
+  "translation_notes": "Signal requires Hurst Exponent calculation which is not in the allowed indicators. Attempted substitution with ADX_14 (0-100 scale normalized to 0-1 by dividing by 100) as a trend strength proxy, but this is fundamentally different from mean reversion vs trending regime classification. Recommend: (1) adding Hurst Exponent calculator to the backtesting engine, or (2) using alternative mean reversion indicators like RSI + ADX combination, or (3) using price position relative to Bollinger Bands with volatility confirmation."
+}

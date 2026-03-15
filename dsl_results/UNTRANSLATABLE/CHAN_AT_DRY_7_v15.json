@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct measurement of 'roll return' (futures basis spread) and detection of regime stability/mean reversion, neither of which are available in the allowed indicator list. Roll return must be calculated as the difference between futures and spot price curves over time, which is not a standard technical indicator. Additionally, 'STABLE' and 'CONTANGO'/'BACKWARDATION' are not in the ALLOWED_REGIMES list, and the stability condition cannot be expressed with allowed operators.",
+  "translation_notes": "This signal is a futures-spot arbitrage strategy that fundamentally requires access to futures pricing data and basis calculations not available in the standard technical indicator set. The strategy needs: (1) futures contract prices, (2) spot ETF prices, (3) calculated roll return series, and (4) regime detection for contango/backwardation. These are domain-specific derivatives unavailable through basic OHLCV technical analysis."
+}

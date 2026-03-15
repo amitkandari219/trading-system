@@ -1,0 +1,128 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "0.4"
+      },
+      {
+        "left": "macd_hist",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "0.4"
+      },
+      {
+        "left": "macd_hist",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "0.4"
+      },
+      {
+        "left": "macd_hist",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "returns",
+        "operator": "<=",
+        "right": "-0.4"
+      },
+      {
+        "left": "macd_hist",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes entering after 40% of intraday range has moved (momentum zone) and exiting at 40% profit or momentum divergence. Used MACD histogram as momentum acceleration indicator (crosses zero for inflection points). Range operator approximates the 40% intraday range threshold. Returns metric captures the 40% profit target. Time-based and absolute stop-loss constraints encoded as max hold duration (8 hours) and stop_loss_pct (4R). Direction set to CONTEXT_DEPENDENT as the rule applies to both long and short entries depending on momentum direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": 0.4
+      },
+      {
+        "indicator": "macd_hist",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": 0.4
+      },
+      {
+        "indicator": "macd_hist",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": 0.4
+      },
+      {
+        "indicator": "macd_hist",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "returns",
+        "op": "<=",
+        "value": -0.4
+      },
+      {
+        "indicator": "macd_hist",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes entering after 40% of intraday range has moved (momentum zone) and exiting at 40% profit or momentum divergence. Used MACD histogram as momentum acceleration indicator (crosses zero for inflection points). Range operator approximates the 40% intraday range threshold. Returns metric captures the 40% profit target. Time-based and absolute stop-loss constraints encoded as max hold duration (8 hours) and stop_loss_pct (4R). Direction set to CONTEXT_DEPENDENT as the rule applies to both long and short entries depending on momentum direction."
+  },
+  "source_rule_text": "A trader should enter only in the zone of greatest momentum/highest probability and exit before the move exhausts, rather than attempting to capture the entire move from extreme to extreme."
+}

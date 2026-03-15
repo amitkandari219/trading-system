@@ -1,0 +1,90 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "bb_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "bb_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_upper"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Flip-flop logic implemented using Bollinger Bands (30-period SMA \u00b1 1.5 std dev approximated by bb_upper/bb_lower). Entry: long when price crosses upper band upward; short when price crosses lower band downward. Exit: position reverses when opposite threshold is crossed (hard stop at opposite band). This creates mutually exclusive states with hysteresis. Context-dependent direction since signal switches between long and short based on threshold crossings."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "bb_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "bb_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Flip-flop logic implemented using Bollinger Bands (30-period SMA \u00b1 1.5 std dev approximated by bb_upper/bb_lower). Entry: long when price crosses upper band upward; short when price crosses lower band downward. Exit: position reverses when opposite threshold is crossed (hard stop at opposite band). This creates mutually exclusive states with hysteresis. Context-dependent direction since signal switches between long and short based on threshold crossings."
+  },
+  "source_rule_text": "Use flip-flop logic with mutually exclusive threshold crossings to generate binary state transitions: maintain a directional signal until the opposite threshold is crossed in the opposite direction."
+}

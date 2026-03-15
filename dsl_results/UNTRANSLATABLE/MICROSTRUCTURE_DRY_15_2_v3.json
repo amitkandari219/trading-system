@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_15_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a microstructure-based trading instruction (active solicitation of latent demand from counterparties) rather than a price-action or technical indicator rule. The entry conditions require non-market data: order submission costs (bps), counterparty database presence, contact history, and block size notional values. The signal depends on order flow management, counterparty relationship tracking, and execution logistics\u2014none of which are expressible using the allowed technical indicators (price, moving averages, RSI, ATR, MACD, etc.). Exit conditions depend on order execution status and contact attempt counts, which are operational rather than market-based signals. This rule is suitable for an order management system or relationship management module, not a technical backtester.",
+  "translation_notes": "Signal parameters (order_cost_threshold_bps: 1, min_block_size_shares: 100, max_contacts_per_block: 10, lookback_period_months: 24) are operational trading desk rules, not chartable conditions. The underlying insight\u2014that latent demand exists among counterparties unwilling to expose interest\u2014is valid but requires CRM/OMS integration rather than price-based backtesting."
+}

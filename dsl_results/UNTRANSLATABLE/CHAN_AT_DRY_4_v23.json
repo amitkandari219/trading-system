@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of a specific support level L1 and mean reversion target F that are not explicitly defined in the source text. The signal also relies on trader conviction/discretion rather than quantifiable price or indicator thresholds. Critical parameters (lookback_period, threshold, half_life, backtest_sharpe, backtest_period) are marked AUTHOR_SILENT and cannot be operationalized. Support/resistance detection and mean reversion targets cannot be expressed with the allowed indicators without arbitrary assumptions.",
+  "translation_notes": "Attempted proxy: Entry when price drops below sma_20 (mean-reversion signal), exit when price reverts above sma_50 (higher price level). However, this is speculative as the original signal lacks concrete definitions of L1, F, and the mechanism for identifying support levels. The all-in position sizing instruction (deploy all capital in single transaction) cannot be expressed in this JSON rule schema and must be configured separately in the backtest engine."
+}

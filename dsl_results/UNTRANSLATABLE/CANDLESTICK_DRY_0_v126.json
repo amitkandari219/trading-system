@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculating candle height as (highest_high - lowest_low) / breakout_price and comparing to median historical value. This custom ratio calculation and median comparison logic cannot be expressed using only the allowed indicators and operators. The 'breakout_price' reference point is undefined, and no indicator exists for dynamic median-based candle height normalization. Market regime detection (bull/bear) is also contextual and not directly available as an allowed indicator.",
+  "translation_notes": "This signal fundamentally requires: (1) a custom candle height metric normalized by breakout price, (2) comparison against rolling median of that metric, (3) explicit bull/bear market classification. The allowed indicators do not support computing custom ratios or percentile-based thresholds. Suggest implementing as custom Python function in backtest engine or reformulating using available indicators like bb_pct_b (for range position) or adx_14 (for trend strength)."
+}

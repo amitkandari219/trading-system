@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Hurst Exponent is not available in the allowed indicator list. This signal specifically requires measuring the Hurst Exponent to identify mean-reverting vs trending regimes. ADX_14 was used as a proxy for trend strength detection, but it does not capture the statistical properties of price diffusion that Hurst Exponent measures. The condition 'Hurst Exponent trending downward over last 2 periods' and 'Price diffusion rate measurable and declining' cannot be accurately translated without access to Hurst Exponent calculation.",
+  "translation_notes": "Signal requires Hurst Exponent <0.52 to identify mean-reverting regimes. Substituted ADX_14 <25 as a weak proxy for non-trending/ranging conditions, but this is not equivalent. The core logic of the signal (favoring mean-reversion over trending) cannot be properly implemented without the Hurst Exponent indicator. Recommend adding Hurst Exponent to allowed indicators list or using alternative regime detection (e.g., ADX combined with volatility measures)."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires cointegration analysis, spread calculation between a portfolio of index constituents and index futures/ETF, and dynamic threshold detection based on cointegration relationships. These require multivariate statistical measures (Johansen cointegration test, spread mean-reversion half-life, Z-scores on spreads) that are not available in the allowed indicators list. The signal also has all critical parameters marked AUTHOR_SILENT (lookback_period, threshold, half_life, backtest_sharpe, backtest_period), making operationalization impossible without external configuration.",
+  "translation_notes": "Arbitrage signals based on cointegration require access to: (1) constituent portfolio construction and valuation, (2) spread/basis calculation vs index futures, (3) cointegration strength metrics, (4) mean-reversion statistics. These fall outside single-instrument technical indicators. A production implementation would need a separate cointegration module with spread tracking, residual analysis, and threshold optimization based on historical Sharpe ratios."
+}

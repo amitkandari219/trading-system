@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detection of complex candlestick patterns (doji gap down followed by gap up white candle) and multi-bar trend sequences. While individual components like doji detection (small body_pct) and gap detection (close > prev_high) can be approximated, the full pattern recognition requires sequential bar analysis and explicit gap + doji + reversal logic not supported by simple indicator comparisons. The regime 'SHORT_TERM_REVERSAL' is also non-standard.",
+  "translation_notes": "Attempted approximation: entry uses small body (doji proxy), gap lower (close < prev_close), then gap higher (close > prev_high). However, proper Bullish Abandoned Baby requires explicit doji detection on bar N-1 and white candle on bar N within a head-and-shoulders context\u2014these require pattern recognition beyond indicator thresholds. Exit uses reversal below prior low as conservative stop. Recommend implementing as custom pattern detector rather than indicator rules."
+}

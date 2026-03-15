@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of clustered stop orders at support/resistance levels and market maker order placement behavior. These require order book depth data and order clustering analysis, which are not available in the allowed indicator set. The core mechanism (stop order triggering and momentum exploitation) cannot be directly expressed using only price action, volume, and technical indicators without access to order flow or order book microstructure data.",
+  "translation_notes": "Approximated entry using price approaching support (s1 pivot level) combined with volume surge (vol_ratio_20) as a proxy for large order placement. Exit condition uses price crossing back above support. This is a simplified technical interpretation of the signal's intent, but does not capture the actual market microstructure mechanics described in the original rule."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires quantification of 'algorithmic trading adoption percentage' and 'speculative crowding index' which are not available as market indicators in the allowed list. The vol_ratio_20 is used as a proxy for crowding but cannot directly measure algorithmic adoption or speculative activity levels. Additionally, the signal requires position sizing logic (max_position_size_high_crowding: 25% of normal) which is a portfolio management rule, not a trade condition.",
+  "translation_notes": "Interpreted 'technical breakout signal' as price crossing above SMA_20. Used vol_ratio_20 < 0.40 as a loose proxy for algorithmic adoption < 40% (lower volume concentration suggests less algorithmic crowding). RSI > 50 as one confirmation indicator alongside the moving average crossover. The regime-dependent nature and position sizing adjustments cannot be fully expressed in this condition-based schema."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_11_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'block shopping inquiry' and 'broker activity signal' \u2014 concepts that require real-time market microstructure data (broker communication, order flow intent) not available in standard OHLCV indicators. Volume spikes alone cannot reliably distinguish block shopping from other large volume events. The core alpha depends on information asymmetry (early knowledge of broker inquiries) that cannot be replicated from price/volume history.",
+  "translation_notes": "Attempted proxy using volume spikes (vol_ratio_20) as crude indicator of block activity, but this fundamentally misses the signal's core mechanic: anticipating price moves based on knowing brokers are shopping blocks. Direction set to CONTEXT_DEPENDENT per input (buy blocks go long, sell blocks go short). Stop loss set to 4 ticks (-4 ticks per parameters), take profit to 6 ticks per parameters. This translation is NOT viable for backtesting without explicit block order detection data."
+}

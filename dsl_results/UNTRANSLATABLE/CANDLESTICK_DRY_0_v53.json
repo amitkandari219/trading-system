@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pattern recognition ('New Price Lines' candlestick pattern) and yearly high/low reference points which cannot be expressed as simple indicator conditions. Candle color and opening gap confirmations are not directly available in the allowed indicator set. The directional context dependency and confirmation method logic require pattern classification unavailable in backtesting framework.",
+  "translation_notes": "Attempted approximation using price position relative to 20-bar range and prior candle close comparison. Reversal bias (51%) and continuation bias (49%) suggest slight reversal tendency. Entry conditions use price_pos_20 to approximate yearly position thirds. Exit uses opposite candle color (close vs prev_close). Success rates (bull 51%, bear 54%) suggest marginal edge requiring additional confirmation not available in allowed indicators."
+}

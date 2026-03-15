@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of specific BARR pattern geometry (tall/narrow vs tall/wide vs short/wide), volume shape analysis (U-shaped vs random), and regime-dependent entry logic. These require multi-bar pattern recognition and proprietary shape classification not expressible with allowed indicator set. Also requires dynamic parameter adjustment based on market regime (bull vs bear) which cannot be fully encoded in static rule conditions.",
+  "translation_notes": "Attempted partial translation using available bar properties (body, upper_wick) and volume indicators. Entry uses falling volume trend (vol_ratio_20 < 1.0) and previous volume comparison. Exit uses reversal logic (close crossing previous bar extremes). However, the core pattern identification, dimension classification, and volume shape U-detection require custom pattern recognition unavailable in standard indicators. Manual backtesting with Bulkowski's specific BARR criteria recommended."
+}

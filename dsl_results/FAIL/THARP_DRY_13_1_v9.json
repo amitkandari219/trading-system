@@ -1,0 +1,58 @@
+{
+  "signal_id": "THARP_DRY_13_1",
+  "entry_long": [
+    {
+      "left": "close",
+      "operator": "crosses_above",
+      "right": "bb_upper"
+    },
+    {
+      "left": "atr_14",
+      "operator": ">",
+      "right": "0"
+    }
+  ],
+  "entry_short": [
+    {
+      "left": "close",
+      "operator": "crosses_below",
+      "right": "bb_lower"
+    },
+    {
+      "left": "atr_14",
+      "operator": ">",
+      "right": "0"
+    }
+  ],
+  "exit_long": [
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "bb_upper"
+    }
+  ],
+  "exit_short": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "bb_lower"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 20,
+  "direction": "BOTH",
+  "target_regime": [
+    "TRENDING_UP",
+    "TRENDING_DOWN",
+    "ANY"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Volatility breakout modeled as price crossing Bollinger Bands (bb_upper/bb_lower) with ATR confirmation. Exit triggers when price closes back inside the bands (time window expired without sustained move). Stop-loss set at 2% reflecting concept failure within window. Hold_days_max set to 20 to represent typical time window for volatility setup expiration. Direction marked CONTEXT_DEPENDENT as rule applies to both long and short breakouts.",
+  "validation_issues": [
+    "entry_long: phantom condition 'atr_14 > 0' is always true",
+    "entry_short: phantom condition 'atr_14 > 0' is always true"
+  ]
+}

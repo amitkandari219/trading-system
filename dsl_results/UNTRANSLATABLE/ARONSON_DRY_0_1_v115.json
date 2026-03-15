@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 9-month historical price momentum calculation and percentile-based ranking across a universe of stocks. The allowed indicators set does not include a pre-computed momentum indicator or cross-sectional ranking mechanism. The signal logic requires: (1) computing returns over a 9-month lookback period, (2) ranking all eligible stocks by this metric, (3) selecting top 20% by momentum, and (4) rebalancing quarterly. This requires portfolio-level cross-sectional analysis and dynamic ranking, which cannot be expressed as point-in-time boolean conditions on a single asset using the provided indicator list.",
+  "translation_notes": "The signal is fundamentally a relative momentum strategy requiring universe ranking and portfolio construction. Standard OHLCV indicators and technical overlays cannot capture the cross-sectional percentile logic needed. A proper implementation would require a custom momentum indicator computed over rolling 9-month windows with percentile bucketing across the asset universe."
+}

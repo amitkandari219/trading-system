@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a meta-rule for validating trading rule symmetry and directional bias, not a direct market entry/exit signal. It requires: (1) comparison of rule trigger counts between long/short conditions (not available as indicators), (2) backtest performance metrics across regimes (out-of-sample statistical analysis), and (3) regime cycle counting (requires external backtest framework). The core validation\u2014that entry condition symmetry must be within \u00b15% and performance divergence <10% across opposing trends\u2014cannot be expressed as real-time candlestick conditions.",
+  "translation_notes": "ARONSON_DRY_0_0 is a regime validation filter for rule robustness testing, not a tradeable signal. Implement this as a backtest-time rule validator: (A) Count rule trigger occurrences in TRENDING_UP vs TRENDING_DOWN regimes\u2014reject if long/short counts differ >5%; (B) Calculate Sharpe/win% separately for up-trend and down-trend subsets\u2014reject if performance delta >10%; (C) Require minimum 3 complete market cycles in historical data. This should be applied as a gating condition before accepting any rule into production."
+}

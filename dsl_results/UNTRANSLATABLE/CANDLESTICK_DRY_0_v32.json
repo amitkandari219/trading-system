@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The pattern requires validation of an 8-candle sequence where EACH of the 8 consecutive candles makes a higher high than the previous candle. The allowed operators and indicators cannot express multi-bar lookback requirements (checking conditions across 8 specific bars in sequence). This requires either: (1) array indexing like close[i] for i in range(-7, 0), or (2) a dedicated 'pattern_match' operator that accepts pattern definitions. The current rule set only supports single-bar comparisons using prev_* indicators for the immediate prior bar.",
+  "translation_notes": "Signal describes a pure candlestick pattern requiring inspection of 8 consecutive bars with strictly ascending highs. While individual higher-high conditions can be expressed (high > prev_high), enforcing this across exactly 8 consecutive candles cannot be represented in the provided rule schema. Recommend implementing this as a dedicated pattern recognition function in the backtest engine rather than a rule-based condition set."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The pattern requires tracking 12 consecutive higher highs with no exceptions. This requires historical state tracking across 12+ bars and a counter mechanism that cannot be expressed as a single 3-field condition. The allowed operators and indicator set do not support sequential pattern counting or multi-bar state validation needed to enforce '12 consecutively higher highs with no exceptions allowed'.",
+  "translation_notes": "Attempted to express the core concept (each candle's high > prior candle's high) but the strict '12 consecutive' requirement with 'no exceptions' demands state tracking across multiple periods. A backtest engine would need custom logic or a dedicated pattern-matching function to properly validate this signal. The entry conditions shown represent only a single-bar higher-high check, which is insufficient for the full pattern specification."
+}

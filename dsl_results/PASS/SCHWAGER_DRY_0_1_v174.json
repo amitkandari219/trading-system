@@ -1,0 +1,110 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes timeframe bias and avoiding intermediate timeframe traps. Implemented using intraday breakouts (Donchian channels as proxy for breakout levels) with confirmation from daily trend filter (SMA_50). Entry on breakout in direction of daily trend, exit on daily trend reversal. Used dc_upper/dc_lower for breakout detection and sma_50 as daily trend confirmation. Direction set to CONTEXT_DEPENDENT as signal applies to both long and short depending on daily trend direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes timeframe bias and avoiding intermediate timeframe traps. Implemented using intraday breakouts (Donchian channels as proxy for breakout levels) with confirmation from daily trend filter (SMA_50). Entry on breakout in direction of daily trend, exit on daily trend reversal. Used dc_upper/dc_lower for breakout detection and sma_50 as daily trend confirmation. Direction set to CONTEXT_DEPENDENT as signal applies to both long and short depending on daily trend direction."
+  },
+  "source_rule_text": "A trader should adopt a timeframe bias\u2014either very short-term or very long-term\u2014aligned with their natural trading style, and avoid the intermediate timeframe which traps the majority of trend followers in false breakouts."
+}

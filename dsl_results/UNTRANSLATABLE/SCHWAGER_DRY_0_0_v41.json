@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal relies on time-of-day filters (European trading hours 08:00-17:00 CET), scheduled macro events (FOMC/ECB/BOE/SNB announcements), and institutional order flow detection. These require external calendar data, event detection systems, and order flow analysis not available in the allowed indicator set. The core tradeable logic (price moves in Europe before US) cannot be quantified with standard OHLCV indicators alone.",
+  "translation_notes": "SCHWAGER_DRY_0_0 is fundamentally a market microstructure and event-timing signal, not a price-action signal. It requires: (1) Macro event calendar integration, (2) Time-of-day execution logic, (3) Position sizing rules tied to event severity, (4) Geographic market session detection. A practical implementation would need custom modules for event detection and session management outside this indicator framework. The placeholder exit condition (close < prev_close) is insufficient for actual trading."
+}

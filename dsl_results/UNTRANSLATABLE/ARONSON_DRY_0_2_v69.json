@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic volatility normalization using standard deviation of price changes with sensitivity coefficient multiplication and pattern deviation baseline comparison. This requires custom calculation logic not expressible with allowed indicators and operators. hvol_20 and atr_14 are used as proxies for volatility-based filtering, but cannot fully capture the 4-coefficient sensitivity array and pattern-specific deviation thresholds specified in the original rule.",
+  "translation_notes": "Signal is context-dependent (LONG/SHORT determined by pattern direction). Attempted to approximate volatility normalization using hvol_20 (historical volatility over 20 days) and atr_14 as volatility proxies. The 100-day lookback period and sensitivity coefficients [1.5, 2.0, 2.5, 3.0] cannot be directly encoded in the structured rule format. Pattern detection and baseline deviation calculation require external computation before condition evaluation."
+}

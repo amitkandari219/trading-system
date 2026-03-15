@@ -1,0 +1,124 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      },
+      {
+        "left": "macd",
+        "operator": "<",
+        "right": "macd_signal"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      },
+      {
+        "left": "macd",
+        "operator": ">",
+        "right": "macd_signal"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Inverse signal strategy: Entry conditions detect traditional bullish/bearish patterns (SMA crossover + MACD crossover + strong trend via ADX) then take opposite position. Stop loss set at 2x pattern risk (4% vs typical 2%), take profit at 1x risk (2%). Exit after 20 bars or on reversal of entry signal. Pattern strength threshold (0.75) mapped to ADX > 25. Lookback confirmation (5 bars) embedded in crossover logic. CONTEXT_DEPENDENT direction allows both long and short entries based on inverse of identified pattern."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "macd",
+        "op": "<",
+        "value": "macd_signal"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "macd",
+        "op": ">",
+        "value": "macd_signal"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Inverse signal strategy: Entry conditions detect traditional bullish/bearish patterns (SMA crossover + MACD crossover + strong trend via ADX) then take opposite position. Stop loss set at 2x pattern risk (4% vs typical 2%), take profit at 1x risk (2%). Exit after 20 bars or on reversal of entry signal. Pattern strength threshold (0.75) mapped to ADX > 25. Lookback confirmation (5 bars) embedded in crossover logic. CONTEXT_DEPENDENT direction allows both long and short entries based on inverse of identified pattern."
+  },
+  "source_rule_text": "A trader should test the inverse of traditional technical analysis rules to determine whether reversed signals have predictive value, since traditional patterns may actually predict opposite outcomes or have no predictive value at all."
+}

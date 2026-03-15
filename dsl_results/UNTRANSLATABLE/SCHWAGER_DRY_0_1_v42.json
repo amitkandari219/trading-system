@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-session/multi-venue position scaling logic with fractional exit rules (33% exit on +1.0x ASR, 67% rollover), session-boundary detection, and incremental re-entry across market sessions. These portfolio management and session-state features are not expressible in single-bar condition logic. The core momentum confirmation can be approximated with trend indicators, but the sophisticated scaling mechanics require a custom execution layer outside standard backtest rule syntax.",
+  "translation_notes": "Approximated 'initial directional thesis with moderate conviction' using ADX > 25 (trend confirmation). Used price vs SMA_20 as directional bias. Exit conditions simplified to reversal logic rather than the complex session-based scaling. The signal's core value lies in its position management strategy (scaling in/out by percentage across multiple sessions), which cannot be fully captured in standard bar-by-bar rules. A custom scaling module would be needed to properly implement the 33%/67% split and session monitoring."
+}

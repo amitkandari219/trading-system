@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires monitoring advance/decline line divergence (market breadth indicator not in allowed list). The core logic\u2014detecting when the advance/decline line lags below 80% of prior peak while market averages hit 52-week highs\u2014requires advance/decline data, which is not available in the allowed indicators. The 3-day persistence requirement also cannot be expressed with available operators. This signal requires custom market breadth indicators or data sources not included in the standard backtest engine.",
+  "translation_notes": "Signal is context-dependent and primarily tactical (reduce long exposure) rather than a binary entry/exit rule. Attempted to approximate exit condition using price relative to sma_50 as a proxy for market deterioration, but this does not capture the true advance/decline divergence mechanism. Recommend implementing a custom advance_decline_line indicator or using an external market breadth data feed."
+}

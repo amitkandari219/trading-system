@@ -1,0 +1,82 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_50",
+        "operator": ">",
+        "right": "sma_200"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "low"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Rise-Retrace Setup interpreted as: (1) upward breakout detected via close above prior high, (2) existing upward trend confirmed via close and SMA alignment (close > sma_50 > sma_200), (3) retrace and continuation are managed dynamically during backtest execution. Exit condition set to close below the pattern low (lowest low of setup). The throwback/pullback percentage and specific pattern statistics were author-silent; used standard 2% stop loss and 20-day hold window for position management."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_50",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "low"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Rise-Retrace Setup interpreted as: (1) upward breakout detected via close above prior high, (2) existing upward trend confirmed via close and SMA alignment (close > sma_50 > sma_200), (3) retrace and continuation are managed dynamically during backtest execution. Exit condition set to close below the pattern low (lowest low of setup). The throwback/pullback percentage and specific pattern statistics were author-silent; used standard 2% stop loss and 20-day hold window for position management."
+  },
+  "source_rule_text": "Rise-Retrace Setup: Upward breakout that joins existing upward primary trend, with price retracing downward a portion of prior up move before continuing the climb"
+}

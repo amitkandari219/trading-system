@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_1_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of limit order placement, order book depth analysis, bid-ask spread measurement, and order cancellation events. These microstructure-level features (limit order presence, exact price deviations from traded prices in real-time, spread tradability, and order lifecycle events) are not available in the standard OHLCV indicator set. The signal also requires avoiding 'well-informed traders' which requires information advantage detection unavailable from price/volume data alone.",
+  "translation_notes": "Attempted to approximate using price_pos_20 (distance from 20-bar range extremes) as proxy for price deviation from recent levels, and bb_bandwidth for volatility context. However, core logic requires order book and microstructure data not present in standard backtester. Exit conditions approximated as +10 bps (0.001 decimal) profit target. Hold time approximated to 30 seconds as 0.02 days. This translation is NOT reliable without actual limit order book and trade execution data."
+}

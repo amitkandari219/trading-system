@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'anticipated support/resistance levels' and 'failed predictions' which are subjective forward-looking concepts not observable from historical price data alone. Requires external level identification (pivot points, technical analysis) and regime detection that precedes the intrabar action. The core logic of 'price penetrates then reverses intrabar' is translatable, but without the anticipatory framework and external level inputs, this captures only the mechanical reversal pattern, not the full regime-shift conviction flip.",
+  "translation_notes": "Translated the mechanical intrabar reversal component: long entry on intrabar penetration (high > prev_high) with rejection (close < open); short entry on low < prev_low with rejection (close > open). Exits trigger on breach of intraday extremes. Original signal intent requires forward-looking prediction validation and explicit support/resistance identification not available in standard OHLCV indicators."
+}

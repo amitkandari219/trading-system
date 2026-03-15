@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires earnings announcement detection (event-driven trigger) and specific threshold/half_life/backtest_sharpe parameters marked as AUTHOR_SILENT. The backtest engine does not support explicit earnings date detection or the ability to compare against a dynamically calculated 90-day moving standard deviation benchmark in a conditional rule. Additionally, exact backtest period (TT days) is unspecified. Approximated entry logic using returns vs hvol_20 as volatility-adjusted proxy, but this does not capture the true PEAD drift mechanics.",
+  "translation_notes": "PEAD strategy requires event-based triggering on earnings announcement dates (not supported by indicator-based rules). Attempted to approximate volatility-adjusted return comparison using hvol_20 as a 20-day historical volatility proxy, but this is not equivalent to a 90-day moving standard deviation benchmark. Direction set to CONTEXT_DEPENDENT to reflect that PEAD can be bullish or bearish depending on surprise direction. Exit conditions reversed to simple return reversals due to AUTHOR_SILENT specification. This translation is a lossy approximation and should be reviewed with domain expertise."
+}

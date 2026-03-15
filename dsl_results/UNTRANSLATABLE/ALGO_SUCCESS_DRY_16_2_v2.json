@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_16_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references explicit z-score calculations (entry_threshold_zscore: 1.5, exit_threshold_zscore: 1.0) which are not available as direct indicators in the allowed list. Z-score requires mean and standard deviation calculations that must be computed externally. Approximated using Bollinger Band percent B (bb_pct_b) as a proxy for normalized price deviation from rolling mean, but this is not an exact z-score implementation.",
+  "translation_notes": "Mean-reversion strategy translated using Bollinger Bands percent B as a proxy for z-score deviation. Entry triggered when price deviates significantly from SMA_100 (rolling mean proxy) and bb_pct_b indicates extreme positioning (< 0.25 for long, > 0.75 for short). Exit when price reverts toward the mean (bb_pct_b approaches 0.5). Lookback window of 100 bars incorporated via SMA_100. The exact z-score thresholds (1.5 entry, 1.0 exit) cannot be directly implemented without z-score calculation capability."
+}

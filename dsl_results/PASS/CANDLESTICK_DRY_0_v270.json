@@ -1,0 +1,108 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "hvol_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "hvol_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires computing shadow height as percentage of breakout price and comparing to median. Since exact median values were not provided (AUTHOR_SILENT), translated as: tall shadows indicated by upper_wick or lower_wick exceeding ATR_14 (a volatility proxy), combined with above-average volume (hvol_20). Exit when volume falls below average, indicating breakout momentum loss. Direction is context-dependent per original signal (both bull and bear patterns). Used bar properties (upper_wick, lower_wick) to approximate shadow height calculations."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "hvol_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "hvol_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires computing shadow height as percentage of breakout price and comparing to median. Since exact median values were not provided (AUTHOR_SILENT), translated as: tall shadows indicated by upper_wick or lower_wick exceeding ATR_14 (a volatility proxy), combined with above-average volume (hvol_20). Exit when volume falls below average, indicating breakout momentum loss. Direction is context-dependent per original signal (both bull and bear patterns). Used bar properties (upper_wick, lower_wick) to approximate shadow height calculations."
+  },
+  "source_rule_text": "Candle shadow height and volume characteristics for breakout trading: Tall shadows and heavy breakout volume improve performance"
+}

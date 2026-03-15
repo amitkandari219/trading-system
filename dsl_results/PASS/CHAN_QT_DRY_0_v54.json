@@ -1,0 +1,88 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "book_id": "CHAN_QT",
+  "dsl_rule": {
+    "signal_id": "CHAN_QT_DRY_0",
+    "entry_long": [
+      {
+        "left": "macd",
+        "operator": "crosses_above",
+        "right": "macd_signal"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "macd",
+        "operator": "crosses_below",
+        "right": "macd_signal"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "macd",
+        "operator": "crosses_below",
+        "right": "macd_signal"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "macd",
+        "operator": "crosses_above",
+        "right": "macd_signal"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal implements momentum-based reversal exit mechanism. MACD crossovers serve as the momentum entry/exit signal: long entry when MACD crosses above signal line, exit when MACD crosses below signal line (reversal). Short entry when MACD crosses below signal line, exit when MACD crosses above signal line. This dynamic reversal mechanism replaces arbitrary stop-loss prices as specified in the original rule. The 'CONTEXT_DEPENDENT' direction means the actual direction depends on which momentum signal fires first."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "macd",
+        "op": "crosses_above",
+        "value": "macd_signal"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "macd",
+        "op": "crosses_below",
+        "value": "macd_signal"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "macd",
+        "op": "crosses_below",
+        "value": "macd_signal"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "macd",
+        "op": "crosses_above",
+        "value": "macd_signal"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal implements momentum-based reversal exit mechanism. MACD crossovers serve as the momentum entry/exit signal: long entry when MACD crosses above signal line, exit when MACD crosses below signal line (reversal). Short entry when MACD crosses below signal line, exit when MACD crosses above signal line. This dynamic reversal mechanism replaces arbitrary stop-loss prices as specified in the original rule. The 'CONTEXT_DEPENDENT' direction means the actual direction depends on which momentum signal fires first."
+  },
+  "source_rule_text": "Exit a momentum position when a new entry signal in the opposite direction occurs, treating the reversal signal as a dynamic stop-loss mechanism."
+}

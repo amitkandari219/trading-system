@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a trained machine learning forecasting model (Logistic Regression, LDA, SVM, or Random Forest) with predicted probability outputs. This model-based prediction mechanism cannot be expressed using only the allowed technical indicators and operators. The signal depends on external model predictions rather than calculated technical indicators.",
+  "translation_notes": "The entry condition attempts to map the 65% confidence threshold to the returns indicator as a proxy, but this is fundamentally inadequate. The core logic requires: (1) a pre-trained ML model with lagged return features, (2) real-time probability predictions from that model, and (3) comparison against dynamic thresholds (65% entry, 55% exit). The backtest engine would need to integrate an external ML model scoring system to properly implement this signal. Exit conditions include probability threshold (55%), stop loss (-2%), and profit target (+3%)."
+}

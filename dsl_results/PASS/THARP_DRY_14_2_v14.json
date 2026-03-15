@@ -1,0 +1,148 @@
+{
+  "signal_id": "THARP_DRY_14_2",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_14_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_10"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "12"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_10"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "12"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_10"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "10"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_10"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "10"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses trend-following logic with ADX confirmation. Direction is context-dependent, so both LONG and SHORT entry/exit rules provided. Entry requires price crossing above/below 10-period MA, ADX > 12, and confirmation from prior close direction. Exit triggers on MA crossover or ADX falling below 10 (trend ending). Used prev_close for prior bar comparison per rule 6."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 12.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 12.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 10.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 10.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses trend-following logic with ADX confirmation. Direction is context-dependent, so both LONG and SHORT entry/exit rules provided. Entry requires price crossing above/below 10-period MA, ADX > 12, and confirmation from prior close direction. Exit triggers on MA crossover or ADX falling below 10 (trend ending). Used prev_close for prior bar comparison per rule 6."
+  },
+  "source_rule_text": "A trader should enter positions aligned with trend direction because trend-following systems never miss major market moves, and price distributions exhibit long tails in the direction of sustained trends rather than random walk behavior."
+}

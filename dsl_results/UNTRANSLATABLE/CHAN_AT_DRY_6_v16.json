@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom half-life calculation via regression of spread changes against lagged values, and Z-score computation on spread gamma values. These require: (1) spread construct (CL calendar spread not in allowed price inputs), (2) regression coefficient calculation (not available in indicator set), (3) custom Z-score on derived spread metric (not available). Exact entry/exit Z-score thresholds are AUTHOR_SILENT. Standard RSI proxy substituted but does not capture the intended mean-reversion mechanics.",
+  "translation_notes": "Original signal is a sophisticated pairs/spread trading strategy requiring out-of-sample regression analysis and custom spread construction. Cannot be accurately translated using only provided indicators. Attempted substitution uses RSI as a generic mean-reversion proxy but loses the half-life adaptive lookback and spread-specific gamma dynamics. Recommend: (1) implement custom spread calculation in backtest engine, (2) add half-life regression module, (3) expose Z-score threshold parameters."
+}

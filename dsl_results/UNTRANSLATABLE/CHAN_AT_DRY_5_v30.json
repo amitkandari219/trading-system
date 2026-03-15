@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires calculating cross-sectional return deviations from an equal-weighted market index and dynamically sizing positions inversely proportional to those deviations across the entire S&P 500 universe. This is a portfolio-level, relative-value strategy that cannot be expressed as simple indicator-based entry/exit conditions on individual stock prices. Required: (1) daily returns for each stock, (2) equal-weighted market return calculation across all stocks, (3) deviation of each stock from market return, (4) inverse weighting by deviation, (5) market-neutral normalization. The backtest engine must support cross-sectional portfolio construction, not single-instrument signal logic.",
+  "translation_notes": "CHAN_AT_DRY_5 is a mean-reversion arbitrage strategy operating at the portfolio level with daily rebalancing. It requires a multi-leg position sizing engine and cross-sectional analytics unavailable in the single-instrument rule structure. The 'returns' indicator exists but cannot capture the relative deviation framework needed. Consider implementing this as a separate portfolio construction module rather than a traditional signal rule."
+}

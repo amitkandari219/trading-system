@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multi-leg spread trading across three different futures contracts (3x CL long, 2x RB short, 1x HO short) with a spread relationship calculation that cannot be expressed using single-instrument indicators from the allowed list. The signal depends on: (1) inter-market spread pricing between CL, RB, and HO; (2) the 3:2:1 hedge ratio validation; (3) spread mean reversion logic. The backtest engine as specified only supports single-instrument technical indicators. Additionally, critical parameters (lookback_period, threshold, half_life, backtest_sharpe, backtest_period) are marked AUTHOR_SILENT with no values provided.",
+  "translation_notes": "This is a calendar/crack spread arbitrage strategy that requires portfolio-level position management and cross-contract spread analytics. It cannot be reduced to entry/exit conditions on individual price bars using the provided indicator set. Recommend implementing as a specialized multi-leg spread module with explicit spread calculation, cointegration testing (Johansen), and dynamic hedge ratio adjustment."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) calculation of price spread between two ETFs (GLD and unlisted counterpart) \u2014 spread construction not supported; (2) dynamic daily hedge ratio computation via linear regression over 20-day lookback \u2014 custom regression calculation not in allowed indicators; (3) comparison of spread deviation from mean using rolling mean calculation \u2014 rolling mean indicator not in allowed list; (4) mean reversion threshold determination \u2014 marked AUTHOR_SILENT with no fallback value provided. The strategy is fundamentally dependent on pair/spread analysis and custom statistical calculations beyond the scope of single-instrument technical indicators.",
+  "translation_notes": "This is a pairs trading / statistical arbitrage strategy that requires: constructing a synthetic spread variable (price ratio or difference between two securities), computing a time-series mean and rolling deviations, performing linear regression for hedge ratio calculation, and identifying mean reversion opportunities via spread z-scores or similar. None of these capabilities exist in the allowed indicator set, which covers only single-instrument price-based and oscillator metrics. To implement this signal, the backtest engine would need to support: (a) dual-instrument data loading and spread calculation, (b) rolling statistics (mean, std dev), (c) linear regression output, and (d) regime detection for mean-reverting vs trending behavior."
+}

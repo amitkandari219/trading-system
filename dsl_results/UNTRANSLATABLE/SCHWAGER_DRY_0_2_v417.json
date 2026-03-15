@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'consolidation phase' (price flattening for 3+ days) and volume 'dryup' followed by expansion, which requires multi-bar pattern recognition and state tracking not expressible as single-bar indicator conditions. hvol_20 approximates 50-day volume average but exact consolidation detection logic cannot be translated to allowed operators.",
+  "translation_notes": "Attempted to capture: uptrend via close > sma_10 (10-day MA), volume dryup via volume < hvol_20 (scaled to 0.8), and volume expansion via volume > hvol_20 (scaled to 1.1). However, the core signal logic depends on detecting a consolidation pattern (sustained price flattening) which requires sequential bar analysis. Stop loss set to 1% below consolidation low is approximated as s1 (first support). Take profit uses 2x risk ratio as stated."
+}

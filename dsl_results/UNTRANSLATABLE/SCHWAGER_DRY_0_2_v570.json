@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct measurement of market depth, bid-ask spread ratios, and participant concentration metrics over monthly periods with 30% degradation thresholds. These structural liquidity metrics are not available in the allowed indicator set. The signal also requires forward-looking projected performance (65% of historical baseline), which cannot be computed from price/technical indicators alone. Used vol_ratio_20 as a weak proxy for liquidity degradation, but this does not capture the signal's intent of measuring market microstructure changes.",
+  "translation_notes": "This is a regime-detection rule requiring market microstructure analysis rather than price-action signals. The original signal emphasizes structural market changes (declining depth, widening spreads, concentration shifts) that make an edge obsolete\u2014this is fundamentally a meta-strategy rule about when to exit a trading style entirely, not a price-level entry/exit signal. A proper implementation would require access to order book depth, bid-ask spread time series, and liquidity provider concentration data."
+}

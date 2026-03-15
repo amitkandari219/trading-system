@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires Johansen cointegration test (eigenvalue decomposition, trace statistics, eigenvector extraction, and multi-asset correlation analysis). These are advanced multivariate statistical tests that cannot be expressed using the allowed indicators (single-asset price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume ratios, and bar properties). The signal also requires dynamic hedge ratio calculation from eigenvectors and spread construction across 3+ correlated assets simultaneously. No combination of allowed operators and indicators can replicate cointegration testing, eigenvalue decomposition, or multi-asset portfolio construction logic.",
+  "translation_notes": "Signal requires: (1) Johansen cointegration test with trace/eigenvalue statistics, (2) eigenvalue decomposition across multiple assets, (3) eigenvector extraction for hedge ratios, (4) construction of cointegrated spreads with specific weights. The backtest engine lacks multivariate statistical testing capabilities and the allowed indicators are limited to single-asset technical analysis. Parameters 'lookback_period', 'half_life', 'backtest_sharpe', and 'backtest_period' are marked AUTHOR_SILENT and cannot be inferred. Exit conditions are also AUTHOR_SILENT. This signal would require a dedicated cointegration module external to standard indicator-based rule engines."
+}

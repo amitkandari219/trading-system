@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-asset optimization (portfolio vs SPY hedge ratios using constrained optimization/genetic algorithm). This is a portfolio-level risk management strategy that cannot be expressed as simple single-instrument price/indicator conditions. Required: (1) multi-asset correlation/covariance analysis, (2) constrained optimization engine (genetic algorithm or simulated annealing), (3) portfolio spread minimization logic. None of these can be represented with the allowed indicators and operators which are designed for single-instrument technical analysis.",
+  "translation_notes": "This signal describes a quantitative portfolio hedging framework rather than a discrete entry/exit rule. The 'divergence' between portfolio and SPY and the optimization of hedge ratios require portfolio-level analytics and numerical optimization\u2014not available in the backtest engine's indicator vocabulary. Author-silent parameters (lookback_period, threshold, half_life, backtest_sharpe, backtest_period) further prevent translation without domain assumptions."
+}

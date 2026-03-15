@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 10-day moving average of up/down volume ratio with channel normalization (15-day lookback). The allowed indicator vol_ratio_20 is a 20-day volume ratio without moving average smoothing or dynamic channel normalization capability. The exact 10-day MA of up/down volume ratio is not available in the allowed indicator list, and channel normalization logic cannot be expressed with the allowed operators.",
+  "translation_notes": "Attempted substitution using vol_ratio_20 as closest available volume ratio indicator, but this does not accurately represent the signal's 10-day MA with dynamic threshold adjustment. The signal's threshold adaptation to volatility regime (channel normalization) cannot be implemented without custom indicator computation. Original source text indicates Type 12 rule with threshold offset of 10 (upper=60, lower=40), but signal parameters specify upper=55, lower=45 with channel normalization lookback=15 days\u2014these are inconsistent and suggest incomplete specification."
+}

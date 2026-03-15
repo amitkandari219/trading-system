@@ -1,0 +1,108 @@
+{
+  "signal_id": "THARP_DRY_15_2",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_15_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes waiting for technical indicator confirmation before entering on price movement alone. Interpreted 'primary technical indicator confirms trend initiation' as ADX >25 (trend strength confirmation). Price direction (close vs open) represents 'market has moved in intended direction.' ADX reversal below 20 indicates trend weakening for exit. CONTEXT_DEPENDENT direction preserved since rule applies to both long and short entries with same logic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes waiting for technical indicator confirmation before entering on price movement alone. Interpreted 'primary technical indicator confirms trend initiation' as ADX >25 (trend strength confirmation). Price direction (close vs open) represents 'market has moved in intended direction.' ADX reversal below 20 indicates trend weakening for exit. CONTEXT_DEPENDENT direction preserved since rule applies to both long and short entries with same logic."
+  },
+  "source_rule_text": "A trader should wait for technical indicators to confirm trend direction before entering, rather than entering impulsively based on market movement alone, to avoid losses from premature entry."
+}

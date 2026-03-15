@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic volatility-adjusted thresholds calculated as (V \u00d7 coefficient) where V is rolling standard deviation of daily % price changes. This involves: (1) computing std dev of returns over 100-day lookback, (2) applying 4 distinct sensitivity coefficients [4.5, 5.0, 5.5, 6.0] to generate multiple filtering thresholds, and (3) pattern deviation detection against these dynamic baselines. The engine does not support custom indicator construction (std dev of returns) or multi-coefficient threshold logic. Closest approximation uses hvol_20 (historical volatility) as regime filter and sma_100 as directional baseline, but this does not capture the precise pattern deviation logic or coefficient-based filtering mechanism described in the original rule.",
+  "translation_notes": "ARONSON_DRY_0_0 implements volatility-normalization for pattern detection. Since custom volatility calculations and dynamic thresholds are not available, the translation uses: (1) hvol_20 > 0 to trigger in high volatility regimes, (2) price vs sma_100 for directional context (CONTEXT_DEPENDENT), and (3) regime filters for HIGH_VOL and TRENDING conditions. This is a structural approximation only; the actual pattern detection and sensitivity coefficient logic cannot be fully expressed."
+}

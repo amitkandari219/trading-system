@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAHNEMAN_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom external data not in allowed indicators: (1) IPO date identification and proximity check (requires IPO_DATE field), (2) Ticker phonetic simplicity scoring (requires PHONETIC_SIMPLICITY_SCORE field with linguistic processing), (3) Company name linguistic fluency metrics (requires LINGUISTIC_FLUENCY_SCORE field). These cognitive/behavioral factors cannot be derived from price/volume/technical indicators alone. The core entry logic depends on IPO recency (0-3 days post-IPO) and linguistic properties of ticker/company name, which are external fundamental data points not available in the allowed indicator set.",
+  "translation_notes": "This signal is fundamentally based on behavioral/linguistic factors (cognitive ease from name pronounceability and familiarity) rather than technical indicators. While we can structure the exit conditions using returns (exit at +2.5% or day 3), the entry conditions require: (1) IPO date tracking within 3-day window, (2) quantified phonetic simplicity score (>75th percentile, 3 syllables max, no consonant clusters), and (3) linguistic fluency metrics. None of these can be constructed from the allowed technical indicator set. A proper implementation would require a custom preprocessor layer that ingests IPO calendars and linguistic scoring models before price data enters the backtest engine."
+}

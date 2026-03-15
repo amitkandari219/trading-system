@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_6_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires order book microstructure detection (time precedence, queue position, competing traders, price improvement execution) which cannot be expressed using only OHLCV candle-based indicators. Requires real-time bid/ask level data and order book state tracking.",
+  "translation_notes": "This is a microstructure trading signal based on order book dynamics and execution priority rules, not price action patterns. The core logic (improve price by 4+ ticks to gain priority) requires: (1) detection of existing orders at specific price levels, (2) identification of time-precedence holders, (3) order placement with price improvement, and (4) execution confirmation. None of these can be reliably detected from historical candle data. A proxy based on pivot points was attempted but does not capture the actual signal intent."
+}

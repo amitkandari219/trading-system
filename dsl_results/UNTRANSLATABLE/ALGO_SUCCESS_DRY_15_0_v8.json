@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal references 'pred' (a predictive model output) which is not in the ALLOWED INDICATORS list. This appears to be a machine learning model prediction score, not a standard technical indicator. To implement this rule, you would need to either: (1) add the 'pred' indicator to your allowed indicators list, or (2) substitute with a comparable technical indicator like MACD (used as a proxy here) that provides binary directional signals.",
+  "translation_notes": "Signal uses external predictive model 'pred' with thresholds at 0.15 (entry) and -0.05 (exit). Substituted MACD as a technical proxy since it provides similar binary directional signals. Original logic: enter when pred > 0.15, exit when pred < -0.05, with max 20-day hold. The crosses_above operator captures the threshold crossing requirement from entry conditions."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires staged exit logic (exit 50% at new extreme, then 50% on 1.0 ATR pullback) which cannot be expressed as simple 3-field conditions. The dual-tranche exit with proportional sizing and ATR-based pullback triggers require conditional exit ordering and position-level state tracking beyond the rule engine's current condition syntax.",
+  "translation_notes": "Attempted to model the new high/low detection using Donchian Channel (dc_upper as proxy for recent extremes within 10-bar lookback). Entry condition checks for profitable position (returns > 0) and new high touch. Exit conditions use ATR pullback concept but cannot implement the specific 50/50 tranche split and sequential trigger logic. The core staged-exit psychology cannot be fully captured in this schema."
+}

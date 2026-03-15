@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_upper"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Interpreted 'tall white candle bursts out of congestion area' as: large body (body > atr_14) with price breaking above upper Bollinger Band. Entry at congestion breakout approximated as price > sma_50 (support level). Volume condition from source text (breakout above 50-day MA performs better) mapped to sma_50 requirement. Exit when price closes back below sma_50. Exit conditions were AUTHOR_SILENT so reversal logic applied. Bear market applicability noted but pattern marked for both regimes per target_regime specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_upper"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Interpreted 'tall white candle bursts out of congestion area' as: large body (body > atr_14) with price breaking above upper Bollinger Band. Entry at congestion breakout approximated as price > sma_50 (support level). Volume condition from source text (breakout above 50-day MA performs better) mapped to sma_50 requirement. Exit when price closes back below sma_50. Exit conditions were AUTHOR_SILENT so reversal logic applied. Bear market applicability noted but pattern marked for both regimes per target_regime specification."
+  },
+  "source_rule_text": "13 New Price Lines pattern: A tall white candle bursts out of a congestion area, triggering a buy order at the top of the congestion zone"
+}

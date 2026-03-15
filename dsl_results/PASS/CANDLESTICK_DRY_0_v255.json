@@ -1,0 +1,82 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Bullish Breakaway pattern translated as: (1) Body size must be large relative to ATR_14 to detect 'tall' candles, (2) Close below previous close indicates bearish pressure/downtrend continuation, (3) Close above previous open indicates white candle reversal. Exit conditions set conservatively when price breaks below recent lows, signaling pattern failure. Pattern is extremely rare (sample_size=41) per source data. Multiple days of lower closes and multi-day retrace detection require bar-by-bar analysis during backtest execution."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Bullish Breakaway pattern translated as: (1) Body size must be large relative to ATR_14 to detect 'tall' candles, (2) Close below previous close indicates bearish pressure/downtrend continuation, (3) Close above previous open indicates white candle reversal. Exit conditions set conservatively when price breaks below recent lows, signaling pattern failure. Pattern is extremely rare (sample_size=41) per source data. Multiple days of lower closes and multi-day retrace detection require bar-by-bar analysis during backtest execution."
+  },
+  "source_rule_text": "Bullish Breakaway: Price forms a tall black candle in a downtrend, then candle lines continue lower with prices closing down each day until a tall white candle ends bearish pressure. In one day, price retakes the ground lost during the prior three days. Usually followed by upward breakout."
+}

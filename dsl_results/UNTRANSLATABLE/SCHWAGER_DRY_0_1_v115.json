@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of '3 consecutive daily down closes OR single down day exceeds 2.0x ADR' which cannot be expressed with single-bar indicators and allowed operators. This requires multi-bar pattern recognition logic not supported by the indicator set. Additionally, 'position_size_multiplier' of 0.65 is a portfolio/risk management rule rather than a tradeable entry/exit condition.",
+  "translation_notes": "Translated core regime-detection concept: price below 50-day MA with elevated volatility (ATR spike >2%). Exit on mean reversion back to 50-day MA. The 2.5x ATR stop-loss is approximated as 2.5% but ATR is dynamic. Original signal emphasizes regime adaptation and position sizing which are risk management concerns, not entry/exit logic. Multi-bar consecutive close patterns and ADR multiple comparisons require custom scripting."
+}

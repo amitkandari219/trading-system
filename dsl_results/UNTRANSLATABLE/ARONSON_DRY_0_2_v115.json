@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires ranking assets by 6-month momentum score relative to peers and selecting top 30% percentile dynamically. This requires cross-sectional relative ranking across a portfolio universe, which cannot be expressed as a single-asset condition using only the allowed indicators and operators. The allowed indicator set lacks a 'momentum_rank' or 'percentile_rank' metric and does not support comparative ranking logic across multiple securities.",
+  "translation_notes": "Signal ARONSON_DRY_0_2 describes a momentum persistence strategy requiring: (1) calculation of 6-month price momentum as (Price_today - Price_6mo_ago)/Price_6mo_ago, (2) cross-sectional ranking across eligible universe, (3) position in top 30% by momentum. The entry_long condition uses positive returns as a proxy for upward momentum, and exit_long uses negative returns as reversal signal. However, the core ranking and percentile selection logic cannot be translated to single-asset rule conditions. This strategy requires portfolio-level ranking logic at the backtest engine level, not individual asset conditions."
+}

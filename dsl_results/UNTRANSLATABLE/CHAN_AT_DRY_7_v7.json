@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires comparison to close price from exactly 250 trading days ago (12-month lookback). The ALLOWED INDICATORS list only provides prev_close (1 bar back) and sma_200 (approximation). Historical price at arbitrary past offsets (250 bars back) is not in the allowed indicator set. Additionally, the daily rebalancing logic with 1/25th capital allocation per day requires position-sizing rules and sequential entry logic that cannot be expressed in the current condition schema.",
+  "translation_notes": "This is a time-series momentum strategy requiring: (1) historical price reference at 250-day offset; (2) dynamic daily position sizing (1/25 of capital daily over 25 days); (3) context-dependent direction with simultaneous long/short tracking. The condition schema supports static entry/exit rules but not parameterized historical lookbacks or position-sizing allocation schedules. Recommend implementing as custom backtest logic rather than rule-based conditions."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires statistical tests (variance ratio test, half-life calculation, lambda coefficient from mean reversion model) that are not available in the allowed indicator set. These are model outputs requiring external computation rather than technical indicators. The backtest engine cannot natively compute: (1) variance ratio test hypothesis rejection with p-value output, (2) mean reversion half-life calculation, or (3) lambda coefficient estimation from AR(1) models. These require econometric analysis outside standard OHLCV indicators.",
+  "translation_notes": "This signal fundamentally requires statistical mean reversion detection that cannot be expressed using only the allowed technical indicators. A practical workaround would require adding custom indicators for: VRatio test output, mean_reversion_half_life, and mean_reversion_lambda. The signal is theoretically sound but operationally untranslatable to the current backtest engine constraint set."
+}

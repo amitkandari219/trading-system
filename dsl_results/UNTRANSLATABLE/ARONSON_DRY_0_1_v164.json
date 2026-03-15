@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a synthetic indicator (quality spread = AAA yield - BAA yield) derived from external bond market data (Moody's corporate bond series). This spread is not available in the allowed indicators list which contains only equity price/volume/technical indicators. The signal cannot be fully translated without access to AAA and BAA corporate bond yield data.",
+  "translation_notes": "Attempted partial translation using price/SMA as proxy for equity market response to credit spread widening, but this loses the core signal logic which depends on monitoring the credit quality spread itself as the leading indicator. The 50-day SMA, 2-day confirmation, and intraday momentum conditions were partially translated, but without the actual bond spread calculation, the signal is not accurately represented. Recommend: (1) adding AAA_yield and BAA_yield as external data sources, or (2) using an alternative equity-based risk appetite indicator like credit spreads from equity option markets."
+}

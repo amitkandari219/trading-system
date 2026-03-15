@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_20_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires real-time inventory levels, production pipeline lead times, demand growth rates, and storage cost data. These are fundamental/supply-chain metrics not available in standard OHLCV technical indicators. Cannot accurately map 'inventory percentile', 'pipeline_days', 'demand_zscore', or 'storage_cost_pct' to allowed indicators. Approximated using price_pos_20 (proxy for inventory pressure via price position) and hvol_20 (proxy for volatility from supply disruption), but this is a lossy conversion.",
+  "translation_notes": "Original signal is fundamentally a supply-chain microstructure play requiring external data feeds (inventory reports, production schedules, commodity storage costs). Used price_pos_20 as a rough proxy for inventory stress (low price position = potential shortage pressure) and hvol_20 as proxy for demand volatility shock. Entry logic: price near 2-year lows (0.30 percentile) AND elevated volatility. Exit when price recovers to median (0.50). Direction set to LONG (buying the dislocation). This is a significantly degraded approximation of the intended signal."
+}

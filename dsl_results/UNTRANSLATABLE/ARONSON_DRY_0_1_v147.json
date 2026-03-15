@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires CFTC commercial hedger positioning data (net long/short percentiles and positioning changes). This proprietary COT dataset is not available in the ALLOWED INDICATORS list. The rule depends on comparing hedger net positioning against 60th/45th percentile thresholds and tracking multi-week positioning sustainability\u2014data types that cannot be derived from standard price, volume, or technical indicators. Only the price-based proxy (50-day MA for trend confirmation) could be partially translated.",
+  "translation_notes": "Partially translated using 50-day MA as a trend confirmation filter. Entry conditions anchor to price relative to sma_50 (downtrend/uptrend context). However, the core signal logic\u2014hedger positioning flows vs. price direction\u2014cannot be faithfully represented without access to CFTC Commitments of Traders data. Recommend sourcing external COT data feed and applying hedger percentile logic outside this rule engine, then triggering entries/exits via external signals."
+}

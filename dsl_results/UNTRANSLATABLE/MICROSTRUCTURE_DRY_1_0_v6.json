@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires external market microstructure data not available in price/volume technical indicators: (1) 'Identify order flow from non-speculative source' requires order flow classification (investor rebalancing, hedge operations, structural flows) - not derivable from OHLCV alone; (2) 'Confirmation that order size exceeds typical speculator activity' requires order categorization by counterparty intent - unavailable; (3) 'Own information advantage demonstrable via alternative data or fundamental research' requires explicit alternative data feeds and fundamental signals outside the allowed indicator set. The signal is fundamentally about information asymmetry detection and counterparty classification, which cannot be operationalized using only technical price/volume indicators.",
+  "translation_notes": "MICROSTRUCTURE_DRY_1_0 is a market microstructure and behavioral trading principle rather than a technical signal. It requires: order flow source identification, counterparty motive classification, and explicit information edge measurement. None of these can be expressed through the allowed technical indicators (OHLCV, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, returns). A proper implementation would require: (1) order flow tagging data, (2) market participant classification, (3) alternative data streams, (4) explicit alpha measurement frameworks. Consider implementing as a separate non-price-based signal adapter."
+}

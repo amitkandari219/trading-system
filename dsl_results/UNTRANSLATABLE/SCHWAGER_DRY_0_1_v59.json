@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) fundamental catalyst strength assessment (top 15th percentile of historical readings) - not available in price/technical indicators; (2) comparison of actual market move vs historically normal expected move - requires external fundamental data and historical expectation library; (3) direct measurement of trader's position thesis validity - requires sentiment/positioning data. The core logic depends on fundamental data (catalyst quality, expected move magnitude) that cannot be expressed using only the allowed technical indicators.",
+  "translation_notes": "Attempted partial translation using technical proxies: entry assumes bullish fundamental position (price above MA), exit uses weak returns (0.6% = 0.006 in decimal scale, approximating 40% of typical 1.5% expected move) and price below pivot as reversal signal. However, this loses the essential semantic meaning of the signal which is about thesis validation through market response to fundamental catalysts. A proper implementation would require: (1) fundamental event tracking, (2) expected move calculations from historical volatility around catalyst dates, (3) relative performance metrics vs benchmark reactions."
+}

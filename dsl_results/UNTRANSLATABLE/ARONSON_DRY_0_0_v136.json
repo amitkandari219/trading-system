@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculating price deviation in standard deviations from 50-period MA (3.0 stdev threshold), identifying reversal candles with opposite momentum, and volume exceeding 20-period average by 150%. These require custom calculations not available in the allowed indicator set. The allowed indicators do not include: standard deviation bands around MA, momentum divergence detection, or normalized volume deviation metrics. Only approximated using price position relative to sma_50 and vol_ratio_20.",
+  "translation_notes": "CONTEXT_DEPENDENT direction cannot be directly expressed in this schema. Provided separate LONG and SHORT entry/exit conditions as a workaround. The 3.0 stdev deviation, reversal candle detection, and momentum confirmation cannot be accurately represented with allowed indicators. vol_ratio_20 is used as proxy for volume confirmation but does not match the specified 150% threshold over 20-period average. Stop loss set to 1.5 (representing 1.5x deviation magnitude) as approximation."
+}

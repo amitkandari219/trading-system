@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references an external proxy index (DJTA) used to trade a different target market (S&P 500). The allowed indicator set contains only price/technical indicators for a single instrument. Cross-market signal generation with a reference index proxy cannot be expressed in the single-instrument constraint. Additionally, the requirement to track 'bars below lower band' (confirmation_bars >= 2) requires state tracking across multiple bars, which is not supported by the condition schema.",
+  "translation_notes": "Attempted partial translation using Bollinger Bands as a volatility band proxy (bb_lower, bb_upper with bb_middle as sma_20 and bandwidth ~4%), and price_pos_20 to approximate extreme deviation. However, the core logic of using an external correlated index (DJTA) to generate signals in another market (S&P 500) cannot be faithfully represented without cross-market data access. The signal is fundamentally untranslatable in this framework."
+}

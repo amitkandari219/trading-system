@@ -1,0 +1,106 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "book_id": "CHAN_AT",
+  "dsl_rule": {
+    "signal_id": "CHAN_AT_DRY_4",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "bb_pct_b",
+        "operator": "<",
+        "right": "0.0"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "bb_pct_b",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Translated z-score conditions using Bollinger Bands percentile (bb_pct_b). Entry occurs when price deviates beyond 1 standard deviation (bb_pct_b < 0.0 for long, > 1.0 for short). Exit when price returns to moving average (bb_pct_b \u2248 0.5 or close crosses sma_20). Used sma_20 as the moving average reference point for mean reversion. bb_pct_b directly represents normalized distance from moving average in standard deviations."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "bb_pct_b",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "bb_pct_b",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Translated z-score conditions using Bollinger Bands percentile (bb_pct_b). Entry occurs when price deviates beyond 1 standard deviation (bb_pct_b < 0.0 for long, > 1.0 for short). Exit when price returns to moving average (bb_pct_b \u2248 0.5 or close crosses sma_20). Used sma_20 as the moving average reference point for mean reversion. bb_pct_b directly represents normalized distance from moving average in standard deviations."
+  },
+  "source_rule_text": "A mean-reversion strategy using Bollinger Bands that trades when price deviates from its moving average by more than one standard deviation, with separate entry and exit thresholds."
+}

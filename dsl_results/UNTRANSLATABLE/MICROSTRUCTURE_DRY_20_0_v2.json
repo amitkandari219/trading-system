@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_20_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of material information events and asymmetry windows ('information not yet public'), which are external event-driven signals not representable by OHLCV technical indicators. The entry condition 'Information event is identifiable and material to fundamentals' and 'Asymmetry window remains open' require fundamental/news data or event calendars external to price/volume data. The exit condition 'Information becomes common knowledge' similarly requires external knowledge dissemination tracking.",
+  "translation_notes": "Translated available technical components: vol_ratio_20 for volume percentile (90th), returns for price move standard deviation detection (approximated as absolute returns > 2 sigma). However, the core logic of this microstructure signal\u2014detecting information asymmetry and informed trading windows\u2014cannot be operationalized with OHLCV indicators alone. This signal is designed for fundamental event arbitrage and requires external data feeds (news, SEC filings, analyst reports) or explicit event timestamps to function correctly."
+}

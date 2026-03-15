@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) month-end detection and cross-month calculations not available in allowed indicators; (2) dynamic ranking of stocks by monthly returns across universe (requires comparative sorting logic); (3) year-on-year seasonal pattern matching from historical lookback (requires multi-year seasonal decomposition not in indicator set); (4) explicit seasonal calendar logic. The strategy is fundamentally a portfolio-level relative-value and seasonal calendar signal that cannot be expressed as simple bar-level indicator conditions.",
+  "translation_notes": "This is a universe/portfolio-level seasonal ranking strategy, not a single-instrument technical signal. It requires: (a) monthly rebalancing logic at month-end; (b) cross-sectional ranking of S&P 500 constituents; (c) historical seasonal pattern matching (e.g., 'month X tends to outperform'); (d) state management across months. A minimal approximation using monthly returns has been provided, but does not capture the core seasonal ranking and year-on-year pattern-matching logic. Recommend implementing as custom portfolio strategy outside standard backtest engine."
+}

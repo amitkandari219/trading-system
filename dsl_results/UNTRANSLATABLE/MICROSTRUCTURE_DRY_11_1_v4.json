@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_11_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires detection of order flow microstructure patterns (consecutive same-side trades from specific counterparties, participant identity tracking, and behavioral prediction). The available indicators do not include participant order flow data, trade-by-trade sequencing, counterparty identification, or behavioral momentum metrics. Vol_ratio_20 and returns are proxies only and cannot accurately capture the core pattern of repeated directional trading by a specific participant within a 15-trade window.",
+  "translation_notes": "Signal is fundamentally based on order book microstructure and counterparty behavior analysis (Jon's tendency to buy after buying/selling after selling). This requires real-time order flow data, participant tracking, and intra-bar trade sequence analysis\u2014none of which are available in the standard OHLCV indicator set provided. The rule cannot be accurately translated into price-action conditions. A proper implementation would require custom order flow analysis at the tick/trade level."
+}

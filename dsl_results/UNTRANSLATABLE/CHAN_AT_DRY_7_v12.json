@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal references 'annualized roll return of 3 percent' which is a futures-specific metric (rolling contract returns) not available in the standard indicator set. The exact threshold value is marked AUTHOR_SILENT. The 'Alexander Filter' appears to be a proprietary indicator not in the allowed list. Interpreted daily return threshold as 0.03 (3%) but this may not match the intended annualized roll return logic.",
+  "translation_notes": "Converted to daily returns comparison since 'returns' is the closest available indicator to daily return calculation. The source mentions a 3% threshold applied to TU (10-year Treasury futures) with results from 2009-2012 (Sharpe 2.1, APR 2.5%), but the exact threshold parameterization and exit logic are not specified in the excerpt. Exit condition reversed to negative returns as a reasonable default since AUTHOR_SILENT."
+}

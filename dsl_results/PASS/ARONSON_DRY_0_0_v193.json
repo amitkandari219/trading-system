@@ -1,0 +1,64 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "rsi_14",
+        "operator": "<=",
+        "right": "40"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is a momentum filter (regime rule) that prevents entry into short positions when RSI > 40, allowing strategy to remain in cash. Used rsi_14 as the standard RSI indicator. The dual moving average crossover signals referenced in entry/exit conditions are not explicitly encoded here as they would be handled by a separate primary strategy rule. Exit threshold calculated as rsi_max + 10 = 40 + 10 = 50. Direction set to CONTEXT_DEPENDENT as the signal filters both long and short entries based on momentum regime. Target regime mapped to TRENDING as specified."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "rsi_14",
+        "op": "<=",
+        "value": 40.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 50.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is a momentum filter (regime rule) that prevents entry into short positions when RSI > 40, allowing strategy to remain in cash. Used rsi_14 as the standard RSI indicator. The dual moving average crossover signals referenced in entry/exit conditions are not explicitly encoded here as they would be handled by a separate primary strategy rule. Exit threshold calculated as rsi_max + 10 = 40 + 10 = 50. Direction set to CONTEXT_DEPENDENT as the signal filters both long and short entries based on momentum regime. Target regime mapped to TRENDING as specified."
+  },
+  "source_rule_text": "Use a momentum/rate-of-change filter (RSI) to prevent entry into trades when momentum conditions are unfavorable, allowing the strategy to remain in cash rather than always reversing positions."
+}

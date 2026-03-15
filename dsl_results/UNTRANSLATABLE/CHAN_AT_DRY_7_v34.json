@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Cross-sectional mean reversion requires comparison of individual stock returns against sector/market mean (unavailable in single-stock indicators). Lookback_period, threshold, and half_life parameters marked AUTHOR_SILENT are essential but not provided. Cannot construct precise cross-sectional deviation detection using only single-instrument price/technical indicators.",
+  "translation_notes": "Attempted proxy using intraday returns reversal as approximation of mean reversion (negative returns trigger long, positive trigger short). Actual implementation requires: (1) cross-sectional universe aggregation, (2) dynamic mean calculation across S&P 500 constituents, (3) z-score or deviation metrics. Backtest Sharpe of 4.7 suggests strong signal quality but requires author-specified parameters to validate."
+}

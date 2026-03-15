@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) news diffusion events - no news sentiment/event indicator available; (2) mutual fund forced liquidation contagion - no fund flow or order flow indicators available; (3) positive kurtosis in returns distribution - kurtosis calculation not in allowed indicators. Substituted with proxies: positive returns momentum (returns > 0), elevated volatility (hvol_20), and price above trend (close > sma_20), but these do not capture the core economic mechanisms of news diffusion and fund contagion.",
+  "translation_notes": "Entry conditions use available momentum and volatility proxies: positive returns indicate post-event momentum, elevated historical volatility (hvol_20 > 0.02 = 2%) approximates high volatility regimes, and price above SMA_20 confirms uptrend. Exit uses RSI overbought (>70) as reversal signal. Original 'AUTHOR_SILENT' parameters replaced with reasonable defaults: 20-day lookback (SMA_20), 3% stop loss, 15-day max hold. Cannot fully capture news-driven contagion or kurtosis clustering without specialized data feeds."
+}

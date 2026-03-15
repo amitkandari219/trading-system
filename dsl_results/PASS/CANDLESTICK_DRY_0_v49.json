@@ -1,0 +1,80 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Pattern detection based on 8-day formation not directly available as indicator. Approximated entry conditions: (1) closing lower than previous (black candle), (2) higher high than previous (confirming higher high), (3) body is negative (black/bearish candle). Exit condition is a simple reversal (close above previous close). The 8-day lookback period and measure rule for target calculation would require custom pattern logic beyond standard indicators. Stop loss set conservatively at 3% given the pattern-based nature and high volatility of breakout trades."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Pattern detection based on 8-day formation not directly available as indicator. Approximated entry conditions: (1) closing lower than previous (black candle), (2) higher high than previous (confirming higher high), (3) body is negative (black/bearish candle). Exit condition is a simple reversal (close above previous close). The 8-day lookback period and measure rule for target calculation would require custom pattern logic beyond standard indicators. Stop loss set conservatively at 3% given the pattern-based nature and high volatility of breakout trades."
+  },
+  "source_rule_text": "Pattern name: New Price Lines (8-day formation). Entry signal when price reverses strongly from bottom (point A) and advances rapidly over 8 days, then encounters overhead resistance where the last candle turns black, followed by another black candle that makes a higher high but closes lower, confirming a downward breakout."
+}

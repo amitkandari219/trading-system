@@ -1,0 +1,18 @@
+{
+  "signal_id": "JOHNSON_DRY_4_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a limit order placement strategy based on anticipatory price targets and execution uncertainty rather than technical indicator thresholds. The core concept\u2014placing limit orders at distances from LTP (buy_limit_distance_from_ltp_percent: 1.0%) to capture reversion or trend continuation\u2014cannot be expressed using the available price and indicator-based operators. The strategy requires: (1) dynamic limit price calculation relative to LTP with parameterized offsets, (2) order expiry logic (15-minute window), and (3) execution probability modeling. These are order management constructs, not indicator conditions. The 'CONTEXT_DEPENDENT' direction and reliance on trader identification of 'expected reversion zone' further indicate this is a discretionary framework rather than a rule-based signal translatable into fixed indicator comparisons.",
+  "translation_notes": "JOHNSON_DRY_4_1 is a meta-strategy for limit order placement philosophy. To implement this in a backtest engine, you would need: (a) custom order types with parameterized distance offsets, (b) time-based order expiry mechanics, (c) regime detection (RANGING vs TRENDING context). Consider creating a separate 'limit_order_framework' rule type that accepts buy_limit_distance_from_ltp_percent and sell_limit_distance_from_ltp_percent as direct parameters, bypassing indicator-based conditions."
+}

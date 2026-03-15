@@ -1,0 +1,128 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "crosses_above",
+        "right": "45"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "crosses_below",
+        "right": "55"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "40"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "60"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires context-dependent directional bias. Entry uses RSI crossing threshold (45 for longs, 55 for shorts) as momentum confirmation, volume ratio for above-average volume, and price vs SMA_20 for trend establishment. Exit triggers on RSI falling below 40 (longs) or rising above 60 (shorts) per overshooting definition. Max hold of 10 bars enforces time-based diffusion exit. 50% retracement condition not directly translatable to allowed indicators; RSI threshold serves as proxy for momentum exhaustion. Higher timeframe opposition check cannot be expressed in single-timeframe rule."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "crosses_above",
+        "value": 45.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "crosses_below",
+        "value": 55.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 40.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 60.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires context-dependent directional bias. Entry uses RSI crossing threshold (45 for longs, 55 for shorts) as momentum confirmation, volume ratio for above-average volume, and price vs SMA_20 for trend establishment. Exit triggers on RSI falling below 40 (longs) or rising above 60 (shorts) per overshooting definition. Max hold of 10 bars enforces time-based diffusion exit. 50% retracement condition not directly translatable to allowed indicators; RSI threshold serves as proxy for momentum exhaustion. Higher timeframe opposition check cannot be expressed in single-timeframe rule."
+  },
+  "source_rule_text": "A trader should enter a momentum trade when price trend signals are early and incomplete diffusion suggests continuation, but must exit before full news diffusion causes overshooting reversal."
+}

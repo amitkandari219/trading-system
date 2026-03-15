@@ -1,0 +1,64 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_middle"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Broadening Bottom breakout entry: price closes above the highest high in formation (approximated using Donchian upper band for the highest high over recent bars). Exit uses mean reversion to Donchian middle as a reasonable exit when momentum fades. Entry filter to avoid dead-cat bounce would require pattern detection not available in indicator set. Success rates (62% bull, 34% bear) and average rise (27%) noted but not encoded as they are statistical outcomes. Default stop loss set to 5% and max hold to 30 days based on pattern characteristics."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_middle"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Broadening Bottom breakout entry: price closes above the highest high in formation (approximated using Donchian upper band for the highest high over recent bars). Exit uses mean reversion to Donchian middle as a reasonable exit when momentum fades. Entry filter to avoid dead-cat bounce would require pattern detection not available in indicator set. Success rates (62% bull, 34% bear) and average rise (27%) noted but not encoded as they are statistical outcomes. Default stop loss set to 5% and max hold to 30 days based on pattern characteristics."
+  },
+  "source_rule_text": "Broadening Bottom: A breakout occurs when prices rise above the highest high in the formation"
+}

@@ -1,0 +1,168 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "atr_14",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "40"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "0.40"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "atr_14",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "60"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "0.40"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "atr_14",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "atr_14",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is context-dependent (long/short based on price direction). Entry requires: price breakout from previous bar + ATR expansion (atr_14 > sma_20 approximates ATR > 20-period MA of ATR) + RSI directional confirmation + volume above 40th percentile (vol_ratio_20 > 0.40). Exit triggers on bar reversal or volatility contraction. Position size multiplier (1.5x) noted but not encoded in JSON. Rate-of-change confirmation mapped to RSI thresholds as ROC is not in allowed indicators."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "atr_14",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 40.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 0.4
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "atr_14",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 60.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 0.4
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "atr_14",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "atr_14",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is context-dependent (long/short based on price direction). Entry requires: price breakout from previous bar + ATR expansion (atr_14 > sma_20 approximates ATR > 20-period MA of ATR) + RSI directional confirmation + volume above 40th percentile (vol_ratio_20 > 0.40). Exit triggers on bar reversal or volatility contraction. Position size multiplier (1.5x) noted but not encoded in JSON. Rate-of-change confirmation mapped to RSI thresholds as ROC is not in allowed indicators."
+  },
+  "source_rule_text": "Trend-following strategies are most profitable when positive feedback dominates market behavior, characterized by imitative investor decisions that amplify initial price movements into large-scale trends rather than mean reversion."
+}

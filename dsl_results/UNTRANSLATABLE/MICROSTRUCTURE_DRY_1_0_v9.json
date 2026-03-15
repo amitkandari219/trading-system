@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires monitoring of competing strategy signals and dynamic profit compression thresholds (75% of 20-day baseline vs 5-day average). These require: (1) external signal feed integration not available in indicator set, (2) multi-timeframe rolling window comparisons (20-day baseline vs 5-day current) that cannot be expressed as single-bar conditions with allowed operators. The profit_compression_threshold_percentile (25th percentile) and competitive entry detection logic require statistical aggregation across multiple strategy signals unavailable in ALLOWED_INDICATORS.",
+  "translation_notes": "This is a regime/meta-strategy rule about strategy erosion due to competition rather than a tradable technical signal. It requires monitoring competing traders' actions and comparing rolling profit windows\u2014capabilities outside the scope of single-indicator backtesting conditions. Recommend implementing as a separate portfolio-level monitoring system rather than a per-instrument backtest rule."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparing individual stock returns to universe average return and detecting serial anti-correlation of relative returns. The allowed indicators set does not include universe-level aggregates, relative performance metrics, or anti-correlation detection. Specifically missing: (1) universe average return calculation, (2) relative return vs universe metric, (3) serial correlation analysis. These require cross-sectional or multi-asset computations beyond single-stock price/volume indicators.",
+  "translation_notes": "The signal describes a mean-reversion strategy based on relative underperformance (stock return below universe average) with expectation of reversal. A simplified proxy using negative returns as entry has been drafted, but this fundamentally misses the relative and cross-sectional nature of the strategy. Author-silent parameters (lookback_period, threshold, half_life) further limit accurate translation. A proper implementation would require universe-relative performance data not available in the allowed indicator set."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Volatility threshold logic ('volatility exceeds 20-day MA by 50%') cannot be precisely expressed with allowed indicators. hvol_20 is in decimal scale and requires complex relative comparison. Regime state machine with threshold-based transitions (green\u2192yellow\u2192red) is not natively supported by simple condition logic. Position-sizing modulation and signal rejection rules are operational/execution directives, not testable conditions.",
+  "translation_notes": "This signal is fundamentally a regime-based position management framework rather than a simple entry/exit rule. The core mechanism uses ADX as the primary regime health indicator (ADX < 15 = yellow, ADX < 10 = red). The 12% and 20% adverse move thresholds and volatility spike conditions cannot be cleanly translated into the three-field condition format. The three-light system (green/yellow/red) with corresponding actions (accept all / liquidate existing / liquidate all) is properly captured in the regime_filter and position_management objects, but the exact transition triggers involving price moves and vol ratios are not fully translatable."
+}

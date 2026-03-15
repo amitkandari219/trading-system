@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 3 consecutive gap days with specific sequencing logic. While individual gap detection is possible via returns > 1.5%, the backtest engine lacks a dedicated multi-bar gap counter and sequential gap confirmation mechanism. Cannot express '3 consecutive gaps AND no reversal day yet' with available atomic condition operators without multi-bar state tracking.",
+  "translation_notes": "Approximated gap detection using returns indicator (1.5% threshold). Entry condition approximates gap-up/gap-down sequences but cannot enforce strict 3-consecutive requirement. Price position relative to 20-bar range (price_pos_20) approximates '10% of recent range extremes' constraint. Exit targets use approximate 5% return threshold as profit target. Reversal day detection approximated via open crossing prev_close. Direction set to CONTEXT_DEPENDENT to reflect long/short symmetry in original signal."
+}

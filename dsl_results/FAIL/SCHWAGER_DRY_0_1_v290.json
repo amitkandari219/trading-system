@@ -1,0 +1,24 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 21,
+  "direction": "BOTH",
+  "target_regime": [
+    "TRENDING_UP",
+    "TRENDING_DOWN",
+    "RANGING",
+    "HIGH_VOL"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "This is a regime-based risk management rule, not a traditional entry/exit signal. It modulates position-taking based on regime health indicated by ADX levels and volatility thresholds. GREEN regime (ADX > 18): accept all signals normally. YELLOW regime (ADX 12-18 OR volatility exceeds sma_20 by 40%): liquidate new entries, hold existing. RED regime (ADX < 12 OR volatility exceeds sma_20 by 65%): liquidate all positions within 1-2 bars. Implementation requires conditional logic wrapper that gates signal acceptance through regime state machine rather than direct entry/exit rules.",
+  "validation_issues": [
+    "no entry conditions defined"
+  ]
+}

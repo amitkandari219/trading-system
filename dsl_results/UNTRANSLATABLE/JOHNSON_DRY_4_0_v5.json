@@ -1,0 +1,18 @@
+{
+  "signal_id": "JOHNSON_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal describes a limit order placement strategy with execution uncertainty based on anticipated future price movement and reversion zones. These are order management tactics requiring dynamic limit price calculation (current_price \u00b1 percentage offset) and time-based expiry logic that cannot be expressed as static indicator-based conditions. Required: order_type, limit_distance_pct, time_to_expiry, execution_probability modeling\u2014none available in indicator set.",
+  "translation_notes": "JOHNSON_DRY_4_0 is fundamentally a limit order execution strategy, not a price-level trading signal. The core logic (place limit buy/sell at offset from LTP, expire in 5 min, accept partial fills) requires order management rules outside backtest engine scope. Parameters buy_limit_distance_from_ltp_percent (0.5%) and sell_limit_distance_from_ltp_percent (0.5%) should be implemented as order placement rules, not entry conditions."
+}

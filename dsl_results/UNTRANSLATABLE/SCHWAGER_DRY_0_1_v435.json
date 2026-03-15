@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires calculation of price position relative to N-period mean and standard deviations (2.0 std dev threshold with 20-period rolling volatility). While price_pos_20 approximates percentile rank within a 20-period band, it does not directly measure standard deviation moves from mean. The allowed indicator set lacks explicit multi-standard-deviation band indicators (such as Bollinger Bands with configurable std dev or a raw volatility-adjusted z-score). The 98% statistical likelihood of reversion is also not directly expressible with allowed operators.",
+  "translation_notes": "Attempted proxy: price_pos_20 represents price position in 20-period range (0=lowest, 1=highest). Entry long at price_pos_20 < 0.02 approximates extreme lows; entry short at price_pos_20 > 0.98 approximates extreme highs. Exit targets price_pos_20 = 0.5 (mean reversion). However, this does not capture the precise 2.0 standard deviation threshold or statistical probability framework required by the original signal. For accurate implementation, a custom indicator calculating rolling mean \u00b1 2\u03c3 is needed."
+}

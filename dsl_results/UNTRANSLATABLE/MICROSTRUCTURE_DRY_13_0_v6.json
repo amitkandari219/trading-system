@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_13_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires modeling dealer inventory goals, bid/ask quote manipulation, and counterparty behavior signaling\u2014concepts not expressible via price/technical indicators alone. Bid-ask spread data and inventory position tracking are not available in the allowed indicator set. The rule describes a market microstructure tactic (quote positioning to signal intent) rather than a price-based trading pattern.",
+  "translation_notes": "Attempted proxy: Used bb_bandwidth as a spread proxy (wider spreads \u2192 higher Bollinger width) and hvol_20 for LOW_VOL regime detection. However, this severely misrepresents the original signal, which is fundamentally about order book dynamics and dealer positioning, not price volatility or technical levels. A proper backtest would require tick-level bid/ask data and inventory state variables not present in this indicator toolkit."
+}

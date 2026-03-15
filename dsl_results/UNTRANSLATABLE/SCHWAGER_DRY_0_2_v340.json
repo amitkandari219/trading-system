@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires valuation metrics (P/E, P/B, Shiller CAPE) and structural market anomalies (margin debt, concentration ratios, derivative imbalances, institutional flows) which are NOT in the allowed indicator list. These are macro/fundamental indicators requiring external data sources, not price-action or technical indicators. The signal is a regime-detection framework rather than a tradeable entry/exit signal.",
+  "translation_notes": "SCHWAGER_DRY_0_2 is a regime-context rule for position sizing reduction, not a directional trading signal. It describes when to shift to cautious stance (80% exposure reduction) based on: (1) Valuation z-score >2.0 standard deviations above 20-year mean, and (2) 3+ structural anomalies present. Neither condition can be expressed with available price/technical indicators. Requires external data feeds for: valuation ratios, historical mean/std dev calculations, margin debt levels, sector concentration indices, options market imbalances, and institutional positioning data. Recommend: (a) Add custom indicators for these macro factors, or (b) Implement as a separate portfolio-level context filter outside the backtester."
+}

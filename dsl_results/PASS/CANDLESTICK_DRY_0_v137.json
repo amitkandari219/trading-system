@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "high"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Abandoned Baby Bearish pattern translated as: (1) Price makes a new high above previous bar's high, (2) Close fails to sustain near the high (large upper wick relative to body), (3) Close is below open (bearish reversal candle). Exit when price crosses back above SMA_20 indicating trend reversal or on max hold period. Parameters like success rates and volume trends were not quantifiable from source text (AUTHOR_SILENT) so defaults were applied."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "high"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Abandoned Baby Bearish pattern translated as: (1) Price makes a new high above previous bar's high, (2) Close fails to sustain near the high (large upper wick relative to body), (3) Close is below open (bearish reversal candle). Exit when price crosses back above SMA_20 indicating trend reversal or on max hold period. Parameters like success rates and volume trends were not quantifiable from source text (AUTHOR_SILENT) so defaults were applied."
+  },
+  "source_rule_text": "Abandoned Baby, Bearish: Price attempts a new high and fails or rises slightly higher to make a new high before running out of steam and reversing. Marks a failed attempt at a new high, also called a 2B pattern."
+}

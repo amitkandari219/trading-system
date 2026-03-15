@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'rising volume trend toward breakout point' and market context (BULL_MARKET vs BEAR_MARKET). The allowed indicators lack: (1) a breakout detection mechanism, (2) a volume trend direction measure (only vol_ratio_20 available, which is a ratio not a trend), and (3) market regime classification beyond TRENDING_UP/TRENDING_DOWN/RANGING/HIGH_VOL. The success rates vary significantly by market context (bull up: 25%, bull down: 16%, bear up: -17%, bear down: -19%), requiring regime-dependent logic not supported by the schema.",
+  "translation_notes": "Attempted translation uses vol_ratio_20 > 1.0 as a proxy for elevated volume, and price position relative to sma_20 as a directional proxy. However, the original signal's emphasis on volume *trend acceleration toward breakout* and market regime-dependent performance cannot be properly captured with available indicators. A proper implementation would require: (1) volume trend calculation (e.g., volume slope over N bars), (2) breakout point detection, and (3) regime classification inputs."
+}

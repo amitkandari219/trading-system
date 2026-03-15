@@ -1,0 +1,18 @@
+{
+  "signal_id": "JOHNSON_DRY_4_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tick-sensitive order conditions with dynamic limit price adjustments based on tick direction reconfirmation and latch logic. The allowed indicator set does not include tick direction primitives (uptick/downtick/zero-tick classification) or dynamic limit price adjustment mechanisms. These are order execution features, not price-based technical indicators. Approximated with close vs prev_close comparison, but this loses the nuanced tick-type and limit-price-latch semantics.",
+  "translation_notes": "Attempted approximation: Buy entry when close <= prev_close (downtick/zero-downtick proxy for longs); Sell entry when close >= prev_close (uptick/zero-uptick proxy for shorts). Exit on tick reversal approximated as sustained reversal beyond 1 bar. However, this translation cannot capture: (1) True tick classification (uptick vs downtick vs zero-tick), (2) Dynamic limit price adjustment on direction reconfirmation, (3) Latch behavior on directional reconfirmation, (4) Order validity conditions tied to tick state. A proper implementation requires tick-level order state management outside the indicator framework."
+}

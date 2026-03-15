@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_20_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires decomposition of volatility into 'transitory' vs 'fundamental' components. Available indicators (hvol_20, bb_bandwidth, atr_20) cannot directly measure transitory volatility caused by uninformed trading activity or order flow imbalance. These microstructure components require tick-level data, bid-ask spreads, and order flow analysis not available in the standard OHLCV indicator set.",
+  "translation_notes": "Attempted proxy: Used hvol_20 > 0.55 to approximate high transitory volatility detection (55% threshold), and bb_bandwidth widening as spread deterioration proxy. However, this is a weak approximation. True implementation requires: (1) bid-ask spread data, (2) order flow imbalance metrics, (3) volatility decomposition model. The signal is fundamentally untranslatable without microstructure data feeds."
+}

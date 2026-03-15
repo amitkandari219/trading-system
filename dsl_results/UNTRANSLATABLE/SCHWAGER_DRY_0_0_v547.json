@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) momentum decline tracking over 3+ consecutive periods - no allowed indicator supports multi-bar momentum comparison without array indexing; (2) institutional distribution detection via widening bid-ask spreads - bid-ask data not available in indicator list; (3) RSI divergence detection (price new high vs RSI) - requires pattern recognition logic beyond simple operator conditions",
+  "translation_notes": "Attempted to approximate using: RSI comparison to previous close as proxy for momentum decline, ATR above SMA_20 as volatility elevation proxy (ATR_20 vs SMA_20 \u2248 25% threshold), and RSI threshold levels (65/35) for reversion signals. However, core logic of 3+ consecutive period momentum loss and RSI divergence cannot be expressed within constraint rules without array indexing or pattern detection operators."
+}

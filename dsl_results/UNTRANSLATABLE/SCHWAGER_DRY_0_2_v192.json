@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires staged multi-leg exits (40% at new extreme, 60% on 0.3 ATR pullback) which cannot be expressed in single condition format. The backtest engine schema does not support fractional position liquidation rules, multi-target exit sequencing, or ATR-relative pullback thresholds as discrete conditions. Recommend implementing as custom exit handler or position management module.",
+  "translation_notes": "Attempted approximation: Entry uses 20-bar Donchian for new highs/lows detection; position gain requirement converted to returns > 0. Exit uses price_pos_20 (position within 20-bar range) as proxy for pullback trigger. However, the core signal\u2014staged exits with percentage-based liquidation at specific price levels\u2014requires custom position management logic outside standard indicator-based rule framework."
+}

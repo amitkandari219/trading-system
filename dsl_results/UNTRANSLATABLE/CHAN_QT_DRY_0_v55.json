@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of mean-reversion entry conditions and regime shifts to momentum, which cannot be expressed with the allowed indicators. Mean-reversion detection typically requires statistical measures (z-scores, Bollinger Band mean-reversion patterns) not explicitly available. Profit target and holding period are position management rules, not entry/exit price conditions. Regime shift detection to 'momentum confirmed by recent news' requires external news data not available in the indicator set.",
+  "translation_notes": "Attempted translation uses price crossing SMA as a proxy for mean-reversion detection, but this is insufficient. The signal's core logic (exit on holding period OR profit target, avoid stop-loss losses in mean-reversion regime) is a position management framework rather than a price-based trading rule. Parameters marked AUTHOR_SILENT indicate the specific mean-reversion thresholds and half-life were not provided in the source material. A proper implementation would require custom mean-reversion indicators (e.g., z-score of Bollinger Bands, mean-reverting spread measures) and position-level tracking (cumulative P&L, elapsed holding periods)."
+}

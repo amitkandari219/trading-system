@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking all securities by 3-month total return and selecting top/bottom percentiles across a universe. This is a cross-sectional portfolio construction rule that cannot be expressed as a single-security indicator condition. The backtest engine would need explicit percentile/ranking logic and multi-security comparison capability. The 'returns' field used here approximates recent performance but does not capture the relative ranking mechanism specified in the original signal.",
+  "translation_notes": "Attempted approximation using returns indicator as proxy for recent performance, but true signal intent (percentile-based cross-sectional momentum) requires ranking infrastructure beyond single-security technical indicators. Parameters: lookback=3mo, long_percentile=95, short_percentile=5, hold_period=3mo, stop_loss=8%."
+}

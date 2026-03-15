@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting 'position established based on strong directional thesis' and 'price penetrated entry by 1% or more in wrong direction' \u2014 both require tracking entry price state and thesis validation logic that cannot be expressed with standard technical indicators alone. The rule is inherently position-state dependent rather than price-pattern dependent.",
+  "translation_notes": "This is a position management rule that triggers on thesis contradiction. The exit conditions check for two consecutive bars closing against direction, but the core trigger ('foundational thesis contradicted') is qualitative and requires position tracking metadata not available in standard OHLCV indicators. Recommend implementing as a custom position validator in backtest engine rather than a rule-based indicator condition."
+}

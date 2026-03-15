@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal relies on pattern-specific characteristics not quantifiable with allowed indicators: (1) 'Left bottom below right bottom' requires multi-bar pattern recognition and absolute price level comparison across bottoms; (2) 'Price variation from bottom low to bottom low measured against median' requires historical bottom identification and dynamic baseline calculation not available in indicator set; (3) Exact volume trend classification (falling vs rising) requires volume moving average comparison logic that is incomplete without direction specification; (4) Success rates are regime/market-dependent but cannot be encoded as conditional rules",
+  "translation_notes": "EADB pattern detection requires pattern recognition engine beyond standard technical indicators. Approximated entry with lower low + falling volume (vol_ratio_20 < 1.0 implied), exit on MA20 breach. Consider implementing custom pattern detector for accurate EADB identification. Bull market success rate 37% (lower left) / 33% (lower right); Bear market 26% / 19% respectively."
+}

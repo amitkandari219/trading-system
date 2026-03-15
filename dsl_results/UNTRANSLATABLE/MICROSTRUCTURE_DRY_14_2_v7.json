@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_14_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires microstructure-level data not available in standard OHLCV indicators: (1) Real-time bid/ask spread measurement and components; (2) Detection of transitory vs permanent spread components; (3) Order flow direction (bid-to-ask vs ask-to-bid jump detection); (4) Midpoint tracking separate from trade price; (5) Spread magnitude relative to recent average. The allowed indicator set lacks tick-level bid/ask data, spread decomposition models, and order flow inference. ATR is used as a crude proxy for volatility/spread but cannot capture the directional bid/ask dynamics or transitory spread elevation required for this strategy.",
+  "translation_notes": "This signal is fundamentally a high-frequency microstructure fade strategy requiring market microstructure data (bid/ask ticks, spread components, order flow direction) that is not present in the standard technical indicator set. Attempted partial translation using ATR as spread proxy, but this loses the core logic of counter-trend entry on impatient order flow and spread mean reversion. Recommend: (1) Augment data pipeline with tick-level bid/ask and order imbalance indicators, or (2) Select an alternative signal based on available OHLCV indicators."
+}

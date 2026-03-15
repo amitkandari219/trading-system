@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal relies on order book microstructure conditions (competitor bid matching patterns, time precedence, bid-ask levels) that cannot be expressed using only OHLCV-derived technical indicators. Required conditions include: 'competitor matching behavior', 'historical win rate of leapfrog skips', and 'time precedence tracking' \u2014 these require order flow and order book data not available in the allowed indicator set.",
+  "translation_notes": "Attempted to proxy market confidence and competitive pressure using vol_ratio_20 (volume surge indicates competitive activity) and atr_14 (spread size proxy), but the core logic of tracking competitor bid patterns and securing time precedence cannot be reliably translated to price-action indicators. This strategy is fundamentally an order book/microstructure play requiring Level 2 data and order matching engine insights."
+}

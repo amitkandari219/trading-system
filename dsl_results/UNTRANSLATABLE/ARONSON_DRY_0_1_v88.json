@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculating a ratio between two separate market indices (DJT/SPX) and comparing it to that ratio's moving average. The allowed indicator set does not support multi-instrument ratios or synthetic indicator construction. DJT and SPX are separate data series not available as pre-computed indicators in the allowed list.",
+  "translation_notes": "The signal logic describes a regime filter using an inter-market relationship (Dow Transportation vs S&P 500 ratio). This requires external data preprocessing to compute the ratio time series and its SMA before rule evaluation. The backtest engine would need to be extended to support dual-instrument ratio calculations or the ratio must be pre-computed as a separate input series."
+}

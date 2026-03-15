@@ -1,0 +1,128 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "0.0025"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "0.0025"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.5,
+    "hold_days_max": 21,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Tall lower shadow approximated as lower_wick > 0.0025 (median 0.25-0.36% of breakout price). Heavy breakout-day volume represented as volume > hvol_20 (20-period historical volatility benchmark). Direction is context-dependent (bullish or bearish breakout). Exit uses simple reversal logic since author provided no explicit exit rules. Stop loss set conservatively at 5.5% based on observed decline ranges (-5.43% to -9.64%). Hold period set to ~21 days (3 weeks) as reasonable default. Pattern applies to both bull and bear market regimes."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": 0.0025
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": 0.0025
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 21,
+    "stop_loss_pct": 0.055,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Tall lower shadow approximated as lower_wick > 0.0025 (median 0.25-0.36% of breakout price). Heavy breakout-day volume represented as volume > hvol_20 (20-period historical volatility benchmark). Direction is context-dependent (bullish or bearish breakout). Exit uses simple reversal logic since author provided no explicit exit rules. Stop loss set conservatively at 5.5% based on observed decline ranges (-5.43% to -9.64%). Hold period set to ~21 days (3 weeks) as reasonable default. Pattern applies to both bull and bear market regimes."
+  },
+  "source_rule_text": "Candlestick patterns with tall lower shadows outperform those with short lower shadows; heavy breakout-day volume suggests better performance"
+}

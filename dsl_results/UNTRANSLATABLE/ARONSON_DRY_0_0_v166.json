@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "CBO operator is not in the allowed indicators list. The signal explicitly requires a 'CBO operator' for trend confirmation with sensitivity settings, which cannot be translated using only the available indicators (SMA, EMA, RSI, ATR, etc.). The CBO (Commodity Channel Index variant or custom operator) is a proprietary/specialized indicator not provided in the allowed set.",
+  "translation_notes": "Attempted partial translation using price/SMA crossover as trend proxy, but the core logic depends on CBO operator with configurable sensitivity (CBO_sensitivity_lookback: 20) that cannot be replicated. Parameters 'CBO_sensitivity_lookback' and 'trend_confirmation_bars' reference an unavailable indicator. The 2+ ATR exit condition would require: close < (sma_50 - 2*atr_14), but without CBO confirmation, the entry logic is incomplete."
+}

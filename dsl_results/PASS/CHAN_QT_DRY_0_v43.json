@@ -1,0 +1,62 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "book_id": "CHAN_QT",
+  "dsl_rule": {
+    "signal_id": "CHAN_QT_DRY_0",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses previous period return (negative) as the primary entry factor for mean reversion. Translated using 'returns' indicator which captures period-over-period price change. Exit condition uses reversal logic (positive returns) as author provided no specific exit threshold. Mean reversion typically occurs in ranging/non-trending markets, so target_regime set to RANGING. Note: 'half_life', 'threshold', and backtest parameters marked AUTHOR_SILENT in source were not translatable to specific rule conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal uses previous period return (negative) as the primary entry factor for mean reversion. Translated using 'returns' indicator which captures period-over-period price change. Exit condition uses reversal logic (positive returns) as author provided no specific exit threshold. Mean reversion typically occurs in ranging/non-trending markets, so target_regime set to RANGING. Note: 'half_life', 'threshold', and backtest parameters marked AUTHOR_SILENT in source were not translatable to specific rule conditions."
+  },
+  "source_rule_text": "Trade stocks exhibiting mean reversion by taking long positions when previous period returns are negative, betting on price recovery."
+}

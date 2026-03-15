@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires Johansen cointegration test statistics (Trace Statistic and Eigen Statistic), statistical hypothesis testing at multiple confidence levels (90%, 95%, 99%), and detection of multiple cointegrating relationships. These are advanced econometric tests that cannot be expressed using the allowed indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume ratios, and bar properties). The backtest engine would need dedicated cointegration analysis modules with access to raw price series for both EWA and EWC, eigenvalue decomposition, and critical value tables\u2014none of which are available in the allowed indicator set.",
+  "translation_notes": "Signal CHAN_AT_DRY_3 is a pairs trading strategy based on statistical cointegration testing. It requires: (1) Johansen cointegration test on two price series (EWA/EWC), (2) Evaluation of Trace and Eigen statistics against critical values at 90%, 95%, 99% confidence levels, (3) Confirmation of exactly two cointegrating relationships. The entry conditions reference specific test statistics (e.g., 'r <= 0 variable 1: 19.983 > 19.935' at 99%) and degrees of cointegration. Exit conditions marked AUTHOR_SILENT suggest mean-reversion exit when spread reverts to mean. To implement this signal, the backtest engine would need custom cointegration indicator support with Johansen test implementation, not achievable with standard technical indicators."
+}

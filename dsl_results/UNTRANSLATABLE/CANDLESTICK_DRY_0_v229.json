@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires precise Fibonacci retracement calculation (50-62% of prior upmove from C to D), trendline detection, and belt hold candlestick pattern recognition. These require multi-bar lookback logic and geometric calculations not supported by available indicators. Specifically: (1) Fibonacci levels require identifying swing highs/lows and calculating exact retracement percentages dynamically, (2) Trendline overhead resistance requires line-fitting algorithm, (3) Belt hold pattern requires specific candlestick sequence analysis (tall white candle followed by tall black candle). Available indicators cannot express these geometric/pattern-matching requirements.",
+  "translation_notes": "Attempted approximation using: close > sma_20 (uptrend recovery), body_pct < 0.5 (avoiding strong reversals), close > pivot (resistance breakout). However, this does NOT capture the core logic: Fibonacci retracement identification, trendline resistance confirmation, or belt hold negation. A proper implementation requires custom pattern recognition logic outside the backtest engine's indicator scope."
+}

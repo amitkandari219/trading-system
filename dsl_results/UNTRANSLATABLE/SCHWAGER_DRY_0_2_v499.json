@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of (1) 'persistent bullish narratives' - this is qualitative market sentiment/news analysis not expressible via technical indicators alone, (2) counting days specifically '50 days above 50-SMA' which requires look-back state tracking beyond single-bar comparisons, and (3) 'bearish divergence' detection (price new high vs RSI lower high) requires multi-bar comparison logic not supported by simple operators. The narrative_count_threshold parameter cannot be operationalized without external sentiment data. Partial translation provided but core logic is incomplete.",
+  "translation_notes": "Translated the technical components (price above SMA, RSI > 70 for potential exit signal, bearish divergence concept). Could not translate: narrative detection (requires NLP/sentiment analysis), the specific '50 days in trend' counting logic, and the 25% position reduction rule (position management outside backtest engine scope). The 'context-dependent' direction and need to avoid consensus traps suggests contra-trend positioning but specific entry direction cannot be determined from the technical rules alone."
+}

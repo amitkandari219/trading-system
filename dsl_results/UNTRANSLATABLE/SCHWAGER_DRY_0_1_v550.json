@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'major news events within last 2 trading sessions' and logic to 'hold through intraday news volatility if technical intact'. News event detection is not available in the allowed indicator set. Additionally, the rule specifies 2+ indicators must flip bearish/bullish for exit, but only ADX is explicitly available; MACD_hist could serve as a second indicator but the signal's intent is ambiguous on which specific indicators constitute the '2+ indicators' beyond ADX.",
+  "translation_notes": "Translated core technical conditions: entry requires price above 50-day MA + ADX > 20 + price above 20-day MA (trend confirmation). Exit triggers when close crosses below 50-day MA. Direction is context-dependent (long above MA, short below MA). The news-filtering logic and dynamic hold-through-volatility behavior cannot be encoded without custom news event data."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_18_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct bid-ask spread data and limit order execution probability estimates, which are NOT available in the allowed indicator set. The 55th percentile spread threshold, execution probability threshold (65%), and tick-level improvements cannot be expressed using only OHLCV-derived indicators. ATR is used as a proxy for spread width, but this is fundamentally incomplete without actual microstructure data.",
+  "translation_notes": "Attempted proxy: Used ATR as a rough spread proxy and body_pct as a normalized volatility measure. Used price improvement relative to prev_close as directional signal. However, this translation fundamentally fails to capture the microstructure logic of the original signal, which requires real-time bid-ask data, spread percentiles, and order execution probability estimates that are external to standard candlestick indicators."
+}

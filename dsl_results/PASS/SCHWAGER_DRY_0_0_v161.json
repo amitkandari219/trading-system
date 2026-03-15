@@ -1,0 +1,148 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      },
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      },
+      {
+        "left": "sma_20",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      },
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "r1"
+      },
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Interpreted 'recent swing high/low' using Donchian channels (20-period default) as a dynamic alternative to fixed historical boundaries. Volume confirmation uses hvol_20. Moving average logic uses sma_20 vs sma_50 crossovers. Exit uses support/resistance (s1/r1) to approximate 'close below 1.0x ATR from recent swing low' concept. Price structure reversals (2 consecutive lower lows) are approximated by MA crossunder combined with support break. Parameters trend_confirmation_bars=3 and structure_reversal_atr_multiple=1.0 inform the logic but are implementation details."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      },
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      },
+      {
+        "indicator": "sma_20",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      },
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "r1"
+      },
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Interpreted 'recent swing high/low' using Donchian channels (20-period default) as a dynamic alternative to fixed historical boundaries. Volume confirmation uses hvol_20. Moving average logic uses sma_20 vs sma_50 crossovers. Exit uses support/resistance (s1/r1) to approximate 'close below 1.0x ATR from recent swing low' concept. Price structure reversals (2 consecutive lower lows) are approximated by MA crossunder combined with support break. Parameters trend_confirmation_bars=3 and structure_reversal_atr_multiple=1.0 inform the logic but are implementation details."
+  },
+  "source_rule_text": "A trader should use trend-following system logic to identify when a trend remains valid rather than imposing fixed historical boundaries on price movement, because markets can exceed historical extremes."
+}

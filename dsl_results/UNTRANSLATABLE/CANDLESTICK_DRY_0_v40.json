@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of shadow height to median shadow height from a historical table, and computation of shadow-to-breakout-price ratio. The source material does not provide explicit numerical thresholds or a translatable formula. Additionally, 'median shadow height in table' and 'breakout price' reference external data structures not available as indicators. The volume trend condition for bear markets vs upbreakouts requires regime detection beyond ALLOWED_REGIMES.",
+  "translation_notes": "Approximated tall shadow concept using upper_wick and lower_wick compared to ATR; used hvol_20 for heavy volume comparison; CONTEXT_DEPENDENT direction preserved to handle both bull and bear market logic; exit condition set to SMA crossover as reversal proxy per Rule 8. Original signal intent cannot be fully captured without access to shadow median tables and explicit breakout price calculation logic."
+}

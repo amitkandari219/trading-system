@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_5_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires meta-level pattern validation ('Pattern has occurred at least 10 times in historical data', 'Win rate of pattern \u2265 55% across all 10+ occurrences', 'Current market setup matches pattern definition'). These conditions require pattern recognition logic, historical backtesting statistics, and user-defined pattern matching that cannot be expressed using only the available technical indicators and operators. The signal is a behavioral/bias-avoidance rule requiring custom pattern-tracking and win-rate calculation logic at the backtest engine level, not translatable to indicator-based conditions.",
+  "translation_notes": "This signal from Van Tharp addresses the law of small numbers bias by requiring statistical validation of patterns (minimum 10 occurrences, 55%+ win rate) before entry. The entry/exit conditions are placeholder values. Implementation requires: (1) a pattern registry with historical occurrence tracking, (2) win-rate calculation per pattern, and (3) pattern-matching logic. The 1.5\u00d7 ATR stop-loss and 2\u00d7 ATR profit target reference atr_14 or atr_20 but require dynamic ATR multiplier functionality not present in basic condition operators. Recommend implementing as a custom pre-filter module before standard backtest signal conditions."
+}

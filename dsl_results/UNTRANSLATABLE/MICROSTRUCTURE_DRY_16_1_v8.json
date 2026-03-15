@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_16_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'estimated fundamental value' and 'market resiliency indicator' which are not available in the allowed indicator list. Used price_pos_20 (20-period normalized price position, 0-1 scale) as proxy for deviation from range center, and hvol_20 (historical volatility) as proxy for market resiliency. True implementation requires custom fundamental value calculation and resiliency scoring not available in standard OHLCV indicators.",
+  "translation_notes": "CONTEXT_DEPENDENT direction implemented as dual entry logic: LONG when price near support (price_pos_20 < 0.02), SHORT when price near resistance (price_pos_20 > 0.98). Both require elevated hvol_20 (> 0.5, representing above-median resiliency). Exit triggers when price reverts toward center (price_pos_20 approaches 0.5) OR resiliency drops below 0.4 (40th percentile proxy). Deviation threshold mapped to price_pos_20 extremes; fundamental value and news filters cannot be implemented without custom data."
+}

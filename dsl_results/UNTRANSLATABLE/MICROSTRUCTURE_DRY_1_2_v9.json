@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_1_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking strategy profitability compression over time (45-day vs 15-day rolling profit averages, 50%/40% threshold compression levels). These require custom profit tracking and comparative period analysis not available in standard OHLCV indicators. Specifically: (1) 'Strategy has been generating above-average returns for 45+ days' requires historical strategy equity curve tracking; (2) 'Reduce position size by 20% if compression reaches 50% of baseline' requires ratio comparison of two distinct rolling periods; (3) 'Full exit if compression continues to 40%' requires multi-period profit degradation tracking. These are meta-level regime indicators that depend on strategy performance history, not market microstructure observables.",
+  "translation_notes": "This signal describes a competitive erosion regime detection mechanism rather than a market-based entry/exit rule. It monitors strategy alpha decay as competitors copy profitable strategies. The core concept cannot be translated to price/volume/volatility indicators alone. A practical implementation would require: (a) custom profit metrics stored in backtest state, (b) comparison logic across two rolling windows (45-day baseline vs 15-day current), and (c) position sizing rules tied to profit compression ratios. Consider implementing as a separate regime detector that flags when returns_rolling_45 drops below 50% of historical average, then coordinates with position sizing module."
+}

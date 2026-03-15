@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'relative strength rank' (contextual momentum ranking vs peers) which is not available in allowed indicators. RSI_14 was substituted as a proxy for relative strength momentum, but this loses the comparative/ranking aspect of the original rule. Additionally, 'recent price advance 5-25% in past 10 days' requires multi-bar historical returns calculation not directly available in indicator set; returns indicator provides single-bar returns only. EPS growth rate YoY is fundamental data not in technical indicator list.",
+  "translation_notes": "Substituted rsi_14 > 70 for relative strength rank > 70. Used returns > 0 as proxy for positive EPS growth YoY (imperfect match). Used vol_ratio_20 > 1 for volume above 10-day average. Exit condition uses rsi_14 < 50 for RS drop below 50. Stop loss set to 12% and profit target to 35% gain via hold_days_max as approximation since exact gain/loss tracking requires external portfolio logic. Direction set to LONG for upward momentum trades. Target regime TRENDING_UP per signal intent."
+}

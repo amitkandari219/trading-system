@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Order book imbalance (bid/ask size ratio) is not available in the allowed indicators list. The signal explicitly requires real-time order book data (bid size vs ask size), which cannot be replicated using OHLCV-derived indicators like vol_ratio_20. This is a market microstructure signal requiring Level 2 data unavailable in backtest engine.",
+  "translation_notes": "Attempted proxy using vol_ratio_20 as a volume-based imbalance metric, but this does not capture the true bid/ask size imbalance required by the original signal. High-frequency momentum strategies based on order book microstructure require tick-level or Level 2 order book data, not available in standard OHLCV backtesting."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegration analysis, hedge ratio regression, and stationary spread construction. These are portfolio-level statistical operations not expressible via single-indicator conditions. Required: (1) Johansen cointegration test between two securities, (2) OLS regression to compute dynamic hedge ratio, (3) Spread stationarity verification (ADF test). None of these operations are supported by the allowed indicator list which contains only single-security price/technical indicators. The signal is fundamentally a pairs trading strategy requiring multivariate statistical analysis outside the backtest engine's scope.",
+  "translation_notes": "This is a sophisticated pairs trading signal that cannot be accurately translated to single-indicator rules. The core logic\u2014identifying cointegrated pairs and constructing a mean-reverting spread via regression\u2014requires statistical machinery beyond the allowed indicators. A practical implementation would need: (1) Pre-backtest pair screening via cointegration tests, (2) Dynamic hedge ratio calculation, (3) Spread-based entry/exit thresholds. Suggest implementing as a custom strategy class rather than a rule-based signal."
+}

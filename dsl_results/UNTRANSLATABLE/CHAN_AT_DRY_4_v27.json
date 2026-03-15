@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires a Kalman Filter-based dynamic linear regression model tracking time-varying beta coefficients between two cointegrated assets (EWA-EWC pair). The strategy generates signals from measurement prediction errors of the Kalman Filter, which is a multi-step state-space estimation technique. The allowed indicator set does not include: (1) Kalman Filter state estimates or innovations, (2) dynamic beta coefficients between asset pairs, (3) cointegration relationships, or (4) multivariate price prediction errors. The signal cannot be expressed using single-indicator comparisons with static thresholds. Implementation requires custom indicator development for Kalman Filter mechanics and pair relationship tracking.",
+  "translation_notes": "Signal is algorithmic/model-based rather than technical indicator-based. Entry/exit conditions depend on real-time Kalman Filter outputs (beta estimates, prediction errors) and noise parameters (delta=0.0001, measurement_noise_variance=0.001) that must be computed continuously across a two-asset system. Critical parameters marked AUTHOR_SILENT (lookback_period, threshold, half_life) are required to operationalize the strategy but not provided."
+}

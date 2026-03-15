@@ -1,0 +1,84 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "book_id": "CHAN_QT",
+  "dsl_rule": {
+    "signal_id": "CHAN_QT_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "5.00"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "5.00"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "5.00"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "5.00"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "This is a stock universe filter rather than a directional trading signal. Entry conditions enforce minimum price threshold of $5.00 to reduce commission/transaction costs. Exit conditions trigger when price falls below $5.00. Applied symmetrically to both LONG and SHORT to act as a filter on tradable universe."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": 5.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": 5.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 5.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 5.0
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "This is a stock universe filter rather than a directional trading signal. Entry conditions enforce minimum price threshold of $5.00 to reduce commission/transaction costs. Exit conditions trigger when price falls below $5.00. Applied symmetrically to both LONG and SHORT to act as a filter on tradable universe."
+  },
+  "source_rule_text": "Avoid trading stocks priced below $5 to minimize commission costs and transaction expenses."
+}

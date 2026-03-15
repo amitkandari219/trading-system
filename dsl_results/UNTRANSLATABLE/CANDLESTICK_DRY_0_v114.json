@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of a 13-candlestick pattern sequence with specific prior context (uptrend or choppy/V-shaped price action). Pattern recognition across a 13-bar window cannot be expressed using only single-bar indicators and comparisons. The candlestick pattern itself is not available in the indicator library. Approximation provided using trend and price action proxies, but full pattern detection is not possible.",
+  "translation_notes": "This signal fundamentally requires multi-bar pattern recognition that cannot be expressed with the available single-bar indicators. The entry conditions attempt to approximate: (1) uptrend entry into pattern via price > SMA_20, (2) reversal confirmation via next bar close reversal. For bull market: long entry with confirmation of lower close. For bear market: short entry with confirmation of black candle (negative body). Exit conditions are set to simple reversals of entry logic. Author did not specify exit criteria or bear market success rate, so defaults were applied. A proper implementation would require a candlestick pattern detection algorithm external to this rules engine."
+}

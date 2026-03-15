@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic position sizing proportional to deviation magnitude from mean, and unknown lookback_period for mean calculation. The deviation-based scaling logic cannot be expressed in the 3-field condition format. Exit conditions marked AUTHOR_SILENT with no parameters provided for threshold definition or calculation method.",
+  "translation_notes": "Used sma_20 as a proxy for the mean price level. Entry/exit conditions implement basic mean-reversion logic (buy below mean, sell above mean) using price crossing sma_20. However, the core requirement of position sizing scaled to deviation magnitude cannot be implemented in this rule structure\u2014this would require custom position sizing logic outside the condition-based framework. Lookback period, half-life, and exact threshold definition are all AUTHOR_SILENT and cannot be determined."
+}

@@ -1,0 +1,72 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "r1"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "s1"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.5,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Diamond Bottom pattern detection approximated using pivot-based support/resistance levels. Entry triggers on breakout above resistance (r1) with upward price momentum. Stop loss placed below formation base (~3.5% below entry). Exit conditions use pivot support (s1) as throwback/support level. Pattern shape and formation geometry cannot be directly encoded in rule-based engine; recommend combining with visual chart confirmation or pattern recognition ML model for production use."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "r1"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "s1"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.035,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Diamond Bottom pattern detection approximated using pivot-based support/resistance levels. Entry triggers on breakout above resistance (r1) with upward price momentum. Stop loss placed below formation base (~3.5% below entry). Exit conditions use pivot support (s1) as throwback/support level. Pattern shape and formation geometry cannot be directly encoded in rule-based engine; recommend combining with visual chart confirmation or pattern recognition ML model for production use."
+  },
+  "source_rule_text": "Diamond Bottom: A reversal pattern where price forms a diamond shape at the bottom, with support near the base of the formation and resistance at the breakout level. After breakout, stock may throwback to the breakout level where support commonly appears."
+}

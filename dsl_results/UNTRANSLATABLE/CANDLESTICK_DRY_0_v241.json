@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Bullish Belt Hold is a specific candlestick pattern requiring visual/morphological analysis of candle structure (body position at low, specific wick characteristics) that cannot be fully expressed using only the allowed indicators. The pattern requires: (1) identification of downtrend context, (2) detection of a candle opening near the low and closing near/at the high (belt hold morphology), and (3) optional retracement context within prior uptrend. These morphological requirements exceed the capability of price/volume/oscillator indicators alone.",
+  "translation_notes": "Attempted partial translation using close regime check for downtrend and body size as proxy for bullish candle, but true belt hold pattern recognition requires candle position analysis (open=low, close=high) not available in indicator set. Recommend: (1) adding candle_position indicator, (2) implementing custom pattern detection function, or (3) using close >= open AND (open - low) / range < 0.1 AND (high - close) / range < 0.1 if custom operators allowed."
+}

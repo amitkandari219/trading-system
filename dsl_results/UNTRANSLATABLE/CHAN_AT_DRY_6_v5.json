@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires Johansen cointegration test on a two-currency portfolio with custom hedge ratio calculation and z-score normalization of a synthetic spread. This requires: (1) multivariate cointegration analysis unavailable in standard indicator set, (2) dynamic portfolio construction with asset weighting, (3) custom z-score calculation on portfolio spread rather than single-instrument indicators. The allowed indicator set contains only single-instrument technical indicators and does not support cross-asset cointegration, hedge ratio computation, or portfolio-level spread normalization. Approximated with Bollinger Band %B as a loose proxy for mean-reversion z-score, but this does NOT capture the true Johansen cointegration logic.",
+  "translation_notes": "Signal is a sophisticated pairs trading strategy requiring multivariate time-series analysis. Used bb_pct_b as a fallback proxy (where pct_b > 1.0 \u2248 z-score > 1, pct_b < 0.0 \u2248 z-score < -1, and reversion toward 0.5 \u2248 mean reversion), but this is a crude approximation that loses the core Johansen cointegration framework, custom hedge ratio weighting, and two-asset portfolio structure. A proper implementation would require custom cointegration indicators not in the allowed set."
+}

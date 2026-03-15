@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires detection of two distinct peaks within 5-7 weeks with price difference 0-6%. This requires multi-bar lookback analysis, peak identification logic, and temporal separation measurement that cannot be expressed with single-bar indicator conditions and the allowed operators. Specifically: (1) identifying two local highs as 'distinct minor highs', (2) measuring time separation between peaks (weeks), (3) comparing prices across non-adjacent bars. The allowed operators do not support historical bar comparisons beyond prev_* variables.",
+  "translation_notes": "BULKOWSKI_DRY_0 is a pattern-based rule requiring multi-bar analysis. Attempted partial translation uses price decline below moving average as proxy for confirmation, but full double-top pattern detection with peak separation validation cannot be reliably encoded. Recommend implementing as custom pattern scanner outside JSON rule engine."
+}

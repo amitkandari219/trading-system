@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires OLS regression residuals, rolling z-score calculation, cointegration testing (ADF test), and mean-reversion confirmation. These advanced statistical computations are not available in the allowed indicator list. The strategy also requires pair cointegration analysis which cannot be expressed with single-instrument indicators. While z-score thresholds have been approximated using returns as a proxy, the core logic (residual-based mean reversion from cointegrated pairs) cannot be fully translated.",
+  "translation_notes": "Attempted approximation using log_returns as proxy for z-score residuals with thresholds \u00b11.5 for entry and \u00b10.25 for exit, and 2.5 for stop-loss. However, this loses the essential components: (1) OLS regression on cointegrated pairs, (2) ADF test validation, (3) residual extraction, and (4) rolling z-score normalization. The signal cannot be accurately implemented without custom statistical indicators for pair trading residuals."
+}

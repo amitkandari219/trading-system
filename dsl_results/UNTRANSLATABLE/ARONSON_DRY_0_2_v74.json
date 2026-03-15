@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of head-and-shoulders pattern structure (right shoulder identification, neckline geometry, zigzag threshold validation) which cannot be expressed using only the allowed point-in-time indicators. Pattern recognition requires multi-bar structural analysis and peak/trough detection logic not available in the indicator set. Approximated using price position and pivot level crossovers as proxy, but this does not capture the intended pattern completion validation mechanism that prevents lookahead bias.",
+  "translation_notes": "ARONSON_DRY_0_2 is fundamentally about pattern-structure validation and lookahead bias prevention. The core intent\u2014confirming pattern completion before signal generation\u2014requires custom pattern detection logic. Used price_pos_20 (\u22650.95) as weak proxy for 'near likely peak' and pivot crosses as proxy for 'neckline level', but these do not replicate the intended zigzag threshold and shoulder confirmation mechanics. The 30-bar hold_days_max approximates the time stop. Recommend implementing as custom pattern validator outside standard indicator framework."
+}

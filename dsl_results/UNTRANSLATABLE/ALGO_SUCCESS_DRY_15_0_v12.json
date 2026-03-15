@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires rolling OLS regression with dynamic hedge ratios between paired assets and z-score computation on residuals. These advanced statistical transformations (OLS regression, residual z-scores, hedge ratio calculation, and stationarity testing) are not available in the allowed indicator set. The signal also requires pair trading mechanics (two correlated assets) which cannot be expressed with single-asset indicators.",
+  "translation_notes": "Attempted proxy using returns as a stand-in for mean-reverted spread z-scores, but this is fundamentally inadequate. The signal's core logic depends on: (1) computing regression between two paired assets, (2) extracting residuals, (3) normalizing residuals into z-scores, and (4) maintaining statistical significance checks on hedge ratios. None of these operations can be replicated from the allowed indicator list. This signal requires custom indicator development or a multi-asset framework."
+}

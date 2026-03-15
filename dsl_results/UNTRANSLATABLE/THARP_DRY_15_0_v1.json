@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external data not available in price/technical indicators: (1) Economic calendar event detection and timing, (2) Distinction between pending vs. reported news status, (3) Fundamental analysis alignment assessment. These require real-time news feeds, event databases, and fundamental metrics outside the backtest engine's indicator scope. The 3-7 day anticipation window and news release timing cannot be operationalized with price-based indicators alone.",
+  "translation_notes": "This signal is fundamentally event-driven and news-sentiment based rather than technical-indicator based. While a basic directional bias could be approximated using moving average alignment (as shown above), the core logic\u2014weighting pending news anticipation premium and exiting after news becomes reported\u2014cannot be reliably translated into price/volume/oscillator conditions without external news calendars and event metadata. Recommend implementing this signal in a separate event-driven module with news feed integration rather than pure technical backtesting."
+}

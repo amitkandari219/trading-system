@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit tracking of 52-week high price anchor and proximity calculations (within 1.0% of 52-week high, price has not closed > 52-week high for last 5 days, take profit at 52-week high + 3%). The allowed indicators do not include a 52-week high reference level or rolling lookback period anchor. Donchian Channel (52-period equivalent) is approximated but does not capture the specific behavioral anchoring bias at 52-week historical high. No mechanism exists to track 'has not closed above level for N days' as a distinct condition.",
+  "translation_notes": "Attempted approximation using dc_upper as proxy for resistance level, but this fundamentally misrepresents the anchoring bias theory which depends on the specific 52-week high anchor point and investor fixation behavior. A proper implementation requires a custom 52-week high indicator not in the allowed set. RSI(14) < 70 translates correctly. Stop loss of 1.5% and hold_days_max of 20 match parameters. Direction is LONG based on 'momentum opportunity' language and bullish information bias."
+}

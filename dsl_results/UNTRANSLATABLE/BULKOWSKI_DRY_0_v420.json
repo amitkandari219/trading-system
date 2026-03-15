@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Double Bottom pattern detection requires identifying twin bottoms at similar price levels and confirmation line (highest high in pattern). These require pattern recognition and multi-bar lookback logic that cannot be expressed with single-bar indicators and the allowed operators. Specifically: (1) identifying two distinct bottom swing points, (2) verifying they are at similar levels, (3) finding the highest high between them, (4) volume comparison between left and right bottoms, and (5) U-shaped volume pattern all require custom pattern detection logic unavailable in the allowed indicator set.",
+  "translation_notes": "The core breakout condition (close > confirmation line) is translatable as close crossing above a prior high, and volume preference is expressible. However, the pattern identification itself (twin bottoms, their relative levels, inter-bottom swing analysis, and U-shaped volume curve) requires custom pattern scanning beyond atomic indicator rules. A backtest engine would need a dedicated Double Bottom pattern detector module."
+}

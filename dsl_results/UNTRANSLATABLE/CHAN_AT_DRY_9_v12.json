@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references 'VIX' (US volatility index) but only 'india_vix' is available in the allowed indicators. The signal also references 'FSTX opening gap setup conditions' from Chapter 7 which are not specified in detail and cannot be translated without additional condition definitions. The previous day's VIX close would require day-shifted VIX data not provided in the allowed indicators.",
+  "translation_notes": "This rule is a regime filter that disables the FSTX opening gap strategy when previous day's VIX closes above 35. The entry condition enforces the low-risk regime (VIX <= 35) as a prerequisite. Exit triggers when VIX breaches above 35, indicating regime shift to high-risk conditions. The actual FSTX opening gap entry/exit logic would need to be defined separately in another rule. Used india_vix as closest proxy but this is a significant assumption\u2014the original signal specifically references US VIX."
+}

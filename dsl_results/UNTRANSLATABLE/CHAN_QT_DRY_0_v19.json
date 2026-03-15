@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a position sizing rule (half-Kelly leverage multiplier = 0.5), not a price-based trading signal. It requires a portfolio-level leverage calculation based on estimated returns and volatility, which cannot be expressed as indicator conditions on individual price bars. The signal applies a constant 0.5 multiplier to Kelly-derived position sizes across all trades. This is a risk management overlay, not a tradeable entry/exit condition.",
+  "translation_notes": "Signal ID CHAN_QT_DRY_0 defines a leverage constraint (half-Kelly vs full Kelly) rather than trade logic. Implementation requires: (1) calculation of portfolio expected return and volatility, (2) Kelly formula: f* = (mean_return / variance), (3) application of 0.5 multiplier to position size. This belongs in the portfolio constructor or position sizing module, not in the signal rules engine. No entry/exit conditions can be derived without additional parameters on return estimation methodology."
+}

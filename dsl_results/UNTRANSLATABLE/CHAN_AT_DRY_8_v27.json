@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit detection of stop order clustering at support/resistance levels, which cannot be directly inferred from price/volume data alone. The core mechanic (identifying stop order placement density at technical levels) is not expressible using only the allowed indicators. Pivot points (r1, s1) are used as proxy for resistance/support, but stop clustering detection would require order book depth data or explicit cluster identification logic not available in allowed indicators.",
+  "translation_notes": "Approximated using pivot-based support/resistance (r1/s1) with volume confirmation as proxy for stop clustering. Entry triggers on breach of r1 (long) or s1 (short) with elevated volume. Exit on return to pivot midpoint. This is a simplified approximation; true stop-hunting strategy requires order flow or cluster analysis unavailable in standard OHLCV indicators."
+}

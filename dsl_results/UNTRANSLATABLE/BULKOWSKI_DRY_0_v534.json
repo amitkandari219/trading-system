@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Double Bottom pattern detection requires multi-bar historical price structure analysis (identifying two distinct lows at similar levels with recovery between them). This cannot be expressed using point-in-time indicators from the allowed list. Pattern recognition requires: (1) locating swing lows across multiple bars, (2) comparing their relative price levels, (3) detecting the recovery valley between them. The allowed indicators do not include pattern state tracking, historical bar sequences, or swing point detection. Measure rule for 20% target above breakout requires explicit price level calculation not supported by the allowed operators.",
+  "translation_notes": "This signal fundamentally describes a candlestick/price-action pattern that requires pattern recognition logic beyond simple indicator comparisons. To implement this signal, the backtest engine would need: (a) swing low detection across N bars, (b) tolerance threshold for 'similar levels', (c) valley/recovery confirmation, (d) breakout confirmation above resistance. Standard technical indicators cannot identify the structural double-bottom formation. Consider adding pattern detection indicators (swing_highs, swing_lows, pattern_state) or using a custom pattern matching function."
+}

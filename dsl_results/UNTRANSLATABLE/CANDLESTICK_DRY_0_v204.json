@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires context-dependent logic based on market regime (BULL vs BEAR) and breakout direction (UP vs DOWN) to determine optimal lower shadow length. The performance differential (short shadows in bull/up scenarios vs tall shadows in other categories) cannot be cleanly expressed as single entry/exit rules without regime-aware conditional branching. Pattern identification and candle height thresholds relative to breakout price are not available as discrete indicators. Price target calculation via measure rule is author-silent and unmeasurable.",
+  "translation_notes": "Attempted to capture lower shadow logic using lower_wick comparison to ATR as a proxy for shadow length classification. However, this signal fundamentally requires: (1) Market regime detection, (2) Prior breakout direction context, (3) Dynamic threshold adjustment based on candle height percentages (3.25%-5.31%), and (4) Conditional logic that varies by market context. The original source material provides performance statistics rather than mechanical entry/exit rules, making direct translation impossible without regime segmentation."
+}

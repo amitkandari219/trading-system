@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a pair spread strategy (USO - hedgeRatio*GLD) with dynamic hedge ratio calculation. Available indicators only support single-asset analysis. Cannot express: (1) multi-asset spread construction, (2) dynamic hedge ratio optimization, (3) exact entryZscore and exitZscore thresholds (not numerically specified). The strategy logic is fundamentally incompatible with single-asset indicator framework.",
+  "translation_notes": "Attempted approximate translation using bb_pct_b (Bollinger Band position indicator) as proxy for spread zscore crossover: bb_pct_b>1.0 approximates upper band breach, bb_pct_b<0.0 approximates lower band breach, reversion to 0.5 (middle band) approximates mean reversion exit. However, this is a structural workaround that does not capture the actual pair spread mechanics or hedge ratio logic. Backtest results would not be valid without true spread calculation."
+}

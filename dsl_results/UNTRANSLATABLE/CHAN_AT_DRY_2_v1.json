@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Ornstein-Uhlenbeck mean-reversion dynamics validation (dy(t) = (\u03bby(t-1) + \u03bc)dt + d\u03b5) with half-life parameter estimation. These statistical properties cannot be expressed using only the allowed indicators and operators. The Bollinger Band conditions are translatable but the underlying OU process validation is not available in the allowed indicator set.",
+  "translation_notes": "Translated core Bollinger Band logic: SHORT when price crosses above upper band (mean reversion expectation), LONG when price crosses below lower band. Exit conditions default to mean reversion (price returning to middle band). The Ornstein-Uhlenbeck dynamics, half-life, and mean-reversion regime confirmation require external statistical analysis not available in this indicator library."
+}

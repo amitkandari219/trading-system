@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_16_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires order book microstructure metrics (depth depletion >75%, bid-ask spread at 90th percentile) and time-based exits (120 minutes) which are not available in the allowed indicator set. Price deviation from MA and volume ratio conditions are partially translatable using available indicators, but the core liquidity exhaustion and dealer inventory risk mechanics cannot be fully captured.",
+  "translation_notes": "Attempted translation uses: (1) bb_bandwidth as proxy for spread widening; (2) price_pos_20 (normalized price position) as proxy for standard deviation moves from 20-day MA; (3) vol_ratio_20 for volume concentration. However, order book depth depletion, specific spread percentile thresholds, and 120-minute time stop cannot be implemented without tick/order book data."
+}

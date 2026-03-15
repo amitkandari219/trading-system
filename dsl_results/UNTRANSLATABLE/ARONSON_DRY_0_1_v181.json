@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires double-channel normalization of a divergence indicator (CN{CN(Series_1, n=20) - CN(S&P_500, n=20), n=200}) which cannot be constructed from allowed indicators. The signal involves cross-series normalization relative to S&P 500 benchmark with custom composite calculations not available in the indicator set. While bb_pct_b approximates normalized oscillation between \u00b11.0 std devs, it cannot replicate the specific dual-series divergence normalization logic required.",
+  "translation_notes": "Attempted approximation using Bollinger Band %B as a normalized oscillator proxy (ranges -1.0 to +1.0 standard deviations), but this loses the critical cross-series co-movement neutralization and divergence calculation at the core of this signal. The original signal requires benchmark-relative volatility adjustment not achievable with available indicators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Kalman filter measurement prediction error e(t) and predicted variance Q(t), which are custom state-space model outputs not available in the standard indicator set. These are derived from a dynamic model estimation process, not basic technical indicators. The signal logic (comparing e(t) to \u00b1sqrt(Q(t))) cannot be expressed using only the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Position, Returns, Bar Properties).",
+  "translation_notes": "This is an advanced mean-reversion signal based on Kalman filtering theory. To implement it, the backtest engine would need to: (1) estimate a state-space model with hidden state and measurement equation, (2) run Kalman filter recursively to compute e(t) = observed - predicted and Q(t) = prediction error variance, (3) compare e(t) against \u00b1sqrt(Q(t)) thresholds. Empirical performance metrics provided: Sharpe=2.4, APR=26.2%."
+}

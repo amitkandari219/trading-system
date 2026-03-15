@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom stationarization (CN operator) and mean\u00b1std deviation calculations on an arbitrary input series with lookback span of 40 periods. These stationary series transformations and transition confirmation logic between extreme regions cannot be expressed using only the allowed indicators (bb_pct_b is the closest proxy for extreme values, but does not capture the specific stationarity requirement or transition confirmation across 3 bars). The signal requires custom preprocessing not available in standard indicator set.",
+  "translation_notes": "Attempted partial translation using Bollinger Bands %B as a proxy for extreme values (>0.5 for high extremes, <0.5 for low extremes), but this does not faithfully represent the stationarized time series logic described in the original signal. A proper implementation would require calculating a stationarized series (likely via differencing or detrending) with custom mean/std deviation bands over a 40-period lookback and detecting transitions between extremes over 3-bar confirmation windows."
+}

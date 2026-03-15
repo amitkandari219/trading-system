@@ -1,0 +1,84 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "book_id": "CHAN_QT",
+  "dsl_rule": {
+    "signal_id": "CHAN_QT_DRY_0",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mean reversion strategy using one-day prior returns. Entry conditions use 1-day returns (the previous bar's return): buy when returns < 0 (worst performers), short when returns > 0 (best performers). Exit conditions are reversed positions (symmetrical reversal), typical for mean reversion. Hold period set to 1 day as per lookback_period. No stop loss specified by author. Percentile ranking cannot be precisely quantified without additional data on the full universe distribution, so we use return sign as proxy for worst/best performers."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mean reversion strategy using one-day prior returns. Entry conditions use 1-day returns (the previous bar's return): buy when returns < 0 (worst performers), short when returns > 0 (best performers). Exit conditions are reversed positions (symmetrical reversal), typical for mean reversion. Hold period set to 1 day as per lookback_period. No stop loss specified by author. Percentile ranking cannot be precisely quantified without additional data on the full universe distribution, so we use return sign as proxy for worst/best performers."
+  },
+  "source_rule_text": "A mean reversion strategy that buys stocks with the worst previous one-day returns and shorts stocks with the best previous one-day returns."
+}

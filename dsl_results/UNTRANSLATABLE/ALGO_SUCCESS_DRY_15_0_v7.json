@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal relies on a custom predictive model output (prediction_threshold > +0.5, prediction <= 0.0) that is not available in the allowed indicators list. The model's prediction value is a proprietary metric that cannot be derived from standard OHLCV or technical indicators provided. To implement this signal, the backtest engine would need access to the underlying model's prediction scores as a real-time data stream.",
+  "translation_notes": "Signal specifies entry on 'model prediction > +0.5' and exit on 'prediction <= 0.0' with lookback of 3 bars minimum and close-only entry confirmation. The 2% stop-loss and 5-bar max hold have been captured. However, without the actual model prediction values as an available indicator, this rule cannot be fully translated to standard technical analysis conditions."
+}

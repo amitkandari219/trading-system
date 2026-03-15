@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Augmented Dickey-Fuller (ADF) statistical test with p-value threshold (0.05) and explicit bar counting for 'deviation persists for minimum 5 bars' confirmation. ADF test is not available in the allowed indicator set. Additionally, the signal requires dynamic calculation of mean and standard deviation over a 20-bar lookback period, which is not directly available; Bollinger Bands approximates this but does not provide the exact statistical parameters specified.",
+  "translation_notes": "Approximated using Bollinger Bands (bb_lower for 2-stddev threshold) and price position (price_pos_20 for relative deviation), with sma_20 as the mean crossover exit. The hard stop of 3.0 stddev is represented as stop_loss_pct=3.0. This is a functional mean-reversion approximation but lacks the rigorous statistical confirmation (ADF test) and bar-counting logic from the original signal."
+}

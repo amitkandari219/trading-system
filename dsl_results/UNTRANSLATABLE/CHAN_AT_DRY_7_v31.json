@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires mutual fund flow data and cross-sectional PRESSURE score calculation (aggregate buy/sell signals across all funds holding each stock, ranked by decile). This requires external fundamental/institutional ownership data not available in the allowed technical indicators list (price, volume, moving averages, RSI, ATR, MACD, ADX, Stochastic, Donchian, Bollinger, Pivots, Volatility). The 5% NAV inflow threshold cannot be operationalized without access to mutual fund inflow/outflow time series and fund holdings data.",
+  "translation_notes": "This is a fundamental/institutional flow-based strategy requiring: (1) mutual fund inflow/outflow data indexed by fund and quarter, (2) mutual fund holdings data by stock, (3) custom PRESSURE score computation as sum of binary Buy/Sell signals across funds, and (4) cross-sectional decile ranking by stock. Backtest engine must be extended with institutional data feeds and custom scoring logic to implement this signal. Cannot be translated to technical indicators alone."
+}

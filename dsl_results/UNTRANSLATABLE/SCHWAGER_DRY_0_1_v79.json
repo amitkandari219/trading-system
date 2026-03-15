@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking of 'fundamental supply/demand metrics' and 'consecutive period confirmations' (2-3 periods of expectations being exceeded). These are external fundamental data points not available in the allowed price/technical indicator set. The 'confirmation_periods' parameter and fundamental metric tracking cannot be expressed using only OHLCV and technical indicators.",
+  "translation_notes": "Attempted to proxy the supply/demand imbalance signal using: (1) price_pos_20 in 30th-70th percentile range to identify spread trading opportunity, (2) hvol_20 < 0.02 (20th percentile volatility threshold indicating market complacency), (3) exit at 85th percentile price position. However, the core condition\u2014'fundamental supply metric exceeds consensus for 2-3 consecutive periods'\u2014requires external fundamental data that cannot be constructed from technical indicators alone. This signal is inherently dependent on non-market data sources."
+}

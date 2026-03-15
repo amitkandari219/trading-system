@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires market microstructure data (bid/offer levels, time precedence tracking, minimum tick increment pricing, order queue position) that cannot be expressed using standard OHLCV-derived indicators. Concepts like 'improve price by 1 tick', 'existing time-precedence order execution', and 'order fills' are order-management mechanics rather than price-action patterns. The signal is a trading tactic/execution rule, not a technical analysis pattern.",
+  "translation_notes": "This signal describes an order placement and execution strategy dependent on real-time order book state and exchange-specific tick sizes. It cannot be mechanically backtested using historical price/volume data alone. It would require: (1) live order book snapshots, (2) order ID tracking and time stamps, (3) instrument-specific minimum tick rules, and (4) execution queue simulation\u2014none of which are available in standard backtesting frameworks using only price, volume, and technical indicators."
+}

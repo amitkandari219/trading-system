@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Head-and-shoulders pattern detection requires multi-point structural analysis (identifying peaks A, C, E and computing distance ratios D1/D2) which cannot be expressed using only the allowed price-based indicators and simple comparison operators. Pattern detection logic requires candlestick or chart pattern recognition not available in the allowed indicator set. The distance_ratio symmetry threshold (max_distance_ratio: 4.0) and neckline violation detection require pattern geometry computation beyond scalar indicator comparisons.",
+  "translation_notes": "Signal requires advanced pattern recognition capabilities. Recommend implementing a dedicated head-and-shoulders detection module that: (1) identifies local peaks/troughs, (2) validates shoulder symmetry with Max(D1,D2)/Min(D1,D2) \u2264 4.0, (3) detects neckline from pattern low points, (4) triggers entry on neckline confirmation and exits on neckline breach. Direction is context-dependent based on whether pattern is inverted (bearish vs bullish)."
+}

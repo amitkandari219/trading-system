@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The Abandoned Baby pattern requires identification of three-candle pattern formation with gap analysis and shadow height ratio calculation relative to 'breakout price'. These multi-candle pattern recognition mechanics, gap detection, and normalized shadow metrics are not directly expressible using the available indicator set. The signal requires candle sequence validation and relative position analysis across multiple bars that exceeds simple indicator thresholds. Additionally, 'breakout_direction: BOTH' and context-dependent success rates (50-71% across quadrants) cannot be encoded into static entry/exit rules without pattern-specific logic.",
+  "translation_notes": "This is a candlestick pattern that requires sequence recognition (3-candle formation), gap analysis between specific candles, and shadow height normalization. The available indicators (body, upper_wick, lower_wick, range) can capture individual candle properties but cannot express: (1) the sequential gap requirement between candles 1-2 and 2-3, (2) directional context-dependent rules tied to market regime classification, (3) shadow height divided by 'breakout price' metric. The pattern's success rates vary significantly by market condition (BULL_UP=50%, BEAR_DOWN=71%), requiring regime-aware logic not supported by simple threshold rules. Recommend implementing custom pattern recognition module or using a dedicated candlestick pattern library."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-session/multi-venue tracking with incremental position scaling across Australia/London/New York sessions and session-specific momentum thresholds (1.5x average session range). Standard backtester indicators do not capture cross-session position management, staged profit-taking by venue, or session-relative price movement metrics. The '50% exit at next session open' and session-range-relative momentum confirm logic are not expressible with available indicators.",
+  "translation_notes": "Attempted to capture core trend-following logic using ADX for momentum confirmation and moving average crossovers for directional bias. However, the original signal's power lies in its multi-session scaling strategy and venue-specific exit mechanics, which cannot be represented in a single-timeframe rule set. A proper backtest would require custom position management and session-aware order execution logic."
+}

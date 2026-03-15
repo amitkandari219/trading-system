@@ -1,0 +1,108 @@
+{
+  "signal_id": "THARP_DRY_10_2",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_10_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_5"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "crosses_above",
+        "right": "50"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_5"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "crosses_below",
+        "right": "50"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_5"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_5"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 0.5,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes trend change and reward-to-risk optimization over perfect mechanics. Entry uses price crossing 5-period MA with RSI confirmation at 50 midpoint. Exit triggers on trend reversal (MA cross in opposite direction). Stop loss set to 0.5x ATR equivalent using standard 0.5% decimal scale for ATR-based stops. Direction marked CONTEXT_DEPENDENT per signal specification to allow both long and short entries based on trend direction. Volume confirmation explicitly not required per original conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_5"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "crosses_above",
+        "value": 50.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_5"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "crosses_below",
+        "value": 50.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_5"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_5"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.005,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes trend change and reward-to-risk optimization over perfect mechanics. Entry uses price crossing 5-period MA with RSI confirmation at 50 midpoint. Exit triggers on trend reversal (MA cross in opposite direction). Stop loss set to 0.5x ATR equivalent using standard 0.5% decimal scale for ATR-based stops. Direction marked CONTEXT_DEPENDENT per signal specification to allow both long and short entries based on trend direction. Volume confirmation explicitly not required per original conditions."
+  },
+  "source_rule_text": "Enter trades at the moment of trend change, when the reward-to-risk ratio is most favorable, rather than focusing on perfect entry mechanics."
+}

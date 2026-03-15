@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cascade pyramiding logic across three distinct MA crossovers (8-period, 21-period, 55-period) with conditional price-holding confirmation. The allowed indicator set lacks 8-period MA (only sma_5, sma_10, sma_20, etc.) and the rule engine does not support multi-stage position-adding logic with consecutive-bar conditions (3 bars above MAs). The 'progressively less sensitive cascade' and 'three-tranche pyramiding' mechanics cannot be expressed in a single 3-field condition format.",
+  "translation_notes": "Approximated initial trigger using ema_5 crosses sma_20 as closest analog to 8-MA/21-MA cross. Medium/slow MA cascade and add-on conditions require stateful position management not supported by this schema. Trailing stop converted to fixed 1.5% stop_loss_pct. Signal is CONTEXT_DEPENDENT but mapped to LONG for directional clarity; true implementation would need regime detection and reversal logic."
+}

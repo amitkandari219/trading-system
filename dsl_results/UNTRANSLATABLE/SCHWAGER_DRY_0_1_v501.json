@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires sentiment indicators not in allowed list: (1) put/call ratio >1.2 \u2014 no PCR indicator available; (2) media sentiment scoring \u2014 no NLP/sentiment analysis indicators available; (3) capitulation pattern recognition \u2014 requires multi-bar candle pattern analysis beyond simple conditions. Approximation used volume spike as proxy for capitulation, but true capitulation detection (high volume down days + reversal attempts) cannot be accurately expressed with available indicators.",
+  "translation_notes": "Translated 30% decline requirement using returns < -0.30. Used india_vix > 25 as proxy for extreme fear (VIX equivalent). Volume confirmation approximated with volume > hvol_20 (above 20-day historical average). Media negativity and specific capitulation patterns cannot be expressed with available indicators. Exit conditions: 75% gain (returns > 0.75), -15% hard stop (returns < -0.15), and 2-year hold max (730 days). Position is contrarian LONG in extreme bearish conditions. Regime set to HIGH_VOL and TRENDING_DOWN to match the reversal setup context."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires fundamental valuation metrics (valuation exceeds historical mean by >4 standard deviations, asset appreciation >200% over 15+ years, retail participation indicators) which are NOT available in the allowed technical indicators list. Only price-based and volume-based technical indicators are available. The core bubble-detection logic cannot be faithfully translated without access to: (1) long-term price history analysis beyond standard lookback windows, (2) fundamental valuation ratios, (3) retail order flow data, and (4) options volume metrics normalized to retail participation.",
+  "translation_notes": "Attempted partial translation using proxy conditions: extreme returns (2.0 = 200% gain proxy), Bollinger Band extremes (>0.95 pct_b indicates upper extreme), and elevated volume ratio. However, these are inadequate proxies for the sophisticated bubble-detection criteria in the original signal. The 15-year lookback period and standard deviation threshold for valuation cannot be computed from daily OHLCV data alone. Recommend: (1) add fundamental data source, (2) add long-term returns calculation, or (3) mark this signal as non-implementable in pure technical backtester."
+}

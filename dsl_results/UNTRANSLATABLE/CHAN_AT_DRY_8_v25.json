@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a market manipulation/layering strategy that requires order book microstructure data (bid/ask sizes, order placement, cancellation timing, and panicked seller detection). The ALLOWED_INDICATORS set contains only OHLCV and derived technical indicators\u2014it lacks access to: (1) real-time order book depth, (2) order placement/cancellation events, (3) trader psychology/panic detection, and (4) latency-sensitive execution sequencing. A backtest engine using only OHLCV candle data cannot simulate the false liquidity creation, order cancellation mechanics, or panic-driven fill timing that are central to this strategy.",
+  "translation_notes": "Attempted approximation: Entry condition uses vol_ratio_20 near 1.0 (similar bid/ask sizes proxy), exit uses price above SMA_5 (crude proxy for panic exit). However, this approximation loses 95%+ of the signal's logic and would not produce meaningful backtest results. Recommend: (1) use a microstructure-aware backtest engine with order book replay, or (2) redesign signal using only standard technical indicators."
+}

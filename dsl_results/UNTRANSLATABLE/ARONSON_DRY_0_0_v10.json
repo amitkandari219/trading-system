@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a custom 'stationary time series' derived from an unspecified transformation and a fixed threshold set at the 80th percentile of historical range. This is not a standard pre-computed indicator in the allowed list. The closest proxy (bb_pct_b at 0.80 scale) is used as a reasonable approximation of a normalized/stationary series with threshold crossing logic, but this is not equivalent to the original signal specification which requires explicit stationarity transformation and percentile-based threshold calibration.",
+  "translation_notes": "Original signal specifies a generic threshold-crossing rule on a stationary series. Without knowing the specific stationarity transformation method, bb_pct_b (Bollinger Band percentage B) was selected as it represents a normalized, mean-reverting stationary-like series on 0-1 scale. The 80th percentile threshold maps to 0.80 on the bb_pct_b scale. Crosses above 0.80 trigger long; crosses below trigger short (context-dependent direction preserved). This is an approximation and may not replicate the author's intended behavior without the original transformation specification."
+}

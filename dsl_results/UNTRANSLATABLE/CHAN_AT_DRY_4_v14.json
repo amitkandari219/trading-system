@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dual-instrument ratio calculation (y/x), z-score computation across two price series, and proportional position scaling based on standard deviation magnitude. These operations require custom ratio indicators and position sizing logic not available in the allowed indicator set. The strategy depends on calculating ratio = instrument_y / instrument_x, then computing z-score = (ratio - sma(ratio)) / stdev(ratio), which cannot be expressed using only single-instrument price indicators. Allowed indicators do not support cross-instrument ratios or dynamic position scaling based on deviation magnitude.",
+  "translation_notes": "This is a pairs trading / statistical arbitrage strategy that requires: (1) two separate price series and their ratio, (2) moving average and standard deviation of the ratio, (3) z-score calculation, and (4) position size scaling. The backtest engine indicators provided are designed for single-instrument analysis. To implement this strategy, custom ratio indicators would need to be added: ratio_y_x, sma_ratio_20, stdev_ratio_20, z_score_ratio."
+}

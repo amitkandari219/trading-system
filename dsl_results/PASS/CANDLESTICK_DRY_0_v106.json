@@ -1,0 +1,88 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_10"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_10"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.46,
+    "hold_days_max": 3,
+    "direction": "BOTH",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal identifies 'tall candles' as outperforming 'short candles'. Translated 'tall candle height' as candlestick range exceeding ATR_14 (volatility-adjusted measure). Direction is CONTEXT_DEPENDENT (both long and short applicable). Hold period set to 3 days based on best performance data (candleend+3days: 1.28% bull, 0.63% bear). Exit conditions derived from AUTHOR_SILENT guidance using mean reversion to SMA_10. Stop loss set to worst-case 10-day bear scenario (-3.46%). Entry applies to both bull and bear regimes as stated in target regimes."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_10"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_10"
+      }
+    ],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 3,
+    "stop_loss_pct": 0.0346,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal identifies 'tall candles' as outperforming 'short candles'. Translated 'tall candle height' as candlestick range exceeding ATR_14 (volatility-adjusted measure). Direction is CONTEXT_DEPENDENT (both long and short applicable). Hold period set to 3 days based on best performance data (candleend+3days: 1.28% bull, 0.63% bear). Exit conditions derived from AUTHOR_SILENT guidance using mean reversion to SMA_10. Stop loss set to worst-case 10-day bear scenario (-3.46%). Entry applies to both bull and bear regimes as stated in target regimes."
+  },
+  "source_rule_text": "Candlestick pattern: Tall candles outperform short candles. Measure candlestick height from lowest low to highest high price."
+}

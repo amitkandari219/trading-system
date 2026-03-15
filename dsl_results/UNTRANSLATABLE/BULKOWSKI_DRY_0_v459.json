@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern detection (identifying two distinct bottoms at same price level separated by 2-6 weeks) requires multi-bar pattern recognition logic not available in single-bar indicator set. Confirmation point (highest high between two bottoms) requires historical pattern state tracking. Volume comparison between left and right sides requires pattern-aware volume analysis.",
+  "translation_notes": "Attempted proxy: Used close crosses_above r1 (pivot resistance) as approximate confirmation breakout, and hvol_20 comparison as volume strength check. However, this does not capture the core double-bottom geometry. A proper implementation would require a dedicated pattern scanner or multi-bar state machine to identify the two bottoms, measure separation distance, detect the intervening high, and confirm breakout. The 40% average rise and 78% success rate from parameters are backtesting outputs, not entry conditions."
+}

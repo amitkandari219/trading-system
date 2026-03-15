@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Augmented Dickey-Fuller (ADF) statistical test with p-value threshold (0.10) and confirmation over N bars (3). ADF test is not available in the allowed indicators list. Bollinger Bands (bb_lower, bb_middle, bb_upper, bb_pct_b) used as practical proxy for mean-reversion detection, but this does not mathematically replicate the ADF stationarity test specified in the original rule.",
+  "translation_notes": "Mapped 'Price < Mean - 1.5*StdDev' to close crossing below Bollinger Band lower (which is mean - 2*stddev by default). Used bb_pct_b < 0.25 as additional confirmation of extreme deviation. Exit conditions use Bollinger Band middle as the mean-reversion target. Hard stop approximated via stop_loss_pct set to 2.5 (matching 2.5 stddev threshold). Cannot fully replicate ADF statistical test; consider this a structural approximation only."
+}

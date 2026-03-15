@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires CFTC commercial hedger positioning data (net long/short position percentiles and 252-day distribution tracking), which is not available in the allowed indicators list. The core logic of comparing hedger positioning percentiles against trailing distributions, tracking multi-week positioning sustenance, and comparing against 50th percentile thresholds cannot be expressed using only price-based technical indicators. A data feed integration for CFTC Commitments of Traders (CoT) data would be required.",
+  "translation_notes": "Translated the trend-following component using sma_200 as a proxy for trend direction (price above/below 200-day MA), but the signal's primary mechanism\u2014commercial hedger positioning flows counter to price\u2014cannot be implemented without external CFTC data. The entry conditions specify extreme percentile thresholds (>75th) for hedger net positioning sustained over 2+ weeks, and exits on positioning reversal below 50th percentile, none of which can be derived from available indicators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit broadening pattern detection and target price calculation, which are not available as atomic indicators. Broadening patterns require identification of expanding highs/lows over time, and target prices require pattern-specific geometry calculations. Substituted Bollinger Bands (band breakouts) as a proxy for pattern extremes and Pivot Points (R1/S1) as proxy for target zones, but this is approximate.",
+  "translation_notes": "BULKOWSKI_DRY_0 describes a broadening pattern with directional breakout and target-based exits. Since the engine lacks pattern recognition indicators, used: (1) Bollinger Bands upper/lower as proxies for pattern breakout extremes, (2) Pivot Points R1/S1 as proxy for target levels, (3) Direction set to CONTEXT_DEPENDENT to reflect that breakouts can be bullish or bearish, (4) Exit logic uses OR because trader should exit on EITHER reaching target zone OR reversal signal (prev_close crossunder). Stop-loss set conservatively at 2% based on typical pattern trade risk management."
+}

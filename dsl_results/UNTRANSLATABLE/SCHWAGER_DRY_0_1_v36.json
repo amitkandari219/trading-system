@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'professional positioning tracking' (65-75% of tracked positions in same direction) and 'extreme price level detection' (>2 standard deviations from mean), neither of which are available in the allowed indicator set. Professional positioning data is not a standard market indicator. Used price_pos_20 and volume as proxy for crowding, but this is an approximation. ATR-based exit is a reasonable reversal condition but does not map to the specified 'professional positioning drops below 60%' exit criterion.",
+  "translation_notes": "This is a contrarian crowded-trade signal that requires real-time professional positioning data (fund flows, COT reports, or proprietary trader positioning) which is not available in standard OHLCV indicators. The translation uses price extremes (price_pos_20 > 2.0 for overbought, < -2.0 for oversold) as a proxy for market saturation/crowding, and volume confirmation as a proxy for participation levels. The exit conditions have been replaced with a 1.5 ATR stop-loss (matching the specified parameter) and a reversal trigger based on price crossing back through the ATR band. For proper implementation, this signal would require access to CoT data, institutional flow data, or a proprietary positioning tracker."
+}

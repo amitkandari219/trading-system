@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cross-asset yield differential comparison (Asset A vs Asset B yield spread of 150+ bps) which cannot be expressed with single-instrument technical indicators. The allowed indicator set lacks: (1) multi-asset comparative metrics, (2) yield/return spread calculations between two distinct assets, (3) competing asset exhaustion pattern detection. Substituted with proxies (returns momentum, ADX trend strength, RSI extremes) but these do not capture the core regime-shift logic of yield dominance driving capital concentration.",
+  "translation_notes": "Original signal is fundamentally about macro yield regime shifts requiring comparative analysis across asset classes. Translated entry conditions approximate: strong positive returns (yield dominance proxy), strong trend (ADX >25), and exhaustion in competing asset (RSI <30). Exit at -25% loss or RSI overbought (>70). Leverage ratio (4.5x) and position sizing (60%) are parameters for backtest engine but cannot be expressed as conditions. Confirmation period (5 days) cannot be enforced in condition logic without bar-indexing."
+}

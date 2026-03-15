@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires calculating Z-Score as (price - moving_average) / moving_standard_deviation and sizing positions proportional to the negative Z-Score. This requires: (1) a custom moving standard deviation calculation not available in the allowed indicators list, and (2) dynamic position sizing based on a computed Z-Score value. The allowed indicators do not include moving_standard_deviation, and position sizing cannot be expressed as a simple 3-field condition rule. The half-life value for lookback period is also not specified. Approximated entry/exit using price vs SMA crossovers as a fallback, but this does not capture the linear mean reversion mechanism.",
+  "translation_notes": "Signal requires custom Z-Score calculation and dynamic position sizing. Approximated with SMA crossover reversal logic only. True implementation needs: movingStd indicator, Z-Score computation capability, and position_size parameter linked to calculated Z-Score value. The exact half-life lookback period is undefined in source material."
+}

@@ -1,0 +1,108 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_5"
+      },
+      {
+        "left": "atr_14",
+        "operator": ">",
+        "right": "0.01"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_5"
+      },
+      {
+        "left": "atr_14",
+        "operator": ">",
+        "right": "0.01"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_5"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_5"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes gradual price diffusion enabling momentum exploitation. Entry requires price above/below 5-period SMA with sufficient ATR (minimum 1% price movement). Exit on SMA crossover representing trend reversal. Context-dependent direction allows both long and short entries. 'Minimum 5 bars in trend' is implicit in SMA establishment; explicit bar-counting not directly supported by indicator set. ATR threshold (0.01 decimal = ~1%) approximates the '1.0 ATR' magnitude requirement."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_5"
+      },
+      {
+        "indicator": "atr_14",
+        "op": ">",
+        "value": 0.01
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_5"
+      },
+      {
+        "indicator": "atr_14",
+        "op": ">",
+        "value": 0.01
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_5"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_5"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes gradual price diffusion enabling momentum exploitation. Entry requires price above/below 5-period SMA with sufficient ATR (minimum 1% price movement). Exit on SMA crossover representing trend reversal. Context-dependent direction allows both long and short entries. 'Minimum 5 bars in trend' is implicit in SMA establishment; explicit bar-counting not directly supported by indicator set. ATR threshold (0.01 decimal = ~1%) approximates the '1.0 ATR' magnitude requirement."
+  },
+  "source_rule_text": "A trader should enter trend-following positions when prices are changing gradually enough to establish momentum, as this gradual diffusion of information creates predictable price trends that momentum traders can exploit."
+}

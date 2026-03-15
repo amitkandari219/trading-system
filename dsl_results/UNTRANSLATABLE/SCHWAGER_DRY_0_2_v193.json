@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting absolute point-based rebound thresholds ('any upside movement > 15 points from intraday low') and profit targets based on 'prior range width' \u2014 neither can be expressed with allowed indicators without custom lookback logic. Donchian channel used as proxy for 5-day range extremes, but exact 15-point rebound detection and range-width-based profit target are not translatable to standard indicators.",
+  "translation_notes": "Interpreted 'new low relative to prior 5 days' as close below dc_lower (5-period Donchian). Rebound entry condition approximated as close > low (any upside from intraday low). Stop loss set at 0.5% (~10 points assumed on typical contract). Profit target multiplier set to 1.5x as proxy for 60% of range. Direction set to LONG as signal describes a reversal up after stop penetration. Regime constrained to RANGING as specified."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pairs trading strategy requires cointegration testing (ADF/Johansen test with p>0.90), spread calculation between two securities, z-score normalization of spread, linear regression coefficient for position sizing, and stationary mean tracking. None of these are available in the allowed indicator set. The signal also lacks explicit entry thresholds (z-score level), exit levels, lookback period, and half-life parameters marked as AUTHOR_SILENT. Without access to paired security data, cointegration metrics, and spread statistics, this cannot be accurately translated to single-security technical indicators.",
+  "translation_notes": "This is a pairs trading/statistical arbitrage strategy that fundamentally requires cross-security analysis (cointegration, spread metrics, hedging ratios) which cannot be expressed using single-asset technical indicators. A placeholder rule using price crossing SMA was provided as a generic mean-reversion proxy, but this does not capture the core pairs logic. Recommend: (1) Implement cointegration detection module outside backtest engine, (2) Pre-calculate spread and z-score for cointegrated pairs, (3) Use spread z-score as custom indicator if engine supports external data sources."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking downside-to-upside volume ratio (custom metric) and counting instances of threshold violations within a rolling window (state-dependent event counting). The allowed indicator 'vol_ratio_20' is a generic volume ratio, not the specific NYSE downside/upside volume ratio. More critically, the rule requires: (1) detection of 2 separate threshold-crossing events within 90 days, and (2) conditional logic based on event history rather than instantaneous price/volume data. This requires event-state tracking and multi-bar lookback logic not expressible in the 3-field condition format.",
+  "translation_notes": "The signal is fundamentally a multi-event pattern detector requiring historical state tracking across a 90-day window. It cannot be reduced to instantaneous indicator comparisons. A proper implementation would need: custom volume breadth calculation (downside vol / upside vol on NYSE data), event logging system, and rolling-window event counter. The exit condition (ratio reverses to <0.7 for 1 week) also requires sustained duration logic beyond single-bar evaluation."
+}

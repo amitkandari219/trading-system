@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Morning Doji Star pattern detection requires multi-candle pattern recognition (doji candle identification with specific wick ratios, retracement measurement, and 3-candle sequence validation) which cannot be expressed using only single-bar indicators and basic operators. The pattern's core logic\u2014identifying a doji formation, measuring retracement depth, and confirming the 3-candle reversal sequence\u2014requires algorithmic pattern detection beyond available indicators.",
+  "translation_notes": "Attempted to approximate using secondary downtrend (close < sma_50), primary uptrend (close > sma_200), and doji-like small body (body_pct < 0.1) with downward breakout exit (close > prev_high = failure). However, this is a significant simplification that misses the pattern's core multi-candle structure and retracement measurement requirements. Consider implementing Morning Doji Star as a dedicated pattern detector in the backtest engine rather than rules-based conditions."
+}

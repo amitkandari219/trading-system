@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_16_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal specifies z-score calculations with entry_threshold_zscore=2.0 and exit_threshold_zscore=1.5, but z-score is not available in the ALLOWED INDICATORS list. Approximated using Bollinger Bands (bb_pct_b) as a proxy for mean-reversion magnitude, but this is not a true z-score implementation.",
+  "translation_notes": "Used bb_pct_b (0-1 scale) as a proxy for z-score deviation from rolling mean. bb_pct_b < 0.2 approximates 2.0 z-score entry threshold (extreme deviation), and bb_pct_b >= 0.5 approximates 1.5 z-score exit threshold (reversion to mean). Used sma_100 as the rolling mean reference aligned with the 100-bar lookback_window parameter. Direction set to CONTEXT_DEPENDENT to support both long and short entries based on deviation direction."
+}

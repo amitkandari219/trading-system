@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires measurement of 'Long condition trigger count / Total bars vs Short condition trigger count / Total bars differential' and dual-regime Sharpe ratio calculations (uptrend \u22650.8 AND downtrend \u22650.8). These are meta-level statistical comparisons across regimes and historical performance metrics that cannot be expressed as point-in-time indicator conditions using the allowed operators and indicators. The rule fundamentally requires backtesting infrastructure to compute regime-separated Sharpe ratios and condition trigger frequency analysis, not just real-time indicator comparisons.",
+  "translation_notes": "This signal is about eliminating directional bias in rule design through statistical symmetry testing, not about trading on specific indicator values. The core intent (requiring balanced long/short trigger frequency <25% differential AND equal performance in both trending regimes) requires custom backtesting logic outside the scope of condition-based rule translation. A proxy using ADX for trend confirmation has been provided, but does not capture the symmetry bias elimination core to ARONSON_DRY_0_2."
+}

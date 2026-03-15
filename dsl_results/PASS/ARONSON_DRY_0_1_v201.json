@@ -1,0 +1,88 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_100"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_20",
+        "operator": "<=",
+        "right": "sma_100"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_20",
+        "operator": "<=",
+        "right": "sma_100"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_100"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Classic SMA crossover strategy. Direction is context-dependent: long when short-term SMA exceeds long-term SMA, short otherwise. Uses sma_20 and sma_100 per signal parameters. Exit conditions are reversals of entry conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_100"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_20",
+        "op": "<=",
+        "value": "sma_100"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_20",
+        "op": "<=",
+        "value": "sma_100"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_100"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Classic SMA crossover strategy. Direction is context-dependent: long when short-term SMA exceeds long-term SMA, short otherwise. Uses sma_20 and sma_100 per signal parameters. Exit conditions are reversals of entry conditions."
+  },
+  "source_rule_text": "A trader should hold a long position when short-term moving average exceeds long-term moving average, and hold a short position otherwise, using optimized lookback periods for both averages."
+}

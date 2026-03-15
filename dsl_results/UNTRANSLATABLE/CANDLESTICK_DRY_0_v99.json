@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires detection of '13 consecutive higher highs' (multi-bar sequence count) and '13 new price lines appearing after 8 new price lines' (pattern memory and phase detection). These require historical bar lookback and pattern state tracking beyond single-bar technical indicators. The specific candlestick pattern recognition (Thirteen New Price Lines) cannot be expressed using only the allowed point-in-time indicators without a dedicated pattern detector.",
+  "translation_notes": "Attempted to approximate with consecutively higher highs (high > prev_high) and price above moving average, but this does NOT capture the specific 13-bar pattern requirement or the series context (following 8-bar pattern). Exit condition set conservatively to close below 20-SMA as reversal signal since AUTHOR_SILENT. Success rates (57% bull, 74% bear) suggest context-dependent reliability requiring regime confirmation."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Target regime 'MODERATE_TREND' is not in ALLOWED_REGIMES list (only TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY permitted). Signal also references '2 std dev below 20-SMA' and 'volume supports reversal' which cannot be expressed with allowed indicators\u2014Bollinger Bands are available but signal specifies deviation from SMA specifically, and volume reversal confirmation lacks a precise quantifiable condition in allowed set.",
+  "translation_notes": "Translated oversold condition using rsi_14 < 30 as primary indicator. ADX < 30 condition preserved for regime filtering. Interpreted 'reversed off recent swing low by <2%' as close price above sma_20 as a proxy for reversal confirmation. Exit on ADX > 35 for trend confirmation. Volume and 2-sigma conditions could not be precisely mapped to allowed indicators. Regime target 'MODERATE_TREND' requires manual mapping to RANGING or low-ADX TRENDING states during backtest configuration."
+}

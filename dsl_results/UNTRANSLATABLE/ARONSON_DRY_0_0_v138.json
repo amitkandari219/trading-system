@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking of 'contradictory signals' and 'confidence levels' across time, which are subjective/qualitative constructs not directly measurable from price/volume data. The core logic (exit after 2nd contradictory signal, position sizing based on thesis confidence decay) cannot be expressed using only the allowed indicators without explicit signal enumeration and confidence scoring mechanism. MACD histogram reversal and ADX decline are used as proxies for trend conviction loss, but this does not capture the sequential contradictory signal counting requirement.",
+  "translation_notes": "This is a psychological/meta-signal about overconfidence reversal that depends on tracking the trader's own thesis changes over time. Translated as: exit when MACD momentum reverses AND trend strength (ADX) falls below threshold, simulating loss of conviction. However, the original requirement to count contradictory signals (threshold=2) and apply position reduction before full exit cannot be mechanically implemented without an external signal enumeration system. Recommended: implement as a manual rule or add explicit contradictory signal definitions (e.g., specific price/MA crossover failures)."
+}

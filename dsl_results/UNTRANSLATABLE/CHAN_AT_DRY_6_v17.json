@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom z-score calculation on spread (gamma) between calendar spread pairs with 1-year expiration difference. Z-score formula uses moving average and moving standard deviation not available as named indicators. Additionally, contract selection logic (near/far pair selection by expiration criteria) and rolling mechanics (10 days before expiration) are portfolio-level operations requiring multi-leg instrument handling and custom spread construction logic not supported in this indicator-based rule engine. The signal also has AUTHOR_SILENT parameters (lookback_period, threshold, half_life) that cannot be inferred.",
+  "translation_notes": "This is a sophisticated calendar spread mean reversion strategy that operates on derived spread instruments and requires custom spread construction, z-score computation on synthetic spreads, and multi-leg rolling mechanics. Standard single-instrument technical indicators cannot capture the required logic. A specialized calendar spread backtest engine with spread definition and rolling capabilities would be needed to properly implement this signal."
+}

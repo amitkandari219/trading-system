@@ -1,0 +1,128 @@
+{
+  "signal_id": "THARP_DRY_14_2",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_14_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_10"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_10"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_10"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_10"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_10"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_10"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses context-dependent direction (long/short based on trend). Entry conditions use price crossing 10-period MA (sma_10) with confirmation of directional movement (price making higher/lower closes). Exit uses hard stop-loss (via ATR multiple) and trend reversal (price crossing back below/above MA). Trailing stop parameters captured in atr_multiple fields. 'Higher highs' trend confirmation approximated using price direction confirmation. High volume reversal condition difficult to express without volume weighting; basic MA cross used as primary reversal signal."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_10"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_10"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses context-dependent direction (long/short based on trend). Entry conditions use price crossing 10-period MA (sma_10) with confirmation of directional movement (price making higher/lower closes). Exit uses hard stop-loss (via ATR multiple) and trend reversal (price crossing back below/above MA). Trailing stop parameters captured in atr_multiple fields. 'Higher highs' trend confirmation approximated using price direction confirmation. High volume reversal condition difficult to express without volume weighting; basic MA cross used as primary reversal signal."
+  },
+  "source_rule_text": "Enter trades when the market direction shifts in your intended direction, then let profits run while cutting losses short."
+}

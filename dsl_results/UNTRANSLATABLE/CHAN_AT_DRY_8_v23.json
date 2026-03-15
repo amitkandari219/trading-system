@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires real-time bid-ask spread data, round-trip commission calculations, and market microstructure (best bid/ask prices, order fill logic). These are not available in the allowed indicator set which contains only OHLCV-derived technical indicators. The strategy is fundamentally a market-making/arbitrage signal that requires tick-level order book data, not a pattern-based technical signal.",
+  "translation_notes": "This signal requires: (1) Current bid-ask spread comparison to threshold (2 ticks), (2) Real-time commission per share calculation, (3) Ability to route buy orders to best bid and sell orders to best ask, (4) Order fill/rejection logic. None of these operational/microstructure requirements can be expressed using standard OHLCV technical indicators. A backtester using only daily/hourly OHLC data cannot replicate this intraday spread arbitrage strategy."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'new highs' relative to historical price levels and volume percentile thresholds (90th vs 80th percentile) which cannot be expressed with allowed indicators. The concept of 'new high on low volume' as a topping pattern requires Donchian comparisons or highest() functions not available. Volume ratio calculation (price gain per 1M shares) requires custom derived metrics not in the allowed indicator set.",
+  "translation_notes": "Attempted partial translation using hvol_20 as proxy for volume percentile and returns as proxy for price-to-volume ratio, but this loses the critical distinction between 80th and 90th percentile thresholds and the absolute 'new high' detection required by the original signal. The signal is fundamentally about market structure (new highs on divergent volume) which is not fully expressible in the given indicator vocabulary."
+}

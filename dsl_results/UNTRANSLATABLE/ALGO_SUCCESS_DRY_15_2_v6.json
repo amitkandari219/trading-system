@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a trained QDA classifier model with lagged returns (t-1, t-2) as features and prediction probability thresholds. The backtest engine does not support machine learning classifier predictions or dynamic probability outputs. The core logic (positive returns \u2192 long, negative returns \u2192 exit) is captured via returns indicator, but the lagged feature engineering, rolling 63-day window training, and QDA probability scoring cannot be expressed using only the allowed indicators and operators.",
+  "translation_notes": "Attempted partial translation using raw returns as a proxy, but this loses the predictive lag structure (t-1, t-2), the rolling window retraining mechanism, and the classifier confidence scoring. A full implementation would require ML model integration beyond the current rule-based constraint system."
+}

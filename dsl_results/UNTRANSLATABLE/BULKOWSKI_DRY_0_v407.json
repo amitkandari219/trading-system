@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Diamond pattern detection requires candlestick pattern recognition (identifying expansion followed by contraction in high/low range) which cannot be expressed using only the allowed indicators. Pattern identification requires geometric analysis of price structure over 46-54 day formation periods. Additionally, the signal requires comparison of 'narrow vs wide' patterns using 'median length as separator', which demands pattern-specific measurement logic not available in standard technical indicators. Volume behavior 'across different market conditions' references Table 12.7 which is incomplete in the source excerpt.",
+  "translation_notes": "This signal describes a visual/structural candlestick pattern (diamond) with context-dependent entry/exit based on pattern dimensions and volume characteristics. The core trading logic (narrow patterns outperform wide patterns except upward breakout diamonds in bear markets) cannot be encoded without explicit pattern detection. Recommend implementing as a custom pattern recognition module that: (1) identifies diamond formations by tracking expanding then contracting price ranges, (2) measures pattern width and height against median thresholds, (3) analyzes volume behavior relative to Table 12.7 specifications, (4) applies breakout direction filters conditional on market regime."
+}

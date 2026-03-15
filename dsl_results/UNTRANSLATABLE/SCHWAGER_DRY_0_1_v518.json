@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) consolidation/base period (10-15 days) - requires lookback window analysis not expressible in single-bar conditions; (2) catalyst event identification - no market event/news indicator available; (3) catalyst recency tracking (5 trading days) - requires external event timestamp data. Volume confirmation and breakout detection are translatable, but the core catalyst-driven logic and consolidation detection require external data or multi-bar pattern recognition beyond allowed operators.",
+  "translation_notes": "Attempted to capture the breakout-on-volume concept (volume > 120% average using vol_ratio_20) with price crossing Bollinger Bands as a proxy for consolidation breakout. However, the signal's fundamental premise\u2014waiting for a market catalyst event\u2014cannot be operationalized without access to news/event data. The 10-15 day consolidation period and 5-day catalyst recency window require lookback analysis and external event feeds not available in the indicator set. Recommend: (1) Add event flag indicator; (2) Add consolidation detector (range / volatility compression metric); (3) Allow multi-bar pattern conditions."
+}

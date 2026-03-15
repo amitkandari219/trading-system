@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references a proxy index (DJTA) with custom volatility bands (\u00b13% from MA) applied to a target market (S&P 500). The allowed indicator set does not include Bollinger Bands with custom width specifications or cross-market proxy logic. The signal requires: (1) bands calculated as MA \u00b1 3% (not standard BB), (2) reference to an external index as entry trigger, and (3) confirmation of extreme deviations. Standard bb_upper/bb_lower use 2 standard deviations, not percentage offsets. Cannot accurately model the 'rare extreme deviations below lower band' condition without access to the proxy instrument's actual bands or custom band construction.",
+  "translation_notes": "Attempted simplified translation using SMA_20 as the center reference with long entry above and short entry below, but this loses the critical volatility band logic and cross-market proxy mechanism that defines the strategy. The original rule's strength lies in detecting rare extreme moves in a correlated proxy\u2014a concept that cannot be faithfully expressed with single-instrument indicators alone."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_20_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal relies on three custom domain-specific indicators not available in standard OHLCV toolkit: (1) 'Inventory levels' and 'Days-to-cover' \u2014 commodity-specific fundamental metrics requiring external data feeds; (2) 'Production schedule' \u2014 forward-looking supply data requiring fundamental/news data sources; (3) 'Storage cost index' \u2014 specialized commodity cost metric not derivable from price/volume alone. These cannot be mapped to allowed technical indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume Ratios, or Bar Properties). The signal is untranslatable without access to commodity inventory databases and production schedules.",
+  "translation_notes": "Attempted partial mapping using price_pos_20 as proxy for inventory depletion percentile and hvol_20 for storage cost pressure, but this is speculative. The core logic cannot be faithfully represented without fundamental data integration."
+}

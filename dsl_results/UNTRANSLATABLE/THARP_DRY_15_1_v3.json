@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of fundamental report events and retracement percentage calculations (25-50% of initial move), which are not available in the allowed indicator set. The rule also requires multi-bar pattern recognition (initial reaction \u2192 retracement \u2192 second leg confirmation) that cannot be precisely encoded without event-detection and historical price comparison operators.",
+  "translation_notes": "Attempted partial translation using price action patterns: entry requires close beyond previous high/low (simulating second leg confirmation) with above-normal volume. Exit uses pivot points as proxy for retracement levels. However, the core logic\u2014detecting the fundamental report event, measuring retracement percentage of initial move, and confirming a reversal pattern\u2014cannot be fully implemented without event APIs and complex multi-bar lookback functions. A production implementation would require custom event handling and retracement calculation logic external to the standard indicator set."
+}

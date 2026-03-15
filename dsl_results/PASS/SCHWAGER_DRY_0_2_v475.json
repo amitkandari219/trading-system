@@ -1,0 +1,106 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.15"
+      },
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "0.15"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.15"
+      },
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "0.15"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Contrarian reversion signal: Long entry when price drops >15% (returns < -0.15) with elevated volatility; Short entry when price spikes >15% (returns > 0.15) with elevated volatility. Exit when prior extreme is broken (close crosses back through prev_low/prev_high). Used 3-day returns to capture the >15% move over lookback_days=3. High volatility confirmed via hvol_20 > 0.15 (15% threshold). Position sizing and 1:1 profit target are implementation parameters, not condition-based."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.15
+      },
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 0.15
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.15
+      },
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 0.15
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "HIGH_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Contrarian reversion signal: Long entry when price drops >15% (returns < -0.15) with elevated volatility; Short entry when price spikes >15% (returns > 0.15) with elevated volatility. Exit when prior extreme is broken (close crosses back through prev_low/prev_high). Used 3-day returns to capture the >15% move over lookback_days=3. High volatility confirmed via hvol_20 > 0.15 (15% threshold). Position sizing and 1:1 profit target are implementation parameters, not condition-based."
+  },
+  "source_rule_text": "A trader should take contrarian positions against extreme price moves (hysteria) when charts show incredible spikes, because exhaustion patterns often precede reversions."
+}

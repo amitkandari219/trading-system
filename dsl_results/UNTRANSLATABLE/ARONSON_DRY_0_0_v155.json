@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires a meta-rule engine that synthesizes multiple component trading rules and calculates consensus agreement scores. The 'composite_agreement_score' is not an atomic market indicator but rather a derived metric from multiple rule evaluations. The signal specifies '4 out of 6 component rules' and 'composite_signal_strength >= 0.75' which cannot be expressed using only the allowed atomic indicators (price, moving averages, RSI, ATR, etc.). Implementation requires: (1) definition of the 6 component rules themselves, (2) a rules evaluation engine, and (3) an agreement scoring mechanism. This is a framework-level rule, not a translatable market condition.",
+  "translation_notes": "This signal describes an ensemble/meta-strategy approach rather than a traditional technical indicator-based rule. To implement: define the 6 component rules separately, create a rule evaluation harness, and aggregate their signals. The 20-bar time stop is captured in hold_days_max. The minimum profitability threshold (1.15 Profit Factor) should be validated during component rule backtesting, not at entry time."
+}

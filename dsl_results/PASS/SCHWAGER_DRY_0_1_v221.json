@@ -1,0 +1,130 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.02"
+      },
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.02"
+      },
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Narrow-range detection modeled using bb_bandwidth (Bollinger Band width as volatility compression proxy) below 0.02. Range expansion threshold approximated using range > atr_14 (represents >100% ATR expansion). Donchian channels (dc_upper/dc_lower) used to detect recent range breakout with implicit confirmation via close crossing these levels. Entry is directional (LONG on breakout above; SHORT on breakout below). Stop loss set at 1.5x ATR equivalent via stop_loss_pct. Lookback period implicitly captured in Donchian and ATR calculations."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.02
+      },
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.02
+      },
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "HIGH_VOL"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Narrow-range detection modeled using bb_bandwidth (Bollinger Band width as volatility compression proxy) below 0.02. Range expansion threshold approximated using range > atr_14 (represents >100% ATR expansion). Donchian channels (dc_upper/dc_lower) used to detect recent range breakout with implicit confirmation via close crossing these levels. Entry is directional (LONG on breakout above; SHORT on breakout below). Stop loss set at 1.5x ATR equivalent via stop_loss_pct. Lookback period implicitly captured in Donchian and ATR calculations."
+  },
+  "source_rule_text": "A trader should enter in the direction of a range expansion in a previously narrow-range market, as the expansion signals the market is committed to moving in that direction."
+}

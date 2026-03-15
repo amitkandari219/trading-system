@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of multiple non-profit trading motivations (forced liquidations, index rebalancing, etc.) and counterparty order flow analysis. These require order book microstructure data, counterparty classification, and motivation inference\u2014none of which are available in the allowed indicators (OHLCV, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, pivots, volume ratios, position, returns). The core logic of 'identifying loser behavior' and 'trading against non-profit motivated counterparties' cannot be expressed with price-action indicators alone.",
+  "translation_notes": "Attempted partial proxy using volume spikes (vol_ratio_20) and price momentum reversals (returns) to approximate contrarian positioning, but this does not capture the required microstructure logic. A proper implementation would need order flow decomposition, counterparty tagging, and motivation classification modules outside the scope of technical indicators."
+}

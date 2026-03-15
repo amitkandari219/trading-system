@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct access to VX front contract price, VIX spot price, and trading days-to-settlement calculation. Available indicators india_vix (VIX proxy) and hvol_20 (historical volatility) do not directly measure VX term structure contango or allow dynamic threshold calculation (0.1 \u00d7 days_to_settlement). The precise contango condition cannot be expressed with allowed indicators.",
+  "translation_notes": "Attempted proxy: india_vix < hvol_20 approximates contango detection (VIX spot below forward volatility), but this is a weak approximation. True signal requires: (1) VX front price data, (2) VIX spot price, (3) days-to-settlement variable, and (4) dynamic threshold calculation. The ES short leg is not captured in indicator rules. Signal should be marked for manual implementation or custom indicator development."
+}

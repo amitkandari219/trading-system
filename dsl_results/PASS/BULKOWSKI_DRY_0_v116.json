@@ -1,0 +1,82 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "REVERSAL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Broadening Top pattern entry conditions translated to detect higher highs and lower lows with expanding volume. The five-point structure (3 highs, 2 lows) cannot be directly encoded in a single bar rule without complex state tracking, so conditions focus on progressive widening. Exit uses reversal signal (price crossing above SMA) as author provided AUTHOR_SILENT for exits. Expected decline of 15% per author; success rate 53% in bear markets."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "REVERSAL"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Broadening Top pattern entry conditions translated to detect higher highs and lower lows with expanding volume. The five-point structure (3 highs, 2 lows) cannot be directly encoded in a single bar rule without complex state tracking, so conditions focus on progressive widening. Exit uses reversal signal (price crossing above SMA) as author provided AUTHOR_SILENT for exits. Expected decline of 15% per author; success rate 53% in bear markets."
+  },
+  "source_rule_text": "Broadening Top: A reversal pattern with higher highs and lower lows as price action widens over time, composed of five turning points (three minor highs and two minor lows in orthodox form)"
+}

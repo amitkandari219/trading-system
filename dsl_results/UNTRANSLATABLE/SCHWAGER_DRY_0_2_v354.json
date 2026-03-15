@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fundamental analysis indicators (quarterly EPS growth, prior year EPS comparison, 5-year earnings CAGR, annual YoY earnings changes) which are not available in the allowed technical indicator set. The rule depends on earnings data that cannot be derived from price/volume/technical indicators alone. A partial translation using returns as a proxy for earnings growth has been provided, but this does not capture the nuanced multi-year earnings consistency pattern required by the original signal.",
+  "translation_notes": "Original signal is fundamentals-based (earnings analysis), not technical-based. The entry_long condition uses returns >= 0.20 (20%) as a weak proxy for the quarterly EPS growth requirement, but this misses the critical components: (1) prior-year quarter comparison, (2) 5-year CAGR >= 15%, (3) annual YoY consistency checks. Recommend implementing this signal using a fundamental data feed with EPS fields rather than a pure technical backtest engine."
+}

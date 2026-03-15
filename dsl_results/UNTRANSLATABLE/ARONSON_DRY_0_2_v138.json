@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking a sequence counter of contradictory signals (4th, 7th occurrence) with position sizing rules (reduce by 25% on 4th, exit on 7th). No allowed indicator directly measures 'contradictory signal count' or implements dynamic position-sizing based on signal history. This requires stateful rule logic beyond indicator-based conditions. The confidence_decay_multiplier and signal_lookback_periods parameters also require custom state management not supported by standard indicator operators.",
+  "translation_notes": "Attempted proxy: Entry when trend established (ADX > 25) and price positioned in direction of trend (price vs SMA_20). Exit when conviction weakens (RSI moving toward exhaustion zones). However, this does not capture the core mechanism: counting contradictory signals against the thesis and scaling out progressively. A true implementation would need a rule engine that maintains a contradiction counter, compares incoming signals against the established thesis, and triggers position reductions at thresholds 4 and 7. The signal is fundamentally about thesis management and confidence decay, not price-based technical indicators."
+}

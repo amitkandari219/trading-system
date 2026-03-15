@@ -1,0 +1,73 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "low",
+        "operator": "<=",
+        "right": "dc_lower"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry: Breakout near 12-month low approximated by Donchian lower band breakout with upward close. Exit: Reversal below 20-day SMA as author provided no explicit exit condition. Hold period set to 10 days matching average time to throwback. Stop loss conservatively set to 5% given 39% average rise potential. Pattern success rates (39% without throwback, 33% with throwback) noted but not directly encoded as they represent historical statistics rather than actionable conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "low",
+        "op": "<=",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Entry: Breakout near 12-month low approximated by Donchian lower band breakout with upward close. Exit: Reversal below 20-day SMA as author provided no explicit exit condition. Hold period set to 10 days matching average time to throwback. Stop loss conservatively set to 5% given 39% average rise potential. Pattern success rates (39% without throwback, 33% with throwback) noted but not directly encoded as they represent historical statistics rather than actionable conditions."
+  },
+  "source_rule_text": "Pattern with breakout near yearly low showing throwback behavior and subsequent rise"
+}

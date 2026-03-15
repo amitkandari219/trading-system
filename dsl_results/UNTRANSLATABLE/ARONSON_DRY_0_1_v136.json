@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of specific candlestick reversal patterns (pin bar, engulfing, 2-bar reversal) which cannot be expressed using only the allowed indicators and operators. price_pos_20 was used as a proxy for deviation from ema_20 (approximating \u00b12.0 standard deviations), but candlestick pattern recognition requires morphological analysis not supported by the allowed indicator set.",
+  "translation_notes": "Approximated \u00b12.0 std dev deviation from 20-period EMA using price_pos_20 indicator (scaled 0-1, with 0.5 = at EMA, 0.0 = below, 1.0 = above). Reversal pattern condition (pin bar/engulfing/2-bar) is untranslatable. Prior bar opposite direction condition implemented using prev_close comparison. Exit set at EMA_20 crossover as primary target. Stop loss set to 0.25% approximating 0.25 std dev stop. Direction marked CONTEXT_DEPENDENT to capture both long (oversold/upward reversal) and short (overbought/downward reversal) scenarios."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires Johansen cointegration test (p < 0.10) and error-correction model residuals measured in standard deviations from zero. Neither cointegration confirmation nor ECM residuals are available in the allowed indicator set. Bollinger Bands (bb_pct_b) and bandwidth have been used as proxies for mean-reversion extremes and spread divergence, but this is a significant approximation that does not capture the true cointegration dynamics specified in the original signal.",
+  "translation_notes": "CRITICAL: This translation uses Bollinger Band percentile and bandwidth as crude proxies for error-correction model divergence. The signal fundamentally depends on econometric cointegration analysis (Johansen test) and ECM residuals which are not available. A proper implementation requires: (1) Johansen cointegration test confirmation, (2) Calculation of error-correction term as residual from cointegrating relationship, (3) Measurement of residual in units of standard deviations. The current JSON approximation may capture some mean-reversion trades but will miss the core econometric signal. Recommend implementing custom cointegration indicators in the backtest engine if this strategy is critical."
+}

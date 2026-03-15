@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) detection of 'activity level' as (volume * volatility proxy) with 50% drop threshold\u2014volatility proxy not available in allowed indicators; (2) measurement of 'conviction' and 'follow-through potential' over multi-bar lookback windows; (3) comparison of current activity against 'recent average' requiring rolling window calculations. The allowed indicators do not support composite metrics (volume * volatility), rolling 8+ bar averages with percentage change detection, or bars-since-condition counting. ATR and volume are used as proxies but do not capture the intended 'voice intensity' acoustic concept.",
+  "translation_notes": "Attempted proxy: used atr_14 for volatility and volume as components, but cannot express the 50% threshold drop from rolling average or the sustained 8+ bar movement detection. The signal's core mechanic relies on detecting weakening conviction through activity intensity changes, which requires indicator combinations and historical comparisons not supported by the allowed operator set. Consider adding: (1) rolling window indicators (vol_sma_8, vol_change_pct), (2) bars_since() function, or (3) composite indicator support."
+}

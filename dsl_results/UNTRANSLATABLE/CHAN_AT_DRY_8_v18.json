@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires intraday return calculation from previous day's close to 15 minutes before market close. The 'returns' indicator measures close-to-close returns, not custom intraday intervals. The exact time-based return calculation (prev_close to 15:45 ET) cannot be expressed with available indicators. Additionally, DRN is specified as a 3x inverse Nasdaq-100 ETF (bearish instrument), but the signal logic calls for LONG direction, creating a semantic conflict.",
+  "translation_notes": "The signal mixes conflicting semantics: DRN is a 3x inverse (SHORT) ETF but instructs buying it as LONG. Intraday return measurement to a specific market time (15 minutes before close) requires custom bar data unavailable in standard indicator library. 'returns' indicator used as closest approximation but does not capture the precise intraday window specified."
+}

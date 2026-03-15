@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detection of 'eight consecutive higher highs' \u2014 a pattern spanning exactly 8 bars with each high strictly greater than the previous. The allowed indicators do not include a bar-counting or lookback mechanism to verify an 8-bar sequence constraint. The pattern requires comparing high[i] > high[i-1] for i=1..8, which cannot be expressed with the available operators and single-bar reference indicators (prev_high only references bar[i-1]).",
+  "translation_notes": "To properly implement this signal, the backtest engine would need either: (1) a custom pattern indicator that counts consecutive higher highs, or (2) an extended syntax supporting multi-bar lookback like high[-1], high[-2]...high[-8]. The provided entry condition (high > prev_high) only captures a single-bar comparison and is insufficient for the true 8-bar pattern requirement."
+}

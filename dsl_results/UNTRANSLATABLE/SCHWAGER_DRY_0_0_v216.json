@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a 'historical analog correlation model' comparing current price action to prior crash periods (1929, >0.85 correlation threshold). This is a complex machine learning/pattern matching construct that cannot be expressed using only the allowed technical indicators (RSI, MACD, Bollinger Bands, etc.). Additionally, 'major policy reversal or central bank statement' requires external event detection not available in price/volume data. The volume spike component was approximated using vol_ratio_20, but the analog model itself is untranslatable.",
+  "translation_notes": "Attempted partial translation using available indicators: (1) vol_ratio_20 > 2.0 approximates extreme volume spike (>2 std dev threshold); (2) returns < -0.05 approximates significant downside move. Exit at first positive close approximated with returns > 0.0. However, the core logic\u2014historical analog correlation model and macro event confirmation\u2014cannot be expressed with standard technical indicators alone. This signal would require custom feature engineering or external data integration."
+}

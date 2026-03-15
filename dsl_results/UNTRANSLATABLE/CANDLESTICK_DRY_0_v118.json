@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The core pattern requirement '13 consecutive higher highs' cannot be expressed with the allowed indicators and operators. This requires multi-bar lookback logic (examining the last 13 candles for strictly ascending highs) which is not supported by point-in-time indicator values. Additionally, 'overhead resistance presence' and 'confluence zone' detection require pattern recognition beyond simple threshold comparisons. The entry conditions have been approximated as a reversal candle (black candle closing below previous low) after an uptrend, but this does not capture the precise 13-candle pattern specification.",
+  "translation_notes": "Attempted to translate the reversal entry signal: a bearish candle (close < open) that breaks below the previous candle's low, suggesting trend reversal. Exit when price recovers above the previous high. However, the critical '13 consecutive higher highs' pattern detection and overhead resistance confluence cannot be accurately represented with available indicators. A custom pattern detection function would be required for proper implementation."
+}

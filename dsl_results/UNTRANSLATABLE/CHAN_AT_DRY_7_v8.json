@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal depends on lagged lookback signals ('longs' and 'shorts') with h-period backshift logic that are not defined in the source text and cannot be reconstructed from allowed indicators. The original code uses custom boolean vectors (longs, shorts) that require strategy-specific indicator definitions not provided. Parameters lookback_period, threshold, and half_life are marked AUTHOR_SILENT. Without explicit definitions of these upstream signals, the exact entry/exit conditions cannot be translated.",
+  "translation_notes": "Signal is an interday momentum strategy with fixed hold period. The core entry logic (lagged long/short signals after h-period lookback) cannot be expressed using only the allowed indicators without the underlying signal definitions. A reversal-based placeholder using price momentum (close vs prev_close) has been provided as a fallback, but this does not capture the intended strategy. hold_days_max set to 5 as a reasonable estimate pending clarification of the actual holddays parameter."
+}

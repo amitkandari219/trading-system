@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'fundamental catalyst announced' and 'valuation basis shift' \u2014 these are external event/news-based conditions not measurable by technical indicators alone. The rule fundamentally depends on recognizing same-day or prior-close catalyst confirmation and trader discretion about material fundamental change, which cannot be formalized into pure price/volume logic.",
+  "translation_notes": "Attempted proxy: Used pivot level crosses with volume confirmation as a mechanical representation of 'breakout on key level with volume.' However, this misses the core requirement that entry is contingent on a real-world fundamental event (trade pact announcement, earnings surprise, etc.). Without an external event flag or news sentiment indicator, the signal cannot be fully operationalized. Recommend: (1) Adding a manual event_flag input, or (2) Using adx_14 > 25 to detect trending conditions post-catalyst, or (3) Combining with hvol_20 spike to detect regime shift. Current JSON is a best-effort technical approximation only."
+}

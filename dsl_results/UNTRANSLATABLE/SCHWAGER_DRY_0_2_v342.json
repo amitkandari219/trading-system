@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking current portfolio exposure level (80-90% long-biased) and dynamic position sizing based on trader confidence/psychology state. These are portfolio-level constructs not available as price/technical indicators. Also requires systematic weekly reduction scheduling over 6-week window, which requires state management and time-based execution logic not expressible in static condition rules.",
+  "translation_notes": "Partially translated: Entry conditions use returns (extreme move proxy) and price_pos_20 (existing long bias proxy). Exit condition approximates 30% reversion of initial decline. Hold_days_max set to 42 (6 weeks). Full implementation requires custom position-sizing engine and confidence score tracking external to indicator rules."
+}

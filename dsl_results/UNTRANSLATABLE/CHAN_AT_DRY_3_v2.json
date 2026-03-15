@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires Augmented Dickey-Fuller (ADF) test results to confirm mean-reversion behavior (\u03bb = 0 hypothesis rejection). This statistical test is not available in the allowed indicators list. Additionally, the signal specifies 'significantly higher/lower than mean' but does not define the threshold quantitatively. The author has marked lookback_period, threshold, half_life, backtest_sharpe, and backtest_period as AUTHOR_SILENT, leaving critical parameters undefined.",
+  "translation_notes": "Attempted a simplified approximation using close price vs sma_20 as a mean-reversion proxy, but this does not capture the ADF test requirement. A proper implementation requires access to statistical stationarity testing which is outside the allowed indicator scope. The CONTEXT_DEPENDENT direction was preserved but cannot be fully operationalized without the ADF confirmation logic."
+}

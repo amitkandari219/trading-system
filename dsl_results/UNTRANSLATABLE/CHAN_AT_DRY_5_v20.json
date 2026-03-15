@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The Johansen cointegration test is a multivariate statistical test that cannot be expressed using only price-based technical indicators and the allowed operators (>, <, >=, <=, ==, crosses_above, crosses_below, is). The signal requires: (1) vector autoregressive (VAR) model estimation, (2) eigenvalue decomposition of the covariance matrix, (3) likelihood ratio test statistic comparison against critical values from non-standard distributions. This requires custom statistical computation outside the scope of the allowed indicator set. The 'is' operator with custom stateful conditions (johansen_cointegrated_with_spy_1pct) would require a bespoke backtest engine extension.",
+  "translation_notes": "Signal requires implementation of Johansen cointegration test with lookback_period of 250+ trading days, comparing lr1 test statistic against 1% critical value cvt. Equal-weight rebalancing across all qualifying stocks. Exit condition marked AUTHOR_SILENT \u2014 represented as reversal when cointegration breaks. This cannot be reduced to standard technical indicators."
+}

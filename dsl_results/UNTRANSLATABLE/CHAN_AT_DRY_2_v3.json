@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires construction of a composite z-score weighted factor model with dynamic normalization using historical correlation signs. This requires: (1) multiple unspecified factors not in the allowed indicator list, (2) runtime calculation of mean/std/correlation across rolling windows, (3) weighted aggregation logic that cannot be expressed as simple 3-field conditions. The backtest engine lacks: parametric factor definition, in-sample statistics computation, dynamic weighting by correlation sign, and composite score generation. Only the directional entry outcome (long on positive predicted return, short on negative) can be approximated, but the underlying predictive model is not translatable to the condition-based rule format.",
+  "translation_notes": "The signal describes an advanced quantitative strategy using normalized factors with correlation-weighted z-scores. The allowed rule engine supports only simple indicator comparisons and cannot express: (a) factor normalization pipelines, (b) correlation calculation and sign detection, (c) weighted composite scoring, or (d) dynamic mean/std calculations. To implement this signal, the backtest engine would need to support user-defined factor registration, statistical preprocessing steps, and multi-factor aggregation functions. The approximation using raw returns as a proxy is conceptually incorrect and not recommended for production use."
+}

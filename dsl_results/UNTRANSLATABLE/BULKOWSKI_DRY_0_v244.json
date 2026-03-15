@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "BARR (Bump-and-Run Reversal Bottom) is a visual pattern recognition rule requiring identification of specific chart formation (bump phase, run phase, and breakout above pattern high). This requires pattern detection logic not expressible through price/indicator threshold comparisons alone. The source references 'Table 7.1 identification guidelines' which are not provided. Conditions use proxy indicators (pivot breakout + trend strength via ADX) but cannot accurately encode the true pattern geometry.",
+  "translation_notes": "Used close > pivot as proxy for 'breakout above pattern high'. Used adx_14 > 20 to confirm trend strength in bull context. Exit uses close < sma_20 as reversal signal since author provided no explicit exit rules (AUTHOR_SILENT). Stop loss set conservatively at 2% given pattern context. Hold period set to 60 days based on typical multi-week BARR formation timeframe. Note: This is an approximation; true BARR identification requires visual pattern confirmation not available in indicator-based rules."
+}

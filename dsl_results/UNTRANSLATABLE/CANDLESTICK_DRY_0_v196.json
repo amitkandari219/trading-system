@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of candlestick pattern phases (advance block, quick rise, quick decline, recovery) and magnitude matching between rise/decline. These multi-bar pattern recognition requirements cannot be expressed using only point-in-time indicator comparisons. The 'mirrors the quick rise in magnitude and timeframe' condition requires historical sequence analysis not supported by the allowed indicators and operators.",
+  "translation_notes": "Attempted partial translation using price action near resistance (close >= r1) and prior bar comparison (close < prev_high) as proxies for the advance block + quick decline pattern, with MA crossover as reversal exit. However, this significantly oversimplifies the original pattern logic which requires recognizing specific multi-bar candlestick formation and phase relationships. Full implementation would require custom pattern detection logic."
+}

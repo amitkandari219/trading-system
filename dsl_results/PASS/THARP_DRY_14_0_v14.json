@@ -1,0 +1,138 @@
+{
+  "signal_id": "THARP_DRY_14_0",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_14_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires trend-following entry aligned with direction. Entry conditions use SMA 50 crossover with ADX confirmation (>25). The '5 closes higher' confirmation is approximated as close > prev_close for uptrend. Exit triggers on MA crossback and ADX weakening (<20). Direction set to CONTEXT_DEPENDENT to allow both long and short entries based on trend direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires trend-following entry aligned with direction. Entry conditions use SMA 50 crossover with ADX confirmation (>25). The '5 closes higher' confirmation is approximated as close > prev_close for uptrend. Exit triggers on MA crossback and ADX weakening (<20). Direction set to CONTEXT_DEPENDENT to allow both long and short entries based on trend direction."
+  },
+  "source_rule_text": "A trader should enter positions aligned with trend direction because trend-following systems never miss major market moves, and price distributions exhibit long tails in the direction of sustained trends rather than random walk behavior."
+}

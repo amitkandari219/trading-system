@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a machine learning forecasting model (Random Forest or SVM) trained on lagged return data to generate predicted probability scores. This is a model-based prediction system that cannot be expressed using only the allowed technical indicators and operators. The 'returns' indicator represents realized returns, not model-predicted probabilities. A custom model implementation outside the standard indicator framework is required.",
+  "translation_notes": "Signal describes a sophisticated ML-based trading system using ensemble methods with lagged predictors. The entry condition (probability > 52%) and exit condition (probability < 50%) reference model outputs rather than observable market data. Stop loss (-1%) and profit target (+1.5% or 5-day exit) are translatable, but the core prediction mechanism is not. This rule requires custom model integration into the backtest engine."
+}

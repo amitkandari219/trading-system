@@ -1,0 +1,92 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "prev_open",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Two-candle pattern: First candle is a tall white body (prev_open < prev_close with large body relative to ATR). Second candle opens below the middle of the first candle's body (open < pivot, where pivot approximates the midpoint) and closes at or below that middle (close <= pivot). Pattern targets uptrend peaks. Exit on reversal above prior high. No volume data specified by author, so volume conditions omitted."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "prev_open",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Two-candle pattern: First candle is a tall white body (prev_open < prev_close with large body relative to ATR). Second candle opens below the middle of the first candle's body (open < pivot, where pivot approximates the midpoint) and closes at or below that middle (close <= pivot). Pattern targets uptrend peaks. Exit on reversal above prior high. No volume data specified by author, so volume conditions omitted."
+  },
+  "source_rule_text": "Below the Stomach: A two-candle pattern appearing at the peak of an uptrend, consisting of a tall white candle followed by a second candle that opens below the middle of the white candle's body and closes at or below the middle."
+}

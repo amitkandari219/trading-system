@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Cannot translate: (1) 'Last 3 closes are above previous close (rising demand confirmation)' requires multi-bar lookback comparison that cannot be expressed with single prev_close reference; (2) 'Volume drops below 20-period moving average for 2 consecutive bars' requires state tracking across 2 bars; (3) 'No news event expected within 24 hours' is external fundamental data not available in price/volume indicators",
+  "translation_notes": "Translated core quantifiable conditions: volume > 20-period MA, price > 50-period SMA, and at least current close > previous close. Exit uses price close below 50-period SMA. The multi-bar consecutive conditions and news event checking require external data sources or state management beyond allowed operators. Entry reduced to 3 conditions (most critical). Demand confirmation via 3 consecutive up closes and consecutive volume drops are marked untranslatable."
+}

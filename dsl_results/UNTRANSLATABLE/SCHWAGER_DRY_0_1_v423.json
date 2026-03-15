@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires advance/decline line tracking and breadth participation metrics (% of stocks advancing, A/D line comparison to prior rally high) which are not available in the allowed indicator set. Attempted approximation using vol_ratio_20 and price_pos_20 as proxies for volume weakness and breadth deterioration, but these do not capture the core advance/decline and stock participation logic required by the original signal.",
+  "translation_notes": "This is an EXIT signal for existing long positions, not an entry signal. The rule detects divergence between price recovery and market internals (volume, breadth). Without advance/decline line and breadth data, the rule cannot be properly translated. Used vol_ratio_20 < 1.0 as a weak proxy for low volume on rally, and price_pos_20 < 0.5 as a weak proxy for incomplete breadth participation, but these are insufficient substitutes for true breadth analysis."
+}

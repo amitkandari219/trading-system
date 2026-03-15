@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires comparing current candle range to the 22-day average range (sma of high-low ranges). While 'range' indicator is available, there is no built-in indicator for 'average high-low range over prior 22 days' (would need sma_22 applied to range values, which is not supported). The 1.46 multiplier cannot be correctly applied without this calculated baseline.",
+  "translation_notes": "Pattern suggests reversal within \u00b11 day (hold_days_max=1). Direction is context-dependent: bullish on bear reversal (entry_short with close > prev_high exit), bearish on bull reversal (entry_long with close < prev_low exit). Exit conditions inferred as close-based reversals. Core measurement logic (range > 1.46 \u00d7 sma_22(range)) is partially translatable using raw range indicator, but lacks the rolling average of ranges needed for precision."
+}

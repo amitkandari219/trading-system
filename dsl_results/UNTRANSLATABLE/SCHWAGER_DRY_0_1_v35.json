@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'key chart level' (user-defined resistance/support), volume confirmation multiplier (1.5x average volume), and 0.5% pullback threshold which cannot be expressed with allowed indicators. Exit logic mixes absolute loss threshold with relative pullback that requires bar-by-bar pullback tracking. 'entry_price' is not an allowed indicator for defining relative losses.",
+  "translation_notes": "Attempted mapping: 'key chart level' \u2192 pivot resistance (r1); 'any volume' \u2192 volume > 0; 'volume reaches 1.5x average' untranslatable without vol_ratio_20 applied to entry bar; '0.5% pullback' requires pullback tracking unavailable; 'close below entry' mapped to close < entry_price (not allowed). Signal is context-dependent (early vs late stage) but direction inferred as LONG based on 'breakout' entry pattern. Holding period of 3 days preserved as hold_days_max."
+}

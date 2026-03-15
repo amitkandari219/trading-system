@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "BULLISH_CONTINUATION",
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Pattern entry conditions: (1) Day 1 closes higher than previous close; (2) Days 2-3 show tall upper wicks relative to body (bear trap); (3) Price eventually closes above pattern high (upward breakout). Exit on reversal (close below previous close) or at max hold of 10 days. Success rate and volume parameters marked AUTHOR_SILENT by source and excluded from rule set. Bar properties (upper_wick, body) used to identify the three-day candlestick formation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "BULLISH_CONTINUATION",
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Pattern entry conditions: (1) Day 1 closes higher than previous close; (2) Days 2-3 show tall upper wicks relative to body (bear trap); (3) Price eventually closes above pattern high (upward breakout). Exit on reversal (close below previous close) or at max hold of 10 days. Success rate and volume parameters marked AUTHOR_SILENT by source and excluded from rule set. Bar properties (upper_wick, body) used to identify the three-day candlestick formation."
+  },
+  "source_rule_text": "Bullish continuation pattern characterized by three candlesticks where bears create tall upper shadows on days 2-3 as a bear trap, followed by bulls entering and price closing above the pattern high for an upward breakout"
+}

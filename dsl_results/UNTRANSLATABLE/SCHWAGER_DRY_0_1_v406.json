@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) RS indicator uptrend detection via 50-period uptrend line \u2014 no uptrend line indicator available in allowed set; (2) Industry group rank in top 50 \u2014 no sector/group ranking indicator available; (3) Confirmation candle logic (second consecutive close) \u2014 cannot express multi-bar sequential conditions with available operators; (4) 'Relative Strength' appears to reference a custom momentum metric distinct from RSI, but exact calculation not specified. Closest approximation uses rsi_14 as momentum proxy, but this loses the core signal intent around trend-of-trend deterioration.",
+  "translation_notes": "The original signal pivots on deteriorating RS momentum (trend of the trend) detected via break of uptrend line, coupled with industry ranking filters. Without a dedicated uptrend-line or trend-detection primitive, and without sector rank data, the translation is incomplete. Used rsi_14 > 80 as entry filter (strong momentum) and crosses_below sma_50 as a crude exit approximation, but this does not capture the nuanced 'uptrend break with confirmation' logic that is central to the signal."
+}

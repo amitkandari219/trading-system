@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires regime classification (BULL_MARKET/BEAR_MARKET) which is not provided in ALLOWED REGIMES list (only TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY available). Additionally, the three confirmation methods (closing price, candle color, opening gap) cannot be precisely distinguished with allowed indicators. The source text is incomplete, making precise rule extraction impossible.",
+  "translation_notes": "Attempted to capture reversal pattern logic using price action: long entry on close > prev_close (closing price confirmation in bull market), short entry on open < prev_close (opening gap down in bear market). Exit conditions use reversal of entry signals. Regime detection and multi-method confirmation require additional regime classification system not available in constraints."
+}

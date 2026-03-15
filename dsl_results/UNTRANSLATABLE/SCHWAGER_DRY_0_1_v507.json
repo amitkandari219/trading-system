@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'policy intervention announcement' and '20-bar trend confirmation period' which are not quantifiable via the allowed technical indicators. The semantic concept of 'policy measure' is an external event/news trigger, not a price/volume-based indicator. The '5 consecutive bars below MA' exit condition cannot be expressed using single-bar comparisons without array indexing.",
+  "translation_notes": "Attempted partial translation: Used sma_50 (50-period MA) and adx_14 (trend strength > 25) to proxy for trend identification. The core logic of 'stay with trend despite intervention' is direction-agnostic, so set direction to CONTEXT_DEPENDENT. However, the entry requirement of 'position already established' and the trigger of 'policy announcement' are non-technical and cannot be encoded in the structured rule format. This signal is fundamentally narrative-based rather than indicator-based."
+}

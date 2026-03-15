@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_8_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external fundamental value estimates and confidence scores derived from non-widely-known information analysis. These are not computable from standard market indicators. The core logic depends on: (1) a fundamental_value input parameter not in the allowed indicator list, (2) an information_confidence_score input not derivable from price/volume data, and (3) custom valuation analysis outside the scope of technical indicators. Cannot operationalize without external data feeds.",
+  "translation_notes": "Attempted approximation using price levels (95% and 105% of close as proxies for discount/premium thresholds), but this is a severe simplification that does not capture the signal's intent. The signal is fundamentally dependent on external fundamental value estimates and confidence scoring that cannot be derived from OHLCV data alone. Recommend: (1) add fundamental_value and confidence_score as external inputs, or (2) redesign using technical mean-reversion indicators (Bollinger Bands, RSI extremes, price_pos_20) as proxies."
+}

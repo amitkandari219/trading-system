@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires external inputs not available in the indicator set: (1) 'Personal fundamental analysis with >80% conviction' \u2014 requires subjective fundamental analysis scores external to price/volume data; (2) 'Consensus correlation degradation' \u2014 requires multi-asset correlation tracking and historical baseline comparisons not available; (3) 'Consensus narrative age tracking' \u2014 requires external event/sentiment timestamp data. The rule is primarily a meta-strategy about contrarian positioning based on qualitative fundamental conviction and cross-asset correlation regimes, neither of which can be expressed using only the allowed technical indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, and bar properties).",
+  "translation_notes": "SCHWAGER_DRY_0_0 is a discretionary contrarian trading principle requiring fundamental judgment and multi-asset correlation analysis. To implement: (1) Add external conviction_score input (0-1 scale, threshold 0.8); (2) Add correlation_coefficient tracking for related assets; (3) Add consensus_narrative_age_days parameter. Once these are available as inputs, entry conditions would be: conviction_score > 0.8 AND correlation_change > 0.30 AND narrative_age > 180 days. Position sizing constraint (2% risk) should be enforced at portfolio level, not in signal logic."
+}

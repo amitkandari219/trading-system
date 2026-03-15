@@ -1,0 +1,108 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_5"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_5"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_5"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_5"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires trend confirmation (5 bars minimum) and 1% move beyond swing point, but these concepts cannot be directly expressed with allowed indicators. Used sma_5 crossover as proxy for trend establishment and price movement beyond prior swing (prev_high/prev_low) as proxy for momentum confirmation. Confirmation bias filter (entry on breakout or next bar) is inherent to breakout logic. Entry direction is context-dependent based on trend direction. Exit uses sma_5 breach as trend reversal signal per conditions specified."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_5"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_5"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_5"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_5"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires trend confirmation (5 bars minimum) and 1% move beyond swing point, but these concepts cannot be directly expressed with allowed indicators. Used sma_5 crossover as proxy for trend establishment and price movement beyond prior swing (prev_high/prev_low) as proxy for momentum confirmation. Confirmation bias filter (entry on breakout or next bar) is inherent to breakout logic. Entry direction is context-dependent based on trend direction. Exit uses sma_5 breach as trend reversal signal per conditions specified."
+  },
+  "source_rule_text": "A trader should enter positions aligned with the direction of price trends that form due to market underreaction and gradual catch-up to fundamental value, because confirmation bias causes investors to weight confirming evidence more heavily, perpetuating trend continuation."
+}

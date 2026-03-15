@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "zscore_last is not in the ALLOWED INDICATORS list. This is a pairs trading signal requiring z-score calculation from cointegration analysis, which is not available in the standard indicator set. The hedge_ratio and cointegration calculations are external to the backtest engine's native indicators.",
+  "translation_notes": "Signal structure correctly identifies mean reversion entry/exit logic (extreme z-score entry, mean reversion exit). However, z-score calculation from cointegrated pairs requires custom preprocessing. Recommend: (1) Pre-calculate z-scores externally and inject as custom indicator, or (2) Approximate using normalized spreads and Bollinger Band percentage (bb_pct_b) with analogous thresholds."
+}

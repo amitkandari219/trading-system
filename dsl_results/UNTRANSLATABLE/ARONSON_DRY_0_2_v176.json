@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a 'Divergence Indicator' computed as normalized price position difference between primary security (S&P 500) and companion series (e.g., Dow Jones Transports). This multi-series relative divergence metric is not available in the allowed indicators list. The price_pos_20 indicator only measures single-series position within range, not cross-series divergence. A custom divergence calculation would be required.",
+  "translation_notes": "Attempted partial translation using price_pos_20 as proxy for normalized position, but true signal requires comparison between two separate time series. Entry thresholds mapped as: >0.70 approximates companion overbought (+30 divergence), <0.30 approximates companion oversold (-30 divergence). Exit at 0.50 (mean/midpoint) attempts to capture mean reversion logic. However, without true divergence metric, this translation is fundamentally incomplete."
+}

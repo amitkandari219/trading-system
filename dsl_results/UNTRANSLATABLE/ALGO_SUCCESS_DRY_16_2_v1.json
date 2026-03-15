@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_16_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit linear regression model fitted over lookback period and z-score calculation of residuals. The allowed indicators list does not include linear regression coefficients, residual values, or z-score transformations. The price_pos_20 indicator (price position within 20-day range) is a proxy for mean reversion but does not capture the true linear regression residuals and their standardized z-scores as specified in the original signal. Grid search optimization parameters (lookback_period_days, entry_zscore_threshold, exit_zscore_threshold) cannot be parameterized in the structured rule format.",
+  "translation_notes": "Attempted approximation using price_pos_20 (0-1 scale representing normalized price position) as a proxy for standardized residuals, mapping z-score thresholds of \u00b11.5 to approximate 0-1 scale bounds. However, this is a simplification that does not capture the true linear regression residuals or their statistical properties. The strategy fundamentally requires custom linear regression modeling not available in the allowed indicator set."
+}

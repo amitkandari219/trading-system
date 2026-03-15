@@ -1,0 +1,128 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires counting consecutive bars above/below SMA (5+ bars confirmation). The allowed operators do not include a 'consecutive bars' counter, so this condition is simplified to a single close crossing the sma_50. The ADX confirmation threshold of 25 and trend strength filter (ADX > 20 exit) are directly translatable. The rule handles both long entries (uptrend) and short entries (downtrend) via CONTEXT_DEPENDENT direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires counting consecutive bars above/below SMA (5+ bars confirmation). The allowed operators do not include a 'consecutive bars' counter, so this condition is simplified to a single close crossing the sma_50. The ADX confirmation threshold of 25 and trend strength filter (ADX > 20 exit) are directly translatable. The rule handles both long entries (uptrend) and short entries (downtrend) via CONTEXT_DEPENDENT direction."
+  },
+  "source_rule_text": "A trader should follow the price trend (buy in uptrends, sell short in downtrends) because market structure requires trend-following speculators to fulfill commercial hedger imbalances, and the market compensates this behavior through trend persistence."
+}

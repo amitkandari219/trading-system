@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pair trading strategy requiring cointegration analysis between two instruments (GLD and GDX spread). The allowed indicator set does not include: (1) spread calculation between two separate instruments, (2) cointegration testing, (3) Zscore or standardized deviation metrics, (4) half-life calculations for mean reversion timing. This strategy requires multivariate statistical analysis not expressible with single-instrument technical indicators.",
+  "translation_notes": "Signal describes a statistical arbitrage / pairs trading strategy that fundamentally requires: (a) cross-instrument spread analysis, (b) cointegration relationship monitoring, (c) mean reversion thresholds based on statistical deviation, and (d) half-life optimization. The backtest engine's indicator library is designed for single-instrument technical analysis only. To implement this signal, the engine would need to support: spread_gld_gdx, zscore_spread, cointegration_status, and half_life indicators. The 'AUTHOR_SILENT' parameters (lookback_period, threshold, half_life, backtest_sharpe, backtest_period) further indicate incomplete specification that cannot be operationalized without additional data."
+}

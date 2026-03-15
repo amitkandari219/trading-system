@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_open"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_open"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Bullish Harami pattern translated as: (1) Previous candle is black (close below open, represented as body < prev_close to capture downtrend continuation), (2) Current candle is white (close > open), (3) Current close at or above midpoint of prior black candle body (approximated as close >= prev_close). Exit on reversal of white candle structure. Success rate favors bear market upbreakout (10.02%), suggesting pattern performs best in downtrends with upside breakout potential."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_open"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_open"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Bullish Harami pattern translated as: (1) Previous candle is black (close below open, represented as body < prev_close to capture downtrend continuation), (2) Current candle is white (close > open), (3) Current close at or above midpoint of prior black candle body (approximated as close >= prev_close). Exit on reversal of white candle structure. Success rate favors bear market upbreakout (10.02%), suggesting pattern performs best in downtrends with upside breakout potential."
+  },
+  "source_rule_text": "Bullish Harami: A two-candle reversal pattern in a downtrend where a black candle is followed by a white candle that opens and closes at or above the midpoint of the prior black candle's body"
+}

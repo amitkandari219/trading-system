@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references 'swing high/low' and 'bear market condition' as regime concepts that are not directly available in the indicator set. BEAR_MARKET/BULL_MARKET are target regimes but not available as conditional operators. The exact definition of 'highest high' lookback period is not specified (could be 5, 10, 20 candles). Regime detection (bear vs bull market) requires external classification not provided by price/technical indicators alone.",
+  "translation_notes": "Translated upward breakout as close > prev_high with positive returns. Translated downward breakout as close < prev_low with returns < -8% (0.08 in decimal scale). Exit conditions reversed direction breakouts since AUTHOR_SILENT. Performance difference between bull/bear noted but cannot be operationalized without regime input. Consider adding explicit lookback period for swing high/low definition."
+}

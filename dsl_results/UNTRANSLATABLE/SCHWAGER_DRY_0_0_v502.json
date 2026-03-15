@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a 25-year historical return calculation and implied volatility percentile ranking, neither of which are directly available in the allowed indicator set. The 300% appreciation threshold over 25 years cannot be precisely replicated using only bar-by-bar indicators. Additionally, 'implied volatility percentile' is not available; india_vix is used as a volatility proxy but does not provide percentile context. The fundamental valuation check is entirely non-technical and untranslatable.",
+  "translation_notes": "Approximated the bubble detection using: (1) returns > 300% mapped to decimal scale as >3.0 (representing 300% gain), (2) price below 200-day MA as technical confirmation of breakdown, (3) india_vix as volatility proxy for the IV percentile threshold. Exit set to a conservative +50% profit target approximation. This is a simplified technical translation of a fundamentally-based signal that requires multi-year historical context and valuation analysis."
+}

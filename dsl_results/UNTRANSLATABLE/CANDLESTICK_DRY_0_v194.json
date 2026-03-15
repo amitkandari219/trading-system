@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires market regime detection (BULL_MARKET vs BEAR_MARKET) which is not provided as a real-time indicator in the allowed list. The source text describes different confirmation methods and close positioning strategies that depend on market context, but the backtest engine only supports TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, or ANY regimes. Exit conditions marked AUTHOR_SILENT require interpretation of post-breakout performance metrics not directly expressible as entry/exit rules.",
+  "translation_notes": "Attempted to capture the Advance Block pattern using: (1) Close below 50-day MA as the block condition, (2) Lower close next day for bull confirmation, (3) Black candle (close < open) for bear confirmation. The pattern's context-dependent nature and reliance on market regime classification cannot be fully expressed with available indicators. Success rates, average moves, and volume trends were marked AUTHOR_SILENT and therefore omitted. Exit positioning strategy (middle vs high of candle) cannot be encoded in standard entry/exit rules."
+}

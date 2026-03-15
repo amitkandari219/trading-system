@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires OLS regression-based z-score of a spread between two assets in a pairs strategy. This requires: (1) dynamic spread calculation from two paired instruments, (2) rolling OLS regression fitting (120-bar window), (3) z-score standardization of residuals. None of these multi-instrument derivative indicators are available in the allowed indicator list. The allowed indicators are single-asset technical indicators only. A pairs strategy with spread z-score cannot be expressed using only the provided single-asset indicators.",
+  "translation_notes": "Attempted partial translation using returns as a proxy for spread deviation, but this fundamentally misrepresents the signal. The original signal is a sophisticated pairs trading strategy requiring co-integration analysis and OLS-based mean reversion detection, which requires indicators not in the allowed set."
+}

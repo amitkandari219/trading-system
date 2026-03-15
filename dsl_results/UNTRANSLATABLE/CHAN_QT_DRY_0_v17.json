@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a portfolio-level leverage constraint rule, not a price-based trading signal. It requires: (1) tracking portfolio total unrestricted leverage (sum of absolute values across multiple strategies), (2) comparing against account type-dependent thresholds (2 overnight / 4 intraday), and (3) proportionally scaling all strategy positions by a common factor. None of these portfolio-level constructs, multi-strategy aggregations, or position-sizing operations are expressible using the single-instrument indicator set provided. This rule belongs in a position-sizing module or risk management layer, not in a technical signal-based backtest engine.",
+  "translation_notes": "Signal CHAN_QT_DRY_0 is a risk control/compliance rule for multi-strategy portfolio management. It requires access to: total portfolio leverage across all strategies, account type context (retail/overnight vs intraday), and the ability to apply uniform position scaling across multiple independent strategies. The backtest engine as specified operates on single-instrument price/technical indicators and cannot model cross-strategy portfolio aggregation or dynamically enforce account leverage limits."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'fundamental supply/demand imbalance' and 'unexpected repeated data points' (e.g., crush data exceeding consensus for 4+ consecutive periods) and 'fundamental supply metric normalization'. These are external fundamental/macro indicators not available in the price-action-only indicator set. The core logic of spread repricing based on fundamental divergence cannot be expressed using only OHLCV-derived technical indicators.",
+  "translation_notes": "Attempted to map the 'spread within 25th-75th percentile' requirement to price_pos_20 range, and the '90th percentile expansion' exit to price_pos_20 > 0.90. However, without access to actual fundamental data (crush spreads, supply metrics, consensus expectations), the entry confirmation mechanism (4 consecutive periods of fundamental surprise) is untranslatable. A full implementation would require custom fundamental data feeds external to standard technical indicators. Hold period set to 84 days (12 weeks)."
+}

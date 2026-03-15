@@ -1,0 +1,148 @@
+{
+  "signal_id": "THARP_DRY_14_1",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_14_1",
+    "entry_long": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.03"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.03"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Trend confirmation uses ADX_14 > 25 (strong trend indicator) combined with price position relative to SMA_20. Exit conditions translate the 3% reversal threshold using returns, the 10-bar reversal pattern via Donchian Channel breach (lookback=10 periods), and trailing stop via DC lower/upper bands. Direction set to CONTEXT_DEPENDENT as signal adapts to both uptrend and downtrend scenarios."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.03
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.03
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Trend confirmation uses ADX_14 > 25 (strong trend indicator) combined with price position relative to SMA_20. Exit conditions translate the 3% reversal threshold using returns, the 10-bar reversal pattern via Donchian Channel breach (lookback=10 periods), and trailing stop via DC lower/upper bands. Direction set to CONTEXT_DEPENDENT as signal adapts to both uptrend and downtrend scenarios."
+  },
+  "source_rule_text": "A trader should remain in a position and allow profits to run as long as the identified trend continues in the trader's favor, exiting only when the trend direction shifts."
+}

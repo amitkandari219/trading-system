@@ -1,0 +1,72 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gap open lower detected by comparing open < prev_close. Black candle confirmation represented by close < open (bearish candle). Bear market regime explicitly constrained to TRENDING_DOWN. Exit on white candle (close > open) reversal. No volume or success rate parameters available in source text, so reasonable defaults applied."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Gap open lower detected by comparing open < prev_close. Black candle confirmation represented by close < open (bearish candle). Bear market regime explicitly constrained to TRENDING_DOWN. Exit on white candle (close > open) reversal. No volume or success rate parameters available in source text, so reasonable defaults applied."
+  },
+  "source_rule_text": "Gap pattern with candle color confirmation in bear market: price gaps open lower the next day, wait for a black candle to appear before trading"
+}

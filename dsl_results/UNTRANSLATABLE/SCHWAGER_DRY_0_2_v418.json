@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'consolidation phase' and 'volume contraction patterns' relative to prior bars which cannot be expressed with single-bar comparisons. The 30th percentile threshold for volume on test bar and multi-bar consolidation context (at least 1 bar of volume contraction before test) requires rolling percentile calculations and pattern detection not available in allowed operators.",
+  "translation_notes": "Attempted to map support/resistance tests using pivot points (s1 for support, r1 for resistance) and volume_ratio as proxy for relative volume strength. However, the core signal logic\u2014distinguishing decreasing volume during consolidation (strength indicator) from increasing volume on reversals (commitment indicator)\u2014requires temporal pattern matching across multiple bars and statistical percentile ranking that exceeds the scope of point-in-time indicator comparisons."
+}

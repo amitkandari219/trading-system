@@ -1,0 +1,74 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "pivot"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.3,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Double bottom pattern detection requires multi-bar low analysis not directly available in indicator set. Approximated using pivot point as pattern resistance level and volume confirmation. Entry: price breaks above pivot on heavy volume (>20-day historical average). Exit: reversal below pivot. Stop loss set to 3.3% based on average decline data (-33%). Hold period set to 20 days for typical pattern reversion window."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "pivot"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.033,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Double bottom pattern detection requires multi-bar low analysis not directly available in indicator set. Approximated using pivot point as pattern resistance level and volume confirmation. Entry: price breaks above pivot on heavy volume (>20-day historical average). Exit: reversal below pivot. Stop loss set to 3.3% based on average decline data (-33%). Hold period set to 20 days for typical pattern reversion window."
+  },
+  "source_rule_text": "Double bottom pattern with narrow or spike bottoms showing upward breakout"
+}

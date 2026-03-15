@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "zscore is not in the ALLOWED INDICATORS list. This pairs strategy requires a custom zscore calculation based on rolling OLS regression of spread between two assets, which is not available as a pre-computed indicator. OLS regression with 60-bar window and spread zscore computation require custom implementation beyond standard technical indicators.",
+  "translation_notes": "Signal requires pairs trading with OLS regression and zscore of spread. The core logic (entry on zscore deviations, exit on zscore mean reversion) is conceptually sound but cannot be expressed using only the allowed indicators. Implementation would require custom indicator: zscore = (spread - SMA(spread, 60)) / StdDev(spread, 60) where spread = close[instrument1] - beta*close[instrument2] from OLS fit."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pyramid scaling on multiple cascading MA crosses (3-period MA > 8-period MA, then price higher high confirmation, then 8-period MA > 21-period MA) with position size management rules. The backtest engine schema does not support dynamic position sizing or multi-stage entry logic with intermediate pyramiding. Additionally, the signal references specific 3-period and 8-period MAs which are not in the allowed indicator list (only 5, 10, 20, 40, 50, 80, 100, 200 available). The cascading entry conditions with aggressive pyramiding on each signal cannot be expressed as a simple flat rule structure.",
+  "translation_notes": "Approximated using ema_5 and ema_10 as closest fast/faster MA proxies. The core momentum-following intent is captured by the fast MA cross, but the sophisticated cascade signal logic and position pyramiding scheme cannot be fully translated into the current JSON rule schema without additional fields for position management and multi-stage entry sequencing."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Advance Block pattern requires analysis of three consecutive candles with specific gap and close characteristics. The pattern detection logic (bearish gaps at open followed by bullish closes across 3 bars) cannot be fully expressed using only single-bar indicators and the allowed operators. A proper implementation requires multi-bar pattern recognition logic that checks: candle[i].close > candle[i].open AND candle[i].open < candle[i-1].close AND candle[i+1].open < candle[i].close, etc. This requires array indexing or pattern-matching capabilities beyond the current constraint set.",
+  "translation_notes": "Attempted to capture the essence with individual white candle and gap conditions, but the three-candle sequential pattern with specific gap relationships cannot be accurately represented. The signal is direction-agnostic (bullish continuation in both bull and bear markets) and requires specialized candlestick pattern recognition."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_2_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a regime monitoring and strategy management rule, not a trade entry/exit signal. It requires calculation of rolling Sharpe ratio (3-month), maximum drawdown percentage, and win rate \u2014 none of which are available in the allowed indicator list. These are portfolio-level performance metrics that must be computed externally from the backtest engine's core indicator set, not from OHLCV data. The signal specifies monitoring conditions (sharpe_threshold: 0.75, max_drawdown_tolerance: 0.18, min_win_rate: 0.48) and actions (parameter modification after 2 consecutive breach periods), which are operational directives for strategy governance, not tradeable conditions expressible via price/technical indicators.",
+  "translation_notes": "Signal ID ALGO_SUCCESS_DRY_2_1 describes a meta-level strategy performance review process. The parameters are correctly specified (sharpe_threshold, max_drawdown_tolerance, min_win_rate, lookback_window_months, consecutive_breach_periods, metrics_requiring_breach) and should be implemented as a separate module in the backtest engine that: (1) calculates rolling 3-month Sharpe ratio, max drawdown, and win rate independently; (2) monitors for simultaneous breaches of at least 2 of 3 thresholds; (3) triggers parameter adjustment after 2 consecutive months of multi-metric breach. This is not a condition-based trading rule but a portfolio health monitoring framework."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'contrarian sentiment >65th percentile extreme' which cannot be directly mapped to available technical indicators. Used RSI as proxy for extremity but true sentiment/contrarian positioning data is unavailable. Also 'second candle of pullback or reversal gap' requires multi-bar pattern recognition not expressible in single-condition format.",
+  "translation_notes": "Mapped 2.0 standard deviations from 20-period mean to price_pos_20 extremes (>2\u03c3 above = price_pos_20 > 1.0 for short, <2\u03c3 below = price_pos_20 < 0.0 for long). Volume spike (1.25x multiplier) mapped to vol_ratio_20. Sentiment extreme (65th percentile) approximated using RSI extremes (>65 for bullish extreme, <35 for bearish extreme) as proxy. Profit target 2-3% rounded to 3% for simplicity. Stop loss at 2.0\u03c3 expressed as percentage stop_loss_pct. Time exit set to 15 bars per specification."
+}

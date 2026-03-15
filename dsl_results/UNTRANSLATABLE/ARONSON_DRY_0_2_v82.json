@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a historical condition-matching engine that compares current market state to a database of past occurrences within defined tolerance bands (30% variance on price/volatility, 35% on additional variables, 50% overall match threshold). This requires dynamic backreferencing and probabilistic similarity scoring across multiple dimensions, which cannot be expressed as static boolean rules using only point-in-time indicator comparisons. The core concept of 'strictly identical defining characteristics' and 'empirical probability estimation via condition matching' requires a custom matching algorithm not supported by standard rule-based condition logic.",
+  "translation_notes": "Attempted to approximate with volatility and volume regime matching, but the fundamental requirement is a condition-history matching system that learns from past signal occurrences. Standard indicator rules cannot capture the meta-rule of 'only trade when current conditions match historical precedents within 30-35% variance.' This requires either: (1) a separate condition database module, or (2) pre-computed similarity scores fed as input signals."
+}

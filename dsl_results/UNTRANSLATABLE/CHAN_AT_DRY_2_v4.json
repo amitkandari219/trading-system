@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a multi-factor ranking model with equal-weighted predictors and relative return forecasting. This is a portfolio-level factor model that cannot be expressed as single-stock technical conditions using only the allowed indicators. The 'top decile' and 'bottom decile' thresholds require cross-sectional ranking across a universe of stocks, which is outside the scope of single-instrument rule-based conditions. Attempted substitution using price_pos_20 is a reasonable approximation but does not capture the true factor model logic.",
+  "translation_notes": "Signal CHAN_AT_DRY_2 is a quantitative factor model strategy designed at portfolio/universe level, not suitable for single-stock backtesting with technical indicators. A proper implementation requires: (1) multi-factor model with specified predictors, (2) equal weighting across factors, (3) cross-sectional ranking of all stocks, (4) decile formation and long-short portfolio construction. The approximation using price_pos_20 (position in 20-day range) is a proxy for relative performance ranking but fundamentally misses the model architecture."
+}

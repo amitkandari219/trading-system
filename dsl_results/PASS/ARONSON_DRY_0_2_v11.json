@@ -1,0 +1,88 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "bb_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "bb_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_upper"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped flip-flop threshold logic to Bollinger Bands with 0.75 std dev (bb_upper/bb_lower). Entry long when price crosses above upper band upward; entry short when price crosses below lower band downward. Exit conditions are symmetric reversals: long exits on lower band crossdown, short exits on upper band crossup. This implements mutually exclusive threshold crossing states with automatic reversal on opposite threshold breach. Used bb_upper and bb_lower as they represent SMA \u00b1 standard deviations matching the signal's threshold definition."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "bb_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "bb_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_upper"
+      }
+    ],
+    "regime_filter": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mapped flip-flop threshold logic to Bollinger Bands with 0.75 std dev (bb_upper/bb_lower). Entry long when price crosses above upper band upward; entry short when price crosses below lower band downward. Exit conditions are symmetric reversals: long exits on lower band crossdown, short exits on upper band crossup. This implements mutually exclusive threshold crossing states with automatic reversal on opposite threshold breach. Used bb_upper and bb_lower as they represent SMA \u00b1 standard deviations matching the signal's threshold definition."
+  },
+  "source_rule_text": "Use flip-flop logic with mutually exclusive threshold crossings to generate binary state transitions: maintain a directional signal until the opposite threshold is crossed in the opposite direction."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'earnings announcement event' which is not a technical indicator available in the allowed indicator set. The strategy is event-driven (earnings date-based) rather than price-action or technical-indicator driven. Additionally, 'market_close' is not a valid operator target. Intraday same-day exit timing and earnings event triggers cannot be expressed using only the provided technical indicators and price data.",
+  "translation_notes": "This is an EVENT-triggered strategy that requires corporate earnings announcement data and intraday market close timing, neither of which are expressible through the allowed technical indicators. The strategy direction is context-dependent (long or short based on post-announcement drift direction), making it impossible to pre-define fixed entry/exit signals without event metadata. A proper implementation would require external event data integration (earnings calendar) and market-close timing functions outside the technical indicator framework."
+}

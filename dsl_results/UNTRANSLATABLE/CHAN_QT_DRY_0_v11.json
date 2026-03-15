@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by one-day prior returns (percentile-based selection across a universe). The available indicators cannot express cross-sectional ranking/percentile logic. The 'returns' indicator represents individual stock returns but cannot encode 'bottom percentile' vs 'top percentile' comparisons across a basket. A proper translation would require a custom ranking function or percentile operator not in the allowed set.",
+  "translation_notes": "Attempted to approximate with returns < 0 (buy worst performers) and returns > 0 (short best performers), but this is a simplification that loses the critical percentile/ranking semantics of the original strategy. The strategy is fundamentally a cross-sectional mean reversion play requiring relative ranking within a stock universe, which cannot be properly expressed in single-stock condition logic."
+}

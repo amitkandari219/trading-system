@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires covariance matrix calculation, eigenvector decomposition, and spread (y3) normalization\u2014operations not expressible using allowed indicators. The strategy uses multivariate statistical methods (PCA/cointegration) to construct a stationary portfolio and position sizing based on eigenvector weights and normalized spreads. These require external preprocessing outside the backtest engine's indicator vocabulary.",
+  "translation_notes": "CHAN_AT_DRY_3 is a pairs/triplet cointegration strategy using eigenvector weighting for mean reversion. Core logic: (1) compute covariance of EWA/EWC/IGE, (2) extract first eigenvector for stationary weights, (3) construct normalized spread y3, (4) size positions = numUnits \u00d7 eigenvector_weights \u00d7 y3, (5) exit on mean reversion. Direction is CONTEXT_DEPENDENT because long/short depends on spread sign and eigenvector orientation. The signal cannot be reduced to simple indicator conditions\u2014it requires matrix operations and external spread calculation."
+}

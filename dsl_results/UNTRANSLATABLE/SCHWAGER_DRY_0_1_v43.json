@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'consecutive limit-move days' (a multi-bar state counter), which cannot be expressed as a single-bar condition using only the allowed indicators. Limit-move detection (close at exchange limit) requires domain-specific price limits not available in the indicator set. A precise implementation requires: (1) consecutive bar counter logic, (2) limit-up/limit-down definitions per instrument, and (3) position sizing state (50% reduction on day 3, full exit on day 4). These require stateful backtest engine features beyond indicator-based boolean conditions.",
+  "translation_notes": "Attempted translation uses high volatility (hvol_20) and strong trend confirmation (adx_14) as proxies for the trending+volatile entry regime. Exit attempts to detect exhaustion via excessive range expansion. However, this does NOT capture the core logic: counting consecutive extreme-move days and executing staged exits (50%/50%) at specific day thresholds. A proper implementation requires a custom backtest function or state machine in the engine."
+}

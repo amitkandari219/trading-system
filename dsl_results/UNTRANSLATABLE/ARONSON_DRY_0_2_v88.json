@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires computing a ratio of two external indices (DJT/SPX) and a moving average of that ratio (sma_25 applied to ratio). The allowed indicator list does not include: (1) external index data sources (DJT, SPX), (2) ratio computation between two series, or (3) moving averages of derived ratios. The sma_25 indicator is also not in the allowed list (only sma_5, sma_10, sma_20, sma_40, sma_50, sma_80, sma_100, sma_200 are available). This requires custom preprocessing or external data integration outside the backtest engine scope.",
+  "translation_notes": "This is an inter-market regime signal (Dow Transport/S&P 500 ratio) that requires external index data and ratio calculations. Implementation would need: (1) DJT and SPX price feeds, (2) custom ratio calculation, (3) SMA(25) applied to the ratio series. Consider extending the engine to support ratio indicators or pre-compute the ratio as a custom indicator before backtesting."
+}

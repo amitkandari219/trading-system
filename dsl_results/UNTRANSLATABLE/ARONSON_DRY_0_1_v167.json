@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references abstract parameter optimization logic ('balancing signal lag against false signal frequency', 'maximizes risk-adjusted performance metrics') that cannot be directly encoded as concrete indicator conditions. The rule is a meta-strategy principle rather than a specific entry/exit rule. No allowed indicator directly measures 'signal accuracy threshold >= 55% historical win rate' or 'risk-adjusted return falls below baseline' as real-time conditions. Provided a reasonable trend-following proxy using ADX and SMA crossovers.",
+  "translation_notes": "This signal describes a parameter optimization framework rather than concrete trading rules. The entry condition requiring 'Signal confirmed for 1 bar' and 'Signal accuracy threshold >= 55%' cannot be expressed without access to backtested win-rate metrics. Used ADX (trend strength) with SMA (trend direction) as a practical alternative for trend-based entry/exit logic. The false_signal_tolerance (0.22) and lag_tolerance_bars (5) parameters inform hold_days_max and stop_loss_pct scaling, but cannot be directly operationalized without custom win-rate tracking logic in the backtest engine."
+}

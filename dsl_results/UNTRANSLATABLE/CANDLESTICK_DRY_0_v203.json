@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic calculation of candle height multiplied by percentage factors (60% for upside, 57% for downside) relative to a 'breakout price' pivot point. This requires: (1) runtime computation of candle measurements, (2) identification of 'last candle in pattern' which is temporal/contextual, (3) determination of shadow ratios compared to 'median' (no median indicator available), and (4) calculation of price targets using formula-based logic that cannot be expressed as simple 3-field conditions. The exit targets 'calculated_target_upward' and 'calculated_target_downward' are placeholders for formulas: (range \u00d7 0.60) + breakout_price and breakout_price - (range \u00d7 0.57), which require context-dependent computation outside the allowed condition structure.",
+  "translation_notes": "This is a measure rule pattern signal that relies on algorithmic calculation of price targets based on candle dimensions. While entry can be loosely triggered by candle body direction (long=positive body, short=negative body), the core logic\u2014computing shadow ratios, comparing to median, and calculating percentage-based targets\u2014requires a custom calculation engine. The signal is untranslatable within the constraint of static 3-field conditions."
+}

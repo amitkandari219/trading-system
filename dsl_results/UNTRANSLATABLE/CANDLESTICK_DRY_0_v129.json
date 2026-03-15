@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of shadow heights to market-condition-specific median thresholds from 'table for your market condition and breakout direction' which is not provided as a structured input. The rule also requires identifying Abandoned Baby candlestick pattern (3-candle formation) which cannot be expressed with single-bar indicators. Additionally, the signal requires dynamic regime detection (bull/bear market, up/down breakout context) that exceeds the available regime types.",
+  "translation_notes": "Attempted to capture the essence of shadow analysis using upper_wick and lower_wick indicators, but the core logic depends on: (1) unprovided median reference tables, (2) multi-candle pattern recognition not available in indicator set, (3) market regime/breakout direction classifications beyond TRENDING_UP/TRENDING_DOWN. The signal is inherently context-dependent and requires external parameter tables to function correctly."
+}

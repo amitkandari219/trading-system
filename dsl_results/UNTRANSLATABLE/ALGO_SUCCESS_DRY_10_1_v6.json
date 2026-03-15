@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegration testing (cointegration test p-value < 0.05), spread analysis based on cointegrated pair construction, and half-life of mean reversion calculation (2-20 days). These are advanced statistical tests and pair-construction methods not available in the standard indicator set. The signal also requires identifying and constructing cointegrated asset pairs dynamically, which is beyond single-asset technical indicator scope. Approximated exit with mean reversion to SMA_20, but true implementation requires external cointegration module and spread modeling.",
+  "translation_notes": "This is a pairs trading cointegration strategy that cannot be fully expressed with single-asset technical indicators. The core logic (mean reversion to a stationary spread) is approximated using price mean reversion to a moving average, but this loses the crucial pair construction and statistical cointegration validation elements. Direction set to CONTEXT_DEPENDENT to reflect that long/short depends on which leg of the pair is overbought/oversold relative to the spread mean."
+}

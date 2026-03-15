@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom momentum calculation (Z-score of price returns over 15-period lookback) and volume percentile thresholds (60th and 45th percentiles of 45-period rolling average). Standard momentum indicators (RSI, MACD, stoch) do not match the Z-score methodology. Volume percentile comparisons cannot be expressed with allowed operators and indicators. Would need custom indicator: 'momentum_zscore_15' and 'volume_percentile_45'.",
+  "translation_notes": "Signal is fundamentally untranslatable with allowed indicators. The core requirement is momentum expressed as Z-scores (standardized deviations from mean) combined with volume percentile ranks\u2014neither of which are available in the allowed indicator set. Attempted approximation using price direction and vol_ratio_20, but this does not capture the statistical rigor of the original signal. Recommend implementing custom momentum_zscore_15 and volume_percentile_45 indicators."
+}

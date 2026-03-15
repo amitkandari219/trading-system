@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fundamental valuation metrics (market capitalization, P/E ratio, price-to-book ratio, percentile rankings) that are not available in the allowed technical indicator list. These are cross-sectional/fundamental data points requiring external data sources, not derivable from OHLCV price/volume data. The signal also requires relative percentile ranking across a universe of stocks, which cannot be computed from single-security technical indicators.",
+  "translation_notes": "ARONSON_DRY_0_1 is a value/reversion strategy based on fundamental metrics. Entry conditions explicitly reference: (1) market cap percentile (20th), (2) P/E ratio percentile (33rd), (3) price-to-book percentile (33rd), and signal confluence logic. Exit conditions reference valuation metrics crossing 50th percentile threshold. None of these can be constructed from the allowed technical indicators (moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, pivots, volume ratios, or price position). This signal requires fundamental data integration and would need: market_cap_percentile, pe_ratio_percentile, price_to_book_percentile as custom indicators in the backtest engine."
+}

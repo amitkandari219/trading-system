@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires market regime classification (BULL vs BEAR) and relative candle height comparison (tall vs short) which cannot be expressed with allowed indicators. The 'range' indicator approximates candle height but lacks the median-relative threshold logic needed. Market context (bull/bear) determination requires external regime detection not available in allowed indicators.",
+  "translation_notes": "Used 'range' (high-low) as proxy for candle height measurement. Entry conditions detect breakout direction via close vs prev_close. Exit uses RSI extremes as reversal signals. Median candle heights and performance metrics from parameters embedded as thresholds, but full contextual evaluation across four market regimes is not fully translatable with available indicators."
+}

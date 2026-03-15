@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegration analysis, eigenvector computation, and half-life estimation via linear regression on spread dynamics. These are portfolio-level statistical measures requiring custom calculations outside the scope of single-instrument technical indicators. Specifically: (1) Eigenvector-weighted portfolio construction from cointegration analysis is not expressible with allowed indicators; (2) Half-life calculation requires regressing first differences against lagged spread values, which requires custom statistical computation; (3) The signal is fundamentally a multi-asset statistical arbitrage model, not a single-instrument technical signal. This requires a separate cointegration module upstream of the backtest engine.",
+  "translation_notes": "CHAN_AT_DRY_3 is a sophisticated mean-reversion strategy based on pairs/portfolio cointegration. To implement: (1) Pre-compute cointegration matrix for ETF basket (e.g., EWA, EWC, IGE); (2) Extract first eigenvector; (3) Construct synthetic spread as weighted portfolio; (4) Estimate half-life of AR(1) process on spread; (5) Trade when half-life < 115 days. Entry/exit would be: LONG when spread < mean - k*std (oversold), EXIT when spread > mean. SHORT when spread > mean + k*std (overbought), EXIT when spread < mean. However, the half-life threshold itself must be calculated externally and used as a regime filter before allowing any trades."
+}

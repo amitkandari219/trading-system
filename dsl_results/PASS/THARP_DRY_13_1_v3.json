@@ -1,0 +1,86 @@
+{
+  "signal_id": "THARP_DRY_13_1",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_13_1",
+    "entry_long": [
+      {
+        "left": "adx_14",
+        "operator": ">=",
+        "right": "0.6"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "30"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "70"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "0.6"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes regime confirmation and setup conditions before entry. Mapped 'Primary fundamental market condition present' to ADX >= 0.6 (regime strength confirmation). 'At least 1 timing relationship confirmed' to RSI within neutral zone (30-70). 'Setup condition aligned with regime' enforced through regime filtering. Exit triggers when regime deteriorates (ADX drops below threshold). No stop-loss included per signal's explicit warning that stops reduce system reliability by stopping out profitable trades. Direction marked CONTEXT_DEPENDENT as signal applies to both trending and ranging markets."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "adx_14",
+        "op": ">=",
+        "value": 0.6
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 30.0
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 70.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 0.6
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes regime confirmation and setup conditions before entry. Mapped 'Primary fundamental market condition present' to ADX >= 0.6 (regime strength confirmation). 'At least 1 timing relationship confirmed' to RSI within neutral zone (30-70). 'Setup condition aligned with regime' enforced through regime filtering. Exit triggers when regime deteriorates (ADX drops below threshold). No stop-loss included per signal's explicit warning that stops reduce system reliability by stopping out profitable trades. Direction marked CONTEXT_DEPENDENT as signal applies to both trending and ranging markets."
+  },
+  "source_rule_text": "A trader should identify and filter entries based on necessary setup conditions and market regime requirements before testing entry reliability, because adding stops will reduce system reliability by stopping out profitable trades."
+}

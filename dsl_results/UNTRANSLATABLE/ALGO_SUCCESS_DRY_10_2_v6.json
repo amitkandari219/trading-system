@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegration test p-value calculation, half-life of mean reversion decay analysis, and spread statistical measurements (mean and standard deviation of a synthetic pair portfolio). These are multi-asset pair-trading constructs requiring external cointegration modeling, not available as single-asset indicators in the allowed list. The engine cannot natively compute cointegration p-values or mean reversion half-life from standard OHLCV indicators.",
+  "translation_notes": "Attempted proxy mapping: used bb_bandwidth (volatility compression) as a weak proxy for cointegration strength, and returns crossing zero as a proxy for spread mean reversion. However, this fundamentally misrepresents the signal's core logic of pair cointegration and spread trading. This rule should be implemented in a separate pairs trading module with dedicated cointegration and mean reversion analysis tools."
+}

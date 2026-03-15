@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting divergence between two correlated time series (price and an unspecified indicator failing to move together), persistence tracking over 5+ bars, and magnitude thresholds relative to recent range. The allowed indicator set lacks: (1) an explicit divergence detection operator, (2) multi-bar persistence memory without array indexing, (3) dynamic recent range calculation. Conditions above use price/MACD as a proxy divergence pair, but this does not capture the true signal intent of monitoring any two normally-correlated series for breakdown.",
+  "translation_notes": "ARONSON_DRY_0_0 describes a general divergence framework rather than a specific indicator pair. Interpreted as price-MACD divergence with 20-bar trend establishment (implied via SMA_20) and 5-bar confirmation via histogram sign persistence. The 2% magnitude threshold and exact divergence persistence logic cannot be precisely encoded without custom operators. Direction set to CONTEXT_DEPENDENT per signal specification. Recommend manual review of actual correlated pairs intended by trader."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-asset class monitoring (2+ major asset classes at all-time highs), mainstream media sentiment analysis (5+ stories/month threshold), market breadth divergence tracking (small cap vs large cap), and regime identification across multiple instruments. The backtest engine operates on single-instrument OHLCV data and does not support cross-asset correlation analysis, media narrative quantification, or breadth indicators. Partial proxy implemented: low volatility percentile (hvol_20 < 0.40) and price near highs (price_pos_20 > 0.95) as substitute for all-time high + low vol regime conditions. Exit on 50-day MA breach substitutes for downtrend detection.",
+  "translation_notes": "This is a macro regime-shift warning signal that fundamentally requires multi-asset, multi-factor analysis beyond single-instrument technical analysis. hvol_20 < 0.40 approximates bottom 40% volatility percentile. price_pos_20 > 0.95 approximates proximity to all-time highs. Media narrative, breadth divergence, and cross-asset correlation cannot be expressed with allowed indicators. The signal's intent is defensive positioning during bubble conditions, not traditional directional trading. Recommendation: implement as separate pre-trade regime filter outside backtest engine."
+}

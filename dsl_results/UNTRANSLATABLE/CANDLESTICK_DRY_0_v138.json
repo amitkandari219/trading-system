@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) explicit bear market regime detection (March 2000 - Oct 2002 hardcoded dates), (2) candle height measurement and storage for target calculation (highest_high - lowest_low), (3) dynamic target calculation based on stored candle height (subtract height from low OR multiply height by 0.46 and subtract from low). The engine lacks: candle pattern recognition, historical date filtering, state variables for candle metrics, and conditional target calculation logic. These require custom pattern detection beyond the allowed indicator set.",
+  "translation_notes": "Entry conditions translated as: downward breakout (close < low indicates breakout attempt) during downtrending regime. Exit uses primary moving average cross as proxy for regime reversal. Hardcoded 5.33% stop-loss from source example. The measure rule target calculation (primary: low - height; adjusted: low - (height \u00d7 0.46)) cannot be automated without: (a) pattern state storage, (b) dynamic lookback for candle high/low, (c) conditional exit price calculation. Recommend implementing as a custom pattern detector outside the standard rule engine."
+}

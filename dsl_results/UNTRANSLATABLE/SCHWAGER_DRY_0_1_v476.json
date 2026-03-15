@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 2+ consecutive gap days with accelerating magnitude\u2014a multi-bar pattern condition. Available indicators lack native gap detection and sequential bar analysis. The `returns` metric approximates single-bar gap moves (>1.2%), but cannot verify minimum 2 consecutive gaps or acceleration pattern without custom gap detection logic.",
+  "translation_notes": "Approximated gap detection using returns >1.2% and volume confirmation. price_pos_20 (Donchian position) used as proxy for 'within 15% of range extremes'. Direction set CONTEXT_DEPENDENT to preserve long/short logic. Exit conditions use hard stops (3% adverse) and profit targets (10-12% reversal). Hold period capped at 10 days. NOTE: A production backtest should implement native gap detection to properly validate consecutive gap acceleration."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires monitoring the advance/decline line (A/D line), which is a market breadth indicator tracking NYSE advances vs declines. This indicator is not in the ALLOWED INDICATORS list. The core logic\u2014detecting divergence between market averages and A/D line participation, and comparing A/D peaks to price peaks across time\u2014cannot be expressed using only price, volume, and oscillator indicators. A/D line is a separate data stream requiring explicit breadth data unavailable in the provided indicator set.",
+  "translation_notes": "Signal is regime-context-dependent (exit longs, avoid shorts). Entry conditions reference A/D line divergence detection which requires custom breadth data. Exit condition is to liquidate all long positions upon signal confirmation, but the confirmation itself depends on untranslatable A/D divergence metrics. Parameters specify divergence_threshold_days=2 and a_d_lag_tolerance_percent=0.5, neither of which can be computed from allowed indicators."
+}

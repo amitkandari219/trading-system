@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_28_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires measurement of 'order anticipators active' via order book depth changes and spread compression, which are not available in the allowed indicator set. The 75th percentile acceleration threshold and 2-bar reversal detection cannot be precisely operationalized with standard OHLCV indicators. Used returns volatility and Bollinger bandwidth compression as proxies for order book dynamics and momentum acceleration, but this is an approximation rather than a true translation of the intended signal.",
+  "translation_notes": "Interpreted 'price acceleration at 75th+ percentile' as returns exceeding 0.75% (top quartile momentum). Interpreted 'order anticipators active' via spread compression proxy using tight Bollinger bandwidth (<1%). Exit conditions approximate the original: exit when acceleration drops (returns fall below threshold) OR two-bar reversal detected (close moves opposite to entry direction). CONTEXT_DEPENDENT direction preserved as signal applies to both long and short momentum extremes."
+}

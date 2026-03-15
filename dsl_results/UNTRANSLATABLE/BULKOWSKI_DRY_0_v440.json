@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Gap detection requires comparison of prev_close to current open (gap = open - prev_close), which cannot be expressed with allowed operators. The signal requires identifying intraday gaps and measuring gap size relative to volatility (ATR), neither of which are directly available. Volume surge confirmation on gap day also cannot be reliably expressed without a 'volume_spike' indicator or comparison operators for vol_ratio_20.",
+  "translation_notes": "Attempted to approximate using trend confirmation (moving average crosses) and price gaps as close > prev_close (up gap) / close < prev_close (down gap). Exit at 35 days max hold and -5% stop loss based on author's stated weakness at ~35-day inflection point. Author provided success rates only for bull market (14%) with silent data for bear market, limiting statistical confidence. The exact gap pattern mechanics and volume confirmation cannot be reliably translated."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of exponential decay parameter \u03b8 and half-life (ln(2)/\u03b8) from time-series analysis to determine optimal holding periods. These are derived statistical measures not available as pre-computed indicators in the allowed list. The exact spread definition, deviation threshold, and reversion target are marked AUTHOR_SILENT. Bollinger Bands used as proxy for mean-reversion detection, but cannot replicate the precise half-life-based exit timing without custom indicator support.",
+  "translation_notes": "Attempted proxy translation using Bollinger Bands (bb_pct_b extremes near 0 or 1 indicate significant deviation from mean) and mean-reversion exit when price crosses bb_middle. However, this fundamentally cannot capture the signal's core mechanic: calculating half-life from \u03b8 and using it to set precise holding periods. Direction set to CONTEXT_DEPENDENT as entry conditions do not specify LONG vs SHORT. Target regime set to RANGING as mean-reversion strategies require non-trending markets. Parameters for threshold, sharpe, and backtest period are AUTHOR_SILENT and cannot be operationalized."
+}

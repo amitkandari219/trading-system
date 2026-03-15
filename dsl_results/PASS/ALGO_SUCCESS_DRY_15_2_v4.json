@@ -1,0 +1,74 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_2",
+  "book_id": "ALGO_SUCCESS",
+  "dsl_rule": {
+    "signal_id": "ALGO_SUCCESS_DRY_15_2",
+    "entry_long": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_10",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped short_window=10 to sma_10 and long_window=50 to sma_50. Entry requires both crossover detection and confirmation that short SMA is above long SMA. Exit triggers on bearish crossover. Direction is CONTEXT_DEPENDENT but structured as LONG entries with corresponding exits; SHORT signals would use inverse logic on the same crossover conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_above",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_10",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "HIGH_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Mapped short_window=10 to sma_10 and long_window=50 to sma_50. Entry requires both crossover detection and confirmation that short SMA is above long SMA. Exit triggers on bearish crossover. Direction is CONTEXT_DEPENDENT but structured as LONG entries with corresponding exits; SHORT signals would use inverse logic on the same crossover conditions."
+  },
+  "source_rule_text": "Generate a long entry signal when the short-term moving average crosses above the long-term moving average (bullish crossover), and generate an exit signal when the short-term moving average crosses below the long-term moving average (bearish crossover)."
+}

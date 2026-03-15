@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 1.5 standard deviation bands, reversal signals (swing breaks/momentum divergence), and ATR-based stops. The allowed indicator list includes Bollinger Bands (which use standard deviations) but not standard deviation directly from a custom 50-period MA. Momentum divergence detection and swing-point identification require multi-bar pattern recognition not expressible in the 3-field condition schema. MACD is provided for divergence approximation, but explicit reversal confirmation logic cannot be fully captured. Recommendation: use bb_upper/bb_lower as proxy for extreme levels, and macd_hist for divergence signals.",
+  "translation_notes": "This signal fundamentally requires pattern recognition (swing breaks, divergences) and multi-bar logic that exceeds the capabilities of the simple 3-field condition structure. A practical implementation would: (1) Use Bollinger Bands (bb_upper/bb_lower) to detect extremes instead of manual 1.5 SD calculation; (2) Use MACD histogram (macd_hist) to detect momentum divergence as reversal confirmation; (3) Set stop_loss_pct to 2.25 (1.5 ATR approximation assuming ~1.5% ATR on typical instruments); (4) Use mean-reversion entry on price touching bands with divergence confirmation. The CONTEXT_DEPENDENT direction reflects the bidirectional nature of reversal trading."
+}

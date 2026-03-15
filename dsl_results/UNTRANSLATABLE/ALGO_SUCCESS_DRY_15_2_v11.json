@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires OLS regression-based cointegration analysis (R-squared > 0.50) and residual z-score calculations on a cointegrated pair. These are multivariate statistical measures requiring external computation beyond single-instrument indicators in the allowed list. The signal also requires pair trading logic (two correlated instruments) which is not supported by the single-symbol indicator framework.",
+  "translation_notes": "Attempted approximation using log_returns as a proxy for residual z-scores, but this is NOT equivalent to the cointegration model described. True implementation requires: (1) OLS regression fitting on a 60-bar lookback window, (2) residual extraction, (3) z-score normalization of residuals, (4) pair-based entry/exit logic. This cannot be expressed with allowed single-instrument indicators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Johansen cointegration test, eigenvector computation, and optimal capital weight calculation between two separate currency pairs (AUD.USD and CAD.USD). These are multivariate statistical tests and cross-pair analyses that cannot be expressed using single-pair technical indicators. The signal also references ZAR.USD pairs. This requires external cointegration analysis outside the backtest engine's indicator scope.",
+  "translation_notes": "This signal is fundamentally about statistical arbitrage via cointegration testing rather than price-action or momentum patterns. It requires: (1) Johansen test implementation on two separate instrument series, (2) eigenvector-based position sizing across multiple pairs, (3) periodic rebalancing logic to manage accumulated P&L drift. The backtest engine would need to support multi-leg statistical testing and dynamic position weight calculations based on cointegration parameters, which exceeds the allowed indicator set. Recommend implementing as custom strategy module outside standard rule engine."
+}

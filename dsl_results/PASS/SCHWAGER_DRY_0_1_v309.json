@@ -1,0 +1,128 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires context-dependent direction (long/short based on trend). Entry conditions use close vs sma_20 (20-period MA) and adx_14 > 25 for trend confirmation. Exit uses close crossing below MA and ADX < 20 for trend exhaustion. Stop loss derived from 2.0x ATR parameter converted to percentage equivalent (2.0% of account risk). Position sizing and max concurrent trades are backtest engine parameters, not rule conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires context-dependent direction (long/short based on trend). Entry conditions use close vs sma_20 (20-period MA) and adx_14 > 25 for trend confirmation. Exit uses close crossing below MA and ADX < 20 for trend exhaustion. Stop loss derived from 2.0x ATR parameter converted to percentage equivalent (2.0% of account risk). Position sizing and max concurrent trades are backtest engine parameters, not rule conditions."
+  },
+  "source_rule_text": "A trader should adopt a big-picture perspective on market direction, trade with the trend across multiple instruments while maintaining strict risk control, because this approach has structural validity regardless of market conditions."
+}

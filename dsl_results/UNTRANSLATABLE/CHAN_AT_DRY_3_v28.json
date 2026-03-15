@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires half-life calculation of price series and continuous proportional position sizing based on deviation magnitude. Half-life is not an allowed indicator and requires statistical computation (mean-reversion half-life via Ornstein-Uhlenbeck process or ADF regression) not available in the allowed indicator set. Continuous proportional position sizing cannot be expressed as discrete entry/exit conditions. Approximated with simple mean-reversion using SMA as a proxy, but this does not capture the core logic of deviation-proportional sizing.",
+  "translation_notes": "This signal describes a sophisticated continuous mean-reversion strategy with position sizing proportional to price deviations from a dynamically calculated mean-reversion half-life. The allowed indicator set does not support: (1) half-life calculations, (2) deviation magnitude measurements for proportional position sizing, or (3) continuous/incremental position adjustments. A basic approximation using SMA crossovers has been provided, but it fundamentally does not implement the author's intended strategy. Manual implementation with custom indicators required."
+}

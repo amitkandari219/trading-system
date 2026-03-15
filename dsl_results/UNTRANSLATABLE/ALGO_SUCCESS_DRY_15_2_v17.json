@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom z-score calculation from spread residuals and OLS hedge ratio, which cannot be expressed using only the allowed standard indicators. The z-score is a derived metric from pair trading (residual = y - (hedge_ratio * x)), not a built-in indicator. The signal also requires tracking pair alignment state (y_signal, x_signal non-None) which is external to the standard indicator set. This is a pairs trading strategy requiring custom calculation logic beyond standard technical indicators.",
+  "translation_notes": "This is a pairs trading mean reversion signal that fundamentally requires: (1) OLS regression to calculate hedge ratio over 30-bar lookback, (2) spread residual calculation from two correlated assets, (3) z-score computation from residual statistics. These custom calculations fall outside the scope of standard indicators. To implement this signal, the backtest engine would need dedicated pairs trading modules for cointegration analysis and hedge ratio optimization. The entry/exit z-score thresholds (\u00b11.5 entry, \u00b10.25 exit, \u00b12.5 stop) cannot be mapped to standard indicators without the underlying pair residual data."
+}

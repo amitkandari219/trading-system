@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Cannot precisely translate 'white candle opens at or above the middle of the black candle's body' without an indicator for the midpoint of a prior candle's body (prev_middle). The pattern requires calculating (prev_open + prev_close) / 2, which is not available as a pre-calculated indicator. Body direction can be detected (body < 0 for black, close > open for white), but the midpoint comparison cannot be expressed with allowed indicators.",
+  "translation_notes": "Attempted to capture: (1) black candle on day 1 via body < 0, (2) white candle on day 2 via close > open, (3) rise-retrace via directional body comparison. However, the core condition\u2014'white candle opens/closes at or above the midpoint of the prior black candle'\u2014requires prior-bar body midpoint calculation not available in the allowed indicator set. Exit condition uses reversal (close < open) as reasonable substitute for AUTHOR_SILENT."
+}

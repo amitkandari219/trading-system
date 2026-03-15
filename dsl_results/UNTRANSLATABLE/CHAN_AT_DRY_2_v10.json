@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Order flow cannot be directly computed from allowed indicators. News arrival is an external event that cannot be expressed using technical indicators alone. These require custom data feeds or external event detection not available in the standard indicator set.",
+  "translation_notes": "Attempted partial translation: (1) 'Order flow positive' approximated using volume > vol_ratio_20 as a proxy for order imbalance. (2) 'Price above moving average' \u2192 close > sma_20. (3) 'Volatility low' \u2192 hvol_20 < 0.015 (15% annualized volatility threshold). (4) 'Important news arrives' \u2192 cannot be expressed; requires external news feed. Exit condition 'AUTHOR_SILENT' interpreted as reversal when price crosses below moving average. The core signal requires order flow and news event data that are outside the scope of technical indicators."
+}

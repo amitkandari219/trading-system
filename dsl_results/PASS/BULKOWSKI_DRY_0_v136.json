@@ -1,0 +1,72 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_lower"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 0.5,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes touching a lower trend line and moving higher. Approximated using Donchian lower band (dc_lower) as a proxy for the lower trend line. Entry triggers when price crosses above this level AND closes higher than previous bar. Exit triggered when price falls back below the lower band. Stop-loss set at 0.15% below lowest low per author specification. Target price set at 37% gain as stated in example."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.005,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal describes touching a lower trend line and moving higher. Approximated using Donchian lower band (dc_lower) as a proxy for the lower trend line. Entry triggers when price crosses above this level AND closes higher than previous bar. Exit triggered when price falls back below the lower band. Stop-loss set at 0.15% below lowest low per author specification. Target price set at 37% gain as stated in example."
+  },
+  "source_rule_text": "Pattern name: Long stop buy - Buy the stock as soon after it touches the lower trend line and moves higher, with stop-loss placement 0.15 below the lowest low"
+}

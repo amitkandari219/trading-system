@@ -1,0 +1,106 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.25"
+      },
+      {
+        "left": "atr_14",
+        "operator": ">",
+        "right": "atr_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.25"
+      },
+      {
+        "left": "atr_14",
+        "operator": ">",
+        "right": "atr_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is contrarian reversion strategy triggered by extreme price moves (\u00b125% spike). Entry uses 10-day returns to detect >25% move, with elevated ATR confirming volatility/hysteria. Exit triggers if price breaks beyond prior extreme (Donchian channels approximate recent spike bounds) by >5%, or 20-day hold limit. Context-dependent direction reflects contrarian nature (long on down spikes, short on up spikes). Pullback confirmation and visual 'spike pattern' detection cannot be expressed with available indicators\u2014approximated via ATR elevation. Position sizing and 2:1 profit target are backtest engine responsibilities."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.25
+      },
+      {
+        "indicator": "atr_14",
+        "op": ">",
+        "value": "atr_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.25
+      },
+      {
+        "indicator": "atr_14",
+        "op": ">",
+        "value": "atr_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "regime_filter": [
+      "HIGH_VOL"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is contrarian reversion strategy triggered by extreme price moves (\u00b125% spike). Entry uses 10-day returns to detect >25% move, with elevated ATR confirming volatility/hysteria. Exit triggers if price breaks beyond prior extreme (Donchian channels approximate recent spike bounds) by >5%, or 20-day hold limit. Context-dependent direction reflects contrarian nature (long on down spikes, short on up spikes). Pullback confirmation and visual 'spike pattern' detection cannot be expressed with available indicators\u2014approximated via ATR elevation. Position sizing and 2:1 profit target are backtest engine responsibilities."
+  },
+  "source_rule_text": "A trader should take contrarian positions against extreme price moves (hysteria) when charts show incredible spikes, because exhaustion patterns often precede reversions."
+}

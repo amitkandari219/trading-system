@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculating gap-down as 'return from previous day's low to today's open lower than one standard deviation below mean' using 90-day rolling volatility. The allowed indicators do not include: (1) previous day's low (only prev_close available), (2) dynamic standard deviation calculation, or (3) gap-specific metrics. The 'returns' indicator typically represents close-to-close returns, not low-to-open gap metrics. Precise translation would require custom volatility-adjusted gap indicators.",
+  "translation_notes": "Attempted approximation using returns < -0.01 as a proxy for significant gap-down, and open > sma_20 for the mean reversion condition. However, this does not accurately capture the 90-day volatility-normalized gap criterion specified in the original signal. A proper backtest would require custom indicator support for gap-adjusted volatility thresholds."
+}

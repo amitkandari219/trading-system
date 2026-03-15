@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_20_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) new fundamental information within 12 hours (not available in price/technical indicators), (2) information asymmetry measurement (few traders know), and (3) media saturation/public mentions tracking (requires external news/social media data not in allowed indicators). The 1.5 standard deviation price move is approximated using ATR comparison, but the information decay timing and asymmetry detection cannot be expressed with allowed technical indicators alone.",
+  "translation_notes": "Translated volume percentile using vol_ratio_20 (75th percentile threshold). Approximated '1.5 standard deviations from 20-day close' using returns magnitude and ATR as volatility proxy. The core requirement\u2014detecting information asymmetry and timing new fundamental events\u2014requires external data sources (news APIs, social media sentiment, insider transaction data) not available in the standard technical indicator set. Exit condition uses 48-hour hold_days_max (2 days) and volume drop threshold. Position sizing (3% of capital) noted but requires portfolio-level implementation."
+}

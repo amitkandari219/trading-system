@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking securities by relative performance (12-month total return percentile) and selecting top/bottom quintiles. The 'returns' indicator provides point-in-time returns but cannot natively express cross-sectional ranking, percentile selection (80th and 20th), or equal-weight portfolio construction across multiple securities. This is a portfolio-level/cross-sectional strategy that requires security-universe ranking logic not supported by single-instrument indicators.",
+  "translation_notes": "Translated 12-month lookback to returns indicator with approximate percentile thresholds (0.80 = top 20%, 0.20 = bottom 20%), but this is a lossy conversion. The true signal requires: (1) ranking all securities in universe by 12-month returns, (2) selecting top and bottom quintiles, (3) equal-weighting within each bucket, and (4) rebalancing monthly. A backtest engine must implement custom ranking/selection logic at the portfolio construction level, not the individual instrument level."
+}

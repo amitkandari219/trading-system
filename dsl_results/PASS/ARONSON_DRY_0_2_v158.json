@@ -1,0 +1,90 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.4,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped n-period maximum/minimum to Donchian Channel (dc_upper/dc_lower) with default 10-period lookback. ATR stop loss calculated as 1 ATR \u2248 1.4% for typical volatility. Entry on intrabar breakout expressed as close crossing above/below channel levels. Position size and specific regime filters (TRENDING, HIGH_VOL) should be applied at portfolio/execution layer."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "HIGH_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.013999999999999999,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mapped n-period maximum/minimum to Donchian Channel (dc_upper/dc_lower) with default 10-period lookback. ATR stop loss calculated as 1 ATR \u2248 1.4% for typical volatility. Entry on intrabar breakout expressed as close crossing above/below channel levels. Position size and specific regime filters (TRENDING, HIGH_VOL) should be applied at portfolio/execution layer."
+  },
+  "source_rule_text": "Enter long positions when price exceeds the n-period maximum; enter short positions when price falls below the n-period minimum, using a dynamically redrawn channel that adjusts to recent price range."
+}

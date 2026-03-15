@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of market regime (BULL_MARKET vs BEAR_MARKET) and conditional logic: 'For upward breakouts in bear markets: prefer light volume breakouts; for other conditions: heavy breakout volume preferred.' The allowed REGIMES list does not include BULL_MARKET or BEAR_MARKET, only TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY. Additionally, distinguishing between 'light' and 'heavy' volume requires a comparative threshold that cannot be derived from the allowed indicators without author-specified parameters. The source text provides performance data (5.25%, 5.19%, -3.75%, -6.79%) but lacks the quantitative breakpoints needed to operationalize the volume preference rule.",
+  "translation_notes": "This signal contains context-dependent logic that depends on market regime classification not available in the allowed regime set. A complete translation would require: (1) definition of BULL_MARKET and BEAR_MARKET regimes (e.g., close > sma_200 for bull), (2) quantitative thresholds for 'heavy' vs 'light' volume (e.g., volume > vol_ratio_20 * 1.5 for heavy), and (3) explicit handling of the asymmetric rule for bear market upbreaks. The placeholder entry/exit conditions use standard breakout logic with volume confirmation, but do not capture the nuanced bear market preference for light volume upbreaks."
+}

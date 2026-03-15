@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) tight consolidation range lasting minimum 5 bars with width <=4% of midpoint\u2014requires custom range detection logic not available in indicator set; (2) absence of earnings announcements or FOMC decisions within 12 hours\u2014requires external calendar data not in allowed indicators; (3) trailing stop at 1 ATR after 2 ATR profit\u2014requires conditional dynamic stops with historical profit tracking. Donchian channels (dc_upper/dc_lower) approximate breakout detection but cannot validate the 5-bar consolidation prerequisite or news catalyst filtering.",
+  "translation_notes": "Approximated using Donchian channels as proxy for range breakout detection. Vol_ratio_20 used as closest match for volume percentile threshold. However, core signal logic (consolidation duration validation, range width percentage calculation, and news event filtering) cannot be expressed with allowed indicators. Entry conditions simplified to breakout + volume confirmation. Stop loss set to approximate range width (4.0%). Take profit set to 2x risk (8.0% for 4% risk). Requires custom preprocessing to validate 5-bar consolidation and news calendar."
+}

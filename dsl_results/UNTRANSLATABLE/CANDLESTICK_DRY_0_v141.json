@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Candlestick pattern detection requires multi-bar analysis: (1) Downtrend context cannot be expressed without lookback window or trend confirmation; (2) Doji detection requires 'gap lower' and 'close at or near opening' logic across 3 consecutive bars which requires indexed bar access (candle[i-2], candle[i-1], candle[i]) not available in allowed operators; (3) Gap detection between bars requires prev_high/prev_low comparison logic that is implicit in pattern definition but not explicitly translatable with single-bar indicators",
+  "translation_notes": "Attempted partial translation: Entry condition approximates (1) black candle via body<0, (2) doji via open==close, (3) bullish gap via close>prev_high. However, true pattern requires sequential 3-bar validation with downtrend confirmation which exceeds single-condition capability. Recommend using explicit candlestick pattern library or adding 'downtrend_bars' lookback parameter to entry_long conditions."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Entry condition 'Capitulation signal active for minimum 3 consecutive bars' requires a capitulation indicator (e.g., extreme breadth, volume spike, or specific candlestick pattern) that is not available in the allowed indicator list. 'Sentiment measure at 65th+ percentile of extreme' is approximated using hvol_20 as a proxy for volatility regime, but true sentiment data (VIX percentile, put/call ratio, or similar) is not available.",
+  "translation_notes": "1. 'Asset experienced prior euphoric rally (>15% move)' translated to returns > 0.15, measuring recent price momentum. 2. 'Sharp pullback of at least 8% from rally highs' approximated using close < dc_upper (Donchian upper channel), indicating price below recent highs. A more precise 8% pullback calculation cannot be expressed without historical peak tracking. 3. 'Capitulation signal' cannot be directly translated\u2014marked untranslatable. 4. 'Sentiment measure at 65th+ percentile' approximated using hvol_20 > 0.65 as a volatility regime proxy. 5. 'Price within 5% of 20-period moving average' translated to price_pos_20 < 0.05, measuring proximity to lower support zone. 6. Take profit at +12% uses returns > 0.12 (exit condition). 7. Stop loss at 3% below entry (stop_loss_pct = 3.0). 8. Holding period 6-12 weeks (~42-84 days) set to hold_days_max = 84. 9. Direction LONG (buy signal). 10. Target regimes set to TRENDING_UP and HIGH_VOL per original specification."
+}

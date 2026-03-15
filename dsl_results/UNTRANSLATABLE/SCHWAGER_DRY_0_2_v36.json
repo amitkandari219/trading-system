@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires monitoring 'professional trader positioning' at >55% in same direction, which is not available in the allowed indicator list. Professional positioning data is external market microstructure information that cannot be derived from price, volume, or technical indicators. Additionally, the 'trend-following signal initiates' entry trigger is vague and requires specification of which trend-following signal to use.",
+  "translation_notes": "Signal is sourced from Schwager discussing crowded professional trades and contrarian positioning. The core logic (take opposite side when professionals are 55%+ in one direction) cannot be implemented without a professional positioning indicator. To operationalize this signal, one would need: (1) a professional positioning or large-trader flow indicator, or (2) a specific trend-following indicator name to trigger entry. The exit conditions include ATR-based stop-loss (implementable as 1 * atr_14) and time-based exit at 10 bars (implementable), but without the entry conditions, the rule is incomplete."
+}

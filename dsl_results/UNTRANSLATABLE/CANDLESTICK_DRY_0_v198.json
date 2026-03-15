@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires precise candlestick morphology detection: (1) identifying a 'tall white candle' requires comparative body size analysis not available in allowed indicators, (2) detecting price opening/closing 'below the middle' of previous candle body requires mid-point calculation ((prev_open + prev_close)/2) which is not an allowed indicator, (3) identifying a 'doji' requires specific wick/body ratio detection not available, (4) 'uptrend leading to pattern' requires trend confirmation beyond simple moving average crossing. The pattern is inherently visual/morphological and cannot be fully expressed with the allowed indicator set.",
+  "translation_notes": "Attempted translation uses: prev_close > prev_open to detect the tall white candle, open < pivot to approximate 'below middle' opening, and close < sma_5 to detect downside close. However, this is a significant simplification and does not capture the precise geometric requirements of the Below-the-Stomach pattern. A proper implementation would require candlestick body mid-point calculations and comparative candle size metrics."
+}

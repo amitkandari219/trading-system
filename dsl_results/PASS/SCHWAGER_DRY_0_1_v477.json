@@ -1,0 +1,126 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "2.5"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.07"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "30"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "2.5"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.07"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "70"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.08"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.08"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 8.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped 'panic volatility spike >2.5 standard deviations' to hvol_20 > 2.5 (historical volatility in decimal scale). Mapped 'price moved >7% contrary to thesis in <7 days' to returns condition (7% = 0.07). Used rsi_14 extremes as confirmation signal proxy: RSI < 30 for bearish thesis entry (price down), RSI > 70 for bullish thesis entry (price up). Direction is CONTEXT_DEPENDENT as signal applies to both long and short based on trader's thesis. Stop loss set at 8% drawdown per parameters."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 2.5
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.07
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 30.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 2.5
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.07
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 70.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.08
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.08
+      }
+    ],
+    "regime_filter": [
+      "HIGH_VOL"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mapped 'panic volatility spike >2.5 standard deviations' to hvol_20 > 2.5 (historical volatility in decimal scale). Mapped 'price moved >7% contrary to thesis in <7 days' to returns condition (7% = 0.07). Used rsi_14 extremes as confirmation signal proxy: RSI < 30 for bearish thesis entry (price down), RSI > 70 for bullish thesis entry (price up). Direction is CONTEXT_DEPENDENT as signal applies to both long and short based on trader's thesis. Stop loss set at 8% drawdown per parameters."
+  },
+  "source_rule_text": "When market panic or hysteria creates extreme price moves, a contrarian trader with a foundational bearish/bullish thesis should maintain the position through the chaos, as panic-driven moves are unsustainable and will reverse."
+}

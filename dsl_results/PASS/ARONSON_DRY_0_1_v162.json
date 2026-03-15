@@ -1,0 +1,110 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_middle"
+      },
+      {
+        "left": "volume",
+        "operator": ">=",
+        "right": "sma_10"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_middle"
+      },
+      {
+        "left": "volume",
+        "operator": ">=",
+        "right": "sma_10"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_middle"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Midpoint of daily range approximated using Donchian middle (dc_middle) which represents (high+low)/2 over the period. Volume check uses sma_10 as proxy for 10-day average volume. Range position stability tolerance (0.1) is implicit in the Donchian framework. Stop loss set to 2 days at prior day's low approximated as 2% trailing stop. Hold period set to 5 days as reasonable reversal window based on signal description."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_middle"
+      },
+      {
+        "indicator": "volume",
+        "op": ">=",
+        "value": "sma_10"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_middle"
+      },
+      {
+        "indicator": "volume",
+        "op": ">=",
+        "value": "sma_10"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_middle"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Midpoint of daily range approximated using Donchian middle (dc_middle) which represents (high+low)/2 over the period. Volume check uses sma_10 as proxy for 10-day average volume. Range position stability tolerance (0.1) is implicit in the Donchian framework. Stop loss set to 2 days at prior day's low approximated as 2% trailing stop. Hold period set to 5 days as reasonable reversal window based on signal description."
+  },
+  "source_rule_text": "A trader should initiate long positions when the market closes above the midpoint of its daily range (indicating accumulation dominance) and short positions when it closes below the midpoint (indicating distribution dominance), as these closings predict directional price movement."
+}

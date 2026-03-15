@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_11_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a directional forecaster model with hit rate accuracy >=52%, p-value <=0.10 statistical significance testing, and minimum 100 test samples. These are meta-strategy validation metrics requiring external model evaluation, not standard price/indicator conditions. The signal is about when to *activate* a strategy based on ML model performance, not price action itself. Standard indicators cannot replicate directional forecast accuracy, p-value computation, or sample size validation without access to the forecasting model's predictions and statistical test results.",
+  "translation_notes": "This signal is a meta-rule for strategy activation based on ML model backtesting performance rather than market conditions. It requires: (1) a trained directional forecasting model, (2) out-of-sample validation with >=100 samples, (3) statistical significance testing (p-value), and (4) MAE measurement. These cannot be expressed as standard technical indicator rules. Implementation requires: external model validation framework, hit rate calculation on rolling windows, p-value computation via binomial test, and MAE tracking\u2014all outside the scope of indicator-based entry/exit logic."
+}

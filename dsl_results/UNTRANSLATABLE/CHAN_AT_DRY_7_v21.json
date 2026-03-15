@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a pairs trading strategy requiring regression-based hedge ratio calculation between two correlated instruments (VX and ES). The signal depends on: (1) fitting a regression model between VX and ES prices (not returns), (2) calculating dynamic hedge ratios from that regression, and (3) detecting deviations from the fitted relationship. These requirements involve multivariate statistical modeling and cross-asset analysis that cannot be expressed using single-instrument technical indicators. The allowed indicator set does not support regression fitting, hedge ratio calculation, or pairs trading mechanics. Critical parameters (lookback_period, threshold, half_life) are marked AUTHOR_SILENT and cannot be inferred.",
+  "translation_notes": "Signal requires advanced quantitative mechanics: (a) OLS regression between VX and ES price series; (b) dynamic hedge ratio computation from regression coefficients; (c) z-score or similar deviation metric from fitted relationship; (d) position sizing based on hedge ratio. The strategy is inherently multi-asset and statistical, not amenable to single-instrument technical rule translation. Recommend implementing as custom pairs trading algorithm in backtest engine rather than generic rule."
+}

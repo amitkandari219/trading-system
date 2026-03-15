@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_20_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires decomposition of volatility into fundamental vs. transitory components. No allowed indicators directly measure this decomposition. hvol_20 (historical volatility) is used as a proxy for total volatility, and atr_14 stability approximates fundamental volatility stability, but true fundamental/transitory separation requires advanced microstructure analysis (e.g., high-frequency data, bid-ask spreads, order flow analysis) not available in standard OHLCV indicators.",
+  "translation_notes": "Approximated using hvol_20 as total volatility proxy (40-60% bounds converted to 0.40-0.60 decimal scale). Approximated fundamental volatility stability using atr_14 < 0.15 (15% threshold). Exit conditions use hvol_20 < 0.35 for transitory vol falling below 35%. Signal is inherently CONTEXT_DEPENDENT as entry/exit should adapt based on market microstructure regime detection."
+}

@@ -1,0 +1,148 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires subjective 'trader observes directional bias forming' which cannot be mechanically expressed. Translated core objective conditions: price breaks above/below 20-period MA (sma_20), volume above 30-day average (vol_ratio_20 > 1.0), ADX > 25 for trend confirmation. Exit on MA crossback and ADX weakness. Context-dependent direction allows both LONG and SHORT entries based on inflection direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires subjective 'trader observes directional bias forming' which cannot be mechanically expressed. Translated core objective conditions: price breaks above/below 20-period MA (sma_20), volume above 30-day average (vol_ratio_20 > 1.0), ADX > 25 for trend confirmation. Exit on MA crossback and ADX weakness. Context-dependent direction allows both LONG and SHORT entries based on inflection direction."
+  },
+  "source_rule_text": "A trader should sense trend momentum and act decisively at the moment of inflection rather than requiring mechanical confirmation rules."
+}

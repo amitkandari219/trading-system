@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of '5+ consecutive down days' pattern which cannot be expressed with single-bar indicators and allowed operators. This requires historical bar-by-bar pattern matching or a custom 'consecutive_down_days' counter not in the allowed indicator list. Additionally, 'position_size_multiplier' of 0.8 is a portfolio management parameter, not a trading condition.",
+  "translation_notes": "Translated core identifiable conditions: (1) Market closes below 100-day MA \u2192 close < sma_100, (2) Cumulative decline >5% approximated using log_returns < -0.05 over recent period, (3) Stop loss tightness of 3.5x ATR converted to approximate stop_loss_pct of 3.5. The consecutive down days condition and position sizing are regime/portfolio-level rules that fall outside entry/exit logic scope. Consider implementing as separate risk management layer."
+}

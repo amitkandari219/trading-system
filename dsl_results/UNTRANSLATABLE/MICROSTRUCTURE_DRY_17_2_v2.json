@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_17_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires pair-trading mechanics across correlated instruments (calculating rolling median spread, correlation coefficient > 0.70, spread in standard deviations, notional exposure balancing, and reverting to normal relations). These operations require: (1) multi-instrument cross-correlation analysis not available in single-instrument indicators, (2) rolling median spread calculation across instrument pairs, (3) dynamic spread-to-std-dev ratio comparisons. The allowed indicator set only supports single-instrument technical analysis. Pair trading, spread analysis, and correlation-based relative value mechanics cannot be expressed using the provided single-asset indicators (price, moving averages, RSI, ATR, etc.).",
+  "translation_notes": "Signal MICROSTRUCTURE_DRY_17_2 is a statistical arbitrage / pairs trading strategy requiring multivariate cross-asset analysis. It fundamentally requires: (a) two or more correlated instruments, (b) correlation coefficient calculation, (c) rolling median spread tracking, (d) standard deviation of spread, (e) equal notional hedging across legs. None of these are supported by single-instrument technical indicators. To implement this signal, a backtest engine would need pair-trading primitives such as: spread(), correlation(instrument1, instrument2), rolling_median_spread(), and multi-leg position management."
+}

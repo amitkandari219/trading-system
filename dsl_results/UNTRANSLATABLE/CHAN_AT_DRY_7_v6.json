@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculating rolling correlation coefficient between 250-day historical returns and 25-day forward returns with p-value testing. The allowed indicator set does not include correlation computation, p-value calculation, or forward-looking return correlation analysis. These are complex statistical measures that require custom calculation outside standard technical indicators.",
+  "translation_notes": "The core logic of this strategy (correlation of past 250-day returns with future 25-day returns at r=0.2719, p=0.0238) cannot be expressed using only the allowed technical indicators. A proper implementation would require a custom indicator that computes rolling Pearson correlation and associated p-values between lagged return series. The entry conditions reference a statistical relationship that is not available in the standard indicator library."
+}

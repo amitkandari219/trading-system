@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_18_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires microstructure-specific metrics (bid-ask spread percentile, limit order execution probability, order flow imbalance) that are not available in the allowed indicator set. vol_ratio_20 is used as a proxy for liquidity conditions, and price_pos_20 as a proxy for order flow directionality, but these are imperfect substitutes for true spread and order imbalance measurements.",
+  "translation_notes": "Context-dependent direction mapped to both LONG and SHORT entry conditions based on order flow direction (price_pos_20 relative to 50th percentile). Execution probability threshold (55%) and order imbalance minimum (0.55) mapped to price_pos_20 thresholds. Spread percentile threshold (45th) approximated using vol_ratio_20 as a liquidity proxy. Hold period set to 1 day as signal emphasizes immediate market order execution. Stop loss set conservatively at 1.5% given tight spread environment."
+}

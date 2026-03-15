@@ -1,0 +1,128 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_10"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.1"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "70"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_10"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.1"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "30"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "r1"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal translated using sma_10 (10-period MA as specified), vol_ratio_20 (volume spike detection >110%), and rsi_14 (40-70 range for uptrend, 30-60 for downtrend). Stop loss set to 1 ATR equivalent (approximately 1% for typical assets). Profit target uses pivot points (r1/s1) as closest approximation to next resistance/support. Direction marked CONTEXT_DEPENDENT as signal applies to both trending up and trending down scenarios. Entry logic requires all three conditions (trend + volume spike + RSI in healthy range)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.1
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 70.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.1
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 30.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "r1"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s1"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal translated using sma_10 (10-period MA as specified), vol_ratio_20 (volume spike detection >110%), and rsi_14 (40-70 range for uptrend, 30-60 for downtrend). Stop loss set to 1 ATR equivalent (approximately 1% for typical assets). Profit target uses pivot points (r1/s1) as closest approximation to next resistance/support. Direction marked CONTEXT_DEPENDENT as signal applies to both trending up and trending down scenarios. Entry logic requires all three conditions (trend + volume spike + RSI in healthy range)."
+  },
+  "source_rule_text": "A trader should enter a strong trend when other traders are forced to exit profitable positions prematurely due to emotional inability to hold gains, creating a contrarian entry opportunity with reduced competition."
+}

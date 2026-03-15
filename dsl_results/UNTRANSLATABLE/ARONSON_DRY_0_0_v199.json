@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) tracking momentum persistence over 2+ consecutive periods, (2) volume comparison to SMA_20 (not available; vol_ratio_20 compares to SMA_20 but exact 40% threshold mapping is ambiguous), (3) medium-term holding period logic (3-12 months) with conditional weighting based on intended horizon (3+ years). The context-dependent direction and horizon-specific volume weighting cannot be expressed as static entry/exit conditions.",
+  "translation_notes": "Attempted to approximate using returns > 0 for positive momentum, vol_ratio_20 > 1.4 for volume threshold (matching the 1.4x multiplier vs MA), and exit on negative returns. However, the core insight\u2014that volume persistence differs by holding period and should be weighted differently for 3-12 month vs 3+ year horizons\u2014requires dynamic, time-dependent logic not expressible in this static rule format. The 2-period confirmation requirement also cannot be captured without lookback history tracking."
+}

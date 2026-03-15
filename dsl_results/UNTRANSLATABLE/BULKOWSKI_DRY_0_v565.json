@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern detection (identification of two peaks at same price level, valley formation, and neckline) requires multi-bar peak/valley identification logic not available in the allowed indicator set. Confirmation requires tracking pattern structure across multiple bars and detecting linear regression of volume from peak-to-peak, which are not supported by the provided indicators. The 65% throwback probability is a statistical property that cannot be encoded as a real-time entry condition.",
+  "translation_notes": "Double Top is a complex multi-bar chart pattern requiring peak detection, valley identification, and volume trend analysis across the pattern structure. The allowed indicators support only single-bar and simple moving average analysis. A full implementation would require custom pattern recognition functions to: (1) identify local peaks at similar price levels, (2) measure the valley (neckline) between them, (3) track volume regression from left to right peak, and (4) confirm breakdown below neckline. The 72% bear market success rate and 8% 5% failure rate are backtested statistics that inform position sizing but cannot be translated into entry logic. The partial entry_short provided uses pivot-based approximation (neckline proxy) and volume confirmation, but this is not a faithful representation of the pattern logic described in the source material."
+}

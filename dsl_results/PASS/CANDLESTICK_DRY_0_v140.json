@@ -1,0 +1,94 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "lower_wick",
+        "operator": "<",
+        "right": "atr_7"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "70"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Abandoned Baby Bullish pattern approximated using: (1) price above SMA_50 to confirm bull market context, (2) body size > ATR_14 to identify 'tall candles', (3) volume > vol_ratio_20 to reflect volume performance clues. Exit uses: (1) lower_wick < ATR_7 as inverse of 'tall lower shadows' reversal signal, (2) RSI_14 > 70 as overbought exit. Gap detection not directly available in allowed indicators; pattern formation relies on candle properties and volume confirmation instead."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "lower_wick",
+        "op": "<",
+        "value": "atr_7"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 70.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Abandoned Baby Bullish pattern approximated using: (1) price above SMA_50 to confirm bull market context, (2) body size > ATR_14 to identify 'tall candles', (3) volume > vol_ratio_20 to reflect volume performance clues. Exit uses: (1) lower_wick < ATR_7 as inverse of 'tall lower shadows' reversal signal, (2) RSI_14 > 70 as overbought exit. Gap detection not directly available in allowed indicators; pattern formation relies on candle properties and volume confirmation instead."
+  },
+  "source_rule_text": "Abandoned Baby, Bullish: A rare bullish reversal candlestick pattern that forms when gaps occur, particularly in thinly traded stocks"
+}

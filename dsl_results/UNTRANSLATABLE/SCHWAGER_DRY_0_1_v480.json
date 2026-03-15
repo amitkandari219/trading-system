@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) N consecutive periods without pullback >3% \u2014 requires sequential bar counting not available in indicator set; (2) Material fundamental news events \u2014 fundamentals data not in allowed indicators; (3) Market ignoring contradictory news for 2-3 days \u2014 requires external news sentiment data not in allowed indicators; (4) Price extension measured in standard deviations \u2014 approximated using price_pos_20 but true multi-standard-deviation measurement needs calculated bb_std_dev unavailable. Core contrarian mean-reversion logic is expressible, but the 'hysterical blowoff' trigger conditions that differentiate this signal require external fundamental data and sequential pattern detection beyond technical indicators.",
+  "translation_notes": "Approximated entry conditions using: (1) price_pos_20 as proxy for standard deviation extension from MA (values >2.0/-2.0 approximate >2 std devs); (2) hvol_20 elevation as proxy for elevated intraday volatility; (3) close crossing sma_20 as directional signal. Exit targets reversion to MA rather than 0.5 std devs due to lack of precise std_dev indicator. The critical 'disconnect between price and fundamental news' condition cannot be fully expressed without external news/sentiment data."
+}

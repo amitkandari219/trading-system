@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires validation of fundamental analysis with '2 independent validation sources' and trader backtested accuracy >55% on similar setups. These are qualitative, discretionary inputs that cannot be expressed as quantitative indicator conditions. Additionally, 'market sentiment deviation >1.5 standard deviations' would require a formal sentiment indicator (india_vix used as proxy but not a perfect match). The signal is inherently discretionary and cannot be fully mechanized without external data feeds and machine learning classification.",
+  "translation_notes": "Mapped sentiment deviation to india_vix as closest available volatility/sentiment proxy. Used RSI extremes (>70 or <30) to approximate contrarian entry points. Modeled stop loss as 12% below entry per parameters. Modeled minimum hold at 150 bars. Direction left CONTEXT_DEPENDENT as original signal is contrarian (long or short depending on sentiment direction). Exit conditions use RSI mean reversion (crossing 50) as reversal signal since fundamental invalidation is not quantifiable. Fundamental validation and accuracy requirements cannot be mechanized."
+}

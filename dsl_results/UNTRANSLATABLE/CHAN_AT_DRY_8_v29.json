@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Order flow signal requires tick-by-tick bid/ask price level detection and signed volume classification (aggressive buying vs selling). The ALLOWED INDICATORS list does not include order flow, cumulative delta, volume at bid/ask, or similar microstructure metrics. This signal fundamentally depends on tick-level order flow data that cannot be constructed from OHLCV and standard technical indicators. The lookback_period, threshold, and backtest_sharpe parameters are marked AUTHOR_SILENT and cannot be inferred.",
+  "translation_notes": "Signal CHAN_AT_DRY_8 requires proprietary order flow analysis with bid/ask discrimination at tick level. Placeholder conditions use volume > 0 as a stub, but this does not capture the cumulative order flow prediction logic. To implement this signal, the backtest engine would need: (1) tick-level bid/ask pricing, (2) order flow delta calculation, (3) cumulative/windowed aggregation method, and (4) directional threshold parameters from the original author."
+}

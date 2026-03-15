@@ -1,0 +1,64 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.01"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires re-entry after stopped-out position when market generates new directional signal (new high). Entry condition uses close > prev_high to detect new directional high on single bar. Exit uses 1% stop-loss via returns indicator. Direction is CONTEXT_DEPENDENT per original signal specification. The 'lookback_periods': 20 and 'confirmation_bars': 0 parameters are noted but confirmation_bars=0 aligns with 'any single bar' requirement. The new_high_threshold_pct of -0.25 appears to be a data artifact and is not applied as the core logic is directional breakout (new high), not a percentage threshold."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.01
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires re-entry after stopped-out position when market generates new directional signal (new high). Entry condition uses close > prev_high to detect new directional high on single bar. Exit uses 1% stop-loss via returns indicator. Direction is CONTEXT_DEPENDENT per original signal specification. The 'lookback_periods': 20 and 'confirmation_bars': 0 parameters are noted but confirmation_bars=0 aligns with 'any single bar' requirement. The new_high_threshold_pct of -0.25 appears to be a data artifact and is not applied as the core logic is directional breakout (new high), not a percentage threshold."
+  },
+  "source_rule_text": "A trader should re-enter a stopped-out position only after the market generates a new directional signal (such as a new high) rather than attempting to re-enter on any reversal, to avoid whipsaw and ensure alignment with the system's intent."
+}

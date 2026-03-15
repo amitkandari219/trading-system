@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Cup and Handle pattern requires visual/geometric pattern recognition (cup shape detection, inner cup identification, handle formation, cup height measurement) which cannot be expressed as simple indicator comparisons. The signal requires: (1) identifying cup bottom and lip prices, (2) detecting handle formation geometry, (3) computing dynamic price targets based on measured cup height. These require pattern-scanning logic beyond the allowed operators (crosses_above/below, >, <, >=, <=, ==, is). Additionally, 'BULL_MARKET' and 'BEAR_MARKET' are not in the ALLOWED REGIMES list.",
+  "translation_notes": "Attempted to approximate entry as price crossing above pivot (representing cup lip) and exit as drop below support (s1). However, this loses the essential pattern geometry. The target regime values provided (BULL_MARKET, BEAR_MARKET) do not match allowed regime values (TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY). A proper implementation would require a dedicated pattern recognition module outside the rule engine."
+}

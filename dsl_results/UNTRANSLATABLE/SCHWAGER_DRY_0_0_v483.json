@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) VIX persistence tracking over 3+ consecutive days\u2014no indicator available for multi-bar history; (2) Detection of limit-down moves\u2014not expressible with allowed operators; (3) Account equity ratio checks (>150% of max loss)\u2014portfolio/risk management logic outside indicator scope; (4) Dynamic position sizing based on account equity\u2014requires external portfolio state; (5) Contrarian technical divergence detection\u2014not available in allowed indicators",
+  "translation_notes": "Partially translated using india_vix as volatility proxy and rsi_14 for contrarian extremes. Entry logic adapted for CONTEXT_DEPENDENT direction: LONG when VIX elevated + oversold (RSI<20), SHORT when VIX elevated + overbought (RSI>80). Exit at 3% profit represents 50% position exit; trailing stop and equity-based position management cannot be encoded in condition rules. Original signal requires real-time multi-day regime tracking and portfolio-level constraints beyond indicator-based rules."
+}

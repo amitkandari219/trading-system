@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires geometric analysis (trend line slope in degrees 45-60\u00b0, vertical height measurement of bump vs lead-in, rounding detection) which cannot be expressed with available price/indicator operators. Requires custom trend line calculation and shape detection logic not available in standard indicator set.",
+  "translation_notes": "Attempted approximate translation: entry uses high volume confirmation (volume > 20-period historical volatility) and strong return move (>5%) as proxy for sharp rise on favorable event. Exit uses close below SMA_20 as proxy for decline through trend line. However, the core pattern logic\u2014measuring trend line slope in degrees, calculating vertical heights, detecting rounding behavior\u2014requires custom geometric pattern recognition unavailable in the allowed indicator set. The signal should be implemented as a custom pattern detector rather than rules-based conditions."
+}

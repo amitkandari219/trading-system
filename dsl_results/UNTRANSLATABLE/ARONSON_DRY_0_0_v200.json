@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a 10-day moving average of up/down volume ratio with channel normalization applied dynamically based on 50-day lookback. The allowed indicator 'vol_ratio_20' is a static 20-day volume ratio, not a 10-day MA of up/down volume ratio with adaptive channel normalization. The signal's complex threshold adaptation (absolute bands 30-70 with dynamic offset adjustment) cannot be expressed using only the allowed indicators and operators. A custom indicator computing sma_10(up_volume/down_volume) with normalized thresholds would be required.",
+  "translation_notes": "Attempted approximation using vol_ratio_20 with threshold 60 (midpoint between original 40 lower and 60 upper thresholds), but this loses the critical 10-day MA calculation, up/down volume separation, and channel normalization logic that are core to the strategy. Recommend implementing a custom indicator for accurate translation."
+}

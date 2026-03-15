@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fundamental metrics (P/E ratio 20-35, institutional accumulation, fundamental thesis evaluation) which are NOT available in the allowed technical indicator set. P/E ratios, fundamental quality metrics, and institutional flow data require external fundamental/market microstructure data sources not present in the technical indicator list. The 'minimum_fundamental_filters: 2' parameter cannot be operationalized with technical indicators alone.",
+  "translation_notes": "Attempted technical proxy: Used price above 200-day MA to approximate 'early-to-mid emerging stage with positive trend' and volume ratio > 1.0 to approximate 'institutional accumulation or positive trend'. Exit condition uses ADX < 20 to detect trend deterioration. However, this is a lossy translation\u2014the original signal's core logic (quality growth metrics + reasonable valuation) cannot be fully captured without fundamental data access. Recommend implementing this signal with a fundamental data connector that can validate P/E range and quality metrics before entry."
+}

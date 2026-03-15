@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires z-score calculation with unspecified lookback period, lagged entry by one period, and triple rollover interest rate adjustments on specific weekdays (Wednesday for AUD, Thursday for CAD). Z-score is not in the allowed indicator list. The position sizing adjustment based on rollover interest rates and day-of-week logic cannot be expressed using allowed operators and indicators. The exact moving average period is marked AUTHOR_SILENT.",
+  "translation_notes": "Attempted translation uses simple mean reversion (price vs SMA) as proxy for z-score deviation, but this does not capture: (1) the statistical z-score calculation, (2) lagged entry trigger, (3) triple rollover multiplier on specific weekdays, or (4) the exact lookback period for moving average. A complete implementation requires custom indicator support for z-score and conditional position sizing logic based on calendar dates."
+}

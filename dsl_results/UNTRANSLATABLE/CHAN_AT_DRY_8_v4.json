@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'substantial divergence' between opening and previous closing prices due to overnight/weekend gaps, and identification of 'accumulated stop orders cascading into momentum.' These require: (1) explicit gap size threshold (AUTHOR_SILENT), (2) time-of-day filtering (5:00 a.m. ET London open), and (3) order flow/stop-loss cascade detection \u2014 none of which are measurable with the allowed indicators. The 'substantial' and 'cascade' concepts cannot be quantified without additional parameters or order book data not in the allowed indicator set.",
+  "translation_notes": "Attempted partial translation using open vs prev_close divergence with volume confirmation as proxy for momentum, but this loses the core logic: gap magnitude threshold (unknown), stop-cascade mechanism (unobservable), and time-of-day context (not supported). Exit conditions were AUTHOR_SILENT; substituted reversal logic as fallback. Signal is fundamentally untranslatable without gap_size threshold parameter and intraday time-filtering capability."
+}

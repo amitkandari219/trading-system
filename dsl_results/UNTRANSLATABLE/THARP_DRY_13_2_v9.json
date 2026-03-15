@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_13_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit time-window tracking (125% of setup window elapsed) which cannot be expressed as a single bar condition. The 'setup time window identified based on trading concept' is contextual and not measurable from standard OHLCV indicators. Price confirmation and volatility breakout are interpretable via Bollinger Bands crossovers, but the time-decay exit logic requires state tracking across multiple bars.",
+  "translation_notes": "Approximated volatility breakout using Bollinger Bands (bb_upper/bb_lower crosses) as proxy for volatility bands. Approximated entry as price confirmation crossing bands. Exit modeled as reversion to bb_middle. True implementation requires custom time-window state management not available in this schema."
+}

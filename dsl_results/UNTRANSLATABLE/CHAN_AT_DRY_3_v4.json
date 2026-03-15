@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The Augmented Dickey-Fuller (ADF) test is a statistical hypothesis test for stationarity that requires computation of test statistics, p-values, and lag parameter optimization. This test is not available in the provided indicator list, which contains only technical price/volume indicators (moving averages, RSI, ATR, Bollinger Bands, MACD, etc.). ADF testing requires time series decomposition, autocorrelation analysis, and statistical inference that cannot be expressed using standard OHLCV indicators and the allowed operators (>, <, >=, <=, ==, crosses_above, crosses_below, is). Additionally, the signal requires dynamic lag parameter selection (k=1 or higher) based on unit root rejection outcomes, which is not supported by the backtest engine's rule structure.",
+  "translation_notes": "This signal describes a statistical stationarity test requiring econometric analysis rather than technical indicator conditions. To implement mean reversion detection in the backtest engine, consider alternative approaches: (1) Use price_pos_20 (position within 20-day range) as a stationarity proxy; (2) Combine mean-reverting indicators like RSI extremes with Bollinger Band mean crossovers; (3) Test half-life of mean reversion empirically through rolling correlation of returns with moving averages. The AUTHOR_SILENT parameters (lookback_period, half_life, backtest_sharpe, backtest_period) also prevent full rule specification."
+}

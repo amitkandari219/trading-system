@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires intraday momentum of underlying stock (SPY) to trigger entry in leveraged ETF (DRN), which requires cross-asset logic not expressible in single-instrument rules. Also requires 'near-market-close' timing window and 'market close' exit trigger, neither of which have corresponding indicators in the allowed list. The 'close' operator 'is' cannot be used with 'market_close' as that is not an allowed regime value.",
+  "translation_notes": "This signal requires: (1) monitoring one instrument (SPY) for entry signals while trading another (DRN), (2) precise intraday timing near market close, and (3) same-day exit at exact market close. These cross-asset and time-of-day dependencies cannot be expressed using single-instrument price/indicator conditions. The core 2% intraday return threshold is captured as returns > 0.02, but the full strategy logic is untranslatable within the constraint of single-bar, single-instrument rules."
+}

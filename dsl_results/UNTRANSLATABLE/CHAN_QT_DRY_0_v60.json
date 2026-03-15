@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Strategy requires prior-year returns ranking and percentile thresholds (10th and 90th percentile decile selection) which cannot be expressed as standard technical indicators. The 'returns' indicator alone does not capture the cross-sectional decile ranking mechanism required for long/short decile construction. Additionally, calendar-date-based entry/exit (first/last trading day of January) cannot be expressed using allowed operators and indicators\u2014this requires a custom date/time condition handler.",
+  "translation_notes": "This is a mean-reversion January effect strategy that requires: (1) ranking stocks by prior-year returns and selecting bottom/top 10% deciles, (2) entering positions on a specific calendar date (first trading day of January), and (3) exiting on another specific calendar date (last trading day of January). The backtest engine would need custom functionality for percentile/decile-based ranking across a universe, as well as calendar date matching. Standard technical indicators cannot replicate cross-sectional relative ranking logic."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic range width measurement and multi-leg targeting (1.25x and 1.5x range width as price targets). The allowed indicator set does not include a 'congestion_range_width' or 'intrabar_penetration_detection' indicator. Donchian channels approximate range boundaries, but calculating target distances as multiples of prior consolidation width requires custom range detection logic not available in the standard indicator library. Volume-based breakout confirmation is approximated using vol_ratio_20.",
+  "translation_notes": "Approximation: Used Donchian channels (dc_upper, dc_lower) as proxy for range boundaries and volume ratio for breakout confirmation. The core Schwager principle of measuring consolidation width and projecting 1.25x/1.5x targets requires custom range measurement not expressible in this constraint set. Recommend implementing custom 'congestion_width' indicator or post-processing logic to calculate target levels from prior consolidation highs/lows."
+}

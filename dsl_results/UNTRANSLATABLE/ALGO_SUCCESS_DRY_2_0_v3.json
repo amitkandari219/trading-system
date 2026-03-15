@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_2_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking strategy profitability state across time periods and detecting deterioration from peak cumulative returns over a 5-day window. This requires: (1) cumulative return tracking from a prior profitable period baseline, (2) peak-to-trough drawdown detection with memory of historical highs, and (3) persistence detection (5+ consecutive days of deterioration). These are portfolio-level metrics, not single-bar indicators. Available indicators (returns, log_returns) provide single-period returns only, not cumulative strategy performance, peak tracking, or multi-day persistence logic. The signal also requires a regime-management rule (no new parameter application) which is a meta-rule outside the indicator space.",
+  "translation_notes": "This is a meta-rule about strategy review process rather than a price-action or technical indicator signal. It describes a decision framework for trader behavior (hypothesis re-evaluation) triggered by deteriorating strategy performance. Converting this to a backtestable rule would require: (1) a cumulative PnL or Sharpe ratio tracking mechanism, (2) a drawdown lookback window, and (3) a state machine to enforce the parameter-ban period. Standard OHLCV indicators cannot express portfolio-level performance metrics or enforce trader discipline constraints."
+}

@@ -1,0 +1,128 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">=",
+        "right": "2.0"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">=",
+        "right": "2.0"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses volume surge (vol_ratio_20 >= 2.0 equivalent to 100% increase) to filter breakout validity. Pivot level approximates 'recent swing high/low' as specific swing calculation unavailable. Entry requires price breakout + volume confirmation. Exit on close below/above breakout level. Direction is context-dependent (long on upside breakout, short on downside breakout). Regime set to TRENDING_UP/TRENDING_DOWN per target_regimes specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">=",
+        "value": 2.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">=",
+        "value": 2.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses volume surge (vol_ratio_20 >= 2.0 equivalent to 100% increase) to filter breakout validity. Pivot level approximates 'recent swing high/low' as specific swing calculation unavailable. Entry requires price breakout + volume confirmation. Exit on close below/above breakout level. Direction is context-dependent (long on upside breakout, short on downside breakout). Regime set to TRENDING_UP/TRENDING_DOWN per target_regimes specification."
+  },
+  "source_rule_text": "Use volume surge as a filter to confirm breakout validity before entry, avoiding whipsaw trades on breakouts lacking conviction."
+}

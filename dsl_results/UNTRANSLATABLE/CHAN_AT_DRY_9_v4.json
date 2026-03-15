@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires optimization of a leverage factor (f) through Monte Carlo simulation and growth rate maximization. This is a portfolio-level parameter optimization strategy, not a price-action entry/exit rule. The signal involves: (1) Monte Carlo simulation of returns, (2) numerical optimization across leverage range 0-24, (3) growth rate function g(f) calculation, and (4) dynamic leverage adjustment. None of these computational steps can be expressed as simple indicator comparisons using the allowed operators and indicators. This requires custom backtesting engine support for stochastic optimization and is outside the scope of traditional rule-based condition logic.",
+  "translation_notes": "Signal CHAN_AT_DRY_9 is a meta-strategy for optimizing position sizing/leverage rather than a trading signal. It would need to be implemented as a custom parameter optimizer in the backtest engine rather than as conditional entry/exit rules. The leverage_range parameter (0 to 24) and optimal_f_example (31) are provided but cannot be operationalized without access to the underlying return distribution and growth rate optimization function."
+}

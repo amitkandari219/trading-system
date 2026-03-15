@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external 'guru consensus' data (60% threshold, consensus shift tracking) which is not available in the allowed indicators list. The core logic depends on real-time consensus tracking from newsletter writers (Prechter, Zweig, etc.) that cannot be computed from price/technical indicators alone. Translated price_pos_20 as proxy for muted price action, but consensus component is unmeasurable within technical framework.",
+  "translation_notes": "Entry condition partially translated: price_pos_20 < 0.06 approximates 'price moved <6% in consensus direction over 10 bars' by capturing price near 10-bar range extremes. Exit at >2% move uses price_pos_20 > 0.02 as inverse proxy. The three entry requirements ('60% consensus', 'directional thesis', 'position size') cannot be formalized without external consensus data feed. This rule requires augmentation with a guru_consensus indicator or manual consensus input."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_17_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires analysis of quantity imbalance characteristics (trade microstructure data) across multiple markets with lead/lag relationships. Required indicators include: quantity_imbalance_stddev, cross_market_quantity_lead_signal, and order_book_depth metrics. These microstructure indicators are not available in the allowed indicator set, which is limited to OHLCV price-based and technical indicators. The signal's core logic (predictive arbitrage based on quantity patterns before price dislocation) cannot be expressed using only price, volume, and standard technical analysis indicators.",
+  "translation_notes": "This is a high-frequency microstructure trading signal designed for multi-market arbitrage detection. It requires: (1) real-time order book imbalance measurements in standard deviation units, (2) lead-lag analysis between source and secondary markets, (3) sub-second timing precision for quantity update tracking. The ALLOWED_INDICATORS list contains no order book metrics, tick-level volume imbalance measures, or cross-market synchronization tools needed to implement this strategy."
+}

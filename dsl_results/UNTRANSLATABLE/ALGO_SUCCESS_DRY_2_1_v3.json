@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_2_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a meta-rule about strategy hypothesis re-evaluation rather than a price-action trading rule. It requires: (1) comparison of aggregate strategy performance metrics across time periods (not available in single-bar indicator set), (2) tracking of win-rate decline (requires portfolio/trade-level statistics), (3) identification of root cause of deterioration (qualitative, non-quantifiable), and (4) parameter refinement logic (post-analysis action, not a backtest entry/exit condition). The core concept\u2014'when performance deteriorates, revisit hypothesis rather than add indicators'\u2014is a process rule, not a tradeable signal with entry/exit conditions on price or technical indicators.",
+  "translation_notes": "Signal ALGO_SUCCESS_DRY_2_1 is a meta-analytical framework for strategy robustness and hypothesis validation. It cannot be expressed as a standard entry/exit rule on OHLCV or technical indicators. To implement this in a backtest engine, you would need: (a) performance tracking across rolling windows, (b) statistical decline detection on aggregate metrics, and (c) a separate hypothesis-validation module outside the signal layer. Consider implementing as a strategy-level regime filter or portfolio rebalance trigger rather than a single-signal rule."
+}

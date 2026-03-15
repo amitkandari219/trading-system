@@ -1,0 +1,83 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.05"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": "<",
+        "right": "1.0"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.07"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 7,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Price decline >= 5% over 14 days represented as returns < -0.05 (decimal scale). Declining volume (vs 20-day avg at 50th percentile) approximated using vol_ratio_20 < 1.0 (below average volume). Entry confirms regime via close < sma_20. Exit logic uses OR to capture either +7% gain OR 7-day hold with stop-loss at 4%."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.05
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": "<",
+        "value": 1.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.07
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 7,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Price decline >= 5% over 14 days represented as returns < -0.05 (decimal scale). Declining volume (vs 20-day avg at 50th percentile) approximated using vol_ratio_20 < 1.0 (below average volume). Entry confirms regime via close < sma_20. Exit logic uses OR to capture either +7% gain OR 7-day hold with stop-loss at 4%."
+  },
+  "source_rule_text": "Buy stocks that have declined sharply on declining volume over a recent period, as the low volume indicates insufficient buyers for distressed sellers, creating a systematic tendency for mean reversion in the following period."
+}

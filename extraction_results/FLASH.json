@@ -1,0 +1,318 @@
+[
+  {
+    "signal_id": "FLASH_DRY_1_0",
+    "book_id": "FLASH",
+    "source_citation": "Flash Boys, Michael Lewis, Ch.1 (CONTENTS section), pp.15-296",
+    "raw_chunk_text": "son he\u2019d quit, as he put it, \u201cto do something more sporting.\u201d That\nturned out to be renting a seat on the Chicago Board Options\nExchange and making markets for his own account. Like every\nother trader",
+    "rule_text": "Exploit price discrepancies between correlated instruments (futures vs. constituent stocks) by executing trades faster than the market can correct the mispricing.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Futures price deviates from fair value of constituent stocks by >0.5%",
+      "Bid-ask spread is tight enough to allow profitable round trip",
+      "Both markets simultaneously accessible with <50ms latency"
+    ],
+    "parameters": {
+      "mispricing_threshold_percent": 0.5,
+      "max_acceptable_latency_ms": 50,
+      "position_duration_seconds": 30,
+      "min_profit_threshold_bps": 10
+    },
+    "exit_conditions": [
+      "Price convergence achieved or mispricing reverses",
+      "30 seconds elapsed regardless of P&L",
+      "Stop loss if adverse move >0.3%"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "FLASH_DRY_1_1",
+    "book_id": "FLASH",
+    "source_citation": "Flash Boys, Michael Lewis, Ch.1 (CONTENTS section), pp.15-296",
+    "raw_chunk_text": "son he\u2019d quit, as he put it, \u201cto do something more sporting.\u201d That\nturned out to be renting a seat on the Chicago Board Options\nExchange and making markets for his own account. Like every\nother trader",
+    "rule_text": "Exploit price discrepancies between correlated instruments (futures vs. constituent stocks) by executing trades faster than the market can correct the mispricing.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Futures price deviates from fair value of constituent stocks by >0.25%",
+      "Both markets accessible with <25ms latency",
+      "Volume sufficient to execute full position within spread"
+    ],
+    "parameters": {
+      "mispricing_threshold_percent": 0.25,
+      "max_acceptable_latency_ms": 25,
+      "position_duration_seconds": 10,
+      "min_profit_threshold_bps": 5
+    },
+    "exit_conditions": [
+      "Mispricing closes within 1 bps",
+      "10 seconds elapsed",
+      "Stop loss if adverse move >0.15%"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "FLASH_DRY_1_2",
+    "book_id": "FLASH",
+    "source_citation": "Flash Boys, Michael Lewis, Ch.1 (CONTENTS section), pp.15-296",
+    "raw_chunk_text": "son he\u2019d quit, as he put it, \u201cto do something more sporting.\u201d That\nturned out to be renting a seat on the Chicago Board Options\nExchange and making markets for his own account. Like every\nother trader",
+    "rule_text": "Exploit price discrepancies between correlated instruments (futures vs. constituent stocks) by executing trades faster than the market can correct the mispricing.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Futures price deviates from fair value of constituent stocks by >0.10%",
+      "Both markets accessible with <10ms latency",
+      "Real-time fair value calculation available"
+    ],
+    "parameters": {
+      "mispricing_threshold_percent": 0.1,
+      "max_acceptable_latency_ms": 10,
+      "position_duration_seconds": 2,
+      "min_profit_threshold_bps": 1
+    },
+    "exit_conditions": [
+      "Mispricing closes",
+      "2 seconds elapsed",
+      "Stop loss if adverse move >0.05%"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "FLASH_DRY_1_0",
+    "book_id": "FLASH",
+    "source_citation": "Flash Boys, Michael Lewis, Ch.1, pp.14-15",
+    "raw_chunk_text": "Spivey was a worrier. He thought that when a person took\nrisks, the thing that went wrong was usually a thing the person\nhadn\u2019t thought about, and so he tried to think about the things he\nwouldn\u2019t nat",
+    "rule_text": "Proactively identify and stress-test against low-probability but high-impact risks that others overlook, especially competitive threats in nascent opportunities.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identified structural or information advantage exists",
+      "Advantage is not yet widely exploited by industry",
+      "Competitive threat assessment: CRITICAL (assume 40%+ probability within 6 months)"
+    ],
+    "parameters": {
+      "position_size_reduction": 0.4,
+      "hedge_ratio_vs_edge_notional": 0.6,
+      "time_horizon_months": 3,
+      "rebalance_frequency_days": 7
+    },
+    "exit_conditions": [
+      "Competitor identified entering market",
+      "Edge profitability deteriorates 20%+ from baseline",
+      "Time horizon expires (3 months)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "FLASH_DRY_1_1",
+    "book_id": "FLASH",
+    "source_citation": "Flash Boys, Michael Lewis, Ch.1, pp.14-15",
+    "raw_chunk_text": "Spivey was a worrier. He thought that when a person took\nrisks, the thing that went wrong was usually a thing the person\nhadn\u2019t thought about, and so he tried to think about the things he\nwouldn\u2019t nat",
+    "rule_text": "Proactively identify and stress-test against low-probability but high-impact risks that others overlook, especially competitive threats in nascent opportunities.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identified structural or information advantage exists",
+      "Advantage is not yet widely exploited by industry",
+      "Competitive threat assessment: MODERATE (assume 20-30% probability within 12 months)"
+    ],
+    "parameters": {
+      "position_size_reduction": 0.25,
+      "hedge_ratio_vs_edge_notional": 0.35,
+      "time_horizon_months": 6,
+      "rebalance_frequency_days": 14
+    },
+    "exit_conditions": [
+      "Competitor identified entering market",
+      "Edge profitability deteriorates 35%+ from baseline",
+      "Time horizon expires (6 months)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "FLASH_DRY_1_2",
+    "book_id": "FLASH",
+    "source_citation": "Flash Boys, Michael Lewis, Ch.1, pp.14-15",
+    "raw_chunk_text": "Spivey was a worrier. He thought that when a person took\nrisks, the thing that went wrong was usually a thing the person\nhadn\u2019t thought about, and so he tried to think about the things he\nwouldn\u2019t nat",
+    "rule_text": "Proactively identify and stress-test against low-probability but high-impact risks that others overlook, especially competitive threats in nascent opportunities.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identified structural or information advantage exists",
+      "Advantage is not yet widely exploited by industry",
+      "Competitive threat assessment: LOW (assume <15% probability within 12 months)",
+      "Daily monitoring of competitor activity and market structure changes in place"
+    ],
+    "parameters": {
+      "position_size_reduction": 0.1,
+      "hedge_ratio_vs_edge_notional": 0.15,
+      "time_horizon_months": 12,
+      "rebalance_frequency_days": 30,
+      "catastrophic_loss_stop_loss_pct": 0.25
+    },
+    "exit_conditions": [
+      "Competitor confirmed entering market (immediate liquidation)",
+      "Daily monitoring detects market structure shift favoring competitors",
+      "Edge profitability deteriorates 50%+ from baseline",
+      "Time horizon expires (12 months)",
+      "Catastrophic loss stop triggered (down 25%)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "FLASH_DRY_1_0",
+    "book_id": "FLASH",
+    "source_citation": "Flash Boys, Michael Lewis, Ch. CONTENTS/Hidden in Plain Sight, pp. 15-296",
+    "raw_chunk_text": "HIDDEN IN PLAIN SIGHT\nheadlines in the newspapers: Barksdale Makes Billions Sell-\ning Out Ordinary American Investor. They hired an industry\nconsultant named Larry Tabb, who had caught Jim Barksdale\u2019s",
+    "rule_text": "A trader should exploit microscopic price discrepancies between the same instrument across geographic markets (cash-futures or regional arbitrage) when the aggregate profit potential from cumulative small trades justifies infrastructure investment.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price discrepancy between primary and secondary market > (median_spread + 2\u03c3)",
+      "Historical frequency of such discrepancies \u2265 100 per trading day",
+      "Infrastructure cost amortization period \u2264 5 years at current volume"
+    ],
+    "parameters": {
+      "discrepancy_threshold_sigma": 2.0,
+      "minimum_daily_opportunities": 100,
+      "max_infrastructure_payback_years": 5
+    },
+    "exit_conditions": [
+      "Discrepancy converges to within 0.5\u03c3 of median",
+      "Daily opportunity frequency drops below 50"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_LIQUIDITY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "FLASH_DRY_1_1",
+    "book_id": "FLASH",
+    "source_citation": "Flash Boys, Michael Lewis, Ch. CONTENTS/Hidden in Plain Sight, pp. 15-296",
+    "raw_chunk_text": "HIDDEN IN PLAIN SIGHT\nheadlines in the newspapers: Barksdale Makes Billions Sell-\ning Out Ordinary American Investor. They hired an industry\nconsultant named Larry Tabb, who had caught Jim Barksdale\u2019s",
+    "rule_text": "A trader should exploit microscopic price discrepancies between the same instrument across geographic markets (cash-futures or regional arbitrage) when the aggregate profit potential from cumulative small trades justifies infrastructure investment.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price discrepancy between primary and secondary market > (median_spread + 1.5\u03c3)",
+      "Historical frequency of such discrepancies \u2265 250 per trading day",
+      "Infrastructure cost amortization period \u2264 2 years at current volume"
+    ],
+    "parameters": {
+      "discrepancy_threshold_sigma": 1.5,
+      "minimum_daily_opportunities": 250,
+      "max_infrastructure_payback_years": 2
+    },
+    "exit_conditions": [
+      "Discrepancy converges to within 0.25\u03c3 of median",
+      "Daily opportunity frequency drops below 150"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_LIQUIDITY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "FLASH_DRY_1_2",
+    "book_id": "FLASH",
+    "source_citation": "Flash Boys, Michael Lewis, Ch. CONTENTS/Hidden in Plain Sight, pp. 15-296",
+    "raw_chunk_text": "HIDDEN IN PLAIN SIGHT\nheadlines in the newspapers: Barksdale Makes Billions Sell-\ning Out Ordinary American Investor. They hired an industry\nconsultant named Larry Tabb, who had caught Jim Barksdale\u2019s",
+    "rule_text": "A trader should exploit microscopic price discrepancies between the same instrument across geographic markets (cash-futures or regional arbitrage) when the aggregate profit potential from cumulative small trades justifies infrastructure investment.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price discrepancy between primary and secondary market > (median_spread + 1.0\u03c3)",
+      "Historical frequency of such discrepancies \u2265 400 per trading day",
+      "Infrastructure cost amortization period \u2264 1 year at current volume"
+    ],
+    "parameters": {
+      "discrepancy_threshold_sigma": 1.0,
+      "minimum_daily_opportunities": 400,
+      "max_infrastructure_payback_years": 1
+    },
+    "exit_conditions": [
+      "Discrepancy converges to within 0.1\u03c3 of median",
+      "Daily opportunity frequency drops below 250"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_LIQUIDITY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  }
+]

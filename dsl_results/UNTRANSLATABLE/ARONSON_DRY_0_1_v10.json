@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a pre-computed stationary time series (e.g., detrended price, normalized oscillator) as input. The allowed indicator list does not include generic custom indicators or user-defined stationary transformations. The threshold value of 75 suggests a normalized 0-100 scale indicator, but without knowing the exact transformation applied, this cannot be reliably mapped to RSI, Stochastic, or other available indicators. To implement this rule, either: (1) specify the exact stationary transformation (e.g., 'RSI(14)', 'Normalized Price Position'), or (2) add the pre-computed stationary series as an available indicator.",
+  "translation_notes": "The rule is theoretically sound but requires clarification on which stationary time series to use. The threshold of 75 and crossing logic are clear and implementable once the underlying indicator is specified. Temporarily used 'close' as placeholder, but this is incorrect without stationarity transformation."
+}

@@ -1,0 +1,108 @@
+{
+  "signal_id": "THARP_DRY_14_2",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_14_2",
+    "entry_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      },
+      {
+        "left": "atr_20",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      },
+      {
+        "left": "atr_20",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used SMA 20/50 crossover as primary trend-following indicator per signal specification of 20-period timeframe. ATR > 1.0 approximates abnormal price movement (>1 std dev). Regime shift detection implemented via moving average crossover. Exit conditions trigger on trend reversal signal (opposite crossover). Direction set to CONTEXT_DEPENDENT to handle both long and short signals from same rule logic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "atr_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "atr_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used SMA 20/50 crossover as primary trend-following indicator per signal specification of 20-period timeframe. ATR > 1.0 approximates abnormal price movement (>1 std dev). Regime shift detection implemented via moving average crossover. Exit conditions trigger on trend reversal signal (opposite crossover). Direction set to CONTEXT_DEPENDENT to handle both long and short signals from same rule logic."
+  },
+  "source_rule_text": "A trader should use longer-term trend-following indicators to reduce transaction costs and capture abnormally large price moves that occur during major market shifts, rather than relying on shorter-term indicators that generate more frequent signals."
+}

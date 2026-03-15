@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of kurtosis and fat-tailed distributions (black swan events), which are not available in the allowed indicator set. The signal is theoretically sound but cannot be operationalized with standard OHLCV indicators. High volatility (hvol_20) is used as a proxy for elevated tail risk, and trend direction (price vs SMA) as a proxy for momentum vs mean-reversion identification, but true kurtosis measurement and black swan event detection are missing.",
+  "translation_notes": "Translated contextual signal using hvol_20 > 0.03 as proxy for high kurtosis/fat-tail regime. Entry logic is AND (both conditions required). Exit uses trend reversal. Direction remains CONTEXT_DEPENDENT to allow both long momentum and short mean-reversion strategies based on price position relative to SMA_20. Parameters marked AUTHOR_SILENT are not specified in JSON as they require external calibration."
+}

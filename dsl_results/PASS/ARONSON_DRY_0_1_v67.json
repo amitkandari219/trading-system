@@ -1,0 +1,110 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.05"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.05"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal translated using returns (5% threshold = \u00b10.05 decimal scale) to detect zigzag peaks and troughs. Entry conditions detect 5% moves from recent extremes (prev_high for peaks, prev_low for troughs). Exit conditions trigger on reversal through identified extremes. Direction set to CONTEXT_DEPENDENT to allow both long and short signals. Pattern scale and detection lag tolerance parameters incorporated into hold_days_max and stop_loss_pct. Note: Explicit head-and-shoulders pattern detection is not available in allowed indicators; this rule focuses on the zigzag threshold mechanism."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.05
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.05
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal translated using returns (5% threshold = \u00b10.05 decimal scale) to detect zigzag peaks and troughs. Entry conditions detect 5% moves from recent extremes (prev_high for peaks, prev_low for troughs). Exit conditions trigger on reversal through identified extremes. Direction set to CONTEXT_DEPENDENT to allow both long and short signals. Pattern scale and detection lag tolerance parameters incorporated into hold_days_max and stop_loss_pct. Note: Explicit head-and-shoulders pattern detection is not available in allowed indicators; this rule focuses on the zigzag threshold mechanism."
+  },
+  "source_rule_text": "A trader should calibrate the threshold percentage of a zigzag filter to detect peaks and troughs at a scale appropriate to the pattern size being analyzed, as different thresholds reveal patterns of different magnitudes."
+}

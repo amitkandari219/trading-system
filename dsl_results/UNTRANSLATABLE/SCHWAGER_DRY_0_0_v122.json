@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external 'guru list consensus' tracking (\u226585% agreement among named analysts) and independent fundamental factor identification (\u22652 factors). These require data sources and qualitative analysis external to price/volume indicators. The price_pos_20 proxy captures low directional conviction, but cannot encode: (1) guru consensus percentages, (2) fundamental factor validation, or (3) explicit 2-bar directional confirmation threshold. A production implementation requires a custom data feed and sentiment/fundamental module.",
+  "translation_notes": "Attempted proxy: Used price_pos_20 (Donchian position) to detect ranging/low-conviction regimes where contrarian trades are most viable. Entry at extremes (near lower/upper channel) represents the low price movement condition. Exit conditions use Donchian breakouts (>5% proxy) to represent consensus shift. Manual fundamental factor validation and guru consensus monitoring required outside backtest engine."
+}

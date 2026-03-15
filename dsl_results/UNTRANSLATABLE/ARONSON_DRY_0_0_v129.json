@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'consecutive periods close in direction of trend' (consecutive_closes_required=5) and '75th percentile volume threshold' which cannot be directly expressed with allowed indicators and operators. Vol_ratio_20 approximates volume strength but does not encode percentile thresholds or consecutive-bar logic. ATR-based price extension (1.5 ATR) approximated using atr_14 comparison.",
+  "translation_notes": "Mapped positive feedback/imitative behavior to ADX>25 (trend strength), volume confirmation to vol_ratio_20 (above median), and swing-based exits to pivot points (s1/r1). Direction set to CONTEXT_DEPENDENT per signal specification. Consecutive close logic and exact percentile volume filtering require custom backtester logic."
+}

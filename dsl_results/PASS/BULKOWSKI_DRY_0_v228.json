@@ -1,0 +1,74 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_lower"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "0.30"
+      },
+      {
+        "left": "returns",
+        "operator": "<=",
+        "right": "-0.05"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Breakout entry modeled as close breaking above 12-month Donchian lower band (representing breakout from formation). Exit uses returns metric: target 30% profit or stop loss at -5%. Book states 54% fail in bull markets and 66% in bear markets to achieve 35% total move (5% loss + 30% gain). Pattern formation timing and location (L/C/H) are qualitative and cannot be expressed with quantitative indicators alone. Hold period set conservatively to 60 days for postbreakout analysis window."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_lower"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": 0.3
+      },
+      {
+        "indicator": "returns",
+        "op": "<=",
+        "value": -0.05
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Breakout entry modeled as close breaking above 12-month Donchian lower band (representing breakout from formation). Exit uses returns metric: target 30% profit or stop loss at -5%. Book states 54% fail in bull markets and 66% in bear markets to achieve 35% total move (5% loss + 30% gain). Pattern formation timing and location (L/C/H) are qualitative and cannot be expressed with quantitative indicators alone. Hold period set conservatively to 60 days for postbreakout analysis window."
+  },
+  "source_rule_text": "Breakout and postbreakout patterns analysis showing formation timing, breakout location distribution, and performance metrics"
+}

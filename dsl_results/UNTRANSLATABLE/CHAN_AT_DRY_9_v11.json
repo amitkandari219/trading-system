@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal references 'Buy-on-gap stock strategy conditions are met (from Chapter 4)' which is not defined in the allowed indicators list. The specific entry conditions for the gap strategy cannot be translated without access to the detailed rules from Chapter 4. Additionally, the signal specifies VIX (US volatility index) but only india_vix is available in the allowed indicators.",
+  "translation_notes": "Signal requires the full buy-on-gap strategy definition from Chapter 4 which is not provided. The VIX > 35 regime filter can be partially translated using india_vix as a volatility proxy, but this may not be the exact equivalent of US VIX. The backtest_sharpe and backtest_period are metadata and not translated into executable conditions. Exit condition set to reversed regime (VIX <= 35) as a reasonable default per AUTHOR_SILENT."
+}

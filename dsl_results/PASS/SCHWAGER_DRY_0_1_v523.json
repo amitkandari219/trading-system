@@ -1,0 +1,102 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.10"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.25"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">=",
+        "right": "55"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<=",
+        "right": "70"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "80"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used price_pos_20 (0-1 scale) to represent price position within 20-bar range, converted 10-25% rise to 0.10-0.25 decimal range. Used rsi_14 as standard RSI indicator. Used dc_lower (20-bar Donchian low) as proxy for 20-bar swing low. RSI > 80 captures overbought reversal condition. 2 ATR reversal condition omitted as it requires multi-indicator calculation; stop_loss_pct set conservatively. Signal direction is LONG as it warns against entering late in uptrends."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.1
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.25
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">=",
+        "value": 55.0
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<=",
+        "value": 70.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 80.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Used price_pos_20 (0-1 scale) to represent price position within 20-bar range, converted 10-25% rise to 0.10-0.25 decimal range. Used rsi_14 as standard RSI indicator. Used dc_lower (20-bar Donchian low) as proxy for 20-bar swing low. RSI > 80 captures overbought reversal condition. 2 ATR reversal condition omitted as it requires multi-indicator calculation; stop_loss_pct set conservatively. Signal direction is LONG as it warns against entering late in uptrends."
+  },
+  "source_rule_text": "A trader should avoid entering a trend-following trade after a prolonged move has already occurred, as late entry into an already overbought market results in capturing diminishing gains and amplified drawdown risk."
+}

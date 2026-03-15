@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Z-Score calculation based on cointegrated portfolio price relative to moving average, with position sizing proportional to Z-Score magnitude. Z-Score is not available in the allowed indicators list. Additionally, Johansen test cointegration validation and half-life estimation cannot be expressed as simple indicator conditions. The signal's core logic (accumulate positions proportional to negative Z-Score deviation) cannot be accurately represented using only the allowed indicators.",
+  "translation_notes": "Attempted approximation uses price deviation from SMA as a crude proxy for mean-reversion signal, but this does NOT capture: (1) Z-Score normalization, (2) proportional position sizing based on deviation magnitude, (3) cointegration validation via Johansen test, (4) half-life confirmation. A proper implementation requires custom cointegration analysis and Z-Score calculation at the portfolio level."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic leverage adjustment based on cumulative drawdown (g_cppi calculation and leverage multiplier = 1 + current_drawdown). The backtest engine does not support dynamic leverage scaling as a tradable condition. The signal also references optimalF (optimal leverage from Kelly/f calculations) which is not available as a real-time indicator. Cumulative drawdown tracking and leverage adjustment require state management beyond the condition-based rule engine.",
+  "translation_notes": "Translated maximum drawdown threshold (-50%) as stop_loss_pct. Entry condition checks that cumulative returns have not breached -50%. Exit condition triggers when cumulative returns reach or fall below -50%. The proportional leverage reduction logic (new_leverage = current_leverage \u00d7 (1 + period_return)) cannot be expressed in the available operators and indicators."
+}

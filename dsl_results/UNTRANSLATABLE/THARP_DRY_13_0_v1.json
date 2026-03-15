@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_13_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires backtesting win rate calculations across 6 different timeframes (1h, EOD, 1d, 5d, 10d, 20d). Win rate is a meta-metric computed from historical trade outcomes, not a real-time price/indicator condition. The allowed indicator set contains only price action, technical indicators, and volatility metrics\u2014not historical performance statistics. This rule requires custom backtesting framework logic to: (1) track win rates per timeframe, (2) aggregate across all 6 periods, (3) apply the AND logic (all must exceed 60%). Cannot be expressed as a static conditional rule on OHLCV or technical indicators.",
+  "translation_notes": "THARP_DRY_13 is a signal validation meta-rule, not a tradeable entry/exit rule. It describes a framework for filtering candidate signals based on their statistical reliability across multiple timeframes. Implementation requires: (a) pre-filtering signals through a win-rate validator, (b) tracking performance in parallel across 1h/EOD/1d/5d/10d/20d windows, (c) only enabling entry when all 6 windows show \u226560% win rate. This is a risk management / signal quality gate, not a price-based condition. Recommend implementing as a separate signal validation layer before applying this rule to actual trades."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires ranking stocks by relative returns and assigning portfolio weights based on mean reversion signal strength. The allowed operators and indicators do not support cross-sectional ranking, relative performance comparison across a universe of stocks, or dynamic weight assignment logic. Additionally, 'market_close' is not an allowed regime value\u2014the strategy liquidates at end-of-day intraday, which cannot be expressed as a condition on price/indicator values alone.",
+  "translation_notes": "CHAN_AT_DRY_5 is a sophisticated multi-stock, cross-sectional mean reversion strategy. Entry conditions depend on ranking the entire stock universe and assigning weights inversely correlated with same-day returns (negative returns \u2192 long, positive returns \u2192 short). Exit is a time-based liquidation at market close. The backtest engine as specified supports single-stock, indicator-based conditions only, not portfolio construction or universe-level ranking. Parameters (lookback_period, threshold, half_life, backtest_sharpe, backtest_period) are marked AUTHOR_SILENT and cannot be inferred. A simplified approximation using intraday returns is provided but does not capture the signal's core logic."
+}

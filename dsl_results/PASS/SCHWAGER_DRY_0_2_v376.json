@@ -1,0 +1,74 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">=",
+        "right": "1.35"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used dc_upper (Donchian upper band over 5 periods) to represent price breaking above 5-period highest high. Used vol_ratio_20 set to 1.35 (35% above 20-day average) to capture volume expansion threshold. The signal specifies CONTEXT_DEPENDENT direction but entry conditions are inherently bullish (new highs + volume expansion), so mapped to LONG. The '50th percentile of recent volume distribution' condition cannot be expressed with available indicators, but vol_ratio_20 >= 1.35 serves as a reasonable volume expansion proxy."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">=",
+        "value": 1.35
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "HIGH_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Used dc_upper (Donchian upper band over 5 periods) to represent price breaking above 5-period highest high. Used vol_ratio_20 set to 1.35 (35% above 20-day average) to capture volume expansion threshold. The signal specifies CONTEXT_DEPENDENT direction but entry conditions are inherently bullish (new highs + volume expansion), so mapped to LONG. The '50th percentile of recent volume distribution' condition cannot be expressed with available indicators, but vol_ratio_20 >= 1.35 serves as a reasonable volume expansion proxy."
+  },
+  "source_rule_text": "A trader should initiate long positions when price enters new highs accompanied by volume expansion of at least 50% above recent average daily volume, as this signals genuine demand and readiness to move higher."
+}

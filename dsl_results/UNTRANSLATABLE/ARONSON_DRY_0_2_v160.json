@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires application of a 2-day linearly weighted moving average smoothing layer to indicator signals before crossover detection. The allowed indicator set does not include pre-computed linearly weighted moving averages (only sma and ema variants). The smoothing methodology and dynamic threshold determination cannot be directly expressed in the structured condition format. Used MACD as a proxy smoother since MACD inherently smooths via its signal line, but this is not the exact 2-day LWA specified in the original rule.",
+  "translation_notes": "Original signal specifies 2-day linearly weighted moving average applied to generic 'indicator signals' with static or dynamic threshold crossing. The rule is context-dependent (works for both long and short). Since the smoothing period and exact indicator to smooth are not specified, and LWA is unavailable, this translation uses MACD with its built-in signal line smoothing as a reasonable approximation. Hard stop loss at 1 bar of counter-direction movement is interpreted as stop_loss_pct of 1.0. Entry on close of crossover bar is implicit in the crossover operator."
+}

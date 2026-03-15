@@ -1,0 +1,82 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s2"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.3"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Belt Hold reversal pattern interpreted as: price touches support (s1), returns toward it without significant decline (small body_pct), stays above lower support (s2). Entry SHORT on these conditions within a trading range. Exit when price breaks back above support (s1). Used pivot support levels (s1, s2) as proxies for support zone since no explicit support zone indicator exists. Small body_pct indicates minimal downward movement after return to support, consistent with pattern definition."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s2"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.3
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s1"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Belt Hold reversal pattern interpreted as: price touches support (s1), returns toward it without significant decline (small body_pct), stays above lower support (s2). Entry SHORT on these conditions within a trading range. Exit when price breaks back above support (s1). Used pivot support levels (s1, s2) as proxies for support zone since no explicit support zone indicator exists. Small body_pct indicates minimal downward movement after return to support, consistent with pattern definition."
+  },
+  "source_rule_text": "Belt Hold: A reversal pattern where price leaves a support zone and returns without falling far, indicating a potential reversal within or near a trading range"
+}

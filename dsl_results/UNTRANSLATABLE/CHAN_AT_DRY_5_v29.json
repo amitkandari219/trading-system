@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires index-relative comparison (r_i - <r>) and position sizing proportional to relative deviation magnitude. The backtest engine cannot compute cross-sectional relative returns or rank-based position sizing against index mean. Threshold for 'significantly positive/negative' marked AUTHOR_SILENT with no quantified cutoff. This requires custom cross-sectional momentum logic unavailable in single-instrument indicator set.",
+  "translation_notes": "Attempted to capture directional intent using returns indicator, but the core logic\u2014comparing each stock's return to the index average and weighting by deviation magnitude\u2014requires basket-level calculations not supported by single-stock indicators. Daily rebalancing with $1 normalized capital noted but cannot be encoded in rule conditions. Recommend implementing as custom cross-sectional mean-reversion factor."
+}

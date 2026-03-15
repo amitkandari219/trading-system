@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a capital allocation and portfolio management rule, not a price-action trading signal. It describes: (1) dividing account equity into a leveraged trading subaccount (D fraction) and cash reserve (1-D fraction), (2) applying leverage multiplier f to the subaccount, (3) reallocating capital when new equity highs are reached, and (4) preserving capital during drawdowns. These are meta-level position-sizing and account-management directives that operate on account equity, drawdown tracking, and high-water mark logic\u2014not on price indicators or technical conditions. A backtest engine with price-based indicator rules cannot execute this signal without custom accounting logic for equity tracking, leverage management, and dynamic capital reallocation between subaccounts.",
+  "translation_notes": "Signal ID CHAN_AT_DRY_9 requires implementation at the portfolio/account management layer, not the trade entry/exit layer. Parameters D (equity allocation fraction), f (leverage multiplier), and high-water mark tracking must be handled by backtest engine infrastructure for position sizing and account reconciliation, not by condition-based rules on price data."
+}

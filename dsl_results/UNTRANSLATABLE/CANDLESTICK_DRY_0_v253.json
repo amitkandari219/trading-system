@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Rising Wedge pattern requires detection of two converging trendlines and price reversal at specific trendline levels. This geometric pattern detection cannot be expressed using only the allowed point-in-time indicators (RSI, MA, ATR, Bollinger Bands, etc.). The signal requires: (1) identification of upper and lower trendlines with convergence geometry, (2) price interaction with specific trendline coordinates, and (3) wedge geometry validation. These require either custom trendline detection logic or multi-bar pattern matching beyond the scope of single-bar indicator comparisons.",
+  "translation_notes": "Attempted approximation using bearish candlestick proxies (small body, long lower wick near resistance) but this does not capture the core Rising Wedge geometry. The pattern fundamentally requires trendline extraction and convergence analysis, which is not available in the indicator set. Author also left key parameters silent (success rates, volume trends, throwback percentages), preventing quantitative rule calibration. A proper implementation would require custom pattern recognition or explicit trendline price levels as inputs."
+}

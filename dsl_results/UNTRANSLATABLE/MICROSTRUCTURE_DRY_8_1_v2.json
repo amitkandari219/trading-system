@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_8_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires identification of counterparty motivations (forced selling, hedging rebalance, liquidity withdrawal), loser behavior persistence tracking across multiple periods, and order flow directionality analysis. None of these microstructure features are available in the allowed indicator set, which contains only price-based technical indicators (moving averages, RSI, ATR, etc.). The signal fundamentally requires market microstructure data (order flow, counterparty intent classification, position tracking) that cannot be derived from OHLCV candle data alone.",
+  "translation_notes": "Signal MICROSTRUCTURE_DRY_8_1 is a behavioral/microstructure trade based on identifying non-profit motivated traders and trading against them. This requires: (1) Detection of forced selling, rebalancing, or liquidity withdrawal - requires order flow analysis, dealer positioning data, or fund flow data; (2) Persistence confirmation over 2+ periods with loser position tracking; (3) Order flow directionality thresholds. The allowed indicators are purely technical/price-based and cannot identify counterparty motivation, classify trader types, or measure order imbalances. A proper implementation would require: order flow, VPIN, microstructure spreads, dealer inventory, or proprietary flow data."
+}

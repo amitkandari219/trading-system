@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_11_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external classification model predictions (model_prediction_up/down, model_confidence, model_confidence_margin) which are not available in the allowed indicators list. The backtest engine would need to integrate a trained classification model output as a custom data feed.",
+  "translation_notes": "This signal fundamentally depends on a machine learning classification model's probability outputs. The logic structure (probability threshold >= 80%, confidence margin >= 15%) is clear and translatable as condition logic, but the actual predictions require external model integration beyond standard technical indicators. The direction is CONTEXT_DEPENDENT because entry signals can be generated for either long or short based on the model's directional classification."
+}

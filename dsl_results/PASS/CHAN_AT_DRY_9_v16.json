@@ -1,0 +1,86 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "book_id": "CHAN_AT",
+  "dsl_rule": {
+    "signal_id": "CHAN_AT_DRY_9",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_lower"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "bb_upper"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "bb_middle"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mean-reversion strategy using Bollinger Bands. Long entry when price touches lower band (oversold), exit at middle band. Short entry when price touches upper band (overbought), exit at middle band. Exit conditions inferred as reversal to middle band since author did not specify. Direction is context-dependent (both long and short entries defined). Target regime set to RANGING as mean-reversion works best in non-trending markets. Parameters (lookback_period, threshold, half_life, backtest_sharpe, backtest_period) not specified by author and are engine defaults."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_lower"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "bb_upper"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "bb_middle"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mean-reversion strategy using Bollinger Bands. Long entry when price touches lower band (oversold), exit at middle band. Short entry when price touches upper band (overbought), exit at middle band. Exit conditions inferred as reversal to middle band since author did not specify. Direction is context-dependent (both long and short entries defined). Target regime set to RANGING as mean-reversion works best in non-trending markets. Parameters (lookback_period, threshold, half_life, backtest_sharpe, backtest_period) not specified by author and are engine defaults."
+  },
+  "source_rule_text": "A mean-reversion strategy using Bollinger Bands to identify overbought/oversold conditions for entry signals."
+}

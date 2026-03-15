@@ -1,0 +1,148 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_middle"
+      },
+      {
+        "left": "body_pct",
+        "operator": ">",
+        "right": "0.35"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      },
+      {
+        "left": "prev_close",
+        "operator": ">",
+        "right": "dc_middle"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_middle"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "-0.35"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      },
+      {
+        "left": "prev_close",
+        "operator": "<",
+        "right": "dc_middle"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_middle"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used dc_middle (Donchian midpoint) as proxy for daily range midpoint. Body_pct used to measure close position within range (upper/lower third). Vol_ratio_20 used as volume confirmation proxy. Previous bar conditions simplified to prior close vs midpoint as substitute for '2 consecutive bars above midpoint'. Stop loss set conservatively at 1% given daily range context."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_middle"
+      },
+      {
+        "indicator": "body_pct",
+        "op": ">",
+        "value": 0.35
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      },
+      {
+        "indicator": "prev_close",
+        "op": ">",
+        "value": "dc_middle"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_middle"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": -0.35
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      },
+      {
+        "indicator": "prev_close",
+        "op": "<",
+        "value": "dc_middle"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_middle"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used dc_middle (Donchian midpoint) as proxy for daily range midpoint. Body_pct used to measure close position within range (upper/lower third). Vol_ratio_20 used as volume confirmation proxy. Previous bar conditions simplified to prior close vs midpoint as substitute for '2 consecutive bars above midpoint'. Stop loss set conservatively at 1% given daily range context."
+  },
+  "source_rule_text": "A trader should initiate long positions when the market closes above the midpoint of its daily range (indicating accumulation dominance) and short positions when it closes below the midpoint (indicating distribution dominance), as these closings predict directional price movement."
+}

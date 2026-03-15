@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of z-score from spread residuals derived from pairs trading (hedge ratio, OLS regression, residual series). This involves cross-asset statistical computation not available in single-asset indicator set. Required: (1) hedge ratio from cointegration analysis, (2) spread residual series from paired instruments, (3) rolling mean/stdev of residuals, (4) z-score threshold logic. None of these pair-based statistical indicators exist in the allowed indicator list. The signal is inherently a pairs trading strategy requiring external preprocessing.",
+  "translation_notes": "This is a pairs trading / statistical arbitrage signal based on cointegration and mean reversion of spread residuals. The backtest engine appears to be designed for single-instrument technical analysis. To implement this signal, the engine would need: (a) cross-pair residual calculation capability, (b) rolling statistics (mean/stdev) of residuals, (c) z-score computation from residuals, and (d) ability to track two correlated instruments simultaneously. Consider: integrating a pairs module with cointegration preprocessing, or providing custom z-score indicator inputs."
+}

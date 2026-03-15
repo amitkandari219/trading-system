@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_13_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires microstructure-level quote management (bid/ask manipulation, inventory positioning, adverse selection risk). The core mechanics involve quote offsetting and counterparty signaling which are not supported by price/technical indicators. This is a dealer inventory management tactic, not a price-action pattern suitable for backtesting with standard OHLCV indicators.",
+  "translation_notes": "Attempted to use trend strength (ADX), spread tightness (BB_bandwidth), and volume confirmation as proxies for entry conditions, but the signal's essence\u2014deliberately quoting unfavorably in one direction to discourage activity while aggressively quoting in the desired direction\u2014cannot be faithfully represented in a technical indicator framework. This requires order book and quote data."
+}

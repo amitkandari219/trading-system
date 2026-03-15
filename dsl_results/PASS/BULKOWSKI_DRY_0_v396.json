@@ -1,0 +1,88 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_middle"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Diamond pattern detection mapped to Donchian breakouts: upward breakout (close above dc_upper) acts as continuation signal for LONG entry; downward breakout (close below dc_lower) acts as reversal signal for SHORT entry. Exit conditions set to reversals at Donchian midline per AUTHOR_SILENT guidance. Pattern identified by price formation entering from bottom with dual breakout possibilities. Bullkowski statistics indicate 88 bull-market up-breakout formations with 27% average rise on continuation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_middle"
+      }
+    ],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Diamond pattern detection mapped to Donchian breakouts: upward breakout (close above dc_upper) acts as continuation signal for LONG entry; downward breakout (close below dc_lower) acts as reversal signal for SHORT entry. Exit conditions set to reversals at Donchian midline per AUTHOR_SILENT guidance. Pattern identified by price formation entering from bottom with dual breakout possibilities. Bullkowski statistics indicate 88 bull-market up-breakout formations with 27% average rise on continuation."
+  },
+  "source_rule_text": "Diamond pattern: Price enters from bottom (tops) with downward breakout acts as reversal; upward breakout acts as continuation"
+}

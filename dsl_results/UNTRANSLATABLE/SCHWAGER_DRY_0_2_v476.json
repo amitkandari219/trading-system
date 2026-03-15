@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of (1) accelerating gap moves with visual acceleration patterns and (2) largest gap in last 5-day period. The allowed indicators lack explicit gap detection, multi-bar comparative logic, and visual acceleration metrics. Returns can approximate gap magnitude but cannot reliably detect gap acceleration or comparative ranking across lookback periods. Emotional discipline rule (never exit on +1% adverse) cannot be enforced in rule engine without conditional logic bypass.",
+  "translation_notes": "Attempted translation uses returns >2% / <-2% as proxy for gap moves and close directional confirmation. However, this loses the critical contrarian timing logic (entering against hysteria at acceleration peaks) and the 5-bar comparative ranking. The signal requires custom gap detection logic or a dedicated gap indicator not in the allowed set. Recommend: (1) add gap_size and gap_acceleration indicators, or (2) implement as manual overlay rule rather than systematic backtest rule."
+}

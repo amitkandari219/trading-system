@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires measurement of (1) 'trend lasting at least 20 bars' \u2014 requires trend detection algorithm not in allowed indicators; (2) 'price moved 2% beyond prior swing point' \u2014 requires swing point detection not available; (3) '2+ consecutive confirming bars' \u2014 requires multi-bar pattern matching logic not expressible with single-bar conditions. Core concept of confirmation bias-driven trend continuation is directionally captured, but precise entry/exit gatekeeping cannot be fully translated.",
+  "translation_notes": "Adapted to use sma_20 (20-bar MA), pivot points (s1/r1 as swing references), and body direction as proxies for trend and confirmation. Direction set to CONTEXT_DEPENDENT per signal specification. Stop loss set to 2% per minimum_move_percent parameter. Target regime restricted to TRENDING states. The '2+ confirming bars' filter and swing-point-relative moves are not expressible in the allowed condition syntax."
+}

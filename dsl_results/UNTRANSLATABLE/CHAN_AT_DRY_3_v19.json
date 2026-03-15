@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Johansen cointegration test requires multivariate statistical analysis of eigenvector decomposition across multiple price series. This cannot be expressed using the allowed indicators (which are univariate technical indicators: RSI, MACD, Bollinger Bands, etc.) and simple comparison operators (>, <, crosses_above, etc.). The signal requires: (1) calculation of cointegration rank 'r' via Johansen trace/eigen statistics, (2) eigenvector extraction from eigendecomposition of \u039b matrix, (3) dynamic hedge ratio calculation. These are portfolio-level statistical operations requiring external cointegration library (jplv7), not single-bar technical indicator comparisons.",
+  "translation_notes": "This is a regime-detection signal for identifying stationary cointegrated portfolios, not a tradeable entry/exit condition. It requires statistical analysis outside the scope of this rules engine. Recommend: (1) pre-process signal externally using Johansen test to identify cointegrated instrument sets, (2) once cointegration confirmed, implement spread trading separately, or (3) add a 'statistical_test' operator type to support eigenvalue-based conditions. Current allowed indicators cannot replicate multivariate cointegration detection."
+}

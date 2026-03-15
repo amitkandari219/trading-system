@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires (1) dynamic normalized deviation calculation (z-score of price relative to moving average), (2) position sizing inversely proportional to deviation magnitude, and (3) mean reversion half-life calculation via regression. These quantitative mechanics cannot be expressed using only binary entry/exit conditions with the allowed indicators and operators. The signal is fundamentally about position scaling and statistical mean reversion detection, not discrete buy/sell triggers.",
+  "translation_notes": "This signal describes a sophisticated quantitative strategy requiring real-time calculation of standardized deviations, dynamic position sizing based on continuous deviation magnitude, and regression-based half-life estimation. A simplified approximation using sma_20 crossovers captures direction reversal but loses the core mean-reversion position-scaling logic. Author provided minimal parameter guidance (AUTHOR_SILENT on lookback, threshold, sharpe, period). The ~115 day half-life suggests a longer-term mean reversion framework inappropriate for short holding periods."
+}

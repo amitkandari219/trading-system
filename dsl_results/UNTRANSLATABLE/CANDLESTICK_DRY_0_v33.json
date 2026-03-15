@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires multi-candle historical analysis (series of candles with rising shadows and no lower highs). The signal explicitly requires validating a sequence of prior candles rather than single-candle conditions. While upper_wick/lower_wick and price breakouts can be partially captured, the core 'series validation with no exceptions' logic cannot be fully expressed with single-bar indicators. A proper implementation would need access to a rolling window of candle data to validate the entire pattern formation rule.",
+  "translation_notes": "Attempted to capture breakout entry conditions using upper_wick > prev_high (rising shadow pattern) and close breakouts. Exit conditions set to simple reversal (close opposite direction). However, this translation is incomplete without multi-candle pattern validation logic. The success rates and performance metrics provided (L7.94%, M5.25%, H5.94% bull; L-6.79%, M-5.89%, H-6.48% bear; 0.82%-1.18% next day) cannot be encoded as conditions but should be tracked separately for backtesting validation."
+}

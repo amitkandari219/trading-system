@@ -1,0 +1,74 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Double Bottom confirmation requires price close above the high between two bottoms (modeled as close > prev_high for confirmation breakout). Higher left volume preference captured via vol_ratio_20 check. Pattern formation detection itself (identifying twin valleys) is not codable in this rule engine and must be handled by preprocessing/pattern detection. Exit condition uses reasonable reversal logic (close below recent low) since AUTHOR_SILENT. 5% stop_loss aligns with stated failure_rate_5pct. 40% average rise captured in backtest target profit expectations rather than hard exit rule."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Double Bottom confirmation requires price close above the high between two bottoms (modeled as close > prev_high for confirmation breakout). Higher left volume preference captured via vol_ratio_20 check. Pattern formation detection itself (identifying twin valleys) is not codable in this rule engine and must be handled by preprocessing/pattern detection. Exit condition uses reasonable reversal logic (close below recent low) since AUTHOR_SILENT. 5% stop_loss aligns with stated failure_rate_5pct. 40% average rise captured in backtest target profit expectations rather than hard exit rule."
+  },
+  "source_rule_text": "Double Bottom pattern: Price must close above the high between the two bottoms for confirmation"
+}

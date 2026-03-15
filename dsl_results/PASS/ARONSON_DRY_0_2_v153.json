@@ -1,0 +1,73 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "7.0"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "vol_ratio_20",
+        "operator": "<",
+        "right": "5.0"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used vol_ratio_20 as the available volume ratio indicator. Signal specifies NYSE upside/downside ratio with 7:1 threshold and 1 consecutive day requirement. Price above previous close confirms directional bias. Exit on ratio falling below 5:1 or 2% stop loss."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 7.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "vol_ratio_20",
+        "op": "<",
+        "value": 5.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "HIGH_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Used vol_ratio_20 as the available volume ratio indicator. Signal specifies NYSE upside/downside ratio with 7:1 threshold and 1 consecutive day requirement. Price above previous close confirms directional bias. Exit on ratio falling below 5:1 or 2% stop loss."
+  },
+  "source_rule_text": "A trader should enter long positions when the daily ratio of upside to downside volume on the NYSE exceeds a defined threshold on a specified number of consecutive occurrences, using volume ratio extremes as a confirmation signal for directional bias."
+}

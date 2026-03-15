@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a 'Divergence Indicator' measuring relative normalized price positions between two securities (S&P 500 vs companion series like Dow Jones Transports). This is a multi-instrument ratio calculation not available in the allowed indicators list. The allowed indicators only support single-instrument analysis. price_pos_20 approximates overbought/oversold within a single instrument's 20-bar range, but cannot capture cross-security divergence dynamics as specified in the original rule.",
+  "translation_notes": "Attempted proxy using price_pos_20 (normalized position within 20-bar range) with thresholds >0.5 and <-0.5 to simulate divergence extremes, but this loses the critical comparative analysis between primary and companion securities. Original signal requires external data alignment and ratio computation beyond backtest engine scope."
+}

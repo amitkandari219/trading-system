@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires pair trading with cointegration analysis (ADF test p-value comparison, spread calculation between two instruments, and mean reversion triggers). The allowed indicator set does not include: (1) cointegration testing capabilities, (2) cross-instrument spread calculations, (3) statistical relationship metrics between pairs, or (4) dynamic mean/standard deviation thresholds across paired instruments. The signal cannot be expressed using single-instrument price/technical indicators alone.",
+  "translation_notes": "ARONSON_DRY_0_1 is a pairs trading strategy requiring bivariate cointegration analysis. While individual components reference concepts that could theoretically map to indicators (e.g., 'spread reverts to mean' \u2192 Bollinger Bands or price_pos_20), the core logic depends on calculating the spread between two distinct instruments and testing their cointegration relationship. The backtest engine would need custom pair-trading modules or external statistical test outputs (ADF p-values) to implement this signal. Recommend: (1) Add cointegration_test and spread_zscore custom indicators, or (2) Flag this as requiring a specialized pairs trading module outside standard single-instrument backtesting."
+}

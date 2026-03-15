@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires tracking '3 consecutive days' of volume ratio exceeding threshold and '2 consecutive days' of ratio falling below exit threshold. The allowed indicators list provides vol_ratio_20 (a 20-day aggregate metric) but does not provide a raw daily NYSE upside/downside volume ratio indicator or a mechanism to count consecutive occurrences across bars. This requires stateful logic (consecutive bar counting) that cannot be expressed in a single condition using the allowed operators and indicators.",
+  "translation_notes": "Mapped vol_ratio_20 as closest available volume ratio metric. The 20-day SMA was used for price confirmation as specified. However, the core logic requiring consecutive-day counting (3 days above 12:1, 2 days below 6:1) cannot be translated without bar-indexing or state counters. A backtest engine with consecutive-condition support would be needed for full implementation."
+}

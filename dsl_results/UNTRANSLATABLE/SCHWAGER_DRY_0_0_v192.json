@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires staged multi-tranche exits (60% at new extreme, 40% on 0.5 ATR pullback). Current rule schema supports single exit conditions only, not dynamic position sizing with multiple exit thresholds triggered sequentially. The pullback trigger also requires tracking the extreme price and measuring distance from it, which is not directly expressible in the binary condition format.",
+  "translation_notes": "Attempted to translate the core logic: (1) Entry when profitable/breakeven + new high/low within 5 bars \u2192 used Donchian channel (dc_upper/dc_lower) as proxy for new highs/lows with 20-bar lookback; (2) Entry profitability requirement \u2192 used returns >= 0; (3) Exit conditions require ATR-relative pullback measurement that cannot be expressed in simple 3-field conditions. The staged exit structure (first_exit_percentage: 0.6, second_exit_percentage: 0.4) is a portfolio/position management directive that lies outside the scope of the condition-based rule engine."
+}

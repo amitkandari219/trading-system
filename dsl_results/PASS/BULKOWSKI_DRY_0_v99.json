@@ -1,0 +1,73 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "prev_volume"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires detection of 'rising volume trend during pattern formation' which cannot be precisely quantified without additional context. Translated as: volume greater than previous bar (rising trend indicator) AND upward breakout (close > prev_close). Exit condition reversed from entry: volume declining signals trend exhaustion. Success rates (30% bull, 24% bear) noted but not encoded as they are statistical outcomes, not actionable conditions. Pattern formation detection would require external pattern recognition not available in indicator set."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal requires detection of 'rising volume trend during pattern formation' which cannot be precisely quantified without additional context. Translated as: volume greater than previous bar (rising trend indicator) AND upward breakout (close > prev_close). Exit condition reversed from entry: volume declining signals trend exhaustion. Success rates (30% bull, 24% bear) noted but not encoded as they are statistical outcomes, not actionable conditions. Pattern formation detection would require external pattern recognition not available in indicator set."
+  },
+  "source_rule_text": "Rising volume trend during pattern formation with upward breakout"
+}

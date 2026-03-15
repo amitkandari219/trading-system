@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Condition 'at least 3 consecutive higher highs over past 20 bars' requires historical bar-by-bar comparison logic not supported by the allowed operators. This requires iterative checking across multiple previous bars (high[1], high[2], high[3]), but array indexing and prev_high only provide single prior bar access.",
+  "translation_notes": "Translated the primary SMA crossover conditions (price > SMA50 AND price > SMA200) and volume confirmation (current volume > 20-bar average * 1.0 = vol_ratio_20 > 1.0). The consecutive higher highs confirmation cannot be expressed with allowed operators. Exit condition uses the SMA50 close below threshold; the 20-bar time exit is captured in hold_days_max. Direction is LONG since signal is context-dependent but entry conditions define uptrend following. Target regime set to TRENDING_UP as most aligned with trend-following strategy."
+}

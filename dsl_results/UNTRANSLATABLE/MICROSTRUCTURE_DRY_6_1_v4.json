@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_6_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal describes a microstructure order placement tactic (price improvement for time precedence trading) which cannot be expressed as a price/indicator-based backtest rule. The signal requires real-time bid-ask data, order queue position, and order submission logic (improve price by 2-3 ticks, wait 5 seconds, cancel if not filled) \u2014 none of which are available in price-based backtesting. Parameters like 'price_improvement_ticks', 'min_spread_width_cents', and 'max_wait_tolerance_seconds' require tick-level data and order management not supported by standard OHLCV backtesting.",
+  "translation_notes": "This is an execution/order placement rule, not a price-action trading signal. It requires Level 2 quote data, order queue modeling, and latency assumptions. A backtest engine using only OHLCV bars cannot simulate time precedence, spread dynamics, or order execution priority."
+}

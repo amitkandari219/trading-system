@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external event detection (Central bank announcement) which is not available in price/technical indicator set. RSI divergence approximated using rsi_14 < prev_rsi_14, but true divergence detection (price higher, RSI lower over a period) requires multi-bar lookback. Trader conviction score (6+) is subjective/non-quantifiable and cannot be expressed as objective rule. Take profit condition (50% retracement of post-intervention rally) requires identifying intervention point as reference, which requires external data.",
+  "translation_notes": "Translated as SHORT entry when: (1) recent rally of 2.5%+ detected via returns > 0.025, (2) momentum weakness shown by RSI declining (rsi_14 < prev_rsi_14). Exit at 4% above entry (stop loss = 4%) or at 50% retracement approximated as simple exit rule. Hold max 10 bars per signal. Core issue: this is a news/event-driven strategy that fundamentally depends on detecting central bank interventions\u2014a non-technical, external trigger that cannot be derived from price data alone."
+}

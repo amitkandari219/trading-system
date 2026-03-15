@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The pattern requires detection of 'twelve consecutive higher highs' which cannot be expressed as a single atomic condition using only the allowed indicators and operators. This would require iterative lookback logic or a custom pattern detector not available in the standard indicator set. Additionally, 'falling window (gap down)' and 'wobbling' behaviors are qualitative and require multi-bar sequence analysis.",
+  "translation_notes": "Attempted approximation using Donchian Channel upper breach (proxy for new highs) combined with price pullback below previous close and below pivot point. True pattern matching for 12 consecutive bars would require custom logic outside this framework. Exit condition approximated as reversal above SMA_20 when AUTHOR_SILENT. Pattern is better implemented as a custom scanner rather than rule-based engine."
+}

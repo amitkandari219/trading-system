@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking assets by 36-month historical returns percentile and detecting regime changes via volatility spikes (>1.5 SD from mean). The allowed indicator set lacks: (1) a percentile ranking function across a universe of assets, (2) a standard deviation volatility metric normalized to historical mean. The 'returns' indicator represents single-asset returns, not cross-sectional ranking. Volatility spike detection would require hvol_20 or similar, but 1.5 SD threshold cannot be operationalized without access to rolling mean and SD calculations.",
+  "translation_notes": "Attempted partial translation using 36-month returns proxy (returns >= 0.75 as top quartile approximation) and moving average crossover (sma_50/sma_200) as regime change signal. However, this does not capture the true intent: avoiding top-performing assets in regime transitions. A complete solution requires multi-asset percentile ranking and volatility normalization unavailable in the indicator set."
+}

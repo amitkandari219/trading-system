@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a quantitative factor model strategy based on principal component analysis of historical returns. It requires: (1) computing a covariance matrix across a lookback period, (2) extracting eigenvectors and eigenvalues, (3) performing OLS regression to estimate factor returns, and (4) ranking stocks by computed expected returns. None of these operations can be expressed using the allowed indicators (price-based, moving averages, RSI, ATR, etc.). The strategy operates at the portfolio/multi-asset level with custom statistical computations, not at the single-bar indicator level. This requires custom backtesting logic outside the constraint of simple indicator-based conditional rules.",
+  "translation_notes": "Signal requires principal component analysis, eigenvalue decomposition, and OLS regression on cross-sectional stock returns \u2014 operations fundamentally incompatible with the indicator-and-operator rule framework. Parameters (lookback_period, num_factors, threshold, backtest_sharpe, backtest_period) are marked AUTHOR_SILENT and cannot be inferred. Direction is CONTEXT_DEPENDENT (long/short determined by ranking). Recommend implementing as custom strategy class in backtest engine rather than rule-based system."
+}

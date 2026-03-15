@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of lambda (\u03bb) autocorrelation coefficient and half-life from price series, which are not available as pre-computed indicators. The rule depends on: (1) computing \u03bb from returns autocorrelation, (2) deriving half-life from \u03bb, (3) dynamically setting lookback period as a multiple of half-life. These require custom statistical calculations not expressible with the allowed indicator set. Threshold and exact multiplier are also AUTHOR_SILENT.",
+  "translation_notes": "This is a meta-strategy rule about parameter optimization rather than a tradeable signal with fixed entry/exit conditions. To implement, backtest engine would need to: (1) calculate autocorrelation lag-1 of returns, (2) derive half-life = ln(2) / -ln(\u03bb), (3) set lookback = k \u00d7 half-life where k is typically 0.5-2.0, (4) apply mean-reversion strategies (pairs trading, Bollinger Band mean reversion, etc.) only when \u03bb < 0 and half-life is reasonable (e.g., 5-100 bars). Context-dependent direction reflects that entry signals depend on deviation from mean rather than fixed long/short bias."
+}

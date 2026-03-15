@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting fundamental catalyst strength (top 10th percentile vs historical), expected move magnitude by catalyst type, and market response underperformance vs. expected. These require external fundamental data, event classification, and historical catalyst-response mapping not available in the allowed technical indicator set. The core logic (detecting muted response to bullish catalyst) cannot be fully expressed with only price/volume technicals without catalyst labeling and expected move lookup tables.",
+  "translation_notes": "Attempted to capture the exit condition (market moves <30% of expected response) using returns < 0.3 as a proxy for underperformance, but this is incomplete without knowing the catalyst type, its historical expected move magnitude, and whether the fundamental signal was actually in the top 10th percentile. The entry condition requires external fundamental data that cannot be derived from price action alone. This signal is fundamentally a discretionary pattern recognition rule requiring manual judgment and event-driven data."
+}

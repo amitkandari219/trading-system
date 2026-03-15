@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": ">=",
+        "right": "high"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "low"
+      },
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "DOWNTREND_CONFIRMATION",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Bearish Belt Hold pattern: Entry requires (1) open at/near high of day, (2) close near low of day, (3) gap above prior candle. Uptrend requirement checked via regime. Exit uses reversal logic (close crosses above open) since author provided no specific exit conditions. Body proportions cannot be precisely quantified without access to specific percentage thresholds from source material."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": ">=",
+        "value": "high"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "low"
+      },
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [
+      "DOWNTREND_CONFIRMATION",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Bearish Belt Hold pattern: Entry requires (1) open at/near high of day, (2) close near low of day, (3) gap above prior candle. Uptrend requirement checked via regime. Exit uses reversal logic (close crosses above open) since author provided no specific exit conditions. Body proportions cannot be precisely quantified without access to specific percentage thresholds from source material."
+  },
+  "source_rule_text": "Bearish Belt Hold: A single candlestick pattern that appears after an uptrend, opening at or near the high for the day and closing near the low"
+}

@@ -1,0 +1,168 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_50",
+        "operator": ">",
+        "right": "sma_200"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.7"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_50",
+        "operator": "<",
+        "right": "sma_200"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.3"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses context-dependent direction based on trend confirmation. Entry long when price above both moving averages with strong ADX; entry short when price below both MAs with strong ADX. 'Top 30% of recent range' translated to price_pos_20 > 0.7 for longs and < 0.3 for shorts. 'Fixed profit target at 2x risk' implies 2% stop-loss for typical 1:2 risk-reward. Position scaling based on ADX strength is implemented via entry condition threshold."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_50",
+        "op": ">",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.7
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_50",
+        "op": "<",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.3
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses context-dependent direction based on trend confirmation. Entry long when price above both moving averages with strong ADX; entry short when price below both MAs with strong ADX. 'Top 30% of recent range' translated to price_pos_20 > 0.7 for longs and < 0.3 for shorts. 'Fixed profit target at 2x risk' implies 2% stop-loss for typical 1:2 risk-reward. Position scaling based on ADX strength is implemented via entry condition threshold."
+  },
+  "source_rule_text": "Trade in the direction of the trend, with position sizing and conviction increasing as trend strength increases."
+}

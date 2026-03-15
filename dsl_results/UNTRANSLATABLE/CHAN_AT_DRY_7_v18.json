@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires real-time detection of WTI crude oil futures curve structure (contango vs backwardation state) and dynamic position reversal between USO and XLE based on regime. The allowed indicator set does not include yield curve, term structure, or futures curve analysis indicators. Additionally, the signal specifies multi-asset spread trading (USO long/short paired with XLE short/long) which requires cross-instrument logic not supported by single-asset indicator conditions. Author has not specified the lookback period, calculation method, or threshold for determining contango/backwardation state.",
+  "translation_notes": "This signal is a sophisticated pairs arbitrage strategy that exploits the structural difference between ETF closing times and front-month futures contracts. To implement this properly would require: (1) A contango/backwardation detector based on term structure analysis of CL futures, (2) Cross-instrument position logic linking USO and XLE moves, (3) Specification of the curve analysis window and threshold. The 'CONTANGO' and 'BACKWARDATION' regime names used here are non-standard and would need to be defined as custom regimes in the backtest engine. Recommended: Add custom curve-state indicators or use external data feed for term structure analysis."
+}

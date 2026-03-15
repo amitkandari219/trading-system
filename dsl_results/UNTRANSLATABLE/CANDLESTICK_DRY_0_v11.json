@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculating '22-trading-day average body height' which is not directly available as an indicator. The body comparison should ideally be against sma(body, 22) which is not in the allowed list. Approximated using ATR_14 as a volatility proxy for body height comparison, but this is not the exact 22-day average body height specified. Additionally, the exact support/resistance detection mechanism within candle bodies is qualitative and cannot be translated to quantitative rules without additional price level inputs.",
+  "translation_notes": "Body height approximately scaled to ATR_14 as proxy for volatility-adjusted candle size. Entry is context-dependent: long when price below 20-day MA and short when above. Exit triggers on MA crossover. Success rate documented as 39% for both directions. Original signal showed 86% of occurrences below moving average, 14% above. Used sma_20 as 22-day approximation."
+}

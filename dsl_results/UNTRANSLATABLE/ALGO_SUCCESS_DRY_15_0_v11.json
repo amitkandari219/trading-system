@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegrated pair analysis with OLS regression (R-squared > 0.70) and residual z-score calculation across two securities. The allowed indicators set does not include: (1) cointegration/pairs analysis, (2) OLS regression coefficients or R-squared values, (3) residual series computation, or (4) dynamic z-score thresholds based on rolling regression. The 150-bar lookback window for statistical calibration also cannot be enforced. Approximated entry/exit using price_pos_20 as a proxy, but this does not capture the true mean-reversion signal which depends on pair-specific statistical relationships.",
+  "translation_notes": "This is a pairs trading / cointegration strategy that fundamentally requires bivariate statistical analysis unavailable in the allowed indicator set. The signal cannot be properly translated without access to: residual spreads, OLS regression statistics, and dynamic z-score thresholds computed from a rolling regression model on a cointegrated pair. A proper implementation would require custom indicators for residual calculation and R-squared tracking."
+}

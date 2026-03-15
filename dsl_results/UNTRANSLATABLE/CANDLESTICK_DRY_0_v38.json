@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Dynamic median calculation based on market regime and breakout direction (4 different thresholds: 10.07%, 12.59%, 11.96%, 16.22%), (2) Breakout detection and classification logic not available in indicator set, (3) Price target computation via 'measure rule' undefined by author (AUTHOR_SILENT), (4) Success rates marked as AUTHOR_SILENT and cannot be incorporated. The signal requires conditional branching on regime+breakout_type combinations and a custom measure rule calculation that cannot be expressed with allowed indicators and operators.",
+  "translation_notes": "Attempted partial translation using range/(breakout_price) as proxy for candle height, but the core logic requires: (a) explicit breakout detection, (b) regime-dependent median thresholds applied conditionally, (c) undefined measure rule for price targets. The 'CONTEXT_DEPENDENT' direction and regime-specific performance variations cannot be properly encoded without custom logic. Upper_wick used as secondary exit metric per spec, but exit_logic is speculative due to AUTHOR_SILENT on measure rule."
+}

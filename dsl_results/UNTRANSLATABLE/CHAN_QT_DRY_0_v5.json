@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pair trading strategy requires dual-asset spread calculation (long GLD vs short GDX) with regression-derived hedge ratio and optimized thresholds. The backtest engine appears single-asset oriented. Specific parameters (lookback_period, threshold values, half_life) are marked AUTHOR_SILENT and cannot be operationalized. Mean reversion entry/exit thresholds are not quantified. Spread deviation measurement requires cointegration/regression analysis not available in standard indicator set.",
+  "translation_notes": "This signal requires a multi-asset pair trading framework with spread modeling and statistical cointegration analysis. The provided indicator set lacks spread indicators, hedge ratio calculations, and cointegration-based thresholds. A reasonable approximation using single-asset mean reversion (price vs SMA_20) has been provided as fallback, but does not capture the paired nature or regression-derived logic of the original strategy. Recommend implementing dedicated pair trading module or providing spread indicator."
+}

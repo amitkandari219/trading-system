@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of breakout direction with 'price trend leading to the candle' to determine reversal vs continuation. The source text mentions exponential moving average as the trend measure, but the exact EMA period and logic for matching breakout direction to prior trend is not specified in the signal. The pattern requires conditional logic (IF trend is up AND breakout is up THEN continuation, ELSE reversal) that cannot be expressed with simple 3-field conditions. Additionally, multiple success_rate and performance metrics are marked AUTHOR_SILENT, preventing proper parameterization.",
+  "translation_notes": "Translated as basic candle breakout logic: upward breakout when close > previous high (paired with EMA-20 confirmation for trend), downward breakout when close < previous low (paired with EMA-20 confirmation). Exit conditions use reversal of breakout direction. The 'marry breakout with price trend' logic for determining reversal vs continuation requires conditional branching not supported by the rule engine structure. EMA-20 selected as likely trend measure from source text reference to exponential moving average, but original period is unspecified."
+}

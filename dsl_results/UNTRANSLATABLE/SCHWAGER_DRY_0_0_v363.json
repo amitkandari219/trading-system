@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires three independent market conditions that cannot be fully expressed with available indicators: (1) Leading stocks breakdown detection requires constituent-level data and YTD performance ranking (not available), (2) Advance/decline line is a market breadth indicator not in the allowed list, (3) Federal Reserve rate hike tracking requires external macro data not in price/technical indicators. Only the price-based proxy (leading stocks closing below 20-day MA) has been partially translated.",
+  "translation_notes": "This signal is fundamentally a macro/market-structure rule requiring: market breadth data (A/D line), constituent ranking (top 10% YTD), and Fed policy tracking. The available indicator set contains only price/volume/momentum tools. The entry_short condition partially captures the leading stock breakdown using price vs sma_20, but without A/D line data and Fed rate hike counts, the rule cannot be fully operationalized in a price-only backtest engine. Recommend adding advance_decline_line, fed_rate_changes, and constituent_ranking indicators to the allowed list."
+}

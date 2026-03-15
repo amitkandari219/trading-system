@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires channel-normalized linearly-weighted moving average (CN(LMA(series, 4), N-days)) which is not available in the allowed indicators list. The closest available proxy is price_pos_20 (price position in 20-day channel), but this uses a different normalization method and lookback period. LMA (linearly weighted MA) is also not provided; only SMA and EMA variants are available.",
+  "translation_notes": "Attempted mapping using price_pos_20 as a channel-normalized indicator proxy with threshold crossing logic. However, the original signal's specific transformation (4-day LMA normalized by 20-day channel) cannot be precisely replicated. The 1.5 ATR stop-loss is approximated as stop_loss_pct based on typical ATR values. Exit conditions use opposite threshold crosses as specified, with an added reversal confirmation using price direction."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external regime variable (oil price) and cointegration detection (GLD vs GDX relationship) which are not available in the allowed indicators list. Oil price is an external asset not in scope. Cointegration probability assessment requires statistical analysis unavailable as a standard indicator. Specific oil price threshold value not provided by author.",
+  "translation_notes": "This is a regime-switching exit rule for a pairs trading strategy. The core logic cannot be fully expressed with allowed indicators because: (1) Oil price is an external asset class not in the indicator library; (2) Cointegration relationship detection requires statistical correlation analysis not available as a pre-computed indicator; (3) The specific threshold values are marked AUTHOR_SILENT. To implement, oil price would need to be added as an external data source, and a cointegration test would need to be computed separately. The exit condition is clear: liquidate GLD/GDX positions when oil price breaches threshold."
+}

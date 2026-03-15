@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fundamental screening (emerging growth, new catalyst), historical validation (stock doubled on prior occasion), and multi-day consolidation pattern analysis (60-89 day base with specific volatility constraints). These require: (1) fundamental/earnings data not in price/technical indicator set, (2) historical lookback across multiple years for doubling events (not available in bar-by-bar indicators), (3) pattern recognition logic for base formation that cannot be expressed as simple indicator comparisons. The signal is fundamentally a multi-stage portfolio construction filter, not a point-in-time entry signal.",
+  "translation_notes": "Attempted to capture the breakout component (price above upper BB on above-average volume) and base invalidation (close below lower BB), but this loses 80% of the signal's intent: the progressive filtering through fundamental catalyst + historical performance + technical pattern quality. A proper implementation would require: (a) fundamental data connectors, (b) historical performance metrics module, (c) pattern detection library for consolidation bases. The CONTEXT_DEPENDENT direction and reduction_ratio parameters also suggest regime/market-dependent entry thresholds that cannot be encoded in static boolean rules."
+}

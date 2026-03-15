@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires execution of a simultaneous pairs trade (long GLD + short GC) with specific roll-yield based entry logic. The entry conditions depend on: (1) detecting negative roll yield in gold futures contracts, (2) calculating the spread between GLD and GC pricing, and (3) establishing leveraged paired positions. None of these concepts can be expressed using only the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, pivots, volume, returns). Roll yield requires futures term structure analysis and contract-specific data not available in the indicator set. Additionally, the signal requires simultaneous multi-instrument execution which exceeds single-instrument backtest engine capabilities.",
+  "translation_notes": "Signal is a calendar spread/pairs arbitrage strategy targeting gold futures roll return. Requires: (1) futures curve slope/roll yield calculation, (2) multi-leg position management (long ETF + short futures), (3) leverage constraints (5-6x), (4) regime detection for negative roll environments. The backtest period (Aug 2007-Aug 2010) and performance metrics (1.9% annualized return, 0.8% max drawdown) are provided but cannot be operationalized without roll yield indicators. Entry/exit conditions marked AUTHOR_SILENT require domain expertise in gold markets and cannot be inferred from standard price-action indicators alone."
+}

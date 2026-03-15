@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires market microstructure metrics not available in allowed indicators: (1) 'Instrument is in bottom quartile of trading volume relative to asset class peers' requires cross-instrument peer comparison and percentile ranking within asset class; (2) 'Bid-ask spread exceeds 95th percentile of historical range' requires bid-ask spread data (not in allowed set); (3) 'Open interest or unique participant count is below 30th percentile of sector median' requires open interest and participant count metrics. The allowed volume indicator (volume, vol_ratio_20) cannot capture relative peer performance or bid-ask spreads. These are market structure conditions that exist outside standard OHLCV price/volume indicators.",
+  "translation_notes": "This signal is fundamentally about market microstructure and liquidity conditions (thin markets, poor fills, low participation) rather than price action. While vol_ratio_20 and volume indicators exist, they cannot measure: (a) relative quartile standing vs peers within an asset class, (b) bid-ask spread dynamics, or (c) participant count. The entry conditions require external data feeds or cross-sectional analysis incompatible with single-instrument technical indicators. Consider implementing this signal in a separate market microstructure module with access to order book depth, bid-ask feeds, and cross-instrument comparative data."
+}

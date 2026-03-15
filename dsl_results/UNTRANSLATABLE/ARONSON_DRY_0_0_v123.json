@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'news events' and 'rational valuation gaps' which are not available as indicators in the allowed set. The concept of anchoring bias and gap-to-rational-value estimation cannot be directly operationalized without external news data and fundamental value estimates. Approximated using price drift (ATR > 2 stddev threshold) and volume confirmation instead, but this is a lossy translation of the original behavioral finance concept.",
+  "translation_notes": "Attempted approximation using: (1) 50-bar SMA as anchor point proxy; (2) ATR > 2.0 as drift magnitude threshold (substitute for 2 stddev drift); (3) vol_ratio_20 > 1.0 for volume confirmation; (4) body_pct > 0.8 as reversal candlestick approximation; (5) 60-bar max hold period per spec. Original signal fundamentally requires news event detection and fundamental valuation inputs not available in technical indicator set."
+}

@@ -1,0 +1,130 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.025"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.1"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "55"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.975"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.1"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "45"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "0.01"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "returns",
+        "operator": "<=",
+        "right": "-0.01"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "HIGH_VOL",
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used price_pos_20 to represent standard deviation bands (0.025 \u2248 1.5 SD below 20-period mean; 0.975 \u2248 1.5 SD above). Mapped 'narrative intensity' and 'contrarian sentiment >55th percentile' to RSI extremes (RSI>55 for bullish overextension, RSI<45 for bearish). Vol_ratio_20 used for volume spike detection. Exit conditions: 1-2% profit mapped to 1% threshold with returns indicator; time-based 5-bar hold enforced via hold_days_max. Direction set to CONTEXT_DEPENDENT to support both long and short entries based on overextension direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.025
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.1
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 55.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.975
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.1
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 45.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": 0.01
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "returns",
+        "op": "<=",
+        "value": -0.01
+      }
+    ],
+    "regime_filter": [
+      "HIGH_VOL",
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used price_pos_20 to represent standard deviation bands (0.025 \u2248 1.5 SD below 20-period mean; 0.975 \u2248 1.5 SD above). Mapped 'narrative intensity' and 'contrarian sentiment >55th percentile' to RSI extremes (RSI>55 for bullish overextension, RSI<45 for bearish). Vol_ratio_20 used for volume spike detection. Exit conditions: 1-2% profit mapped to 1% threshold with returns indicator; time-based 5-bar hold enforced via hold_days_max. Direction set to CONTEXT_DEPENDENT to support both long and short entries based on overextension direction."
+  },
+  "source_rule_text": "Traders should recognize that investor overconfidence and overoptimism cause overreaction to information, pushing prices too far and creating mean-reversion opportunities; discipline requires restraint from joining the crowd narrative and instead positioning for price correction."
+}

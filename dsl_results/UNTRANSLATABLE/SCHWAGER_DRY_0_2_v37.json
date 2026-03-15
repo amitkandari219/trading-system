@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct detection of 'central bank or institutional intervention activity' as a measurable condition, which is not available in the indicator set. Intervention is a qualitative market microstructure phenomenon (large coordinated orders, official communications, FX operations) that cannot be reliably inferred from price/volume/momentum indicators alone. The 'consecutive bars of intervention' logic requires an intervention detection signal not present in allowed indicators.",
+  "translation_notes": "Attempted proxy using volume ratio drop (suggesting intervention removing trend fuel) and ADX trend confirmation, but this is a weak approximation. The core signal cannot be properly translated without explicit intervention detection data (e.g., central bank order flow, official statements flagged in real-time, or a dedicated intervention indicator). Stop-loss set to 1.5 ATR equivalent (approx 2.25% for typical ATR/price ratios). Position size reduction (position_reduction_percent: 0) suggests no entry rather than partial exit, leaving direction as CONTEXT_DEPENDENT."
+}

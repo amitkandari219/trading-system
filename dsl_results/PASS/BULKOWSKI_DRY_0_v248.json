@@ -1,0 +1,80 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_upper"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "BARR pattern entry mapped to: price above SMA_20 (upsloping base), volume spike above historical vol, and price breaking above upper Bollinger Band (bump phase with momentum). Exit on price crossing below SMA_20 (sharp decline phase). Pattern requires visual confirmation of rounding top which cannot be fully expressed in quantitative rules; additional chart review recommended. Success rates and specific percentage moves marked AUTHOR_SILENT were not incorporated."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_upper"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "BARR pattern entry mapped to: price above SMA_20 (upsloping base), volume spike above historical vol, and price breaking above upper Bollinger Band (bump phase with momentum). Exit on price crossing below SMA_20 (sharp decline phase). Pattern requires visual confirmation of rounding top which cannot be fully expressed in quantitative rules; additional chart review recommended. Success rates and specific percentage moves marked AUTHOR_SILENT were not incorporated."
+  },
+  "source_rule_text": "Pattern name: BARR (Bump And Run Reversal). Prices rise with upward sloping base, bump up with volume spike on momentum, round over at top, then decline sharply."
+}

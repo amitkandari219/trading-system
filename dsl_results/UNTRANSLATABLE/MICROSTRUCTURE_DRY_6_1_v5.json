@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_6_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking competitor order matching patterns (3+ matches in last 5 bids), historical win rate of leapfrog skips (>60%), and willingness-to-execute thresholds. These are behavioral/execution attributes not available as standard market indicators. vol_ratio_20 and atr_14 approximate market spread conditions, but the core logic (competitor pattern matching, confidence thresholds, time precedence mechanics) cannot be fully expressed using only OHLCV-derived indicators.",
+  "translation_notes": "MICROSTRUCTURE_DRY_6_1 is a sophisticated order placement strategy tied to order book dynamics and competitive behavior prediction. Translated entry conditions approximate 'wide spread' (vol_ratio as proxy for relative spread activity) and 'sufficient volatility to justify skips' (atr_14 >= 2 ticks). Exit on adverse move (atr expansion >3) represents market moving against the position. The signal is fundamentally untranslatable without access to order flow, competitor identity tracking, and historical bid-match statistics."
+}

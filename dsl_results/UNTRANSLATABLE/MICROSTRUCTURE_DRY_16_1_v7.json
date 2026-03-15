@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_16_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dealer-specific microstructure metrics (dealer ask price vs fundamental value, inventory imbalance detection, dealer spread normalization) which are not available in standard OHLCV indicators. The core concept of 'ask price 2-2.5% below fundamental value' and 'size multiple relative to normal spread size' cannot be expressed without access to order book depth, dealer quotes, or proprietary fundamental value estimates not included in the allowed indicator set.",
+  "translation_notes": "Attempted proxy translation using spread widening (atr_20 as volatility/spread proxy), prior volume elevation, and price deviation from sma_20 as fundamental value estimate. However, this does not capture the true microstructure intent of dealer inventory rebalancing and specific ask-price discounting. A proper implementation requires real-time order book and dealer quote data."
+}

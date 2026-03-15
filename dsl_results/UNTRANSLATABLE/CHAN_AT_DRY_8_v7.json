@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of earnings announcement events and intraday return measurement from previous close. Earnings announcement timing is an external event marker not available in the allowed indicator set. The strategy also requires same-day close liquidation which requires explicit event detection and time-based exit logic not expressible with available indicators and operators.",
+  "translation_notes": "Attempted to capture the 'very positive' and 'very negative' intraday return thresholds using \u00b15% on the returns indicator as a placeholder, but the core requirement\u2014triggering only on earnings announcement days\u2014cannot be properly expressed without event data or a dedicated earnings flag indicator. The exit condition 'liquidate at day close' requires temporal logic beyond the allowed operators. This signal is fundamentally event-driven and requires custom event handling in the backtest engine."
+}

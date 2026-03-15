@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "zscore_last is not in the ALLOWED INDICATORS list. Z-score calculations require cointegration analysis and hedge ratio computation that are not supported by the available indicators (which are limited to standard technical indicators like RSI, MACD, ATR, etc.). Additionally, position tracking flags (not already long/short) require state management outside the indicator scope.",
+  "translation_notes": "Signal describes a pairs trading strategy with z-score mean reversion logic. The core mechanics (z-score thresholds at \u00b13.0 for entry, \u00b10.5 for exit) and context-dependent direction are clear, but cannot be expressed using only the allowed indicators. Would require either: (1) adding zscore_spread or zscore_pair to allowed indicators, or (2) implementing cointegration/hedge ratio calculations within the backtester."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_28_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'acceleration_rate' (rate of change of momentum / second derivative) which is not available in the allowed indicators list. The closest available proxy is MACD histogram for momentum direction changes, but true acceleration detection (ROC of ROC or second-order derivative) cannot be precisely replicated. Additionally, '60th percentile of recent distribution' requires dynamic percentile calculation not supported by the allowed operators.",
+  "translation_notes": "Attempted translation uses MACD histogram crossover as a proxy for momentum acceleration reversal, combined with profitable position check (returns > 0) for entry, and exit on momentum reversal (MACD histogram < 0) or profit target (+2.5% = 0.025 in decimal). Hold duration capped at 5 bars as specified. However, this is a lossy translation that does not capture the true microstructure signal of uninformed buyer exhaustion."
+}

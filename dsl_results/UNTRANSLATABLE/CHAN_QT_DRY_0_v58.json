@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calendar-based filtering (January month detection) and index membership filtering (S&P 600 small-cap classification). These are data/universe filters, not technical indicators from the allowed list. Additionally, the signal references mean-reversion properties and market downturn/recovery benefits but provides no quantifiable technical thresholds (all parameters marked AUTHOR_SILENT). The operators 'is' used above for calendar and index membership are not valid for technical indicator comparison and should be implemented as data filters external to the rule engine.",
+  "translation_notes": "This signal is fundamentally a calendar-seasonal pattern rule combined with universe selection, not a technical indicator-based rule. The entry conditions cannot be expressed using only the allowed technical indicators and operators. Implementation would require: (1) calendar month filtering at the data/universe selection layer, (2) S&P 600 index membership validation, and (3) historical analysis to determine quantifiable mean-reversion thresholds (e.g., RSI, Bollinger Band positioning) that were not provided by the author."
+}

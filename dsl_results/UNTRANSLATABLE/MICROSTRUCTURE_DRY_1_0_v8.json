@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires market microstructure data not available in standard OHLCV indicators: (1) Limit order book depth and sitting time (>60 seconds without adjustment), (2) Price deviation from recent trades measured in standard deviations, (3) Order size percentile detection (>75th percentile of retail size), (4) Informed trader detection via institutional trade flow analysis. These require tick-level order book data, trade classification algorithms, and institutional flow detection not present in allowed indicators list.",
+  "translation_notes": "This signal is fundamentally based on order book microstructure and information asymmetry detection. Standard candlestick and technical indicators cannot capture: limit order persistence, order size distribution percentiles, trader classification (retail vs institutional), or information content of trades. The partial translation above uses volume percentile as a weak proxy for order size, but misses the core logic of exploiting stale limit orders while avoiding informed traders. Backtesting this strategy requires tick data, order book snapshots, and trade classification data."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) 3-sigma calculation below 20-SMA (not available as indicator), (2) reversal pattern detection across 3+ bars (requires multi-bar pattern logic not expressible with single-bar indicators), (3) margin call tracking (position management feature outside indicator scope), (4) gap-down detection (requires inter-day gap logic). The core oversold + ADX regime filter is translatable, but pattern recognition and margin call components cannot be expressed with allowed indicators.",
+  "translation_notes": "Translated oversold condition using rsi_14 < 20 (closest match to RSI < 20). Used adx_14 < 40 directly. The 3-sigma oversold threshold, 3+ bar reversal pattern, gap-down avoidance, and margin call buffer feature cannot be expressed with the allowed indicator set and require custom logic or additional indicators not in the ALLOWED list."
+}

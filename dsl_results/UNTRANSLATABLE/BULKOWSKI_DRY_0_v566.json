@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern detection (two peaks of approximately equal height and identification of confirmation line low) requires multi-bar pattern recognition logic not expressible with single-bar indicators and basic operators. The 'confirmation line' (low between two peaks) is a structural pattern element that cannot be computed from standard OHLCV indicators without explicit peak-detection algorithms.",
+  "translation_notes": "Signal requires identifying a double-top pattern with two equal peaks and computing the low between them as a dynamic support level. This is a chart pattern recognition task beyond the scope of indicator-based rules. The entry condition 'close below confirmation line' was approximated using pivot point as a proxy, but this is NOT semantically equivalent to the actual pattern. Recommend implementing a custom pattern detector or using candle pattern library instead."
+}

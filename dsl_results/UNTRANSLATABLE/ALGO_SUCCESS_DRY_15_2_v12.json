@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires rolling OLS regression with dynamic hedge ratios and z-score calculations on residuals from paired asset spreads. These are not available in the allowed indicators list. OLS regression, residual z-scores, and multi-asset pair correlation metrics are custom statistical computations not present in standard OHLCV indicators.",
+  "translation_notes": "The signal describes a pairs trading strategy with mean reversion based on z-scores of OLS regression residuals. This requires: (1) computing rolling OLS regression between two paired assets, (2) calculating residuals, (3) computing z-scores of those residuals, (4) comparing against zscore_high (2.0) and zscore_low (0.75) thresholds. None of these intermediate calculations are available as pre-computed indicators. A practical approximation using mean reversion (price vs SMA) has been provided, but this does not capture the paired asset dynamics or statistical rigor of the original signal. Parameters ols_window=60, zscore_high=2.0, zscore_low=0.75 cannot be directly applied without custom indicator development."
+}

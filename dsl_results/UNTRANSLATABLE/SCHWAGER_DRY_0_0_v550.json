@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires news event detection ('No major news event within last 5 trading sessions' and 'Exit counter-trend position immediately on unexpected news release'). News event indicators are not in the allowed indicator list. The rule also requires tracking news timing across 5 trading sessions, which cannot be expressed with available price/technical indicators.",
+  "translation_notes": "Translated the core technical conditions: price above/below 200-day MA (sma_200), RSI > 50 for uptrend (rsi_14), and ADX > 25 for trend persistence (adx_14). The exit conditions on 200-day MA crossover are included. However, the fundamental rule about avoiding trades against news events and the 5-day news lookback window cannot be implemented without external news data feeds. This signal requires integration with a news/event detection system that is outside the scope of technical indicator-based backtesting."
+}

@@ -1,0 +1,72 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used Donchian Channel (dc_upper/dc_lower) as the 50-period channel breakout mechanism. Volume confirmation interpreted as current volume exceeding the 50-period SMA of volume. Time-based exit (20 bars without new highs) encoded via hold_days_max. The signal is context-dependent but targets TRENDING regimes; mapped to TRENDING_UP as the primary long signal regime."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Used Donchian Channel (dc_upper/dc_lower) as the 50-period channel breakout mechanism. Volume confirmation interpreted as current volume exceeding the 50-period SMA of volume. Time-based exit (20 bars without new highs) encoded via hold_days_max. The signal is context-dependent but targets TRENDING regimes; mapped to TRENDING_UP as the primary long signal regime."
+  },
+  "source_rule_text": "Enter a long position when price breaks above the maximum value of a lookback channel; the simplicity and effectiveness of channel breakouts makes them viable as a core trend-following mechanism."
+}

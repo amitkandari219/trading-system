@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) detection of 'capitulation indicator active for minimum 5 consecutive bars' \u2014 no capitulation or multi-bar consecutive condition operator available; (2) 'sentiment measure (VIX equivalent, put/call ratio, or positioning) at 75th+ percentile' \u2014 only india_vix available, no percentile rank function; (3) 'prior euphoric rally >20% move on macro catalyst event' requires event detection not available in price/technical indicators. Used vol_ratio_20 as proxy for capitulation volume spike, but cannot enforce 5-bar consecutive requirement or sentiment percentile thresholds.",
+  "translation_notes": "Translated 'prior euphoric rally >20%' as recent returns > 0.2 (approximate). Translated 'sharp pullback of 10% from highs' as close < sma_50 (structural pullback below intermediate trend). Translated 'capitulation with high volume' as vol_ratio_20 > 1.5 (approximate volume surge). Cannot precisely replicate 5-bar consecutive capitulation or 75th percentile sentiment without additional operators. Translated 'price holds above 30-period MA' as entry filter (close > sma_30). Exit on +15% return (returns > 0.15) or close below sma_30 (support break). Hold period set to 90 days (3 months) per signal specification."
+}

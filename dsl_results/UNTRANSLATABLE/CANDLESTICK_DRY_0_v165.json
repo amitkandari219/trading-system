@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires computing a dynamic 'height-to-breakout-price ratio' and comparing it to a median baseline, then applying a 'measure rule' with percentage multipliers from a lookup table. These calculations (ratio computation, median comparison, and table-driven price targets) cannot be expressed using only the allowed indicators and operators. Additionally, the 'breakout price' reference is not defined in the source material, and the measurement table referenced in exit conditions is not provided. The pattern classification logic (tall vs short candles) and resulting directional bias cannot be reliably constructed with available indicators.",
+  "translation_notes": "Signal CANDLESTICK_DRY_0 describes a candlestick pattern analysis method that relies on custom calculations (height ratio to median) and external lookup tables not accessible in the backtest engine. All key parameters (success rates, average moves, failure rates, volume trends, throwback percentages) are marked AUTHOR_SILENT, making realistic exit conditions impossible to define. Recommend obtaining the measurement table and explicit entry/exit rules from the original source material."
+}

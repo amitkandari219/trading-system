@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires autocorrelation of returns (not available in allowed indicators) to measure information diffusion lag and Ljung-Box test p-value (not available) for volatility clustering detection. These statistical tests cannot be replicated using the provided technical indicators. Volume proxies and return metrics are used as approximations, but the core autocorrelation-based logic is untranslatable.",
+  "translation_notes": "Attempted translation uses returns volatility clustering (hvol_20 < 0.15) as proxy for Ljung-Box significance, returns magnitude as proxy for autocorrelation persistence, and volume ratio as proxy for diffusion lag effects. Momentum persistence approximated by directional close changes. This is a degraded translation that loses the signal's statistical rigor."
+}

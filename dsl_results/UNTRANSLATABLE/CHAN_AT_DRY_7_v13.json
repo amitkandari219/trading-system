@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires comparison of current price against prices 30 and 40 days ago. The allowed indicators only support prev_close (1 bar ago) and standard moving averages (sma_30, sma_40). Historical price values at arbitrary past bars (close[30d_ago], close[40d_ago]) are not in the allowed indicator set. To implement this signal, either add 30-day and 40-day lookback price indicators, or use sma_30 and sma_40 as proxies for historical price levels.",
+  "translation_notes": "Signal logic is clear (mean-reversion with dual lookback periods), but the backtest engine's indicator library does not support direct historical price indexing beyond 1 bar. The strategy would require custom indicator support or reformulation using moving averages as price-level proxies."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Price decline >= 1.5 standard deviations below 15-day moving average \u2014 requires standard deviation calculation not in allowed indicators; (2) Volume on down days >= 125% of 15-day average volume \u2014 requires conditional volume averaging (down days only) not expressible with allowed operators; (3) MACD histogram reversal \u2014 requires directional change detection not supported by allowed operators; (4) 15-day moving average is not in allowed list (only sma_5, sma_10, sma_20, sma_40, sma_50, sma_80, sma_100, sma_200 available)",
+  "translation_notes": "Attempted partial translation using closest available indicators: substituted sma_20 approximation for 15-day MA, used vol_ratio_20 as proxy for volume threshold, used rsi_14 < 35 for oversold condition. However, the core statistical conditions (standard deviation bands, conditional volume filtering, MACD reversal confirmation) cannot be reliably expressed with the constrained operator set and indicator list."
+}

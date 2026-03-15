@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references specific 'Belt Hold' candlestick pattern recognition and regime-dependent closing price confirmations (-5.12% for bull-down, -8.09% for bear-down) that cannot be expressed with allowed indicators. Pattern requires candle morphology analysis (opening gap confirmation, specific body/wick structure) beyond available bar properties. Regime-dependent entry thresholds cannot be dynamically applied in current rule structure.",
+  "translation_notes": "Translated core logic: breakout above/below 50-day MA with directional candle confirmation. Omitted regime-specific closing price thresholds (-5.12%, -8.09%) as they require conditional logic not supported in schema. Used stop_loss_pct=5.12 as representative value from bear-down regime. Belt Hold pattern details (opening gap, specific candle structure) cannot be replicated\u2014recommend implementing as custom pattern detector."
+}

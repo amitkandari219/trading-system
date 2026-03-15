@@ -1,0 +1,72 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_upper"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Cup pattern breakout modeled as price breaking above upper Bollinger Band with volume confirmation. Entry requires both conditions (AND logic). Cup formation itself cannot be directly encoded with allowed indicators, so used breakout proxy with volume ratio. Exit on close below SMA_20 represents loss of bullish continuation. Throwback probability (50%) noted but not formally encoded in rules. Average rise of 34% suggests 10-20 day hold period. Failure rate of 9% at 5% decline incorporated into stop_loss_pct conservatively at 5%."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_upper"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Cup pattern breakout modeled as price breaking above upper Bollinger Band with volume confirmation. Entry requires both conditions (AND logic). Cup formation itself cannot be directly encoded with allowed indicators, so used breakout proxy with volume ratio. Exit on close below SMA_20 represents loss of bullish continuation. Throwback probability (50%) noted but not formally encoded in rules. Average rise of 34% suggests 10-20 day hold period. Failure rate of 9% at 5% decline incorporated into stop_loss_pct conservatively at 5%."
+  },
+  "source_rule_text": "Cup pattern: A bullish continuation pattern that forms in an uptrend, characterized by a U-shaped formation"
+}

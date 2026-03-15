@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_11_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a classification model's predicted probability output (model_confidence) and probability margin (model_margin) which are not available in the allowed indicators list. These are external ML model outputs, not technical indicators. The signal is inherently model-dependent and cannot be expressed using only price-based technical indicators.",
+  "translation_notes": "This signal describes a meta-rule for using classification model outputs with confidence thresholds. It cannot be translated into technical indicator conditions because it depends on: (1) predicted probabilities from an external classification model, (2) probability margins between top-2 predictions, and (3) direction determination from the model itself. To implement this rule, the backtester would need to integrate actual ML model predictions as data feeds rather than relying on technical indicators alone."
+}

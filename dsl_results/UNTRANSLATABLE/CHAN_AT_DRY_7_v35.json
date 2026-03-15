@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a regime-avoidance rule rather than a tradeable entry/exit signal. It requires: (1) detection of 'post-financial crisis regime' and 'mean reversion dominance' which are not measurable with the allowed indicators; (2) monitoring of 'S&P DTI momentum index' which is not in the allowed indicator list; (3) identification of regime transitions that cannot be operationalized without external crisis detection or regime classification models. The signal instructs to AVOID or REDUCE allocation during specific market regimes, not to generate mechanical buy/sell signals. This requires external regime classification logic outside the scope of standard technical indicators.",
+  "translation_notes": "Signal CHAN_AT_DRY_7 is fundamentally a regime filter (NOT APPLICABLE during crisis/mean reversion periods) rather than an actionable trading rule. To implement, use as a portfolio-level allocation gate: reduce momentum strategy exposure when market regime transitions to post-crisis mean reversion. Suggested workaround: Create a separate regime detector for financial crisis periods and apply as a multiplier to momentum strategy position sizing rather than as entry/exit conditions. The 25-day holding period is noted but cannot be enforced as an exit condition without additional context on entry signals."
+}

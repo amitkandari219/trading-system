@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Belt Hold candle pattern identification - a multi-candle pattern not reducible to single-bar indicators; (2) Dynamic median calculation of candle height ratio to classify tall vs short candles - requires rolling percentile calculation not available in indicator list; (3) Market regime context (bull/down breakouts vs bear/up breakouts) that cannot be precisely determined from provided regime types. The 'tall candle' vs 'short candle' performance differential requires pattern-level analysis beyond standard OHLCV indicators.",
+  "translation_notes": "Attempted entry using range > ATR as proxy for 'tall candle' detection, and context-dependent direction with exits based on moving average crossovers within the 5-10 day window mentioned in source text. However, the core Belt Hold pattern recognition and performance variance mechanism cannot be accurately expressed using only the allowed indicators. A proper implementation would require custom pattern recognition logic."
+}

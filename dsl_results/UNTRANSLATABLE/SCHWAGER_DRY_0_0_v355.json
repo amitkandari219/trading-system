@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of fundamental catalysts (new product/management/industry change announced within last 6 months) and shares outstanding < 15 million. These are qualitative/external data points not available in the ALLOWED INDICATORS list, which contains only technical price/volume indicators. The 52-week new high is approximated using dc_upper (Donchian channel), volume confirmation uses vol_ratio_20, and small share count is inferred via price_pos_20 proximity, but the core catalyst detection cannot be mechanically implemented without external fundamental data feeds.",
+  "translation_notes": "Partial translation attempted: (1) New all-time high approximated as close > dc_upper (Donchian upper); (2) Volume confirmation approximated as volume > vol_ratio_20 (ratio to 20-day avg); (3) Small share count inferred indirectly as price_pos_20 < 0.15 (price near lower end of recent range, proxy for lower market cap); (4) Exit on 10-day MA break uses sma_10; (5) Hard stop-loss at -8% using returns indicator. However, the fundamental catalyst requirement (product/management/industry change) cannot be encoded without qualitative data ingestion or external event feeds."
+}

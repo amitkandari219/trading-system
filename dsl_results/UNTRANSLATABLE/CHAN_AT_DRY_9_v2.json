@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Kelly formula leverage calculation requires historical mean excess return and variance estimation, which cannot be expressed as static indicator conditions. Kelly leverage optimization is a portfolio-level calculation requiring backtester implementation outside of rule-based entry/exit conditions. The 'half-Kelly' modifier (0.5x multiplier) is a position sizing operation, not a tradeable signal condition.",
+  "translation_notes": "This signal describes a risk management overlay (position sizing via Kelly criterion) rather than a market entry/exit rule. Implementation requires: (1) calculating realized mean excess returns and variance over lookback period, (2) computing optimal Kelly leverage f* = (mean_excess_return) / variance, (3) applying position_size = 0.5 * f*. This belongs in position sizing logic, not entry/exit conditions. Placeholder conditions shown use return direction as proxy, but do not capture the Kelly leverage computation."
+}

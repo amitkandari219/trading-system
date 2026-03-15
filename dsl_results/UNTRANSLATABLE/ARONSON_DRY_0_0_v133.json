@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'news announcement contradicts prior regime belief' and 'consolidation period post-announcement' \u2014 these require event-driven external data (news feeds, sentiment signals) and multi-bar pattern recognition not available in the allowed indicator set. The 'underreaction' concept (price moves <50% of historical normal move for similar surprise magnitude) requires historical surprise magnitude calibration and regime-specific baseline comparisons that cannot be expressed with the allowed indicators. Approximated with returns underperformance and volume confirmation, but core logic is untranslatable.",
+  "translation_notes": "Attempted partial translation using returns as proxy for price underreaction (returns < 0.5 representing <50% expected move) and vol_ratio_20 for volume confirmation (>1.5x). However, the signal fundamentally relies on news event detection and regime-specific surprise baselines which are outside the scope of technical indicators. Direction set to CONTEXT_DEPENDENT per original signal specification, with symmetric entry/exit conditions for both long and short since actual direction depends on whether trend or mean-reversion regime was broken."
+}

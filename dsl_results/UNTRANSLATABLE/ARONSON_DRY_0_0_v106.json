@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'major news events' and precise 1.5-2.0 standard deviation moves from pre-news levels with post-reversal confirmation. These require explicit news event timestamps and intra-bar volatility anchoring not available in standard OHLCV indicators. The 50% retracement logic and 75% target distance back to 'rational level' require external fundamental value estimation. Translated conditions as approximate mean-reversion proxies using Bollinger Bands and volume confirmation, but this does not capture the signal's core news-event-driven mechanism.",
+  "translation_notes": "Mean reversion approximated using: (1) close crossing sma_50 as rational level proxy, (2) bb_pct_b at 0.5 as 50% retracement confirmation, (3) vol_ratio_20 > 1.0 for volume confirmation. Stop loss set to 0.5 ATR per spec (atr_14). Hold duration set to 5 bars per parameters. Direction set CONTEXT_DEPENDENT per signal. Actual news event detection and standard deviation anchoring to pre-news price require external data not in indicator set."
+}

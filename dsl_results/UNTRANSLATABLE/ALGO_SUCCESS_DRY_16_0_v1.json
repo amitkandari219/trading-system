@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_16_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pair trading with residuals from linear regression fit, which is not available in the allowed indicators list. The strategy needs custom calculation of z-scores from regression residuals across a 60-day lookback period on paired instruments. Standard technical indicators cannot capture this multivariate statistical relationship.",
+  "translation_notes": "Attempted approximate translation using log_returns as a proxy for residual-like deviation signals, but this does not accurately represent the pair trading residual z-scores specified in the original signal. The grid-search optimization across lookback periods, entry thresholds, and exit thresholds is a meta-strategy parameter that cannot be encoded in individual trade rules. A proper implementation requires custom pair trading logic not supported by standard technical indicators."
+}

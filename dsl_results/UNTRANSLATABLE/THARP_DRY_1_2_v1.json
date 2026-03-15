@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_1_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of 'Yesterday's High + 0.5 \u00d7 Yesterday's Range' and gap tolerance comparisons that cannot be expressed with single indicator comparisons. Requires multi-step arithmetic on previous bar data that exceeds the atomic condition structure. Also requires explicit profit target logic (Entry + 1.0 \u00d7 risk taken) which is not supported in the condition syntax.",
+  "translation_notes": "Approximated entry using close > prev_high (volatility breakout concept) and volume confirmation via vol_ratio_20. Stop-loss set to 1.0% representing the Yesterday's High - 1.0 \u00d7 Yesterday's Range logic. Hold_days_max set to 3 for time-based exit. Full signal requires custom indicator or multi-condition expression engine."
+}

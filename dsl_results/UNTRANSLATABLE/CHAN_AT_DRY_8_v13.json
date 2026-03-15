@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires event-driven trigger (earnings announcement) which is not a price/technical indicator. The strategy is based on intraday execution following earnings events and position sizing by daily announcement frequency \u2014 neither of which can be expressed using only the allowed price-based indicators (OHLCV, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios). The entry condition explicitly requires 'Earnings announcement occurs (event-driven trigger)' which requires external fundamental/calendar data not available in the indicator list. Additionally, 'post-earnings announcement drift' and 'position sizing based on daily announcement frequency' require event timestamps and counts that cannot be derived from price action alone.",
+  "translation_notes": "This PEAD (Post-Earnings Announcement Drift) strategy is fundamentally event-driven and requires fundamental data (earnings calendars) and intraday market microstructure data that fall outside the scope of technical indicators. The strategy cannot be translated into pure price-action rules without access to earnings event data and intraday order flow information. Backtest parameters provided: APR 6.7%, Sharpe 1.5, period Jan 3 2011\u2013Apr 24 2012, max 30 positions/day, but these are historical results, not rule-based conditions."
+}

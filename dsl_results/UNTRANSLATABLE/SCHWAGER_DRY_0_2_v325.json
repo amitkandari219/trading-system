@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'material news events' (litigation verdicts, bankruptcy-level events) which cannot be expressed using only price/volume/technical indicators. News sentiment detection and event classification require external data feeds not in the allowed indicator set. The 60-minute time window and thesis invalidation logic also require event timestamp integration and position metadata (entry thesis) that exceed indicator-based rule capability.",
+  "translation_notes": "Partially translated exit logic: implemented the 3% price move threshold (\u00b10.03 in decimal scale) as a mechanical trigger using returns indicator within a 60-minute window. However, the core signal depends on news materiality assessment, thesis context, and fundamental analysis\u2014none of which can be expressed through technical indicators alone. A backtest engine would need: (1) external news feed integration, (2) position entry thesis logging, (3) event-driven rule execution, and (4) fundamental data sources to fully implement this rule. Current JSON captures only the price-action confirmation component (3% move requirement)."
+}

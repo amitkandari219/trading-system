@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) 'multiple asset classes at all-time highs simultaneously' \u2014 engine only has single-instrument indicators, no cross-asset class comparison capability; (2) 'media narrative of unsustainable wealth creation' \u2014 narrative sentiment cannot be quantified from price/technical indicators alone; (3) 'broad market breadth deterioration' \u2014 no breadth indicator (advance/decline line, McClellan Oscillator, etc.) in allowed list. Partially translated using price_pos_20 (52-week high proxy) and india_vix (complacency) as available substitutes, but core regime-shift detection logic is not implementable.",
+  "translation_notes": "Attempted partial translation using price_pos_20 >= 0.99 as proxy for 'at all-time high' on individual instruments and india_vix < 50 as complacency indicator (inverted: below median volatility). However, the signal's core requirement\u2014detecting synchronized ATH across multiple asset classes with media narrative confirmation\u2014cannot be replicated in a single-instrument backtester without cross-asset data feeds and sentiment analysis. Exit condition uses 2% rally reversal (5-10 days) as reasonable proxy for 'clear reversal fails'. Position sizing and narrative weighting parameters from original signal could not be translated to technical rules."
+}

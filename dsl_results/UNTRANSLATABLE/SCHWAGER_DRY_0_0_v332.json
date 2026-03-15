@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cross-asset yield/return comparison (Asset A vs Asset B differential tracking) which cannot be expressed with single-asset indicators. The core logic ('yield_differential_threshold_bps': 300, 'confirmation_period_days': 20) requires multi-instrument spread analysis not available in the allowed indicator set. Approximation attempted using returns and volatility proxies, but this does not capture the relative value regime shift mechanic described in the original signal.",
+  "translation_notes": "This signal describes a relative value / carry trade dynamic requiring comparison of yield spreads between two asset classes over time. The allowed indicator set contains only single-instrument technical indicators. To properly translate this, a custom indicator computing (Asset_A_Yield - Asset_B_Yield) tracked over rolling 20-day windows would be needed. The attempted JSON uses returns as a proxy for yield extremes and hvol_20 as a volatility regime marker, but this does not faithfully represent the intended signal logic of concentrating into the dominant asset when yield differential exceeds 300 bps persistently."
+}

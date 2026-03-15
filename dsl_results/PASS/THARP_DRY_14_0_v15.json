@@ -1,0 +1,128 @@
+{
+  "signal_id": "THARP_DRY_14_0",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_14_0",
+    "entry_long": [
+      {
+        "left": "sma_100",
+        "operator": "crosses_above",
+        "right": "sma_100"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.02"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_100",
+        "operator": "crosses_below",
+        "right": "sma_100"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.02"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_100",
+        "operator": "crosses_below",
+        "right": "close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_100",
+        "operator": "crosses_above",
+        "right": "close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used sma_100 as the long-term trend-following indicator per the 100-period lookback parameter. Price move abnormality represented by returns crossing \u00b12% threshold (approximating >2 standard deviations). Regime shift detection uses ADX > 25 to confirm trend initiation. Exit on trend reversal when price crosses back below/above the 100-period MA. Stop loss set to 3% to account for transaction costs and volatility during regime shifts."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_100",
+        "op": "crosses_above",
+        "value": "sma_100"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.02
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_100",
+        "op": "crosses_below",
+        "value": "sma_100"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.02
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_100",
+        "op": "crosses_below",
+        "value": "close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_100",
+        "op": "crosses_above",
+        "value": "close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used sma_100 as the long-term trend-following indicator per the 100-period lookback parameter. Price move abnormality represented by returns crossing \u00b12% threshold (approximating >2 standard deviations). Regime shift detection uses ADX > 25 to confirm trend initiation. Exit on trend reversal when price crosses back below/above the 100-period MA. Stop loss set to 3% to account for transaction costs and volatility during regime shifts."
+  },
+  "source_rule_text": "A trader should use longer-term trend-following indicators to reduce transaction costs and capture abnormally large price moves that occur during major market shifts, rather than relying on shorter-term indicators that generate more frequent signals."
+}

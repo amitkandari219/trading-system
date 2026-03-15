@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 12-month price range position detection and market context classification (BULL_MARKET vs BEAR_MARKET regime). The price_pos_20 indicator provides 20-day range position only, not 12-month. Additionally, the reversal/continuation rates are context-dependent on market regime (69% bull/48% bear success rates) which cannot be encoded as deterministic entry conditions without a regime detector. Exit conditions marked AUTHOR_SILENT in original source.",
+  "translation_notes": "Attempted to approximate candle position within range using price_pos_20 (0-0.33 for low position, 0.67-1.0 for high position) as proxy for 12-month range detection. Long entries at range lows (reversal bias 73%), short entries at range highs (reversal bias 63-67% in bear). Used SMA_50 crossing as reasonable exit condition. Original signal requires explicit 12-month range calculation and market regime classifier not present in standard indicator set."
+}

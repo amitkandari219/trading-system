@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'adverse move from regime entry' (path-dependent calculation) and 'regime entry point' which are not available as atomic indicators. Also requires dynamic position state tracking ('existing positions', 'position age') and forced re-evaluation logic that exceed atomic rule condition scope. The regime light system is fundamentally a state machine requiring position lifecycle tracking, not a simple entry/exit condition set.",
+  "translation_notes": "This is a meta-rule that governs how OTHER signals are accepted/rejected based on regime health. It cannot be directly translated into entry/exit conditions without: (1) a reference regime entry price/time, (2) position tracking state, (3) conditional signal acceptance logic. Recommend implementing as a pre-filter wrapper around the backtest engine rather than as a standalone signal rule. ADX_14 < 20 mapped to yellow (weak trend), ADX_14 < 15 mapped to red (very weak trend). hvol_20 >= 0.30 approximates '30% above 20-day MA' and hvol_20 >= 0.50 approximates '50% above 20-day MA'."
+}

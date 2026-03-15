@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires measuring price deviation as >1.5 standard deviations from 10-period SMA. The allowed indicator set includes atr_* but not rolling standard deviation or normalized deviation bands that would directly express '1.5 stdev from SMA'. While Bollinger Bands (bb_upper/bb_lower based on 20-period SMA) could approximate volatility-based deviation, they don't match the specified 10-period SMA + 1.5 stdev requirement. ATR could proxy volatility but is a different calculation than stdev. The exact entry condition 'Price deviates >1.5 standard deviations from 10-period SMA' cannot be precisely translated with available indicators.",
+  "translation_notes": "This signal fundamentally requires a rolling standard deviation calculation around sma_10, which is not available in the allowed indicator list. The reversion logic (RSI overbought/oversold + price extremes) can be partially captured using rsi_7 > 70 / < 30 and price vs sma_10 crossovers, but the precise deviation threshold measurement is untranslatable. A workaround would require adding bb_* indicators with 10-period settings or a custom stdev indicator."
+}

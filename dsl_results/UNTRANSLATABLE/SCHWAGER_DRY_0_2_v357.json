@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Relative Strength Rank (12-month percentile ranking) is not available in the allowed indicators list. The 'returns' field was used as a proxy for momentum/strength, but true RS ranking requires cross-sectional comparison against all stocks in universe, which cannot be computed from single-stock OHLCV data. Institutional ownership detection also requires fundamental data not in technical indicators list.",
+  "translation_notes": "Signal references: (1) RS Rank >= 75 \u2014 approximated as positive 12-month returns >= 0.75 (75% gain), but this is NOT equivalent to percentile ranking; (2) Institutional ownership \u2014 cannot be translated without fundamental data; volume > 0 used as proxy for institutional participation; (3) Price > 200-day MA \u2014 translated directly using sma_200; (4) Exit on RS < 60 and price below 200-day MA \u2014 translated as returns < 0.60 or close < sma_200. WARNING: This translation significantly deviates from original signal intent due to missing Relative Strength Rank indicator."
+}

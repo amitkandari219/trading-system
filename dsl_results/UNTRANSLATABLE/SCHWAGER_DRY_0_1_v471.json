@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires forward-looking catalyst event detection, outcome probability assessment based on external data, and platform/policy favorability assessment. These are fundamentally external, non-price-based inputs that cannot be expressed using only technical price/volume indicators (open, high, low, close, volume, moving averages, RSI, ATR, MACD, etc.). The rule requires: (1) identification of a future catalyst event 2-4 months ahead, (2) subjective probability assessment of outcomes (65-70%), (3) policy/platform favorability scoring, and (4) time-based position scaling logic. No technical indicator can measure future events, external probabilities, or regulatory favorability. This requires a fundamental/event-driven system external to price action.",
+  "translation_notes": "Signal SCHWAGER_DRY_0_1 is event-driven and catalyst-based rather than technical-indicator-based. The core logic\u2014'build position gradually over 6-8 weeks before a foreseeable event with 65-70% conviction, hold through event, exit within 2-4 weeks post-event or if conviction drops'\u2014cannot be operationalized without external event and probability data feeds. To implement this in a backtest engine, you would need: (1) an external events calendar with confirmed dates, (2) a probability/conviction assessment module, and (3) policy/sector favorability scoring. Consider using this as a trading framework separate from technical backtesting, or combine with technical filters (e.g., require sma_50 trend confirmation) as a secondary gate."
+}

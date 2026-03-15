@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_13_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'time window expiration logic' (exit after 75% of setup window elapsed without confirmation) which cannot be expressed as a simple 3-field condition. This requires temporal state tracking beyond allowed operators. Volatility breakout approximated using Bollinger Bands crossover, but the time-based exit condition is not translatable to the rule engine schema.",
+  "translation_notes": "Volatility breakout interpreted as price crossing Bollinger Bands (bb_upper/bb_lower). Price confirmation modeled as crossover event. Stop loss set to 2.0% based on signal parameters. Time window exit (75% elapsed) requires state machine logic not available in condition-based engine."
+}

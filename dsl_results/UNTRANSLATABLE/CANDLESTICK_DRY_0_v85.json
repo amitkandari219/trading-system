@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic price target calculation based on candle height ratios (height/6 for upside, height/3 for downside) with context-dependent entry direction. The backtest engine does not support parametric target calculation or regime-based directional switching at signal generation. Additionally, 'BULL_MARKET' and 'BEAR_MARKET' are not in the ALLOWED_REGIMES list. The signal also references performance metrics by shadow type that require pre-classification logic not expressible in simple condition rules.",
+  "translation_notes": "This pattern requires: (1) candle height calculation as (high-low), (2) separate upside target = (height/6) + high and downside target = (height/3) subtracted from high, (3) regime detection to determine breakout direction, (4) shadow classification (short vs tall) based on performance data. These require custom logic outside the standard 3-field condition structure. Recommend implementing as a custom pattern detector or separate rules engine module."
+}

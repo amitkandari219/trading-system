@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes market manipulation (spoofing/layering) by placing fake large orders to create false demand illusions. This requires: (1) order book depth data (best bid/ask sizes, order imbalance metrics) which are not in the allowed indicators list, (2) the ability to submit and cancel orders within the backtest (order submission/cancellation logic), and (3) detection of time-priority execution rules. The allowed indicators only include OHLCV, moving averages, momentum oscillators, and volatility metrics\u2014none of which can detect or execute the core manipulation mechanism. Additionally, translating this into a rule would constitute encoding an illegal market manipulation strategy.",
+  "translation_notes": "Signal CHAN_AT_DRY_8 describes spoofing/layering\u2014a prohibited market manipulation technique under most financial regulations (SEC Rule 10b-5, MAR Article 15, etc.). Cannot be implemented in a legitimate backtesting framework. Required data points missing: order_book_imbalance, bid_ask_spread, order_depth_levels, execution_rule_type, and order submission/cancellation mechanics."
+}

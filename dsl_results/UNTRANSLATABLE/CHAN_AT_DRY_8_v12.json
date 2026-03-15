@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Earnings announcement flag (earnann) \u2014 not available in allowed indicators; (2) Dynamic 90-day rolling standard deviation of close-to-open returns with 0.5 SD threshold \u2014 no rolling volatility indicator available in allowed set; (3) Comparison of returns against a dynamically calculated baseline. The allowed indicators do not include event flags (earnann) or the ability to compute and compare against rolling standard deviations of returns.",
+  "translation_notes": "Attempted approximation using raw returns >= 0.005 (\u22480.5% gap proxy) and intraday hold (hold_days_max=1), but this loses the critical volatility-normalized and earnings-event components. A proper backtest requires custom event detection and rolling volatility calculation unavailable in the standard indicator set."
+}

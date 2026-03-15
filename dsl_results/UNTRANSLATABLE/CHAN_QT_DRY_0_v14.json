@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a pre-calculated spread price threshold from external MATLAB pair-trading algorithm run before market open. This is a dynamic, externally-computed parameter that cannot be expressed using only the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Position, Previous Bar, Returns, Bar Props). The entry condition depends on 'Spread price reaches pre-calculated limit price threshold' where the threshold itself is unknown and author-silent. The exit condition is also author-silent (manual button press). Pair-trading spread prices are not available in the allowed indicator set.",
+  "translation_notes": "This is a discretionary spread pair-trading strategy with manual entry/exit via basket trader interface. Entry is triggered by reaching a pre-market calculated spread threshold. Exit is manual (button press). Cannot be systematically backtested without: (1) the specific pair constituents, (2) the MATLAB algorithm parameters (lookback_period, threshold, half_life), and (3) the calculated spread limit prices. Recommend obtaining the algorithm parameters and spread price calculations from the strategy author, or marking this as non-automatable."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fundamental metrics (market cap, institutional ownership %, analyst coverage, S&P 500 membership) that are NOT available in the allowed indicator set. The allowed indicators only support technical price/volume analysis. Institutional ownership, market cap, analyst coverage, and index membership are data attributes that must be sourced from a separate fundamental data layer and applied as pre-filters before technical rules are evaluated.",
+  "translation_notes": "This is a regime/filtering signal based on market structure and institutional participation, not a technical pattern. The entry conditions reference market cap ($500M-$2B), institutional ownership (<30%), analyst coverage (<=5 firms), and index membership (not in S&P 500) \u2014 all fundamental/structural metrics. Volume constraints were translated as a proxy for liquidity in the specified range, but this is insufficient to capture the true signal intent. The exit condition (institutional ownership reaching 40% or S&P 500 entry) also requires fundamental data. This signal should be implemented as a pre-filter/watchlist generator using a fundamental data API, not within the technical indicator backtest engine."
+}

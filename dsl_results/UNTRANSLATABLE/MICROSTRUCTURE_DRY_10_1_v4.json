@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_10_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'Estimated Fundamental Value' which is not an available indicator. The backtest engine cannot calculate true fundamental value without external data or a custom valuation model. Position sizing based on '2-sigma deviation from mean price' requires explicit volatility calculation not directly available. Used price_pos_20 as a proxy for deviation from 20-day range but this does not accurately capture the intended mean-reversion logic.",
+  "translation_notes": "Attempted partial translation using price_pos_20 (normalized position in 20-day range) as a proxy for deviation from mean, with discount_threshold of 8% (0.92 multiplier for long entry, 1.08 for short). Convergence target approximated as 3% band around estimated value (0.97-1.03 range). True implementation requires custom fundamental value estimator and volatility-based position sizing."
+}

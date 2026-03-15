@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of shadow height to median shadow ratio (normalized ratio metric). The allowed indicators provide upper_wick and lower_wick, but there is no 'median_shadow_ratio' or historical percentile calculation available. The exact breakout price and shadow-to-breakout ratio computation cannot be expressed with available indicators. Additionally, the success rates and failure rates referenced in parameters are marked AUTHOR_SILENT with insufficient data to derive exit conditions.",
+  "translation_notes": "Attempted to proxy tall shadow condition using upper_wick/lower_wick > atr_14 as a volatility-normalized shadow measure, and rising volume using volume > hvol_20. However, this does not faithfully capture the median-ratio comparison specified in the original signal. Exit condition set to moving average crossover as reasonable reversal since author provided no exit guidance."
+}

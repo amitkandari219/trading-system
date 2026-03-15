@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'emotional/hysterical buying' and 'retail/unsophisticated buyer participation' which are qualitative market sentiment measures not directly observable from OHLCV price/volume data. The three-stage cycle progression (Stage 1: undervalued, Stage 2: fundamental buying, Stage 3: euphoric trend-following) cannot be precisely encoded without sentiment indicators, order-flow analysis, or media monitoring tools not in the allowed indicator set. Proxy conditions using RSI overbought (>70) and volume ratio are heuristic approximations only.",
+  "translation_notes": "Attempted translation uses volume spike (vol_ratio_20) as proxy for retail participation and RSI overbought (>70) as proxy for euphoric sentiment. Exit at 8% profit or 5 days maximum is preserved. However, the core signal requires multi-stage cycle detection and sentiment analysis beyond technical indicators. A production implementation would need order-flow imbalance, retail positioning data, or sentiment APIs to properly detect Stage 3 euphoria onset."
+}

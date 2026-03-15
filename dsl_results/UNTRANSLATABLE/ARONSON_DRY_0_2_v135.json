@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit detection of 'consecutive same-direction closes (2-3 periods)' and 'momentum inflection vs prior 2-period baseline,' which cannot be expressed with single-bar indicators and allowed operators. Consecutive bar logic and multi-period relative comparisons are not supported by the allowed indicator set and operators. Volume threshold of 120% of 20-bar average is approximated via vol_ratio_20 but the 2-3 period consecutive move counter requires state tracking not available in this engine.",
+  "translation_notes": "Attempted approximation using returns crossing, volume ratio, and Bollinger Bands extremes as proxy for overreaction detection, but core logic of counting consecutive same-direction moves and detecting inflection points cannot be faithfully translated. Recommend implementing custom indicator for consecutive move counter or using higher-level rule engine."
+}

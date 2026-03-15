@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires pair trading with cointegration statistical testing and multi-asset correlation analysis. The allowed indicators are single-asset technical indicators (RSI, MACD, Moving Averages, etc.) and do not include: (1) cointegration test results, (2) correlation coefficients between two assets, (3) spread analysis between paired instruments, (4) statistical significance thresholds for cointegration, or (5) multi-asset regime detection. The entry conditions explicitly require 'Two ETFs are confirmed to be cointegrated through statistical testing' and 'ETFs share exposure to common economic factors', which cannot be expressed using single-asset price/volume indicators. Exit conditions are marked AUTHOR_SILENT with no reversal guidance provided.",
+  "translation_notes": "CHAN_AT_DRY_5 is a pairs trading strategy that requires external statistical inputs (Johansen cointegration test, half-life of mean reversion, spread z-score thresholds) that are not available in the single-asset indicator set. This strategy is structurally incompatible with the backtesting engine's indicator library, which lacks multi-asset cointegration and correlation metrics."
+}

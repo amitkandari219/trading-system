@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of lagged correlation coefficients and p-value statistical testing between past and future returns at variable lag combinations. These quantitative statistical tests (correlation analysis, hypothesis testing, p-value thresholds) cannot be expressed using the allowed indicators and operators. The signal requires dynamic lag identification and statistical significance testing that is outside the scope of the simple indicator-based rule engine.",
+  "translation_notes": "This signal is fundamentally a quantitative statistical strategy requiring: (1) computation of Pearson correlation between returns at lag X vs. lag Y, (2) p-value calculation for correlation significance testing, (3) dynamic optimization to find the lag pair with strongest positive correlation. While a simplified proxy using 'returns > 0' is provided above, it does NOT capture the core logic of lagged correlation momentum detection. Proper implementation requires a research backtester, not a rules-based engine."
+}

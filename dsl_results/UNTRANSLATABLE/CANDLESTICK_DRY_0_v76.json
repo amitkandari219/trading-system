@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The core signal requires detecting '12 consecutive days of upward price movement,' which demands sequential historical context across multiple prior candles. The allowed indicators do not include mechanisms to count consecutive up-days or reference candle states beyond the immediate previous bar (prev_close, prev_high, etc.). A proper implementation would require either: (1) a custom consecutive_up_days counter indicator, or (2) explicit bar[n] indexing for bars 1-12, neither of which are available in the allowed indicator set. The exit conditions are explicitly marked AUTHOR_SILENT with advisory notes to examine 8 or 10 price lines instead, providing no deterministic exit rule.",
+  "translation_notes": "Signal describes a candlestick pattern requiring analysis of 12 sequential daily candles. The entry condition (12 consecutive up days) and the lack of a specified exit rule (author explicitly recommends against using 12 days as exit point) make this unsuitable for the constraint-based rule engine. The pattern occurrence (192 out of 4.7M candles, 99th percentile performance) suggests strong empirical validity, but cannot be captured without multi-bar sequence detection capabilities."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cross-sectional ranking across 52 commodities by 12-month returns and selecting the top-ranked commodity. This requires: (1) portfolio-level ranking logic not expressible in single-instrument indicator conditions, (2) dynamic instrument selection (which future to trade), and (3) relative performance comparison across a basket. The allowed indicators operate on single price series and cannot express 'rank position X out of 52' or 'compare returns vs. all peers'. Standard momentum entry/exit conditions cannot capture the cross-sectional selection mechanism.",
+  "translation_notes": "This is a statistical arbitrage/cross-sectional momentum strategy that requires basket-level analysis and dynamic instrument selection. It cannot be reduced to single-instrument technical conditions using the provided indicator set. Implementation requires a custom ranking function at the portfolio/multi-instrument level, not individual signal rules."
+}

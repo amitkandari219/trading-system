@@ -1,0 +1,74 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">=",
+        "right": "high"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "prev_high"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "BULL",
+      "BEAR"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Belt Hold Candlestick: Entry requires open near/at high AND close below open (bears push down). Exit on close crossing above previous day's high (reversal/recovery signal). Pattern ranks 33/103 in bull markets, 39/103 in bear markets. Exit conditions were author-silent, so a reasonable reversal condition was applied."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">=",
+        "value": "high"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "prev_high"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "BULL",
+      "BEAR"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Belt Hold Candlestick: Entry requires open near/at high AND close below open (bears push down). Exit on close crossing above previous day's high (reversal/recovery signal). Pattern ranks 33/103 in bull markets, 39/103 in bear markets. Exit conditions were author-silent, so a reasonable reversal condition was applied."
+  },
+  "source_rule_text": "Pattern name: Belt Hold Candlestick. Price opens at or near the high for the day, then bears take over and push price down, representing bullish enthusiasm gone wrong."
+}

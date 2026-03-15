@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Hurst Exponent is not available in the allowed indicators list. The signal explicitly requires calculation of Hurst Exponent to measure mean-reversion vs trending behavior. No direct substitute exists among allowed indicators (RSI, ADX, Stochastic, etc. are momentum/trend measures, not diffusion rate measures). Suggested workaround: use log_returns volatility (hvol_20) as a proxy for mean-reversion tendency, combined with low volatility regime detection.",
+  "translation_notes": "Signal fundamentally depends on Hurst Exponent calculation which measures the rate of diffusive behavior of a price series. This is a specialized statistical measure not replicated by standard technical indicators. The entry conditions were approximated using log_returns (proxy for series behavior) and historical volatility compression (hvol_20 < 0.15 suggests mean-reversion potential), but this is NOT equivalent to true Hurst Exponent < 0.5. Exit on Hurst crossing 0.52 approximated as returns crossing 0.52. Position drawdown condition translated to stop_loss_pct of 3.0. Hold period set to 15 days as specified. Consider implementing custom Hurst Exponent calculation in backtest engine for accurate signal translation."
+}

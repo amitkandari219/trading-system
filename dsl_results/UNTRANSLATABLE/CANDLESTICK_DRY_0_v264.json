@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Black candle color detection requires explicit color classification not available in allowed indicators (only price, volume, and derived technical indicators provided). The pattern requires identifying candlestick color (black/red vs white/green) which cannot be reliably inferred from OHLC data alone without additional color metadata.",
+  "translation_notes": "Translated shadow and body constraints using upper_wick, lower_wick, and body indicators. Entry conditions check: body exists (>0), upper shadow < body height, lower shadow < body height. Applied to both long and short entries since direction is CONTEXT_DEPENDENT. Exit conditions use reversal logic (breakout beyond previous candle extremes). Color condition (black candle) cannot be translated with available indicators."
+}

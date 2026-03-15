@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires computing candle height as (high - low) / breakout_price and comparing to median of that ratio across historical candles. The median calculation and normalization by 'breakout price' (which is not a defined indicator) cannot be expressed using only the allowed indicators and operators. The 'range' indicator approximates candle height but lacks the normalization and median comparison logic required by the original rule.",
+  "translation_notes": "Attempted approximation: Used 'range' (high - low) compared to atr_14 as a proxy for tall vs short candles, but this does not capture the precise ratio-to-breakout-price and median-based logic described in the source material. The signal is context-dependent for direction (bullish vs bearish breakouts) and applies to both BULL_MARKET and BEAR_MARKET regimes."
+}

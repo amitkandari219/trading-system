@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_11_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Logistic regression probabilistic predictions and dynamically tuned probability thresholds cannot be expressed using only the allowed technical indicators and static operators. The signal requires a trained ML model (logistic regression) with time-series feature engineering (lagged returns as independent variables) and optimization logic that is beyond the scope of technical indicator-based rule expressions. The 'probability_threshold' parameter and threshold optimization for accuracy are model-level concepts, not indicator-level conditions.",
+  "translation_notes": "Attempted approximation using returns as proxy for price direction signal, but this fundamentally misses the ML model specification. A proper implementation would require integration with a logistic regression model external to the rule engine, where the model generates probability predictions that are then compared against the tunable threshold parameter (0.50 with tolerance of 0.48-0.50)."
+}

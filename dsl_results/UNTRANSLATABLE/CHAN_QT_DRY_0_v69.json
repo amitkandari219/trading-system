@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of stock-level beta relative to market benchmark. Beta is not available in the allowed indicators list. The entry condition 'Identify stocks with low beta relative to market' requires computing beta (typically via regression of stock returns vs market returns over a lookback period), which cannot be expressed using only the provided indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Returns). Additionally, the signal requires portfolio construction and leverage application logic, which are position-sizing/portfolio-level operations outside the scope of single-bar indicator conditions.",
+  "translation_notes": "This signal is fundamentally untranslatable because: (1) Beta requires cross-asset regression analysis not supported by single-security indicators, (2) 'AUTHOR_SILENT' parameters make precise rule definition impossible, (3) Portfolio construction and leverage are portfolio-level operations, not bar-level entry/exit conditions, (4) The regime selection 'ANY' combined with missing parameters prevents meaningful rule construction. A proper implementation would require a beta calculation module and portfolio-level position sizing logic external to this indicator framework."
+}

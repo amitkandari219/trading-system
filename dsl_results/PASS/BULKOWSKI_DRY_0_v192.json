@@ -1,0 +1,108 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "sma_50",
+        "operator": "is",
+        "right": "TRENDING_UP"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      },
+      {
+        "left": "sma_50",
+        "operator": "is",
+        "right": "TRENDING_DOWN"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_50",
+        "operator": "is",
+        "right": "TRENDING_DOWN"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_50",
+        "operator": "is",
+        "right": "TRENDING_UP"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires pattern recognition (unspecified chart patterns) which cannot be directly encoded. Approximated using Donchian breakouts as a general breakout proxy. Trend direction determined via sma_50 as trend filter. Entry aligns breakout direction with prevailing trend (long on upside breakout in uptrend, short on downside breakout in downtrend). Exit conditions use trend reversal as proxy for 'ultimate highs and lows' reversal points. Average rise/decline >45% suggests holding 15-20 days; set conservatively at 20."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "sma_50",
+        "op": "is",
+        "value": "TRENDING_UP"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "sma_50",
+        "op": "is",
+        "value": "TRENDING_DOWN"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_50",
+        "op": "is",
+        "value": "TRENDING_DOWN"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_50",
+        "op": "is",
+        "value": "TRENDING_UP"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires pattern recognition (unspecified chart patterns) which cannot be directly encoded. Approximated using Donchian breakouts as a general breakout proxy. Trend direction determined via sma_50 as trend filter. Entry aligns breakout direction with prevailing trend (long on upside breakout in uptrend, short on downside breakout in downtrend). Exit conditions use trend reversal as proxy for 'ultimate highs and lows' reversal points. Average rise/decline >45% suggests holding 15-20 days; set conservatively at 20."
+  },
+  "source_rule_text": "Trade chart patterns aligned with prevailing trend direction for optimal performance"
+}

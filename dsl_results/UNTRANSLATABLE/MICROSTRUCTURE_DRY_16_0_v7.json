@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_16_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) 'Dealer ask price is >3.5% below estimated fundamental value' \u2014 fundamental value estimation is not available in allowed indicators; (2) 'Available size for purchase \u22654x normal spread size' \u2014 order book depth/size metrics not in allowed indicators; (3) 'Volume spike from dealers observed in prior 2 bars' \u2014 dealer-specific volume attribution not available; (4) 'Bid-ask spread has widened >2 standard deviations' \u2014 bid-ask spread data not in allowed indicators. This is a microstructure signal requiring order book and dealer-specific data not present in price/technical indicator set.",
+  "translation_notes": "Attempted translation uses price-below-SMA (reversion proxy), Bollinger Bandwidth (spread widening proxy), and volume ratio (volume spike proxy), but these are poor substitutes for the actual dealer inventory imbalance and microstructure conditions specified in the original signal. A proper backtest would require tick-level order book data and dealer position tracking."
+}

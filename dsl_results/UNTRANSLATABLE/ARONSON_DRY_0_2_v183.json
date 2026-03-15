@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references a custom 'divergence indicator' comparing companion series to benchmark (S&P 500). This indicator is not available in the allowed list. The mapping of thresholds (50.5/49.5) and percentile-based positioning (55th/45th percentile) has been approximated using price_pos_20 (relative position in 20-bar channel) and bb_pct_b (Bollinger Band position), but these are proxies. The true divergence comparison mechanism between two separate series cannot be replicated without the divergence indicator itself.",
+  "translation_notes": "Used price_pos_20 to represent relative channel position (0.55 \u2248 55th percentile, 0.45 \u2248 45th percentile). Used bb_pct_b as proxy for threshold-based divergence signal (0.505 \u2248 upper threshold 50.5, 0.495 \u2248 lower threshold 49.5). Entry is immediate (confirmation_bars=0). Stop-loss set to 1% as specified. Take-profit added at 1% gain per exit conditions. This is a best-effort translation but fundamentally requires the companion series divergence indicator not in the allowed set."
+}

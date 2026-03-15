@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multi-asset spread construction via rolling linear regression (hedge ratio calculation on USO vs GLD), dynamic mean-reversion threshold detection, and unit portfolio construction. These operations require: (1) cross-asset regression not available in single-asset indicators, (2) dynamic spread calculation and mean deviation monitoring not in the allowed indicator list, (3) explicit entry/exit thresholds marked as AUTHOR_SILENT. The backtest engine indicators are designed for single-asset technical analysis and do not support pairs trading mechanics, cointegration analysis, or hedge ratio computation.",
+  "translation_notes": "Signal involves constructing a hedged spread portfolio (yport = -hedgeRatio \u00d7 GLD + 1 \u00d7 USO) with rolling OLS regression. This requires: (1) access to two separate asset price series simultaneously, (2) regression coefficient calculation, (3) spread mean and standard deviation tracking across rolling windows. The allowed indicator set does not include spread indicators, inter-asset correlation measures, or regression-based metrics. Entry signals are specified as 'spread deviates significantly from mean' but exact deviation threshold and mean calculation period are not provided (AUTHOR_SILENT). Exit conditions are completely unspecified (AUTHOR_SILENT). To implement this signal, the backtest engine would need to be extended with pairs-trading modules including cointegration testing, hedge ratio solvers, and spread z-score monitoring."
+}

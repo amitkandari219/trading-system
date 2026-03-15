@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fundamental valuation metrics (price/historical average ratio, absolute 20+ year return thresholds) and market breadth data (% new highs deterioration) which are not available in the allowed technical indicator set. The 3.5x valuation ratio threshold and breadth-based entry conditions cannot be translated to technical indicators without fundamental/breadth data feeds.",
+  "translation_notes": "Approximated the bubble-like behavior using: (1) log_returns > 2.5 to represent extreme 250%+ appreciation on log scale; (2) price_pos_20 > 0.85 as proxy for elevated valuation position; (3) vol_ratio_20 < 0.5 to represent deteriorating participation (fewer participants = lower relative volume). Exit at +100% profit uses returns > 1.0 (100% on log scale). Stop-loss set at 30% retracement as specified. Note: This is a lossy translation\u2014ideally requires custom fundamental and breadth indicators."
+}

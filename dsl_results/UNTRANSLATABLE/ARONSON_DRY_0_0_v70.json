@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Head-and-shoulders pattern detection requires multi-bar peak/trough identification, historical price comparison (left shoulder vs prior peak/trough), and geometric relationships (head dominance ratio, neckline deviation calculation, shoulder symmetry). These require pattern recognition logic beyond single-bar indicator comparisons. The signal needs: (1) identification of swing pivots across 20+ bars, (2) calculation of shoulder heights and neckline position, (3) geometric validation of pattern structure. Available indicators cannot compute relative peak positioning, pattern height measurements, or neckline symmetry percentages. Pattern requires custom pattern-detection function.",
+  "translation_notes": "Only the uptrend context (close > sma_50) could be approximated. All five entry conditions (shoulder peaks vs prior peaks, head dominance ratio, neckline deviation tolerance, shoulder peak relationships) require pattern recognition. Stop loss should be set at right_shoulder_peak + 1*atr_14 (approximately 1.5% based on parameters), and profit target at neckline_break + 1.5*pattern_height. These cannot be expressed without pattern identification."
+}

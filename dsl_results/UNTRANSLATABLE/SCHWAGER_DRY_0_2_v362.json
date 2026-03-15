@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'new highs on low volume' and multi-bar sequential patterns (3 consecutive bars meeting specific criteria) which cannot be expressed with single-bar indicators and simple operators. Specifically: (1) new_high detection requires lookback beyond available prev_* fields, (2) consecutive bar confirmation logic requires conditional state tracking across multiple bars, (3) price-to-volume ratio (0.1% per 1M shares) requires custom volume scaling not in allowed indicators, (4) 'market tops forming' is a pattern-based regime not expressible as a single regime condition.",
+  "translation_notes": "Attempted partial translation using vol_ratio_20 as proxy for volume surge detection and returns for price progress, but the core signal logic around sequential bar patterns and new high detection cannot be faithfully represented in the allowed indicator/operator set."
+}

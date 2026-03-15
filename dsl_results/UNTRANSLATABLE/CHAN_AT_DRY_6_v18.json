@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires contract expiration tracking, calendar spread mechanics (near-term short + far-term long on different contract months), and temporal logic (days until expiration, contract sequencing) that are not supported by the allowed indicators. The backtest engine requires time-series price data for individual contracts with expiration dates and the ability to manage multi-leg futures spreads across contract months. Standard price/technical indicators cannot express: (1) contract expiration dates, (2) relative positioning within contract lifecycle (X days before expiry), (3) spread month offsetting (12-month calendar spread), (4) rolling mechanics between successive contracts, or (5) simultaneous long/short positions on different contract expirations.",
+  "translation_notes": "CHAN_AT_DRY_6 is a calendar spread strategy requiring futures contract infrastructure with expiration calendars and multi-contract position management. Parameters indicate: entry when near contract has 63-73 days to expiry (hold_days=63, days_before_expiry_entry=10 implies 63+10=73 days), exit after 63 days or 10 days before expiry (whichever first), with 12-month spread between legs. This requires architectural support beyond technical indicators."
+}

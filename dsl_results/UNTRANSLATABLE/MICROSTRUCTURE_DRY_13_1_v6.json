@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_13_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal describes a market microstructure quoting strategy (bid/ask manipulation to signal intent and manage counterparty behavior) rather than a price-based technical pattern. Core concepts like 'dealer inventory goal', 'aggressive/discouraging quotes', and 'quote offset in basis points' cannot be directly expressed as price/indicator conditions in a backtester. The allowed indicators lack: dealer inventory position, bid/ask spread magnitude (only spreads relative to market are provided), and quote aggressiveness metrics. This is an order book/microstructure signal, not a OHLCV price action signal.",
+  "translation_notes": "Attempted proxy: Used bb_bandwidth as a surrogate for 'spread widening' (entry when spread >= 1.5x typical = elevated bb_bandwidth ~0.015, exit when normalized <0.010). However, this does not capture the core intent of the signal: actively quoting against one's desired direction to manage inventory. A proper backtest implementation would require: (1) explicit bid/ask quote simulation, (2) dealer inventory tracking state, (3) quote execution logic based on counterparty response. This signal is unsuitable for standard OHLCV backtesting."
+}

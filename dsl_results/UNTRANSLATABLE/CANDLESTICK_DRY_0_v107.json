@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic threshold selection based on market condition (BULL/BEAR) and breakout direction (UP/DOWN), which cannot be fully expressed in static rule conditions. The normalized height calculation (range / breakout_price) requires conditional logic: for upbreaks use high; for downbreaks use prev_low. Additionally, 'BULL_MARKET' and 'BEAR_MARKET' are not in ALLOWED_REGIMES list (only TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY are permitted). The median thresholds vary by regime and direction (12.36%, 18.14%, 13.50%, 14.48%) but cannot be conditionally applied within the schema.",
+  "translation_notes": "Partial translation provided: Used 'range' (high-low) as proxy for candlestick height, but the signal's requirement to divide by a context-dependent breakout price (highest_high for upbreaks, prev_low for downbreaks) and compare against regime-specific thresholds exceeds the expressiveness of the static rule format. A full implementation would require a custom indicator function or multi-rule regime-based logic."
+}

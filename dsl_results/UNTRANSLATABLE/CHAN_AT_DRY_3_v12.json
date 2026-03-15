@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of price series half-life and z-score based normalized deviation with proportional position sizing. Half-life is not a standard allowed indicator and cannot be calculated dynamically within the engine. Z-score normalization and proportional position sizing based on deviation magnitude are not supported by the allowed operators and condition structure. The strategy also requires dynamic lookback period adjustment based on half-life calculation, which is not expressible in the 3-field condition format.",
+  "translation_notes": "Attempted approximation using sma_20 as a proxy for the moving average component and context-dependent direction to reflect the mean-reversion nature. However, the core logic of proportional position sizing tied to normalized deviation and half-life-derived lookback periods cannot be faithfully translated. Author did not specify exact threshold values, lookback periods, or exit conditions, further limiting translation fidelity."
+}

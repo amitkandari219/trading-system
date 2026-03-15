@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'confirmed panic event or forced liquidation announcement' (external news event), '3+ broken support levels' (requires multi-level support tracking not available in single-bar indicators), and 'first candle close above lowest cascade price' (requires order flow/cascade tracking not in allowed indicators). These conditions cannot be expressed using only the allowed OHLCV and technical indicators provided.",
+  "translation_notes": "Translated achievable conditions: vol_ratio_20 > 1.5 approximates 150% volume spike threshold; bb_bandwidth > 2.0 approximates spread widening beyond 2 standard deviations; close stabilization signals (above/below prev extremes) approximate cascade stabilization. Exit at 50% reversion approximated as 5% return threshold given decimal scale. Direction set to CONTEXT_DEPENDENT per signal specification. Support level breaks and panic confirmation require external data feeds beyond technical indicators."
+}

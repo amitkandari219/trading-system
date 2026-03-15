@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_15_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external news event data (pending news identification, time-to-event countdown, and directional bias from non-technical sources) which are not available in the allowed indicator set. The core logic depends on: (1) detecting pending vs reported news events, (2) measuring hours until event release, (3) confirming anticipatory directional move\u2014none of which can be constructed from price/volume/technical indicators alone. Partial proxy attempted using volatility regime, but this does not capture the essential news-event timing mechanism.",
+  "translation_notes": "This signal is fundamentally about event-driven trading around news releases, which requires external event data feeds and time-tracking logic outside the scope of technical indicators. The allowed indicator set contains no news calendar, event timing, or sentiment data. A proper implementation would require: custom event data source, time-delta calculation to next scheduled event, and news sentiment confirmation\u2014all unavailable here. The HIGH_VOL regime and short hold_days_max (1 day) partially reflect the urgency, but do not replace the missing event detection layer."
+}

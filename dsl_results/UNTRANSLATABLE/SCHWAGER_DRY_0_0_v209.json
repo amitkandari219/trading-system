@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires validation across 3+ independent timeframes (5m, 1h, 4h) simultaneously. The backtest engine indicator set does not include multi-timeframe aggregation or cross-timeframe alignment checks. Additionally, 'momentum oscillator confirms directional bias (RSI not diverging)' requires RSI divergence detection, which is not a primitive indicator in the allowed list.",
+  "translation_notes": "Attempted approximation using: ADX_14 for trend strength confirmation (replaces multi-timeframe alignment concept), vol_ratio_20 for sustained volume participation (replaces volume profile analysis), and RSI_14 for momentum confirmation. This is a lossy translation\u2014the original signal's core requirement of synchronous multi-timeframe validation cannot be fully captured. The CONTEXT_DEPENDENT direction reflects that entry bias depends on RSI positioning relative to oversold/overbought levels."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'price momentum over past 15 days in bottom 25th percentile' which requires percentile-based calculation over a lookback window. The allowed indicators do not include a generic momentum indicator or percentile function. While returns can approximate short-term momentum, expressing the 25th percentile threshold requires a rolling percentile calculation not available in the allowed indicator set.",
+  "translation_notes": "Partial translation: Entry uses 15-day log_returns approximating negative momentum (bottom 25th percentile estimated as -10% decline per parameters) combined with vol_ratio_20 < 0.40 to capture below-40th-percentile volume. Exit conditions translated to: exit after 3 days (hold_days_max) OR when returns > 5% (recovery to within ~5% of entry). The momentum percentile condition cannot be fully expressed with allowed indicators and would require custom percentile calculation logic."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of serial correlation at long time scales and identification of persistent roll return regimes (contango vs backwardation). These require advanced statistical analysis (autocorrelation functions, regime classification) not available in the standard indicator set. The optimal lookback periods, holding days, and threshold parameters are marked AUTHOR_SILENT and vary by contract type, making precise rule definition impossible without access to the original research or parameter optimization framework.",
+  "translation_notes": "Attempted a generic mean-reversion entry using log_returns reversal, but this does not capture the core logic of serial correlation exploitation or roll return persistence. The strategy's effectiveness depends critically on contract-specific parameter optimization that cannot be expressed with allowed indicators. Maximum drawdown constraint of 2.5% was applied as stop_loss_pct. A proper implementation would require custom indicators for autocorrelation analysis and futures curve regime detection."
+}

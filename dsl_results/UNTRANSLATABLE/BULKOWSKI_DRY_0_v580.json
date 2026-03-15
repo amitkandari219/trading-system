@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The Half-Height Target Method requires dynamic calculation of formation height based on identified left peak and lowest low within a lookback period. This requires: (1) identifying the highest high (left peak) within a formation period, (2) identifying the lowest low within that period, (3) calculating height = highest_high - lowest_low, (4) calculating target = lowest_low - (height / 2). The backtest engine does not support dynamic multi-bar pattern identification or arithmetic calculations on historical price extrema within variable lookback windows. The exit condition 'CALCULATED_TARGET' cannot be expressed using only allowed indicators and static values.",
+  "translation_notes": "Entry condition simplified to 'price breaks below previous low' as a proxy for breakout below formation lowest low. Exit target calculation (lowest_low - formation_height/2) requires indicator support for pattern-aware calculations not available in the allowed indicator set. To implement this signal, the backtest engine would need: (1) lookback window parameter for formation identification, (2) support for donchian-style highest/lowest calculations over custom periods, (3) support for arithmetic expressions in conditions. Conservative approach referenced in exit conditions (Table 17.3 failure rates) cannot be encoded without additional parameters."
+}

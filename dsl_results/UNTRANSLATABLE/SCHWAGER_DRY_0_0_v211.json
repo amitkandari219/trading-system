@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external input: (1) 'Trusted contrarian trader signals' \u2014 contrarian sentiment/positioning data not in allowed indicators; (2) 'Corroborating fundamental news' \u2014 external news/events require data source outside technical indicators; (3) 'Original bias duration > 5 periods' \u2014 requires tracking external trader's position history. These dependencies cannot be expressed using only price/technical indicators. Approximated entry as price stall (low body) + weak trend (low ADX), but this misses the core contrarian signal logic.",
+  "translation_notes": "This signal is fundamentally about tracking an external trader's position changes and correlating with news events. Used body < 0.5 to approximate 'consecutive periods of flat/stalling action' and adx_14 < 25 to detect weak trend conviction. Exit uses pivot-based reversal as proxy for 'next technical level.' Direction marked CONTEXT_DEPENDENT per source spec, but cannot be operationalized without external sentiment/news feed."
+}

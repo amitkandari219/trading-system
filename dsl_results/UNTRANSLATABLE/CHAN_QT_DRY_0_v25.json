@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of mean reversion vs trending behavior and special market conditions that vary by time horizon. These require statistical regime detection (lookback_period, half_life, threshold parameters marked AUTHOR_SILENT) that cannot be expressed as simple indicator conditions. The signal also references 'reference price' and dynamic behavior classification not available in the allowed indicators list.",
+  "translation_notes": "Translated core logic: LONG when price above SMA_50 + trending confirmation (ADX>25); SHORT when price below SMA_50 + trending confirmation. Used close relative to SMA_50 as proxy for 'high/low relative to reference price'. ADX_14 used to detect trending regimes. However, the full mean-reversion detection logic and special market conditions cannot be captured without the AUTHOR_SILENT parameters. Exit conditions use reversal through moving average as reasonable substitution for AUTHOR_SILENT exits."
+}

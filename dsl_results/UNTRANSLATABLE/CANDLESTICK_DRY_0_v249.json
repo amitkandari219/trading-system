@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires multi-candle analysis (4-5 candles with specific body/close relationships, gap detection, and relative positioning across bars). Available indicators cannot precisely encode: (1) detection of gap between candles, (2) relative body size comparisons across multiple prior bars, (3) close positioning within a specific prior gap range, (4) the sequential logic of 3 candles with higher closes followed by reversal. Recommend implementing as custom candlestick pattern detector.",
+  "translation_notes": "Attempted entry approximation uses tall white candle (body > ATR) and gap-like behavior (close > prev_high), with exit on reversal (close > prev_close). This is a simplified heuristic that does not capture the full pattern complexity. The bearish breakaway is inherently a multi-bar pattern that requires lookback across 4+ candles with specific gap and relative close/body constraints."
+}

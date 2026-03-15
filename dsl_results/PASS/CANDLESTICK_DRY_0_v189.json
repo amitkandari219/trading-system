@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "pivot"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "60"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.71,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes candlestick breakout pattern with upward direction. Entry conditions translated as: (1) price at or above pivot (old high equivalent), (2) ADX > 60 representing steep directional move (trending above 60 degrees), (3) volume confirmation for breakout. Exit condition uses reversal below 20-SMA as reasonable stop for failed breakout. Success rates and average moves from parameters (6.85% avg rise with heavy volume) inform stop_loss_pct. Target regimes set to both bull and bear reversals/continuations as stated. 'AUTHOR_SILENT' exit conditions replaced with technical reversal signal."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "pivot"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 60.0
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.0571,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal describes candlestick breakout pattern with upward direction. Entry conditions translated as: (1) price at or above pivot (old high equivalent), (2) ADX > 60 representing steep directional move (trending above 60 degrees), (3) volume confirmation for breakout. Exit condition uses reversal below 20-SMA as reasonable stop for failed breakout. Success rates and average moves from parameters (6.85% avg rise with heavy volume) inform stop_loss_pct. Target regimes set to both bull and bear reversals/continuations as stated. 'AUTHOR_SILENT' exit conditions replaced with technical reversal signal."
+  },
+  "source_rule_text": "Candlestick breakout pattern: Price vulnerability to reversal or continuation based on market conditions and price action characteristics"
+}

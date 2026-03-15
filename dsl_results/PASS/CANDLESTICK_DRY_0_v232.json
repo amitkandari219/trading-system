@@ -1,0 +1,94 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "open",
+        "operator": "==",
+        "right": "low"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      },
+      {
+        "left": "body_pct",
+        "operator": ">",
+        "right": "0.7"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Bullish Belt Hold pattern conditions: (1) Falling price trend approximated as price below SMA_20 and SMA_20 below SMA_50 (downtrend); (2) Open at low of day; (3) Price climbs and closes near high approximated as close > open with large body_pct (>0.7 = tall white candle). Exit when price closes below SMA_20 indicating trend reversal. Success rates 71% in both bull and bear markets are noted but not actionable as conditions. Hold period set to 10 days as reasonable default."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "open",
+        "op": "==",
+        "value": "low"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      },
+      {
+        "indicator": "body_pct",
+        "op": ">",
+        "value": 0.7
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_DOWN",
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Bullish Belt Hold pattern conditions: (1) Falling price trend approximated as price below SMA_20 and SMA_20 below SMA_50 (downtrend); (2) Open at low of day; (3) Price climbs and closes near high approximated as close > open with large body_pct (>0.7 = tall white candle). Exit when price closes below SMA_20 indicating trend reversal. Success rates 71% in both bull and bear markets are noted but not actionable as conditions. Hold period set to 10 days as reasonable default."
+  },
+  "source_rule_text": "Bullish Belt Hold: A candlestick pattern in a downtrend where price opens at the low for the day and climbs, forming a tall white candle when price closes near the high"
+}

@@ -1,0 +1,88 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Channel breakout operator translated using Donchian Channel (dc_upper and dc_lower) which represents the n-period highest high and lowest low over a lookback period. The dc_upper approximates the channel top and dc_lower approximates the channel bottom. Entry conditions trigger on price closing above/below these extremes. Exit conditions reverse when price closes back inside the channel. The 10-period lookback and 1-bar confirmation are implicit in the Donchian calculation. Direction set to CONTEXT_DEPENDENT to reflect that the signal generates both long (above breakout) and short (below breakout) signals based on market conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Channel breakout operator translated using Donchian Channel (dc_upper and dc_lower) which represents the n-period highest high and lowest low over a lookback period. The dc_upper approximates the channel top and dc_lower approximates the channel bottom. Entry conditions trigger on price closing above/below these extremes. Exit conditions reverse when price closes back inside the channel. The 10-period lookback and 1-bar confirmation are implicit in the Donchian calculation. Direction set to CONTEXT_DEPENDENT to reflect that the signal generates both long (above breakout) and short (below breakout) signals based on market conditions."
+  },
+  "source_rule_text": "A trader should use channel-breakout operators to filter noise and identify the current trend direction in a time series before entering trend-following trades."
+}

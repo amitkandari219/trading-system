@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of external events (index composition change announcements - stock additions/deletions) which are not available as market indicators. The specific entry trigger is event-driven (announcement timing) rather than price/technical based. Volume surge is used as a proxy but cannot reliably capture the actual announcement event.",
+  "translation_notes": "This is an event-driven signal that cannot be fully translated into technical indicator rules. The core logic depends on detecting when a stock is added to or deleted from an index, which requires external data not available in the indicator set. A volume spike has been used as a loose proxy for the announcement/rebalancing event, with intraday holding (1 day max) and tight stops (2%) to capture short-term momentum. Direction is context-dependent: LONG on additions (buying pressure), SHORT on deletions (selling pressure). Manual event detection or alternative data source required for proper implementation."
+}

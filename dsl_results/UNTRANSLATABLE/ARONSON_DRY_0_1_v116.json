@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking all securities by 6-month total return and selecting top/bottom deciles. This requires cross-sectional analysis and percentile ranking across a universe of securities, which cannot be expressed as a single-security indicator condition using the allowed indicators. The 'returns' indicator measures individual security returns but cannot encode the percentile rank relative to peers. Backtesting this strategy requires universe-level ranking logic outside the scope of single-bar indicator conditions.",
+  "translation_notes": "Attempted to map decile selection using returns indicator with percentile thresholds, but the fundamental requirement for cross-sectional ranking is not supported by the allowed indicator set. The strategy is a momentum/relative-strength strategy that inherently requires comparing each security against all others in the universe at entry time."
+}

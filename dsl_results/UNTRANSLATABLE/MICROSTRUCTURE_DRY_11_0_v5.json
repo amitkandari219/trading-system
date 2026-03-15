@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_11_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'block shopping activity' and 'order book asymmetry' \u2014 microstructure data not available in allowed indicator set. Order inquiry frequency, block detection, and order book state require market microstructure feeds beyond standard OHLCV and technical indicators. Approximated with volume spike (vol_ratio_20) and directional price movement, but this does not capture the core signal mechanism of broker block shopping.",
+  "translation_notes": "Original signal is based on detecting broker block shopping activity and anticipating price moves ahead of large block order absorption. The allowed indicators cannot directly detect block shopping, order inquiries, or order book asymmetry. Attempted proxy: elevated vol_ratio_20 (suggesting unusual activity) combined with directional body movement. This is a weak approximation. A proper implementation would require market microstructure data (order flow imbalance, large order detection, broker activity feeds) not present in the allowed indicator list. Signal should be marked for manual implementation or custom data integration."
+}

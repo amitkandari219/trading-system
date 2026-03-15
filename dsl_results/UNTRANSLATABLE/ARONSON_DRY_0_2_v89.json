@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal specifies sma_30 as long-term lookback, but only sma_5, sma_10, sma_20, sma_40, sma_50, sma_80, sma_100, sma_200 are available in allowed indicators. The optimization search across parameter space cannot be directly encoded in static JSON rules; this requires a parametric optimization loop rather than a fixed rule definition.",
+  "translation_notes": "This is a parameterized optimization signal rather than a fixed rule. The core logic (dual MA crossover) is translatable, but the systematic parameter search aspect (finding optimal short_term and long_term lookback pair) requires backtesting engine optimization capabilities. Substituted sma_20 as closest available alternative to requested sma_30. Signal is direction-agnostic (generates both long and short signals from same crossover logic)."
+}

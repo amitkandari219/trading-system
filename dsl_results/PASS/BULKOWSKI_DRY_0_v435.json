@@ -1,0 +1,74 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry conditions: (1) Price climbs less than 5% represented as returns < 0.05 in decimal scale; (2) Price heading down represented as close < prev_close. Exit condition: Use reversal above SMA_20 as reasonable exit per RULE 8 since AUTHOR_SILENT. Pattern described as busted breakout with bearish bias suggests short direction. Stop loss set to 5% matching failure_rate_5pct parameter. Hold period set conservatively at 20 days for pattern-based trades."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry conditions: (1) Price climbs less than 5% represented as returns < 0.05 in decimal scale; (2) Price heading down represented as close < prev_close. Exit condition: Use reversal above SMA_20 as reasonable exit per RULE 8 since AUTHOR_SILENT. Pattern described as busted breakout with bearish bias suggests short direction. Stop loss set to 5% matching failure_rate_5pct parameter. Hold period set conservatively at 20 days for pattern-based trades."
+  },
+  "source_rule_text": "Busted Pattern: Price climbs less than 5% before tumbling"
+}

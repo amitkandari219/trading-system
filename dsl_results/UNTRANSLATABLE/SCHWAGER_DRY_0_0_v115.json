@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Adaptive position sizing based on regime (0.5x multiplier in bear markets) - cannot be expressed as price/indicator conditions; (2) 'Daily down move exceeds 1.5x average daily range' requires normalized ADR comparison not available in allowed indicators; (3) 'Trail stop at 2.0x ATR below swing high' requires dynamic swing high tracking not supported; (4) Profit target at '1.5x risk' requires risk-based position management outside condition scope",
+  "translation_notes": "Attempted to capture core entry logic: price below 20-day MA + volatile down movement. However, this signal is fundamentally about position sizing rules and dynamic risk management across market regimes, which requires portfolio-level logic and position state tracking beyond the condition-based backtest engine capabilities. The signal mixes entry conditions with position management (sizing, trailing stops, profit targets) that cannot be fully expressed in the 3-field condition structure."
+}

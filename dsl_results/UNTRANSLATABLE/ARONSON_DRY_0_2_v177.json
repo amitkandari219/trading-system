@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegration confirmation (Johansen test, p < 0.15) and error-correction model divergence measurement, which are not available in the standard indicator set. Cointegration testing and ECM calculations require multivariate time series analysis external to single-pair OHLCV indicators. Used Bollinger Band %B as a proxy for mean-reversion extremes, but this does not capture the true error-correction dynamics specified in the original signal.",
+  "translation_notes": "Attempted proxy mapping: bb_pct_b < 0.0 approximates extreme negative divergence (long entry), bb_pct_b > 1.0 approximates extreme positive divergence (short entry). Exit conditions represent partial reversion to mean (0.5 SD equivalent). However, this translation loses the statistical rigor of cointegration testing and ECM-specific thresholds. A proper implementation requires custom cointegration and ECM indicators outside the allowed set."
+}

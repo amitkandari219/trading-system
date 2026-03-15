@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking the 13-candlestick series low (breakout_price) which is not available as a standard indicator. The concept of 'breakout price is the low of the last candleline in the 13-candleseries' requires custom lookback window calculation beyond allowed indicators. Also, regime names 'BULL_MARKET' and 'BEAR_MARKET' are not in the allowed regime list (should be TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY).",
+  "translation_notes": "Pattern-based reversal signals typically require custom series tracking. Attempted to express the core logic: price closes below a reference level (prev_low as proxy for breakout price) and confirmation on next bar. However, without explicit indicator for the 13-bar series low, this is incomplete. Recommend: (1) Create custom indicator for 13-bar rolling low, (2) Define what 'breakout price' means precisely, (3) Clarify if BULL_MARKET/BEAR_MARKET map to TRENDING_UP/TRENDING_DOWN."
+}

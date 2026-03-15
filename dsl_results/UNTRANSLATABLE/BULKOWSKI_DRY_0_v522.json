@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Double Bottom pattern requires identifying two distinct valley lows and comparing them for price equality, which requires multi-bar pattern recognition (finding local minima across 5-10+ bars) and relative comparisons between non-adjacent bars. The allowed indicator set lacks pattern detection capabilities and bar indexing beyond prev_* fields. Specifically: (1) cannot identify 'two lowest minor lows' without full price history access, (2) cannot verify 'approximately same price level' without configurable tolerance thresholds, (3) cannot distinguish Adam vs Eve shape categories, (4) cannot validate 'rise exists between bottoms' without sequence validation. This requires custom pattern detection logic outside the simple 3-field condition model.",
+  "translation_notes": "Pattern detection signals require historical sequence analysis not supported by the current indicator framework. Recommend implementing as a custom indicator (e.g., 'double_bottom_signal') that returns 1 when pattern is confirmed, or using a dedicated pattern recognition library rather than rule-based conditions."
+}

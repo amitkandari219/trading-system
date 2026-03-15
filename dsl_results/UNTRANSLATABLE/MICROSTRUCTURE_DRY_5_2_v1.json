@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_5_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of psychological round price levels (multiples of 1.00, 0.50, 0.25, 0.20, 0.10, 0.05) and proximity calculations (within 10 ticks of round numbers). No allowed indicator detects round-number clustering or calculates tick-distance from psychological price levels. Signal also requires order placement logic (limit orders above/below round numbers) which is execution-level strategy, not price-based backtesting rules. The clustering_intensity_threshold parameter and offset_from_round_number_ticks parameter cannot be operationalized with available indicators.",
+  "translation_notes": "This is a market microstructure order placement strategy that depends on: (1) detecting psychological price clustering zones dynamically, (2) calculating tick offsets from round numbers, and (3) order book positioning logic. These are not price-action or technical analysis conditions expressible through standard OHLCV indicators. Would require custom round-number detection functions and order book depth analysis to implement."
+}

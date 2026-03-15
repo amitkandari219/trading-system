@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires three independent filter alignment (fundamental analysis, market timing, price structure exhaustion) with scaled position sizing based on filter count. These require custom logic beyond standard technical indicators: (A) fundamental analysis data not in allowed indicators, (B) market timing inflection detection requires multi-timeframe analysis, (C) exhaustion pattern recognition requires pattern-matching beyond simple operator conditions. Additionally, 'bullish consensus' sentiment percentile ranking cannot be directly mapped to india_vix without validation against actual consensus data.",
+  "translation_notes": "Attempted proxy translation using india_vix as sentiment extremes (>75th percentile = >75, <25th percentile = <25) and RSI extremes as technical confirmation, with pivot levels (S1/R1) as swing-based stops. However, the core signal requires multi-filter confirmation logic with position sizing scaling that cannot be fully expressed in this rule schema. Recommendation: implement as custom backtest module with separate fundamental data feed and pattern recognition engine."
+}

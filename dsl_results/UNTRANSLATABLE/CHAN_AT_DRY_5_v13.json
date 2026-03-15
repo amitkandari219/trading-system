@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'gap up by one standard deviation' which requires pre-open/ARCA prices and standard deviation calculation over 20-day lookback. Neither pre-open prices (ARCA) nor standard deviation indicator are in the allowed indicator list. The 'gap up by one standard deviation' magnitude cannot be precisely expressed using only the available indicators and operators.",
+  "translation_notes": "Partially translated: Entry condition approximated as open > prev_close (gap up) AND close < sma_20. Exit approximated as price crosses above 20-day moving average. The exact 1-sigma threshold cannot be enforced without access to standard deviation calculations and pre-open price data. The signal specifically mentions using pre-open prices to avoid lookahead bias, which requires indicators not available in the allowed set."
+}

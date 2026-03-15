@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires calculation of a custom spread between two assets, Z-score computation relative to a moving average and standard deviation of that spread, and position sizing proportional to the negative Z-score. These require multi-asset correlation, custom spread calculations, and dynamic position sizing based on volatility-adjusted Z-scores. The allowed indicator set does not support: (1) inter-asset spreads with hedge ratios, (2) Z-score calculations on custom spreads, (3) moving standard deviation of spreads, or (4) position sizing proportional to Z-scores. This is a pairs/statistical arbitrage strategy requiring specialized indicators not available in the standard indicator list.",
+  "translation_notes": "Signal is a sophisticated pairs trading strategy (Chande mean reversion on spreads). Attempted to approximate using returns as a proxy for spread mean reversion, but this fundamentally misrepresents the strategy. A proper implementation requires: custom spread calculation between two correlated assets, rolling mean and standard deviation of that spread, Z-score normalization, and dynamic position sizing. The backtest engine would need to support multi-asset rules and custom ratio calculations."
+}

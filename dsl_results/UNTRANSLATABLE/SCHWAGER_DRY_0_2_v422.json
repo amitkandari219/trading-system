@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking individual position stopouts (consecutive_stopouts_threshold: 4 within 20 days) and detecting market leader underperformance relative to broader market. These require portfolio-level tracking and relative strength comparison across multiple securities, which cannot be expressed as single-instrument indicator conditions. The core mechanic\u2014'when leading stocks underperform during bull phase' and '4+ consecutive positions stopped out'\u2014requires cross-asset or portfolio state data unavailable in single-bar indicator set.",
+  "translation_notes": "Partially translated the 200-day MA breach component: close below sma_200 triggers reduction (25% position size cut), and a decisive breach (close 2% below sma_200) triggers full exit. However, the primary detection mechanism for regime change relies on relative performance of market leaders and position-level stopout tracking, which fall outside single-instrument backtesting scope. This rule is better suited for portfolio-level or multi-asset regime detection systems."
+}

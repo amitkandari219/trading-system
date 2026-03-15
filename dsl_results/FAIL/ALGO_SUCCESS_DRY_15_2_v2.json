@@ -1,0 +1,40 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_2",
+  "entry_long": [
+    {
+      "left": "sma_5",
+      "operator": "crosses_above",
+      "right": "sma_15"
+    }
+  ],
+  "entry_short": [],
+  "exit_long": [
+    {
+      "left": "sma_5",
+      "operator": "crosses_below",
+      "right": "sma_15"
+    },
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "sma_5"
+    }
+  ],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "LONG",
+  "target_regime": [
+    "TRENDING_UP",
+    "HIGH_VOL"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Signal uses 5-period and 15-period SMAs. Mapped to sma_5 and sma_15 (closest available from allowed list). The 'immediate crossover detected' condition is inherently captured by the crosses_above operator. Exit conditions use OR logic as they represent alternative exit triggers.",
+  "validation_issues": [
+    "entry_long: unknown right value 'sma_15'",
+    "exit_long: unknown right value 'sma_15'"
+  ]
+}

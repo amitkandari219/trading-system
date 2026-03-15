@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking assets by 3-year cumulative return percentile and selecting extreme quintiles. This requires cross-asset ranking logic and portfolio-level calculations (percentile thresholds across asset universe) which cannot be expressed as single-instrument indicator conditions. The 200-day MA reversal confirmation is translatable, but the core mean-reversion rank-and-trade logic requires portfolio construction rules outside the scope of per-instrument technical conditions.",
+  "translation_notes": "Attempted partial translation: Used returns indicator to approximate 3-year trend (noting that returns should be calculated over 3-year window in backtest engine). Long entry uses negative returns (bottom 20th percentile proxy) with price above 200-day MA confirmation. Short entry uses positive returns (top 80th percentile proxy) with price below 200-day MA. Exit conditions approximate reversal into 40th percentile of 3-year range using returns thresholds. Hold period set to 730 days (2 years). Core percentile ranking across asset universe requires explicit portfolio ranking logic not available in single-instrument rule syntax."
+}

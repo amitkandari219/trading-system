@@ -1,0 +1,74 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Breakaway bullish pattern interpreted as price breaking above previous resistance (prev_high) with confirmation above 20-day MA. Exit conditions were AUTHOR_SILENT so reversal below 20-day MA was applied as reasonable exit. Specific success rate metrics and volume data marked as AUTHOR_SILENT were not incorporated into structured conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Breakaway bullish pattern interpreted as price breaking above previous resistance (prev_high) with confirmation above 20-day MA. Exit conditions were AUTHOR_SILENT so reversal below 20-day MA was applied as reasonable exit. Specific success rate metrics and volume data marked as AUTHOR_SILENT were not incorporated into structured conditions."
+  },
+  "source_rule_text": "Breakaway, Bullish: A candlestick pattern representing a change from a bearish mood to a bullish reversal"
+}

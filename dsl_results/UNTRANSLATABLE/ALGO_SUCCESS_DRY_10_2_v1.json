@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ADF/KPSS statistical test for stationarity (p < 0.10) and explicit standard deviation distance calculation from rolling mean. These statistical tests are not available in the allowed indicator set. SMA_63 is approximated, but the critical ADF test condition and precise std_dev_multiple thresholds cannot be expressed with allowed indicators.",
+  "translation_notes": "The signal fundamentally relies on statistical mean-reversion tests (ADF/KPSS) that are not available as pre-computed indicators. The rolling mean window of 63 periods has no direct SMA equivalent in the allowed list (closest would be sma_50 or sma_100). Price deviation measured in standard deviations (std_dev_multiple=1.0) cannot be calculated from allowed indicators without explicit volatility measures. The exit condition of '+0.5 standard deviations toward mean' also requires standard deviation calculations not available. Consider adding: adf_pvalue, kpss_pvalue, rolling_std_dev, or price_zscore to the allowed indicators."
+}

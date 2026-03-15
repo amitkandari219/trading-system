@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'price momentum over past 20 days in bottom 10th percentile' which requires cross-sectional percentile ranking across all stocks. This is a portfolio-level statistical calculation not expressible as a single-stock indicator. Similarly, 'volume below 30th percentile of its 60-day average' requires statistical percentile binning. Only translated the directional price decline (-15%) and approximate volume weakness using vol_ratio_20. Entry requires custom percentile calculation engine.",
+  "translation_notes": "Partially translated using available indicators: (1) Price decline approximated with returns < -15% over lookback period; (2) Volume weakness approximated with vol_ratio_20 < 0.30 as proxy for below-average volume; (3) Price recovery exit set at returns > 8%; (4) Hold period set to 5 days per exit conditions. Missing: cross-sectional momentum percentile ranking and rolling percentile volume calculation. Recommend implementing custom percentile_rank() function for full signal fidelity."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires specialized pair trading indicators not in the allowed set: (1) cointegration_test_pvalue - statistical test for cointegrated pairs, (2) spread_zscore - normalized spread between cointegrated assets, (3) half_life_mean_reversion - half-life decay calculation. The strategy operates on constructed synthetic portfolios from pairs rather than single assets, which requires multi-asset correlation and time-series decomposition analysis. Standard single-asset technical indicators cannot capture cointegration relationships, spread dynamics, or mean reversion half-life. A custom cointegration module would be required.",
+  "translation_notes": "Signal ALGO_SUCCESS_DRY_10_0 is a pair trading/statistical arbitrage strategy fundamentally incompatible with single-asset indicator-based rule translation. Entry requires: cointegration p-value < 0.01, spread > \u00b12.0 std devs, half-life > 5 days. Exit requires: spread within \u00b10.5 std devs OR stop at \u00b13.5 std devs. Parameters include cointegration_pvalue_threshold=0.01, spread_std_dev_entry=2.0, min_half_life_days=5, position_sizing_ratio=0.5. This requires a dedicated cointegration engine outside standard backtester scope."
+}

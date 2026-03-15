@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'intraday trend exhaustion pattern' and 'gap opening direction' which are not available as atomic indicators in the allowed list. These require multi-bar pattern recognition or gap detection logic not expressible with single-bar indicator comparisons. The 75% recovery exit target also requires dynamic calculation of prior move amplitude, which cannot be expressed without indexing past bars beyond prev_* variables.",
+  "translation_notes": "Translated core mean-reversion logic: entry when price deviates \u00b11% from 50-bar MA (approximated as close crossing sma_50 with returns threshold). Exit at MA or on reversal. Hold capped at 6 bars as specified. Direction set to CONTEXT_DEPENDENT per signal. Pattern exhaustion and gap conditions marked untranslatable."
+}

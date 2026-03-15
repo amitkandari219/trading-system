@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Historical mean (\u00b5) calculation from Ornstein-Uhlenbeck model\u2014not available in allowed indicators; (2) Half-life threshold computation\u2014requires stochastic process analysis beyond standard technical indicators; (3) Entry conditions completely unspecified (AUTHOR_SILENT). Used sma_20 as a proxy for historical mean, but this does not capture the true mean-reversion framework intended by the signal.",
+  "translation_notes": "This signal is fundamentally untranslatable with standard technical indicators because it relies on mean-reverting process parameters (\u00b5 from O-U formula, half-life decay rate) that require time-series statistical modeling. The allowed indicator set lacks: (a) a true historical mean calculator, (b) half-life measurement tools, (c) mean-reversion strength metrics. Entry conditions are completely absent from the source material. Substituted sma_20 as a rough proxy for mean, but this is not statistically equivalent to the Ornstein-Uhlenbeck mean target. For proper implementation, this signal requires custom indicators for mean calculation and half-life detection."
+}

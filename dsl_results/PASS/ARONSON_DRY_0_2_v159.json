@@ -1,0 +1,107 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_middle"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_middle"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped channel breakout to Donchian Channel (dc_upper, dc_lower, dc_middle) with lookback_period_n=8 implicitly set. Entry on breakout above/below channel boundaries. Exit on closure back inside channel (crossing dc_middle) or breach of opposite boundary. Direction is bidirectional (LONG on upside breakout, SHORT on downside breakout)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_middle"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_middle"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mapped channel breakout to Donchian Channel (dc_upper, dc_lower, dc_middle) with lookback_period_n=8 implicitly set. Entry on breakout above/below channel boundaries. Exit on closure back inside channel (crossing dc_middle) or breach of opposite boundary. Direction is bidirectional (LONG on upside breakout, SHORT on downside breakout)."
+  },
+  "source_rule_text": "A trader should adjust the lookback period of a channel breakout indicator based on the trend magnitude they wish to capture\u2014larger lookback periods detect larger trends with fewer false signals, while smaller periods detect smaller trends with higher sensitivity."
+}

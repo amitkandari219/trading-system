@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a meta-rule for validating rule quality, not a tradeable signal. It requires: (1) counting trigger occurrences across entry conditions (not expressible as atomic price/indicator conditions), (2) comparing backtest performance metrics across regimes (external backtest analysis, not real-time price conditions), (3) statistical divergence analysis (requires historical performance data, not available to the signal engine). The rule validates whether another rule has directional bias by comparing its behavior in up vs. down trends\u2014this is a backtest diagnostic, not an entry/exit condition.",
+  "translation_notes": "ARONSON_DRY_0_1 is a validation framework from Aronson's 'Evidence-Based Technical Analysis' designed to detect false edges caused by regime alignment bias. It mandates: (a) symmetry check\u2014long and short trigger counts within \u00b110%, (b) cycle testing\u2014minimum 2 complete trend reversals, (c) performance stability\u2014max 20% performance differential between opposite regimes. This must be evaluated at backtest time by comparing rule statistics across TRENDING_UP and TRENDING_DOWN regimes. Real-time entry/exit conditions cannot capture this meta-level validation. Implementation requires backtest engine support for regime-split performance analysis and trigger-count symmetry checks."
+}

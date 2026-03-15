@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires market microstructure data (order submission costs in basis points, counterparty trade history, bid-ask spreads, block size in notional value, counterparty response tracking) that are not available in the ALLOWED INDICATORS list. The signal is fundamentally a trader behavior/negotiation rule rather than a technical price-action rule. Required inputs: order_cost_threshold_bps, spread_threshold_bps, min_block_size_shares, lookback_period_months, counterparty_trade_history, bid_ask_spread, and counterparty_response_status \u2014 none of which can be expressed using price, volume, or technical indicators.",
+  "translation_notes": "MICROSTRUCTURE_DRY_15_1 is a market microstructure and counterparty engagement signal. It describes a proactive trading strategy (solicit latent demand) conditioned on: (1) high order submission costs relative to transaction size, (2) historical counterparty trading activity, (3) wide spreads, and (4) large block sizes. The exit conditions involve counterparty responses and time elapsed. This requires market data feeds (spread quotes, trade history databases, cost analytics) and counterparty interaction state tracking, which fall outside the scope of a price-action backtest engine using technical indicators. To implement this signal, the backtest engine would need to be extended with market microstructure modules."
+}

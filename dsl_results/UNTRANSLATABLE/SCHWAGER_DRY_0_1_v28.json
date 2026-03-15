@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'voice intensity/volatility proxy' and activity baseline comparison (5-bar average activity drop/spike detection). Standard OHLCV indicators cannot directly measure acoustic intensity or custom activity metrics. Volume proxy is imperfect substitute. Signal also requires multi-bar sustained movement detection and percentage-change comparisons from rolling averages that exceed standard indicator capabilities.",
+  "translation_notes": "Attempted approximation: Used volume as proxy for activity intensity (volume < 65% of baseline suggests activity drop; body_pct < 0.3 indicates directional weakness). However, this signal fundamentally requires custom acoustic/intensity data and rolling baseline comparisons not available in standard technical indicators. Recommendation: Implement custom activity_index indicator combining volume, range, and volatility metrics before backtesting this rule."
+}

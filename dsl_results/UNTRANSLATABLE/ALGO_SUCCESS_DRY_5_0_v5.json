@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'multiple tranches identified across 4+ hour window' and 'order book imbalance (sell/buy ratio) > 2.0'. Order book microstructure data (bid/ask imbalance ratio, tranche detection algorithm) is not available in the allowed indicator set. The signal also requires intraday multi-timeframe order flow analysis that cannot be expressed with OHLCV-based indicators alone.",
+  "translation_notes": "Partially translated using available indicators: vol_ratio_20 approximates volume spike detection (2.5x threshold), returns < -3.5% captures intraday price decline, and price_pos_20 < 0.3 approximates sustained selling pressure relative to 20-day range. Exit at +1.5% recovery uses returns threshold. Hard stop of 2.5% is set as stop_loss_pct. However, order book imbalance detection and tranche identification across multi-hour windows require microstructure data unavailable in this indicator set. This signal is fundamentally untranslatable without real-time Level 2/3 order book data."
+}

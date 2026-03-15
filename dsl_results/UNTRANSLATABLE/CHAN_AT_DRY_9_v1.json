@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The Kelly formula (f = m/s\u00b2) requires calculation of mean excess return (m) and variance of returns (s\u00b2) over a lookback period. These are statistical measures that cannot be expressed as simple conditional comparisons between a single indicator and a threshold. The signal requires: (1) Computing rolling mean of excess returns, (2) Computing rolling variance of returns, (3) Applying the Kelly formula calculation. The backtest engine supports only binary comparisons (indicator vs threshold/indicator), not multi-step statistical computations. Additionally, critical parameters (lookback_period, threshold values) are marked AUTHOR_SILENT and cannot be inferred.",
+  "translation_notes": "This is a position sizing/leverage rule rather than an entry/exit signal. It requires statistical calculations (mean, variance) and formula application that exceed the capability of the condition-based rule system. The signal determines optimal leverage ratio f but does not specify entry/exit triggers. To implement this, the backtest engine would need: (1) A dedicated Kelly calculator module, (2) Configurable lookback periods for returns statistics, (3) Risk management parameters for maximum leverage limits. Recommend implementing as a separate position sizing algorithm rather than as entry/exit conditions."
+}

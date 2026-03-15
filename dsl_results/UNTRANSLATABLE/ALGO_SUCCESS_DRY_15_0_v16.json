@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires z-score of OLS regression residuals from pairs trading (zscore_last indicator), which is not available in the allowed indicators list. The z-score threshold (0.5) and mean reversion logic cannot be expressed using only standard price/volume/momentum indicators. This requires custom statistical computation on pair residuals.",
+  "translation_notes": "Original signal uses pairs trading with linear regression residuals and z-score mean reversion detection. Attempted fallback: modeled mean reversion as price crossing moving average (close crossing sma_20), but this is a crude approximation. The true signal requires: (1) two correlated assets (p0, p1), (2) OLS hedge ratio calculation, (3) residuals time series, (4) z-score of residuals. None of these statistical measures are in the allowed indicator set."
+}

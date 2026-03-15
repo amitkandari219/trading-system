@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) consecutive periods without pullback >2% \u2014 requires multi-bar lookback logic not expressible as single condition; (2) fundamental news event detection \u2014 no fundamental/sentiment indicator available; (3) market ignoring news for 5+ days \u2014 requires event tracking external to price/volume; (4) price extension >3 standard deviations from MA \u2014 would need custom indicator combining standard deviation with price distance. Used price_pos_20 as proxy for extension detection, but this is a weak approximation of the hysterical blowoff condition.",
+  "translation_notes": "Attempted partial translation using price_pos_20 (normalized position in 20-period range) as proxy for extreme extension. Entry requires price near extremes (0-2% or 98-100% of range) with volume confirmation. Exit targets reversion to MA. However, the core signal requires multi-period continuation analysis and fundamental news detection which are unavailable. This translation captures only the mean reversion structure, not the hysterical blowoff pattern recognition that is central to the signal."
+}

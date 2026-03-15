@@ -1,0 +1,168 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "30"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.6"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "sma_20",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "30"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.4"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "25"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "25"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses trend confirmation across multiple indicators. Entry conditions mapped to long/short contexts based on MA alignment. 'Top 40% of range' translated to price_pos_20 > 0.6 for long, < 0.4 for short. Trailing stop at 1.5x ATR approximated as 3% stop_loss_pct given typical ATR relationships. Position scaling logic noted but not directly encodable in rule structure\u2014should be handled in position sizing module."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 30.0
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.6
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "sma_20",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 30.0
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.4
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 25.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 25.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses trend confirmation across multiple indicators. Entry conditions mapped to long/short contexts based on MA alignment. 'Top 40% of range' translated to price_pos_20 > 0.6 for long, < 0.4 for short. Trailing stop at 1.5x ATR approximated as 3% stop_loss_pct given typical ATR relationships. Position scaling logic noted but not directly encodable in rule structure\u2014should be handled in position sizing module."
+  },
+  "source_rule_text": "Trade in the direction of the trend, with position sizing and conviction increasing as trend strength increases."
+}

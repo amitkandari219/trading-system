@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a QDA classifier model trained on lagged returns (t-1, t-2) to generate prediction probabilities. This is a machine learning model output, not a technical indicator. The allowed indicator set contains only pre-calculated technical indicators (RSI, MACD, Moving Averages, etc.) and cannot express: (1) classifier predictions, (2) rolling 252-day model training and retraining logic, (3) prediction probability thresholds from a trained model. To implement this signal, the backtest engine would need custom ML model integration capabilities beyond the standard technical indicator framework.",
+  "translation_notes": "The signal's core logic (enter on positive predictions, exit on negative predictions with probability thresholds of 0.65 and 0.60) cannot be translated to standard technical indicators. The 'returns' indicator exists but represents actual returns, not predicted returns from a classifier. A custom implementation would require: (1) a QDA classifier module, (2) dynamic model retraining on rolling 252-day windows, (3) prediction probability outputs as signals."
+}

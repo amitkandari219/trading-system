@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires detection of 8 consecutive new price highs and tracking of white candle count across a multi-bar sequence. Available indicators do not include pattern recognition or lookback aggregation functions to count consecutive highs or measure candle color ratios across a fixed-length window. The 48% success rate metric and reversal probability are statistical outcomes, not entry/exit conditions that can be mechanically coded without custom pattern detection logic.",
+  "translation_notes": "Attempted to capture core pattern characteristics: (1) new high each day = high > prev_high, (2) most candles white = body_pct > 0.5 and close > open, (3) exit on reversal = close falls below prior close. However, the strict requirement for exactly 8 consecutive new highs and the assertion that reversal occurs only 48% of the time cannot be expressed with the allowed indicator set. A proper implementation would require a custom pattern scanner or state machine to track the sequence length and success probability."
+}

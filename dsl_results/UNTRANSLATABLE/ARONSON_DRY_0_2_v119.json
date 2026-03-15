@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of price momentum as Z-score over 10-period lookback and volume percentile thresholds (55th percentile of 30-period MA) which are not available as pre-computed indicators. The allowed indicators do not include custom momentum Z-score or volume percentile ranking functions. Using log_returns as a proxy for momentum and vol_ratio_20 as a volume confirmation, but this is an approximation rather than the exact specification.",
+  "translation_notes": "Approximated momentum Z-score threshold (0.8 sigma) using log_returns decimal scale; approximated volume confirmation using vol_ratio_20 (volume ratio to 20-period MA) as proxy for '55th percentile' requirement. Signal is CONTEXT_DEPENDENT so both LONG and SHORT entry conditions provided. Exit on reversal (returns crossing zero) and volume confirmation loss."
+}

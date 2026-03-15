@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pair trading on GLD/USO spread, log-spread, or ratio with z-score thresholds and linear regression parameters (lookback_period, threshold, half_life). These pair-specific constructs and exact threshold values are not available in the allowed single-asset indicators. The strategy references Examples 2.5 and 2.8 for specific parameter values which are not provided in the source text.",
+  "translation_notes": "This signal is a pairs/spread trading strategy that cannot be fully expressed using single-asset indicators. A complete translation would require: (1) cross-asset spread calculation (GLD - USO), (2) z-score computation relative to rolling mean, (3) specific threshold values from referenced examples, and (4) linear regression mean-reversion logic. The generic log_returns proxy above does not capture the pair-specific dynamics required. Manual parameter configuration from Examples 2.5 and 2.8 is essential."
+}

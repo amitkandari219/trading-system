@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) '20+ day base' consolidation phase - not directly measurable without custom pattern recognition; (2) 'fundamental catalyst event occurred within last 2 trading days' - external event detection not available in indicator set; (3) Price below base support - requires identified support level from pattern history. The volume confirmation and MA crossover are translatable, but the core logic (catalyst detection + base identification) cannot be expressed using allowed indicators alone.",
+  "translation_notes": "Partial translation captures the technical components: MA50 crossover with volume confirmation (vol_ratio_20 > 1.5). Missing critical components: (a) catalyst event detection (requires external data/event feed), (b) base formation detection (requires pattern memory or custom lookback), (c) support level identification. Direction set to CONTEXT_DEPENDENT as signal specifies direction depends on trend direction at time of catalyst. Recommend adding external event flag input or implementing custom base-detection indicator to fully operationalize this signal."
+}

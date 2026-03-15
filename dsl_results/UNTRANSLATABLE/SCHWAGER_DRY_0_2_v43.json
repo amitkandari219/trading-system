@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires counting consecutive limit-move days and detecting momentum reversal patterns. The concept of 'limit move' (market close limit-up/limit-down), consecutive day counting logic, and exhaustion detection cannot be expressed using only single-bar indicators and the allowed operators. These require multi-bar state tracking and custom logic (e.g., 'day 4 caution', 'fifth consecutive limit-move day', 'momentum reversal') that fall outside the single-condition boolean framework.",
+  "translation_notes": "Attempted proxy: Used price_pos_20 (position in 20-bar range) combined with elevated ATR to approximate trending/extreme volatility conditions. Exit uses price crossing pivot as reversal signal. However, this does not capture the core signal logic: the specific mechanic of counting consecutive limit-move days and detecting unsustainable exhaustion intensity. The original signal is pattern-based and state-dependent, requiring a custom rule engine or multi-bar lookback logic."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a market microstructure behavior (quote refresh strategy) that cannot be expressed as a technical indicator-based rule. The core concept involves: (1) timing of quote placements relative to previous quotes (requires order book state tracking, not available in allowed indicators), (2) competitor price matching behavior (requires market microstructure data), and (3) explicit trader intent to signal continued interest and force price improvement (behavioral/strategic concept, not a price/volume pattern). The allowed indicators set contains only OHLCV-derived technical metrics and cannot capture order placement timing, quote refresh intervals, or relative pricing actions within the order book.",
+  "translation_notes": "MICROSTRUCTURE_DRY_6_0 is a quote management strategy from oral auction market microstructure theory ('A quote is good only as long as the breath is warm'). It requires monitoring: (1) time elapsed since last quote refresh vs. quote_refresh_interval_seconds threshold, (2) order book position and competitor quotes, (3) minimum_price_improvement_required_bps relative to competing bids/offers. None of these can be constructed from price bars, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, stochastic, Donchian channels, pivots, volume ratios, or position metrics. A proper implementation would require order book depth data, quote timestamps, and order placement/cancellation event streams."
+}

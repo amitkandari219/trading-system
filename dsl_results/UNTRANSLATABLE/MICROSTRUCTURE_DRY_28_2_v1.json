@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_28_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of order flow microstructure patterns (unusual order flow, liquidity withdrawal, spread widening, correlation shift, skew change), pattern recognition confidence scoring (confidence > 0.40), and historical episode matching. These require real-time market microstructure data and machine learning pattern classification not available in the allowed indicator set. Additionally, realized vs implied volatility comparison requires option market data. Used hvol_20 and bb_bandwidth as proxies for volatility regime detection, but core pattern recognition logic cannot be fully expressed.",
+  "translation_notes": "Translated volatility percentile trigger (50th) to hvol_20 > 0.50 as approximate proxy. Used bb_bandwidth widening as proxy for liquidity/spread conditions. Entry/exit on realized volatility changes approximated with hvol thresholds. Pattern confidence threshold (0.40) and order flow analysis require external microstructure data unavailable in standard OHLCV indicators. Hold period set to 5 days per exit conditions. Direction set to CONTEXT_DEPENDENT per signal specification."
+}

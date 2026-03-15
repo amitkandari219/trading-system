@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'consecutive limit-move days' (market closes limit-up or limit-down) and counting N consecutive occurrences. This requires custom bar-pattern logic not available in the allowed indicators. Specifically: (1) 'limit-move definition' needs exchange-specific limit calculation, (2) consecutive day counting requires state tracking across multiple bars. Entry uses high volatility + trend confirmation as proxy; exit uses extreme body size as proxy for exhaustion, but true implementation needs custom limit-detection logic.",
+  "translation_notes": "This Schwager exhaustion signal requires tracking consecutive limit-move days (bars that close at daily limit-up or limit-down). The allowed indicators cannot express this pattern. Used hvol_20 > 0.02 (2% volatility) + adx_14 > 25 (strong trend) as entry proxy. Exit approximated with body_pct > 0.95 (full-range candle indicating exhaustion) on max 3-day hold. For production use, add custom indicator detecting consecutive limit closes and implement state-tracking exit on third occurrence."
+}

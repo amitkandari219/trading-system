@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Kalman filter predictions and measurement prediction error e(t) which are not available in the allowed indicators list. The signal operates on a spread (EWC-EWA) with dynamic Kalman-filtered mean and deviation thresholds specified in standard deviations. Critical parameters (lookback_period, threshold, half_life) are marked AUTHOR_SILENT and cannot be inferred. Substituted bb_pct_b as a proxy for mean-reversion extremes, but this does not capture the true Kalman filter logic.",
+  "translation_notes": "This is a pairs trading signal using Kalman filtering for adaptive mean estimation. Without access to Kalman filter predictions, measurement errors, or the actual parameter values, the translation cannot be accurate. bb_pct_b (Bollinger Band %B) approximates extreme deviations but lacks the statistical sophistication of Kalman-filtered predictions. Requires custom Kalman filter implementation outside standard indicator set."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_20_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires three key indicators not in allowed list: (1) Inventory level percentile tracking over 2-year range\u2014no inventory data source available; (2) Production pipeline lead time (60+ days)\u2014no supply chain indicator available; (3) Storage cost as percentage of commodity price\u2014no cost basis indicator available. These are microstructure-specific fundamental inputs that cannot be proxied by technical indicators. Partial translation provided using price position (proxy for inventory relative strength) and historical volatility (proxy for demand variability).",
+  "translation_notes": "Attempted proxy: price_pos_20 approximates inventory percentile position within recent range; hvol_20 approximates demand volatility coefficient of variation. However, the core signal is fundamentally untranslatable without access to commodity-specific inventory, supply chain, and cost data that lie outside technical indicator scope. Direction marked CONTEXT_DEPENDENT because the original signal states timing is dependent on whether inventory imbalance creates shortage vs. oversupply conditions. A fully functional implementation would require external data feeds for inventory levels, production pipeline timing, and storage costs."
+}

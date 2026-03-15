@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of correlation coefficient between lagged returns and future returns with statistical significance testing (p-value < 0.05). This is a dynamic statistical test that cannot be expressed using only the allowed indicators and comparison operators. The correlation calculation and p-value threshold are computational operations beyond the scope of the rule engine's indicator-based logic. Lookback and holding periods are parameterized (25/60/120 days and 1/5/10/25/60/120/250 days respectively) requiring external computation.",
+  "translation_notes": "This momentum/mean-reversion signal is fundamentally a parametric statistical test (Pearson correlation with significance testing) rather than a technical indicator comparison. The rule engine would need to support lag-correlation functions and hypothesis testing to properly implement this strategy. A simplified proxy using returns direction has been shown above, but this does not capture the actual signal logic of identifying correlation significance across multiple timeframes."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) 52-week high proximity calculation \u2014 Donchian upper approximates but is not true 52-week high; (2) 52-week low avoidance buffer \u2014 no 252-day lookback available; (3) >30% drawdown detection with 5+ day uptrend confirmation \u2014 requires historical peak tracking and multi-day consecutive condition logic not supported; (4) 10-day ROC momentum calculation \u2014 returns indicator available but ROC(10) specifically not in allowed list. Partial translation uses available proxies (Donchian for strength, returns for momentum) but loses signal fidelity on recovery drawdown rules.",
+  "translation_notes": "Entry approximates 'near 52-week high' using dc_upper (Donchian upper band, typically 20-day). Entry uses 10-day positive returns as proxy for 10-day ROC > 0%. Exit uses 2-consecutive-day close below SMA approximated as single condition close < sma_50, and momentum reversal approximated as returns < -5%. Stop loss set to 5% per avoid_low_buffer_percent. Cannot properly implement 52-week lookback, recovery from >30% drawdown, or 5+ day uptrend confirmation with available indicators."
+}

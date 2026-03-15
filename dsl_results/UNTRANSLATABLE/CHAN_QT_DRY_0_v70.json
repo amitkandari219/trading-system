@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires mean-reversion equilibrium calculation (lookback_period, threshold, half_life all marked AUTHOR_SILENT). Exact deviation threshold from mean not specified. Without these critical parameters, only a generic mean-reversion proxy using price vs SMA can be constructed. Original implementation details unavailable from excerpt.",
+  "translation_notes": "Translated as context-dependent mean-reversion strategy using SMA crossover as proxy for mean deviation. Entry when price deviates below/above SMA_20 (equilibrium estimate), exit on reversal cross. Actual backtest parameters (Sharpe ratio, period, transaction costs) are author-silent and cannot be encoded. This is a reasonable approximation but does not capture the sophisticated mean-reversion logic referenced in the signal definition."
+}

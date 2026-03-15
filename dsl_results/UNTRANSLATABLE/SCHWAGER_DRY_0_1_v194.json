@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit detection of prior consolidation/congestion range duration (minimum 10-15 bars) and calculation of range width as price target measurement. The allowed indicators (Donchian, ATR, Pivots) can detect breakouts and provide some range context, but cannot reliably identify and measure historical consolidation periods or project 1.0x range width targets dynamically. This requires lookback logic and range memory not available in the allowed indicator set.",
+  "translation_notes": "Attempted partial translation using Donchian Channels (dc_upper/dc_lower) as proxy for range boundaries and atr_14 for range width validation. However, the core requirement to measure and retain prior consolidation width as a forward projection target cannot be fully expressed with allowed indicators. A custom 'congestion_detector' or 'range_memory' indicator would be needed."
+}

@@ -1,0 +1,92 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 4,
+    "direction": "BOTH",
+    "target_regime": [
+      "BULL_MARKET_UP",
+      "BULL_MARKET_DOWN",
+      "BEAR_MARKET_UP",
+      "BEAR_MARKET_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal detects candle breakouts within 2-4 days. Entry conditions capture upward breakouts (close > prev_high) and downward breakouts (close < prev_low). Exit conditions reverse the breakout direction. hold_days_min and hold_days_max enforce the 2-4 day window. Direction is CONTEXT_DEPENDENT as the signal applies to both long and short breakouts. Pattern uses previous bar extremes (prev_high, prev_low) as the candle top/bottom reference points."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "BULL_MARKET_UP",
+      "BULL_MARKET_DOWN",
+      "BEAR_MARKET_UP",
+      "BEAR_MARKET_DOWN"
+    ],
+    "hold_days": 4,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal detects candle breakouts within 2-4 days. Entry conditions capture upward breakouts (close > prev_high) and downward breakouts (close < prev_low). Exit conditions reverse the breakout direction. hold_days_min and hold_days_max enforce the 2-4 day window. Direction is CONTEXT_DEPENDENT as the signal applies to both long and short breakouts. Pattern uses previous bar extremes (prev_high, prev_low) as the candle top/bottom reference points."
+  },
+  "source_rule_text": "Candle end to breakout: Price closes above the top (upward breakouts) or below the bottom (downward breakouts) within 2-4 days"
+}

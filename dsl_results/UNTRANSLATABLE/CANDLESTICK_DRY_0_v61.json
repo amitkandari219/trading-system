@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic calculation of price targets based on candle height ratios: (candle_height \u00f7 6) + highest_high for upward breakout and highest_high - (candle_height \u00f7 3) for downward breakout. The engine does not support computed fields or multi-candle arithmetic operations. Targets CALCULATED_TARGET_UPWARD and CALCULATED_TARGET_DOWNWARD are placeholders requiring external computation logic. Additionally, the signal is CONTEXT_DEPENDENT (direction determined by pattern breakout direction, not predefined), which requires pattern recognition not available in the indicator set.",
+  "translation_notes": "This is a measurement-based breakout strategy that cannot be fully expressed with static indicators. Entry requires identification of a candle pattern with measurable height (high - low). Exit targets are dynamically calculated: upward breakout exit = (high - low) / 6 + high; downward breakout exit = high - (high - low) / 3. The 'range' indicator (high - low) was used as a proxy for candle height identification. A proper implementation requires custom pattern detection and dynamic target calculation logic outside the standard indicator framework."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires tracking NYSE upside/downside volume ratio on 2 consecutive days and a 3-day downtrend in close prices. The available vol_ratio_20 indicator does not specify NYSE-specific data or consecutive-day pattern matching logic. The 'consecutive_days_required': 2 and '3-day downtrend' conditions cannot be expressed with the allowed operators and single-bar indicators provided. Multi-bar lookback logic and exchange-specific volume data are beyond the current rule schema.",
+  "translation_notes": "Attempted to map vol_ratio_20 as a proxy for NYSE upside/downside volume ratio. Volume confirmation mapped to volume > sma_20. Exit condition for ratio falling below 7:1 is expressible, but the consecutive-day requirement and multi-day trend conditions require custom logic outside the allowed operator set."
+}

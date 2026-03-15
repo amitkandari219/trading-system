@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of mutual fund cash reserves vs. short-term interest rates linear regression and standard deviation divergence. Neither 'mutual fund cash reserves' nor 'short-term interest rates' are available in the allowed indicator set. This is a macro/institutional flow indicator requiring external data sources not present in the price/technical indicator universe.",
+  "translation_notes": "ARONSON_DRY_0_2 (Fosback Index derivative) fundamentally relies on institutional cash flow data and macro interest rate regime that cannot be constructed from OHLCV price action alone. The signal requires: (1) mutual fund cash level time series, (2) short-term interest rate time series, (3) 63-day rolling linear regression fit, (4) residual standard deviation calculation. All entry logic is predicated on this external data source. The 0.5% hard stop and 20-day max hold are translatable, but without the core cash reserve divergence metric, the signal cannot be operationalized."
+}

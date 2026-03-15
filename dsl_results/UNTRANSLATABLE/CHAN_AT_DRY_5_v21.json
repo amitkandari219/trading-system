@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Johansen cointegration test (statistical test not available as indicator), portfolio construction from cointegrated stock universe (requires multi-asset screening logic), and spread-based mean reversion triggers (cointegration residual/spread not in allowed indicators). These require custom statistical computation outside standard indicator library.",
+  "translation_notes": "This signal fundamentally requires: (1) cointegration testing framework between multiple assets and SPY, (2) dynamic portfolio construction based on cointegration results, and (3) spread/residual monitoring from a cointegration model. None of these are expressible using the allowed indicators (which are single-asset technical indicators only). The signal needs a custom cointegration module in the backtest engine rather than a rule-based condition set. A simplified proxy using log_returns deviation was provided but does not capture the intended cointegration logic."
+}

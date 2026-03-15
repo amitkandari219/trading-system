@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-candle pattern recognition (identifying a complete candle pattern structure and measuring breakout timing within 2-4 days from pattern end). This requires pattern detection logic not available in the indicator set. Additionally, the 'candle pattern' itself is not defined with specific criteria (body size, wick ratios, or sequence requirements). The signal also conditions performance on 'yearly position' (temporal market position within calendar year), which is not representable with standard OHLCV indicators.",
+  "translation_notes": "Attempted to capture breakout logic (close above/below previous candle extremes) and the 6-10 day exit window (hold_days_max=10). However, the core pattern-matching requirement and yearly seasonality component cannot be fully encoded. Entry uses prev_high/prev_low as proxy for 'last candle line' breakout. Direction set to CONTEXT_DEPENDENT per original signal. Success rates and volume requirements listed as AUTHOR_SILENT are omitted."
+}

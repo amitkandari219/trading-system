@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Ornstein-Uhlenbeck model fitting and mean-reversion coefficient (theta) calculation via OLS regression on lagged deviations from mean. These are statistical model parameters not available in the allowed indicator set. The half-life calculation (-ln(2)/theta) cannot be computed from standard technical indicators. Additionally, the signal specifies a pair spread (GLD-GDX) which requires cross-asset analysis not supported by single-security indicators.",
+  "translation_notes": "This signal is fundamentally a statistical arbitrage strategy requiring custom model fitting rather than technical indicator thresholds. The entry condition should detect mean-reversion behavior (negative returns suggest deviation from mean), and exit after ~10 days. However, without access to OU model parameters or spread calculations, a true translation is not possible within the constraint of allowed indicators. A proxy using log_returns and moving average crossover is provided but does not capture the intended mean-reversion detection mechanism."
+}

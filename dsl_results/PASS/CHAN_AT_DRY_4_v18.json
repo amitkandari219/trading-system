@@ -1,0 +1,86 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "book_id": "CHAN_AT",
+  "dsl_rule": {
+    "signal_id": "CHAN_AT_DRY_4",
+    "entry_long": [
+      {
+        "left": "bb_pct_b",
+        "operator": ">",
+        "right": "1"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "bb_pct_b",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "bb_pct_b",
+        "operator": "<=",
+        "right": "0.5"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "bb_pct_b",
+        "operator": ">=",
+        "right": "0.5"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "MEAN_REVERSION"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses z-score thresholds (1 and 0) which map to Bollinger Bands %B indicator. Entry at z-score \u00b11 corresponds to bb_pct_b > 1.0 (long, above upper band) and bb_pct_b < 0.0 (short, below lower band). Exit at z-score 0 (mean) corresponds to bb_pct_b \u2248 0.5 (middle band). Lookback period, half-life, and backtest parameters marked AUTHOR_SILENT are not included in rules but would typically be 20 periods for Bollinger Bands. This is a mean-reversion strategy trading both sides bidirectionally."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "bb_pct_b",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "bb_pct_b",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "bb_pct_b",
+        "op": "<=",
+        "value": 0.5
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "bb_pct_b",
+        "op": ">=",
+        "value": 0.5
+      }
+    ],
+    "regime_filter": [
+      "MEAN_REVERSION"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses z-score thresholds (1 and 0) which map to Bollinger Bands %B indicator. Entry at z-score \u00b11 corresponds to bb_pct_b > 1.0 (long, above upper band) and bb_pct_b < 0.0 (short, below lower band). Exit at z-score 0 (mean) corresponds to bb_pct_b \u2248 0.5 (middle band). Lookback period, half-life, and backtest parameters marked AUTHOR_SILENT are not included in rules but would typically be 20 periods for Bollinger Bands. This is a mean-reversion strategy trading both sides bidirectionally."
+  },
+  "source_rule_text": "A mean-reversion strategy using Bollinger Bands that enters when z-score exceeds 1 and exits when z-score returns to 0, trading both long and short sides of a spread."
+}

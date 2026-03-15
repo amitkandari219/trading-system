@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) 'heavily-defended level' with >= 8-12 prior tests \u2014 level detection and test-counting not available in allowed indicators; (2) 'bid-ask spread widening >= 100%' \u2014 spread data not available; (3) 'no trading activity for >= 30 pips after breach' \u2014 order flow/trading activity data not available. These are market microstructure features not expressible with OHLCV-based indicators.",
+  "translation_notes": "Attempted approximation using volatility expansion (atr_14), price gap (range), and volume confirmation, but core signal logic depends on level persistence memory, spread dynamics, and order flow data unavailable in the indicator set. Original signal is fundamentally about market microstructure (level defense, poor fills, no-trade zones) which cannot be reliably reconstructed from standard technical indicators alone."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pair trading mechanics with cointegration testing (ADF p-value), spread calculation between two securities, and multi-security correlation analysis. The backtest engine only supports single-security indicators. Critical components missing: (1) Cointegration test (ADF p-value < 0.01), (2) Price spread between paired equities, (3) Spread mean/std deviation calculations, (4) Multi-security relative divergence detection. These require external pair selection and relationship validation outside the allowed indicator set.",
+  "translation_notes": "This is a pairs trading strategy requiring cointegration analysis and relative value mechanics between two securities. The allowed indicators are single-security technical indicators and cannot express the inter-security spread, cointegration relationship, or mean reversion of the spread itself. A proper implementation would need: (1) pre-selected cointegrated pairs from sector screening, (2) spread = price_A - price_B calculation, (3) z-score of spread vs. historical mean, (4) holding period tracking. Recommend: create a separate pairs screening module and pass pre-validated pairs to the backtest engine with derived spread indicators."
+}

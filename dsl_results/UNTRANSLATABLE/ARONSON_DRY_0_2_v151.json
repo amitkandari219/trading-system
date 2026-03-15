@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'price momentum over past 10 days in bottom 40th percentile' which demands percentile ranking across a lookback window. No allowed indicator directly computes momentum percentiles. 'returns' approximates recent price change but cannot be constrained to a specific percentile bucket without a custom momentum percentile indicator.",
+  "translation_notes": "Approximated entry conditions: (1) Negative 10-day returns (\u2264-5%) substitutes for bottom 40th percentile momentum check. (2) vol_ratio_20 < 1.0 approximates below-average volume condition. Exit after 2 days is enforced via hold_days_max. Recovery exit (within 3% of entry) is captured via returns > 3%. Original signal's percentile-based momentum filter cannot be fully expressed with allowed indicators."
+}

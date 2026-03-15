@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 52-week high (high_52w) which is not in the allowed indicators list. The signal logic depends on comparing current price to a 52-week rolling high value, which cannot be expressed using only the provided indicators (sma_5 through sma_200, ema variants, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, and Bar Properties). Donchian channels (dc_upper) only provide the highest price over a specified lookback period (typically 20 bars), not 252 trading days (52 weeks).",
+  "translation_notes": "The signal requires tracking a 52-week high value which is a custom lookback indicator not available in the allowed set. While dc_upper could approximate recent highs, it does not capture the full 52-week (252 trading day) horizon specified in the original rule. A proper translation would require a high_52w or equivalent 252-bar lookback indicator."
+}

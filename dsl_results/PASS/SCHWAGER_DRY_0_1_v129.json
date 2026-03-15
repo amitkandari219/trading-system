@@ -1,0 +1,108 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_100"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_100"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_100"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_100"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_100"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_100"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is context-dependent (LONG in uptrends, SHORT in downtrends). Entry uses 100-period SMA with 2-bar confirmation as specified. Exit triggers on single close below/above MA per rules. Stop loss encoded as 2.5x ATR multiple. Wide stops and large drawdown tolerance (18%) align with trend-following philosophy. Confirmation bars represented as AND logic requiring two consecutive closes on correct side of MA."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_100"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_100"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_100"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_100"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_100"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_100"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is context-dependent (LONG in uptrends, SHORT in downtrends). Entry uses 100-period SMA with 2-bar confirmation as specified. Exit triggers on single close below/above MA per rules. Stop loss encoded as 2.5x ATR multiple. Wide stops and large drawdown tolerance (18%) align with trend-following philosophy. Confirmation bars represented as AND logic requiring two consecutive closes on correct side of MA."
+  },
+  "source_rule_text": "A trader should use very long-term decision-making systems with wide stops to filter out market noise and catch larger trends, accepting that this requires tolerance for large retracements."
+}

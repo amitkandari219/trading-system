@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_22_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires meta-level validation metrics (historical backtest win rate, out-of-sample forward test validation, regime matching, documented edge hypothesis mechanism) that are NOT price/technical indicators. These are portfolio/strategy-level criteria requiring external backtester state and trader documentation, not computable from OHLCV data alone. The signal is fundamentally a risk management rule about when to trade vs. when to abstain, not a price-action entry/exit signal.",
+  "translation_notes": "MICROSTRUCTURE_DRY_22_0 is a meta-rule about trade initiation discipline, not a technical signal. It mandates: (1) min 60% historical win rate on 100+ trades, (2) min 55% OOS validation, (3) regime match, (4) edge hypothesis documentation. These require backtester state tracking, external validation data, and trader intent verification\u2014beyond the scope of indicator-based rules. Attempted mapping of win rates to returns field is illustrative only and does not capture the true logic. Recommend implementing this as a pre-trade gate in the backtest engine's portfolio manager, not as a price-level condition."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires contract-specific lookback periods (BR=100, HG=40, TU=250 days) and roll yield calculation which cannot be expressed with allowed indicators. Roll yield (futures curve slope) and cumulative returns over contract-dependent periods are not available in the allowed indicator set. Threshold and half_life parameters marked AUTHOR_SILENT are also not specified.",
+  "translation_notes": "Attempted proxy: Used returns momentum indicator with trend direction (CONTEXT_DEPENDENT) to approximate cumulative return trend signal. Used sma_100 crossover as exit condition to approximate reversal from dominant trend. Hold period set to 40 days (HG contract standard) as middle ground. True implementation requires custom roll yield calculation and contract-specific parameter switching unavailable in standard backtester."
+}

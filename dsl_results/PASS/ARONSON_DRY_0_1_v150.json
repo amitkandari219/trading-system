@@ -1,0 +1,86 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_200"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 21,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal specifies 12-month lookback period. Mapped to sma_200 as the closest available long-term simple moving average (approximately 200 trading days \u2248 12 months). Entry conditions are directional based on price position relative to MA. Exit conditions trigger on MA crosses. Monthly rebalance frequency noted but implemented as 21-day max hold as proxy. CONTEXT_DEPENDENT direction preserved to allow both long and short positioning."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_200"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING"
+    ],
+    "hold_days": 21,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal specifies 12-month lookback period. Mapped to sma_200 as the closest available long-term simple moving average (approximately 200 trading days \u2248 12 months). Entry conditions are directional based on price position relative to MA. Exit conditions trigger on MA crosses. Monthly rebalance frequency noted but implemented as 21-day max hold as proxy. CONTEXT_DEPENDENT direction preserved to allow both long and short positioning."
+  },
+  "source_rule_text": "A trader should take long positions when price is above its moving average and short positions when price is below it, using a fixed lookback period to identify trend direction in futures markets."
+}

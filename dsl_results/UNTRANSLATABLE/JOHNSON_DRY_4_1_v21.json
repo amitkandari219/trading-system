@@ -1,0 +1,18 @@
+{
+  "signal_id": "JOHNSON_DRY_4_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires IOC order execution logic, hidden liquidity detection, order priority sequencing, and multi-ping probe tracking (3 consecutive unfilled orders as exit condition). These are order-type and execution-layer concepts that cannot be expressed using price/volume indicators alone. The core 'ping for hidden liquidity' mechanism is a trading infrastructure feature, not a price-action pattern translatable to backtest indicators.",
+  "translation_notes": "Attempted to capture volume spike detection using vol_ratio_20 > 1.5 as proxy for hidden liquidity presence, but the actual signal logic depends on: (1) IOC order mechanics and execution speed, (2) tracking order fill status across multiple attempts, (3) order priority in matching engine, and (4) sequential order expiration counting. A proper backtest implementation would require custom order-execution callbacks and state tracking beyond standard indicator-based rules."
+}

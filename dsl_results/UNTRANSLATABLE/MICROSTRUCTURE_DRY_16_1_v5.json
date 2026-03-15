@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_16_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct measurement of order book depth depletion (50-60% of typical depth), bid-ask spread percentile ranking (>75th percentile), and one-sided volume comparison. These microstructure metrics (order book imbalance, spread dynamics, directional volume exhaustion) are not available in the standard OHLCV indicator set. Price deviation threshold (1.8 SD from 20-day MA) approximated using price_pos_20 and bb_bandwidth as proxies, but true order book depletion detection requires L2 data or specialized microstructure indicators.",
+  "translation_notes": "Attempted translation uses price_pos_20 to detect extreme deviations (long entry <0.2, short entry >0.8), bb_bandwidth to approximate spread widening, and vol_ratio_20 to detect volume spikes. However, the core signal depends on order book depth metrics and spread percentile rankings unavailable in standard OHLCV feeds. Exit uses ATR crossing as reversion proxy and 60-minute hold approximated as 1 day max. This rule should be marked for custom implementation with L2 order book data."
+}

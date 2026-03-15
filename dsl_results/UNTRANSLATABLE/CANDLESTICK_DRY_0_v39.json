@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires precise candle height measurement (high - low) and dynamic target calculation: upward targets = high + (candle_height / 6), downward targets = high - (candle_height / 3). The backtest engine does not support arithmetic expressions combining indicators or derived calculations. Additionally, 'short/tall' shadow classification requires threshold definitions not provided by the author (marked AUTHOR_SILENT). Success rates and performance metrics cannot be encoded as executable conditions.",
+  "translation_notes": "Attempted to encode shadow analysis using upper_wick and lower_wick as proxies for shadow presence/absence, but this is speculative. The core measure rule (candle height \u00f7 6 or \u00f7 3 for targets) and stop placement cannot be properly translated without expression evaluation capability. Recommend implementing as custom indicator or extending engine to support arithmetic operations on bar properties."
+}

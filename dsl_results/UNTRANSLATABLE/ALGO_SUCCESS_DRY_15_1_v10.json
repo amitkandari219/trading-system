@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Z-score calculation is not available in the allowed indicator list. Z-score requires computing (price - mean) / standard_deviation over a rolling window, which is a derived statistical calculation not included in the provided indicators. The signal specifically requires rolling z-score thresholds at +2.0 and +0.5 standard deviations, which cannot be expressed using only the allowed indicators (sma, ema, rsi, atr, bollinger, macd, adx, stochastic, donchian, pivots, volume, position, returns, bar properties).",
+  "translation_notes": "Attempted workaround using price deviation from sma_20 as a proxy for mean reversion, but this does not capture the precise z-score threshold logic required by the original signal. A proper implementation would require z-score calculation capability in the backtest engine."
+}

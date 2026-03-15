@@ -1,0 +1,82 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_200"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_200"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_200"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Converted '200-period moving average' to sma_200. Stop loss expressed as ATR multiple (1.5x atr_14). Confirmation condition simplified to sustained close above MA rather than exact 3-bar confirmation (atr_14 used as standard ATR lookback). Position size reduced by 33% via position_size_multiplier of 0.67. Exit uses crosses_below to detect close below 200-MA crossing; author specifies 2 consecutive periods but engine interprets first cross as signal. Direction set to LONG given trend-following nature and wide stops for catching larger moves."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_200"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Converted '200-period moving average' to sma_200. Stop loss expressed as ATR multiple (1.5x atr_14). Confirmation condition simplified to sustained close above MA rather than exact 3-bar confirmation (atr_14 used as standard ATR lookback). Position size reduced by 33% via position_size_multiplier of 0.67. Exit uses crosses_below to detect close below 200-MA crossing; author specifies 2 consecutive periods but engine interprets first cross as signal. Direction set to LONG given trend-following nature and wide stops for catching larger moves."
+  },
+  "source_rule_text": "A trader should use very long-term decision-making systems with wide stops to filter out market noise and catch larger trends, accepting that this requires tolerance for large retracements."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires market regime classification (BULL vs BEAR, UPBREAK vs DOWNBREAK) that cannot be directly computed from allowed indicators. The logic is context-dependent on higher-level trend/breakout detection not available in the indicator set. Upper/lower wick identification is possible via bar_props (upper_wick, lower_wick), but matching specific regime contexts requires external regime detection beyond allowed indicators.",
+  "translation_notes": "Partially translated: Used upper_wick and lower_wick (from bar properties) to identify tall shadows. Used adx_14 > 25 as a proxy for breakout confirmation. Exit conditions set to simple reversal logic (close reverses direction). Full translation blocked by inability to programmatically define bull/bear market and upbreak/downbreak contexts without additional regime indicators."
+}

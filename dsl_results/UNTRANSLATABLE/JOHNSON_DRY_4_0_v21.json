@@ -1,0 +1,18 @@
+{
+  "signal_id": "JOHNSON_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal relies on order book microstructure analysis (hidden order detection via IOC ping probes, bid-ask spread dynamics, execution priority sequencing, and order timing logic) that cannot be expressed using only OHLCV-derived technical indicators. Requires: (1) real-time order book depth data, (2) order execution latency measurements, (3) hidden volume inference from order fills, (4) time-between-orders state tracking across multiple probe attempts. The core mechanism is algorithmic order flow manipulation, not price/volume pattern recognition.",
+  "translation_notes": "This is an institutional market-making/liquidity detection strategy that operates at the order execution layer rather than the price chart layer. It cannot be backtested using standard OHLCV data. Would require: tick-by-tick order book snapshots, latency measurements, and execution simulation engine capable of modeling hidden liquidity pools and order priority rules."
+}

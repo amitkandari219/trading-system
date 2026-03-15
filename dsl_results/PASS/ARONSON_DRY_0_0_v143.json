@@ -1,0 +1,168 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_5"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "55"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_5"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "45"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "50"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_5"
+      },
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "50"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_5"
+      },
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is context-dependent (both long and short entries included). Used rsi_14 as proxy for momentum indicator. Volume threshold compared to vol_ratio_20 (volume relative to 20-period MA). Minimum trend bars requirement (3-5 bars) handled by requiring price extension beyond sma_5. Divergence detection not directly available in indicator set, so omitted from entry conditions. Exit momentum threshold (50) applied to RSI crosses. Hold period set to 10 days as reasonable default for momentum trade."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_5"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 55.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_5"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 45.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 50.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_5"
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 50.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_5"
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is context-dependent (both long and short entries included). Used rsi_14 as proxy for momentum indicator. Volume threshold compared to vol_ratio_20 (volume relative to 20-period MA). Minimum trend bars requirement (3-5 bars) handled by requiring price extension beyond sma_5. Divergence detection not directly available in indicator set, so omitted from entry conditions. Exit momentum threshold (50) applied to RSI crosses. Hold period set to 10 days as reasonable default for momentum trade."
+  },
+  "source_rule_text": "A trader should enter a momentum trade when price trend signals are early and incomplete diffusion suggests continuation, but must exit before full news diffusion causes overshooting reversal."
+}

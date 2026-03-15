@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking confidence level against a signal stream and counting contradictory signals across multiple bars. This requires custom state management (contradiction counter, confidence decay tracking) not expressible via standard indicator comparisons. The logic demands: (1) maintaining a counter of contradictory signals over lookback_periods=8, (2) applying confidence_decay_multiplier=0.5 to a tracked thesis confidence value, (3) triggering position reduction at count>=3 and exit at count>=5. These are stateful, event-driven conditions rather than price/indicator threshold conditions. A backtest engine with signal tracking capabilities would be required.",
+  "translation_notes": "Mapped 'Established trend or conviction thesis present' to ADX > 25 as a proxy for trend strength. Mapped contradictory signals reversal to RSI extremes (oversold <30 for long, overbought >70 for short) as confidence-breaking reversals. However, the core mechanic\u2014counting signal contradictions and decaying confidence over time\u2014cannot be fully expressed without custom state variables. Parameters captured in schema but require engine enhancement: contradictory_signal_threshold=3, position_reduction_percent=50, signal_lookback_periods=8, confidence_decay_multiplier=0.5."
+}

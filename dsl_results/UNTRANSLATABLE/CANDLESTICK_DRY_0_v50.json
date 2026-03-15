@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires identification of 8 consecutive 'new price line' candles and extraction of highest high/lowest low from that formation. This requires pattern recognition logic beyond standard indicator comparison operators. The specific target values (31.23 for downside, highest_high + height/6 for upside) are hardcoded examples from source text and cannot be generalized without pattern detection capability. Additionally, the '92% success rate' and 'day after formation' timing requirement cannot be expressed with available operators.",
+  "translation_notes": "Attempted to use Donchian channels (dc_upper, dc_lower) as proxy for price lines formation extremes and modeled upside/downside targets, but the core pattern detection (8 new price lines formation) is not translatable to standard indicators. The signal fundamentally requires candle-by-candle pattern matching logic not available in the indicator set."
+}

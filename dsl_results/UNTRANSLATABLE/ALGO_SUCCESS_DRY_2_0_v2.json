@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_2_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a meta-strategy performance monitor, not a price-action trading rule. It requires tracking monthly rolling Sharpe ratio, maximum drawdown from peak equity, and win rate across executed trades\u2014none of which are available in the ALLOWED_INDICATORS list. These are portfolio-level metrics that must be computed outside the bar-by-bar indicator engine. The signal describes regime detection and strategy retirement logic, not entry/exit conditions on price, volume, or technical indicators.",
+  "translation_notes": "ALGO_SUCCESS_DRY_2_0 is designed as a risk management overlay and regime-shift detector for strategy monitoring. It should be implemented as a separate backtest-engine module that tracks equity curve, drawdown, and win-rate statistics independently, then flags strategy retirement when thresholds are breached. Cannot be expressed as standard technical indicator conditions."
+}

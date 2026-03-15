@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pairs trading strategy with cointegration analysis (ADF test, hedge ratio calculation via OLS regression, spread z-score mean reversion). These are multivariate statistical techniques that cannot be expressed using single-asset technical indicators from the allowed indicator list. The signal also references specific CADF t-statistic thresholds (-3.819 to -3.343) which require real-time cointegration computation between GLD and GDX, not available in the allowed indicators.",
+  "translation_notes": "This is a statistical arbitrage pairs strategy requiring: (1) cointegration testing between two assets, (2) hedge ratio estimation, and (3) spread stationarity monitoring. The backtest engine as specified does not support multivariate cointegration analysis or cross-asset spread calculations. A pairs trading implementation would require custom cointegration indicators or a dedicated pairs trading module external to the standard indicator set."
+}

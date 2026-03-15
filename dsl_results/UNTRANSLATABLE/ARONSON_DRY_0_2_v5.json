@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'public announcement' events and 'large price change following announcement' which are not expressible as technical indicators. The volume and price position filters are translatable, but the announcement trigger is external market data not available in the allowed indicator set.",
+  "translation_notes": "Translated the volume and percentile rank conditions using vol_ratio_20 (volume vs 20-day average) and price_pos_20 (price position within 20-day range as proxy for volume rank percentile). Direction set to CONTEXT_DEPENDENT per original signal. Exit uses 2-bar reversal logic combined with volume drying up condition. Stop loss set to 2-bar equivalent (2.0%). Cannot encode announcement detection without external event data sources."
+}

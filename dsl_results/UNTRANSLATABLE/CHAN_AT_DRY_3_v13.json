@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires computing normalized deviation as (price - MA) / StdDev and using that exact value as position sizing. The allowed indicator list does not include a standard deviation indicator or a normalized z-score indicator. Additionally, dynamic position sizing based on computed deviations cannot be expressed as binary entry/exit conditions using only the allowed operators and indicators. The signal also has missing critical parameters (lookback_period, threshold marked as AUTHOR_SILENT) needed to operationalize the mean reversion logic.",
+  "translation_notes": "Signal describes a linear mean reversion strategy with dynamic position sizing based on normalized deviations from a moving average. Without StdDev indicator and with missing parameter specifications, full translation is not possible. A simplified proxy using price crossing its moving average has been provided as a fallback, but this does not capture the core logic of the original signal (negative normalized deviation weighting)."
+}

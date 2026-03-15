@@ -1,0 +1,126 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.20"
+      },
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "0.20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.20"
+      },
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "0.20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.015"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.015"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 15,
+    "direction": "BOTH",
+    "target_regime": [
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires visual chart spike detection ('CRB chart shows visually obvious spike') which cannot be quantified with allowed indicators. Approximated spike detection using 5-day returns >20% combined with elevated 20-day historical volatility as proxy for hysteria/exhaustion. Entry triggers on 1st pullback (opposite direction move) or spike day itself. Exit conditions map to: prior extreme break (3% threshold on reversal), 15-day time stop, and 1.5:1 profit target (approximated as 1.5% return given 2.5% position size). Position direction inferred from market condition (long on downspike, short on upspike)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.2
+      },
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 0.2
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.2
+      },
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 0.2
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.015
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.015
+      }
+    ],
+    "regime_filter": [
+      "HIGH_VOL"
+    ],
+    "hold_days": 15,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires visual chart spike detection ('CRB chart shows visually obvious spike') which cannot be quantified with allowed indicators. Approximated spike detection using 5-day returns >20% combined with elevated 20-day historical volatility as proxy for hysteria/exhaustion. Entry triggers on 1st pullback (opposite direction move) or spike day itself. Exit conditions map to: prior extreme break (3% threshold on reversal), 15-day time stop, and 1.5:1 profit target (approximated as 1.5% return given 2.5% position size). Position direction inferred from market condition (long on downspike, short on upspike)."
+  },
+  "source_rule_text": "A trader should take contrarian positions against extreme price moves (hysteria) when charts show incredible spikes, because exhaustion patterns often precede reversions."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'large price change following public announcement' and 'top 10% of announcement moves' \u2014 neither announcement events nor historical price change percentiles are available in the allowed indicator set. vol_ratio_20 and price_pos_20 proxy for volume conditions, but the announcement trigger and price-move ranking cannot be expressed with allowed indicators alone.",
+  "translation_notes": "Translated volume conditions using vol_ratio_20 (volume ratio to 20-day average) >= 1.5 and price_pos_20 >= 0.75 as proxy for 75th percentile volume rank. Exit triggered when volume ratio falls below 1.2 AND price shows reversal confirmation. Direction kept as CONTEXT_DEPENDENT since announcement direction is not predetermined. Signal entry and exit logic assumes volume confirmation on both long and short sides, but the critical 'announcement event' filter cannot be implemented without external event data."
+}

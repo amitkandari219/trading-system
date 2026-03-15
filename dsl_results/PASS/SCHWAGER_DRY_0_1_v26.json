@@ -1,0 +1,88 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used Donchian channels (10-bar lookback equivalent via dc_upper/dc_lower) to identify swing highs/lows for trend continuation entries and reversals. Entry triggers on breakouts above/below recent swing extremes. Exit triggers on opposite swing break, implementing the core rule: 'exit only when trend changes, not on emotion.' Stop loss set at 1.5x initial risk as specified. Minimum holding period of 10 bars is noted but not enforced in exit logic per signal design (trend-based exit takes precedence). Direction set to CONTEXT_DEPENDENT to accommodate both long and short legs."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used Donchian channels (10-bar lookback equivalent via dc_upper/dc_lower) to identify swing highs/lows for trend continuation entries and reversals. Entry triggers on breakouts above/below recent swing extremes. Exit triggers on opposite swing break, implementing the core rule: 'exit only when trend changes, not on emotion.' Stop loss set at 1.5x initial risk as specified. Minimum holding period of 10 bars is noted but not enforced in exit logic per signal design (trend-based exit takes precedence). Direction set to CONTEXT_DEPENDENT to accommodate both long and short legs."
+  },
+  "source_rule_text": "Stay with the established trend and avoid prematurely taking profits; exit only when the trend itself changes, not based on emotional desire to lock in gains."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparing candle pattern height (highest high to lowest low divided by breakout price) against a median threshold from Table 3.3. This ratio calculation and table-based comparison logic cannot be expressed using only the allowed indicators and operators. The signal also lacks explicit exit conditions (marked AUTHOR_SILENT) and does not provide the median threshold value needed for the comparison.",
+  "translation_notes": "The core pattern measurement (pattern_height / breakout_price vs median) requires custom calculation logic not available in standard indicator set. Direction is context-dependent (upbreakout vs downbreakout), but the backtest engine requires explicit LONG/SHORT direction. Entry uses tall candle proxy (range > 2%), exit uses reversal logic as author provided no exit guidance."
+}

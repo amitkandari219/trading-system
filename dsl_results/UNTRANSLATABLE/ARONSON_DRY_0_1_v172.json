@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit divergence detection (price vs momentum divergence over 20-bar lookback window) and coherence phase alignment measurement. These require multi-bar comparative analysis and custom divergence metrics not available in the allowed indicator set. MACD used as proxy for momentum, but cannot directly express: (1) 3+ bar directional confirmation with prior trend reversal detection, (2) divergence magnitude calculation and 40% coherence threshold comparison, (3) phase alignment validation between two series. A proper implementation would need custom divergence oscillator or multi-bar lookback functions.",
+  "translation_notes": "Partial translation using MACD as momentum proxy and price/SMA crossovers as directional confirmation. The core requirement\u2014detecting when price and momentum both reverse AND move back into phase alignment after prior divergence\u2014cannot be fully expressed with point-in-time indicator comparisons. This signal requires statistical divergence analysis across a rolling window."
+}

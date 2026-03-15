@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fund redemption flow data (net fund outflows >5%, fund holding changes by quarter, fund-level redemption pressure ratios). This is fundamental data not available in price/volume-based indicators. The PRESSURE metric is a custom cross-sectional factor derived from fund portfolio holdings and flows, which cannot be constructed from the allowed indicators (OHLCV, technicals, moving averages, oscillators). Requires external data source: fund-level quarterly holdings, NAV flows, and redemption data.",
+  "translation_notes": "CHAN_AT_DRY_7 is a factor construction rule for quantitative analysis, not a price-action trading signal. It measures selling pressure driven by redemption-forced liquidations across the fund universe. The entry conditions specify a calculation (PRESSURE ratio) rather than threshold-based price signals. To implement this in a backtest engine, you would need: (1) quarterly fund holdings database, (2) fund NAV and flow data, (3) a preprocessing step to compute PRESSURE(i,t) for each stock, then (4) discretionary thresholds on the PRESSURE metric itself. This falls outside the scope of technical indicator-based rule translation."
+}

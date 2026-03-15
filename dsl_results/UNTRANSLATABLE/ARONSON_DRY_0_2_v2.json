@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal specifies sma_15 (15-period SMA) which is not in the allowed indicator list. Allowed SMAs are: sma_5, sma_10, sma_20, sma_40, sma_50, sma_80, sma_100, sma_200. Additionally, the 'higher high in past 10 bars' confirmation and precise volume threshold (0.6x 10-bar average) cannot be expressed with allowed operators and indicators without bar indexing.",
+  "translation_notes": "The signal requires: (1) a 15-period SMA not in the allowed list; (2) detection of higher highs over a lookback window, which requires bar indexing; (3) comparison to a rolling 10-bar volume average. These constraints make direct translation impossible. To proceed, substitute sma_20 for sma_15 and remove the higher-high confirmation, or extend the allowed indicator list to include sma_15."
+}

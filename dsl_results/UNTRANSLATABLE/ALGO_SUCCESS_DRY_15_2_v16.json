@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires z-score of OLS regression residuals from pairs trading spread, which is not available in the allowed indicators list. The signal specifically calls for: (1) zscore calculation from residuals of linear regression between two correlated instruments, (2) hedge ratio from OLS, (3) spread construction and normalization. These are custom computed metrics requiring external pair data and statistical modeling, not standard technical indicators. Substituted with a proxy condition (price vs SMA) but this does not capture the mean-reversion mechanics of the original pairs trade exit logic.",
+  "translation_notes": "Original signal uses abs(zscore_last) <= 1.5 to signal mean reversion completion in pairs trading. The allowed indicator set lacks support for: (a) z-score calculations on residuals, (b) OLS regression outputs, (c) multi-instrument spread metrics. A simplified reversal proxy using moving average crossover was provided, but does not replicate the intended pairs trading logic. To properly implement this signal, custom indicators for z-score and spread must be added to the engine."
+}

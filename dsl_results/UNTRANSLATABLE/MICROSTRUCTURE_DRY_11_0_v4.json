@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_11_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Core signal logic requires tracking individual counterparty order flow history (4+ consecutive same-side trades from specific participant, time since last order from participant, confidence assessment based on price action confirmation). This requires order book microstructure data and participant identity tracking not available in standard OHLCV indicators. The vol_ratio_20 > 1.5 serves as a proxy for elevated activity but cannot capture the repeated same-side participant pattern detection that is fundamental to this strategy.",
+  "translation_notes": "This is an order flow microstructure strategy that fundamentally requires: (1) identification of specific market participants, (2) tracking their historical trade sequence and sides, (3) time-stamped order book data, and (4) execution ahead of anticipated continuation trades. Standard price/volume indicators cannot replicate this. A proper implementation would need tick-level order flow data, participant IDs, and sequence detection logic external to standard backtest engines."
+}

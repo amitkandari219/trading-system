@@ -1,0 +1,82 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_200"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 10.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "BULLISH"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Cup with Handle pattern detection requires price pattern recognition beyond indicator-only constraints. Approximated using: (1) price above 200-day MA (handle forms above 200 SMA), (2) volume breakout using vol_ratio_20 (50%+ above normal), (3) upward breakout using dc_upper (Donchian channel breakout simulates cup resistance breakout). Handle duration (1-2 weeks), cup edges alignment, and handle depth (10-15% drop) are structural pattern properties that cannot be fully expressed with indicator operators alone. Exit uses 50-day MA crossbelow as reversal signal. Stop loss set at 10% matching stated handle drop range. Hold period set to 60 days based on average pattern timeframe."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "BULLISH"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.1,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Cup with Handle pattern detection requires price pattern recognition beyond indicator-only constraints. Approximated using: (1) price above 200-day MA (handle forms above 200 SMA), (2) volume breakout using vol_ratio_20 (50%+ above normal), (3) upward breakout using dc_upper (Donchian channel breakout simulates cup resistance breakout). Handle duration (1-2 weeks), cup edges alignment, and handle depth (10-15% drop) are structural pattern properties that cannot be fully expressed with indicator operators alone. Exit uses 50-day MA crossbelow as reversal signal. Stop loss set at 10% matching stated handle drop range. Hold period set to 60 days based on average pattern timeframe."
+  },
+  "source_rule_text": "Cup with Handle: A reversal pattern with a U-shaped cup followed by a downward price correction (handle) in the upper portion, breaking out upward on high volume"
+}

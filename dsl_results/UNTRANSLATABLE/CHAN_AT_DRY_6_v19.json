@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires z-score calculation on a 12-month crude oil calendar spread (synthetic derived metric). Z-score is not in the ALLOWED_INDICATORS list. The strategy depends on: (1) constructing a calendar spread (front month vs. back month crude oil futures), (2) computing z-score of that spread with unknown lookback_period and half_life (marked AUTHOR_SILENT), and (3) detecting sign changes in z-score. None of these operations are expressible using only the provided price, moving average, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, pivot, volume, and bar property indicators. Requires external z-score computation before rules can be applied.",
+  "translation_notes": "This is a calendar spread mean-reversion strategy requiring synthetic indicator construction. The core logic (enter when z-score is negative, reverse when it turns positive, exit when NaN) cannot be translated without z-score as a pre-computed input. Recommend: (1) compute z-score externally and provide as custom indicator, or (2) approximate using bb_pct_b (Bollinger Band percentile rank) on the spread as a proxy for mean reversion state."
+}

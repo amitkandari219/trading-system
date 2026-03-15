@@ -1,0 +1,148 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes discipline in waiting for confirmed trend conditions. Entry requires price beyond 50-period MA (trend direction), ADX > 25 (strong directional move), and volume confirmation via vol_ratio_20 > 1 (above 20-day average). Exit triggers on MA breach (trend break) or ADX < 20 (trend weakening). CONTEXT_DEPENDENT direction allows both long and short entries based on trend direction. Original source shows Ed staying short in downtrend despite consensus bullishness\u2014this rule structure enforces waiting for objective trend confirmation rather than acting on opinion."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes discipline in waiting for confirmed trend conditions. Entry requires price beyond 50-period MA (trend direction), ADX > 25 (strong directional move), and volume confirmation via vol_ratio_20 > 1 (above 20-day average). Exit triggers on MA breach (trend break) or ADX < 20 (trend weakening). CONTEXT_DEPENDENT direction allows both long and short entries based on trend direction. Original source shows Ed staying short in downtrend despite consensus bullishness\u2014this rule structure enforces waiting for objective trend confirmation rather than acting on opinion."
+  },
+  "source_rule_text": "A trader should maintain discipline to wait for clearly defined trend conditions before entering or staying in a trade, rather than acting on incomplete setups or consensus opinion."
+}

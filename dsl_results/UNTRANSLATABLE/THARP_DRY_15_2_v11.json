@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_15_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Seasonal pattern detection requires external calendar/historical seasonal data not available in standard OHLCV indicators. The signal requires: (1) identification of historical seasonal peaks/troughs within \u00b115 trading days, (2) confirmation that directional bias matched in 2+ of last 5 years, and (3) direction determination based on seasonal direction. These require external seasonal analysis module or pre-computed seasonal regime indicator not in allowed list. Volume confirmation is translatable but seasonal window detection itself cannot be expressed with standard price/technical indicators alone.",
+  "translation_notes": "This signal fundamentally requires a seasonal calendar or external seasonal analysis engine. The entry conditions reference 'historical seasonal peak/trough' and '2 of last 5 years confirmation' which are statistical/temporal patterns requiring lookback analysis beyond single-bar technical indicators. Attempted to capture volume increase during window as proxy, but direction and window timing cannot be reliably determined from OHLCV data alone. Stop loss set to 1.5% (midpoint of 1-2% range). Hold period set to 45 days as specified. Direction marked CONTEXT_DEPENDENT per original signal."
+}

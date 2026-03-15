@@ -1,0 +1,74 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Re-entry triggered by new directional signal: price closes above 20-period Donchian upper (new high equivalent) AND ADX confirms trending market. Exit on pivot support breakdown or original 1% stop-loss. Signal applies to both LONG and SHORT contexts depending on direction of initial stopped-out position. Donchian upper approximates 'new high' requirement; ADX >25 confirms trending regime alignment per target_regime specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Re-entry triggered by new directional signal: price closes above 20-period Donchian upper (new high equivalent) AND ADX confirms trending market. Exit on pivot support breakdown or original 1% stop-loss. Signal applies to both LONG and SHORT contexts depending on direction of initial stopped-out position. Donchian upper approximates 'new high' requirement; ADX >25 confirms trending regime alignment per target_regime specification."
+  },
+  "source_rule_text": "A trader should re-enter a stopped-out position only after the market generates a new directional signal (such as a new high) rather than attempting to re-enter on any reversal, to avoid whipsaw and ensure alignment with the system's intent."
+}

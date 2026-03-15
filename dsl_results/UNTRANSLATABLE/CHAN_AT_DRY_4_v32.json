@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires construction of mean-reverting portfolios using hedge ratios derived from price/log-price series analysis and spread/ratio deviation thresholds. These are portfolio-level statistical constructs (cointegration analysis, optimal hedging) that cannot be expressed as simple indicator comparisons on single price series. The signal requires: (1) multi-asset spread/ratio calculations not available as atomic indicators, (2) dynamic threshold computation from historical mean and standard deviation, (3) determination of optimal hedge ratios via regression\u2014none of which can be represented using the allowed single-indicator operators. The entry/exit conditions reference 'exact threshold not specified' and 'AUTHOR_SILENT' parameters (lookback_period, threshold, half_life), making implementation impossible without these specifications.",
+  "translation_notes": "This is a sophisticated statistical arbitrage / pairs trading signal that requires portfolio construction and cointegration testing. It cannot be reduced to single-instrument technical indicator conditions. Recommend: (1) implement as custom multi-asset strategy outside backtest engine, (2) compute spread = log(price_A) - hedge_ratio*log(price_B), (3) z-score = (spread - mean_spread) / std_spread, (4) enter when |z-score| > threshold (e.g., 2.0), (5) exit when z-score crosses zero. Author omitted critical parameters needed for any implementation."
+}

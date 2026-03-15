@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a cross-sectional mean reversion strategy requiring dynamic cross-sectional calculations (mean return across universe, proportional weight allocation based on deviation from mean, and daily rebalancing across multiple stocks). The allowed indicator set does not include cross-sectional metrics, relative-to-index calculations, or portfolio-level weighting functions. The strategy requires calculating index mean returns and allocating capital proportionally across the entire universe\u2014operations that fall outside single-stock technical indicators. Implementation requires custom portfolio optimization logic, not available in single-indicator conditions.",
+  "translation_notes": "CHAN_AT_DRY_5 is a sophisticated portfolio-level mean reversion strategy that operates on cross-sectional relationships rather than individual stock price action. It cannot be expressed as simple indicator thresholds. To backtest this strategy, use a dedicated portfolio optimization framework that can: (1) calculate cross-sectional mean returns, (2) compute deviation-based weights, (3) rebalance daily across the full universe, and (4) handle long/short allocation dynamically. Consider implementing this in a custom backtest engine with numpy/pandas portfolio weighting logic rather than rule-based indicator conditions."
+}

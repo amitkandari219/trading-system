@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Entry conditions marked 'AUTHOR_SILENT' \u2014 cannot be translated without specification; (2) Information diffusion process half-life \u2014 no allowed indicator directly measures this; (3) Dynamic holding period that decreases over time based on market regime changes \u2014 requires parameterized time-decay mechanism not expressible in current 3-field condition schema; (4) Optimal holding period optimization \u2014 requires external backtest calibration, not a rule condition. The core concept of 'fixed holding period exit' is translatable, but the adaptive decay and information diffusion components cannot be implemented with allowed indicators.",
+  "translation_notes": "PARTIAL TRANSLATION: Expressed as context-dependent exit after fixed hold (20 days as placeholder). Exit uses returns as a proxy indicator. Entry conditions remain undefined per AUTHOR_SILENT. The signal's key innovation\u2014adaptive holding periods linked to information diffusion speed\u2014cannot be captured without: (a) explicit entry signal definition, (b) an information-diffusion or market-efficiency indicator, or (c) time-decay parameters outside the condition structure. Recommend: (1) clarify entry conditions, (2) define proxies for information diffusion speed (e.g., volume_ratio, volatility decay), (3) implement hold_days_max as a function of regime or time series rather than static value."
+}

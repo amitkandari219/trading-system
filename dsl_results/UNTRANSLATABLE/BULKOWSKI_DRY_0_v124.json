@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 52-week (yearly) high/low price positions and throwback/pullback detection within 2 weeks. The allowed indicators lack explicit yearly range tracking and historical lookback beyond prev_* fields. price_pos_20 only provides 20-bar position; yearly highs/lows and multi-week throwback logic cannot be accurately expressed with available indicators.",
+  "translation_notes": "Approximated yearly position using price_pos_20: upward breakout near yearly high mapped to price_pos_20 >= 0.8, downward breakout in middle of range mapped to 0.4-0.6 range. Volume increase assumed for breakout confirmation. Exit condition uses reversal logic (price returning near breakout price) rather than explicit 2-week throwback detection. Author-silent stop loss and profit targets set to null."
+}

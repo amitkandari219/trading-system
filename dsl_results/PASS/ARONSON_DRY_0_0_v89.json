@@ -1,0 +1,88 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_80"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_80"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_80"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_80"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Dual moving average crossover using sma_20 (short-term) and sma_80 (long-term) as specified in parameters. Signal is context-dependent with both long and short entry/exit conditions based on crossover direction. Target regime restricted to TRENDING states. Note: This rule represents an optimized parameter pair from a systematic search; in live backtesting, parameter optimization should be performed on the specified 5-year minimum sample."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_80"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_80"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_80"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_80"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Dual moving average crossover using sma_20 (short-term) and sma_80 (long-term) as specified in parameters. Signal is context-dependent with both long and short entry/exit conditions based on crossover direction. Target regime restricted to TRENDING states. Note: This rule represents an optimized parameter pair from a systematic search; in live backtesting, parameter optimization should be performed on the specified 5-year minimum sample."
+  },
+  "source_rule_text": "Optimize dual-moving-average crossover rules by systematically searching parameter space to identify the short-term and long-term lookback period pair that produces the highest historical performance."
+}

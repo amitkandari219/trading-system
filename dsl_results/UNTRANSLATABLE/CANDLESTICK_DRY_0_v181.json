@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The pattern requires identifying three consecutive candlesticks with progressively shorter bodies and taller shadows on days 2 and 3, which requires multi-bar pattern analysis and relative comparison between bars. The engine cannot directly compare body_pct[i] vs body_pct[i-1] vs body_pct[i-2] or evaluate the sequential relationship of three specific candlesticks. Additionally, the 'breakout above point A' exit condition cannot be expressed without reference to a specific historical price level that would require pattern anchor identification.",
+  "translation_notes": "Advance Block is a three-candlestick pattern requiring: (1) uptrend context, (2) three white candles, (3) progressively shorter bodies, (4) taller upper wicks on bars 2-3, (5) bullish breakout. While individual conditions like 'white candles' (close > open) and 'tall wicks' (upper_wick > body) can be expressed, the pattern logic requires comparing properties across three specific sequential bars, which exceeds the engine's bar-by-bar capability. A simplified version tracking recent closes above MA and tall wicks is provided, but this does not capture the true Advance Block pattern structure."
+}

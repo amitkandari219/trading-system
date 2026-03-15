@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires constructing a stationary spread from cointegrated assets using linear combinations (regression coefficients or Johansen eigenvectors) and detecting mean reversion. This requires: (1) multi-asset spread construction with dynamic hedge ratios not available in single-instrument indicator set, (2) stationarity testing (ADF/KPSS tests), (3) cointegration analysis across multiple securities, and (4) spread mean/equilibrium tracking. The allowed indicators only support single-instrument technical analysis. No provided indicators can construct, normalize, or detect deviations in a cointegrated spread.",
+  "translation_notes": "CHAN_AT_DRY_4 is a statistical arbitrage / pairs trading strategy requiring quantitative portfolio construction techniques (Johansen cointegration, VEC modeling, hedge ratio optimization) that fall outside the scope of the backtest engine's single-instrument indicator vocabulary. Implementation requires external preprocessing: (a) identify cointegrated stock pairs/baskets via Johansen test, (b) calculate optimal hedge ratios from eigenvectors, (c) construct spread time series offline, (d) calculate spread mean and standard deviation, (e) feed spread as synthetic instrument to engine with threshold conditions based on z-score deviations (e.g., enter when spread > mean + 2*std_dev). Current engine cannot auto-detect cointegration or compute hedge ratios."
+}

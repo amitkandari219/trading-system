@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) explicit consecutive directional day counting (3+ consecutive up/down days) - not directly available as a single indicator; (2) 'daily sentiment index percentile' - no sentiment indicator in allowed list; (3) sentiment divergence detection (>10 percentile point moves) - requires historical percentile tracking not supported by single bar comparison. Used RSI as momentum proxy and directional close comparisons as best available approximation, but core consecutive-days and sentiment-percentile logic cannot be accurately implemented.",
+  "translation_notes": "This signal is fundamentally about tracking multi-bar consecutive directional patterns and sentiment percentile shifts relative to a lookback window. The allowed indicator set lacks: (a) a built-in consecutive-bar counter, (b) any sentiment or positioning data, (c) percentile rank calculations over rolling windows. Approximated with directional close comparisons and RSI momentum thresholds, but this loses the signal's core logic around consecutive-day streaks and sentiment percentile ranks."
+}

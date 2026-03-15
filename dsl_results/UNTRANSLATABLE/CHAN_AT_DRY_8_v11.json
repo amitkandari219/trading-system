@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires event detection (earnings announcement timing: BMO or 6:00-9:59 AM) and 'surprising' classification based on historical deviation benchmark. These are calendar/event-based conditions and statistical thresholds that cannot be expressed using only the allowed technical indicators. Additionally, entry timing 'after announcement has been released and drift begins' requires event timestamps not available in price/volume data. Exit conditions marked AUTHOR_SILENT with no specification provided.",
+  "translation_notes": "This is an event-driven strategy requiring: (1) earnings announcement detection and timing validation, (2) comparison of prev_close-to-open returns against historical standard deviation, (3) event release confirmation. The allowed indicator set contains only technical price/volume derivatives and lacks event calendar data. Conceptually, entry would trigger on abnormal prev_close-to-open returns (using 'returns' indicator) when labeled 'surprising', with direction depending on drift sign, but precise 'threshold_std_dev' cannot be computed from standard OHLCV indicators alone."
+}

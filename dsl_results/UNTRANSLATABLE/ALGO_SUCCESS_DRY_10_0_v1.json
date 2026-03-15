@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires statistical tests (ADF/KPSS stationarity testing) and rolling mean deviation calculations that are not available in the allowed indicator set. The allowed indicators do not include: (1) ADF/KPSS p-value outputs for mean-reversion confirmation, (2) rolling mean with custom 252-period window, (3) standard deviation bands with custom 2.0x multiplier for deviation measurement. These are advanced time-series analysis features that require custom calculations beyond the provided indicator library.",
+  "translation_notes": "This signal fundamentally requires statistical hypothesis testing (Augmented Dickey-Fuller or KPSS test with p < 0.01) and dynamic rolling statistics that cannot be expressed using the allowed indicator set. A practical approximation would substitute Bollinger Bands (bb_upper/bb_lower with standard settings) for deviation measurement, but this would not preserve the original signal's statistical rigor. Recommend: (1) implementing custom ADF/KPSS indicators, or (2) using bb_upper and bb_lower crossovers as a proxy for mean-reversion entry/exit."
+}

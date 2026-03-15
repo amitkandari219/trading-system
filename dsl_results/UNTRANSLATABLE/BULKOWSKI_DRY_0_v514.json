@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of specific chart patterns (head-and-shoulders bottom, down-sloping neckline, ascending scallop formation) which cannot be expressed using only the allowed point-in-time indicators. These are multi-bar pattern recognition requirements that require custom pattern detection logic not available in the indicator set. Additionally, conditions like 'bottoms 6 weeks apart', 'rise between bottoms over 10%', and 'volume higher on left bottom than right bottom' require historical peak/trough identification and comparison across multiple weeks, which exceeds the scope of allowed indicators.",
+  "translation_notes": "Attempted approximation uses: close > pivot (neckline breakout proxy), volume > hvol_20 (volume confirmation), and close < sma_20 (exit on trend reversal). However, this is a poor substitute for the actual pattern-based signal. A proper implementation would require custom pattern detection functions for head-and-shoulders formations and scallop patterns."
+}

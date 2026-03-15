@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic holding period selection (6 vs 24 months) based on momentum strength, volume percentile ranking (55th/60th), and comparison of current volume to 20-period SMA with explicit 25% multiplier. The ALLOWED INDICATORS list contains vol_ratio_20 but no percentile ranking function or dynamic holding period logic. Cannot express: (1) volume percentile calculations, (2) conditional holding period switching logic, (3) median-based momentum thresholds, (4) time-horizon-dependent weighting rules.",
+  "translation_notes": "Attempted to capture core entry logic (positive momentum + above-average volume with 1.25x multiplier) and exit signal (volume decline). However, the signal's key insight\u2014differential volume weighting across 3-month vs 3+ year horizons\u2014cannot be structurally represented in a single rule. This requires a regime-switching or multi-strategy framework outside the backtest engine's apparent scope. The 55th percentile stop and 60th percentile entry thresholds cannot be expressed without a percentile indicator."
+}

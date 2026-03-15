@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic position sizing proportional to deviation magnitude and incremental profit-taking at small thresholds. These features require multi-leg order management and continuous scaling logic that cannot be expressed as simple conditional rules. Lookback_period, threshold, and half_life parameters marked AUTHOR_SILENT are essential for mean calculation and scaling algorithm but not provided.",
+  "translation_notes": "Translated core mean-reversion concept using sma_20 as mean proxy. Entry when price deviates below (long) or above (short) the mean, exit when price reverts to mean. The proportional position sizing and incremental scale-out mechanics cannot be captured in static entry/exit conditions and require order management layer outside of rule engine scope."
+}

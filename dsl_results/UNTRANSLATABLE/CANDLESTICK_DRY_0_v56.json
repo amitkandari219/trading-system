@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The pattern requires tracking 10 consecutively higher highs with each day's shadow above the prior day's high. This requires sequential bar-by-bar validation across a 10-candle window. The engine cannot express: (1) counting consecutive occurrences across N bars, (2) comparing current bar's upper_wick to bar[N-1].high for N=10 bars back, or (3) enforcing ALL 10 prior bars meet the condition. Standard indicators and operators do not support multi-bar sequential pattern matching of this complexity.",
+  "translation_notes": "The entry conditions provided are a simplified approximation: high > prev_high (consecutive higher high) and upper_wick > prev_high (shadow above prior high). However, this only validates 1 bar ahead, not 10 consecutive bars. The actual pattern requires a custom multi-bar validator or loop construct not available in this rule engine. Exit condition inferred as close crossing below prior low (breakout failure)."
+}

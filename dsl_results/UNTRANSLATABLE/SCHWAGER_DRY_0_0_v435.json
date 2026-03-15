@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires rolling standard deviation calculation (2.5+ std dev from mean over 20-period window) and multi-timeframe momentum confirmation. Available indicators do not include raw standard deviation or explicit multi-timeframe momentum composite. Price position (price_pos_20) approximates extremes but cannot precisely measure statistical standard deviations. Multi-timeframe momentum confirmation is not expressible with single-timeframe indicators.",
+  "translation_notes": "Attempted approximation using price_pos_20 (Donchian 20-period position): values <0.025 approximate 2.5+ std dev lows (reversion buy), values >0.975 approximate 2.5+ std dev highs (reversion sell). Target reversion to 1 std dev approximated as price_pos_20 crossing toward 0.5 (middle). However, this is a geometric approximation, not the actual statistical measure specified. Directional bias and multi-timeframe momentum cannot be encoded without additional indicators."
+}

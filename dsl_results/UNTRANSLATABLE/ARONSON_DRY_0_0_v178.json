@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires cointegration analysis (ADF test p-value), spread calculation relative to historical mean, and dynamic pair trading logic. None of these statistical measures are available in the allowed indicators list. Cointegration testing, z-score spread calculations, and multi-instrument position correlation are not supported by the standard price/technical indicator set provided.",
+  "translation_notes": "Signal ARONSON_DRY_0_0 is a pairs trading strategy requiring: (1) ADF cointegration test (p < 0.05), (2) spread threshold in standard deviations (1.5 std devs), (3) opposing positions across two instruments (Ford vs GM example), (4) spread reversion exit (0.5 std devs). The backtest engine's allowed indicators do not include cointegration statistics, z-scores, or multi-leg position management. This strategy requires a dedicated pairs/cointegration module outside the scope of single-instrument technical analysis rules."
+}

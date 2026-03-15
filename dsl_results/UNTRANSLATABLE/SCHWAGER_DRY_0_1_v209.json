@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires validation of 'underlying demand fundamentally supports price movement' and detection of 'temporary manipulation' which are qualitative regime assessments not directly measurable by technical indicators. Additionally, explicit requirement to 'validate 2+ timeframes aligned (1h and 4h)' cannot be expressed without multi-timeframe data support. Volume threshold '50% below 20ma' is approximated using vol_ratio_20 but lacks precise percentage calculation. Bearish divergence detection requires explicit momentum indicator comparison across price/momentum not available in single-bar format.",
+  "translation_notes": "Approximated entry conditions using price above SMA_20, volume above SMA_20, and positive MACD histogram as proxies for sustained demand without manipulation. Exit uses volume collapse (vol_ratio_20) and price mean reversion (below SMA_20) as approximations for the 66% retracement rule. Direction set to CONTEXT_DEPENDENT as original signal applies to both long and short. Stop loss set to 2% as conservative default. Recommendation: Implement multi-timeframe validation logic outside this rule engine to fully capture the signal's regime validation intent."
+}

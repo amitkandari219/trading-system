@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) detection of intraday mean reversion vs daily non-mean-reversion regime comparison \u2014 no indicator provided to distinguish intraday vs daily mean reversion regimes; (2) sector concentration limits \u2014 requires sector classification data not in allowed indicators; (3) extended buying period beyond market open \u2014 requires intraday time-of-day condition not expressible with allowed operators; (4) optional intraday profit caps \u2014 'optional' parameter cannot be expressed in structured rule format; (5) specific lookback_period, threshold, and half_life parameters marked AUTHOR_SILENT and unavailable.",
+  "translation_notes": "Core gap-down entry condition translated as open < prev_close. Exit modeled as simple intraday profit cap (returns > 0.02 = ~2% gain). However, the signal's complexity around regime discrimination (intraday vs daily mean reversion), sector limits, and time-windowed entry logic cannot be fully captured with the allowed indicator set and operators. Requires custom logic beyond this schema."
+}

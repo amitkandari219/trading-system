@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'large price change following public announcement' and identification of 'top 15% of announcement moves', neither of which can be expressed using only the allowed indicators. Public announcement events and their magnitude classification are external market events not captured by technical indicators. The volume and price_pos conditions are translatable, but the core trigger (announcement + top 15% move) requires event data or sentiment/news indicators not in the allowed set.",
+  "translation_notes": "Translated the volume-based filter conditions: vol_ratio_20 >= 1.25 for volume exceeding 1.25\u00d7 20-day average, and price_pos_20 >= 0.6 for 60th percentile rank. Exit conditions use vol_ratio_20 < 1.1 and close < prev_close as proxies for 2-bar volume drop and price close below entry. The 'Large price change following public announcement' entry trigger and 'top 15% of announcement moves' parameter classification cannot be operationalized without news/event data or external announcement timestamps."
+}

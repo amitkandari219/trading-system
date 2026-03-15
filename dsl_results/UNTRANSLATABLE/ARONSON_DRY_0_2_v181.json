@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires double channel normalization (CN{CN(Series_1, n=5) - CN(S&P_500, n=5), n=50}) which is a custom multi-series comparative normalization function not available in the allowed indicator set. This requires: (1) access to cross-series data (Series_1 vs S&P_500), (2) nested channel normalization across two timeframes, and (3) a divergence calculation between normalized series. None of these composite indicators exist in the allowed list. The signal also specifies position sizing proportional to signal strength, which is not representable in condition-based entry rules.",
+  "translation_notes": "This signal describes a sophisticated regime-normalization technique for making divergence indicators comparable across different volatility regimes. The core concept requires comparing two series (asset and benchmark) through dual channel normalization\u2014a preprocessing step that cannot be expressed with the available point-in-time indicators. The entry threshold of +0.5 std devs and exit thresholds of \u00b10.5 and -2.0 std devs suggest the normalized output would be in standard deviation units, but without the actual normalized divergence value available as an indicator, the rule cannot be operationalized."
+}

@@ -1,0 +1,74 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 4.88,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires candlestick pattern recognition (lowest third position) which cannot be precisely expressed with allowed indicators. Translated core logic as: price crossing above and staying above sma_50. Exit condition inferred as reversal below sma_50 since AUTHOR_SILENT. Stop loss set to average decline percentage (4.88%) from parameters. Hold period set to 20 days as reasonable intermediate timeframe for breakout trades. Entry conditions combined with AND logic: must cross above AND remain above sma_50 to confirm breakout."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.048799999999999996,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal requires candlestick pattern recognition (lowest third position) which cannot be precisely expressed with allowed indicators. Translated core logic as: price crossing above and staying above sma_50. Exit condition inferred as reversal below sma_50 since AUTHOR_SILENT. Stop loss set to average decline percentage (4.88%) from parameters. Hold period set to 20 days as reasonable intermediate timeframe for breakout trades. Entry conditions combined with AND logic: must cross above AND remain above sma_50 to confirm breakout."
+  },
+  "source_rule_text": "Candlestick pattern with moving average confirmation: breakouts above the 50-trading-day moving average"
+}

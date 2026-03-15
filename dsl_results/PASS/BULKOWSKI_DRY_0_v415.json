@@ -1,0 +1,63 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Diamond pattern identification requires visual chart analysis which cannot be quantified with standard technical indicators. Entry condition approximated as price breaking below pivot (representing downward breakout). Exit uses moving average crossover as a reasonable reversal signal since target price computation was author-silent. Stop-loss placement and trailing approach referenced in original signal approximated as 2.5% initial stop with dynamic adjustment expectation. Target regime filtered to stocks with low overhead resistance (approximated by avoiding RANGING regime and favoring TRENDING_DOWN conditions)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Diamond pattern identification requires visual chart analysis which cannot be quantified with standard technical indicators. Entry condition approximated as price breaking below pivot (representing downward breakout). Exit uses moving average crossover as a reasonable reversal signal since target price computation was author-silent. Stop-loss placement and trailing approach referenced in original signal approximated as 2.5% initial stop with dynamic adjustment expectation. Target regime filtered to stocks with low overhead resistance (approximated by avoiding RANGING regime and favoring TRENDING_DOWN conditions)."
+  },
+  "source_rule_text": "Diamond pattern: Correctly identify the pattern using guidelines and select downward breakouts for best performance"
+}

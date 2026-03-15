@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires monitoring divergence between multiple correlated time series pairs (8 pairs monitored with 50% threshold). This requires: (1) tracking correlation state across multiple external time series not in the allowed indicators list, (2) detecting directional agreement/disagreement across indexed pairs (requires array/pair indexing logic not supported by the 3-field condition schema), and (3) comparing divergence counts against thresholds. The allowed indicator set contains only single-series technical indicators and does not support multi-series correlation analysis, pair indexing, or divergence counting across monitored pairs.",
+  "translation_notes": "This is a multi-series correlation signal (Hussman divergence logic) that fundamentally requires tracking relationships between 8+ external time series. The backtest engine's indicator set and condition schema are designed for single-series technical analysis and do not support the correlation tracking, pair indexing, and divergence aggregation this signal requires. To implement this signal, the engine would need: (1) multi-series correlation indicators, (2) array-based indexing for pair comparisons, and (3) aggregation operators to count divergence occurrences across pairs."
+}

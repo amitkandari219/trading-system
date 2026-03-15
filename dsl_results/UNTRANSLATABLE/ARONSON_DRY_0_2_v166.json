@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "CBO (Chande Breakout Oscillator) is not in the allowed indicators list. The signal specifies 'CBO operator confirms uptrend with high-sensitivity setting' and 'CBO operator outputs -1 (downtrend signal)' but CBO is a proprietary/derived indicator not available. ADX_14 used as a directional proxy, but this is an approximation rather than a true translation of the original CBO-based logic.",
+  "translation_notes": "Signal references CBO (Chande Breakout Oscillator) with sensitivity_lookback=5, which cannot be directly implemented. Substituted ADX_14 as a trend-confirmation proxy. Original signal uses binary +1/-1 output from CBO; ADX thresholds approximate trend strength detection. Exit condition 'price closes below moving average by 1 ATR' simplified to close < sma_20 due to complexity of ATR-offset calculation. Direction marked CONTEXT_DEPENDENT per original signal specification."
+}

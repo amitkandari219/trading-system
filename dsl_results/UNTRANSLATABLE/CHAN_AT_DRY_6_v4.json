@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a statistical arbitrage pairs trading strategy based on Johansen cointegration testing, which requires multivariate time series analysis and eigenvector computation. The strategy requires: (1) calculating cointegration relationships between two currency pairs (AUD.USD and CAD.USD) via Johansen test, (2) deriving hedge ratios from cointegration eigenvectors, (3) constructing a synthetic mean-reverting portfolio (yport), and (4) dynamically rebalancing based on cointegration strength. None of these quantitative finance operations are available in the allowed indicator set (which contains only technical indicators like RSI, MACD, Bollinger Bands, etc.). The strategy also relies on entry/exit thresholds that are marked AUTHOR_SILENT and cannot be inferred from standard technical levels.",
+  "translation_notes": "Signal requires specialized statistical cointegration analysis and multivariate modeling unavailable in a standard technical indicator-based backtesting engine. Would need custom Johansen cointegration module, eigenvector computation, and portfolio construction logic at the engine level rather than rule-based conditions."
+}

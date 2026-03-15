@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_20_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires decomposition of volatility into 'fundamental volatility' (price-driven) and 'transitory volatility' (bid-ask spread + order flow impact). These components cannot be directly calculated from the allowed indicators. hvol_20 (historical volatility) and vol_ratio_20 (volume ratio) are proxies but do not directly measure the fundamental vs. transitory split. The position sizing rule 'inverse to transitory volatility ratio' also requires explicit calculation of transitory volatility which is not available in the indicator set.",
+  "translation_notes": "Attempted mapping: hvol_20 approximates total realized volatility; vol_ratio_20 attempted as proxy for transitory volatility component. However, without bid-ask spread data and explicit order flow impact measurement, the core microstructure distinction cannot be accurately captured. The signal is theoretically sound but requires additional data inputs (order book depth, bid-ask spreads, trade classification) not available in standard OHLCV indicators."
+}

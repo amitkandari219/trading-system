@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal references 'Relative Strength' which is not available in the allowed indicator list. Available RSI indicators (rsi_7, rsi_14, rsi_21) are momentum oscillators but not true relative strength comparisons (RS = stock performance vs benchmark). Additionally, the condition 'RS falls for 5+ consecutive periods' requires multi-bar lookback logic that cannot be expressed with single-bar comparisons using the allowed operators. The 'base-building' concept also requires pattern recognition beyond the provided indicators.",
+  "translation_notes": "Attempted substitution using rsi_14 >= 80 as proxy for high relative strength, and price_pos_20 <= 0.8 as approximate check for non-overextended position (not at 20-period highs). However, this is fundamentally inaccurate without true RS indicator. The confirmation bar logic simplified to direction check. Exit conditions partially translatable but multi-period streak detection not supported."
+}

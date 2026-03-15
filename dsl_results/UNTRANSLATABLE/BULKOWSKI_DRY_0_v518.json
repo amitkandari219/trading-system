@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The pattern requires detecting TWO distinct bottoms at approximately the same price level separated by a rise, which requires multi-bar pattern recognition logic not expressible with single-bar indicator conditions. Specific requirements like 'two bottoms form', 'bottoms not part of same congestion region', and measuring the rise between them require pattern detection beyond allowed operators. Approximated entry using Donchian breakout above highest high (confirmation) combined with volume spike, but this does not capture the complete double-bottom formation logic.",
+  "translation_notes": "Used Donchian Channel upper to approximate 'closes above highest high in pattern' confirmation signal. Used volume > hvol_20 to approximate 'volume spike indicating buying demand'. Exit uses Donchian lower as reversal. True implementation requires custom double-bottom pattern detector to identify dual bottoms at similar levels and validate they are not part of congestion."
+}

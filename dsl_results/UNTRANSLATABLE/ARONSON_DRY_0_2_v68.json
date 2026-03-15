@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of head-and-shoulders patterns across 10 volatility-calibrated zigzag filter scales (ATR deciles: 5, 10, 15, 20, 30, 40, 50, 65, 80, 95%). The allowed indicator set lacks: (1) a zigzag filter implementation, (2) pattern detection capabilities for head-and-shoulders, and (3) multi-scale pattern confirmation logic. These are structural/algorithmic requirements beyond point-in-time indicator comparisons. ATR-based volatility normalization is available (atr_14), but the core pattern recognition and cross-filter logic cannot be expressed using only the permitted operators (>, <, >=, <=, ==, crosses_above, crosses_below, is) and single-indicator conditions.",
+  "translation_notes": "This signal is architectural in nature\u2014it prescribes a multi-scale pattern detection framework rather than discrete entry/exit trigger conditions. Implementation requires custom zigzag filtering, head-and-shoulders pattern recognition, and scale-dependent confirmation logic at the algorithm level, not at the rule-condition level."
+}

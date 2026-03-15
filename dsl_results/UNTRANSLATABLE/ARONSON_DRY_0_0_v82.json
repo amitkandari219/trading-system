@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic historical pattern matching across 5 simultaneous variables (volatility regime, price level, volume profile, trend strength, time-of-day) with tolerance bands (10%, 10 pips, 15%, 10%, session-match). This requires: (1) Real-time comparison of current multi-dimensional state to a stored historical database of precedents, (2) Fuzzy matching logic with variance tolerance across multiple incommensurable metrics, (3) Session/time-of-day classification not available in indicator set. The signal is a meta-rule about condition matching methodology rather than a computable technical condition. No combination of allowed indicators can express 'matches historical precedent within tolerance' without custom data structures and comparison functions outside the backtest engine's scope.",
+  "translation_notes": "This is Aronson's 'Identical Conditions' rule\u2014a principle for regime validation rather than a tradeable signal. To implement: (1) Build a historical database of regime states with 5-variable fingerprints, (2) Add custom comparison function for multi-metric fuzzy matching, (3) Use adx_14 as proxy for trend strength, atr_14 for volatility, hvol_20 for volume regime, pivot-based price_pos_20 for level matching, and time-of-bar for session\u2014but this still cannot capture the cross-variable pattern-matching logic required."
+}

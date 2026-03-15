@@ -1,0 +1,94 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "low"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      },
+      {
+        "left": "body_pct",
+        "operator": ">",
+        "right": "0.7"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Bullish Belt Hold pattern translated as: (1) open near low of day, (2) close above open (white candle), (3) tall body (body_pct > 0.7 represents tall white candle), (4) close near high coupled with support above sma_50. Exit when price falls below 50-day moving average indicating loss of support/uptrend. Pattern optimally occurs during retracement in uptrend, captured by target_regime TRENDING_UP. Underlying support condition represented by proximity to sma_50."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "low"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      },
+      {
+        "indicator": "body_pct",
+        "op": ">",
+        "value": 0.7
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Bullish Belt Hold pattern translated as: (1) open near low of day, (2) close above open (white candle), (3) tall body (body_pct > 0.7 represents tall white candle), (4) close near high coupled with support above sma_50. Exit when price falls below 50-day moving average indicating loss of support/uptrend. Pattern optimally occurs during retracement in uptrend, captured by target_regime TRENDING_UP. Underlying support condition represented by proximity to sma_50."
+  },
+  "source_rule_text": "Bullish Belt Hold: A candlestick pattern where price opens near the low for the day and climbs, forming a tall white candle when price closes near the high. Works best as part of a retracement in an uptrend and marks a reliable turning point when coupled with underlying support."
+}

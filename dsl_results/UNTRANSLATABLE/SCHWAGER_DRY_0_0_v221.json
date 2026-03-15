@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'narrow range for 20 periods' and 'range expansion exceeds 150% of ATR' which require multi-bar historical range comparison and ratio calculation not directly expressible with single-bar indicators. The 'pullback to range boundary' and precise '150% threshold' conditions cannot be accurately captured using only allowed operators and indicators. Would require custom range-tracking logic.",
+  "translation_notes": "Attempted partial translation using: range indicator for volatility state detection, atr_20 for expansion magnitude proxy, volume confirmation with vol_ratio_20, and Donchian channels (dc_upper/dc_lower) as approximation for range boundaries. However, the core logic of detecting multi-period narrow range (close-to-close variance) and quantifying exact 150% ATR expansion threshold is not achievable with provided operators. A custom indicator tracking rolling 20-period range statistics would be needed for accurate implementation."
+}

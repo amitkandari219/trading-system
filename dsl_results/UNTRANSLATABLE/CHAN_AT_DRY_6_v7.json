@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Interest rate differential calculations between AUD and CAD not available in allowed indicators; (2) Calendar-based logic (weekday == 4 for Wednesday detection) not supported; (3) Triple rollover multiplier application not expressible; (4) Cumulative carry accrual tracking over 20-day lookback period requires custom accumulation logic; (5) Entry threshold value is AUTHOR_SILENT and undefined; (6) Exit conditions are AUTHOR_SILENT with no guidance. This is a carry trade strategy requiring external interest rate data sources and custom financial calculations beyond standard technical indicators.",
+  "translation_notes": "Attempted partial translation using returns indicator as proxy for carry accrual, but this does not capture the interest rate differential logic, Wednesday rollover multiplier, or cumulative tracking required by the strategy. The signal is fundamentally dependent on interest rate time series (Reserve Bank of Australia and Bank of Canada rates) and custom financial calculations that cannot be expressed through standard price-action indicators alone."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires calculating candle range thirds (low + range/3 and low + 2*range/3) which requires derived calculations not available as atomic indicators. The allowed indicators do not include dynamic range-thirds or methods to compute close position within intra-bar range divisions.",
+  "translation_notes": "Signal describes: close price falls within middle third of candle's high-low range. This requires: (1) identifying candle range = high - low, (2) calculating lower bound = low + range/3, (3) calculating upper bound = low + 2*range/3, (4) checking if close is between these bounds. While 'range' is an allowed indicator, range_thirds are not atomic. The core logic would need: (low + (high-low)/3) <= close <= (low + 2*(high-low)/3), but this requires inline arithmetic not supported by the condition schema. Performance metrics indicate 6.88% win rate (bull) vs 11.08% (bear) with -8.26% max drawdown used for stop_loss_pct."
+}

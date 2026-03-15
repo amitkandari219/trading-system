@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "High Wave Candle and Bearish Engulfing Pattern detection requires multi-candle pattern recognition logic not expressible with single-bar indicators. Specifically: (1) identifying candle with 'wide range' at uptrend top requires contextual trend analysis, (2) Bearish Engulfing requires comparing current candle open/close to previous candle's range, (3) 'stomach low' concept is not a standard technical indicator. Approximated with range > ATR and bearish candle close < open, but this does not capture the full pattern intent.",
+  "translation_notes": "Attempted approximation: Entry uses wide range (range > atr_14) and bearish candle (close < prev_open) as proxies for High Wave + Bearish Engulfing. Exit uses close > prev_high as reversal signal. Stop loss set to 2.43% per example. Pattern operates in TRENDING_UP regime. Author did not specify success rates or other parameters, so defaults applied."
+}

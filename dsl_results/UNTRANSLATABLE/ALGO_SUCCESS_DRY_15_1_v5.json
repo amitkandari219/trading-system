@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a lagged forecasting model (Logistic Regression, LDA, SVM, or Random Forest) trained on 126 days of historical data with 2-lag return predictors to generate predicted probability of positive return. No direct indicator in the allowed list represents the output of a machine learning classification model. The 'returns' indicator is a raw price return metric, not a model prediction probability. Implementation requires custom model integration outside standard technical indicators.",
+  "translation_notes": "Signal ID ALGO_SUCCESS_DRY_15_1 describes a predictive ML-based strategy fundamentally different from rule-based technical analysis. The core logic (predicted_probability > 55% for entry, < 50% for exit) is structurally translatable, but the prerequisite\u2014a trained forecasting model\u2014cannot be expressed using only the provided technical indicators. To implement this signal, a backtest engine would need: (1) custom ML model training module with 126-day minimum history, (2) lagged return feature engineering (2 prior periods), and (3) model probability output as a synthetic indicator. Stop loss (-1.5%) and profit target (+2%) are actionable once entry is triggered."
+}

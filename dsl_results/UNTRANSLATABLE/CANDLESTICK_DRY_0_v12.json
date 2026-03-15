@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'candle height four times the average' and 'support or resistance within candle body'. While range can approximate candle height comparison to sma_20, the precise measurement of 4x average candle height and the identification of support/resistance levels within the candle body cannot be directly expressed with allowed indicators. Pivot levels (r1, s1) are used as proxies for support/resistance, but this is an approximation rather than a true translation of the original rule.",
+  "translation_notes": "Attempted translation using range > sma_20 as proxy for tall candle detection (4x average approximated as significantly above typical range). Used pivot points (pivot, r1, s1) as proxies for support/resistance levels. Entry conditions check for tall candle with price exhibiting support/resistance behavior near pivot levels. Exit when price crosses pivot in opposite direction. This is a reasonable approximation but does not fully capture the original signal's mechanics. Consider custom indicator implementation for precise 4x average candle height calculation."
+}

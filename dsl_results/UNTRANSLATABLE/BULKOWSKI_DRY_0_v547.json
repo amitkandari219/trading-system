@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern recognition (Double Bottom identification) requires multi-bar pattern detection with explicit lowest/highest values across a lookback window. The signal requires: (1) identification of two distinct bottoms, (2) calculation of highest high between them, (3) measurement of pattern height (highest_high - lowest_low), (4) computation of target as highest_high + pattern_height. These operations require pattern state variables and multi-bar lookback logic not available in the allowed indicator set. The engine would need custom pattern detection functions or explicit swing high/low tracking indicators.",
+  "translation_notes": "Attempted proxy entry using pivot crossover and volume confirmation as surrogate for breakout above confirmation point. Exit uses R1 (resistance level 1) as approximation of measured target. However, the core Double Bottom pattern logic cannot be accurately encoded without pattern-specific indicators like swing_high, swing_low, or pattern_height variables. Author Bulkowski's measurement rule is mathematically sound but requires pattern state tracking beyond simple indicator comparisons."
+}

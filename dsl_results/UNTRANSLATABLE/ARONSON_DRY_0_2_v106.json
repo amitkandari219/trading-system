@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'major news event' (not in allowed indicators) and measurement of standard deviations from 'pre-news level' (requires external news data and baseline establishment logic not available in price/technical indicators). Approximated with volatility spike (true_range > atr_14) and reversal momentum (close crossing prev_close), but this does not capture the core news-event-driven reversion mechanism specified in the original signal.",
+  "translation_notes": "Entry conditions use true_range spike as proxy for overreaction (0.75-1.0 stddev equivalent), and directional close reversal from extreme. Exit uses pivot (rational repricing level) and 1.5 ATR stop loss as specified. Context-dependent direction based on reversal direction. HIGH_VOL regime filter applied. This is a partial translation\u2014true implementation requires external news event detection."
+}

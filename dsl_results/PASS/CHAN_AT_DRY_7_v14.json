@@ -1,0 +1,84 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "book_id": "CHAN_AT",
+  "dsl_rule": {
+    "signal_id": "CHAN_AT_DRY_7",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "ema_100"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "ema_100"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "ema_100"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "ema_100"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 21,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses EMA-based trend following with monthly rebalancing. Since exact EMA period (lookback/half_life) is AUTHOR_SILENT, used ema_100 as a standard medium-term trend filter. Monthly rebalancing (approximately 21 trading days) is represented via hold_days_max. Position direction flips based on price crossing the EMA: LONG above, SHORT below. Exit is triggered by price crossing back through the EMA in the opposite direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "ema_100"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "ema_100"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "ema_100"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "ema_100"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 21,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses EMA-based trend following with monthly rebalancing. Since exact EMA period (lookback/half_life) is AUTHOR_SILENT, used ema_100 as a standard medium-term trend filter. Monthly rebalancing (approximately 21 trading days) is represented via hold_days_max. Position direction flips based on price crossing the EMA: LONG above, SHORT below. Exit is triggered by price crossing back through the EMA in the opposite direction."
+  },
+  "source_rule_text": "Long futures trading above their exponential moving average and short those below it, with monthly rebalancing across a diversified basket of 24 futures contracts."
+}

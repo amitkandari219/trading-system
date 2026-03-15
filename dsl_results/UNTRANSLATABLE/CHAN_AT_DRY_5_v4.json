@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Johansen cointegration test, which is a multivariate statistical test between two separate price series (GLD vs GDX). This cannot be expressed using single-instrument indicators from the allowed list. Cointegration detection requires cross-asset analysis and formal statistical testing not available in the indicator set.",
+  "translation_notes": "The core logic of this pairs strategy (buy when pair is in cointegration, exit when it breaks) cannot be fully translated without a cointegration indicator. A simplified proxy using price relative to moving average has been provided, but this does not capture the statistical relationship between the two ETFs that is central to the strategy. The actual implementation requires computing the Johansen test statistic or tracking spread mean-reversion between GLD and GDX, neither of which are available indicators."
+}

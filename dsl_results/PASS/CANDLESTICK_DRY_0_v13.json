@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes tall candles (large range) acting as support/resistance with context-dependent direction. Entry condition: candle range significantly exceeds ATR_14 baseline to identify 'tall' candles. Exit: price breaks through the previous candle's low (for longs) or high (for shorts), indicating support/resistance breach. The 66% hit rate for very tall candles and 39% baseline cannot be directly coded into conditions but inform the ATR multiplier selection. Hold period set to 20 days as reasonable for support/resistance interaction timeframe."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal describes tall candles (large range) acting as support/resistance with context-dependent direction. Entry condition: candle range significantly exceeds ATR_14 baseline to identify 'tall' candles. Exit: price breaks through the previous candle's low (for longs) or high (for shorts), indicating support/resistance breach. The 66% hit rate for very tall candles and 39% baseline cannot be directly coded into conditions but inform the ATR multiplier selection. Hold period set to 20 days as reasonable for support/resistance interaction timeframe."
+  },
+  "source_rule_text": "Tall Candle Support/Resistance: A candle that covers a large price range can act as support or resistance, with effectiveness increasing as candle height increases. Very tall candles show higher hit rates for identifying minor highs and lows within their body."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'N-period mean' and 'standard deviation from baseline' which are not in the allowed indicators list. Standard deviation calculation and rational baseline detection would require custom indicators not available. Partial approximation attempted using returns (as proxy for large price moves) and price_pos_20 (as proxy for distance from baseline), but this does not capture the precise statistical logic of the original rule.",
+  "translation_notes": "Attempted translation: (1) Large price move = returns > 1.5 (approximates 1.5 std dev threshold in log-return scale); (2) Overreaction = RSI 60-70 for long or 30-40 for short; (3) Exit when price_pos_20 < 0.5 (representing return within 0.5 std dev of baseline); (4) Stop loss set to 1.0%. However, without access to rolling standard deviation and rational baseline calculation, this is a lossy approximation of the original signal intent."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pete's Candle pattern requires dynamic price target calculation based on candle height, shadow ratios, and median comparison. The exit targets (43.76 / 41.80) are example-specific values dependent on runtime candle analysis. No single allowed indicator captures: (1) live candle height measurement, (2) shadow-to-price ratio computation, (3) median shadow ratio comparison, or (4) dynamic multiplier selection (6 vs 3). The pattern logic requires custom candlestick geometry analysis beyond standard OHLCV indicators.",
+  "translation_notes": "Attempted to encode directional breakout logic using high/low crosses and wick characteristics, but the core price target formula\u2014(candle_height / divisor \u00d7 percentage) + reference_price\u2014cannot be expressed with allowed indicators. This pattern requires a custom indicator or dedicated pattern recognition module in the backtest engine."
+}

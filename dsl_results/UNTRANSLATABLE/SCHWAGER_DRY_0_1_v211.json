@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of 'trusted contrarian trader signals exit/flat' and 'corroborating fundamental catalyst' \u2014 these are subjective external inputs (trader sentiment monitoring and news event detection) that cannot be expressed using only the allowed technical indicators. The signal also depends on detecting when an 'original bias duration > 3 periods' has completed, which requires multi-period state tracking outside standard indicator vocabulary. Price stall detection (1+ bar without new highs) is approximated but contrarian trader intent and news timing alignment require data external to the backtest engine.",
+  "translation_notes": "This signal is fundamentally based on contrarian position flows and fundamental catalyst alignment rather than pure technical analysis. A partial proxy implementation is provided using price reversal (close > prev_high) and volatility confirmation (atr_14 > 0), with exit at pivot support. However, the core logic \u2014 waiting for a specific trusted trader to exit their position and news to align \u2014 cannot be fully mechanized without external data feeds for trader positioning and news events."
+}

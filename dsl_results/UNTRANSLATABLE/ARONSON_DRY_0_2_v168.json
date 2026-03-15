@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires stationarized time series (CN operator) and extreme threshold detection (mean \u00b1 1.0 standard deviations). These advanced statistical transformations and normalized extreme value detection are not available in the allowed indicator set. The allowed indicators do not include custom stationarity operators, z-score calculations, or mean-reversion bands calibrated to stationarity measures. Substituted with SMA crossover as a pragmatic reversion proxy, but this does not accurately capture the signal's intent of detecting extremes in stationarized series.",
+  "translation_notes": "ARONSON_DRY_0_2 is a sophisticated mean-reversion rule based on stationarity and extreme value transitions. Since stationarized series and z-score extremes cannot be expressed with allowed indicators, the rule has been approximated using SMA-based mean reversion. The 60-period lookback was mapped to a 20-period SMA (closest allowed match). True implementation requires custom stationarity calculations (detrending/differencing) not available in this indicator library."
+}

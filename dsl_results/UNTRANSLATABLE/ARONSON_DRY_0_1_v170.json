@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detecting divergence between two correlated time series (price vs indicator moving together, then one reversing while other continues). This requires multi-bar state tracking and pair-wise correlation analysis that cannot be expressed with single-bar conditional logic using only the allowed operators (>, <, >=, <=, ==, crosses_above, crosses_below, is). The signal specifically requires: (1) confirmation that two series were 'trending together for minimum 12 bars', (2) detection that 'one series reverses while other continues', and (3) 'divergence persists for minimum 2 consecutive bars'\u2014all of which require historical state comparison and correlation metrics not available in the allowed indicator set.",
+  "translation_notes": "Signal is fundamentally untranslatable with current engine constraints. A proper implementation would require: (a) a correlation or comovement indicator comparing price to a technical indicator over a lookback window, (b) state machine to track whether two series are coupled vs diverged, (c) historical comparison operators to detect when prior trend direction changes. The entry conditions attempted above use Donchian breakout + SMA cross as a weak proxy for 'series moving apart', but this does NOT capture the true divergence logic which requires measuring the relationship between two previously-correlated series."
+}

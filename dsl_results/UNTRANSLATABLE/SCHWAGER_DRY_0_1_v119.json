@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting breakouts outside 1.5 standard deviations from 20-day mean, which would require a custom Bollinger Bands calculation with 20-period SMA and 1.5 std dev (non-standard). The available bb_* indicators use standard Bollinger parameters (typically 20-period, 2 std dev). price_pos_20 approximates relative position but does not directly measure std dev breakouts. Additionally, the '0 confirmation bars' and 'real-time alert' requirements cannot be expressed in static backtest conditions\u2014these are operational/alert system requirements rather than price-action rules.",
+  "translation_notes": "Attempted to approximate using price_pos_20 (position within 20-period range) but this does not accurately capture the 1.5 std dev threshold specified. Exit at 2% profit was mapped to returns >= 0.02. The core signal is based on alert-triggered breakout trading, which is more operational/execution-focused than a standard rule-based signal and does not translate cleanly to deterministic backtest conditions."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_6_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires order book microstructure metrics (quote placement, quote refresh timing, time precedence tracking, and order withdrawal detection) that are not available in the allowed indicator set. These are behavioral/execution-level signals requiring real-time order book state, not OHLCV candle-based indicators. The core logic of 'maintaining and refreshing quoted prices at regular intervals' cannot be expressed with price/volume/momentum indicators alone.",
+  "translation_notes": "This signal describes an order management and market-making strategy focused on quote refresh cadence and time priority preservation. The allowed indicators are all historical price/volume-based metrics unsuitable for capturing quote lifecycle events. Parameters like 'quote_refresh_interval_seconds' and 'minimum_price_improvement_required_bps' reference order book state changes, not candlestick patterns. A proper implementation would require tick-level order book data and order event tracking."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires percentile-based ranking across asset universe (bottom 30th percentile vs top 30th percentile) and monthly rebalancing with dynamic percentile criteria. The allowed indicators set supports single-asset technical analysis but lacks cross-sectional ranking, percentile calculation, and portfolio-level rebalancing logic. The 18-month cumulative return calculation can be approximated with 'returns' indicator, but dynamic percentile thresholding and relative asset comparison cannot be expressed in the single-asset rule format provided.",
+  "translation_notes": "Attempted approximation using returns indicator as proxy for 18-month cumulative performance (threshold \u00b10.30 as rough percentile bounds), with 252-day (12-month) holding period. However, this loses the essential mean-reversion ranking logic that requires comparing each asset against the universe distribution. A proper implementation requires portfolio optimization module with cross-sectional percentile rankings and dynamic rebalancing triggers based on relative performance metrics."
+}

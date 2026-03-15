@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pattern recognition logic that cannot be expressed through simple indicator comparisons. The rule demands: (1) detection of a specific candlestick/price pattern (N days narrow range + big jump), (2) historical backtest validation across 20+ occurrences, (3) win rate calculation (\u226560%), and (4) exact pattern matching on current bar. These require custom pattern detection algorithms, historical statistical analysis, and pattern-matching logic beyond the scope of indicator-based rules. The source text is also fragmentary and does not clearly define the pattern itself.",
+  "translation_notes": "This is a meta-rule about statistical rigor and avoiding small-sample bias (Law of Small Numbers). It cannot be operationalized as a simple entry/exit rule set. Implementation requires: (a) explicit pattern definition in code, (b) pattern occurrence counter in historical data, (c) win-rate tracker, (d) pattern matcher on current bar. The parameters (minimum_historical_occurrences: 20, minimum_win_rate_percent: 60) are thresholds for pattern validation, not tradeable conditions. Recommend implementing as a custom filter or gating function in the backtest engine rather than as a condition-based rule."
+}

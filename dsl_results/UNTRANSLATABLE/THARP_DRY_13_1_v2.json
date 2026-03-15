@@ -1,0 +1,18 @@
+{
+  "signal_id": "THARP_DRY_13_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a meta-rule about backtesting validation thresholds (win_rate >= 55%, minimum 50 trades, 1-5 day timeframes) rather than a price-action entry/exit rule. It requires win_rate and sample_size metrics that are not available as real-time indicators in the allowed indicator list. This is a portfolio/concept acceptance filter, not a tradeable signal condition.",
+  "translation_notes": "THARP_DRY_13_1 defines a validation framework for accepting entry concepts based on historical performance statistics. The rule states: reject any entry concept with win_rate < 55% regardless of how sound it appears. This is a backtesting acceptance criterion (applied before live trading), not a condition that can be expressed as price/volume indicators crossing thresholds. Implementation requires: (1) backtest each concept over 50+ trades, (2) calculate win_rate across 1-5 day holds, (3) only proceed with concepts where win_rate >= 0.55, (4) monitor live win_rate and discard if it degrades below 55%. To use this rule, apply it as a pre-trading filter in the backtesting framework rather than as an indicator-based entry condition."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fundamental data (earnings estimate revisions, P/E ratio ranking) that are not available in the allowed technical indicator set. The rule depends on: (1) positive change in earnings estimates, (2) P/E ratio ranking relative to earnings growth, and (3) post-earnings-announcement drift detection. None of these can be constructed from price, volume, or standard technical indicators. Additionally, critical parameters (lookback_period, threshold, half_life, backtest_sharpe, backtest_period) are marked AUTHOR_SILENT and cannot be inferred.",
+  "translation_notes": "This signal is fundamentally a mean-reversion filter based on earnings revisions and valuation metrics. It prohibits SHORT entries when earnings estimates are positive and P/E ranking suggests trending behavior. Without access to earnings data, estimate revision timestamps, and forward P/E calculations, the rule cannot be operationalized in a price-action-only backtest engine. The regime targets (Post-earnings-announcement drift, Earnings estimate revision regimes) also require external fundamental data feeds."
+}

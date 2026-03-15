@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Dickey-Fuller test requires statistical regression analysis (calculating \u03bb coefficient, standard error, and comparing against DF distribution critical values) which cannot be expressed using only the allowed indicators and operators. The test requires: (1) regressing \u0394y(t) on y(t-1) to derive \u03bb, (2) computing SE(\u03bb), (3) calculating test statistic \u03bb/SE(\u03bb), and (4) comparing against critical values from Dickey-Fuller tables conditional on drift assumptions. None of these statistical computations are available as pre-computed indicators in the allowed list. The backtest engine would need to expose adf_statistic, adf_pvalue, or similar statistical test indicators to operationalize this signal.",
+  "translation_notes": "This is a statistical hypothesis test for mean reversion, not a price-action or momentum signal. It requires econometric regression capabilities beyond the scope of the allowed indicator library. Recommend implementing as a custom indicator (adf_test_statistic, adf_test_pvalue) or using a dedicated time-series analysis module outside the backtest engine."
+}

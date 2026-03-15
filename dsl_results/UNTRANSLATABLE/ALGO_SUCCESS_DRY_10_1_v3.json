@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ADF/KPSS statistical tests for mean-reversion confirmation and half-life calculation (2-10 periods), which are not available in the allowed indicator set. These require specialized econometric analysis beyond standard technical indicators. Substituted with Bollinger Band positioning (bb_pct_b) as a proxy for mean-reversion detection, but this does not replicate the statistical rigor of the original rule.",
+  "translation_notes": "Used bb_pct_b extremes (<0.15 for long, >0.85 for short) to approximate price deviation from mean, and bb_pct_b reversion to middle band (0.4-0.6) for exit. This is a simplified approximation; the original signal's statistical tests (ADF, KPSS, half-life) cannot be accurately represented with standard technical indicators alone."
+}

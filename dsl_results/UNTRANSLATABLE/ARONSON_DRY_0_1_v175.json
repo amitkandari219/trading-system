@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'channel-normalized values' for two distinct price series with divergence measurement between them. Available indicators (bb_pct_b, price_pos_20) only support single-series normalization. True dual-series divergence comparison (Series A vs Series B) cannot be expressed with allowed indicator set, which lacks cross-series comparison operators or multi-series channel indicators.",
+  "translation_notes": "Approximated using Bollinger Band percentage B (0-1 scale) and price position in 20-period channel (price_pos_20) as proxies for channel-normalized values. Entry when one series at extreme high (\u22650.75) and other at extreme low (\u22640.25) with spread \u22650.50. Exit on mean reversion toward 0.50 or bandwidth contraction <0.40. CONTEXT_DEPENDENT direction interpreted as LONG on Series A strength, SHORT on Series B strength."
+}

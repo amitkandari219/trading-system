@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires three confluent layers: (1) Fundamental metrics (supply/demand imbalance via two independent sources) \u2014 not available as price-based indicators; (2) Psychological/news sentiment (2+ consecutive news events with directional alignment) \u2014 sentiment data and news event detection not in allowed indicator set; (3) Technical confirmation (5-bar minimum with MA alignment) \u2014 partially translatable but news/sentiment components cannot be quantified with available indicators. The core edge depends on external fundamental and sentiment data sources unavailable in backtest engine.",
+  "translation_notes": "Translated only the technical component (price vs SMA_50 + 5-bar confirmation approximated via returns threshold). Entry conditions use close crossing SMA_50 plus 2%+ return threshold (approximating 5-bar directional move). Exit conditions use SMA_50 breakdown or 2x risk target (4% vs 2% entry). However, this is a partial translation missing the fundamental supply/demand metrics and market psychology/news sentiment components that are critical to the original signal's edge. A complete implementation would require external data feeds for fundamental metrics and sentiment scoring."
+}

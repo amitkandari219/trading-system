@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) ADF stationarity test at 99% confidence level - not available in indicator set; (2) Linear mean-reverting strategy application - requires custom statistical model; (3) Z-score threshold calculation on calendar spread - requires spread construction and standardization not in base indicators; (4) Specific half-life calculation (36 days) - requires half-life decay modeling; (5) Calendar spread construction from futures contracts - requires multi-leg spread calculation not in base indicators",
+  "translation_notes": "Attempted partial translation using log_returns as proxy for spread mean-reversion, but core signal logic depends on advanced time-series analysis (ADF test, half-life, z-scores on constructed calendar spreads) beyond the allowed indicator set. This signal requires custom preprocessing and statistical validation before standard backtesting can occur."
+}

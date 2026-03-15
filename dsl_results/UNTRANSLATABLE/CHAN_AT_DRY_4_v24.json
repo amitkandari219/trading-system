@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multiple alternative entry strategies (Strategy I/II/III with conditional logic based on L\u2081 and L\u2082 support levels, and scaled position sizing with averaging). The framework does not support: (1) absolute support level parameters L\u2081 and L\u2082 which are author-silent and cannot be derived from allowed indicators, (2) conditional branching between three mutually exclusive strategies with probability p, (3) scaled multi-leg entries with position-dependent triggers (e.g., 'enter second contract IF first was filled AND price reaches L\u2082'). This is a multi-path strategy requiring dynamic position sizing and conditional entry logic beyond the JSON rule structure.",
+  "translation_notes": "Attempted partial translation using pivot levels (s1 as proxy for first support, pivot as fair value exit), but this loses the core signal logic: the three alternative pathways, the probability weighting, the cumulative position sizing, and the author-silent parameters (lookback_period, threshold, half_life). A proper implementation requires a state machine or multi-leg order framework."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires computing optimal correlation between past and future return periods dynamically during backtest. This requires: (1) forward-looking future returns (not available at trade decision time), (2) parameter optimization across multiple lookback/holding period pairs, and (3) correlation calculation logic that cannot be expressed as simple indicator comparisons with static thresholds. The 'optimal pair of past and future periods' and correlation analysis require custom backtest engine logic beyond allowed operators and indicators.",
+  "translation_notes": "Attempted partial translation using return sign matching (up following up, down following down) as a proxy for positive correlation, but this omits the core requirement: finding the optimal lookback/holding period pair through correlation analysis. The signal is inherently a parameter-optimization strategy that requires walkforward or rolling correlation calculations, not a static rule set."
+}

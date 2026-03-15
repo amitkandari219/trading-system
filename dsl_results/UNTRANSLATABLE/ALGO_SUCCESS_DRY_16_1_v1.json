@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_16_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires linear regression residuals and z-score calculations on fitted model residuals, which are not available in the allowed indicator set. The strategy depends on: (1) fitting a linear regression over a 40-day lookback, (2) computing residuals, (3) standardizing residuals as z-scores, and (4) triggering on z-score thresholds (\u00b12.0 entry, \u00b10.25 exit). These are domain-specific quantitative constructs that cannot be expressed using the provided indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Returns, Bar Properties). A grid search optimization framework is also not representable in this rule schema.",
+  "translation_notes": "This is a sophisticated pair-trading mean reversion strategy based on statistical model residuals. The signal cannot be translated to the allowed indicator vocabulary. Implementation would require custom indicator development (linear regression, residual computation, z-score standardization) within the backtest engine or a more flexible rule language that supports custom calculations."
+}

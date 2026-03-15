@@ -1,0 +1,93 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "0.1"
+      },
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "-0.05"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">=",
+        "right": "60"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "0.08"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 28,
+    "direction": "LONG",
+    "target_regime": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires identification of prior euphoric rally (>=10%) and pullback (>=5%) measured via returns. Capitulation modeled as high volume reversal (vol_ratio_20 spike) combined with elevated RSI (>=60th percentile as proxy for extreme sentiment). Sentiment percentile threshold approximated using RSI_14 >= 60. No structural support required per original rule. Exit uses +8% profit target and -4% stop loss. Hold period capped at 28 days (upper bound of 2-4 weeks)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": 0.1
+      },
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": -0.05
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">=",
+        "value": 60.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": 0.08
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "HIGH_VOL"
+    ],
+    "hold_days": 28,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal requires identification of prior euphoric rally (>=10%) and pullback (>=5%) measured via returns. Capitulation modeled as high volume reversal (vol_ratio_20 spike) combined with elevated RSI (>=60th percentile as proxy for extreme sentiment). Sentiment percentile threshold approximated using RSI_14 >= 60. No structural support required per original rule. Exit uses +8% profit target and -4% stop loss. Hold period capped at 28 days (upper bound of 2-4 weeks)."
+  },
+  "source_rule_text": "Buy during the confusion and capitulation that follows an initial euphoric move, because the underlying macro catalyst (revolution, regime change) will ultimately support prices despite short-term reversal."
+}

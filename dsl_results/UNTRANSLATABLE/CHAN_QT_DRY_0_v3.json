@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a pairs trading/market-neutral strategy (long IGE + short SPY with equal dollar amounts) that requires multi-asset position management and correlation-based hedging logic. The backtest engine appears designed for single-instrument technical analysis. The strategy lacks quantifiable entry triggers based on price/indicator conditions\u2014it is fundamentally a portfolio construction rule rather than a pattern-based trading signal. Exit date (November 2007) is a calendar constraint, not a technical condition. The source code snippet shows daily return calculations but no specific entry logic. Cannot express equal-dollar-amount hedging, multi-asset coordination, or the underlying economic thesis within the single-instrument indicator framework provided.",
+  "translation_notes": "Signal requires: (1) two instruments traded simultaneously in opposite directions, (2) position sizing based on dollar amounts across assets, (3) correlation/hedge ratio management\u2014none expressible in current schema. Entry conditions reference specific stocks (IGE/SPY) by name rather than technical patterns. Exit is time-based (November 2007) rather than price/indicator-based. Recommend: redesign backtest engine to support multi-leg strategies, or split into separate long/short signals with external position-sizing logic."
+}

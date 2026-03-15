@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_11_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a logistic regression model trained on lagged returns to generate probabilistic predictions of price direction. This is a machine learning model output that cannot be expressed using only the allowed indicator library (which contains only technical indicators). The 'probability_threshold' of 0.55 and the binary classification mechanism require external model inference not available in the backtest engine's indicator set.",
+  "translation_notes": "Attempted approximation using returns as a proxy for direction, but this fundamentally misrepresents the signal which requires: (1) logistic regression model training on historical data, (2) probabilistic predictions from that trained model, and (3) dynamic threshold optimization. These capabilities are outside the scope of rule-based technical indicator conditions. A proper implementation would require integration of an ML model layer into the backtest engine."
+}

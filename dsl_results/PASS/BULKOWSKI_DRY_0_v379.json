@@ -1,0 +1,84 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_middle"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Diamond Top/Bottom pattern detection: Entry triggered on breakout (close crossing Donchian channel boundaries). Donchian Upper/Lower represent pattern boundaries. Direction determined by breakout direction (long on upper breakout, short on lower breakout). Exit on pullback to midline (Donchian middle). Stop loss set at 5% conservative margin given 69% success rate on bear breakouts and 17% average decline. No specific exit authored so reversal condition used."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_middle"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Diamond Top/Bottom pattern detection: Entry triggered on breakout (close crossing Donchian channel boundaries). Donchian Upper/Lower represent pattern boundaries. Direction determined by breakout direction (long on upper breakout, short on lower breakout). Exit on pullback to midline (Donchian middle). Stop loss set at 5% conservative margin given 69% success rate on bear breakouts and 17% average decline. No specific exit authored so reversal condition used."
+  },
+  "source_rule_text": "Diamond Top/Bottom: Wait for breakout before entry. Diamond top shows quick rise followed by decline back to launch point. Diamond bottom shows steep drop followed by rise back to launch point."
+}

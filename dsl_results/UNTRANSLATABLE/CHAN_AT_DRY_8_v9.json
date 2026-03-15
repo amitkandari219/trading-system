@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is an EVENT-based filter requiring external data (earnings announcement calendar with date and time stamps) that cannot be expressed using price-based technical indicators. The conditions require: (1) lookup of stock ticker in an earnings announcement database for a specific date, (2) filtering by announcement time (AMC or PM), and (3) membership check against a tracked symbol universe. These are data sourcing and set membership operations, not price-action rules. No price indicators (OHLCV, MA, RSI, ATR, etc.) can replicate this logic.",
+  "translation_notes": "Signal CHAN_AT_DRY_8 is a preprocessing/filtering rule for event-driven analysis, not a technical trading rule. It requires: (a) external earnings calendar data source, (b) ticker matching logic, (c) time-of-day filtering (AM/PM), (d) symbol universe membership validation. To implement this signal, the backtest engine must pre-filter the universe of symbols before applying technical rules, using an earnings calendar database rather than chart patterns."
+}

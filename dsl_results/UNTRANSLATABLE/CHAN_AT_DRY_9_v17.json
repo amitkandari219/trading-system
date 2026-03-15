@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires specific statistical tests (Augmented Dickey-Fuller for stationarity confirmation, half-life calculation via mean reversion method) and exact thresholds marked AUTHOR_SILENT. These are advanced econometric measures not available in the allowed indicator set. The mean-reversion logic has been approximated using price-to-SMA crossovers as a proxy, but this does not capture the core stationarity and half-life requirements.",
+  "translation_notes": "This is a best-effort approximation only. The original signal requires: (1) ADF stationarity test - not available as an indicator; (2) Half-life calculation - requires time-series decomposition not in allowed set; (3) Exact deviation thresholds - marked AUTHOR_SILENT so unmeasurable. Substituted with simple mean-reversion proxy: long when price deviates above SMA_20, exit on reversion below SMA_20. For bidirectional context-dependent trading, entry/exit logic reverses for short positions. Actual implementation requires external statistical validation before deployment."
+}

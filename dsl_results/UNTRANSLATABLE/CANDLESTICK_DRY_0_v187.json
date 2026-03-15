@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of shadow height ratios, median percentile comparison, dynamic price target formulas (e.g., 2\u00d753%+40), and pattern-specific volume trend classification. These require multi-candle pattern recognition, statistical table lookups, and custom calculations not expressible with allowed indicators and operators. The specific median shadow ratio thresholds and breakout price multipliers are not available as standard indicators.",
+  "translation_notes": "Jacob's Candle pattern cannot be fully operationalized with available indicators. The pattern requires: (1) detection of the Jacob's candle candlestick formation itself (needs pattern library), (2) shadow ratio calculation relative to a median lookup table (not available), (3) volume trend classification (falling vs rising volume comparison), and (4) context-dependent target calculation using median percentages from author's reference table. Attempted approximation uses wick ratio comparison and falling volume trend (vol_ratio_20 < 1.0) but cannot replicate the full statistical framework of the original signal."
+}

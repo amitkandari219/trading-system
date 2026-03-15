@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_16_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'estimated fundamental value' (not in allowed indicators), 'market resiliency indicator' (bid-ask spread not available), and 'dealer participation signal' (specialized microstructure metric). Bollinger Bands used as proxy for deviation detection, but true fundamental value estimation and resiliency metrics are not available in standard OHLCV indicators.",
+  "translation_notes": "Used bb_upper/bb_lower as proxies for price deviation from fundamental value (3-sigma equivalent). Used bb_bandwidth as resiliency proxy (lower bandwidth suggests higher resiliency). Used vol_ratio_20 to approximate dealer/contrarian volume participation. Exit conditions set at bb_middle (0.5 std) reversion target and bandwidth decline. Direction set to CONTEXT_DEPENDENT as signal calls for counter-moves based on market regime. Position sizing at 1% per stated parameters."
+}

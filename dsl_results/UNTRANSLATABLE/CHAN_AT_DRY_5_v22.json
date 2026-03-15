@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multivariate cointegration testing (Johansen test) and eigenvector-based portfolio construction, which cannot be expressed using single-instrument technical indicators. The signal requires: (1) simultaneous analysis of two correlated instruments (stock portfolio + SPY), (2) calculation of cointegration test statistics with specific critical values, (3) eigenvector computation from covariance matrices, (4) dynamic hedge ratio determination. None of these operations are supported by the allowed indicator set, which only includes single-price technical indicators. This requires a dedicated cointegration module outside the standard backtest engine.",
+  "translation_notes": "CHAN_AT_DRY_5 is a pairs trading/statistical arbitrage signal that operates at the portfolio level with econometric cointegration methods. The allowed indicator list contains only standard technical analysis tools (RSI, MACD, moving averages, etc.) and does not include multivariate statistical tests, cross-asset correlations, or eigenvector calculations. To implement this signal, the backtest engine would need: (a) cointegration test calculator, (b) Johansen test implementation with critical value lookup tables, (c) eigenvector extraction capability, (d) multi-leg position management for pairs trading."
+}

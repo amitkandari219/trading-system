@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of external newsworthy events (earnings announcements, macroeconomic news) which cannot be modeled with price/volume/technical indicators alone. The core logic depends on event timestamps external to the market data. Additionally, timing conditions like 'first few days, hours, or seconds after news' require explicit event metadata not available in standard OHLCV data.",
+  "translation_notes": "Attempted approximation using volume spike (vol_ratio_20) and momentum (returns) to proxy for post-event cascading behavior, but this is a significant simplification. The signal fundamentally requires external news event detection which is outside the scope of technical indicator rules. Recommend: (1) Integrate news feed data source, (2) Tag bars with event timestamps, (3) Use entry logic that checks 'time_since_event < 3 days' as a condition."
+}

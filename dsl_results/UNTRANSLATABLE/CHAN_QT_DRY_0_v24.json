@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit mean-reversion detection (e.g., half-life calculation, ADF test, or Hurst exponent) which is not available in the allowed indicator set. Parameters lookback_period, threshold, and half_life are marked AUTHOR_SILENT and cannot be inferred. The entry condition 'Price is mean-reverting (not random-walking or trending)' cannot be operationalized with standard technical indicators alone.",
+  "translation_notes": "Approximated with price below SMA_20 as a proxy for 'low relative to reference price' and crossing back above as mean-reversion signal, but this does not capture the statistical mean-reversion requirement. A proper implementation would require Hurst exponent, half-life of mean reversion, or cointegration testing."
+}

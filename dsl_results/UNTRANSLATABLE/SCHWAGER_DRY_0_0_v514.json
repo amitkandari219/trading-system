@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires cross-market correlation analysis across 4 separate markets/instruments (currencies, stocks, bonds, commodities) with synchronized alignment verification over 5 days. The allowed indicators are single-instrument price-action based and do not include: (1) inter-market correlation functions, (2) multi-instrument comparison operators, (3) cross-market directional alignment checks, or (4) time-series consensus scoring across separate asset classes. The rule 'All 4 scenarios directionally aligned (same bias)' cannot be expressed using only single-instrument price indicators and the allowed operators (>, <, >=, <=, ==, crosses_above, crosses_below, is). Implementing this requires custom multi-instrument aggregation logic outside the scope of single-instrument technical indicators.",
+  "translation_notes": "SCHWAGER_DRY_0_0 describes a regime-confirmation strategy requiring synchronized directional signals across multiple uncorrelated markets. This is a regime-selection rule (not an entry/exit signal) that mandates confluent cross-asset analysis. While the target_regime=['TRENDING', 'ANY'] partially captures the intent, the core logic\u2014that all four markets must align before ANY trade is entered\u2014requires external multi-market data fusion not available in standard single-instrument indicator sets. Consider implementing as a separate market-regime filter external to the backtest engine, or augment the allowed indicators to include correlation_score, cross_market_alignment, or similar derived metrics."
+}

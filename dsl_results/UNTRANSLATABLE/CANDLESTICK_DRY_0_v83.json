@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires computing candle height (high - low) divided by a dynamic 'breakout price' and comparing to a median value. The allowed indicators do not include: (1) a 'median' calculation across multiple candles, (2) the ability to dynamically set breakout price based on direction context, or (3) a normalized height ratio operator. The 'range' indicator approximates (high - low) but cannot be divided by a contextual breakout price or compared to a rolling median. Exit conditions are also undefined (AUTHOR_SILENT). A proper implementation would require custom indicator composition or a multi-step calculation not expressible in the current rule schema.",
+  "translation_notes": "This is a measurement-based pattern rule that requires statistical aggregation (median calculation) and dynamic normalization by breakout price. The entry conditions describe a computational procedure rather than a simple threshold comparison. Without custom indicators for percentile-based measurements and dynamic denominators, this signal cannot be accurately translated into the allowed operator/indicator framework."
+}

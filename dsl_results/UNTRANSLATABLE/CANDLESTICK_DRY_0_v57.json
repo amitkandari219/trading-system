@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern detection ('Run of Higher Highs') requires multi-candle historical sequence analysis (comparing highs across N previous bars to identify ascending pattern). This requires candle-by-candle lookback logic not expressible with single-bar indicators. The signal also lacks specific exit criteria (marked AUTHOR_SILENT), quantified thresholds for pattern confirmation, and success rates needed for robust rule translation.",
+  "translation_notes": "Attempted to capture breakout logic: LONG entry on upward breakout (close > prev_high), SHORT entry on downward breakout (close < prev_low). Exit conditions inferred as reversal of entry signals. However, the core 'higher highs' pattern detection cannot be implemented without multi-bar comparison logic. The 8% average decline noted in parameters was used as stop_loss_pct for SHORT positions. Regime targeting set to TRENDING_UP (bull) and TRENDING_DOWN (bear) per target_regimes. Direction marked CONTEXT_DEPENDENT per original signal."
+}

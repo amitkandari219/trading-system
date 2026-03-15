@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires cointegration testing (cadf test), hedge ratio calculation via OLS regression, and residual spread analysis\u2014none of which are available in the allowed indicators list. The strategy operates on statistical relationships between two price series (EWA and EWC) rather than single-instrument technical indicators. Additionally, mean reversion signals from spread deviations require dynamic threshold calculation based on the spread's historical mean and standard deviation, which cannot be expressed with the allowed operators and indicators.",
+  "translation_notes": "Signal CHAN_AT_DRY_3 is a pairs trading strategy requiring: (1) Cointegration validation between EWA and EWC via cadf test, (2) OLS regression for hedge ratio computation, (3) Stationarity verification of residual spread, (4) Dynamic spread mean and z-score thresholds. These advanced statistical operations exceed the scope of single-indicator technical analysis and would require custom backtesting logic outside the structured rule format. The 'AUTHOR_SILENT' parameters for lookback_period, threshold, half_life, and backtest parameters further prevent concrete rule specification. Recommend implementing this strategy in a dedicated pairs-trading or cointegration-aware backtesting framework."
+}

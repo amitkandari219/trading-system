@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The pattern requires analysis of a 5-candle sequence with specific gap logic between candle bodies and position of the 5th candle's close relative to the first two candles' bodies. This multi-bar relational logic (comparing body positions across 5 candles, identifying gaps between bodies while ignoring shadows, and validating close position between two specific prior candle bodies) cannot be expressed using the available indicators and single-bar operators. The allowed indicators do not support multi-candle pattern matching, historical body comparisons, or relative positioning constraints needed to fully validate this specific breakaway candle pattern.",
+  "translation_notes": "Signal requires: (1) 5-candle pattern validation, (2) gap between bodies of candles 1-2 (excluding shadows), (3) candle 5 close between bodies of candles 1-2. These constraints require multi-candle relative comparisons and body positioning logic not supported by available indicators. A complete implementation would need custom pattern recognition functions beyond the allowed operator set."
+}

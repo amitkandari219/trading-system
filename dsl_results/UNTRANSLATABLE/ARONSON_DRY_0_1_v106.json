@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'major news events' and measurement of price deviation from 'pre-news level' \u2014 neither news detection nor historical baseline anchoring are available in the indicator set. The rule also requires identifying 'systematic movement back toward pre-news level' (trend reversal confirmation) which cannot be reliably expressed without explicit news event timestamps or dynamic baseline tracking. Approximated with high volatility + significant returns + reversal close direction, but this does not capture the true fundamental mechanism.",
+  "translation_notes": "Attempted proxy: HIGH_VOL regime + 1.25 stddev overreaction approximated as returns > \u00b11.25% + consecutive close reversal direction. Stop loss set to 1.0 ATR equivalent (1.0%). Hold duration set to 10 bars as specified. This is a weak approximation and requires domain-specific news event data for proper implementation."
+}

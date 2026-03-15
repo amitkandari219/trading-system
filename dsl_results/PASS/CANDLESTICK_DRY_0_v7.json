@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes two pattern types: (1) Reversal candle: success when close < prev_low (price drops below previous candle low), failure when close > prev_high. (2) Continuation candle: success when breakout follows entry direction, failure when it reverses. Modeled as two opposing entry conditions (long reversal vs short reversal) with reciprocal exit conditions. Direction marked CONTEXT_DEPENDENT as pattern type determines long vs short. Author provided 69% bull success rate but no other specific parameters, so reasonable defaults applied (2% stop_loss, 5-day hold). Sample size: 103 candles."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal describes two pattern types: (1) Reversal candle: success when close < prev_low (price drops below previous candle low), failure when close > prev_high. (2) Continuation candle: success when breakout follows entry direction, failure when it reverses. Modeled as two opposing entry conditions (long reversal vs short reversal) with reciprocal exit conditions. Direction marked CONTEXT_DEPENDENT as pattern type determines long vs short. Author provided 69% bull success rate but no other specific parameters, so reasonable defaults applied (2% stop_loss, 5-day hold). Sample size: 103 candles."
+  },
+  "source_rule_text": "Candlestick Reversal/Continuation Pattern: A reversal candle should cause price to drop (close below previous low = success, close above preceding candle top = failure). A continuation candle should break out in the same direction as entry (upward entry should break out up = success, downward breakout = failure)."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The 'Eight New Price Lines' pattern requires multi-candle pattern recognition (8 consecutive candles with specific properties) and comparison of current candle range against the highest range of the prior 22 trading days. This pattern detection logic cannot be expressed using only single-bar indicators and standard operators. The signal also lacks explicit exit conditions (marked AUTHOR_SILENT for retracement target calculation). An approximation using tall candle detection (range > ATR_20) and trend context is provided, but this does not capture the full pattern semantics.",
+  "translation_notes": "Approximated the 'unusually tall candle' condition using range > atr_20 as a proxy for candle height abnormality. Entry requires both a tall candle and appropriate trend context (uptrend for long, downtrend for short). Exit uses SMA_20 crossover as a reversal proxy since Fibonacci retracement targets are not directly calculable from available indicators. The true pattern requires identifying 8 consecutive candles meeting specific criteria plus a taller 8th candle, which is not expressible in this rule format. Success rates (67% bull, 72% bear) noted but not encoded in rule conditions."
+}

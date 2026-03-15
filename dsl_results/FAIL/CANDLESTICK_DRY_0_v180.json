@@ -1,0 +1,44 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "prev_close"
+    },
+    {
+      "left": "body",
+      "operator": "<",
+      "right": "prev_body"
+    },
+    {
+      "left": "upper_wick",
+      "operator": ">",
+      "right": "prev_upper_wick"
+    }
+  ],
+  "exit_long": [],
+  "exit_short": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "sma_20"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 5,
+  "direction": "SHORT",
+  "target_regime": [
+    "TRENDING_UP"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Advance Block pattern identified by: (1) progressive shortening of candlestick bodies compared to previous bar, (2) lengthening upper wicks indicating rejection at highs, (3) exit when price closes above 20-period SMA signaling failed reversal. Pattern requires 3-candle sequence but backtest engine will evaluate bar-by-bar. Overall rank 54 indicates mediocre performance; pattern performs better on downward breakouts per source material.",
+  "validation_issues": [
+    "entry_short: unknown right value 'prev_body'",
+    "entry_short: unknown right value 'prev_upper_wick'"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit ABW (Ascending Broadening Wedge) pattern detection algorithm which is not available in the allowed indicators list. Pattern recognition for broadening wedges requires multi-bar geometric analysis (widening highs and lows) that cannot be expressed using only price, moving averages, and oscillators. Additionally, 'yearly high/low' positioning requires annual lookback window and historical range calculations not available in the indicators set.",
+  "translation_notes": "Attempted proxy using Donchian channels (dc_upper, dc_lower) as approximation for breakout detection and price_pos_20 as yearly position proxy, but this does not capture the true ABW pattern geometry. Throwback condition (50% occurrence, 9-13 day return) approximated via hold_days_max=13. Exit conditions inferred as reversals through dc_middle since author provided AUTHOR_SILENT values. Direction marked CONTEXT_DEPENDENT per signal specification (bull vs bear market dependent breakout direction)."
+}

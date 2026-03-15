@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) consensus sentiment percentile from media/analyst/retail positioning data (not available in indicator set), (2) central bank announcement detection and timing (not available as indicator), and (3) trader conviction scoring (subjective, non-quantifiable). The core thesis\u2014reversal against consensus and CB interventions\u2014cannot be fully operationalized with only price/technical indicators. Provided proxy entry using price_pos_20 as sentiment extreme, but this is insufficient for the intended strategy.",
+  "translation_notes": "SCHWAGER_DRY_0_2 is a discretionary reversal strategy built on fundamental/macro inputs (consensus, CB policy) rather than technical indicators. Attempted to represent 'extreme bullish positioning' via price_pos_20 > 0.8 (price near 20-bar high), and exit on pivot reversal as proxy for conviction invalidation. Stop loss set to 3% per specification. However, without sentiment/announcement feeds, this translation significantly compromises signal fidelity. Recommend: (1) Add external data feeds for consensus/positioning, (2) Implement calendar for CB announcements, or (3) Classify as MANUAL_DISCRETIONARY rather than automated backtest."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'round number' price levels (0.00, 0.25, 0.50, integer multiples) and 'order clustering' intensity which are not available in the allowed indicator set. The 'minimum price increment < 0.5%' condition and 'offset_from_round_number_ticks' logic also cannot be expressed with standard OHLCV indicators. A custom indicator for round-number detection and microstructure analysis would be needed.",
+  "translation_notes": "Attempted to use hvol_20 (volatility percentile proxy) and vol_ratio_20 (thin trading proxy), but the core mechanic of detecting psychological price clustering and limit order placement near round numbers requires custom microstructure indicators not in the allowed set. Direction set to CONTEXT_DEPENDENT to reflect the signal's bidirectional nature (above or below round numbers)."
+}

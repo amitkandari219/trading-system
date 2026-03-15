@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires computing per-stock deviations from equal-weighted market index return and assigning position weights proportional to negative deviation. This requires: (1) real-time calculation of equal-weighted index across all stocks in universe, (2) per-stock deviation computation relative to that index, (3) dynamic weight normalization by stock count. The backtest engine's condition-based rule structure cannot express portfolio-level relative positioning, cross-security comparisons, or dynamic weight allocation based on deviation magnitudes. The signal is fundamentally a portfolio construction rule, not a per-security entry/exit signal.",
+  "translation_notes": "This is a mean-reversion portfolio strategy requiring market-relative weighting logic that cannot be expressed as per-security conditions. The entry/exit conditions shown are placeholders based on return sign, but do not capture the core logic of proportional weighting by negative deviation from market return. Original source code references are pseudocode (myop, myhi, etc.) and do not clarify implementation details. Recommend implementing as custom portfolio weight calculation function outside standard rule engine."
+}

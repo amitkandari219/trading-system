@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) 12+ month lookback momentum calculation not available as single indicator; (2) volume percentile thresholds (40th, 50th, 75th) require dynamic percentile computation not in allowed indicator set; (3) regime-specific weighting logic (3-12 months vs 3+ years holding period) cannot be expressed as static entry/exit rules; (4) negative momentum constraint with volume interaction requires multi-condition lookback logic beyond available operators",
+  "translation_notes": "Attempted partial translation using returns (12-month proxy) and vol_ratio_20 as volume deviation metric. However, the core signal's value proposition\u2014differential volume weighting by holding period horizon\u2014cannot be properly captured in a single backtest rule set. This signal requires either: custom indicator for rolling 12/36-month momentum, percentile-rank functions, or regime-conditional rule switching not supported by the engine."
+}

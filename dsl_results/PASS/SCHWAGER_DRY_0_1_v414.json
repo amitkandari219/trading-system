@@ -1,0 +1,84 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_1",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">=",
+        "right": "1.5"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses volume surge to confirm breakout validity. Entry: (1) Price breaks above recent swing high (approximated as Donchian upper), (2) Volume ratio vs 20-day average >= 1.5x (50% increase), (3) Close remains above breakout level. Exit: Close below breakout level (approximated as prior close since exact swing high not available as historical reference). The '33% retracement' exit condition cannot be precisely translated without invention of new indicators, so primary exit uses close reversal. The exclusion of marginal volume increases (below 10%) is implicitly handled by the 1.5x multiplier threshold. Direction marked CONTEXT_DEPENDENT as signal can apply to both long and short breakouts depending on market context."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">=",
+        "value": 1.5
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses volume surge to confirm breakout validity. Entry: (1) Price breaks above recent swing high (approximated as Donchian upper), (2) Volume ratio vs 20-day average >= 1.5x (50% increase), (3) Close remains above breakout level. Exit: Close below breakout level (approximated as prior close since exact swing high not available as historical reference). The '33% retracement' exit condition cannot be precisely translated without invention of new indicators, so primary exit uses close reversal. The exclusion of marginal volume increases (below 10%) is implicitly handled by the 1.5x multiplier threshold. Direction marked CONTEXT_DEPENDENT as signal can apply to both long and short breakouts depending on market context."
+  },
+  "source_rule_text": "Use volume surge as a filter to confirm breakout validity before entry, avoiding whipsaw trades on breakouts lacking conviction."
+}

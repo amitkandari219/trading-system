@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires real-time comparison between index future contract price and instantaneous market value of component stocks (a synthetic composite index). These are cross-asset, cross-venue inputs that cannot be expressed using single-instrument OHLCV indicators. The signal requires access to: (1) index futures tick data, (2) real-time component stock prices, (3) index composition weighting, and (4) basis/spread calculations between futures and spot. None of these cross-asset relationships are available in the allowed indicator set, which is limited to single-instrument technical indicators.",
+  "translation_notes": "This is a statistical arbitrage / cash-and-carry arbitrage strategy that requires multi-leg position data (long stocks, short futures or vice versa) and synthetic index construction. It cannot be reduced to single-timeframe OHLCV technical conditions on a single instrument. A proper backtest would require: (1) futures data with basis calculation, (2) constituent stock prices, (3) transaction cost modeling for pairs trading, and (4) real-time index value computation."
+}

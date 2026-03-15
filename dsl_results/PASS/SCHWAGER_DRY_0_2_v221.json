@@ -1,0 +1,131 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "range",
+        "operator": "<",
+        "right": "0.015"
+      },
+      {
+        "left": "true_range",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "range",
+        "operator": "<",
+        "right": "0.015"
+      },
+      {
+        "left": "true_range",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used range < 1.5% to represent 5-period narrow range market condition. True_range expansion detected as breakout signal using ATR_14 comparison. Entry on close crossing Donchian Channel extremes (breakout). Exit uses pivot as dynamic support/resistance level. Stop loss set tight at 1% for aggressive management per signal intent."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "range",
+        "op": "<",
+        "value": 0.015
+      },
+      {
+        "indicator": "true_range",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "range",
+        "op": "<",
+        "value": 0.015
+      },
+      {
+        "indicator": "true_range",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "HIGH_VOL"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used range < 1.5% to represent 5-period narrow range market condition. True_range expansion detected as breakout signal using ATR_14 comparison. Entry on close crossing Donchian Channel extremes (breakout). Exit uses pivot as dynamic support/resistance level. Stop loss set tight at 1% for aggressive management per signal intent."
+  },
+  "source_rule_text": "A trader should enter in the direction of a range expansion in a previously narrow-range market, as the expansion signals the market is committed to moving in that direction."
+}

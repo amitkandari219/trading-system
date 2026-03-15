@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'price at 1 standard deviation from 10-period MA' which requires Bollinger Bands or custom std dev calculation. Allowed indicators lack raw standard deviation bands. Also 'pullback from recent high/low within last 5 bars' requires multi-bar lookback logic not expressible in single 3-field conditions. Entry on 'first touch of extreme' is temporal/order-dependent and cannot be expressed in static indicator conditions.",
+  "translation_notes": "CONTEXT_DEPENDENT direction cannot be fully implemented without conditional logic. Mean-reversion structure attempted using MA crossovers as proxy, but original signal's statistical extremes and pullback definitions are not translatable with available indicators. Recommend: (1) Add bb_upper/bb_lower for 1-STD bands, (2) Add highest/lowest() functions for recent extremes, (3) Enable temporal order logic for 'first touch' semantics."
+}

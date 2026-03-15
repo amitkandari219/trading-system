@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires tracking consecutive same-direction moves (>= 5 periods) and estimating 'fair value' deviation (2.0 std dev), which cannot be directly expressed using only the allowed indicators. 'Consecutive closes in same direction' would require bar-by-bar sequence logic not supported by the allowed operators. The 'conservatism bias fade' detection via retail positioning is also not available in the allowed indicator set. Used Bollinger Bands as a proxy for fair value deviation and volume ratio as a proxy for retail positioning spike, but this is an approximation.",
+  "translation_notes": "Signal is fundamentally about mean reversion after noise-driven overreaction. Approximated using: (1) Bollinger Bands upper/lower for 2 std dev overshoot detection; (2) vol_ratio_20 > 1.5 as proxy for volume spike/retail positioning; (3) returns direction as proxy for consecutive move direction; (4) bb_middle (fair value proxy) as reversion target. True implementation requires custom sequence detector for 5+ consecutive same-direction bars. Position sizing reduction (50%) should be applied externally. Entry is CONTEXT_DEPENDENT\u2014use entry_long when oversold (returns < 0, price > bb_upper rejected) or entry_short when overbought (returns > 0, price < bb_lower rejected)\u2014logic requires conditional wrapping."
+}

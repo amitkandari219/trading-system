@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires order flow data and commodity-specific leading indicators (oil price, Baltic Dry Index) that are not in the allowed indicator set. Order flow is not a standard OHLCV-derivable indicator. Commodity cross-pair analysis and external commodity price inputs cannot be expressed using only the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, and bar properties). The signal is conceptually sound but requires external data sources and position relative analysis not available in the backtest engine.",
+  "translation_notes": "This is a regime-detection signal using multi-asset order flow and leading indicators. To implement: (1) Ingest order flow data from external source, (2) Add commodity price feeds (crude oil, gold spot, Baltic Dry Index), (3) Compute relative performance divergences for pair trades, (4) Map order flow polarity and commodity direction shifts to regime flags. Consider implementing as a separate pre-processor module that feeds regime classification into the backtest engine rather than as a rule within it."
+}

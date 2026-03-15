@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern detection requires candlestick pattern recognition (new highs with down day structure) which cannot be expressed using only the allowed indicators. The signal also references relative frequency in bear markets ('occurs more frequently') which requires statistical comparison not available in single-bar conditions. Success rate parameters (bull/bear) and detailed performance metrics are author-silent and cannot be operationalized.",
+  "translation_notes": "Attempted to approximate the pattern with: (1) price making new highs relative to SMA_20, and (2) at least one down day (close < open). Stop loss set to 6.9% based on average_decline_pct parameter. Pattern is rare (95 instances in 4.7M candles) and context-dependent, so direction marked CONTEXT_DEPENDENT. Regime targeted to TRENDING_DOWN per signal specification. However, true candlestick pattern structure cannot be fully captured without pattern-matching capabilities."
+}

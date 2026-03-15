@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_14_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of bid/ask microstructure (consecutive alternating bid-to-ask and ask-to-bid jumps) and transitory spread component elevation. These microstructure features require tick-level order book data and cannot be expressed using only OHLCV candle-based indicators. The 'distance_from_midpoint_in_spreads' parameter also requires real-time spread data unavailable in standard backtest engines.",
+  "translation_notes": "Attempted partial translation using price_pos_20 (position within 20-bar range) as a proxy for mean reversion tendency and vol_ratio_20 to approximate low-liquidity conditions. However, the core signal logic (alternating bid/ask jumps) is fundamentally microstructure-based and cannot be reliably translated to OHLCV indicators. Recommend using a tick-data compatible backtest engine or adding bid/ask level indicators."
+}

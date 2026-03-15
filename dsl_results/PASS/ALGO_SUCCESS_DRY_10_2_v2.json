@@ -1,0 +1,108 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_2",
+  "book_id": "ALGO_SUCCESS",
+  "dsl_rule": {
+    "signal_id": "ALGO_SUCCESS_DRY_10_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "bb_lower"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_upper"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "bb_middle"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes mean reversion using standard deviation thresholds. Mapped to Bollinger Bands (bb_upper, bb_middle, bb_lower) which encode mean (middle) and \u00b11 stddev (upper/lower) bands at default 20-period lookback. Entry when price crosses below lower band (short) or above upper band (long) with confirmation of movement away from mean (price < prev_close for long, price > prev_close for short). Exit when price reverts to middle band (mean). Hard stop at 2.0 stddev implemented via stop_loss_pct. Hold_days_max set to 10 bars as specified."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "bb_lower"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_upper"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "bb_middle"
+      }
+    ],
+    "regime_filter": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal describes mean reversion using standard deviation thresholds. Mapped to Bollinger Bands (bb_upper, bb_middle, bb_lower) which encode mean (middle) and \u00b11 stddev (upper/lower) bands at default 20-period lookback. Entry when price crosses below lower band (short) or above upper band (long) with confirmation of movement away from mean (price < prev_close for long, price > prev_close for short). Exit when price reverts to middle band (mean). Hard stop at 2.0 stddev implemented via stop_loss_pct. Hold_days_max set to 10 bars as specified."
+  },
+  "source_rule_text": "Enter a trade when a price series deviates significantly from its mean, expecting reversion to that mean, and exit when the series returns to the mean for profit."
+}

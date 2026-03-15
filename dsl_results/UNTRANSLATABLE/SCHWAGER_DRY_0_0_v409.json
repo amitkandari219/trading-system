@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires three untranslatable criteria: (1) 'Candidate passes fundamental screening' \u2014 no fundamental indicators available; (2) 'Stock has doubled or more on at least 2 separate historical occasions' \u2014 requires multi-period historical returns analysis beyond single-bar indicators; (3) '90-day tight consolidation with low intra-base volatility' \u2014 requires pattern recognition and multi-bar consolidation detection not expressible as single conditions. Bollinger Bandwidth used as proxy for volatility tightness, but cannot validate historical doublings or multi-bar consolidation quality.",
+  "translation_notes": "This is a multi-stage filtering rule requiring: (1) fundamental/catalyst analysis (untranslatable), (2) historical performance validation over multiple occurrences (untranslatable without backtesting memory), and (3) pattern quality assessment (partially addressed via bb_bandwidth < 0.08 as low-volatility proxy). The breakout on volume is translatable using Bollinger Bands upper band cross with volume confirmation. Exit conditions use logical reversal (break below support/base). Direction set to LONG based on breakout semantics. Consider this rule requires custom pre-screening logic before strategy execution."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking downside-to-upside volume ratio (NYSE breadth indicator) and counting occurrences of threshold violations over a rolling window. The allowed indicator set includes vol_ratio_20 but does not include: (1) a downside volume breadth ratio indicator, (2) a mechanism to count discrete threshold-crossing events within a time window, or (3) stateful event counters. This is a multi-occurrence pattern-detection rule that cannot be expressed as simple point-in-time conditions using the available indicators and operators.",
+  "translation_notes": "ARONSON_DRY_0_0 is an event-counting signal that requires: (a) measuring upside vs downside volume on NYSE (not available in standard OHLCV indicators), (b) detecting when vol_ratio > 11.0, (c) counting how many times this occurs in last 120 days, and (d) triggering when count >= 3. The backtesting framework would need custom breadth indicators and event accumulation logic. Original source mentions threshold=9 with 2 instances in 3 months; this variant uses 11.0 with 3 instances in 4 months."
+}

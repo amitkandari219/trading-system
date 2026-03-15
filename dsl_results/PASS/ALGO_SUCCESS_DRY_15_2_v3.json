@@ -1,0 +1,64 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_2",
+  "book_id": "ALGO_SUCCESS",
+  "dsl_rule": {
+    "signal_id": "ALGO_SUCCESS_DRY_15_2",
+    "entry_long": [
+      {
+        "left": "sma_5",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_5"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped short_window=5 to sma_5 and long_window=20 to sma_20. Signal uses crosses_above/crosses_below operators to detect moving average crossovers. Direction is LONG only since entry is bullish crossover. Exit condition is reversal crossover (sma_20 above sma_5)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_5",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_5"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "HIGH_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Mapped short_window=5 to sma_5 and long_window=20 to sma_20. Signal uses crosses_above/crosses_below operators to detect moving average crossovers. Direction is LONG only since entry is bullish crossover. Exit condition is reversal crossover (sma_20 above sma_5)."
+  },
+  "source_rule_text": "Enter long positions when a short-period moving average crosses above a long-period moving average; exit when the long-period moving average crosses above the short-period moving average."
+}

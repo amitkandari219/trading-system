@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The Abandoned Baby pattern requires multi-candle sequence recognition (doji \u2192 bearish belt hold \u2192 doji \u2192 small black candle \u2192 gravestone doji) with specific peak identification logic that cannot be expressed using single-bar indicators and simple comparison operators. Pattern detection requires: (1) precise doji identification across multiple bars, (2) gravestone doji detection at a secondary peak, (3) sequence validation across 5+ candles, (4) failed breakout confirmation. These require custom pattern-matching logic beyond allowed operators.",
+  "translation_notes": "Attempted to approximate entry with doji-like characteristics (small body_pct < 5%, previous bearish candle, upper wick dominance) and bearish confirmation (close below previous close), but this does not capture the full multi-candle reversal sequence or peak identification required by the Abandoned Baby pattern. Exit condition uses SMA crossover as reversal signal proxy. Recommend implementing as custom pattern detector in backtest engine."
+}

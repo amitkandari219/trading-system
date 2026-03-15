@@ -1,0 +1,98 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "bb_lower",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "bb_lower"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses Bollinger Bands (2% width, 20-period MA) as volatility bands around a 20-period moving average. DJTA reference proxy mapped to close price comparisons. Entry long: price within normal bands (above lower band). Entry short: price below lower band (extreme deviation). Exits are reversals at band boundaries. Position size multiplier (1.5\u00d7) noted but not encoded in rules structure\u2014apply at execution layer. The 'DJTA as proxy for S&P 500' relationship is noted but both are treated as price series in this rule engine."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "bb_lower",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "bb_lower"
+      }
+    ],
+    "regime_filter": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses Bollinger Bands (2% width, 20-period MA) as volatility bands around a 20-period moving average. DJTA reference proxy mapped to close price comparisons. Entry long: price within normal bands (above lower band). Entry short: price below lower band (extreme deviation). Exits are reversals at band boundaries. Position size multiplier (1.5\u00d7) noted but not encoded in rules structure\u2014apply at execution layer. The 'DJTA as proxy for S&P 500' relationship is noted but both are treated as price series in this rule engine."
+  },
+  "source_rule_text": "Use a reference index (proxy) with volatility bands to generate directional signals in a correlated target market: trade long when the proxy is within normal bands, and trade short only during rare extreme deviations below the lower band."
+}

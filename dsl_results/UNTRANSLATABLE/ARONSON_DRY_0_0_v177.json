@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires error-correction model (ECM) residuals from cointegration analysis and z-score calculations on spread divergence. These are multivariate statistical constructs requiring external model output (Johansen cointegration test, ECM residual series, spread normalization). The allowed indicator set contains only single-series technical indicators and does not include: (1) cointegration test results, (2) ECM residual values, (3) standardized spread z-scores, or (4) persistence counters across bars. Cannot be expressed using price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume ratios, or bar properties alone.",
+  "translation_notes": "This is a pairs-trading signal requiring pre-computed statistical model outputs. To implement: (1) Execute Johansen cointegration test offline on the two cointegrated series, (2) Fit error-correction model and extract residuals, (3) Calculate z-scores of residuals with 3-bar persistence check, (4) Feed ECM residual z-scores into backtest engine as a custom data stream (similar to how external alpha factors are loaded). Entry would then require: ecm_zscore > 2.5 for 3+ bars AND volume confirmation. Exit: ecm_zscore crosses zero OR ecm_zscore > 3.5 (hard stop)."
+}

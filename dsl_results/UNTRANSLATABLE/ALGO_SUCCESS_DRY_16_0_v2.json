@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_16_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Z-score calculation is not available in the allowed indicators list. Z-score requires computing (price - rolling_mean) / rolling_std_dev, which is a derived metric not directly provided. The signal's core logic about mean reversion with specific threshold magnitudes (entry_threshold_zscore: 2.5, exit_threshold_zscore: 2.0) cannot be precisely expressed using only the allowed indicators. Approximated with sma_100 crossover as a proxy for mean reversion, but this does not capture the statistical rigor of z-score thresholds.",
+  "translation_notes": "SIGNAL REQUIRES Z-SCORE INDICATOR: The original signal specifically uses z-score magnitude thresholds (2.5 for entry, 2.0 for exit) with a 100-period lookback window for mean reversion. Without a native z-score indicator, exact translation is impossible. A reasonable proxy using sma_100 crossovers has been provided, but this loses the quantitative precision of the original z-score-based entry/exit logic. To properly implement this signal, either (1) add z-score as a calculated indicator to the engine, or (2) provide Bollinger Bands (which embed z-score via standard deviation) as an alternative."
+}

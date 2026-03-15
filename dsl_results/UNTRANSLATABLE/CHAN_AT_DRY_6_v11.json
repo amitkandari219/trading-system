@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'Roll Return \u03b3 (gamma)' indicator which is not in the allowed indicator list. Roll return is a futures-specific metric calculated as the difference between futures and spot returns across contract rollovers, not a standard price-action indicator. Additionally, the signal requires comparison of roll return magnitude vs spot return magnitude, and specification of 'Magnitude of roll returns exceeds magnitude of spot returns' cannot be expressed with available indicators.",
+  "translation_notes": "This signal is fundamentally about exploiting futures roll yield (backwardation vs contango), which requires specialized futures data and roll return calculations not available in the standard indicator set. The allowed indicators (price, moving averages, RSI, ATR, etc.) are designed for spot price analysis, not futures curve dynamics. A proper implementation would require custom indicators for: (1) roll return calculation (\u03b3), (2) spot vs futures spread, and (3) contract roll mechanics."
+}

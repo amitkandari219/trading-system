@@ -1,0 +1,64 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes a bottom pattern with upward breakout. Since specific bottom pattern detection is not available as a discrete indicator, used Donchian channel breakout as a technical proxy for bottom breakout (price crossing above recent resistance). Exit uses Donchian lower band crossing for reversal detection. Pattern historically shows 35% average rise in bull markets and 24% in bear markets, with ~28% of formations rising >45% in bull markets. The reversal classification (206 R) indicates this acts as a downtrend reversal."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal describes a bottom pattern with upward breakout. Since specific bottom pattern detection is not available as a discrete indicator, used Donchian channel breakout as a technical proxy for bottom breakout (price crossing above recent resistance). Exit uses Donchian lower band crossing for reversal detection. Pattern historically shows 35% average rise in bull markets and 24% in bear markets, with ~28% of formations rising >45% in bull markets. The reversal classification (206 R) indicates this acts as a downtrend reversal."
+  },
+  "source_rule_text": "Bottom pattern with upward breakout acting as a reversal of downward price trend"
+}

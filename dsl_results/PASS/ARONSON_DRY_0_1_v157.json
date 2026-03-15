@@ -1,0 +1,63 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 15,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Translated n-period channel breakout using Donchian Channel indicators. dc_upper represents the maximum close over past n periods (default 20), and dc_lower represents the minimum over past 10 periods for exit. Exit condition includes time-based exit via hold_days_max=15 bars. Signal is LONG-only based on entry condition (price breaks above channel maximum). Volume threshold of 0 percentile indicates no volume filter applied."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 15,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Translated n-period channel breakout using Donchian Channel indicators. dc_upper represents the maximum close over past n periods (default 20), and dc_lower represents the minimum over past 10 periods for exit. Exit condition includes time-based exit via hold_days_max=15 bars. Signal is LONG-only based on entry condition (price breaks above channel maximum). Volume threshold of 0 percentile indicates no volume filter applied."
+  },
+  "source_rule_text": "Enter a long position when price breaks above the maximum value of a lookback channel; the simplicity and effectiveness of channel breakouts makes them viable as a core trend-following mechanism."
+}

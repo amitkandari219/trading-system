@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Double Bottom pattern detection requires multi-bar peak/trough identification and relative volume comparison between two distinct bottoms. The signal specifies: (1) identification of two bottoms at same price level, (2) detection of a peak between them, (3) volume pattern comparison (very high on left bottom vs. substantially reduced on right bottom), and (4) throwback pullback behavior. These require pattern recognition logic beyond the scope of single-bar indicator comparisons. Specifically, the 'two bottoms at approximately the same price level' and 'peak between two bottoms' conditions cannot be expressed with allowed operators and indicators. Volume ratio between specific bars is also not directly available.",
+  "translation_notes": "Attempted approximation using Donchian channels (dc_upper as highest high proxy) and volume comparison, but this does NOT capture the true double bottom pattern mechanics. A proper implementation would require: (a) local minima detection across multiple bars, (b) relative price level comparison logic, (c) inter-bar volume ratio calculations. The target price calculation (height from highest high to lowest low, then add to highest high) would be: target = highest_high + (highest_high - lowest_low), but this requires pattern-specific variable storage not available in rule engine."
+}

@@ -1,0 +1,148 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_10"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "macd_hist",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_10"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "macd_hist",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_10"
+      },
+      {
+        "left": "macd_hist",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_10"
+      },
+      {
+        "left": "macd_hist",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses momentum-based price action for trend detection. Mapped 10-period trend confirmation to close above/below sma_10. Interpreted 'positive momentum over last 3 bars' as macd_hist > 0 (standard momentum proxy). Direction is CONTEXT_DEPENDENT per signal specification. Entry requires price above MA and positive momentum; exit on MA crossover or momentum reversal. Maximum hold of 30 bars preserved."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "macd_hist",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "macd_hist",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "macd_hist",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "macd_hist",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses momentum-based price action for trend detection. Mapped 10-period trend confirmation to close above/below sma_10. Interpreted 'positive momentum over last 3 bars' as macd_hist > 0 (standard momentum proxy). Direction is CONTEXT_DEPENDENT per signal specification. Entry requires price above MA and positive momentum; exit on MA crossover or momentum reversal. Maximum hold of 30 bars preserved."
+  },
+  "source_rule_text": "A trader should use price action as an inferred signal of private information held by other market participants, because gradual price incorporation of information creates exploitable trends for momentum strategies."
+}

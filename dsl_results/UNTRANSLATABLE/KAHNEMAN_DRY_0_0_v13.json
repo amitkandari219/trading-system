@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAHNEMAN_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'announced events that contradict baseline expectations' \u2014 a fundamental event/news signal that cannot be expressed through price/volume/technical indicators alone. The deviation thresholds (1.5\u03c3 from 20-day mean, volume >150%) are translatable, but the event-driven anomaly detection component requires external event data feeds not available in the technical indicator set.",
+  "translation_notes": "Translated quantifiable components: (1) Price deviation beyond 1.5\u03c3 using price_pos_20 threshold of \u00b11.5; (2) Volume deviation >150% using vol_ratio_20 > 2.5 (20-day avg baseline = 1.0); (3) Position size reduction on anomaly (75%) would be handled at execution layer. Entry/exit conditions assume resumption of normal regime after analysis window. The 'announced event' condition is untranslatable without news/sentiment feeds. Recommend integrating external event classifier or news sentiment indicator for complete signal implementation."
+}

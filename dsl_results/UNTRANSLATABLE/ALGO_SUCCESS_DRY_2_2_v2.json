@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_2_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a meta-rule for strategy performance monitoring and retirement, not a price-action trading signal. It requires: (1) 6-month rolling Sharpe ratio calculation (not available in allowed indicators), (2) historical drawdown tracking across equity curve (not a real-time price indicator), (3) win rate computation from trade history (meta-statistic, not price data), and (4) temporal breach counting logic (4+ consecutive months). These are portfolio/strategy-level metrics that cannot be expressed using only real-time OHLCV-based indicators. This signal belongs in a strategy lifecycle management system, not a trade-entry backtest engine.",
+  "translation_notes": "Signal ALGO_SUCCESS_DRY_2_2 is a regime-shift detector and strategy performance filter. It requires custom backtesting harness logic to: track rolling Sharpe (6-month window), compute max drawdown from equity curve, calculate win rate from closed trades, and count consecutive periods where all 3 metrics breach simultaneously. Recommend implementing as a separate pre-trade filter module that gates strategy activation/deactivation, not as entry/exit conditions. Parameters are configuration inputs, not backtestable conditions."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires z-score calculation from custom VX calendar spread ratio (back/front) and ADF stationarity test, neither of which are available in the allowed indicator set. The india_vix proxy cannot replicate the specific mean-reversion properties of the VX calendar spread ratio or the ADF statistical test at 99% probability threshold. Custom synthetic indicators and advanced statistical tests are required.",
+  "translation_notes": "Original signal uses specialized derivatives strategy (VX calendar spreads) with z-score thresholds and ADF stationarity confirmation. Attempted proxy using india_vix with SMA-20 as a reverting mean, but this is not a faithful translation of the original logic. The 15-day lookback, z-score threshold (>1\u03c3), and ADF confirmation criteria cannot be expressed with standard OHLCV indicators alone."
+}

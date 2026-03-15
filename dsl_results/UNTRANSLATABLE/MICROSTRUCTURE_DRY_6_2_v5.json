@@ -1,0 +1,18 @@
+{
+  "signal_id": "MICROSTRUCTURE_DRY_6_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires microstructure-level logic (competitor bid matching patterns, order book depth, time precedence, tick-by-tick sequencing, and sub-second execution timing) that cannot be expressed with OHLCV and technical indicators alone. Entry condition 'Competitor has shown any pattern of bidding (2+ historical matches)' requires order flow data and counterparty tracking. Entry condition 'You are willing to execute at any level offered' is a policy/intent statement. Exit condition 'Competitor does not take offer within 1 second' requires real-time order book monitoring and latency measurement. This is a high-frequency market microstructure strategy, not a price-action or technical analysis signal.",
+  "translation_notes": "Attempted to map high urgency + high volatility + spread awareness to volume and ATR proxies, but the core logic\u2014skipping price levels to gain time precedence over competitors\u2014is fundamentally order-flow dependent and cannot be reliably backtested on OHLCV data. Requires order book, trade sequence, and latency infrastructure."
+}

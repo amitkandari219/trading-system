@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires pattern recognition (head-and-shoulders detection with neckline and shoulder points A, B, C, D, E) and temporal ratio validation between pattern formation points. The allowed indicator set contains only price-derived technical indicators and does not include pattern detection, geometric point identification, or explicit time-ratio comparisons between named pattern components. The core logic 'time(E to penetration) \u2264 2.0x time(A to E)' requires tracking specific pattern landmarks that cannot be expressed with standard OHLCV indicators.",
+  "translation_notes": "Signal requires candlestick pattern recognition engine with point-in-time tracking. Exit condition based on neckline penetration translated to pivot-based reversal as proxy. Parameters max_penetration_time_ratio=2.0 and reference_period='A_to_E_duration' cannot be operationalized without pattern detection module. Recommend implementing dedicated head-and-shoulders pattern scanner with temporal validation before using this signal in backtest."
+}

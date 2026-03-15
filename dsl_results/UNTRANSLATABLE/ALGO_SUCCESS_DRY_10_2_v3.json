@@ -1,0 +1,18 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_10_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires statistical tests (ADF/KPSS test, half-life calculation, Ornstein-Uhlenbeck process characteristics) which are not available in the allowed indicator list. These are complex econometric tests that cannot be directly mapped to standard technical indicators. Approximated entry/exit using Bollinger Bands percentage B as a proxy for mean reversion deviation, but this is not statistically equivalent to the specified tests.",
+  "translation_notes": "ADF/KPSS test confirmation cannot be implemented with available indicators. Half-life of mean reversion is a parameter calculated from time series analysis, not a standard indicator. Used bb_pct_b (Bollinger Bands %B) as a practical proxy: values < 0.0 suggest price below lower band (oversold/reverting down), values > 1.0 suggest price above upper band (overbought/reverting up). Exit when bb_pct_b crosses 0.1-0.9 range approximates 'price reverts to within 0.1 std dev of mean'. Stop-loss set to 1.5 standard deviations as specified. Direction set to CONTEXT_DEPENDENT as signal trades both long (when oversold) and short (when overbought)."
+}

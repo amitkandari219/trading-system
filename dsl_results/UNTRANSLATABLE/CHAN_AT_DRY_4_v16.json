@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic z-score thresholds (entryZscore and exitZscore as free parameters) and rolling mean/standard deviation computed over an optimizable lookback period. The allowed indicators list does not include raw z-score calculations or parameterized Bollinger Bands with custom z-score inputs. Bollinger Bands (bb_upper, bb_middle, bb_lower) are fixed at 2 standard deviations and cannot be adjusted to arbitrary entryZscore or exitZscore values. The signal also requires half-life optimization logic which is not supported by the allowed operators.",
+  "translation_notes": "Attempted approximation using Bollinger Bands (which represent \u00b12\u03c3 from mean) as a proxy, but this does not capture the full flexibility of the signal's parameterized z-score entry/exit framework. A proper implementation would require custom indicator support for variable z-score bands or direct access to rolling mean and standard deviation calculations."
+}

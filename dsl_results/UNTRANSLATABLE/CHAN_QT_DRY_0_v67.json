@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal relies on calendar-based seasonal entry/exit (specific dates: Feb 25 entry, Apr 15 exit) and contract-specific logic (June NYMEX NG futures expiry). The indicator set does not support date-based conditions or contract-expiry selection logic. Seasonal regime detection (SEASONAL_SUMMER_DEMAND) is not in the ALLOWED_REGIMES list. This requires custom calendar/contract-aware logic outside standard technical indicators.",
+  "translation_notes": "This is a pure calendar-driven seasonal trade with no technical indicator entry/exit conditions. Entry is tied to purchasing a specific contract (June NG) on a fixed date (Feb 25), and exit is on a fixed date (Apr 15). The backtest engine would need to support: (1) date-based condition evaluation, (2) contract selection/rolling logic, (3) seasonal regime classification. Standard OHLCV indicators cannot express this intent."
+}

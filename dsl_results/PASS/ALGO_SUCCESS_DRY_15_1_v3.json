@@ -1,0 +1,64 @@
+{
+  "signal_id": "ALGO_SUCCESS_DRY_15_1",
+  "book_id": "ALGO_SUCCESS",
+  "dsl_rule": {
+    "signal_id": "ALGO_SUCCESS_DRY_15_1",
+    "entry_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "sma_50",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses classic golden cross strategy: SMA(20) crosses above SMA(50) for entry, reversal (SMA(50) crosses above SMA(20)) for exit. Mapped short_window=20 to sma_20 and long_window=50 to sma_50 per allowed indicators. Direction is CONTEXT_DEPENDENT but operationally LONG for entry/exit logic. Position state checks omitted as they are engine-level concerns, not condition-level."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "sma_50",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal uses classic golden cross strategy: SMA(20) crosses above SMA(50) for entry, reversal (SMA(50) crosses above SMA(20)) for exit. Mapped short_window=20 to sma_20 and long_window=50 to sma_50 per allowed indicators. Direction is CONTEXT_DEPENDENT but operationally LONG for entry/exit logic. Position state checks omitted as they are engine-level concerns, not condition-level."
+  },
+  "source_rule_text": "Enter long positions when a short-period moving average crosses above a long-period moving average; exit when the long-period moving average crosses above the short-period moving average."
+}

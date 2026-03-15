@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Kalman filtering is a dynamic state-space model that estimates hidden mean prices in real-time. This requires: (1) explicit Kalman filter implementation with state equations, (2) calculation of Kalman gain K(t) dynamically, (3) forecast error computation m(t|t-1), and (4) comparison of observed price deviation against weighted forecast error. None of these components can be expressed using the allowed indicators (which are all standard technical indicators). The signal requires custom indicator implementation and cannot be translated to simple threshold-based rules.",
+  "translation_notes": "The signal describes an advanced state-space estimation technique for mean reversion in cointegrating series. While the allowed indicators include moving averages (sma_*, ema_*) and Bollinger Bands (bb_*) which approximate mean and deviation concepts, they do not implement Kalman filtering. A proper translation would require implementing a custom Kalman filter indicator with state transition and measurement models. Recommend implementing this signal as a custom module outside the standard rule engine."
+}

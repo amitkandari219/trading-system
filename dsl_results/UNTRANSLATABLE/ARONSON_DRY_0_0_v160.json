@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implementation of a custom linearly-weighted moving average (LWMA) with configurable smoothing period (8 days specified in parameters). The allowed indicator list does not include LWMA or generic smoothing functions. The signal also references abstract 'critical threshold' and 'indicator signals' without specifying which base indicator to smooth. Translation uses SMA crossover as a proxy for smoothed indicator crossover, but this does not capture the exact linear weighting methodology described in the source material.",
+  "translation_notes": "Substituted sma_5 and sma_20 as a smoothing proxy approximating the intent of weighted moving average smoothing to reduce false crossovers. Original signal specified 8-day smoothing period with linear weighting, but LWMA is not available in the allowed indicators. The confirmation bar requirement is represented by the second condition requiring the smoothed indicator to remain above/below threshold. Direction marked CONTEXT_DEPENDENT per signal specification. Parameters smoothing_period_days=8, linear_weight_method=linearly_weighted, threshold_type=static_or_dynamic cannot be directly encoded in the JSON structure."
+}

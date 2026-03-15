@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a custom 'quality_spread' indicator (AAA yield - BAA yield from Moody's corporate bond series) which is not available in the allowed indicators list. This is a macro/fixed-income indicator not present in the standard price/technical indicator set. The confirmation condition 'remains above 200-day SMA for minimum 5 consecutive days' and 'positive rate of change in spread over last 5 days' cannot be precisely expressed without access to the quality_spread data series.",
+  "translation_notes": "Signal references Moody's corporate bond quality spread (AAA-BAA) which is external macro data. Standard backtest engines typically do not include fixed-income spread indicators. To implement: (1) obtain quality_spread data from Bloomberg/Federal Reserve FRED, (2) add as custom indicator, (3) apply conditions: crosses_above(quality_spread, sma_200), sustained above sma_200 for 5 bars, positive rate_of_change over 5-day period. Exit on crosses_below or 8% trailing stop."
+}

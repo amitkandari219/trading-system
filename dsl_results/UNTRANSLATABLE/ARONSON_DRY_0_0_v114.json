@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of earnings announcements with surprise magnitude (actual vs consensus deviation > 5%), which is not available in the allowed indicators list. The 'returns' indicator is used as a proxy for price move but cannot capture earnings-specific surprise data. This requires external data source (earnings calendar with consensus estimates) not supported by price/volume/technical indicators alone.",
+  "translation_notes": "Translated available components: (1) Earnings surprise proxied using returns > 5% on announcement day; (2) Price closes above open with minimum 1.5% daily gain expressed as returns > 0.05 AND close > open; (3) Volume > 150% of 30-day average expressed as vol_ratio_20 > 1.5; (4) Close above previous day's high using close > prev_high; (5) Stop loss at 8% below entry; (6) Exit at 30 calendar days. Core limitation: earnings surprise confirmation cannot be fully replicated without earnings data feeds."
+}

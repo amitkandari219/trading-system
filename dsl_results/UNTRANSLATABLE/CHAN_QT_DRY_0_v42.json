@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cointegration analysis (Johansen test, ADF test on spread, half-life calculation, and spread equilibrium detection), which are advanced statistical methods not representable by the allowed indicator set. The allowed indicators (SMA, RSI, ATR, Bollinger Bands, etc.) cannot directly measure cointegration or stationarity of a spread between two instruments. Specific entry/exit thresholds are marked as AUTHOR_SILENT. A proxy using moving average crossover has been provided as a fallback, but this does not capture the true cointegration trading logic.",
+  "translation_notes": "This is a pairs trading / statistical arbitrage signal that fundamentally requires cointegration and stationarity testing. The allowed indicator set lacks: (1) cointegration coefficients, (2) spread calculations between two instruments, (3) ADF/KPSS stationarity tests, (4) half-life of mean reversion, (5) z-score or threshold deviation measures on the spread. The fallback SMA crossover is a simplified mean-reversion proxy only. Author did not specify lookback period, threshold deviation, half-life, or backtest parameters. For proper implementation, a custom indicator computing the cointegrated spread and its z-score relative to equilibrium would be required."
+}

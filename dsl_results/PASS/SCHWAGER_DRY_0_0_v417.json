@@ -1,0 +1,92 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": "<",
+        "right": "0.5"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Uptrend condition mapped to close > sma_50. Consolidation phase (10+ days range-bound) represented by Donchian Channel upper/lower bounds (dc_upper, dc_lower). Volume dryup (< 50% of 50-day avg) and expansion (> 150% of 50-day avg) both mapped to vol_ratio_20 indicator which captures volume ratio relative to historical average. Entry on close above consolidation high mapped to crosses_above dc_upper. Stop loss set at 2% below consolidation low. Take profit condition (3x risk) requires position tracking not available in indicator set, so only stop loss is coded. Consolidation_min_days parameter noted but not directly enforceable in condition engine."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": "<",
+        "value": 0.5
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Uptrend condition mapped to close > sma_50. Consolidation phase (10+ days range-bound) represented by Donchian Channel upper/lower bounds (dc_upper, dc_lower). Volume dryup (< 50% of 50-day avg) and expansion (> 150% of 50-day avg) both mapped to vol_ratio_20 indicator which captures volume ratio relative to historical average. Entry on close above consolidation high mapped to crosses_above dc_upper. Stop loss set at 2% below consolidation low. Take profit condition (3x risk) requires position tracking not available in indicator set, so only stop loss is coded. Consolidation_min_days parameter noted but not directly enforceable in condition engine."
+  },
+  "source_rule_text": "A trader should initiate a long position when volume expansion follows a consolidation phase in an uptrending stock, as this signals imminent breakout."
+}

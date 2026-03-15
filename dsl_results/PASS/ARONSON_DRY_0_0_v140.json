@@ -1,0 +1,128 @@
+{
+  "signal_id": "ARONSON_DRY_0_0",
+  "book_id": "ARONSON",
+  "dsl_rule": {
+    "signal_id": "ARONSON_DRY_0_0",
+    "entry_long": [
+      {
+        "left": "sma_5",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      },
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_5",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      },
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses cascade logic: (1) Initial trigger: sma_5 crosses sma_20, (2) Confirmation within 5 bars: sma_20 crosses sma_50, (3) Volume confirmation required. Context-dependent direction handled via separate entry_long and entry_short branches. Exit conditions use the cascade reversal (20/50 MA cross) as primary exit, with fixed 2% stop loss applied. Vol_ratio_20 used for volume confirmation (normalized volume indicator)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_5",
+        "op": "crosses_above",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_5",
+        "op": "crosses_below",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses cascade logic: (1) Initial trigger: sma_5 crosses sma_20, (2) Confirmation within 5 bars: sma_20 crosses sma_50, (3) Volume confirmation required. Context-dependent direction handled via separate entry_long and entry_short branches. Exit conditions use the cascade reversal (20/50 MA cross) as primary exit, with fixed 2% stop loss applied. Vol_ratio_20 used for volume confirmation (normalized volume indicator)."
+  },
+  "source_rule_text": "A trader should enter trend-following positions when initial price movements trigger progressively less sensitive cascade signals, capturing momentum from positive feedback loops before they dissipate."
+}

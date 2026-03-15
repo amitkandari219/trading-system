@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) identifying 'highest shadow' across multiple candles - requires lookback window not expressible in 3-field condition format; (2) 'third of yearly high/low' requires yearly high/low indicators not in allowed list; (3) stop placement and target price computation explicitly marked AUTHOR_SILENT with no guidance provided; (4) pattern detection logic ('12 new price lines') not translatable to indicator-based rules",
+  "translation_notes": "Attempted partial translation of breakout concept using upper_wick for upside and prev_low for downside, but core pattern logic requires multi-candle historical analysis and yearly range references not available. Hold period set to 8 days per 'six to eight days' guidance. Direction marked CONTEXT_DEPENDENT per signal specification."
+}

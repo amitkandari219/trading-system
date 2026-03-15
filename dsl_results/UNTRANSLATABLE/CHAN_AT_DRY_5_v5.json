@@ -1,0 +1,18 @@
+{
+  "signal_id": "CHAN_AT_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Johansen cointegration test between three asset classes (gold spot, gold miners' equities, oil/USO) with spread deviation measurement. This is a multivariate statistical test and spread calculation that cannot be expressed using the allowed single-instrument indicators (RSI, MACD, Bollinger Bands, etc.). The signal also specifies CONTEXT_DEPENDENT direction based on oil price regime relative to cointegrating vector, which requires dynamic regime classification beyond the allowed TRENDING_UP/TRENDING_DOWN/RANGING/HIGH_VOL/ANY regimes. No combination of price action indicators can replicate Johansen cointegration testing or triplet spread analysis.",
+  "translation_notes": "This is a sophisticated pairs/triplet trading signal requiring econometric cointegration analysis. The core logic involves: (1) detecting statistical cointegration between three instruments via Johansen test, (2) measuring spread deviations from equilibrium, (3) directional entry based on oil price context relative to the cointegrating relationship. Standard technical indicators cannot capture this relationship. The signal would require custom indicator development: a Johansen cointegration detector, a spread calculator for the three instruments, and a regime classifier based on oil price level relative to the cointegrating vector."
+}

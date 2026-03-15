@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'news event' and 'deviation >2.0 standard deviations from moving average', which cannot be expressed using only the allowed indicators. Standard deviation calculation is not available; price_pos_20 (normalized position) is used as a proxy but does not precisely capture 2.0 std dev thresholds. News event detection is not available in the indicator set.",
+  "translation_notes": "Approximated mean reversion signal using price_pos_20 extremes (close to 0 for oversold, close to 1 for overbought) combined with volume confirmation. True implementation requires custom std dev calculation for precise 2.0 std dev threshold detection and news event trigger. Exit condition uses crossing back to sma_20 as proxy for reversion to fair value. Hold period capped at 15 bars as specified in exit conditions."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of 12-month low/middle/high price levels with reversal/continuation probabilities varying by level (L:58%R/42%C, M:64%R/36%C, H:74%R/26%C). This requires dynamic calculation of 12-month extrema and context-dependent directional bias based on entry price position within the range. The backtest engine lacks: (1) a 12-month lookback extrema indicator, (2) conditional logic to apply different success rates/exit rules based on which level price is at, and (3) regime-dependent reversal vs continuation weighting. Approximated with Donchian Channel but this does not capture the nuanced probability structure by price level.",
+  "translation_notes": "The original signal is a sophisticated pattern recognition rule from Bulkowski that conditions trade direction and exit probability on whether price enters at the 12-month low (highest reversal rate ~58-61%), middle (moderate reversal ~64-66%), or high (lowest reversal ~74-79%, highest continuation risk). Without custom multi-level entry detection and level-specific exit rules, a faithful translation is not possible. The approximation uses Donchian channels as a proxy for extrema detection but loses the critical 12-month lookback window and probability differentiation by entry level."
+}

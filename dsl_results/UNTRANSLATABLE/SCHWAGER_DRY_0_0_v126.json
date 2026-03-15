@@ -1,0 +1,18 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) price piercing a specific defended level with historical test count tracking (min 15 prior tests) \u2014 requires level memory/tracking not available in indicator list; (2) bid-ask spread widening measurement \u2014 no spread indicator in allowed set; (3) post-breakout trading inactivity zone detection (50+ pips with no activity) \u2014 requires order flow/activity tracking not in indicators. Approximated with range (bar size) and volatility expansion (hvol_20), but this loses the essential defended-level and poor-fill context.",
+  "translation_notes": "Converted 'violently pierces defended level' to large range + volatility spike (hvol_20 >= 150% = 1.5x baseline). Converted 'no trading activity for 50 pips' to volatility measure as proxy. Converted exit conditions to reversal below pivot + profit target. The core logic of heavily-defended level recognition and bid-ask spread monitoring cannot be fully captured without order book or level-tracking indicators."
+}

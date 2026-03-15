@@ -1,0 +1,18 @@
+{
+  "signal_id": "ARONSON_DRY_0_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 4-hour chart timeframe specification and lookback window of '5 bars ago' which cannot be expressed with available indicators. Price_pos_20 exists but signal requires custom lookback comparisons. 5-day MA reference unavailable (only sma_5 available, not guaranteed to match 5-day period on 4H chart). Recent high comparison requires bar-by-bar history not available in allowed indicators.",
+  "translation_notes": "Approximated trend entry with close > sma_20 (20-period MA proxy). Used close > prev_close to capture 'higher close than recent' concept. Countertrend entry approximated with 5% drawdown as returns < -0.05 with elevated volume. Exit conditions use sma_20 crossunder and 3% profit target (returns > 0.03). Direction set CONTEXT_DEPENDENT to reflect dual-mode strategy (trend vs countertrend). Vol_ratio_20 used for liquidity/volume filter. Critical limitation: Cannot accurately reference 4H timeframe or specific bar offsets without chart context."
+}
