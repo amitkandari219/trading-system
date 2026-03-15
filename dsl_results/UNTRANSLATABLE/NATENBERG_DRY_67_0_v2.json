@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_67_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific metrics (implied volatility percentile, expected price move magnitude, days to expiration, spread structure selection logic, time decay tolerance) that are not available in the provided price/technical indicator set. These require options market data (IV surface, option Greeks, extrinsic value decay curves) which are outside the scope of standard OHLCV and technical analysis indicators.",
+  "translation_notes": "Attempted approximation using hvol_20 (historical volatility as proxy for IV regime), atr_14 (expected movement magnitude), and price position relative to sma_20 (trend context). However, the signal's core logic\u2014selecting between backspread/straddle/strangle based on IV percentile and expected move relative to time decay risk\u2014cannot be properly translated without access to option chain data and Greeks calculations."
+}

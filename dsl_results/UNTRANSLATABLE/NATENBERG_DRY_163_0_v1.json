@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_163_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct access to Greek values (gamma, vega, theta) and IV percentiles which are not available in the allowed indicator set. The source material provides explicit delta/gamma/theta/vega calculations from options positions, but no equivalent synthetic Greeks can be reliably constructed from price-action indicators alone. Substituted hvol_20 (historical volatility) and india_vix (volatility index) as proxies for elevated volatility environment, but this does not capture the critical negative gamma/vega with positive theta structure that defines the strategy. A proper implementation requires options Greeks input.",
+  "translation_notes": "This signal fundamentally requires options Greeks (gamma, vega, theta) and implied volatility metrics that fall outside the price-action indicator constraint. Entry conditions mapped to high volatility proxies (hvol_20 > 75th percentile, india_vix elevated) as substitute for 'IV percentile > top quartile', but the core short volatility spread logic cannot be properly expressed without Greeks. Exit condition uses hvol_20 mean-reversion as proxy for 'IV falls'. Recommend feeding Greeks directly into backtest engine rather than attempting synthetic approximation."
+}

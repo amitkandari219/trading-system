@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_60_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a pairs/spread trading signal requiring: (1) price relationship deviation measured in standard deviations between TWO related instruments (not available in single-instrument indicator set), (2) historical mean spread calculation (requires cross-instrument comparison logic), (3) bid-ask spread monitoring across instruments. The signal requires multi-leg position management and statistical relationship analysis between instrument pairs, which cannot be expressed using single-instrument indicators from the allowed list. Would require custom spread indicators like 'spread_zscore', 'pair_correlation', or 'relative_value' metrics.",
+  "translation_notes": "NATENBERG_DRY_60_0 is a pairs trading/statistical arbitrage signal. The core logic involves: (a) establishing a baseline mean relationship between two instruments over a lookback period, (b) detecting when the spread deviates beyond a threshold (in standard deviations), (c) trading the mean reversion by going long the underpriced leg and short the overpriced leg, (d) exiting when spread reverts to target percentile. This requires comparative analysis across instruments and spread-based metrics not present in the single-instrument indicator vocabulary provided."
+}

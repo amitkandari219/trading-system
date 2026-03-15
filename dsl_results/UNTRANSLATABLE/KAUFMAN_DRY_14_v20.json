@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking multi-day bull move duration (34+ days) and identifying specific cycle days (55th, 89th) with dynamic series extension logic. The allowed indicators cannot natively measure: (1) duration of a continuous bull move in days, (2) absolute day count within a pattern cycle, (3) conditional Fibonacci/Lucas series extension based on penetration thresholds. These require bar-counting state machines and pattern memory not available in the standard indicator set. Additionally, 'major resistance or reversal' is not objectively quantifiable without additional parameters like volatility or support/resistance levels.",
+  "translation_notes": "KAUFMAN_DRY_14 is a temporal pattern-recognition signal based on Fibonacci/Lucas day counts applied to bull move cycles. This requires: (a) stateful tracking of when a bull move begins and its duration, (b) day-counting within the pattern, (c) dynamic series recalculation. The backtest engine would need custom pattern detection logic or bar_count/pattern_age indicators to translate this rule effectively. Recommend implementing as a dedicated pattern module rather than condition-based rules."
+}

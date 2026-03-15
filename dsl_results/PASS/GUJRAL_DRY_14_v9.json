@@ -1,0 +1,72 @@
+{
+  "signal_id": "GUJRAL_DRY_14",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_14",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "s1"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "25"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes a range-bound pattern with failed breakout and lower boundary respect. Entry uses pivot support level (s1) as proxy for range lower boundary, with ADX < 25 to confirm range-bound (non-trending) regime. Exit triggers when price closes above the support level (lower boundary respected = exit signal to avoid being trapped). The pattern implies a short position that should be closed when the market moves higher (price crosses above support)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "s1"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s1"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal describes a range-bound pattern with failed breakout and lower boundary respect. Entry uses pivot support level (s1) as proxy for range lower boundary, with ADX < 25 to confirm range-bound (non-trending) regime. Exit triggers when price closes above the support level (lower boundary respected = exit signal to avoid being trapped). The pattern implies a short position that should be closed when the market moves higher (price crosses above support)."
+  },
+  "source_rule_text": "When the lower boundary of a range is respected after a failed breakout, shorts should book out to avoid being trapped on the other side of the market."
+}

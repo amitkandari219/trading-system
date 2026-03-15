@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_40_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit implied volatility (IV) and break-even volatility calculations using Black-Scholes/Black model, delta-hedging mechanics, and premium-based loss thresholds. These are derivatives pricing constructs not available in the allowed indicator set (which contains only price-action and volatility proxies like hvol_20 and india_vix). The core logic\u2014comparing realized vol to break-even IV and managing delta adjustments\u2014cannot be faithfully represented without access to option Greeks, IV surfaces, and strike-specific premium data.",
+  "translation_notes": "Attempted proxy: used hvol_20 (realized volatility proxy) > india_vix (implied volatility proxy) for entry, and reverse for exit. However, this is a significant semantic loss: (1) break-even IV is option-specific and premium-dependent, not a market-wide implied vol index; (2) delta adjustments require real-time Greeks not available; (3) mark-to-market loss thresholds depend on option moneyness and time decay, not general price action. Recommend implementing this signal within a dedicated options backtesting engine with access to option chains and pricing models."
+}

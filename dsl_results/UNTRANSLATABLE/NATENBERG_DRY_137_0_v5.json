@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_137_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires specific IV compression thresholds, HV-IV spread percentile comparison, and economic event calendar data. Available indicators (hvol_20, india_vix) are proxies but cannot precisely replicate: (1) IV < N-day IV average \u00d7 threshold comparison, (2) HV-IV spread > Nth percentile points, (3) scheduled major economic events filter, and (4) consecutive-day confirmation logic. The signal is context-dependent and requires external event data unavailable in the indicator set.",
+  "translation_notes": "Attempted partial translation using hvol_20 as realized volatility proxy and india_vix as implied volatility proxy. Entry conditions approximate: realized vol > IV and IV below its moving average (mean reversion setup). Exit on IV mean reversion. However, the original signal's parameterized thresholds and event calendar filtering cannot be expressed with available indicators alone."
+}

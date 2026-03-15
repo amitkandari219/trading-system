@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_34_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options-specific metrics (implied volatility, realized volatility, strike prices, volatility spreads) that are not available in the provided indicator set. The rule depends on comparing IV across different strikes and forecasting realized volatility outcomes relative to IV levels. Standard equity/futures indicators (RSI, MACD, Bollinger Bands, etc.) cannot replicate options volatility analysis. To implement this signal, a backtest engine would need: implied_volatility, realized_volatility, strike_differential, and volatility_term_structure indicators.",
+  "translation_notes": "Signal NATENBERG_DRY_34_0 is a volatility-skew arbitrage rule from options trading theory (Natenberg). It requires real-time IV data across multiple strikes and volatility forecasting capability. The entry conditions involve comparing lower-strike vs higher-strike IV levels and measuring realized volatility against IV thresholds. Exit conditions depend on realized volatility convergence to IV and theta decay tracking. This is not translatable to a traditional price-action backtest engine without options-specific data feeds."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires standard deviation calculation from mean (3-sigma bands) which is not directly available as an allowed indicator. Bollinger Bands (bb_upper, bb_lower) could approximate this, but the exact deviation threshold parameter is marked [THRESHOLD_NEEDED] and not specified. Additionally, the 'color-coded monitoring board' and 'position review' conditions are qualitative/manual actions that cannot be mechanically expressed in the rule engine.",
+  "translation_notes": "This is a risk management alert signal rather than a mechanical trading rule. It monitors for unusual price moves (3 standard deviations) to trigger manual review of existing positions. The core mechanism (3-sigma deviation detection) would require either: (1) Bollinger Bands as a proxy, or (2) a custom standard_deviation indicator. The exit condition 'Position reviewed and management decision executed' is inherently discretionary and cannot be automated without additional context."
+}

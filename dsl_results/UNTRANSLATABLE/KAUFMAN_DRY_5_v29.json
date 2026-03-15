@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires point-and-figure chart logic (tracking ascending/descending columns of Xs and Os with configurable box sizes). This is a chart pattern specific to P&F analysis. The closest approximation uses Donchian channels to detect breakouts above/below recent highs/lows, but this does not capture the true P&F column structure, reversal logic, or box-size sensitivity. Authentic implementation requires P&F-specific indicators not available in the standard indicator set.",
+  "translation_notes": "KAUFMAN_DRY_5 is a point-and-figure chart pattern signal. Attempted proxy using dc_upper (recent 20-bar high) for 'highest X of last ascending column' and dc_lower (recent 20-bar low) for 'lowest O of last descending column'. However, P&F analysis fundamentally differs from price-bar analysis: it uses fixed box sizes to filter noise and tracks column direction changes. A proper backtest requires a P&F-specific indicator or custom column-tracking logic. The box_size parameter controls sensitivity but has no direct mapping to standard indicators."
+}

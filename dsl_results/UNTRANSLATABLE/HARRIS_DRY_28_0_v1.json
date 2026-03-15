@@ -1,0 +1,18 @@
+{
+  "signal_id": "HARRIS_DRY_28_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'forced buying activity' (margin calls, wealth transfers), 'short interest levels', and 'acceleration rate comparison across multiple periods' which are not directly available in the allowed indicator set. The concept of 'consecutive rising periods' and 'acceleration flattening' require multi-bar comparisons and short interest data not in the allowed indicators. Used volume and returns as proxies but this is incomplete.",
+  "translation_notes": "Translated price acceleration as close > prev_close and returns comparison. Volume increase proxied with vol_ratio_20. Short interest requirement cannot be met with allowed indicators. Acceleration threshold and consecutive bar requirements mapped to directional change in returns. Exit conditions use returns reversal and MA crossunder as momentum loss signals. Direction set to LONG per signal intent. Target regime set to TRENDING_UP as most consistent with acceleration-driven momentum."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires absolute threshold values (x) for two conditions: (1) open > prev_high + x and (2) 0 < prev_low - x. The thresholds are marked [THRESHOLD_NEEDED] in source and not specified numerically. Additionally, condition (2) '0 < L[1] - x' is logically problematic (comparing 0 to a price difference) and interpretation is ambiguous. Signal intent is to identify range-bound behavior but lacks concrete entry thresholds and clear mathematical definition of the second condition.",
+  "translation_notes": "The signal identifies two entry scenarios for NEUTRAL/RANGING trades: (1) Open gaps above prior high by threshold x (modest range predictor), (2) Prior low minus threshold x remains positive (very good range predictor). Without explicit x values and clarification on condition 2 logic, this cannot be operationalized. Recommend: (a) specify numeric thresholds for x (e.g., x=ATR multiple), (b) clarify whether condition 2 should be 'prev_low > x' or another formulation, (c) define exit rules (marked AUTHOR_SILENT). Exit set to reasonable reversal: close crosses below/above range midpoint."
+}

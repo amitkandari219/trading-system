@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_111",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal describes an options strategy (diagonal bear spread with specific strike relationships and expiration dates). The backtest engine indicators do not support options contracts, strikes, or expirations. The core mechanism\u2014selling near-term calls at lower strikes and buying longer-term calls at higher strikes\u2014cannot be directly expressed using price-based technical indicators alone. Approximated with a trend-following short entry, but this loses the spread structure and cost-reduction mechanics central to the strategy.",
+  "translation_notes": "MCMILLAN_DRY_111 is an options spread strategy requiring contract specifications (strike levels, expiration dates, premium calculations) that fall outside the scope of price/indicator-based rules. Approximated as a short trade triggered by price below SMA_20 (trend confirmation) with exit on cross above SMA_20, but this is a significant simplification that does not capture the diagonal spread's risk/reward profile or the cost offset from the long call purchase."
+}

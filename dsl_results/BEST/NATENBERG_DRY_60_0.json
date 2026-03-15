@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_60_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multi-leg spread analysis across two delivery months (e.g., December vs July corn futures). Required calculations: (1) theoretical carry cost = (interest_rate \u00d7 time / 12 \u00d7 spot_price) + storage_costs, (2) actual spread price comparison to theoretical value, (3) liquidity assessment on both legs. The backtest engine processes single-instrument OHLCV data with standard indicators. Spread analysis, multi-leg position tracking, inter-month price differentials, and carry cost calculations are outside the scope of single-instrument indicator-based conditions. This requires a dedicated spread-trading or multi-leg derivatives module.",
+  "translation_notes": "NATENBERG_DRY_60_0 is a classical cash-and-carry / basis trading signal from volatility/derivatives literature. It cannot be reduced to single-leg technical indicators (RSI, MACD, Bollinger Bands, etc.). To implement this signal: (1) create a custom spread instrument (Dec_Corn - Jul_Corn), (2) build a carry cost calculator module taking interest rates and storage fees as inputs, (3) implement spread convergence logic with time-decay monitoring near delivery, (4) manage dual positions with correlation and margin tracking. Recommend implementing as a separate spread-strategy engine or using a multi-leg framework outside this indicator-based backtest system."
+}

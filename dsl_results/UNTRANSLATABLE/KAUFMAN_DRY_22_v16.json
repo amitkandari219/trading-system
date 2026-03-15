@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_22",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Martingale position sizing logic with dynamic contract cap cannot be expressed in indicator conditions. This requires position management rules outside the scope of entry/exit signal logic. The MA trendline direction is translatable, but the contract sizing multiplier and cap thresholds require algorithmic position sizing implementation separate from signal generation.",
+  "translation_notes": "Based on source table reference to 'MA 60', interpreted as sma_60 moving average crossover. Entry/exit conditions use MA trendline crossovers for CONTEXT_DEPENDENT direction. Martingale sizing (contracts varying from 1 to cap) and specific thresholds for moving_average_period and martingale_contract_cap are marked as [THRESHOLD_NEEDED] in original and cannot be inferred from the provided excerpt. Position sizing multiplier logic must be implemented separately in backtest engine's position management module."
+}

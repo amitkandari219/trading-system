@@ -1,0 +1,104 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_12",
+    "entry_long": [
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses volume confirmation principle: increase confidence (enter) when price changes with above-average volume (vol_ratio_20), decrease confidence (exit) when volume is light. Direction determined by price movement direction (up/down). 'Relatively heavy volume' interpreted as volume > 20-period ratio baseline. Exit condition inverted from entry logic per Kaufman's principle."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses volume confirmation principle: increase confidence (enter) when price changes with above-average volume (vol_ratio_20), decrease confidence (exit) when volume is light. Direction determined by price movement direction (up/down). 'Relatively heavy volume' interpreted as volume > 20-period ratio baseline. Exit condition inverted from entry logic per Kaufman's principle."
+  },
+  "source_rule_text": "Increase confidence in price direction changes when they occur on relatively heavy volume; decrease confidence when price changes occur on very light volume."
+}

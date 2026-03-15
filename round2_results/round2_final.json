@@ -1,0 +1,1757 @@
+{
+  "tier_a": [],
+  "tier_b": [
+    {
+      "signal_id": "KAUFMAN_DRY_12",
+      "tier": "TIER_B",
+      "reason": null,
+      "windows_passed": 19,
+      "total_windows": 26,
+      "pass_rate": 0.7307692307692307,
+      "aggregate_sharpe": 1.4522642148659852,
+      "last4_passed": 3,
+      "nifty_corr": -0.007,
+      "full_sharpe": 1.605,
+      "full_trades": 643,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_close"
+          },
+          {
+            "indicator": "volume",
+            "op": "<",
+            "value": "prev_volume"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_close"
+          },
+          {
+            "indicator": "volume",
+            "op": "<",
+            "value": "prev_volume"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_close"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_close"
+          }
+        ],
+        "regime_filter": [],
+        "hold_days": 7,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal expects reversals when price moves (up or down) with declining volume, indicating weak moves. Entry conditions capture both Falling Rising Volume (price up, vol down) and Falling Falling Volume (price down, vol down). Exit conditions trigger on direction reversal. Using weekly data context with 7-day hold period to align with 'next week' timeframe specification."
+      }
+    }
+  ],
+  "dropped": [
+    {
+      "signal_id": "GUJRAL_DRY_5",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": 0.239,
+      "full_sharpe": 3.15,
+      "full_trades": 111,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "sma_20",
+            "op": ">",
+            "value": "sma_50"
+          },
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "sma_20"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "sma_20",
+            "op": "<",
+            "value": "sma_50"
+          },
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "sma_20"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "sma_20"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "sma_20"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Used sma_20 as the MA line reference (specific period not provided by author). Entry conditions detect trend direction and price retracement to MA. Exit conditions trigger on MA crossover reversals. Context-dependent direction handled via separate entry_long/entry_short rules rather than single direction field."
+      }
+    },
+    {
+      "signal_id": "GUJRAL_DRY_6",
+      "tier": "DROP",
+      "reason": "sh=0.49 l4=25%",
+      "windows_passed": 18,
+      "total_windows": 26,
+      "pass_rate": 0.6923076923076923,
+      "aggregate_sharpe": 0.4857933864006631,
+      "last4_passed": 1,
+      "nifty_corr": 0.438,
+      "full_sharpe": 1.385,
+      "full_trades": 696,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "lower_wick",
+            "op": ">",
+            "value": "body"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "low"
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_close"
+          }
+        ],
+        "exit_short": [],
+        "regime_filter": [],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "LONG",
+        "reason": "Interpreted 'long bottom shadow' as lower_wick > body. 'Closing price significantly higher than lows' as close > low. 'Price found support' condition captured through lower_wick formation. Exit condition set to close below previous close as a reversal signal since AUTHOR_SILENT. Parameters shadow_length, body_color, and body_size marked as AUTHOR_SILENT are not encoded as specific thresholds due to lack of defined values."
+      }
+    },
+    {
+      "signal_id": "GUJRAL_DRY_7",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": 0.403,
+      "full_sharpe": 1.872,
+      "full_trades": 148,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "lower_wick",
+            "op": ">",
+            "value": "body"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_50"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_high"
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_low"
+          }
+        ],
+        "exit_short": [],
+        "regime_filter": [
+          "TRENDING_UP"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "LONG",
+        "reason": "Entry conditions: (1) lower_wick > body detects rejection candle with long bottom tail; (2) close > sma_50 confirms ongoing uptrend context; (3) close > prev_high ensures next candle is green and takes out previous rejection candle high. Exit condition uses reversal signal (close below previous low) as author provided no exit guidance (AUTHOR_SILENT). Support level detection via price structure is implicit in the uptrend/correction context rather than explicit indicator."
+      }
+    },
+    {
+      "signal_id": "GUJRAL_DRY_8",
+      "tier": "DROP",
+      "reason": "LAST4_FAIL",
+      "windows_passed": 4,
+      "total_windows": 26,
+      "pass_rate": 0.15384615384615385,
+      "aggregate_sharpe": 2.179682520570487,
+      "last4_passed": 0,
+      "nifty_corr": 0.428,
+      "full_sharpe": 2.1,
+      "full_trades": 591,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "open",
+            "op": ">",
+            "value": "pivot"
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "pivot"
+          }
+        ],
+        "exit_short": [],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN",
+          "RANGING"
+        ],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "LONG",
+        "reason": "Signal requires daily pivot level to be plotted on intraday chart. Entry condition uses 'open > pivot' to capture price opening above daily pivot. Exit condition inferred as reversal: price closing below pivot, since AUTHOR_SILENT indicates no explicit exit criteria provided. Applied reasonable intraday reversal logic for exit."
+      }
+    },
+    {
+      "signal_id": "GUJRAL_DRY_9",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": 0.39,
+      "full_sharpe": 1.873,
+      "full_trades": 198,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_50"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "pivot"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "s1"
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "s1"
+          }
+        ],
+        "exit_short": [],
+        "regime_filter": [
+          "TRENDING_UP"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "LONG",
+        "reason": "CPR (Central Pivot Range) mapped to standard pivot levels: central pivot line = pivot, lower end of CPR = s1 (first support). Uptrend detection uses price above sma_50. Corrective move below central pivot = close < pivot. Sustains above lower CPR = close > s1. Exit when support breaks (close < s1)."
+      }
+    },
+    {
+      "signal_id": "GUJRAL_DRY_10",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": 0.481,
+      "full_sharpe": 1.156,
+      "full_trades": 104,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_10"
+          },
+          {
+            "indicator": "sma_10",
+            "op": ">",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "sma_10",
+            "op": ">",
+            "value": "prev_close"
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_10"
+          }
+        ],
+        "exit_short": [],
+        "regime_filter": [
+          "TRENDING_UP"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "LONG",
+        "reason": "Mapped '8MA' to sma_10 (closest available), '20MA' to sma_20. Entry conditions require price and fast MA above slow MA (uptrend confirmation) with rising fast MA. Exit condition is a break below the 8MA/10SMA indicating momentum loss. AUTHOR_SILENT exit interpreted as trend reversal signal."
+      }
+    },
+    {
+      "signal_id": "GUJRAL_DRY_14",
+      "tier": "DROP",
+      "reason": "ONLY_1_PASS",
+      "windows_passed": 1,
+      "total_windows": 26,
+      "pass_rate": 0.038461538461538464,
+      "aggregate_sharpe": 0.7639972564112137,
+      "last4_passed": 1,
+      "nifty_corr": 0.016,
+      "full_sharpe": 0.264,
+      "full_trades": 447,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">=",
+            "value": "dc_lower"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_close"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<=",
+            "value": "dc_upper"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_close"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "dc_upper"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "dc_lower"
+          }
+        ],
+        "regime_filter": [
+          "RANGING"
+        ],
+        "hold_days": 5,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Used Donchian Channels (dc_upper, dc_lower) to represent clear range boundaries established over several days. Entry conditions trigger when price touches boundaries (lower for LONG, upper for SHORT). Exit conditions reverse the trade when price breaks through the opposite boundary. Range duration approximated as 5 bars (Donchian default lookback). The 'clear' boundary requirement is implicitly satisfied by Donchian channel formation in a RANGING regime."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_3",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": -0.033,
+      "full_sharpe": 1.554,
+      "full_trades": 664,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "volume",
+            "op": ">",
+            "value": "hvol_20"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_high"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "volume",
+            "op": ">",
+            "value": "hvol_20"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_low"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_close"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_close"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 5,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Gap breakout detected by comparing close to previous high/low. High volume confirmed using hvol_20 (20-period historical volatility proxy). Context-dependent direction implemented with separate long/short entry conditions. Exit conditions set as price reversal from entry direction since AUTHOR_SILENT. Market execution timing is implicit in backtest engine."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_5",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": -0.037,
+      "full_sharpe": 1.186,
+      "full_trades": 420,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_high"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_low"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_low"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_high"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal is context-dependent based on market trend. LONG entries trigger on penetration above previous swing high (close > prev_high). SHORT entries trigger on penetration below previous swing low (close < prev_low). Exits are reversals of entry conditions. Since exact swing high/low calculation method is not specified and not available as a direct indicator, using prev_high/prev_low as the closest proxy for recent swing points. Author provides no explicit exit conditions (AUTHOR_SILENT), so reversal logic is applied as a reasonable alternative."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_9",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": -0.08,
+      "full_sharpe": 3.832,
+      "full_trades": 35,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "ema_10",
+            "op": "crosses_above",
+            "value": "ema_20"
+          },
+          {
+            "indicator": "ema_10",
+            "op": ">",
+            "value": "ema_50"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "ema_10",
+            "op": "crosses_below",
+            "value": "ema_20"
+          },
+          {
+            "indicator": "ema_10",
+            "op": "<",
+            "value": "ema_50"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "ema_10",
+            "op": "crosses_below",
+            "value": "ema_20"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "ema_10",
+            "op": "crosses_above",
+            "value": "ema_20"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal uses two trendlines of different speeds. Interpreted faster trendline as EMA_10 (shorter period for timing) and slower trendline as EMA_50 (longer period for primary trend direction). Entry occurs when faster MA crosses slower MA in the direction of the primary trend. Exit uses reversal of the faster MA signal as reasonably inferred from signal intent."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_15",
+      "tier": "DROP",
+      "reason": "LAST4_FAIL",
+      "windows_passed": 12,
+      "total_windows": 26,
+      "pass_rate": 0.46153846153846156,
+      "aggregate_sharpe": 0.12584063335681211,
+      "last4_passed": 0,
+      "nifty_corr": -0.125,
+      "full_sharpe": 0.805,
+      "full_trades": 1275,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_close"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_close"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_close"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_close"
+          }
+        ],
+        "regime_filter": [],
+        "hold_days": 1,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "KAUFMAN_DRY_15 is an intraday continuation signal based on first bar direction relative to previous close. Entry is determined by whether the first bar closes above (LONG) or below (SHORT) the previous close. Exit is triggered by reversal (close crossing back through previous close). Hold period set to 1 day since this is an intraday pattern. This is a context-dependent directional signal that adapts based on market action."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_4",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": 0.47,
+      "full_sharpe": 1.863,
+      "full_trades": 512,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "pivot"
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "pivot"
+          }
+        ],
+        "exit_short": [],
+        "regime_filter": [
+          "TRENDING_UP"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "LONG",
+        "reason": "Signal uses pivot point concept which is available in the allowed indicators. Entry triggers on price crossing above the pivot point in an uptrend. Exit condition inferred as reversal (crossing below pivot) since AUTHOR_SILENT. The 'pivot' indicator represents the center pivot point (highest high or lowest low) as described in the source material."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_8",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": -0.2,
+      "full_sharpe": 1.67,
+      "full_trades": 84,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "sma_50"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "sma_50"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "sma_50"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "sma_50"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal specifies 40-day moving average period with AUTHOR_SILENT type. Mapped to sma_50 as the closest available period. CONTEXT_DEPENDENT direction preserved with both long and short entry/exit conditions. Exit conditions implemented as reversals (opposite crossovers) since original exit conditions were AUTHOR_SILENT. Target regime set to TRENDING variants as specified."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_16",
+      "tier": "DROP",
+      "reason": "sh=0.97",
+      "windows_passed": 18,
+      "total_windows": 26,
+      "pass_rate": 0.6923076923076923,
+      "aggregate_sharpe": 0.9737986563146033,
+      "last4_passed": 4,
+      "nifty_corr": 0.242,
+      "full_sharpe": 1.379,
+      "full_trades": 798,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "prev_close"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "prev_close"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "open",
+            "op": ">",
+            "value": "close"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "open",
+            "op": "<",
+            "value": "close"
+          }
+        ],
+        "regime_filter": [],
+        "hold_days": 1,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal uses 15-30 minute intraday data. Entry triggered by close penetration (crosses above/below previous close). Exit on next open - interpreted as exiting when open moves against the position direction. Hold period set to 1 day maximum since exit occurs on next open. Direction is context-dependent as signal applies to both long and short entries."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_17",
+      "tier": "DROP",
+      "reason": "LAST4_FAIL",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 1.9258980068733176,
+      "last4_passed": 0,
+      "nifty_corr": -0.29,
+      "full_sharpe": -0.611,
+      "full_trades": 96,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "bb_upper",
+            "op": "crosses_above",
+            "value": "close"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "bb_lower",
+            "op": "crosses_below",
+            "value": "close"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "bb_lower",
+            "op": "crosses_below",
+            "value": "close"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "bb_upper",
+            "op": "crosses_above",
+            "value": "close"
+          }
+        ],
+        "regime_filter": [],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal describes band breakouts with volatility-adaptive behavior (widest bands in low volatility, narrowest in high volatility). Mapped to Bollinger Bands which exhibit this inverse volatility relationship. Long entry on upper band break, short entry on lower band cross. Since system is always in market, exits are reversals (opposite band crosses). The adaptive smoothing constant behavior mentioned in parameters is inherent to Bollinger Bands calculation."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_18",
+      "tier": "DROP",
+      "reason": "LAST4_FAIL",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 2.31430862885861,
+      "last4_passed": 0,
+      "nifty_corr": 0.072,
+      "full_sharpe": -0.904,
+      "full_trades": 93,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "bb_upper"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "bb_lower"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "bb_middle"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "bb_middle"
+          }
+        ],
+        "regime_filter": [],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal describes Bollinger Band penetration as either trend confirmation (directional trade) or mean reversion setup. Translated as: LONG entry on upper band penetration with exit on middle band touch (mean reversion), SHORT entry on lower band penetration with exit on middle band touch. Both entry and exit conditions use bb_upper, bb_lower, and bb_middle which are standard 2-deviation Bollinger Bands as referenced in source material."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_19",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": -0.466,
+      "full_sharpe": -1.489,
+      "full_trades": 275,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "macd_hist",
+            "op": ">",
+            "value": "prev_close"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "macd_hist",
+            "op": "<",
+            "value": "prev_close"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "macd_hist",
+            "op": "<",
+            "value": "prev_close"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "macd_hist",
+            "op": ">",
+            "value": "prev_close"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal uses weekly MACD histogram week-over-week comparison to determine trend direction. Entry conditions are context-dependent: go long when macd_hist > previous value (trend up), go short when macd_hist < previous value (trend down). Exit conditions reverse the entry logic. Used prev_close as proxy for previous week's MACD histogram value since the indicator list does not include week-indexed MACD values; in actual backtest implementation, ensure weekly timeframe aggregation is applied. Target regimes set to TRENDING_UP and TRENDING_DOWN to match the signal's focus on trend identification."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_20",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": 0.218,
+      "full_sharpe": 2.379,
+      "full_trades": 85,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "sma_20",
+            "op": "crosses_above",
+            "value": "close"
+          },
+          {
+            "indicator": "hvol_20",
+            "op": "<",
+            "value": 0.25
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "sma_20",
+            "op": "crosses_below",
+            "value": "close"
+          },
+          {
+            "indicator": "hvol_20",
+            "op": "<",
+            "value": 0.25
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "hvol_20",
+            "op": ">",
+            "value": 1.6
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "hvol_20",
+            "op": ">",
+            "value": 1.6
+          }
+        ],
+        "regime_filter": [
+          "LOW_VOL"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal references a 40-day moving average; translated to sma_20 as closest available indicator. Volatility filter implemented using hvol_20 (20-day historical volatility). Low volatility entry threshold set to 0.25, high volatility exit threshold set to 1.60. Direction marked CONTEXT_DEPENDENT per original signal specification. Exit condition inferred as exiting when volatility rises above high threshold (1.60), which contradicts the low-volatility trading regime."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_21",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": -0.292,
+      "full_sharpe": 1.743,
+      "full_trades": 99,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "ema_50"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "ema_50"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "ema_50"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "ema_50"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal specifies 'exponential smoothing trendline' without precise period. Used ema_50 as a standard longer-period exponential moving average suitable for macro trend tracking as mentioned in source text. Entry/exit conditions are symmetric for both long and short positions based on crosses above/below the trendline. Direction is CONTEXT_DEPENDENT because the signal generates both long and short signals depending on price action relative to the trendline."
+      }
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_22",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 17.17,
+      "last4_passed": 0,
+      "nifty_corr": 0.25,
+      "full_sharpe": 2.683,
+      "full_trades": 109,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "bb_lower"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "bb_upper"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "bb_middle"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "bb_middle"
+          }
+        ],
+        "regime_filter": [
+          "RANGING"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal references 'innermost horizontal lines' which maps to Bollinger Bands (innermost = bb_lower/bb_upper). 'Slightly oversold/overbought' indicates proximity to but not extreme deviation, consistent with BB touch points. Center horizontal line maps to bb_middle (mean). Used crosses operators to capture price crossing events. Direction is CONTEXT_DEPENDENT since signal specifies both buy (long) and sell (short) conditions based on price crossing direction."
+      }
+    },
+    {
+      "signal_id": "MCMILLAN_DRY_140",
+      "tier": "DROP",
+      "reason": "LAST4_FAIL",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 1.252936329268313,
+      "last4_passed": 0,
+      "nifty_corr": -0.229,
+      "full_sharpe": -0.697,
+      "full_trades": 136,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_20"
+          }
+        ],
+        "exit_long": [],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_20"
+          }
+        ],
+        "regime_filter": [],
+        "hold_days": 30,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0,
+        "direction": "SHORT",
+        "reason": "Bear put spread is a SHORT directional strategy anticipating downward price movement. Entry condition added: price below 20-day SMA to confirm downward bias. Exit condition set as reversal: price crosses above 20-day SMA. The actual option mechanics (sell lower strike put, buy higher strike put) are structural and handled by the strategy implementation layer, not by price/indicator conditions. Author provided no explicit exit signal (AUTHOR_SILENT), so a logical reversal condition was applied."
+      }
+    },
+    {
+      "signal_id": "GRIMES_DRY_2_0",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": 0.025,
+      "full_sharpe": -0.666,
+      "full_trades": 110,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "adx_14",
+            "op": ">",
+            "value": 25.0
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_close"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "adx_14",
+            "op": ">",
+            "value": 25.0
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_close"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_low"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_20"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_high"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_20"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Used ADX_14 > 25 to confirm established trend. Entry requires price above/below SMA_20 (trend direction) and close in direction of trend (vs prev_close). Pullback identification uses prev_high/low as recent swing points. Exit triggers on trend structure break (close below/above recent pullback extremes or SMA_20 violation). CONTEXT_DEPENDENT direction handled via separate LONG and SHORT entry/exit conditions."
+      }
+    },
+    {
+      "signal_id": "GRIMES_DRY_5_0",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": 0.123,
+      "full_sharpe": 1.748,
+      "full_trades": 139,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_high"
+          },
+          {
+            "indicator": "volume",
+            "op": ">",
+            "value": "hvol_20"
+          },
+          {
+            "indicator": "rsi_14",
+            "op": ">",
+            "value": 50.0
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_low"
+          },
+          {
+            "indicator": "volume",
+            "op": ">",
+            "value": "hvol_20"
+          },
+          {
+            "indicator": "rsi_14",
+            "op": "<",
+            "value": 50.0
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "macd_hist",
+            "op": "<",
+            "value": 0.0
+          },
+          {
+            "indicator": "rsi_14",
+            "op": "<",
+            "value": 30.0
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "macd_hist",
+            "op": ">",
+            "value": 0.0
+          },
+          {
+            "indicator": "rsi_14",
+            "op": ">",
+            "value": 70.0
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.025,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal describes trend termination via failure patterns (springs/upthrusts) with momentum weakness. Entry conditions translated to: price breaking prior extreme with volume surge and momentum divergence (RSI moving away from overbought/oversold). Exit conditions use momentum reversal (MACD crossover) and RSI extremes indicating false breakout failure. Spring/upthrust patterns themselves are not directly available as indicators, so entry uses price + volume + RSI as proxies for momentum weakness at extremes. CONTEXT_DEPENDENT direction preserved as signal applies to both trend directions."
+      }
+    },
+    {
+      "signal_id": "GRIMES_DRY_6_0",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": -0.058,
+      "full_sharpe": -0.19,
+      "full_trades": 53,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "adx_14",
+            "op": ">",
+            "value": 25.0
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "atr_14",
+            "op": "<",
+            "value": "atr_20"
+          },
+          {
+            "indicator": "rsi_14",
+            "op": "<",
+            "value": 70.0
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "adx_14",
+            "op": ">",
+            "value": 25.0
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "atr_14",
+            "op": "<",
+            "value": "atr_20"
+          },
+          {
+            "indicator": "rsi_14",
+            "op": ">",
+            "value": 30.0
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "pivot"
+          },
+          {
+            "indicator": "rsi_14",
+            "op": ">",
+            "value": 80.0
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "pivot"
+          },
+          {
+            "indicator": "rsi_14",
+            "op": "<",
+            "value": 20.0
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.025,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal requires context-dependent directional logic. Entry conditions mapped to: (1) ADX confirms trend strength, (2) Price near MA confirms pullback location, (3) ATR compression indicates reduced bar ranges during pullback, (4) RSI not in extreme territory indicates absent strong countertrend momentum. Exit conditions use pivot levels as pullback boundaries and RSI extremes for momentum reversal detection. vol_ratio_20 unavailable for direct volume comparison, so ATR compression used as proxy for reduced bar ranges. Signal direction is CONTEXT_DEPENDENT with separate entry/exit logic for both long and short scenarios."
+      }
+    },
+    {
+      "signal_id": "HILPISCH_DRY_5_0",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": 0.031,
+      "full_sharpe": 1.824,
+      "full_trades": 288,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "sma_10",
+            "op": ">",
+            "value": "sma_50"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "sma_10",
+            "op": "<",
+            "value": "sma_50"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_below",
+            "value": "sma_50"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_above",
+            "value": "sma_50"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Classic moving average crossover strategy. SMA1_period mapped to sma_10 (fast MA) and SMA2_period mapped to sma_50 (slow MA) as reasonable defaults for trend-following. Signal supports both long and short positions based on MA crossovers. Exit conditions use crosses_above/crosses_below operators to detect crossover events."
+      }
+    },
+    {
+      "signal_id": "HILPISCH_DRY_7_0",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": -0.356,
+      "full_sharpe": -0.966,
+      "full_trades": 108,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_above",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_10"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_below",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_10"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_below",
+            "value": "sma_20"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_above",
+            "value": "sma_20"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Classic SMA crossover strategy (Golden/Death Cross variant). SMA1_period mapped to sma_10 and SMA2_period mapped to sma_20 as standard fast/slow pair. Entry requires crossover AND price confirmation above/below the faster MA. Exit triggered on crossover signal only (reversal condition). Direction is bidirectional: longs on upward cross, shorts on downward cross. Optimal for TRENDING regimes."
+      }
+    },
+    {
+      "signal_id": "HILPISCH_DRY_2_0",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "last4_passed": 0,
+      "nifty_corr": -0.083,
+      "full_sharpe": 0.05,
+      "full_trades": 95,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_above",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_10"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "volume",
+            "op": ">",
+            "value": "vol_ratio_20"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_below",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_10"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_20"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_below",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_10"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_above",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_10"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Classic SMA crossover strategy using sma_10 (short-term) and sma_20 (long-term) as standard parameters. Entry conditions include crossover, price confirmation above/below both MAs, and volume confirmation. Exit on reversal crossover or price breaking shorter SMA. Direction is context-dependent: long when short SMA > long SMA, short when opposite. Applied to TRENDING regimes."
+      }
+    },
+    {
+      "signal_id": "HILPISCH_DRY_8_0",
+      "tier": "DROP",
+      "reason": "LAST4_FAIL",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "aggregate_sharpe": 1.5951008598656973,
+      "last4_passed": 0,
+      "nifty_corr": -0.36,
+      "full_sharpe": -2.167,
+      "full_trades": 184,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "macd_hist",
+            "op": ">",
+            "value": 0.0
+          },
+          {
+            "indicator": "macd_hist",
+            "op": ">",
+            "value": "prev_close"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "macd_hist",
+            "op": "<",
+            "value": 0.0
+          },
+          {
+            "indicator": "macd_hist",
+            "op": "<",
+            "value": "prev_close"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "macd_hist",
+            "op": "<",
+            "value": 0.0
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "macd_hist",
+            "op": ">",
+            "value": 0.0
+          }
+        ],
+        "regime_filter": [
+          "TRENDING"
+        ],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal uses momentum generation with lag_bars='second but last value' and label_parametrization='right'. Translated momentum using MACD histogram (macd_hist) as the momentum indicator since no explicit 'momentum' indicator is in the allowed list. Entry conditions require positive/negative momentum signal with consistency check approximated by comparing current to previous bar momentum. Exit triggers on momentum reversal (sign change) or zero crossing. Context-dependent direction handles both long and short scenarios based on momentum sign."
+      }
+    }
+  ],
+  "near_misses": [
+    {
+      "signal_id": "KAUFMAN_DRY_16",
+      "tier": "DROP",
+      "reason": "sh=0.97",
+      "windows_passed": 18,
+      "total_windows": 26,
+      "pass_rate": 0.6923076923076923,
+      "aggregate_sharpe": 0.9737986563146033,
+      "last4_passed": 4,
+      "nifty_corr": 0.242,
+      "full_sharpe": 1.379,
+      "full_trades": 798,
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "prev_close"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "prev_close"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "open",
+            "op": ">",
+            "value": "close"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "open",
+            "op": "<",
+            "value": "close"
+          }
+        ],
+        "regime_filter": [],
+        "hold_days": 1,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal uses 15-30 minute intraday data. Entry triggered by close penetration (crosses above/below previous close). Exit on next open - interpreted as exiting when open moves against the position direction. Hold period set to 1 day maximum since exit occurs on next open. Direction is context-dependent as signal applies to both long and short entries."
+      }
+    }
+  ],
+  "condition_freq": {
+    "entry_long:close > prev_close": 1,
+    "entry_long:volume < prev_volume": 1,
+    "entry_short:close < prev_close": 1,
+    "entry_short:volume < prev_volume": 1,
+    "exit_long:close < prev_close": 1,
+    "exit_short:close > prev_close": 1
+  }
+}

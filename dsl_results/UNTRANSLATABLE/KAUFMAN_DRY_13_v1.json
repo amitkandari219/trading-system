@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires real-time comparison between two separate market instruments (cash index C and futures index F) with external parameters (trading costs r\u00d7t, profit margin E). The backtest engine operates on single-instrument OHLCV data. The price difference calculation |C - F| and profit formula P = |C - F| - C \u00d7 r \u00d7 t - E cannot be expressed using only the allowed single-instrument indicators. Additionally, parameters r, t, and profit_threshold are marked AUTHOR_SILENT and are undefined. Arbitrage signals require dual-leg monitoring across separate data feeds.",
+  "translation_notes": "KAUFMAN_DRY_13 describes index arbitrage between cash and futures markets. This requires: (1) two separate price feeds with synchronized timestamps, (2) external cost parameters not provided, (3) real-time spread monitoring. The allowed indicator set does not support multi-instrument comparisons. A proper implementation would require close and futures_close as separate indicators, plus explicit cost parameters."
+}

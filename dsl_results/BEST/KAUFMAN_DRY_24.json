@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_24",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting when averages are 'moving lower' and 'moving in different directions', which requires multi-bar momentum analysis. The allowed indicators lack a built-in momentum or direction detector. Approximation used EMA crossovers as proxy, but this does not precisely capture the original intent of comparing average direction (slope) over time.",
+  "translation_notes": "Original signal uses undefined 'fast_average' and 'slow_average' parameters marked AUTHOR_SILENT. Substituted ema_20 (fast) and ema_50 (slow) as reasonable defaults. Entry conditions approximate 'moving lower' by checking if fast and slow EMAs are below the previous close. Exit conditions use crossover logic as a proxy for directional divergence, but this is not a perfect translation of the stated rule."
+}

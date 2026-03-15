@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Pattern requires 3-bar sequence (up \u2192 inside \u2192 up), but backtest engine only supports current and previous bar comparisons (prev_* indicators). The signal requires tracking bar state from 2 bars ago to validate the 3-bar pattern, which cannot be expressed with available indicator set.",
+  "translation_notes": "Attempted to capture the inside day condition (high < prev_high AND low > prev_low) and up days (close > prev_close), but the full pattern validation across 3 consecutive bars cannot be properly implemented. Entry conditions shown represent only the inside day + current up day segment. Original signal mentions 'Outside Day' in source text but rule describes inside day pattern\u2014used inside day interpretation per explicit rule definition."
+}

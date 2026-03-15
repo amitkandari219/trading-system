@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_113_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires domain-specific derivatives data (settlement_type, intrinsic_value, time_value_decay, days_to_expiration, option_premium) that are not available in the allowed indicator list. These are fundamental options/futures contract properties, not market microstructure indicators. The rule cannot be expressed using only price, technical indicators, and volume data.",
+  "translation_notes": "This is a fundamental options trading rule from Natenberg about early exercise decision-making. It requires: (1) contract metadata (settlement_type == STOCK-TYPE vs FUTURES-TYPE), (2) options-specific Greeks/values (intrinsic_value, time_value, option_premium), and (3) contract calendar data (days_to_expiration). None of these can be derived from OHLCV or standard technical indicators. The rule belongs in an options pricing module with access to contract specifications and Greeks, not in a price-action backtester."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_115_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific indicators (put moneyness, strike price, time value, days to expiration, ex-dividend date proximity, interest income calculation) that are not available in the allowed indicator set. The signal operates on derivatives pricing logic (interest earned on strike \u00d7 days/365 vs remaining time value) rather than spot price technical analysis. Standard price/volume/volatility indicators cannot adequately express: (1) whether a put is in-the-money, (2) interest income threshold calculations, (3) ex-dividend date proximity detection, or (4) option time value decomposition. This requires an options-specific backtesting engine with Greeks and fundamental corporate action data.",
+  "translation_notes": "Signal ID NATENBERG_DRY_115_0 is from Natenberg's options trading framework. While the conceptual logic (comparing interest credits vs time decay) is valid, it cannot be translated to equity price action indicators. A proper implementation would require: (a) options chain data with strike/expiration, (b) dividend calendar with ex-dates, (c) risk-free rate input for interest calculations, and (d) option Greeks (theta/time value). Recommend implementing this rule in a dedicated options backtester rather than adapting to price-based technical signals."
+}

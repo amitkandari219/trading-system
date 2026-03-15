@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references 'Bullish Consensus' indicator which is not available in the allowed indicator set. Bullish Consensus is a sentiment/survey-based metric not computable from standard OHLCV data. RSI was used as a proxy for overbought/oversold conditions, but this is not a direct equivalent to the original signal specification.",
+  "translation_notes": "Original signal requires Bullish Consensus (90% overbought, 20% oversold) which is not available. Substituted RSI_14 as a technical proxy for extremes. Entry uses moving average crossover (sma_20) to confirm directional change. Direction set to CONTEXT_DEPENDENT to reflect the signal's dual-mode logic (long on uptrends, short on downtrends). The 2-week period translates to approximately 10 trading days, rounded to hold_days_max of 20 for conservative position management."
+}

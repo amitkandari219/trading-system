@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_317",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires futures options calendar spread construction (buy May call, sell March call at same strike). The backtest engine provided only supports price action and technical indicators on single instruments. Calendar spreads, options legs, strike price selection, and multi-leg derivatives positions cannot be expressed using the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Position, Returns, Bar Properties). Options Greeks, extrinsic value decay, time value, and inter-month spread dynamics are not representable in this framework.",
+  "translation_notes": "Signal requires options pricing model and multi-leg position management. This is a derivatives strategy that falls outside the scope of a technical indicator-based backtest engine. Recommend implementing in a dedicated options/derivatives backtesting platform with Greeks calculation and volatility surface modeling."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_91",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a multi-leg options strategy (butterfly spread) that requires explicit strike selection, leg quantities, and option Greeks. The backtest engine indicators list contains only price-based and technical indicators. Options strategy execution requires: (1) strike price selection relative to current underlying price, (2) specification of buy/sell legs with exact contracts, (3) tracking of individual leg P&L and Greeks (delta, gamma, theta, vega). Standard OHLCV indicators cannot parametrize these multi-leg option construction rules.",
+  "translation_notes": "MCMILLAN_DRY_91 describes a static options structure (1 long call lower strike, 2 short calls middle strike, 1 long call higher strike) with profit maximization at middle strike. This is a position architecture rule, not a market timing signal. Implementation requires an options-aware backtest engine with strike mapping, contract selection, and Greeks modeling capabilities."
+}

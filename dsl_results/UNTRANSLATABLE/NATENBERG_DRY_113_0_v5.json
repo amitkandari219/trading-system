@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_113_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires derivatives pricing inputs (intrinsic value, interest cost, call option price, futures price, exercise mechanics) that are not present in the allowed indicator set. The backtest engine indicators are limited to OHLCV-derived technical indicators (moving averages, RSI, ATR, Bollinger Bands, MACD, etc.) and do not include options pricing data, futures contract data, or interest rate calculations. Cash-and-carry arbitrage execution requires multi-leg derivative position assembly logic that cannot be expressed using only technical indicators.",
+  "translation_notes": "Signal NATENBERG_DRY_113_0 describes an options arbitrage strategy from Natenberg's text on option pricing. Entry conditions reference 'Call price < (Intrinsic Value + Interest Cost)', which requires: (1) real-time option bid/ask prices, (2) futures contract prices, (3) intrinsic value calculations based on strike/spot relationship, and (4) interest rate inputs. Exit conditions require position assembly state tracking across multiple legs (buy call, short futures, exercise) which is a portfolio-level operation, not a single price-based signal. This is a derivatives trading strategy, not a technical analysis signal suitable for the indicator-based backtest engine provided."
+}

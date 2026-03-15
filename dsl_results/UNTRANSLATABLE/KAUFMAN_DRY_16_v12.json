@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Time-based condition 'time_minutes_from_open' is not in the ALLOWED INDICATORS list. The signal requires checking if 30+ minutes have elapsed since market open, which cannot be expressed using only the provided indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Position, Previous Bar, Returns, Bar Props). A custom time-based indicator or session logic would be required.",
+  "translation_notes": "Signal requires both time gate (30 min after open) and breakout logic. Entry conditions use prev_high and prev_low (previous day's price levels). Exit conditions implement reversal logic: long position closes on break below prev_low, short closes on break above prev_high. However, the time gate cannot be expressed with allowed indicators."
+}

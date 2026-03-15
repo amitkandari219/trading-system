@@ -1,0 +1,4921 @@
+{
+  "filters": {
+    "max_nifty_correlation": 0.5,
+    "min_trades_per_window": 20
+  },
+  "summary": {
+    "input_dsl_signals": 46,
+    "alpha_candidates": 15,
+    "rejected_corr": 16,
+    "rejected_no_trades": 15,
+    "rejected_error": 0,
+    "tier_a": 0,
+    "tier_b": 0,
+    "dropped": 15
+  },
+  "tier_a": [],
+  "tier_b": [],
+  "dropped": [
+    {
+      "signal_id": "GRIMES_DRY_2_0",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_100%_OF_WINDOWS",
+      "nifty_correlation": 0.025,
+      "full_sharpe": -0.666,
+      "full_trades": 110,
+      "full_win_rate": 0.309,
+      "full_max_dd": 0.646,
+      "full_annual_return": -0.0461,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "worst_dd": 1.0,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "adx_14",
+            "op": ">",
+            "value": 25.0
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_close"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "adx_14",
+            "op": ">",
+            "value": 25.0
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_close"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_low"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_20"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_high"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_20"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Used ADX_14 > 25 to confirm established trend. Entry requires price above/below SMA_20 (trend direction) and close in direction of trend (vs prev_close). Pullback identification uses prev_high/low as recent swing points. Exit triggers on trend structure break (close below/above recent pullback extremes or SMA_20 violation). CONTEXT_DEPENDENT direction handled via separate LONG and SHORT entry/exit conditions."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "GRIMES_DRY_5_0",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_100%_OF_WINDOWS",
+      "nifty_correlation": 0.123,
+      "full_sharpe": 1.748,
+      "full_trades": 139,
+      "full_win_rate": 0.496,
+      "full_max_dd": 0.511,
+      "full_annual_return": 0.0772,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "worst_dd": 1.0,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_high"
+          },
+          {
+            "indicator": "volume",
+            "op": ">",
+            "value": "hvol_20"
+          },
+          {
+            "indicator": "rsi_14",
+            "op": ">",
+            "value": 50.0
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_low"
+          },
+          {
+            "indicator": "volume",
+            "op": ">",
+            "value": "hvol_20"
+          },
+          {
+            "indicator": "rsi_14",
+            "op": "<",
+            "value": 50.0
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "macd_hist",
+            "op": "<",
+            "value": 0.0
+          },
+          {
+            "indicator": "rsi_14",
+            "op": "<",
+            "value": 30.0
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "macd_hist",
+            "op": ">",
+            "value": 0.0
+          },
+          {
+            "indicator": "rsi_14",
+            "op": ">",
+            "value": 70.0
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.025,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal describes trend termination via failure patterns (springs/upthrusts) with momentum weakness. Entry conditions translated to: price breaking prior extreme with volume surge and momentum divergence (RSI moving away from overbought/oversold). Exit conditions use momentum reversal (MACD crossover) and RSI extremes indicating false breakout failure. Spring/upthrust patterns themselves are not directly available as indicators, so entry uses price + volume + RSI as proxies for momentum weakness at extremes. CONTEXT_DEPENDENT direction preserved as signal applies to both trend directions."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "GUJRAL_DRY_10",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_100%_OF_WINDOWS",
+      "nifty_correlation": 0.249,
+      "full_sharpe": -2.993,
+      "full_trades": 116,
+      "full_win_rate": 0.397,
+      "full_max_dd": 0.345,
+      "full_annual_return": -0.0355,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "worst_dd": 1.0,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "sma_200",
+            "op": "<",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": "<=",
+            "value": "sma_200"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "sma_200",
+            "op": ">",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": ">=",
+            "value": "sma_200"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_200"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_200"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal is context-dependent (LONG in uptrends, SHORT in downtrends). Entry conditions check MA relationship (200MA below/above 20MA) AND price proximity to 200MA as dynamic support/resistance. Exit conditions trigger when price breaches the 200MA line. Multi-timeframe monitoring (5m, 15m, 60m) should be applied at backtest execution level. Used sma_200 and sma_20 as specified indicators."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "GUJRAL_DRY_7",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_100%_OF_WINDOWS",
+      "nifty_correlation": 0.403,
+      "full_sharpe": 1.872,
+      "full_trades": 148,
+      "full_win_rate": 0.399,
+      "full_max_dd": 0.184,
+      "full_annual_return": 0.0581,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "worst_dd": 1.0,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "lower_wick",
+            "op": ">",
+            "value": "body"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_50"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_high"
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_low"
+          }
+        ],
+        "exit_short": [],
+        "regime_filter": [
+          "TRENDING_UP"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "LONG",
+        "reason": "Entry conditions: (1) lower_wick > body detects rejection candle with long bottom tail; (2) close > sma_50 confirms ongoing uptrend context; (3) close > prev_high ensures next candle is green and takes out previous rejection candle high. Exit condition uses reversal signal (close below previous low) as author provided no exit guidance (AUTHOR_SILENT). Support level detection via price structure is implicit in the uptrend/correction context rather than explicit indicator."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "GUJRAL_DRY_8",
+      "tier": "DROP",
+      "reason": "LAST_4_ALL_FAIL",
+      "nifty_correlation": -0.499,
+      "full_sharpe": 0.299,
+      "full_trades": 371,
+      "full_win_rate": 0.38,
+      "full_max_dd": 0.35,
+      "full_annual_return": 0.004,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 1.5773574742009542,
+      "worst_dd": 0.103,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0.46,
+          "total_trades": 124
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 1.98,
+          "total_trades": 69
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 2.33,
+          "total_trades": 8
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "pivot"
+          },
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "s1"
+          }
+        ],
+        "exit_long": [],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "pivot"
+          }
+        ],
+        "regime_filter": [
+          "RANGING"
+        ],
+        "hold_days": 5,
+        "stop_loss_pct": 0.025,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Mapped 'central pivot' to pivot indicator. Entry conditions use pivot level penetration (close < pivot) combined with support rejection (crosses_below s1) to capture reactive players. Exit uses price return toward pivot equilibrium (crosses_above pivot). Signal is context-dependent as it describes reactive mean-reversion within ranging markets. Used conservative stop_loss and hold_days based on intraday/short-term drift mentioned in source."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": 0.376,
+          "max_dd": 0.048,
+          "win_rate": 0.5,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": -0.315,
+          "max_dd": 0.049,
+          "win_rate": 0.455,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 4.526,
+          "max_dd": 0.047,
+          "win_rate": 0.5,
+          "trades": 12,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 2.33,
+          "max_dd": 0.043,
+          "win_rate": 0.5,
+          "trades": 8,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": -1.214,
+          "max_dd": 0.017,
+          "win_rate": 0.2,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 2.169,
+          "max_dd": 0.023,
+          "win_rate": 0.273,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 2.169,
+          "max_dd": 0.023,
+          "win_rate": 0.273,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 1.718,
+          "max_dd": 0.034,
+          "win_rate": 0.235,
+          "trades": 17,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": 1.883,
+          "max_dd": 0.035,
+          "win_rate": 0.273,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": 1.893,
+          "max_dd": 0.025,
+          "win_rate": 0.286,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": 1.893,
+          "max_dd": 0.025,
+          "win_rate": 0.286,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": 6.599,
+          "max_dd": 0.014,
+          "win_rate": 0.667,
+          "trades": 6,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": 2.377,
+          "max_dd": 0.035,
+          "win_rate": 0.438,
+          "trades": 16,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": -1.041,
+          "max_dd": 0.085,
+          "win_rate": 0.389,
+          "trades": 18,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": -1.037,
+          "max_dd": 0.085,
+          "win_rate": 0.381,
+          "trades": 21,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": -2.009,
+          "max_dd": 0.091,
+          "win_rate": 0.353,
+          "trades": 17,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": -3.491,
+          "max_dd": 0.103,
+          "win_rate": 0.385,
+          "trades": 13,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "HILPISCH_DRY_2_0",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_100%_OF_WINDOWS",
+      "nifty_correlation": -0.083,
+      "full_sharpe": 0.05,
+      "full_trades": 95,
+      "full_win_rate": 0.368,
+      "full_max_dd": 0.595,
+      "full_annual_return": -0.0187,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "worst_dd": 1.0,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_above",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_10"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "volume",
+            "op": ">",
+            "value": "vol_ratio_20"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_below",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_10"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_20"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_below",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_10"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_above",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_10"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Classic SMA crossover strategy using sma_10 (short-term) and sma_20 (long-term) as standard parameters. Entry conditions include crossover, price confirmation above/below both MAs, and volume confirmation. Exit on reversal crossover or price breaking shorter SMA. Direction is context-dependent: long when short SMA > long SMA, short when opposite. Applied to TRENDING regimes."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "HILPISCH_DRY_5_0",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_100%_OF_WINDOWS",
+      "nifty_correlation": 0.283,
+      "full_sharpe": -0.535,
+      "full_trades": 264,
+      "full_win_rate": 0.477,
+      "full_max_dd": 0.695,
+      "full_annual_return": -0.0685,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "worst_dd": 1.0,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "sma_50",
+            "op": ">",
+            "value": "sma_200"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "sma_50",
+            "op": "<",
+            "value": "sma_200"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "sma_50",
+            "op": "crosses_below",
+            "value": "sma_200"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "sma_50",
+            "op": "crosses_above",
+            "value": "sma_200"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal uses SMA(42) and SMA(252). Mapped to closest available indicators: sma_50 (short-period proxy for 42-day) and sma_200 (long-period proxy for 252-day). Uses crosses_above/crosses_below operators for entry/exit crossovers as specified in conditions. Direction is CONTEXT_DEPENDENT since signal generates both long and short signals. Target regime set to TRENDING_UP and TRENDING_DOWN per signal's TRENDING target."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "HILPISCH_DRY_7_0",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_100%_OF_WINDOWS",
+      "nifty_correlation": -0.356,
+      "full_sharpe": -0.966,
+      "full_trades": 108,
+      "full_win_rate": 0.407,
+      "full_max_dd": 0.601,
+      "full_annual_return": -0.0522,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "worst_dd": 1.0,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_above",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_10"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_below",
+            "value": "sma_20"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_10"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_below",
+            "value": "sma_20"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "sma_10",
+            "op": "crosses_above",
+            "value": "sma_20"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Classic SMA crossover strategy (Golden/Death Cross variant). SMA1_period mapped to sma_10 and SMA2_period mapped to sma_20 as standard fast/slow pair. Entry requires crossover AND price confirmation above/below the faster MA. Exit triggered on crossover signal only (reversal condition). Direction is bidirectional: longs on upward cross, shorts on downward cross. Optimal for TRENDING regimes."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "HILPISCH_DRY_8_0",
+      "tier": "DROP",
+      "reason": "LAST_4_ALL_FAIL",
+      "nifty_correlation": -0.36,
+      "full_sharpe": -2.167,
+      "full_trades": 184,
+      "full_win_rate": 0.304,
+      "full_max_dd": 0.827,
+      "full_annual_return": -0.1311,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 1.5951008598656973,
+      "worst_dd": 0.178,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -5.17,
+          "total_trades": 105
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -8.01,
+          "total_trades": 84
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -9.95,
+          "total_trades": 12
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "macd_hist",
+            "op": ">",
+            "value": 0.0
+          },
+          {
+            "indicator": "macd_hist",
+            "op": ">",
+            "value": "prev_close"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "macd_hist",
+            "op": "<",
+            "value": 0.0
+          },
+          {
+            "indicator": "macd_hist",
+            "op": "<",
+            "value": "prev_close"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "macd_hist",
+            "op": "<",
+            "value": 0.0
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "macd_hist",
+            "op": ">",
+            "value": 0.0
+          }
+        ],
+        "regime_filter": [
+          "TRENDING"
+        ],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal uses momentum generation with lag_bars='second but last value' and label_parametrization='right'. Translated momentum using MACD histogram (macd_hist) as the momentum indicator since no explicit 'momentum' indicator is in the allowed list. Entry conditions require positive/negative momentum signal with consistency check approximated by comparing current to previous bar momentum. Exit triggers on momentum reversal (sign change) or zero crossing. Context-dependent direction handles both long and short scenarios based on momentum sign."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": -11.57,
+          "max_dd": 0.051,
+          "win_rate": 0.222,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": -12.901,
+          "max_dd": 0.078,
+          "win_rate": 0.222,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": -0.83,
+          "max_dd": 0.066,
+          "win_rate": 0.3,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": -7.872,
+          "max_dd": 0.049,
+          "win_rate": 0.286,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": -12.023,
+          "max_dd": 0.047,
+          "win_rate": 0.2,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": -13.997,
+          "max_dd": 0.171,
+          "win_rate": 0.333,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": -1.303,
+          "max_dd": 0.107,
+          "win_rate": 0.5,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 0.673,
+          "max_dd": 0.104,
+          "win_rate": 0.4,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 2.007,
+          "max_dd": 0.046,
+          "win_rate": 0.429,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 4.891,
+          "max_dd": 0.031,
+          "win_rate": 0.6,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": -5.639,
+          "max_dd": 0.066,
+          "win_rate": 0.444,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": -5.269,
+          "max_dd": 0.064,
+          "win_rate": 0.417,
+          "trades": 12,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": -12.745,
+          "max_dd": 0.12,
+          "win_rate": 0.231,
+          "trades": 13,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": -14.7,
+          "max_dd": 0.154,
+          "win_rate": 0.2,
+          "trades": 15,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": -26.537,
+          "max_dd": 0.174,
+          "win_rate": 0.077,
+          "trades": 13,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": -3.984,
+          "max_dd": 0.178,
+          "win_rate": 0.143,
+          "trades": 14,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": -8.417,
+          "max_dd": 0.121,
+          "win_rate": 0.111,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": -3.43,
+          "max_dd": 0.062,
+          "win_rate": 0.25,
+          "trades": 8,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 3.134,
+          "max_dd": 0.019,
+          "win_rate": 0.5,
+          "trades": 8,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": -3.301,
+          "max_dd": 0.022,
+          "win_rate": 0.375,
+          "trades": 8,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": -7.079,
+          "max_dd": 0.061,
+          "win_rate": 0.364,
+          "trades": 11,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_17",
+      "tier": "DROP",
+      "reason": "LAST_4_ALL_FAIL",
+      "nifty_correlation": -0.29,
+      "full_sharpe": -0.611,
+      "full_trades": 96,
+      "full_win_rate": 0.438,
+      "full_max_dd": 0.61,
+      "full_annual_return": -0.0415,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 1.9258980068733176,
+      "worst_dd": 0.186,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -4.66,
+          "total_trades": 122
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -1.76,
+          "total_trades": 66
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -2.15,
+          "total_trades": 40
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "bb_upper",
+            "op": "crosses_above",
+            "value": "close"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "bb_lower",
+            "op": "crosses_below",
+            "value": "close"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "bb_lower",
+            "op": "crosses_below",
+            "value": "close"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "bb_upper",
+            "op": "crosses_above",
+            "value": "close"
+          }
+        ],
+        "regime_filter": [],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal describes band breakouts with volatility-adaptive behavior (widest bands in low volatility, narrowest in high volatility). Mapped to Bollinger Bands which exhibit this inverse volatility relationship. Long entry on upper band break, short entry on lower band cross. Since system is always in market, exits are reversals (opposite band crosses). The adaptive smoothing constant behavior mentioned in parameters is inherent to Bollinger Bands calculation."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": -5.346,
+          "max_dd": 0.069,
+          "win_rate": 0.333,
+          "trades": 6,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": -8.984,
+          "max_dd": 0.1,
+          "win_rate": 0.286,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 2.398,
+          "max_dd": 0.084,
+          "win_rate": 0.333,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 1.576,
+          "max_dd": 0.117,
+          "win_rate": 0.273,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 1.412,
+          "max_dd": 0.128,
+          "win_rate": 0.273,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": -7.06,
+          "max_dd": 0.186,
+          "win_rate": 0.3,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": -4.517,
+          "max_dd": 0.102,
+          "win_rate": 0.375,
+          "trades": 8,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": -3.948,
+          "max_dd": 0.096,
+          "win_rate": 0.375,
+          "trades": 8,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": -4.824,
+          "max_dd": 0.075,
+          "win_rate": 0.286,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": -2.766,
+          "max_dd": 0.05,
+          "win_rate": 0.444,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 1.48,
+          "max_dd": 0.056,
+          "win_rate": 0.556,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": -0.035,
+          "max_dd": 0.049,
+          "win_rate": 0.556,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 2.381,
+          "max_dd": 0.04,
+          "win_rate": 0.556,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 1.466,
+          "max_dd": 0.047,
+          "win_rate": 0.444,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 4.641,
+          "max_dd": 0.049,
+          "win_rate": 0.545,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 3.826,
+          "max_dd": 0.045,
+          "win_rate": 0.6,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 1.518,
+          "max_dd": 0.045,
+          "win_rate": 0.556,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": -1.841,
+          "max_dd": 0.077,
+          "win_rate": 0.556,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": -6.162,
+          "max_dd": 0.071,
+          "win_rate": 0.333,
+          "trades": 6,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": -3.06,
+          "max_dd": 0.09,
+          "win_rate": 0.222,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": -4.886,
+          "max_dd": 0.09,
+          "win_rate": 0.143,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": -4.422,
+          "max_dd": 0.129,
+          "win_rate": 0.333,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": -18.541,
+          "max_dd": 0.165,
+          "win_rate": 0.2,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": -13.498,
+          "max_dd": 0.138,
+          "win_rate": 0.3,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": -11.059,
+          "max_dd": 0.107,
+          "win_rate": 0.333,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": -7.684,
+          "max_dd": 0.078,
+          "win_rate": 0.286,
+          "trades": 7,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_21",
+      "tier": "DROP",
+      "reason": "LAST_4_ALL_FAIL",
+      "nifty_correlation": -0.115,
+      "full_sharpe": -2.298,
+      "full_trades": 150,
+      "full_win_rate": 0.24,
+      "full_max_dd": 0.617,
+      "full_annual_return": -0.0805,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.2445630814852698,
+      "worst_dd": 0.264,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -2.26,
+          "total_trades": 189
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -2.2,
+          "total_trades": 107
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -25.37,
+          "total_trades": 47
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "sma_20"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "sma_20"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "sma_20"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "sma_20"
+          }
+        ],
+        "regime_filter": [],
+        "hold_days": 10,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal uses 20-day moving average crossover for both buy and sell signals. Implemented as: BUY when price crosses above sma_20, SELL when price crosses below sma_20. Exit conditions inferred from reversal logic since original source marked 'AUTHOR_SILENT'. Test period: January 2, 1990 through March 28, 1991 on crude oil futures."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": -9.789,
+          "max_dd": 0.125,
+          "win_rate": 0.125,
+          "trades": 16,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": -9.807,
+          "max_dd": 0.099,
+          "win_rate": 0.214,
+          "trades": 14,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": -10.962,
+          "max_dd": 0.129,
+          "win_rate": 0.25,
+          "trades": 16,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": -22.685,
+          "max_dd": 0.184,
+          "win_rate": 0.083,
+          "trades": 12,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": -16.39,
+          "max_dd": 0.145,
+          "win_rate": 0.154,
+          "trades": 13,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": -36.757,
+          "max_dd": 0.165,
+          "win_rate": 0.0,
+          "trades": 8,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": -25.63,
+          "max_dd": 0.264,
+          "win_rate": 0.071,
+          "trades": 14,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": -17.098,
+          "max_dd": 0.244,
+          "win_rate": 0.062,
+          "trades": 16,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": -16.291,
+          "max_dd": 0.201,
+          "win_rate": 0.059,
+          "trades": 17,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": 0.023,
+          "max_dd": 0.102,
+          "win_rate": 0.25,
+          "trades": 16,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 3.564,
+          "max_dd": 0.051,
+          "win_rate": 0.357,
+          "trades": 14,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 6.141,
+          "max_dd": 0.023,
+          "win_rate": 0.5,
+          "trades": 12,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 4.73,
+          "max_dd": 0.058,
+          "win_rate": 0.5,
+          "trades": 14,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 1.461,
+          "max_dd": 0.059,
+          "win_rate": 0.4,
+          "trades": 15,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 0.456,
+          "max_dd": 0.064,
+          "win_rate": 0.333,
+          "trades": 15,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 1.871,
+          "max_dd": 0.044,
+          "win_rate": 0.385,
+          "trades": 13,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 4.027,
+          "max_dd": 0.042,
+          "win_rate": 0.462,
+          "trades": 13,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": 5.494,
+          "max_dd": 0.028,
+          "win_rate": 0.5,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": 1.942,
+          "max_dd": 0.047,
+          "win_rate": 0.417,
+          "trades": 12,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": -8.058,
+          "max_dd": 0.101,
+          "win_rate": 0.273,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": -9.58,
+          "max_dd": 0.112,
+          "win_rate": 0.2,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": -0.838,
+          "max_dd": 0.074,
+          "win_rate": 0.5,
+          "trades": 12,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": 0.98,
+          "max_dd": 0.039,
+          "win_rate": 0.5,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 2.509,
+          "max_dd": 0.045,
+          "win_rate": 0.5,
+          "trades": 12,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": 0.308,
+          "max_dd": 0.047,
+          "win_rate": 0.385,
+          "trades": 13,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": -0.333,
+          "max_dd": 0.052,
+          "win_rate": 0.267,
+          "trades": 15,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_22",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_100%_OF_WINDOWS",
+      "nifty_correlation": -0.031,
+      "full_sharpe": -0.413,
+      "full_trades": 208,
+      "full_win_rate": 0.389,
+      "full_max_dd": 0.458,
+      "full_annual_return": -0.025,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "worst_dd": 1.0,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "ema_10"
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "ema_20"
+          },
+          {
+            "indicator": "ema_10",
+            "op": "<",
+            "value": "ema_20"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "ema_10"
+          },
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "ema_20"
+          },
+          {
+            "indicator": "ema_10",
+            "op": ">",
+            "value": "ema_20"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "ema_50"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "ema_50"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal uses three moving average hierarchy: faster (ema_10), slower (ema_20), and long-term (ema_50). Entry conditions require price above both shorter MAs with faster below slower. Exit triggers when long-term MA (ema_50) conflicts with shorter MA positioning, representing the neutral condition. Open interest measurement not translatable to available indicators. Parameters mapped using EMA variants as most responsive to Kaufman's adaptive methodology intent."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_5",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_100%_OF_WINDOWS",
+      "nifty_correlation": -0.037,
+      "full_sharpe": 1.186,
+      "full_trades": 420,
+      "full_win_rate": 0.381,
+      "full_max_dd": 0.312,
+      "full_annual_return": 0.0975,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "worst_dd": 1.0,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_high"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_low"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "prev_low"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "prev_high"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal is context-dependent based on market trend. LONG entries trigger on penetration above previous swing high (close > prev_high). SHORT entries trigger on penetration below previous swing low (close < prev_low). Exits are reversals of entry conditions. Since exact swing high/low calculation method is not specified and not available as a direct indicator, using prev_high/prev_low as the closest proxy for recent swing points. Author provides no explicit exit conditions (AUTHOR_SILENT), so reversal logic is applied as a reasonable alternative."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "KAUFMAN_DRY_8",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_100%_OF_WINDOWS",
+      "nifty_correlation": -0.2,
+      "full_sharpe": 1.67,
+      "full_trades": 84,
+      "full_win_rate": 0.238,
+      "full_max_dd": 0.347,
+      "full_annual_return": 0.0478,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "worst_dd": 1.0,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "sma_50"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "sma_50"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "crosses_below",
+            "value": "sma_50"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": "crosses_above",
+            "value": "sma_50"
+          }
+        ],
+        "regime_filter": [
+          "TRENDING_UP",
+          "TRENDING_DOWN"
+        ],
+        "hold_days": 20,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "BOTH",
+        "reason": "Signal specifies 40-day moving average period with AUTHOR_SILENT type. Mapped to sma_50 as the closest available period. CONTEXT_DEPENDENT direction preserved with both long and short entry/exit conditions. Exit conditions implemented as reversals (opposite crossovers) since original exit conditions were AUTHOR_SILENT. Target regime set to TRENDING variants as specified."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "MCMILLAN_DRY_140",
+      "tier": "DROP",
+      "reason": "LAST_4_ALL_FAIL",
+      "nifty_correlation": -0.229,
+      "full_sharpe": -0.697,
+      "full_trades": 136,
+      "full_win_rate": 0.206,
+      "full_max_dd": 0.556,
+      "full_annual_return": -0.0512,
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 1.252936329268313,
+      "worst_dd": 0.244,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -3.21,
+          "total_trades": 171
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -2.57,
+          "total_trades": 92
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -8.97,
+          "total_trades": 44
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_20"
+          }
+        ],
+        "exit_long": [],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_20"
+          }
+        ],
+        "regime_filter": [],
+        "hold_days": 30,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0,
+        "direction": "SHORT",
+        "reason": "Bear put spread is a SHORT directional strategy anticipating downward price movement. Entry condition added: price below 20-day SMA to confirm downward bias. Exit condition set as reversal: price crosses above 20-day SMA. The actual option mechanics (sell lower strike put, buy higher strike put) are structural and handled by the strategy implementation layer, not by price/indicator conditions. Author provided no explicit exit signal (AUTHOR_SILENT), so a logical reversal condition was applied."
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "sharpe": -4.095,
+          "max_dd": 0.097,
+          "win_rate": 0.062,
+          "trades": 16,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "sharpe": -5.008,
+          "max_dd": 0.127,
+          "win_rate": 0.077,
+          "trades": 13,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "sharpe": 2.266,
+          "max_dd": 0.131,
+          "win_rate": 0.2,
+          "trades": 15,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "sharpe": 1.527,
+          "max_dd": 0.108,
+          "win_rate": 0.091,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "sharpe": 1.782,
+          "max_dd": 0.083,
+          "win_rate": 0.083,
+          "trades": 12,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "sharpe": -19.855,
+          "max_dd": 0.146,
+          "win_rate": 0.125,
+          "trades": 8,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "sharpe": -19.349,
+          "max_dd": 0.244,
+          "win_rate": 0.077,
+          "trades": 13,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "sharpe": -17.731,
+          "max_dd": 0.243,
+          "win_rate": 0.067,
+          "trades": 15,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "sharpe": -16.802,
+          "max_dd": 0.2,
+          "win_rate": 0.062,
+          "trades": 16,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "sharpe": -4.431,
+          "max_dd": 0.104,
+          "win_rate": 0.267,
+          "trades": 15,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "sharpe": 3.731,
+          "max_dd": 0.051,
+          "win_rate": 0.333,
+          "trades": 12,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "sharpe": 6.677,
+          "max_dd": 0.023,
+          "win_rate": 0.556,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "sharpe": 2.669,
+          "max_dd": 0.058,
+          "win_rate": 0.455,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "sharpe": 2.108,
+          "max_dd": 0.059,
+          "win_rate": 0.333,
+          "trades": 12,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "sharpe": -0.888,
+          "max_dd": 0.062,
+          "win_rate": 0.308,
+          "trades": 13,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "sharpe": 1.599,
+          "max_dd": 0.018,
+          "win_rate": 0.364,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "sharpe": 3.994,
+          "max_dd": 0.017,
+          "win_rate": 0.4,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "sharpe": -7.006,
+          "max_dd": 0.04,
+          "win_rate": 0.25,
+          "trades": 8,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "sharpe": -6.312,
+          "max_dd": 0.047,
+          "win_rate": 0.3,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "sharpe": -11.243,
+          "max_dd": 0.101,
+          "win_rate": 0.2,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "sharpe": -1.946,
+          "max_dd": 0.112,
+          "win_rate": 0.2,
+          "trades": 10,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "sharpe": -1.265,
+          "max_dd": 0.089,
+          "win_rate": 0.417,
+          "trades": 12,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "sharpe": 0.226,
+          "max_dd": 0.041,
+          "win_rate": 0.444,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "sharpe": 1.803,
+          "max_dd": 0.055,
+          "win_rate": 0.455,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "sharpe": -2.668,
+          "max_dd": 0.051,
+          "win_rate": 0.364,
+          "trades": 11,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "sharpe": -11.269,
+          "max_dd": 0.086,
+          "win_rate": 0.143,
+          "trades": 14,
+          "passed": false
+        }
+      ]
+    }
+  ],
+  "condition_frequency_tierab": {},
+  "condition_frequency_all": {
+    "entry_short:close < sma_20": 3,
+    "exit_long:close < prev_low": 3,
+    "entry_long:close > prev_high": 3,
+    "entry_long:close > sma_20": 2,
+    "exit_short:close > prev_high": 2,
+    "exit_short:close > sma_20": 2,
+    "entry_short:close < prev_low": 2,
+    "exit_long:macd_hist < <numeric>": 2,
+    "exit_short:macd_hist > <numeric>": 2,
+    "entry_long:sma_10 crosses_above sma_20": 2,
+    "entry_long:close > sma_10": 2,
+    "entry_short:sma_10 crosses_below sma_20": 2,
+    "entry_short:close < sma_10": 2,
+    "exit_long:sma_10 crosses_below sma_20": 2,
+    "exit_short:sma_10 crosses_above sma_20": 2,
+    "entry_long:adx_14 > <numeric>": 1,
+    "entry_long:close > prev_close": 1,
+    "entry_short:adx_14 > <numeric>": 1,
+    "entry_short:close < prev_close": 1,
+    "exit_long:close < sma_20": 1,
+    "entry_long:volume > hvol_20": 1,
+    "entry_long:rsi_14 > <numeric>": 1,
+    "entry_short:volume > hvol_20": 1,
+    "entry_short:rsi_14 < <numeric>": 1,
+    "exit_long:rsi_14 < <numeric>": 1,
+    "exit_short:rsi_14 > <numeric>": 1,
+    "entry_long:sma_200 < sma_20": 1,
+    "entry_long:close <= sma_200": 1,
+    "entry_short:sma_200 > sma_20": 1,
+    "entry_short:close >= sma_200": 1
+  },
+  "near_misses": []
+}

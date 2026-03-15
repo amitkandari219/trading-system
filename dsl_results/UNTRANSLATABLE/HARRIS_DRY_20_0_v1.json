@@ -1,0 +1,18 @@
+{
+  "signal_id": "HARRIS_DRY_20_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external data not in allowed indicators: (1) Inventory levels and percentile distributions (not available in price/technical indicators), (2) Storage costs and sector median comparisons (fundamental data not in allowed set), (3) YoY demand growth metrics (macroeconomic data not available). The rule is fundamentally about commodity-specific supply/demand dynamics and cannot be expressed using only the allowed price-action and technical indicators (OHLCV, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume ratios).",
+  "translation_notes": "This signal requires specialized commodity market data (inventory levels, storage costs, demand growth) that are not derivable from standard OHLCV technical indicators. It would require data connectors to commodity-specific APIs (e.g., EIA inventory reports, futures term structure for storage costs, macroeconomic demand indices). The volatility component could be partially captured using hvol_20 or atr_14 for HIGH_VOL regime confirmation, but the core trigger conditions cannot be expressed without inventory and cost-basis data."
+}

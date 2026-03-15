@@ -1,0 +1,62 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_4",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses pivot point as the key reference level. The 'pivot' indicator (highest high or lowest low in center of 1-3 days on either side) directly matches the source definition. Entry triggers on upward price crossing above this pivot in a trend-following context. Exit condition reversed per AUTHOR_SILENT rule \u2014 exit on downward crossing below pivot (logical reversal for trend-following long). No explicit stop loss or hold period specified in source material."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal uses pivot point as the key reference level. The 'pivot' indicator (highest high or lowest low in center of 1-3 days on either side) directly matches the source definition. Entry triggers on upward price crossing above this pivot in a trend-following context. Exit condition reversed per AUTHOR_SILENT rule \u2014 exit on downward crossing below pivot (logical reversal for trend-following long). No explicit stop loss or hold period specified in source material."
+  },
+  "source_rule_text": "Buy on an upwards move through the previous pivot point in a trend-following approach."
+}

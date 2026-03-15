@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires parameterized threshold (SMA_period and threshold amount in standard deviations or fixed points) that cannot be expressed with the allowed indicators and operators. The source code shows incomplete implementation with [THRESHOLD_NEEDED] placeholders. Without specific threshold values and the ability to compute dynamic thresholds relative to SMA using standard deviations, the exact entry condition cannot be translated. Assumed sma_20 as a reasonable default SMA period, but the critical threshold parameter remains unspecifiable.",
+  "translation_notes": "Original signal structure suggests a mean-reversion strategy with flexible threshold. Entry requires price to fall below SMA by a specific amount (either fixed points or standard deviations), but this dynamic offset calculation is not supported by the allowed indicator set. Exit is clear: price >= SMA. Direction is LONG (buy on dip). Regime is RANGING as typical for mean-reversion strategies."
+}

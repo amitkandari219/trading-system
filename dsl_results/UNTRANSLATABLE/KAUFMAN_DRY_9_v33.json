@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires comparing current penetration magnitude against 'any previous 1-day closing price penetration' with a volatility offset. This requires historical state tracking and comparison of past penetration levels that cannot be expressed with single-bar comparison operators. The condition 'exceeds any previous 1-day closing price penetration by at least one volatility measure' requires multi-bar lookback logic beyond allowed operators.",
+  "translation_notes": "Approximated the signal using: (1) price crossing 20-day MA as trend initiation, (2) close exceeding prev_close for directional confirmation, (3) true_range exceeding ATR_14 for volatility confirmation. This captures the spirit of 'penetration exceeding previous by at least one ATR' but cannot precisely implement the exact historical comparison logic specified."
+}

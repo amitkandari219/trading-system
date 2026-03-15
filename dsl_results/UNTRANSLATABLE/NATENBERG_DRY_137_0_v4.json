@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_137_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires event calendar detection (identifiable systemic events within N days: central bank decisions, earnings, OPEC meetings, M&A announcements) which is not available in the allowed indicator set. The signal is fundamentally dependent on external event data that cannot be expressed using only price/technical indicators. Additionally, specific thresholds for days-to-event, IV premium decay %, and position sizing percentages were marked [THRESHOLD_NEEDED] in original signal and cannot be determined without domain context.",
+  "translation_notes": "Attempted translation uses india_vix as a proxy for implied volatility and hvol_20 as historical volatility proxy, with entry condition requiring IV below HV and HV below its own moving average. However, this is a poor approximation of the true signal intent, which fundamentally requires event calendar data. The CONTEXT_DEPENDENT direction cannot be properly encoded without event classification logic. Recommend implementing custom event-based rule system outside this indicator framework."
+}

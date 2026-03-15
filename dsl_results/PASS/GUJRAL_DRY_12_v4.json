@@ -1,0 +1,74 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_12",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": "<=",
+        "right": "-0.05"
+      },
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal prohibits shorting at gap-down open after breakdown. Interpreted as: (1) stock has broken down 5-7% (using returns <= -0.05 as proxy for lower bound), (2) gap-down opening (open < prev_close). Entry conditions capture the scenario to AVOID shorting. Exit uses pullback to support via SMA_20 crossover. Direction set to LONG because the rule is about waiting for pullback before entering long in uptrending gap market (complementary scenario mentioned). Parameters: breakdown_percentage approximated via returns, gap_down via open/prev_close comparison."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": "<=",
+        "value": -0.05
+      },
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal prohibits shorting at gap-down open after breakdown. Interpreted as: (1) stock has broken down 5-7% (using returns <= -0.05 as proxy for lower bound), (2) gap-down opening (open < prev_close). Entry conditions capture the scenario to AVOID shorting. Exit uses pullback to support via SMA_20 crossover. Direction set to LONG because the rule is about waiting for pullback before entering long in uptrending gap market (complementary scenario mentioned). Parameters: breakdown_percentage approximated via returns, gap_down via open/prev_close comparison."
+  },
+  "source_rule_text": "In a trending market with significant gap-down opening after a prior breakdown, do not short at the open; correspondingly, in an uptrending gapping market, wait for a pullback to support before entering long."
+}

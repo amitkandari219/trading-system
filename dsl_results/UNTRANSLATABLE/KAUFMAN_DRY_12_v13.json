@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires intraday time-of-day pattern recognition (W-pattern: high open \u2192 drop \u2192 modest midday increase \u2192 fall \u2192 close increase) and comparison against normal volume for specific intraday times. The allowed indicators do not include intraday time-of-day segmentation, hourly volume patterns, or baseline volume by time-of-session. vol_ratio_20 and hvol_20 are daily/bar-level aggregates and cannot distinguish opening vs closing hour volume patterns.",
+  "translation_notes": "This signal fundamentally requires intraday time segmentation and historical baseline volumes by time-of-day, which cannot be expressed using only bar-level indicators. A proper implementation would need custom indicators like 'intraday_vol_vs_avg_at_open', 'intraday_vol_vs_avg_at_close', and 'time_of_day_bucket' to compare current volume against the normal W-pattern distribution throughout the session."
+}

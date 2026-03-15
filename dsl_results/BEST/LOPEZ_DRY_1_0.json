@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fractional differentiation (FFD) analysis, ADF stationarity testing, and computation of optimal d* coefficient \u2014 these are statistical preprocessing operations not expressible as real-time indicator conditions. The signal also references undefined thresholds ([THRESHOLD_NEEDED]) for ADF p-values and predictive power degradation that cannot be operationalized without domain expertise. Log returns are used as a proxy for stationarity assessment, but FFD and ADF testing are out of scope for this backtest engine.",
+  "translation_notes": "This signal is fundamentally a data preprocessing and model selection rule rather than a trading signal. It describes how to transform data (via fractional differentiation) to achieve stationarity while preserving memory \u2014 which is a research/strategy development step, not an entry/exit condition. A practical implementation would require: (1) offline ADF testing to identify when d* \u2208 (0,1), (2) FFD preprocessing of the price series, (3) use of the transformed series in downstream models. The entry/exit skeleton above uses log_returns as a weak proxy for regime detection but does not capture the nuanced statistical testing described in the source material."
+}

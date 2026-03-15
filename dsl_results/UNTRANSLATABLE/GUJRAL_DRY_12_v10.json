@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) 'third day of consolidation' \u2014 requires bar-by-bar consolidation pattern detection not expressible with single indicator conditions; (2) 'congestion zone with past activity' \u2014 requires zone definition and historical price clustering analysis; (3) 'contraction/merging of moving averages' \u2014 requires MA convergence detection (distance between sma_20 and sma_200 narrowing) which cannot be expressed in the 3-field condition format; (4) 'breakout expected in second half of day' \u2014 requires intraday time-based logic not available in daily OHLC indicators.",
+  "translation_notes": "Partial translation provided: Entry attempts to capture MAs near price and entry near pivot. However, the core pattern recognition (consolidation day counting, zone-based entry, MA convergence detection, and intraday timing) cannot be reliably expressed using only the allowed indicator set and 3-field condition structure. This signal requires custom pattern detection logic or indicator enhancement (e.g., ma_distance = abs(sma_20 - sma_200), consolidation_bars counter)."
+}

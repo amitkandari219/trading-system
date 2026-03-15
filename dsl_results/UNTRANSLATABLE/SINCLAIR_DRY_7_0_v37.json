@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific metrics (implied volatility skew IV_OTM_put/IV_ATM ratio, put delta, call delta hedge ratios) that are not available in the allowed indicators list. The allowed indicators are limited to price action, technical indicators, and historical volatility\u2014not options Greeks or IV term structure. Substituted with hvol_20 (historical volatility) as a proxy for volatility regime detection, but this does not capture the IV skew premium that is core to the strategy.",
+  "translation_notes": "This is a volatility skew arbitrage strategy for index options that cannot be fully translated to price-based backtesting. Entry uses HIGH_VOL regime + elevated historical volatility as best available proxies for steep skew conditions. Exit uses skew normalization approximated by declining hvol_20. Position sizing, put delta targets, and call hedge ratios are parameters that require live options data and cannot be implemented in a price-only backtest engine. Recommend backtesting this signal on options data or using a dedicated options backtest platform."
+}

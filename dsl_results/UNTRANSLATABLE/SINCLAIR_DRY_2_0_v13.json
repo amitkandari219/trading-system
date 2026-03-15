@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_2_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of volatility_ratio (annualized_daily_volatility / annualized_monthly_volatility) with specific thresholds [THRESHOLD_NEEDED] and position_size_multiplier that are undefined. The allowed indicators set does not include separate daily and monthly volatility measures needed to construct this ratio. hvol_20 (20-period historical volatility) is used as a proxy for short-term volatility detection, but the dual-timeframe ratio comparison and dynamic position sizing logic cannot be fully expressed with available indicators.",
+  "translation_notes": "SINCLAIR_DRY_2_0 is a volatility regime-switching strategy based on variance ratio testing. Entry should occur when short-term volatility significantly exceeds long-term volatility (mean reversion setup). The signal uses hvol_20 as a proxy for detecting elevated short-term volatility. Position sizing should scale with the volatility ratio (currently unmeasurable). Exit occurs when volatility ratio converges (short and long-term volatility equalize), indicating mean reversion opportunity has diminished. Requires parameterization of volatility_ratio_threshold (suggested 1.5-2.0) and position_size_multiplier (suggested 1.0-2.0)."
+}

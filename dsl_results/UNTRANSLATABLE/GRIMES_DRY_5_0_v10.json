@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic threshold parameters (max_adverse_excursion_percent, min_breakout_move_confirmed) and timeframe-calibrated confirmation logic that cannot be expressed as static JSON conditions. The core concept\u2014tolerating initial adverse volatility within calibrated timeframes\u2014requires conditional logic based on entry timeframe and volatility metrics (ATR scaling) that exceeds the allowed operator set. Specific numeric thresholds for adverse excursion tolerance and confirmation move size are marked [THRESHOLD_NEEDED] in the original parameters and must be calibrated empirically per trading timeframe before translation.",
+  "translation_notes": "Attempted approximation using Donchian breakouts (dc_upper/dc_lower) as proxy for identified breakout levels. Entry logic captures breakout confirmation. Exit logic uses retracement to Donchian midline as proxy for failed confirmation. However, this loses the critical signal components: (1) timeframe-dependent confirmation calibration, (2) ATR-scaled adverse excursion tolerance, (3) dynamic hold duration based on entry timeframe. Recommend implementing this signal with parametric rules engine supporting time-scaled thresholds and volatility normalization."
+}

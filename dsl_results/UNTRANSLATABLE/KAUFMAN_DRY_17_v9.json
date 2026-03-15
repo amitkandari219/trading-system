@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_17",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of mean and standard deviation of price changes over a dynamic lookback period to define volatility regimes. The allowed indicator set does not include a custom volatility calculation tool or standard deviation of returns indicator. While hvol_20 exists, it is a fixed 20-day historical volatility that does not support the flexible 10-30+ day lookback period or the specific mean \u00b1 0.25 SD threshold logic required by this signal. The signal is a volatility regime classifier (NEUTRAL direction) rather than a directional trading rule, and cannot be expressed as entry/exit conditions using only the available indicators.",
+  "translation_notes": "This signal defines volatility regime boundaries rather than traditional entry/exit points. To implement, a custom indicator calculating returns_std_dev over configurable periods would be required. The low volatility threshold (mean + 0.25 SD) could theoretically use bb_bandwidth if interpreted as volatility proxy, but this would be inaccurate. Signal is better suited as a regime filter overlay rather than standalone rule."
+}

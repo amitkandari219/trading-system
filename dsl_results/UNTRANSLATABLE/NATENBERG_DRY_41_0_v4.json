@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_41_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Black-Scholes theoretical option valuation, IV-RV spread calculation, delta calculation, and delta-neutral hedging mechanics. These are derivatives pricing and portfolio construction concepts that cannot be expressed using only price-based technical indicators. Required inputs: theoretical option value, implied volatility, realized volatility, option delta, and hedge ratio\u2014none of which are available in the allowed indicator set.",
+  "translation_notes": "This is a volatility arbitrage signal requiring quantitative options pricing. Attempted proxy: used hvol_20 (realized volatility proxy) vs india_vix (implied volatility proxy) to approximate IV-RV spread detection, with directional entry based on price position relative to sma_50. However, this is a significant simplification that does not capture the core signal logic of selling overpriced options with delta-neutral hedges. Recommend implementing this signal in a dedicated options pricing module outside the standard backtest engine."
+}

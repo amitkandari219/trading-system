@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_71_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) IV rank percentile comparison (not available in allowed indicators \u2014 only hvol_20 approximates volatility level), (2) directional IV trend confirmation over N days (requires time-series analysis beyond single-bar comparison operators), (3) Explicit spread width measurement and tracking (not available \u2014 would need option-specific pricing data). The core logic of 'long spreads when IV rises, short spreads when IV falls' cannot be fully expressed with allowed indicators. hvol_20 is used as a weak proxy for IV regime but does not capture IV rank percentile or multi-day trend confirmation required by the original signal.",
+  "translation_notes": "NATENBERG_DRY_71_0 is a volatility regime-dependent options strategy that requires IV rank, IV percentile, and historical volatility trending. The allowed indicator set (hvol_20, india_vix) provides only point-in-time volatility snapshots, not the IV ranking, percentile thresholds, or multi-day trend confirmation needed. The signal's directional logic (LONG spreads in rising IV, SHORT spreads in falling IV) cannot be operationalized without explicit spread width tracking and IV derivative calculations unavailable in standard OHLCV backtesting. Recommend: (1) Add IV_rank, IV_percentile, and spread_width as native indicators, or (2) Refactor signal into separate LONG and SHORT rules with explicit hvol_20 threshold crossovers."
+}

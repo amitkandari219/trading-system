@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting 'extremes of a price move' (local highs/lows) and 'immediate reversal following spike' which cannot be expressed as static threshold conditions. The vol_ratio_20 indicator approximates volume spike detection, but precise identification of price extremes and post-spike reversal magnitude requires dynamic lookback or pattern recognition not supported by available operators and indicators.",
+  "translation_notes": "Attempted partial translation using vol_ratio_20 > 2.0 as volume spike proxy. Entry conditions assume reversal occurs when close crosses previous close after volume spike. Exit conditions reverse the trade direction. However, the original signal's core logic\u2014identifying price extremes and post-spike reversals\u2014cannot be reliably encoded without additional context-dependent indicators or multi-bar pattern matching."
+}

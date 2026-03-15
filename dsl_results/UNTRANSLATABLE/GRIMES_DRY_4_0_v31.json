@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) large spike move in one direction within few bars, (2) similar spike in opposite direction within few bars, (3) converging triangle pattern formation. These require multi-bar pattern recognition (spike magnitude comparison across bars, triangle convergence rate) that cannot be expressed as simple 3-field conditions with allowed indicators. Would need: spike_detector (comparing current range to historical volatility), reversal_spike_detector, and triangle_convergence_rate\u2014none of which are in the allowed indicator list.",
+  "translation_notes": "REGIME signal describes a consolidation avoidance rule triggered by opposing spikes followed by triangle formation. The core logic is: AVOID trading (flat position) during this pattern, ONLY re-enter on breakout. This is a regime-based filter rather than a directional entry signal. The ATR indicators (atr_7, atr_14, atr_20) could approximate 'large moves' but cannot capture the sequential spike pattern or triangle convergence. A proper translation would require custom pattern indicators."
+}

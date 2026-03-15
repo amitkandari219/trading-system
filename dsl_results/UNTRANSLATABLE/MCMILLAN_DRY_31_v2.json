@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_31",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detection of 'technical support breakage' which is a chart pattern concept that cannot be directly expressed using the allowed indicators (price levels, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Returns, Bar Properties). Technical support is typically identified through visual analysis of prior swing lows or pivot points, not through quantitative indicator thresholds. A proper implementation would require either: (1) an explicit support_level input parameter, or (2) detection logic comparing current price to prior swing lows (which requires bar-by-bar lookback beyond the prev_* operators provided). The signal is also a ROLL ACTION (position management) rather than an entry/exit signal, which falls outside the scope of entry/exit condition rules.",
+  "translation_notes": "This is a position management signal from McMillan's covered call strategy. It describes an action (roll down) to be taken when a technical condition (support breakage) occurs. To make this actionable, traders would need to: (1) manually identify support levels from price charts, (2) set a price level threshold, or (3) use a support detection library outside this rule engine."
+}

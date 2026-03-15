@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_30_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of realized volatility over a sample period and comparison to implied volatility with specific thresholds (sample_period_days, inconsistency_threshold_pct, convergence_threshold_pct). No single allowed indicator directly computes realized volatility; hvol_20 and india_vix are proxies but lack the parameterized sample period and explicit deviation thresholds specified in the original rule. The 18.8% reference value and 'materially deviates' criterion cannot be precisely operationalized without additional volatility calculation indicators.",
+  "translation_notes": "Attempted proxy using hvol_20 (20-day historical volatility) vs india_vix (implied volatility proxy), but this does not capture the signal's core requirement: comparing realized volatility computed over a variable sample period against implied volatility with a configurable inconsistency threshold. The entry conditions reference sample_period_days and inconsistency_threshold_pct which are not translatable to the available indicator set."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_36",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific indicators (time_to_expiration, time_value_premium, written_call_status) that are not available in the allowed indicator list. The signal operates on option Greeks and premium decay dynamics rather than price-based technical indicators. Entry conditions require: (1) days to expiration measurement, and (2) time value premium quantification for a written call position. Exit is a management action (buy back call) rather than a price/technical trigger. No mapping possible with equity price/volume indicators alone.",
+  "translation_notes": "Signal ID MCMILLAN_DRY_36 is an options management rule from covered call writing strategy. It describes when to roll forward a covered call position as expiration approaches. This requires access to: option expiration date, option time value (derived from option pricing), and written position tracking\u2014none of which are available in the standard technical indicator set provided. Recommend adding option-specific data fields: days_to_expiration, option_time_value, written_call_price, and option_status to support this signal type."
+}

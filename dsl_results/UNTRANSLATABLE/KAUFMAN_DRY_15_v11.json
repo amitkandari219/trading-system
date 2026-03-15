@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Gap size of exactly 1% cannot be precisely measured with available indicators. The signal requires calculating the percentage difference between open and previous close (gap_pct = (open - prev_close) / prev_close), then checking if abs(gap_pct) == 0.01. This calculation is not supported by the allowed indicator set. Entry conditions approximated as directional gap (open vs prev_close) but cannot enforce the strict 1% threshold.",
+  "translation_notes": "Signal is context-dependent (long on up-gaps, short on down-gaps). Hold period is 1 day (market open to close). The exit 'at close of day' is represented with hold_days_max=1. The precise 1% gap detection is not translatable without a custom gap_pct indicator."
+}

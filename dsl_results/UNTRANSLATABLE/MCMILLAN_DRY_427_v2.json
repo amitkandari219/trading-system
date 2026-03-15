@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_427",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific logic (call position with unrealized gain, put purchase at specific strike spread, liquidation after calendar date) that cannot be expressed using the available equity/futures technical indicators. The strategy involves: (1) detecting an existing call position with unrealized gain (requires portfolio/options state), (2) executing a calendar spread across option strikes (requires options chain data and strike price relationships), (3) triggering exit based on calendar date, not price/technical conditions. The allowed indicators are exclusively price-action and momentum-based and do not support options position state, strike price deltas, or calendar-based logic.",
+  "translation_notes": "Signal is a tax-deferral strategy using options collar (long call + short put spread). Requires position-level state tracking, options Greeks, strike price relationships, and calendar date logic\u2014none of which are available in the technical indicator set. This is structurally incompatible with a price-based backtest engine."
+}

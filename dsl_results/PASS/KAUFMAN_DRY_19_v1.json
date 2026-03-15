@@ -1,0 +1,108 @@
+{
+  "signal_id": "KAUFMAN_DRY_19",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_19",
+    "entry_long": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "stoch_k",
+        "operator": ">",
+        "right": "80"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "stoch_k",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "stoch_k",
+        "operator": "<",
+        "right": "50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "stoch_k",
+        "operator": ">",
+        "right": "50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used ADX_14 > 25 as trend confirmation signal (longer-term trend indicator). Used stoch_k for short-term overbought (>80) and oversold (<20) conditions. Entry triggers on first stochastic extreme after trend confirmation. Exit on stochastic mean reversion (crossing 50 level). Direction is CONTEXT_DEPENDENT as signal applies to both long (overbought entry) and short (oversold entry) trades based on trend direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "stoch_k",
+        "op": ">",
+        "value": 80.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "stoch_k",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "stoch_k",
+        "op": "<",
+        "value": 50.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "stoch_k",
+        "op": ">",
+        "value": 50.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used ADX_14 > 25 as trend confirmation signal (longer-term trend indicator). Used stoch_k for short-term overbought (>80) and oversold (<20) conditions. Entry triggers on first stochastic extreme after trend confirmation. Exit on stochastic mean reversion (crossing 50 level). Direction is CONTEXT_DEPENDENT as signal applies to both long (overbought entry) and short (oversold entry) trades based on trend direction."
+  },
+  "source_rule_text": "Use a short-term stochastic oscillator to time entry into a longer-term trend trade, entering only on the first overbought or oversold condition after a new trend signal is generated."
+}

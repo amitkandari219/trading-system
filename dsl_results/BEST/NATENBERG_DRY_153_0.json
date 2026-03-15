@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_153_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) institutional positioning data from 13F filings and block trades\u2014not available in price/technical indicators; (2) Put/Call ratio for index options\u2014not in allowed indicator list; (3) Index futures selling volume flow analysis\u2014requires derivatives market data not in allowed set; (4) IV skew measurement\u2014requires options volatility surface data. The core institutional flow detection and derivatives hedging mechanics cannot be translated using only OHLCV and technical indicators.",
+  "translation_notes": "Attempted proxy using vol_ratio_20 and india_vix as crude substitutes for hedging pressure (higher volatility/volume during hedging flows), but this does not capture the specific Put/Call ratio imbalance and institutional positioning that drive the signal. The signal is fundamentally built on options market structure and institutional filings data that fall outside the allowed indicator set. Position sizing: 2% of capital; holding period: 5 days as specified."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Island reversal pattern requires detection of gaps on both sides of a price bar/group, which requires multi-bar lookback and gap magnitude comparison (e.g., current_low > prev_high AND prev_prev_high < current_high). The allowed indicators do not include gap detection or the ability to reference multiple previous bars (only prev_* single bar lookback available). True range calculation (TRn = Max(Hn - Ln, Hn - Cm, Cm - Ln)) is provided as context but cannot be used to isolate island formations without explicit gap detection logic.",
+  "translation_notes": "Attempted approximation using: (1) Current bar making new high relative to previous bar, (2) Current bar low higher than previous low (reversal signal), (3) ATR above SMA indicating elevated volatility. However, this does NOT capture the core island reversal logic of isolated gaps on both sides. A proper implementation would require custom gap detection indicator or multi-bar indexing capabilities not available in the current indicator set."
+}

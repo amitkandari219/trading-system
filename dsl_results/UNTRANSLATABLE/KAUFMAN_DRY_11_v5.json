@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Hilbert Transform cycle detection is not available in the allowed indicators list. The signal requires a specialized indicator (Hilbert Transform) to detect short-term cycles and distinguish between ranging and trending markets. No equivalent indicator exists in the ALLOWED INDICATORS set. Implementation would require custom development of the Hilbert Transform oscillator or use of a cycle detection algorithm not present in standard technical indicators.",
+  "translation_notes": "This is a regime filter/avoidance signal rather than a traditional trade entry signal. Signal ID KAUFMAN_DRY_11 instructs traders to detect ranging markets (via cycle detection) and avoid trading cycles in favor of trend-following strategies. The core logic\u2014'if short-term cycle exists, then market is ranging'\u2014cannot be operationalized with available indicators. ADX_14 could serve as a trending confirmation tool (ADX > 25 = trending), but does not directly measure cycles. A workaround would be to use ADX as a trend confirmation proxy, but this would not capture Ehlers' specific cycle detection methodology."
+}

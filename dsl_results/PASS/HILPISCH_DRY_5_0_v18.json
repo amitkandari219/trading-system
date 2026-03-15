@@ -1,0 +1,86 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "book_id": "HILPISCH",
+  "dsl_rule": {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses time series momentum over 3-12 month horizon. Implemented using 'returns' indicator which captures recent price performance. Entry long when returns > 0, entry short when returns < 0. Exit conditions reverse the entry signal (momentum reversal). Holding period capped at 252 trading days (~12 months). THRESHOLD_NEEDED values for lookback_period, position_size_pct not specified in source\u2014defaults applied: returns calculated over full lookback window, position sizing to be configured separately. Regime 'TRENDING' retained from signal specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses time series momentum over 3-12 month horizon. Implemented using 'returns' indicator which captures recent price performance. Entry long when returns > 0, entry short when returns < 0. Exit conditions reverse the entry signal (momentum reversal). Holding period capped at 252 trading days (~12 months). THRESHOLD_NEEDED values for lookback_period, position_size_pct not specified in source\u2014defaults applied: returns calculated over full lookback window, position sizing to be configured separately. Regime 'TRENDING' retained from signal specification."
+  },
+  "source_rule_text": "Buy instruments with positive recent returns and sell instruments with negative recent returns over a 3- to 12-month time horizon to capture time series momentum."
+}

@@ -1,0 +1,88 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "bb_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "bb_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses Bollinger Bands upper/lower for entries and a moving average for exits. Used sma_20 as the reference moving average (mid-range choice). Band width risk limit noted in parameters but expressed via stop_loss_pct. Context-dependent direction allows both long and short entries based on which band is penetrated."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "bb_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "bb_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses Bollinger Bands upper/lower for entries and a moving average for exits. Used sma_20 as the reference moving average (mid-range choice). Band width risk limit noted in parameters but expressed via stop_loss_pct. Context-dependent direction allows both long and short entries based on which band is penetrated."
+  },
+  "source_rule_text": "Buy when the high of the day penetrates the upper band, and close out longs when the low of the day penetrates the moving average. Sell short when the low of the day penetrates the lower band, and cover shorts when the high penetrates the moving average."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_32_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison between implied volatility and historical volatility bounds, but implied volatility (IV) is not available in the allowed indicators list. Only hvol_20 (historical volatility) can be used. The core logic of anchoring IV estimates within historical vol \u00b1 deviation tolerance cannot be fully implemented without an IV indicator. Additionally, 'extraordinary market events detection' is not quantifiable with available indicators.",
+  "translation_notes": "Partially translated using hvol_20 as a proxy for historical volatility baseline. Entry conditions check if 20-day historical volatility stays within the 10-30% range (0.10-0.30 decimal scale). Exit triggers when hvol_20 exceeds 35% (0.30% + 5% tolerance). The signal is CONTEXT_DEPENDENT because entry/exit direction depends on whether IV is above or below the historical band, which cannot be determined without IV data. Thresholds for lookback period (default assumed 20 days) and deviation tolerance (assumed 5%) are inferred from parameters but marked as [THRESHOLD_NEEDED] in original signal."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'range extension' vs 'true breakout' distinction and 'price holds beyond range boundary for minimum consecutive closes' which requires multi-bar pattern recognition and historical range memory not directly available in allowed indicators. Thresholds for [THRESHOLD_NEEDED] parameters (probe_confirmation_bars, range_boundary_proximity_pct, breakout_follow_through_bars) were not specified and cannot be inferred.",
+  "translation_notes": "Attempted partial translation using Donchian Channels (dc_upper/dc_lower) to represent range boundaries and pivot points as range reference levels. Range expansion detected via range > atr_14 as a volatility widening proxy. However, the core logic of distinguishing range extensions from breakouts requires sequential bar validation and contextual range memory that exceeds the scope of single-bar indicator comparisons. This signal is better suited for custom multi-bar pattern recognition rather than a simple rule engine."
+}

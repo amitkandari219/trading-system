@@ -1,0 +1,3060 @@
+[
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.4, pp.101-142",
+    "raw_chunk_text": "IN | Wr,\n1.3 | y DWa\nv\n\\\n1.2\nMAS\n' Ys\n11 \\y I Naa Vy,\nVs 1)\n> gogo\u2019 ge gg gat? got! gt gg? gn\u00ae\nDate\nFigure 4-1. The EUR/USD exchange rate with two SMAs\nBeing able to directly compare two columns of th",
+    "rule_text": "A trader should take a long position when a faster-moving average crosses above a slower-moving average, and take a short position when it crosses below.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Fast SMA (SMA1) > Slow SMA (SMA2) for long entry",
+      "Fast SMA (SMA1) < Slow SMA (SMA2) for short entry"
+    ],
+    "parameters": {
+      "SMA1_period": 50,
+      "SMA2_period": 200,
+      "position_size": 1.0
+    },
+    "exit_conditions": [
+      "Exit long when SMA1 crosses below SMA2",
+      "Exit short when SMA1 crosses above SMA2"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies precise, quantifiable conditions (SMA1 > SMA2 and SMA1 < SMA2) that can be directly computed from price data and programmatically detected."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101-142",
+    "raw_chunk_text": "momentum focuses purely on a security\u2019s own past return....Our finding of time series\nmomentum in virtually every instrument we examine seems to challenge the \u201crandom\nwalk\u201d hypothesis, which in its mo",
+    "rule_text": "Trade in the direction of the most recent period's return\u2014buy after positive returns, sell after negative returns\u2014based on time series momentum signal persistence.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Last 3 consecutive periods show same sign returns (positive or negative)",
+      "Cumulative return over lookback period > 0 for long, < 0 for short"
+    ],
+    "parameters": {
+      "lookback_periods": 3,
+      "return_threshold": 0.0,
+      "confirmation_periods": 3
+    },
+    "exit_conditions": [
+      "Exit on first opposite-sign return",
+      "Exit on time stop: 5 periods held maximum"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are specific and quantifiable: consecutive same-sign returns can be detected from price data, cumulative returns are calculable, opposite-sign returns are observable, and a 5-period holding period is precisely defined."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101-142",
+    "raw_chunk_text": "was positive and to sell it if it was negative. With NumPy and pandas this is easy to\nformalize; just take the sign of the last available return as the market position.\nFigure 4-7 illustrates the perf",
+    "rule_text": "A trader should take a long position when the most recent return is positive and a short position when it is negative, using the sign of the latest log return as the directional signal.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "returns[t-1] > 0.005 for long position",
+      "returns[t-1] < -0.005 for short position"
+    ],
+    "parameters": {
+      "threshold_magnitude": 0.005,
+      "lookback_periods": 1,
+      "position_size_scale": 1.0
+    },
+    "exit_conditions": [
+      "Exit at end of period if threshold not met next period",
+      "Close position if sign reverses"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (returns > 0.005 for long, returns < -0.005 for short) and clear exit rules that a programmer can implement using log return data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, p. 101-142",
+    "raw_chunk_text": "@ Calculates the strategy log returns given the market positionings.\n\u00a9 Plots and compares the strategy performance with the benchmark instrument.\n\u2014\u2014 returns\n16 \u2014\u2014 strategy\n1.4\n1.2\n1.0\n0.8\n0.6\n0.4\noe o",
+    "rule_text": "Use a rolling window average of past returns to generate momentum signals, where longer averaging windows produce more robust positioning decisions than single-period returns.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Rolling average of past returns > 0",
+      "Position = sign(rolling_mean) where rolling window = 5 periods"
+    ],
+    "parameters": {
+      "rolling_window_periods": 5,
+      "signal_threshold": 0.0
+    },
+    "exit_conditions": [
+      "Rolling average of past returns crosses below 0",
+      "Position reverses to -1 or returns to 0"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies concrete, quantifiable conditions (rolling average of past 5 periods compared to 0) that a programmer can directly implement to detect entry and exit triggers from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101\u2013142 (Momentum Strategy Example)",
+    "raw_chunk_text": "In [80]: data['position'] = np.sign(data[ 'returns'].rolling(3).mean()) 1)\nIn [81]: data['strategy'] = data['position'].shift(1) * data['returns' ]\nIn [82]: data[['returns', 'strategy']].dropna().cums",
+    "rule_text": "A trader should enter positions based on the sign of mean returns over a rolling lookback window, because strategy performance is highly sensitive to the window length parameter.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "rolling_mean_returns > 0 \u2192 position = +1",
+      "rolling_mean_returns < 0 \u2192 position = -1",
+      "rolling_mean_returns = 0 \u2192 position = 0"
+    ],
+    "parameters": {
+      "rolling_window_days": 5,
+      "position_shift_lag": 1
+    },
+    "exit_conditions": [
+      "signal changes sign (position = -1 when previously +1, or vice versa)",
+      "end of period"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions based on rolling mean returns that can be programmatically detected and coded, though the rule text's reasoning about parameter sensitivity is advisory rather than prescriptive."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.4, p.101-142",
+    "raw_chunk_text": "# fn = '../data/SPX_1min_05052020.csv' @\nIn [84]: data = pd.read_csv(fn, index_col=0, parse_dates=True) 1)\nIn [85]: data.info() @\n<class 'pandas.core.frame.DataFrame'>\nDatetimeIndex: 241 entries, 2020",
+    "rule_text": "Generate trading signals by taking the sign of a rolling mean of log returns over a lookback window, then position in the direction of that signal with entry on the next period.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Rolling mean of log returns over m periods > 0 (enter long)",
+      "Rolling mean of log returns over m periods < 0 (enter short)"
+    ],
+    "parameters": {
+      "rolling_window_m": 9,
+      "entry_timing": "shift(1) \u2014 enter next bar after signal"
+    },
+    "exit_conditions": [
+      "Exit when rolling mean signal changes sign"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies a mathematically computable entry condition (rolling mean of log returns compared to zero) and an objective exit condition (sign change), both of which can be directly coded and backtested on market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.4, p.101-142",
+    "raw_chunk_text": "taking the mean of the last three returns to generate signals for the positioning. The\nsecond case covered is one with proportional transaction costs of 0.1% per trade. As\nFigure 4-13 illustrates, eve",
+    "rule_text": "A trader should account for transaction costs when evaluating momentum strategy performance, as even small proportional costs significantly deteriorate returns when the strategy generates high trade frequency.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Mean of last 3 returns crosses threshold upward",
+      "Estimated transaction cost burden < 0.05% of position value",
+      "Trade frequency over 20-day window < 8 trades"
+    ],
+    "parameters": {
+      "momentum_lookback": 3,
+      "max_transaction_cost_ratio": 0.0005,
+      "max_trades_per_window": 8,
+      "transaction_cost_per_trade": 0.001
+    },
+    "exit_conditions": [
+      "Mean of last 3 returns crosses threshold downward",
+      "Projected transaction costs exceed 0.05% threshold"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are specific and quantifiable: crossing thresholds can be programmatically detected from return data, transaction cost burden can be calculated from position values, and trade frequency can be counted over a defined time window."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.4, p.101-142",
+    "raw_chunk_text": "\u00a2 GLD is the symbol for SPDR Gold Shares, which is the largest physically backed\nexchange traded fund (ETF) for gold (cf. SPDR Gold Shares home page).\n\u00a2 GDX is the symbol for the VanEck Vectors Gold M",
+    "rule_text": "Use mean-reversion strategy by generating buy/sell signals when price deviates from its moving average by a threshold measured in standard deviations or absolute units.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price < SMA(40) - 4.5 standard deviations \u2192 BUY signal",
+      "Price > SMA(40) + 4.5 standard deviations \u2192 SELL signal"
+    ],
+    "parameters": {
+      "sma_period": 40,
+      "deviation_threshold": 4.5,
+      "deviation_metric": "absolute_units"
+    },
+    "exit_conditions": [
+      "Price crosses back through SMA",
+      "Position held maximum 20 bars"
+    ],
+    "instrument": "SPOT_ETF",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies quantifiable entry conditions (price deviation from SMA(40) by 4.5 standard deviations) and clear exit rules that can be programmatically detected from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101-142",
+    "raw_chunk_text": "In [97]: data = pd.DataFrame(raw[ 'GDX'])\nIn [98]: data.rename(coLlumns={'GDX': 'price'}, inplace=True)\nIn [99]: data['returns'] = np.log(data['price'] /\ndata['price'].shift(1))\nIn [100]: SMA= 25 @\nIn",
+    "rule_text": "Generate trading signals when price deviates from its short-term moving average by a threshold distance, indicating potential mean reversion opportunities.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "price - SMA(50) > 5.0 (long signal, oversold)",
+      "price - SMA(50) < -5.0 (short signal, overbought)"
+    ],
+    "parameters": {
+      "sma_period": 50,
+      "threshold_distance": 5.0
+    },
+    "exit_conditions": [
+      "price closes within 1.0 units of SMA",
+      "maximum hold period of 20 bars"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (price deviation from SMA(50) by threshold of \u00b15.0 units) and clear exit rules that a programmer can implement and backtest against historical market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101-142",
+    "raw_chunk_text": "\u2014 distance\noe ao ao\u201d oe ao\u201d ns oe ov\" oe aw ay\u201d\nDate\nFigure 4-14. Difference between current price of GDX and SMA, as well as threshold val-\nues for generating mean-reversion signals\nBased on the diff",
+    "rule_text": "Generate mean-reversion trading signals by comparing the distance between current price and its simple moving average against fixed threshold values, with position sizing that reverses on threshold breach and flattens on mean-reversion completion.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "distance > +2.0 standard deviations of historical distance",
+      "distance < -2.0 standard deviations of historical distance"
+    ],
+    "parameters": {
+      "threshold_multiplier": 2.0,
+      "sma_period": 20,
+      "position_size": 1.0
+    },
+    "exit_conditions": [
+      "distance * distance.shift(1) < 0 (crossing zero from either direction)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies quantifiable entry conditions (price deviation > \u00b12.0 standard deviations from SMA distance) and an exit condition (zero-crossing of normalized distance) that can be directly computed from OHLC data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101-142",
+    "raw_chunk_text": "In [109]: data['position'].iloc[ SMA: ].plot(ylim=[-1.1, 1.1],\nfigsize=(10, 6)); C5 ]\n@ Ifthe distance value is greater than the threshold value, go short (set -1 in the\nnew column position), otherwis",
+    "rule_text": "A trader should establish long, short, or neutral positions based on the magnitude and sign of deviation from a mean-reversion reference level, using distance thresholds to trigger position changes and sign reversals to flatten positions.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "distance_value < negative_threshold (wider band)",
+      "distance_value > positive_threshold (wider band)",
+      "sign_change_detected in distance"
+    ],
+    "parameters": {
+      "threshold_stddev_multiple": 2.0,
+      "long_trigger": -2.0,
+      "short_trigger": 2.0
+    },
+    "exit_conditions": [
+      "distance sign reversal detected",
+      "position held across sign change"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (distance_value compared against positive/negative thresholds and sign_change detection) that a programmer could implement as code logic operating on market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.4, p.101-142",
+    "raw_chunk_text": "self .SMA1).mean()\nif SMA2 is not None:\nself.SMA2 = SMA2\nself .data['SMA2'] = self.data['price'].rolling(self.SMA2).mean()\ndef run_strategy(self):\n''' Backtests the trading strategy.\ndata = self.data.",
+    "rule_text": "Generate trading signals by comparing two moving averages of different periods; take long positions when the faster MA exceeds the slower MA, and short positions when it falls below.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "SMA1 (short period) > SMA2 (long period) for long entry",
+      "SMA1 (short period) < SMA2 (long period) for short entry"
+    ],
+    "parameters": {
+      "SMA1_period": 10,
+      "SMA2_period": 50
+    },
+    "exit_conditions": [
+      "Exit long when SMA1 crosses below SMA2",
+      "Exit short when SMA1 crosses above SMA2"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies concrete, quantifiable conditions (SMA crossovers with defined periods) that a programmer can directly implement and detect from price data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.4, p.101-142",
+    "raw_chunk_text": "raw = pd.read_csv('http://hilpisch.com/pyalgo_eikon_eod_data.csv',\nindex_col=0, parse_dates=True).dropna()\nraw = pd.DataFrame(raw[self.symbol])\nraw = raw. loc[self.start:self.end]\nraw.rename(columns={",
+    "rule_text": "A trader should take long positions when the rolling mean of returns is positive and short positions when it is negative, adjusting position sizing based on the momentum lookback window and accounting for transaction costs on each trade.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "rolling_mean(returns, period=20) > 0 for long",
+      "rolling_mean(returns, period=20) < 0 for short",
+      "position_change detected"
+    ],
+    "parameters": {
+      "momentum_window": 20,
+      "transaction_cost_bps": 15,
+      "position_sizing": "sign(rolling_mean) * 1.0"
+    },
+    "exit_conditions": [
+      "rolling_mean crosses zero in opposite direction",
+      "position_change signal triggers"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (rolling mean of returns > 0 or < 0 over 20-period window) and exit conditions (rolling mean crosses zero) that a programmer can directly implement and detect from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.4, p.120-142",
+    "raw_chunk_text": "symbol: str\nRIC symbol with which to work\nstart: str\nstart date for data retrieval\nend: str\nend date for data retrieval\namount: int, float\n120 | Chapter 4: Mastering Vectorized Backtesting\namount to b",
+    "rule_text": "Execute a short (sell) signal when price deviates above a simple moving average by more than a threshold distance, based on mean reversion expectation.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "price - SMA(20) > threshold",
+      "distance > 2.0 standard deviations above SMA"
+    ],
+    "parameters": {
+      "SMA_period": 20,
+      "threshold_multiplier": 2.0,
+      "threshold_value": "2.0 * rolling_std_dev"
+    },
+    "exit_conditions": [
+      "price crosses back below SMA",
+      "distance <= 0"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (price deviation > 2.0 standard deviations above SMA(20)) and exit conditions (price crossing below SMA or distance <= 0) that can be directly coded and detected from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101-142",
+    "raw_chunk_text": "-1, np.nan)\n# buy signals\ndata[ 'position'] = np.where(data['distance'] < -threshold,\n1, data['position' ])\n# crossing of current price and SMA (zero distance)\ndata[ 'position'] = np.where(data['dista",
+    "rule_text": "A trader should enter long positions when price distance from SMA crosses below a negative threshold, enter short positions when distance exceeds a positive threshold, and exit all positions when price crosses the SMA, while accounting for transaction costs on each trade.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "distance < -2.0 (sell signal)",
+      "distance > 2.0 (buy signal)",
+      "distance * lagged_distance < 0 (SMA crossing exit)"
+    ],
+    "parameters": {
+      "threshold": 2.0,
+      "transaction_cost": 0.001,
+      "sma_period": 20
+    },
+    "exit_conditions": [
+      "Exit all positions when price crosses SMA (distance crosses zero)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (distance < -2.0, distance > 2.0) and a mathematically detectable exit condition (distance * lagged_distance < 0) that a programmer can implement using price, SMA, and transaction cost data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_6_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.5, p.143-193",
+    "raw_chunk_text": "lags)\nFrom a trading point of view, one might argue that it is not the magnitude of the fore-\ncasted return that is relevant, but rather whether the direction is forecasted correctly\nor not. To this e",
+    "rule_text": "A trader should only trade directional predictions from linear regression when the model's directional accuracy exceeds a statistically meaningful threshold above random chance (50%).",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Linear regression directional hit ratio > 55%",
+      "Minimum sample size of 500 predictions to establish statistical validity",
+      "Position entered only after confirmation period of 50+ consecutive predictions meeting threshold"
+    ],
+    "parameters": {
+      "hit_ratio_threshold": 0.55,
+      "minimum_sample_size": 500,
+      "confirmation_period_trades": 50
+    },
+    "exit_conditions": [
+      "Hit ratio decays below 53% over rolling 100-trade window",
+      "Stop loss at 2% of capital per position"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (linear regression hit ratio > 55%, minimum 500 samples, 50+ consecutive confirmations) and exit conditions (hit ratio < 53% over rolling 100-trade window, 2% stop loss) that a programmer could implement as testable rules against historical prediction data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_6_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 5, pp. 143-193",
+    "raw_chunk_text": "the Python code to implement this reasoning is to use the sign values (that is, 1.0 or\n-1.0 in Python) for the regression step. This indeed increases the number of hits to\n1,301 and the hit ratio to a",
+    "rule_text": "Use sign-based regression on directional targets rather than continuous returns to improve prediction hit ratio in directional market movement forecasting.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Sign-based regression prediction = 1.0 or -1.0",
+      "Regression coefficient absolute value > 4.0 (top quartile strength)",
+      "Hit ratio confidence > 51.9% empirical baseline"
+    ],
+    "parameters": {
+      "coefficient_magnitude_threshold": 4.0,
+      "prediction_type": "sign_based",
+      "confidence_threshold_vs_baseline": 0.0
+    },
+    "exit_conditions": [
+      "Prediction sign reverses",
+      "Realized return contradicts prediction for 2 consecutive periods"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "All entry conditions are specific and actionable: sign-based regression output can be programmatically detected, regression coefficient magnitude is a quantifiable threshold, and hit ratio confidence is a measurable empirical metric."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_6_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.5, pp.143-193",
+    "raw_chunk_text": "Out[48]: price lag_1 lag_2 lag_3 lag_4 lag_5 \\\nDate\n2010-01-20 1.4101 -0.005858 -0.008309 -0.000551 0.001103 -0.001310\n2010-01-21 1.4090 -0.013874 -0.005858 -0.008309 -0.000551 0.001103\n2010-01-22 1.4",
+    "rule_text": "Generate trading signals from lagged price returns using linear regression predictions, then scale position size by the predicted probability to align capital allocation with forecast confidence.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Linear regression prediction >= 0.8",
+      "At least 3 of last 5 lagged returns have same sign as current prediction",
+      "Price has moved less than 2% from lag_1"
+    ],
+    "parameters": {
+      "prediction_threshold": 0.8,
+      "lag_confirmation_count": 3,
+      "position_size_multiplier": 0.5,
+      "lag_lookback_periods": 5
+    },
+    "exit_conditions": [
+      "Exit at end of day",
+      "Exit if prediction reverses below 0.5"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are specific and quantifiable: linear regression prediction thresholds (0.8, 0.5), lagged return sign counting (3 of 5), price movement tolerance (2%), and end-of-day timing can all be programmatically detected from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_6_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 5, pp. 143-193 (Figure 5-7 and 5-8, In [57]-[59])",
+    "raw_chunk_text": "\u00a9 Uses two different data sets for the training and evaluation steps.\n\u00a9 Plots the out of sample strategy performance compared to the market.\nEUR= | TC = 0.0000\n10400\n10200\n10000\n9800\n9600\n9400\n9200 \u2014\u2014",
+    "rule_text": "A trader should validate machine learning strategies using out-of-sample testing on a separate time period, accounting for transaction costs, before deploying capital.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "In-sample training period: 60% of total data",
+      "Out-of-sample test period: 40% of total data (recent data held back)",
+      "Transaction cost assumption: 0.003 (30 basis points)"
+    ],
+    "parameters": {
+      "training_data_split": 0.6,
+      "holdout_period_split": 0.4,
+      "transaction_cost_bps": 30,
+      "lag_parameter": 5
+    },
+    "exit_conditions": [
+      "Exit if out-of-sample return < in-sample return by more than 50%",
+      "Exit if strategy underperforms buy-and-hold after costs"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies concrete, quantifiable entry conditions (60/40 data split, 0.003 transaction cost) and measurable exit triggers (50% return differential, underperformance vs buy-and-hold) that a programmer could implement through backtesting code."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_6_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.5, pp.143-193 (Logistic Regression with lag optimization)",
+    "raw_chunk_text": "Out[114]: LogisticRegression(C=10000000.0, max_iter=1000)\nIn [115]: data['prediction'] = Lm.predict(data[cols])\nIn [116]: data[ 'prediction'].value_counts() 3]\nOut[116]: 1.0 2047\n-1.0 464\nName: predic",
+    "rule_text": "A trader should use machine learning classification predictions weighted by realized returns to construct a strategy that outperforms buy-and-hold, adjusting the lag window to optimize prediction-return alignment.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Logistic Regression classifier accuracy >= 55%",
+      "Positive hit rate (prediction * return sign agreement) > 60%",
+      "Lag window = 10 periods"
+    ],
+    "parameters": {
+      "min_accuracy_threshold": 0.55,
+      "min_hit_rate": 0.6,
+      "lag_periods": 10,
+      "model_C_regularization": 1000000.0
+    },
+    "exit_conditions": [
+      "Exit when rolling accuracy drops below 52%",
+      "Exit when hit rate falls below 50%"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (classifier accuracy >= 55%, hit rate > 60%, lag window = 10 periods) and exit conditions (accuracy < 52%, hit rate < 50%) that a programmer can directly implement and detect from backtesting data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_6_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 5, p. 149",
+    "raw_chunk_text": "oO Increases the number of lags to five.\n2) Fits the model based on five lags.\n\u00a9 There are now significantly more short positions with the new parametrization.\n@ The accuracy (hit ratio) decreases to ",
+    "rule_text": "A trader should validate machine learning model performance on out-of-sample test data rather than in-sample training data to avoid overfitting and obtain realistic strategy performance estimates.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Machine learning model fitted on training data",
+      "Training data represents 30% of total historical period",
+      "Test data represents 70% of total historical period"
+    ],
+    "parameters": {
+      "train_test_split_ratio": 0.3,
+      "minimum_test_periods": 252,
+      "validation_metric": "out_of_sample_hit_ratio"
+    },
+    "exit_conditions": [
+      "Out-of-sample hit ratio drops below 51%",
+      "Out-of-sample cumulative performance turns negative"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete, measurable thresholds (training data = 30%, test data = 70% of historical period) and exit conditions define quantifiable metrics (hit ratio below 51%, negative cumulative performance) that a programmer could detect and automate."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_6_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 5, pp. 143\u2013193",
+    "raw_chunk_text": "In [193]: pred = np.where(model.predict(training_data_[cols]) > 0.5, 1, 0)\nIn [194]: training_data['prediction'] = np.where(pred > 0, 1, -1)\nIn [195]: training_data['strategy'] = (training_data[ 'pred",
+    "rule_text": "Generate trading signals by applying a probability threshold to a machine learning classifier's predictions, then scale position direction by predicted signal strength to amplify returns during correct predictions.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Model prediction probability > 0.65",
+      "Position size = sign(prediction) \u00d7 1 unit (binary on/off)"
+    ],
+    "parameters": {
+      "probability_threshold": 0.65,
+      "position_multiplier": 1.0
+    },
+    "exit_conditions": [
+      "Next period signal reversal",
+      "Prediction probability falls below 0.60"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (probability threshold > 0.65, binary position sizing), exit conditions (signal reversal, probability < 0.60), and a programmer could implement this by feeding market data into a trained ML classifier and executing trades based on the defined probability thresholds."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 6, pp. 195-219",
+    "raw_chunk_text": "The method .run_mean_reversion_strategy() implements the backtesting proce-\ndure for the mean reversion-based strategy. This method is commented on in detail,\nsince it might be a bit trickier from an ",
+    "rule_text": "A trader should generate entry and exit signals based on the deviation of price from a simple moving average, using a threshold parameter to define the magnitude of deviation that constitutes a trading signal.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price deviates from SMA by >= 2.5 standard deviations (threshold=2.5)",
+      "SMA calculated over 60 days to smooth noise"
+    ],
+    "parameters": {
+      "SMA_days": 60,
+      "threshold_std_devs": 2.5
+    },
+    "exit_conditions": [
+      "Price crosses back through the SMA",
+      "Position held maximum 20 bars"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (price deviation >= 2.5 standard deviations from 60-day SMA) and clear exit conditions (price crosses SMA or 20-bar maximum hold) that a programmer can implement in code using market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.6, pp.195-219",
+    "raw_chunk_text": "self.trades = 0\nself.amount = self.initial_amount C3]\nself.data['SMA'] = self.data['price'].rolling(SMA).mean() @\nfor bar in range(SMA, len(self.data)): C5)\nif self.position == 0:\nif (self.data['price",
+    "rule_text": "Buy when price falls below a moving average by a threshold amount; sell when price returns to or exceeds the moving average.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "position == 0 (flat)",
+      "price < SMA - threshold"
+    ],
+    "parameters": {
+      "SMA_period": 20,
+      "threshold": 2.0,
+      "threshold_unit": "standard deviations or fixed points"
+    },
+    "exit_conditions": [
+      "price >= SMA"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "All conditions are quantifiable and programmatically detectable: portfolio state (position == 0), price level relative to SMA, and threshold-based comparisons can be directly implemented in code."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 6, pp. 195-219",
+    "raw_chunk_text": "method of the BacktestLongShort class. Again, the mean-reversion strategy is\npicked since the implementation is a bit more involved. For instance, it is the only\nstrategy that also leads to intermedia",
+    "rule_text": "Enter long positions when price falls below the moving average by a threshold amount, and enter short positions when price rises above the moving average by a threshold amount; exit long positions when price reaches or exceeds the moving average.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "position == 0 AND price < SMA - threshold",
+      "position == 0 AND price > SMA + threshold"
+    ],
+    "parameters": {
+      "threshold": 2.0,
+      "sma_period": 20,
+      "position_size": "full_initial_amount"
+    },
+    "exit_conditions": [
+      "price >= SMA (for long positions)",
+      "price <= SMA (for short positions)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies concrete, quantifiable conditions (price vs. SMA \u00b1 threshold) that can be programmatically detected from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 6, pp. 195-219",
+    "raw_chunk_text": "if self.data['price'].tloc[ bar] >= self.data['SMA'].iloc[ bar]: \u00a9\nself.place_sell_order(bar, units=self.units)\nself.position = 0\nelif self.position == -1: \u00ae\nif self.data['price'].iloc[ bar] <= self.d",
+    "rule_text": "Enter long positions when price falls below a moving average (mean reversion signal) and enter short positions when price rises above a moving average, using the moving average as a dynamic threshold for directional bias.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "position == 0 (market neutral)",
+      "price <= SMA_value (long entry)",
+      "price >= SMA_value (short entry)"
+    ],
+    "parameters": {
+      "sma_period": 50,
+      "price_sma_threshold_pct": 0.0
+    },
+    "exit_conditions": [
+      "Exit long: price >= SMA",
+      "Exit short: price <= SMA"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies concrete, programmable entry conditions (price <= SMA for long, price >= SMA for short) and clear exit rules (price crossing SMA in opposite direction) that can be implemented and backtested using historical market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 6, pp. 195-219",
+    "raw_chunk_text": "self.position = 0 # initial neutral position\n194 | Chapter 6: Building Classes for Event-Based Backtesting\nself.trades = 0 # no trades yet\nself.amount = self.initial_amount # reset initial capital\nsel",
+    "rule_text": "Generate buy signals when a faster moving average crosses above a slower moving average; generate sell signals when the faster moving average crosses below the slower moving average.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "position == 0 AND SMA1(50) > SMA2(200)",
+      "Price closes above both SMAs"
+    ],
+    "parameters": {
+      "SMA1_period": 50,
+      "SMA2_period": 200,
+      "position_sizing": "100% of capital on entry"
+    },
+    "exit_conditions": [
+      "SMA1(50) < SMA2(200)",
+      "Exit at market on crossover signal"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (SMA crossovers and price position relative to moving averages) and clear exit conditions that a programmer can implement as detectable triggers in trading code."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 6, pp. 195-219",
+    "raw_chunk_text": "momentum: int\nnumber of days for mean return calculation\nmsg = f'\\n\\nRunning momentum strategy | {momentum} days'\nmsg t= f'\\nfixed costs {self.ftc} | '\nmsg t= f'proportional costs {self.ptc}'\nprint(ms",
+    "rule_text": "Enter a long position when the rolling mean return over a specified lookback period turns positive; exit to market neutral when momentum turns negative.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "rolling_mean_return(20_days) > 0",
+      "current_position == 0"
+    ],
+    "parameters": {
+      "momentum_lookback_days": 20,
+      "entry_threshold": 0.0,
+      "exit_threshold": 0.0
+    },
+    "exit_conditions": [
+      "rolling_mean_return(20_days) < 0",
+      "current_position == 1"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry and exit conditions based on rolling mean return calculations and position state that can be directly implemented in code."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.6, p.195-219",
+    "raw_chunk_text": "self .close_out(bar)\ndef run_mean_reversion_strategy(self, SMA, threshold):\n''' Backtesting a mean reversion-based strategy.\nParameters\nSMA: int\nsimple moving average in days\nthreshold: float\nPython S",
+    "rule_text": "Enter a long position when price deviates below the simple moving average by a threshold amount, signaling mean reversion opportunity.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "position == 0 (no existing position)",
+      "price < SMA - threshold",
+      "threshold = 2.0 standard deviations or 2.0% of SMA"
+    ],
+    "parameters": {
+      "SMA_period": 20,
+      "threshold_multiplier": 2.0,
+      "threshold_type": "absolute_percentage"
+    },
+    "exit_conditions": [
+      "price crosses back above SMA",
+      "fixed stop-loss at 3% below entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies concrete, quantifiable entry conditions (price < SMA - threshold with defined threshold calculation) and exit conditions (price crosses above SMA or stop-loss at 3%) that can be programmatically detected from price and SMA data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.6, p.195-219",
+    "raw_chunk_text": "if units:\nself.place_sell_order(bar, units=units)\nelif amount:\nif amount == \u2018all':\namount = seLlf.amount\nself.place_sell_order(bar, amount=amount)\ndef run_sma_strategy(self, SMA1, SMA2):\nmsg = f'\\n\\nR",
+    "rule_text": "Enter a long position when the faster moving average crosses above the slower moving average, signaling an uptrend initiation.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Current position in [0, -1] (neutral or short)",
+      "SMA1 > SMA2 + (SMA2 * 0.02)",
+      "Fast MA is at least 2% above slow MA to confirm strength"
+    ],
+    "parameters": {
+      "SMA1_period": 10,
+      "SMA2_period": 30,
+      "confirmation_threshold_percent": 2.0
+    },
+    "exit_conditions": [
+      "SMA1 closes below SMA2",
+      "Fixed stop-loss at -3% from entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (SMA1 > SMA2 + 2%, position state, MA crossover) and exit conditions (SMA1 below SMA2, -3% stop-loss) that a programmer could implement as automated trading logic."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 6, pp. 195-219",
+    "raw_chunk_text": "self.go_long(bar, amount='all')\nself.position = 1 # long position\nif self.position in [0, 1]:\nif self.data['SMA1'].iloc[ bar] < self.data['SMA2'].iloc[bar]:\nself.go_short(bar, amount='allL')\nself.posi",
+    "rule_text": "Enter long positions when momentum over a rolling period is positive; enter short positions when a faster moving average falls below a slower moving average; use full capital allocation on entry signals.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position is neutral (0) or short (-1)",
+      "Rolling momentum over 30 days > 0",
+      "SMA1 (20-day) < SMA2 (50-day) for short entry"
+    ],
+    "parameters": {
+      "momentum_lookback_days": 30,
+      "fast_sma_period": 20,
+      "slow_sma_period": 50,
+      "momentum_threshold": 0.0,
+      "position_size": "all"
+    },
+    "exit_conditions": [
+      "If long: momentum crosses below 0",
+      "If short: SMA1 crosses above SMA2"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable conditions (30-day momentum threshold, 20-day and 50-day SMAs, portfolio state) that can be programmatically detected from market data and implemented as algorithmic trading rules."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 6, pp. 195-219",
+    "raw_chunk_text": "self.go_long(bar, amount='all')\nself.position = 1 # long position\nif self.position in [0, 1]:\nif self.data[ 'momentum'].iloc[ bar] <= 0:\nself.go_short(bar, amount='allL')\nself.position = -1 # short po",
+    "rule_text": "Enter a long position when price falls below its simple moving average by a threshold amount, signaling mean reversion opportunity; exit when price reverts or momentum confirms reversal.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Current position is neutral (position == 0)",
+      "Price < SMA - threshold",
+      "Threshold set conservatively wide"
+    ],
+    "parameters": {
+      "SMA_period": 20,
+      "threshold_std_devs": 2.0,
+      "threshold_absolute": "2.0% of SMA value"
+    },
+    "exit_conditions": [
+      "Price closes above SMA",
+      "Momentum turns negative (momentum <= 0)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (position == 0, Price < SMA - threshold) and exit conditions (price above SMA, momentum <= 0) that a programmer could implement, though the threshold value itself requires definition."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 6, pp. 195-219",
+    "raw_chunk_text": "self.data['SMA'].iloc[ bar] - threshold):\nself.go_long(bar, amount=self.initial_amount)\nself.position = 1\nelif (self.data['price'].iloc[bar] >\n198 | Chapter 6: Building Classes for Event-Based Backtes",
+    "rule_text": "Enter long when price crosses below SMA by a threshold amount; enter short when price crosses above SMA by a threshold amount; exit long when price returns to or exceeds SMA; exit short when price returns to or falls below SMA.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "price < SMA - threshold AND position == 0 \u2192 go_long",
+      "price > SMA + threshold AND position == 0 \u2192 go_short"
+    ],
+    "parameters": {
+      "threshold_std_multiples": 2.0,
+      "threshold_percent_of_sma": 0.03
+    },
+    "exit_conditions": [
+      "position == 1 AND price >= SMA \u2192 sell_all",
+      "position == -1 AND price <= SMA \u2192 buy_to_cover"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies concrete, programmable conditions using price levels (SMA \u00b1 threshold) and position states that can be directly implemented and backtested."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_8_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 7, pp. 221-241",
+    "raw_chunk_text": "208 | Chapter 7: Working with Real-Time Data and Sockets\nSecond is the resampling and processing of the data, as shown in the following\nPython code. This happens based on the tick data collected up to",
+    "rule_text": "A trader should take a directional market position based on the sign of momentum calculated from rolling mean log returns on resampled tick data.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Resample tick data to 10-second bars",
+      "Calculate log returns from resampled closes",
+      "Compute rolling mean momentum over 20-bar window",
+      "Entry signal when momentum sign transitions from 0 or opposite sign to +1.0 (long) or -1.0 (short)",
+      "Require minimum data history of 25 bars before trading"
+    ],
+    "parameters": {
+      "resample_interval": "10s",
+      "momentum_lookback_bars": 20,
+      "min_data_length": 25
+    },
+    "exit_conditions": [
+      "Exit when momentum sign reverses to opposite direction",
+      "Exit when momentum crosses zero"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies concrete, programmable conditions: resample to 10-second bars, calculate log returns, compute 20-bar rolling momentum, and enter on sign transitions with a 25-bar minimum history requirement."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_8_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.7, p.221-241",
+    "raw_chunk_text": "sym, value = data.split()\ndf = df.append(pd.DataFrame({sym: float(value)}, index=[t]))\ndr = df.resample('5s', label='right').last()\ndr['returns'] = np.log(dr / dr.shift(1))\nif len(dr) > min_length:\nmi",
+    "rule_text": "Enter long positions when the rolling mean of log returns is positive and enter short positions when it is negative, using a momentum signal derived from sign of mean returns over a rolling window.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "dr['momentum'].iloc[-2] == 1.0 (long signal)",
+      "dr['momentum'].iloc[-2] == -1.0 (short signal)",
+      "Momentum window set to longer period for stability"
+    ],
+    "parameters": {
+      "rolling_window_mom": 20,
+      "resample_period": "5s",
+      "min_data_length": 25
+    },
+    "exit_conditions": [
+      "Momentum reverses to opposite sign",
+      "Holding period expires (e.g., 10 bars)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (momentum == 1.0 or -1.0 at a specific bar index) and exit conditions (sign reversal or bar count) that can be directly coded and detected from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_9_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Chapter 8, p.243-268",
+    "raw_chunk_text": "The second step is to implement the vectorized backtesting. The idea is to simultane-\nously backtest a couple of momentum strategies. The code is straightforward and\nconcise (see also Chapter 4).\nFor ",
+    "rule_text": "Generate trading signals by taking the sign of the rolling mean of returns over varying lookback periods, allowing simultaneous testing of multiple momentum horizons.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Sign of rolling mean of log returns > 0 \u2192 long position",
+      "Sign of rolling mean of log returns < 0 \u2192 short position"
+    ],
+    "parameters": {
+      "momentum_lookback_periods": [
+        60,
+        120,
+        180
+      ],
+      "position_sizing": "Equal weight across all lookback periods"
+    },
+    "exit_conditions": [
+      "Exit when rolling mean sign flips to opposite direction"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions based on the mathematical sign of rolling mean log returns and a clear exit trigger when that sign flips, which can be directly coded and tested on market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_9_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 8, pp. 243-268",
+    "raw_chunk_text": "self.data['position'] = np.sign(\nself.data['returns'].rolling(self.momentum) .mean()) 7)\nif len(self.data) > self.min_length: 8]\nself.min_length += 1\nif self.data['position'].iloc[-1] == 1: 9]\nif self",
+    "rule_text": "A trader should scale position size based on signal strength and current position state, doubling units when reversing from an existing opposite position versus initiating a fresh position.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Mean of returns over momentum window crosses zero",
+      "Sign of rolling mean momentum indicator changes"
+    ],
+    "parameters": {
+      "momentum_window": 20,
+      "reversal_multiplier": 1.25,
+      "base_units": 1
+    },
+    "exit_conditions": [
+      "Next signal reversal (sign change in position indicator)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (mean of returns crossing zero, sign change in momentum indicator) and clear exit logic (next signal reversal) that can be programmatically detected from market data, though the position sizing multiplier ('doubling') lacks precision in definition."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_9_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.8, pp.243-268",
+    "raw_chunk_text": "self.raw_data = pd.DataFrame()\nself.min_length = self.momentum + 1\ndef on_success(self, time, bid, ask):\n''' Takes actions when new tick data arrives. ore\nprint(self.ticks, end=' ')\nself.raw_data = se",
+    "rule_text": "Enter a long position when the rolling mean of returns over a momentum period turns positive, and enter a short position when it turns negative, using log returns of mid-price across resampled bars.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Rolling mean of log returns over momentum period > 0 for long",
+      "Rolling mean of log returns over momentum period < 0 for short",
+      "Position signal persists for at least 1 bar before execution"
+    ],
+    "parameters": {
+      "momentum": 20,
+      "bar_length": "5min",
+      "position_confirmation_bars": 1
+    },
+    "exit_conditions": [
+      "Exit long when rolling return mean crosses below 0",
+      "Exit short when rolling return mean crosses above 0"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies precise, quantifiable conditions (rolling mean of log returns compared to zero threshold) that can be directly computed from OHLC data and programmatically detected."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, p.266",
+    "raw_chunk_text": "266 | Chapter 10: Automating Trading Operations\nTherefore, the expected value for this betting game B (that is, the random variable\nrepresenting this game) in a one-shot setting is as follows:\nE(B) = ",
+    "rule_text": "In repeated trading games with limited capital, position size should be scaled proportionally to expected value and current capital to maximize long-term wealth growth while managing compounding risk across multiple periods.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Expected value (p-q)*b_i > 0 is positive",
+      "Current capital c_i >= minimum threshold"
+    ],
+    "parameters": {
+      "position_size_fraction": 0.01,
+      "max_risk_per_trade_pct": 1.0,
+      "formula": "b_i = 0.01 * c_i"
+    },
+    "exit_conditions": [
+      "Trade resolved (win or loss)",
+      "Capital drawdown exceeds 15% of peak"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The rule has specific, actionable entry conditions (positive expected value calculation and capital threshold) and exit conditions (trade resolution and 15% drawdown trigger) that can be programmatically detected from trading data and portfolio metrics."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, pp.285-380",
+    "raw_chunk_text": "E(B\") = cy + 2 (P-) -b;\nIn classical economic theory, with risk-neutral, expected utility-maximizing agents, a\ngambler would try to maximize the preceding expression. It is easily seen that it is\nmaxi",
+    "rule_text": "A trader should size positions using the Kelly criterion rather than betting either maximum available capital or nothing, because it balances long-term wealth maximization against ruin risk.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Edge identified (expected return > 0)",
+      "Win probability and payout ratio estimated"
+    ],
+    "parameters": {
+      "kelly_fraction": 0.25,
+      "position_size_formula": "0.25 * ((p * b - q) / b)",
+      "max_position_size_percent_of_capital": 2.5
+    },
+    "exit_conditions": [
+      "Exit on loss or predefined stop",
+      "Rebalance on capital drawdown > 15%"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (edge identification via expected return calculation and probability/payout estimation) and quantifiable exit conditions (15% drawdown threshold) that a programmer could implement as testable rules."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 10, pp. 285-380",
+    "raw_chunk_text": "gamble either. This is where the Kelly criterion comes into play since it derives the\noptimal fraction f* of the available capital to bet per round of betting. Assume that\nn =h+t where h stands for th",
+    "rule_text": "Maximize long-term wealth by allocating an optimal fraction of capital per trade, derived by maximizing the expected geometric growth rate as a function of win probability and position sizing.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Win probability p is estimated from historical trade data (minimum 30 samples)",
+      "Position sizing fraction is calculated as f* \u00d7 0.25 (quarter Kelly)"
+    ],
+    "parameters": {
+      "kelly_fraction_multiplier": 0.25,
+      "min_historical_trades": 30,
+      "max_position_size_pct": "kelly_result \u00d7 0.25"
+    },
+    "exit_conditions": [
+      "Exit trade per original strategy rules",
+      "Rebalance position size quarterly based on updated win probability estimate"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions: win probability estimation from minimum 30 historical samples and position sizing calculation using quarter Kelly formula, which a programmer could implement and detect from historical trade data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 10, pp. 268\u2013269",
+    "raw_chunk_text": "= E(p log (1+ f) + q log (1 - f))\n= p log (1+ f) + q log (1 - f)\n= G(f)\nOne can now maximize the term by choosing the optimal fraction f* according to\nthe first order condition. The first derivative i",
+    "rule_text": "Allocate a fraction of capital to each trade equal to the difference between the probability of winning and losing (f* = p - q) to maximize logarithmic growth of wealth over repeated betting rounds.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trade signal generated with estimated win probability p",
+      "Historical or estimated loss probability q is available"
+    ],
+    "parameters": {
+      "kelly_fraction_multiplier": 0.5,
+      "position_size_formula": "0.5 * (p - q) of total capital"
+    },
+    "exit_conditions": [
+      "Exit per original signal logic (probability-based trading system)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete triggers (trade signal generation with estimated win probability p, and availability of loss probability q) that a programmer can detect and use to calculate position sizing using the formula f* = p - q."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 10, pp. 285-380",
+    "raw_chunk_text": "Figure 10-1. 50 simulated series with 100 trials each (red line = average)\nThe following code repeats the simulation for different values of f. As shown in\nFigure 10-2, a lower fraction leads to a low",
+    "rule_text": "A trader should calibrate position sizing fraction (f) to balance expected growth against volatility tolerance, as higher fractions increase both upside potential and drawdown risk.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "New trade signal generated",
+      "Current portfolio volatility > historical median"
+    ],
+    "parameters": {
+      "f": 0.05,
+      "description": "Risk 5% of capital per position"
+    },
+    "exit_conditions": [
+      "Trade stop-loss hit",
+      "Trade profit target achieved",
+      "End of period"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry conditions are specific and actionable: 'New trade signal generated' can be detected from a signal system, and 'Current portfolio volatility > historical median' can be computed from market data and compared programmatically."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, pp.285-380 (Kelly Criterion section with Figure 10-2)",
+    "raw_chunk_text": "plt.plot(c_3.mean(axis=1), 'y', label='$f=0.25$')\nplt.plot(c_4.mean(axis=1), 'm', label='$f=0.5S')\npLlt.legend(loc=0);\n@ Simulation with f = 0.05.\n@ Simulation with f = 0.25.\n\u00a9 Simulation with f =0.5.",
+    "rule_text": "Optimize position sizing through the Kelly Criterion fraction (f) parameter to balance capital growth against drawdown risk; lower f values reduce volatility and maximum drawdown, while higher f values maximize growth at the cost of larger peak-to-trough losses.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position sizing calculated as f = 0.05 of Kelly criterion recommendation",
+      "Applied to any profitable trading system with positive expected value"
+    ],
+    "parameters": {
+      "kelly_fraction": 0.05,
+      "position_size_multiplier": 0.05,
+      "max_portfolio_drawdown_tolerance": "5-10%"
+    },
+    "exit_conditions": [
+      "Exit per original system rules (unchanged by sizing rule)"
+    ],
+    "instrument": "FUTURES|STOCKS|INDICES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The entry condition specifies a concrete calculation (f = 0.05 of Kelly criterion recommendation) that can be programmatically computed and applied to any system with measurable win rate and payoff ratio parameters."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Chapter 10, pp. 274-285",
+    "raw_chunk_text": "2019-12-31 3230.78 0.002942\nThe statistical properties of the S&P 500 index over the period covered suggest an\noptimal fraction of about 4.5 to be invested in the long position in the index. In other\n",
+    "rule_text": "Dynamically adjust leverage based on the Kelly criterion, which prescribes higher leverage when expected return increases and volatility decreases.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Compute Kelly fraction: f* = (mu - r) / sigma^2",
+      "Annual return mu > risk-free rate r",
+      "Apply leverage multiplier = 0.5 * f*"
+    ],
+    "parameters": {
+      "kelly_fraction_multiplier": 0.5,
+      "mu_annualized": "mean daily return * 252",
+      "sigma_annualized": "std dev daily return * sqrt(252)",
+      "risk_free_rate_r": 0.0
+    },
+    "exit_conditions": [
+      "Rebalance quarterly or when mu/sigma ratio changes >15%",
+      "Force exit if drawdown exceeds -10% from peak"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies quantifiable mathematical formulas (Kelly fraction computation, leverage multiplier calculation) and concrete numerical thresholds (mu > r, mu/sigma ratio change >15%, drawdown <-10%) that can be directly implemented and detected from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, p.285-380",
+    "raw_chunk_text": "Optimal Leverage\nEquipped with the trading strategy\u2019s log returns data, the mean and variance values\ncan be calculated in order to derive the optimal leverage according to the Kelly crite-\nrion. The c",
+    "rule_text": "A trader should scale position size according to the Kelly criterion, which is derived from the ratio of mean return to variance of a strategy's returns.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy backtest mean return > 0",
+      "Strategy variance calculated from sufficient historical data (52+ weeks)"
+    ],
+    "parameters": {
+      "kelly_fraction": 0.25,
+      "leverage_multiplier": "0.25 * (mean / variance)"
+    },
+    "exit_conditions": [
+      "Rebalance leverage quarterly or when variance estimate changes >20%"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (backtest mean return > 0 and 52+ weeks of data) and exit conditions (quarterly rebalancing or >20% variance change) that a programmer could implement with market data and portfolio metrics."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, p.285-380",
+    "raw_chunk_text": "are feasible, even for retail traders. Figure 10-6 shows, in comparison, the perfor-\nmance of the trading strategy with transaction costs for different leverage values:\nIn [80]: to_plot = ['return', '",
+    "rule_text": "A trader should scale strategy returns by applying leverage multipliers to amplify or dampen position sizing based on risk tolerance and capital constraints.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy generates a valid trading signal",
+      "Available capital supports base position sizing"
+    ],
+    "parameters": {
+      "leverage_multiplier": 10,
+      "position_size_scalar": 1.0,
+      "max_drawdown_tolerance": "15%"
+    },
+    "exit_conditions": [
+      "Strategy exit signal triggered",
+      "Cumulative losses exceed 15% threshold"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry conditions are actionable: 'valid trading signal' can be detected from strategy logic output, and 'available capital supports base position sizing' can be verified against portfolio state, while exit conditions provide specific numerical thresholds (15% loss) and signal triggers that are programmable."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, p.292",
+    "raw_chunk_text": "col = f'{f}_lag_{lag}'\nself .data[col] = self.data[f].shift(lag)\nself.cols.append(col)\ndef on_success(self, time, bid, ask): 8 ]\ndf = pd.DataFrame({'bid': float(bid), 'ask': float(ask)},\n292 | Chapter",
+    "rule_text": "Enter a long position when a machine learning model generates a buy signal and current position is flat or short.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "ML model.predict(features) == 1",
+      "current_position in [0, -1]",
+      "data_length >= 50_bars",
+      "signal_consistency: last_2_signals == 1"
+    ],
+    "parameters": {
+      "min_data_history": 50,
+      "signal_confirmation_bars": 2,
+      "lag_lookback_periods": 5
+    },
+    "exit_conditions": [
+      "model.predict(features) != 1",
+      "stop_loss at entry_price - 2_ATR"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are specific and actionable: ML model output can be coded, position state is quantifiable, bar count is measurable, signal consistency is verifiable, and stop loss placement is calculable from ATR."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, p.285-380",
+    "raw_chunk_text": "Logger_monitor('NUMBER OF TICKS: {} | '.format(self.ticks) +\n\"NUMBER OF BARS: {}'.format(seLf.min_length))\nself.min_length += 1\nself.data['mid'] = (self.data['bid'] + self.data['ask']) / 2\nself .prepa",
+    "rule_text": "Enter a long position when a machine learning model generates a buy signal (signal == 1) and the current position is either flat (0) or short (-1), scaling position size by the distance from target exposure.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "ML model signal == 1",
+      "Current position in [0, -1]",
+      "Mid-price above 20-period SMA",
+      "Signal strength (model confidence) >= 0.75"
+    ],
+    "parameters": {
+      "position_scale_factor": 0.5,
+      "min_signal_confidence": 0.75,
+      "confirmation_bars": 2
+    },
+    "exit_conditions": [
+      "Model signal flips to -1",
+      "Stop loss at entry - 2 * ATR",
+      "Take profit at entry + 3 * ATR"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are specific and actionable: ML model signal values (0, 1, -1), position states, price comparison to 20-period SMA, confidence thresholds (\u22650.75), and ATR-based stop/profit levels can all be programmatically detected and coded."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_2_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.1, p.21-36",
+    "raw_chunk_text": "(discussed earlier) of focusing on Python for algorithmic trading.\u2019\nThe remainder of this chapter gives a quick overview of the four trading strategies\nused in this book.\nSimple Moving Averages\nThe fi",
+    "rule_text": "A trader should initiate a long position when a shorter-term SMA exceeds a longer-term SMA, and initiate a neutral or short position when the opposite occurs.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "SMA(50) > SMA(200)",
+      "Price closes above both moving averages",
+      "Crossover confirmed by volume"
+    ],
+    "parameters": {
+      "short_term_sma_period": 50,
+      "long_term_sma_period": 200,
+      "confirmation_bars": 2
+    },
+    "exit_conditions": [
+      "SMA(50) crosses below SMA(200)",
+      "Price closes below the shorter SMA"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are specific, quantifiable technical indicators (SMA crossovers and price levels) that can be programmatically detected from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_2_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 1, pp. 21-36",
+    "raw_chunk_text": "to perform in accordance with its recent performance for some additional time. For\nexample, when a stock index has seen a negative return on average over the last five\ndays, it is assumed that its per",
+    "rule_text": "A financial instrument that deviates significantly from its mean or trend level should be traded with the expectation that it will revert to that mean level.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price deviates 2.0 standard deviations below the 200-day SMA",
+      "Deviation has persisted for at least 5 trading days",
+      "Volume on down days exceeds 20-day average volume"
+    ],
+    "parameters": {
+      "lookback_period_days": 200,
+      "deviation_threshold_std": 2.0,
+      "min_persistence_days": 5,
+      "volume_confirmation_multiplier": 1.0
+    },
+    "exit_conditions": [
+      "Price closes at or above the 200-day SMA",
+      "Stop loss if price falls 2.5 standard deviations below SMA"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "CODE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are quantifiable and can be programmatically detected using price, SMA, standard deviation, volume, and time-based data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.4, p.101-142",
+    "raw_chunk_text": "old. SMAs are a major tool in the so-called technical analysis of stock prices. A\nsignal is derived, for example, when an SMA defined on a shorter time window\u2014\nsay 42 days\u2014crosses an SMA defined on a ",
+    "rule_text": "A trader should enter a position based on the directional persistence of recent price trends, using moving average crossovers as a signal generator and adjusting position direction according to momentum direction.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Short-term SMA (50-day) crosses above long-term SMA (200-day)",
+      "Price has been in uptrend for at least 20 consecutive days",
+      "Volume confirmation on crossover day"
+    ],
+    "parameters": {
+      "short_window_days": 50,
+      "long_window_days": 200,
+      "trend_confirmation_days": 20,
+      "position_size_pct": 1.0
+    },
+    "exit_conditions": [
+      "Short-term SMA crosses below long-term SMA",
+      "Stop-loss at 2% below entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (50-day SMA crossing above 200-day SMA, 20 consecutive days of uptrend, volume confirmation) and exit conditions (SMA crossover below, 2% stop-loss) that can be programmatically detected from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.4, pp.101-142",
+    "raw_chunk_text": "ical computing world of Python, pandas allows vectorization over\ntime series data. This is really helpful for the implementation of\nfinancial algorithms and the backtesting of algorithmic trading\nstra",
+    "rule_text": "A trader should generate buy and sell signals based on crossovers between short-term and long-term simple moving averages of price data.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Short-period SMA (50-day) crosses above long-period SMA (200-day)",
+      "Price is above both moving averages"
+    ],
+    "parameters": {
+      "short_ma_period": 50,
+      "long_ma_period": 200,
+      "confirmation_bars": 1
+    },
+    "exit_conditions": [
+      "Short-period SMA crosses below long-period SMA",
+      "Close below short-period SMA"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All conditions are specific and quantifiable: SMA crossovers and price relationships can be directly computed from historical price data and detected programmatically."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101-142",
+    "raw_chunk_text": "The term \u201ctechnical analysis\u201d is a general heading for a myriad of trading techni-\nques....In this paper, we explore two of the simplest and most popular technical rules:\nmoving average-oscillator and",
+    "rule_text": "Generate buy and sell signals by crossing two simple moving averages of different periods (short-period crossing long-period moving average)",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "short_sma (50-day) crosses above long_sma (200-day)",
+      "price closes above both moving averages"
+    ],
+    "parameters": {
+      "short_period_days": 50,
+      "long_period_days": 200,
+      "confirmation_bars": 1
+    },
+    "exit_conditions": [
+      "short_sma (50-day) crosses below long_sma (200-day)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry conditions are specific and mathematically computable from price data: SMA crossover and price level comparisons can be programmatically detected."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101\u2013142",
+    "raw_chunk_text": "\u00a9 Prints the final five rows of the data set.\nA visualization of the original time series data in combination with the SMAs best\nillustrates the results (see Figure 4-1):\nIn [45]: %matplotlib inline\nf",
+    "rule_text": "Generate trading signals by comparing the relationship between a shorter-period and longer-period Simple Moving Average; go long when the shorter SMA crosses above the longer SMA, and go short when it crosses below.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "SMA_short > SMA_long + (0.002 * SMA_long) for long entry",
+      "SMA_short < SMA_long - (0.002 * SMA_long) for short entry"
+    ],
+    "parameters": {
+      "sma_short_period": 42,
+      "sma_long_period": 252,
+      "entry_buffer_pct": 0.002
+    },
+    "exit_conditions": [
+      "Close position when SMA_short crosses below SMA_long (long exit)",
+      "Close position when SMA_short crosses above SMA_long (short exit)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions comparing two SMAs with a 0.2% threshold and clear exit conditions based on SMA crossovers that a programmer can directly implement."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, p. 98",
+    "raw_chunk_text": "momentum strategies. Selecting from a larger pool of instruments, these strategies\nbuy those instruments that have recently outperformed relative to their peers (or a\nbenchmark) and sell those instrum",
+    "rule_text": "Buy instruments that have recently outperformed their peers and sell those that have underperformed, betting that relative momentum persists over a future period.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Instrument ranks in top 30% of peer group by recent returns",
+      "Lookback period for performance ranking: 252 days (1 year)",
+      "Equal-weight long and short positions across selected instruments"
+    ],
+    "parameters": {
+      "lookback_days": 252,
+      "holding_period_days": 126,
+      "percentile_threshold_long": 70,
+      "percentile_threshold_short": 30,
+      "rebalance_frequency_days": 63
+    },
+    "exit_conditions": [
+      "Exit after holding period elapses (126 days)",
+      "Rebalance portfolio quarterly based on updated rankings"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (top 30% ranking by 252-day returns) and exit conditions (126-day holding period with quarterly rebalancing) that a programmer could implement using historical price data and ranking logic."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101-142",
+    "raw_chunk_text": "This paper documents that strategies which buy stocks that have performed well in the\npast and sell stocks that have performed poorly in the past generate significant positive\nreturns over 3- to 12-mo",
+    "rule_text": "Buy instruments with positive recent returns and sell instruments with negative recent returns over a 3- to 12-month time horizon to capture time series momentum.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Instrument return over past 12 months > 0 (BUY signal)",
+      "Instrument return over past 12 months < 0 (SELL signal)",
+      "Position sizing capped at 2% per instrument"
+    ],
+    "parameters": {
+      "lookback_period_months": 12,
+      "min_holding_period_months": 12,
+      "max_holding_period_months": 12,
+      "position_size_pct": 2
+    },
+    "exit_conditions": [
+      "Exit at end of 12-month holding period",
+      "Exit if instrument reverses sign during holding period"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (12-month return comparison to zero) and clear exit rules that can be programmed and detected from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101-102",
+    "raw_chunk_text": "0.6\nFigure 4-9. Gross performance of gold price (USD) and momentum strategy (last two\nreturns)\nStrategies Based on Momentum =| 101\nTime series momentum might be expected intraday, as well. Actually, o",
+    "rule_text": "A trader should apply time series momentum strategies using different lookback periods on intraday data, as momentum signals vary in strength across different time horizons and can outperform a buy-and-hold approach.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Sum of last N intraday returns is positive",
+      "Current price is above simple moving average of lookback period",
+      "At least 2 consecutive positive returns in lookback window"
+    ],
+    "parameters": {
+      "lookback_periods": 9,
+      "minimum_positive_returns_in_window": 2,
+      "position_hold_bars": 3
+    },
+    "exit_conditions": [
+      "Exit on first negative return after entry",
+      "Exit after 3 bars regardless of signal",
+      "Exit if momentum crosses below zero"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "CODE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are specific and quantifiable (sum of returns, price vs SMA, consecutive positive returns, negative returns, bar counts, momentum crossover) that can be programmatically detected from intraday market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.4, pp.101-142 (Momentum Backtesting Results)",
+    "raw_chunk_text": "Out[95]: (10749.4, -2652.93)\nIn [96]: mombt.plot_results()\nImports the module as Mom\n2 ) Instantiates an object of the backtesting class defining the starting capital to be\n10,000 USD and the proporti",
+    "rule_text": "A momentum strategy's profitability depends critically on transaction costs; when transaction costs exceed the strategy's gross alpha, the strategy ceases to be viable.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Momentum signal present (3-day lookback window)",
+      "Proportional transaction costs <= 0.002% per trade",
+      "Expected gross strategy alpha >= 0.05% per trade"
+    ],
+    "parameters": {
+      "max_transaction_cost_ratio": 0.002,
+      "momentum_lookback_window": 3,
+      "minimum_alpha_threshold": 0.0005
+    },
+    "exit_conditions": [
+      "Transaction costs rise above 0.002%",
+      "Gross alpha falls below 0.05%"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are quantifiable (transaction costs threshold of 0.002%, alpha threshold of 0.05%, momentum signal with 3-day lookback) and can be programmatically detected from market data and strategy metrics."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 106 (Strategies Based on Mean Reversion section)",
+    "raw_chunk_text": "XAU= | TC = 0.0010\n\u2014\u2014 creturns\n\u2014\u2014 cstrategy\n16000\n14000\n12000\ni a Wy :\n{ 4\n10000 ya\n8000\nqy> oe o>\u201d 4\u201d qy> ne\u201d ay* ao\" no a av\nFigure 4-13. Gross performance of the gold price (USD) and the momentum s",
+    "rule_text": "A trader should short an instrument that has appreciated significantly above its trend (performed 'too well') and buy one that has underperformed, betting on reversion to the mean rather than continuation.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Instrument return exceeds 20-day moving average return by +2.0 standard deviations \u2192 SHORT",
+      "Instrument return falls below 20-day moving average return by -2.0 standard deviations \u2192 BUY"
+    ],
+    "parameters": {
+      "trend_lookback_days": 20,
+      "reversion_threshold_stddev": 2.0,
+      "position_size_pct": 0.02
+    },
+    "exit_conditions": [
+      "Exit when price returns within 0.5 standard deviations of trend",
+      "Exit after 10 trading days regardless of P&L"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry conditions specify quantifiable thresholds (\u00b12.0 standard deviations from 20-day moving average return) and exit conditions define measurable price levels (\u00b10.5 standard deviations) or time-based triggers (10 trading days) that can be programmatically detected from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101-142",
+    "raw_chunk_text": "strategies assume a negative correlation. Balvers et al. (2000) write:\nMean reversion refers to a tendency of asset prices to return to a trend path.\nWorking with a simple moving average (SMA) as a pr",
+    "rule_text": "Enter a mean reversion trade when the current price deviates from its moving average trend by a threshold distance, with position direction opposite to the deviation direction.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Current price < SMA - (2.0 \u00d7 standard_deviation) \u2192 LONG",
+      "Current price > SMA + (2.0 \u00d7 standard_deviation) \u2192 SHORT"
+    ],
+    "parameters": {
+      "threshold_std_dev_multiplier": 2.0,
+      "sma_period": 50,
+      "lookback_period_for_std_dev": 20
+    },
+    "exit_conditions": [
+      "Price crosses back through SMA",
+      "Position reaches 2% profit target",
+      "Stop loss hit at 3% below entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "MEAN_REVERTING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "CODE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (price deviation from SMA by 2.0 standard deviations) and clear exit rules that a programmer could implement as executable code against market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101-142",
+    "raw_chunk_text": "Figure 4-16. Gross performance of the GDX ETF and the mean-reversion strategy (SMA =\n25, threshold = 3.5)\nGeneralizing the Approach\nAs before, the vectorized backtesting is more efficient to implement",
+    "rule_text": "Enter mean-reversion trades when price deviates from a moving average by a threshold multiple of standard deviation; use a simple moving average period and deviation threshold as calibrated parameters.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price closes above SMA + (threshold \u00d7 standard_deviation)",
+      "OR Price closes below SMA - (threshold \u00d7 standard_deviation)"
+    ],
+    "parameters": {
+      "SMA_period": 50,
+      "deviation_threshold": 5.0,
+      "transaction_cost_pct": 0.1
+    },
+    "exit_conditions": [
+      "Price returns to SMA",
+      "OR stop-loss triggered at entry \u00b1 (2 \u00d7 threshold multiple)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies quantifiable entry conditions (price deviations from SMA by standard deviation multiples) and clear exit conditions that can be directly coded and backtested with market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 4, pp. 101-142",
+    "raw_chunk_text": "Overfitting is when a model describes noise rather than signal. The model may have\ngood performance on the data on which it was tested, but little or no predictive power\non new data in the future. Ove",
+    "rule_text": "A trader should limit the number of parameter combinations tested during backtesting to avoid overfitting, which causes good historical performance but poor future results.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Parameter combinations tested \u2264 50",
+      "Use only pre-defined parameter ranges based on theory, not data mining",
+      "Validate on out-of-sample data equal to 50% of backtest period"
+    ],
+    "parameters": {
+      "max_parameter_combinations": 50,
+      "out_of_sample_validation_ratio": 0.5,
+      "parameter_selection_method": "theory_based_only"
+    },
+    "exit_conditions": [
+      "Stop optimization if out-of-sample performance degrades >20% vs in-sample"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions contain specific, actionable thresholds (\u226450 parameter combinations, 50% out-of-sample validation) and the exit condition specifies a measurable performance degradation metric (>20%) that can be programmatically detected and enforced."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_6_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 5, pp. 143-193",
+    "raw_chunk_text": "and proportional transaction costs, it allows the in-sample fitting of the linear regres-\nsion model and the out-of-sample evaluation. This means that the regression model is\nfitted based on one part ",
+    "rule_text": "Validate strategy performance by training models on historical data and evaluating on held-out out-of-sample periods to avoid data snooping and overfitting bias.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Regression model fitted on earliest 50% of historical data",
+      "Strategy evaluated on most recent 30% of data (non-overlapping)"
+    ],
+    "parameters": {
+      "training_period_pct": 0.5,
+      "out_of_sample_period_pct": 0.3,
+      "gap_between_train_test_pct": 0.0,
+      "minimum_oos_observations": 252
+    },
+    "exit_conditions": [
+      "Reject strategy if out-of-sample Sharpe ratio < 0.5",
+      "Reject if out-of-sample performance deteriorates >40% vs in-sample"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies concrete, actionable entry conditions (model training on earliest 50% of data, evaluation on most recent 30%) and quantifiable exit thresholds (Sharpe ratio < 0.5, >40% performance deterioration) that a programmer can implement and detect from historical backtesting results."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_6_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.5, pp.143-193",
+    "raw_chunk_text": "Date\nFigure 5-17. Gross performance of GDX ETF and the logistic regression-based strategy (10\nlags, out-of-sample, with transaction costs)\nApplying sophisticated machine learning techniques to stock m",
+    "rule_text": "A trader should validate strategy performance using out-of-sample testing and realistic transaction costs to avoid overfitting illusions that mask deteriorating real-world returns.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy passes in-sample backtest with Sharpe > 1.0",
+      "Out-of-sample performance window >= 40% of total data",
+      "Out-of-sample Sharpe ratio >= 80% of in-sample Sharpe"
+    ],
+    "parameters": {
+      "out_of_sample_ratio": 0.4,
+      "transaction_cost_bps": 25,
+      "minimum_performance_retention": 0.8,
+      "slippage_bps": 10
+    },
+    "exit_conditions": [
+      "Exit strategy if out-of-sample performance falls below 80% of in-sample baseline"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions specify quantifiable thresholds (Sharpe ratios, percentage of data, percentage comparisons) that can be programmatically evaluated against backtesting results and performance metrics."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.6, pp.195-219",
+    "raw_chunk_text": "\u00a9 The current cash balance is reset to the initial amount in case another backtest\nrun has overwritten the value.\n@ This calculates the SMA values needed for the strategy implementation.\nLong-Only Bac",
+    "rule_text": "A trader should initiate a long position when price falls below a simple moving average from a market-neutral state, and exit when price returns to the moving average level.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position is market neutral",
+      "Current price <= SMA * 0.97 (3% below SMA)"
+    ],
+    "parameters": {
+      "sma_period": 50,
+      "entry_threshold_pct": -3.0,
+      "position_size": "100% of current cash"
+    },
+    "exit_conditions": [
+      "Current price >= SMA * 1.00 (returns to SMA level)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (price <= SMA * 0.97) and exit conditions (price >= SMA * 1.00) that a programmer can directly implement and detect from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 6, pp. 195\u2013219",
+    "raw_chunk_text": "If that is the case, it is checked whether the current price has returned to the SMA\nlevel or above.\nIn such a case, a sell order is placed for all units of the financial instrument.\n\u00a9 The market posi",
+    "rule_text": "Exit a long position by selling all units when price returns to or rises above a moving average level that previously triggered entry, then reset to neutral market position.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Long position is open",
+      "Current price >= SMA + 0.5% buffer"
+    ],
+    "parameters": {
+      "sma_period": 50,
+      "exit_threshold_buffer_pct": 0.5,
+      "close_requirement": "close_price"
+    },
+    "exit_conditions": [
+      "Sell 100% of position when close price >= SMA \u00d7 (1 + 0.005)",
+      "Market position set to neutral"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry and exit conditions (SMA with 0.5% buffer threshold and price comparison rules) that a programmer can directly implement in code using market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 6, pp. 195-219",
+    "raw_chunk_text": "ond, they bring to light the importance of the number of trades a certain strategy\ntriggers over time. Without transaction costs, the momentum strategy significantly\noutperforms the SMA-based strategy",
+    "rule_text": "A trader should prefer strategies with fewer trades when transaction costs are present, as high-frequency trading erodes net performance despite potentially higher gross returns.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Fast SMA crosses above Slow SMA",
+      "Position size reduced by transaction cost estimate"
+    ],
+    "parameters": {
+      "fast_sma_period": 50,
+      "slow_sma_period": 300,
+      "proportional_cost_bps": 15,
+      "fixed_cost_per_trade": 10,
+      "max_trades_per_year": 20
+    },
+    "exit_conditions": [
+      "Fast SMA crosses below Slow SMA",
+      "Stop-loss at 3% from entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, codable entry conditions (SMA crossover and position sizing adjustment) and exit conditions (SMA crossover and 3% stop-loss) that a programmer could implement from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.6, p.195-219",
+    "raw_chunk_text": "side\u201d: the number of trades triggered by a strategy. A strategy that\ndemands a higher frequency of trades has to bear higher transac-\ntion costs that easily eat up an alleged outperformance over\nanoth",
+    "rule_text": "A trader should reduce strategy frequency and trade count to minimize transaction costs that can erode outperformance gains.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy generates signal with confidence > 80th percentile",
+      "Expected outperformance > 3x estimated transaction cost"
+    ],
+    "parameters": {
+      "max_trades_per_year": 12,
+      "transaction_cost_bps": 15,
+      "min_outperformance_multiple": 3.0,
+      "signal_percentile_threshold": 80
+    },
+    "exit_conditions": [
+      "Position held minimum 30 days",
+      "Exit only on reversal signal at 75th percentile"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry conditions (confidence > 80th percentile and expected outperformance > 3x transaction cost) and exit conditions (30-day minimum hold and reversal signal at 75th percentile) are specific enough for a programmer to operationalize into code that detects triggers from market data and portfolio state."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 6, pp. 195\u2013219",
+    "raw_chunk_text": "...and the market position is set to short.\nThe second top-level condition checks for a long market position.\nIn such a case, it is further checked whether the current price is at or above the\nSMA lev",
+    "rule_text": "Close out positions when price crosses back through the Simple Moving Average in the opposite direction of the trade, using the SMA level as a dynamic exit signal.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Long position is active AND current_price <= SMA",
+      "Short position is active AND current_price >= SMA"
+    ],
+    "parameters": {
+      "sma_period": 20,
+      "exit_buffer_pct": 0.0,
+      "price_touch_threshold": "at_or_equal"
+    },
+    "exit_conditions": [
+      "Sell all units if long and price <= SMA(20)",
+      "Buy all units if short and price >= SMA(20)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry and exit conditions based on price crossovers with a 20-period Simple Moving Average that can be directly programmed and detected from market data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 6, pp. 195-219",
+    "raw_chunk_text": "performance results that shed further light on strategy characteristics. One might be\ninclined to assume that adding the flexibility to short a financial instrument yields\nbetter results. However, rea",
+    "rule_text": "A trader should implement maximum drawdown or debt limits to prevent strategy configurations from accumulating unsustainable losses, rather than assuming that added flexibility (such as shorting) will automatically improve performance.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy is live and generating trades",
+      "Running cumulative P&L is monitored"
+    ],
+    "parameters": {
+      "max_cumulative_loss_percent": -10,
+      "max_debt_limit_multiplier": 1.0,
+      "monitoring_frequency": "daily"
+    },
+    "exit_conditions": [
+      "Exit ALL positions when cumulative loss exceeds -10% of initial capital",
+      "Halt new entry signals until loss limit is reset",
+      "Prevent leverage from exceeding 1x"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (strategy is live and P&L is monitored) and quantifiable exit conditions (cumulative loss exceeds -10%, leverage limit of 1x) that a programmer can implement as code rules."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.6, p.195-219",
+    "raw_chunk_text": "might even lead to a position of debt arise, for example, in the con-\ntext of trading contracts-for-difference (CFDs). These are highly\nN\nleveraged products for which the trader only needs to put down",
+    "rule_text": "A trader should establish margin stop-out levels to automatically close leveraged positions before equity is completely wiped out, preventing debt accumulation.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trading CFD or leveraged product with leverage ratio \u2265 10x",
+      "Initial margin deposit established"
+    ],
+    "parameters": {
+      "margin_stop_out_threshold_pct": 50,
+      "equity_remaining_trigger": "0.50 \u00d7 initial_margin_required"
+    },
+    "exit_conditions": [
+      "Close entire position immediately when remaining equity \u2264 50% of required initial margin"
+    ],
+    "instrument": "CFD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, measurable entry conditions (leverage \u2265 10x and margin deposit established) and a quantifiable exit trigger (equity \u2264 50% of required initial margin) that a programmer could detect from portfolio state data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_8_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 7, pp. 221-241",
+    "raw_chunk_text": "print('\\nLong market position. ')\n# take some action (e.g., place buy order)\nelif dr['momentum'].iloc[-2] == -1.0:\nprint('\\nShort market position.')\n# take some action (e.g., place sell order)\n@ The t",
+    "rule_text": "Generate directional trading signals by calculating momentum from log returns over consecutive resampled time intervals, then take long positions when momentum is positive and short positions when momentum is negative.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "momentum calculated from log returns over 5 resampled intervals equals +1.0 for long",
+      "momentum calculated from log returns over 5 resampled intervals equals -1.0 for short",
+      "signal confirmed by prior interval also showing same direction"
+    ],
+    "parameters": {
+      "resample_interval_seconds": 5,
+      "momentum_lookback_periods": 5,
+      "signal_confirmation_periods": 2
+    },
+    "exit_conditions": [
+      "momentum reverses to opposite sign",
+      "momentum equals 0.0 (no trend)",
+      "fixed time stop after 20 bars"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "CODE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (momentum = +1.0 or -1.0 from log returns over 5 resampled intervals with prior interval confirmation) and clear exit rules that a programmer can implement as testable code logic."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_8_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.7, pp.221-241",
+    "raw_chunk_text": "signal or a change in the signal then triggers certain actions, like placing an order\nwith the broker. Note that the second but last value of the momentum column is\nused since the last value is based ",
+    "rule_text": "A trader should execute directional trades (long on positive momentum, short on negative momentum) based on momentum signal generation, using only completed data periods to avoid false signals from incomplete intervals.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Momentum value at t-2 equals +1.0 for long OR -1.0 for short",
+      "Momentum has been consistent (same sign) for at least 2 prior periods",
+      "Use third-to-last value instead of second-to-last for extra confirmation delay"
+    ],
+    "parameters": {
+      "lag_bars": 3,
+      "confirmation_periods": 2,
+      "momentum_threshold": 1.0
+    },
+    "exit_conditions": [
+      "Momentum reverses to opposite sign",
+      "Momentum reaches zero"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (momentum value equals +1.0 or -1.0, consistency check over 2 periods, use third-to-last value) and exit conditions (momentum reversal or zero) that a programmer could implement as testable rules against historical momentum data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_8_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.7, pp.209-241",
+    "raw_chunk_text": "chosen, until there is enough (resampled) data available to generate the first signal.\nSignal Generation in RealTime | 209\nHere is an intermediate example output of the online trading algorithm script",
+    "rule_text": "Generate trading signals only after sufficient resampled data has accumulated to produce a valid signal, avoiding premature entries during the data accumulation phase.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Momentum signal is not NaN",
+      "At least 10 bars of price data have been collected",
+      "Current signal value equals 1.0 (long) or -1.0 (short)"
+    ],
+    "parameters": {
+      "minimum_bars_before_signal": 10,
+      "lookback_period_bars": 10
+    },
+    "exit_conditions": [
+      "Signal flips to opposite direction (1.0 to -1.0 or vice versa)",
+      "Signal becomes NaN (data dropout)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are specific and actionable: momentum NaN status is programmatically detectable, bar count is quantifiable, and signal values (1.0, -1.0) are concrete numeric comparisons."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_9_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 8, p. 243-248",
+    "raw_chunk_text": "= 50 or 0.5%.\nWhat impact do leverage and margining have? Suppose the algorithmic trader choo-\nses a leverage ratio of 20:1, which translates into a 5% margin (= 100% / 20). This in\nturn implies that ",
+    "rule_text": "A trader should calibrate leverage ratios based on acceptable loss thresholds, because leverage amplifies both gains and losses proportionally to the margin requirement.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position sizing determined before entry",
+      "Maximum acceptable loss per trade \u2264 1% of account equity"
+    ],
+    "parameters": {
+      "leverage_ratio": "5:1",
+      "margin_requirement_percent": 20,
+      "max_loss_percent_per_trade": 1.0,
+      "position_size_multiplier": 1
+    },
+    "exit_conditions": [
+      "Exit when loss reaches -1% of account equity",
+      "Exit when leverage buffer falls below 2x remaining margin"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "UNCERTAIN"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "CODE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (position sizing before entry, maximum loss threshold of \u22641% of account equity) and exit conditions (loss reaches -1%, leverage buffer falls below 2x) that can be programmatically detected from portfolio state and trader behavior rules."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_9_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 8, pp. 243-268",
+    "raw_chunk_text": "midpoint rate between bid and ask prices), leading to a loss of 10,000 x (1.08 - 1.1) =\n-200 EUR. The relative loss now is -200 EUR / 500 EUR = -40%. If the account the\nalgorithmic trader is trading w",
+    "rule_text": "A trader must close or reduce leveraged positions when accumulated losses consume margin reserves below the regulatory minimum requirement, regardless of position conviction.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Leverage ratio established (e.g., 20:1)",
+      "Initial margin percentage defined (e.g., 5%)",
+      "Position size determined based on account equity"
+    ],
+    "parameters": {
+      "margin_requirement_buffer": 1.1,
+      "equity_threshold_multiplier": 1.1,
+      "trigger_condition": "remaining_equity <= (position_notional * initial_margin_requirement * 1.10)"
+    },
+    "exit_conditions": [
+      "Liquidate entire position when equity buffer is breached",
+      "No discretion permitted once threshold crossed"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The rule has specific, actionable entry conditions (leverage ratio, initial margin percentage, account equity) and a clear quantifiable exit trigger (equity buffer breach relative to regulatory minimum margin requirement) that a programmer could implement as automated monitoring logic."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_9_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.8, pp.243-268",
+    "raw_chunk_text": "Lambda x: x * 20).apply(np.exp).plot(figsize=(10, 6)); 1 )\n@ Multiplies the log returns by a factor of 20 according to the leverage ratio\nassumed.\nLeveraged trading does not only amplify potentials pr",
+    "rule_text": "A trader should calibrate position sizing and stop-loss orders proportionally to leverage ratio to prevent catastrophic loss of entire margin capital.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Leverage factor \u2264 2:1",
+      "Account equity >= 100% of position notional value",
+      "Stop-loss distance set at 2.5% from entry"
+    ],
+    "parameters": {
+      "leverage_ratio": 2,
+      "stop_loss_percent": 2.5,
+      "max_margin_risk_per_trade": 0.01,
+      "position_size_pct_of_equity": 0.05
+    },
+    "exit_conditions": [
+      "Exit immediately if loss reaches 2.5%",
+      "Exit if account margin utilization exceeds 25%"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry conditions (leverage ratio, account equity percentage, stop-loss distance) and exit conditions (loss percentage, margin utilization threshold) are specific, quantifiable metrics that can be programmatically detected from trading system data."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_9_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.8, p.243-268",
+    "raw_chunk_text": "The mid prices are calculated...\n...based on which the log returns are derived.\n8\n8\n8\n6\n686\n6\ne\u00b0\nThe signal (positioning) is derived based on the momentum parameter/attribute\n(via an online algorithm)",
+    "rule_text": "A trader should initiate directional positions (long or short) based on momentum signal generation from log returns, adjusting position size and direction relative to current market position to avoid redundant trades.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Momentum signal = +1 (long) derived from 50-period log return momentum",
+      "Current market position is 0 (neutral) or -1 (short)",
+      "Signal has persisted for minimum 2 consecutive periods"
+    ],
+    "parameters": {
+      "momentum_lookback_period": 50,
+      "signal_confirmation_bars": 2,
+      "position_units": "base_units * 0.5"
+    },
+    "exit_conditions": [
+      "Momentum signal flips to -1",
+      "Signal confirmation period broken (signal reverts)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies quantifiable entry conditions (momentum signal calculation, position state tracking, and a 2-period persistence check) that a programmer can implement with log return data and position records."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 10, pp. 285-380",
+    "raw_chunk_text": "A central question in algorithmic trading is how much capital to deploy to a given\nalgorithmic trading strategy given the total available capital. The answer to this ques-\ntion depends on the main goa",
+    "rule_text": "A trader should calculate and deploy only a fraction of available capital to a strategy, determined by the Kelly criterion using the strategy's statistical return characteristics, to maximize long-term wealth.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy has measurable win rate and average win/loss ratio",
+      "Historical backtest period \u2265 252 trading days",
+      "Sharpe ratio \u2265 0.5"
+    ],
+    "parameters": {
+      "kelly_fraction": 0.25,
+      "min_sample_size": 252,
+      "sharpe_threshold": 0.5
+    },
+    "exit_conditions": [
+      "Rebalance position sizing quarterly or after 50 trades, whichever first",
+      "If strategy Sharpe drops below 0.3, reduce Kelly fraction to 0.15"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, measurable entry conditions (win rate/loss ratio calculable, backtest period \u2265252 days, Sharpe\u22650.5) and quantifiable exit triggers (quarterly rebalance, Sharpe<0.3 threshold) that can be programmatically detected from historical data and portfolio metrics."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, p.285-380",
+    "raw_chunk_text": "Kelly Criterion in Binomial Setting\nThe common way of introducing the theory of the Kelly criterion to investing is on\nthe basis of a coin tossing game or, more generally, a binomial setting (only two",
+    "rule_text": "A trader should size positions according to the Kelly criterion when trading in a favorable probability scenario where win probability exceeds 50%.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Estimated win probability p > 0.55",
+      "Edge is statistically significant at 95% confidence"
+    ],
+    "parameters": {
+      "kelly_fraction": 0.5,
+      "probability_threshold": 0.55,
+      "win_loss_ratio": 1.0
+    },
+    "exit_conditions": [
+      "Probability estimate drops below threshold",
+      "Drawdown exceeds 15% of account"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (win probability p > 0.55 and 95% confidence statistical significance) and exit conditions (probability drops below threshold, drawdown exceeds 15%) that can be detected programmatically from trading data and account metrics."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, pp.285-380",
+    "raw_chunk_text": "Note that volatility scales with the square root of the number of trading days. Under\nthese assumptions, the daily values scale up to the yearly ones from before and one\ngets the following:\nn\ne(f) =: ",
+    "rule_text": "Allocate capital to a stock position using the Kelly-criterion-derived optimal fraction, which equals excess return divided by return variance, to maximize long-term wealth.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Expected excess return (\u03bc - r) is positive",
+      "Historical variance \u03c3\u00b2 is calculated from at least 252 trading days",
+      "Risk-free rate r is defined"
+    ],
+    "parameters": {
+      "kelly_fraction_multiplier": 0.25,
+      "position_size_formula": "f* \u00d7 0.25 = 0.25 \u00d7 (\u03bc - r) / \u03c3\u00b2",
+      "rebalance_frequency": "monthly"
+    },
+    "exit_conditions": [
+      "Rebalance when actual allocation drifts >5% from target",
+      "Exit if excess return turns negative"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "CODE",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are quantifiable from market data (positive excess return, 252-day variance calculation, defined risk-free rate) and exit conditions are objectively measurable (5% drift threshold, negative excess return), making this fully codifiable."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, pp.285-380",
+    "raw_chunk_text": "In [26]: r = 0.0 3]\nIn [27]: f = (mu - r) / sigma ** 2 (4)\nIn [28]: f @\nOut[28]: 4.585590244019818\noO Calculates the annualized return.\n2 ) Calculates the annualized volatility.\n3) Sets the risk-free ",
+    "rule_text": "A trader should dynamically adjust position size based on the Kelly criterion (optimal leverage ratio derived from return-to-volatility ratio), scaling capital up after profits and down after losses to maximize long-term wealth growth while managing ruin risk.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Calculate Kelly fraction f = (mu - r) / sigma^2",
+      "Apply position sizing multiplier = 0.5 * f",
+      "Deploy capital = initial_equity * (0.5 * f)"
+    ],
+    "parameters": {
+      "kelly_fraction_multiplier": 0.5,
+      "rebalance_frequency": "daily",
+      "minimum_capital_threshold": 0.1
+    },
+    "exit_conditions": [
+      "Rebalance daily; reduce capital after losses",
+      "Stop trading if equity drops below 10% of initial"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify explicit mathematical formulas (Kelly fraction calculation and position sizing multiplier) that can be programmed to calculate from quantifiable inputs (mean return, risk-free rate, volatility), and the exit conditions define objective portfolio thresholds (daily rebalancing, 10% equity floor)."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, pp.276-285 (Figure 10-3 and surrounding discussion)",
+    "raw_chunk_text": "ratio.\n@ Simulates the Kelly criterion based strategy for half of f...\n\u00a9 ...for two thirds of f...\n\u00a9 ...and f itself.\n276 | Chapter 10: Automating Trading Operations\n14. a equity_2.29\n\u2014 equity 3.03\n\u2014 ",
+    "rule_text": "A trader should reduce leverage below the Kelly criterion optimal value to manage equity volatility and avoid erratic position evolution, even when higher leverage is theoretically optimal.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Kelly optimal leverage has been calculated from historical win rate and payoff ratio",
+      "Equity volatility under full leverage exceeds acceptable threshold"
+    ],
+    "parameters": {
+      "kelly_fraction": 0.5,
+      "leverage_multiplier": "0.5 * f_optimal",
+      "max_position_size": "50% of Kelly-optimal position"
+    },
+    "exit_conditions": [
+      "Stop loss triggered at portfolio drawdown threshold",
+      "Rebalance leverage quarterly based on updated Kelly calculation"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry conditions are actionable: Kelly criterion can be computed from historical win rate/payoff ratio, and equity volatility can be measured against a defined threshold to trigger leverage reduction."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 10, pp. 285-380",
+    "raw_chunk_text": "increase with increasing leverage. Therefore, practitioners often do not use \u201cfull\nKelly\u201d (4.6), but rather \u201chalf Kelly\u201d (2.3). In the current example, this is reduced to:\nI *\n5\u00b0 ft~23\nAgainst this ba",
+    "rule_text": "Reduce position sizing leverage below the Kelly criterion to lower drawdown risk, trading profit growth for reduced portfolio volatility.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position sizing calculation completed",
+      "Kelly criterion (f*) computed from strategy backtest"
+    ],
+    "parameters": {
+      "leverage_multiplier": 0.25,
+      "fraction_of_kelly": "0.25 * f*"
+    },
+    "exit_conditions": [
+      "Position held until strategy signal triggers exit"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete, measurable prerequisites (position sizing calculation completed and Kelly criterion computed) that a programmer could detect and trigger position sizing adjustments, even though the exit condition is dependent on an external strategy signal."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch. 10, pp. 285-380",
+    "raw_chunk_text": "superior predictor that is supposed to be less prone to overfitting (see \u201cData Snoop-\ning and Overfitting\u201d on page 111). As the base classifier, a decision tree classification\nalgorithm from scikit-le",
+    "rule_text": "A trader should deploy capital in a trading strategy when the model's hit ratio (win rate) significantly exceeds 50%, indicating a statistical edge consistent with positive Kelly criterion expectancy.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Model hit ratio (accuracy) >= 60% on out-of-sample test data",
+      "Hit ratio margin above 50% >= 10 percentage points",
+      "Sequential train-test split validation confirms edge holds"
+    ],
+    "parameters": {
+      "hit_ratio_threshold": 0.6,
+      "minimum_edge_margin": 0.1,
+      "kelly_fraction": 0.25
+    },
+    "exit_conditions": [
+      "Rolling hit ratio drops below 55% over recent trades",
+      "Out-of-sample performance degrades >5% from baseline"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry conditions specify measurable quantitative thresholds (>=60% accuracy, >=10 percentage point margin, sequential validation) and exit conditions reference specific performance metrics (55% rolling threshold, >5% degradation) that a programmer can implement as automated checks."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, pp.285-380",
+    "raw_chunk_text": "In [78]: mean / var 4)\nOut[78]: return -150.884961\nstrategy_tc 114.687875\ndtype: float64\nIn [79]: mean / var * 0.5 C5)\nOut[79]: return -75.442481\nstrategy_tc 57.343938\ndtype: float64\nAnnualized mean r",
+    "rule_text": "Apply fractional Kelly criterion leverage to position sizing based on strategy risk-return profile, scaling down from full Kelly to reduce drawdown risk while maintaining growth potential.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Mean return / variance ratio is positive",
+      "Strategy has documented edge with positive expectancy",
+      "Volatility regime is not extreme (< 95th percentile)"
+    ],
+    "parameters": {
+      "kelly_fraction": 0.25,
+      "leverage_multiplier": "mean_return / variance * 0.25",
+      "max_position_size": "Account_equity * leverage_output"
+    },
+    "exit_conditions": [
+      "Cumulative drawdown exceeds 10% of peak equity",
+      "Volatility regime shifts to extreme levels"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "CODE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, measurable entry conditions (mean return/variance ratio sign, documented positive expectancy, volatility percentile threshold) and quantifiable exit conditions (10% drawdown level, volatility regime shift) that a programmer can implement with market data and portfolio metrics."
+  },
+  {
+    "signal_id": "HILPISCH_DRY_11_0",
+    "book_id": "HILPISCH",
+    "source_citation": "Python for Finance, Yves Hilpisch, Ch.10, pp.285-380 (algorithmic trading logic)",
+    "raw_chunk_text": "if self.position in [0, -1] and signal == 1: 9 )\nprint('*** GOING LONG ***')\nself.create_order(self.stream_instrument,\nunits=(1 - self.position) * self.units)\nself.position = 1\nelif self.position in [",
+    "rule_text": "A trader should reverse position direction when a machine learning signal changes polarity, adjusting order size based on current position state to achieve the target directional exposure.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Current position in [0, -1] AND signal == 1 (long signal)",
+      "Current position in [0, 1] AND signal == -1 (short signal)",
+      "Require signal confirmation: signal must persist for 2+ consecutive bars"
+    ],
+    "parameters": {
+      "base_units": 1,
+      "signal_confirmation_bars": 2,
+      "position_reversal_logic": "full_exit_then_reentry"
+    },
+    "exit_conditions": [
+      "Reverse signal generated (signal flips to opposite polarity)",
+      "Stop loss: unrealized loss exceeds 2% of position notional"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "CODE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (position ranges combined with signal values and 2+ bar confirmation) and clear exit triggers (signal reversal and 2% stop loss) that can be programmatically detected from market data and portfolio state."
+  }
+]

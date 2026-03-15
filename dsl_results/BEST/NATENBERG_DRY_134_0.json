@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_134_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-leg volatility strategy analysis across different expirations with term structure comparisons (implied vs. historical volatility across tenors). The allowed indicators do not include: (1) implied volatility (IV) by expiration tenor, (2) historical volatility by expiration tenor, (3) term structure spread calculations, (4) multi-leg position construction/evaluation, or (5) volatility term structure curve analysis. This is a derivatives volatility strategy that cannot be expressed using equity price-based technical indicators alone. The signal fundamentally requires options market data (IV curves, skew, term structure) which is outside the scope of the provided indicator set.",
+  "translation_notes": "Signal ID NATENBERG_DRY_134_0 references Natenberg's volatility framework requiring comparative analysis of implied vs. historical volatility across short-term (42 DTE) and long-term (95 DTE) expirations. Available indicators (hvol_20, india_vix) are insufficient for this multi-expiration, multi-tenor term structure analysis. Would require custom indicators: iv_short_term, iv_long_term, hv_short_term, hv_long_term, term_structure_slope."
+}

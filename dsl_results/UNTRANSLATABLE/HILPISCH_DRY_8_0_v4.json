@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'momentum' indicator which is not in the allowed list. Used MACD histogram as closest momentum proxy, but cannot directly implement: (1) dynamic threshold requirement [THRESHOLD_NEEDED], (2) consistency check for 'at least N prior periods with same sign' without array indexing or lookback functions, (3) explicit use of 'second but last value' which requires shift/lag function not supported by operator set. The lag_bars parameter and label_parametrization='right' suggest a custom momentum calculation not available in standard indicators.",
+  "translation_notes": "HILPISCH_DRY_8_0 references a custom momentum indicator from the source material. Substituted MACD histogram as a momentum-like alternative, but this is a workaround. The core signal logic (directional trades on momentum sign, consistency check, use of lag-2 values) cannot be fully replicated without: (a) a 'momentum' indicator, (b) array/history access beyond prev_* values, or (c) a 'lookback_n_periods_same_sign' function. Recommend sourcing the exact momentum calculation formula from the original source to implement correctly."
+}

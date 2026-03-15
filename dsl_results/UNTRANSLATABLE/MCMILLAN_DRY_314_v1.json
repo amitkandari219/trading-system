@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_314",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires calendar-based entry conditions (February or March) and inter-contract spread analysis (July vs September soybean futures differential). The backtest engine indicators do not support: (1) calendar/month-based filtering, (2) multi-leg futures spread pricing or differential tracking, or (3) contract-month arbitrage mechanics. The signal also references AUTHOR_SILENT exit conditions with no explicit reversal target provided in standard price terms. A proper implementation requires contract-aware spread analytics beyond single-series price indicators.",
+  "translation_notes": "Attempted proxy: entry conditions assume July contract at ~600 cents and September at ~606 cents (6-cent differential), with exit when July reaches 706+ cents (100-cent reversal). However, this cannot properly replicate the calendar-month gating and spread-tracking logic essential to this strategy. Recommend: (1) implement calendar filters in backtest engine, (2) add multi-leg spread indicators, (3) clarify exit condition from original source."
+}

@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses 'central pivot' which maps to the standard pivot indicator. Entry conditions require price to break above the pivot level, signifying bullish breakout. Opening price above pivot and close above previous day's range high confirm the breakout strength. Exit condition uses reversal below pivot as the author did not specify exit criteria (AUTHOR_SILENT)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal uses 'central pivot' which maps to the standard pivot indicator. Entry conditions require price to break above the pivot level, signifying bullish breakout. Opening price above pivot and close above previous day's range high confirm the breakout strength. Exit condition uses reversal below pivot as the author did not specify exit criteria (AUTHOR_SILENT)."
+  },
+  "source_rule_text": "Buy when price moves above the central pivot, signifying bullishness and strength of positive sentiment."
+}

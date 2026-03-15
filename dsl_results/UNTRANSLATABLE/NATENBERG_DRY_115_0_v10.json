@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_115_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires delta, moneyness, and early exercise probability calculations which are options-specific metrics not available in the standard equity indicator set. hvol_20 vs india_vix used as proxy for IV vs HV comparison, and price_pos_20 as proxy for deep ITM positioning, but true delta and early exercise modeling cannot be accurately represented.",
+  "translation_notes": "Original signal is based on options delta and volatility regime analysis. Mapped 'IV lower than HV' to hvol_20 > india_vix and 'deep ITM' to price_pos_20 >= 0.75 (upper quartile). Exit on IV rise mapped to hvol_20 < india_vix. This is a lossy translation\u2014the signal's core logic around delta-adjusted moneyness and early exercise probability cannot be fully captured without options Greeks."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'confirmation_bars' (N consecutive closes beyond breakout level) which cannot be expressed with single-bar indicator comparisons. The backtest engine would need multi-bar lookback logic or a custom 'consecutive_closes' indicator not in the allowed list. Additionally, 'lookback_period' parameter is referenced but not quantified in the signal.",
+  "translation_notes": "Interpreted pattern breakout using Donchian Channel extremes (dc_upper/dc_lower) as resistance/support proxies. Volume confirmation mapped to vol_ratio_20 > 1.5x baseline. Reversal exits use opposing Donchian levels. However, the core requirement (N consecutive confirmation closes) is untranslatable with allowed operators. Recommend implementing a custom 'consecutive_closes_beyond_level' indicator or using a rolling confirmation counter in backtest logic."
+}

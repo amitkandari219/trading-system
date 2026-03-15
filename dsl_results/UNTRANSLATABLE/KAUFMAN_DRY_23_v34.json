@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_23",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'no opportunity occurred within 5 days' \u2014 a stateful condition requiring comparison against prior entry signals over a 5-day lookback window. This is not expressible as a simple price/indicator condition. The rule depends on the state of previous signal evaluations, not direct market data or standard technical indicators.",
+  "translation_notes": "KAUFMAN_DRY_23 is a time-based fallback entry rule that forces entry on day 5 if prior conditions have not triggered. The core logic ('no opportunity in 5 days') cannot be encoded without: (1) a signal history state variable, or (2) indicator logic tracking prior entry signals. Standard indicator comparison operators cannot express this requirement. Recommend implementing as a separate state machine layer or counter-based rule in the backtest engine."
+}

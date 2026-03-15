@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_87",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Calendar spread is an options strategy (sell near-term option, buy far-term option at same strike). This requires option-chain data (expirations, implied volatility, time decay) and derivatives pricing logic, not available in the provided price/technical indicator set. The signal cannot be expressed using only OHLCV and technical indicators.",
+  "translation_notes": "MCMILLAN_DRY_87 describes a horizontal/calendar time spread strategy. Entry requires: (1) identification of near-term and far-term option expirations, (2) matching strike prices, (3) simultaneous execution of sell/buy. Exit is triggered by near-term expiration. These conditions require options market data (Greeks, time value, volatility surface) beyond the scope of standard price-based backtest indicators. A proper implementation would need an options-aware engine with greeks calculation and time decay modeling."
+}

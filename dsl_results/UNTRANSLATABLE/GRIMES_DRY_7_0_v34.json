@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of MACD histogram sign consistency across bars (current histogram same sign as prior bar) and detection of hidden divergence (MACD line trending with price). The allowed operators do not support sign comparison or divergence detection logic. Additionally, Bollinger Band standard deviation parameter is not specified in the signal ([THRESHOLD_NEEDED]), and prior_macd_hist is not in the ALLOWED INDICATORS list\u2014only prev_close, prev_high, prev_low, prev_open, prev_volume are permitted for prior bar references.",
+  "translation_notes": "Entry condition for bar close only (entry_timing: close_only) is noted but cannot be enforced in the rule engine with current operators. The no-divergence requirement and MACD trend confirmation are qualitative conditions that require custom logic beyond the structured rule format. Recommend setting bb_standard_deviations to 2.0 as industry standard if implementing manually."
+}

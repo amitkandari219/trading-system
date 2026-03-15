@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking cumulative volume imbalance (buy vs. sell side), dollar imbalance magnitude, and multi-tick run persistence without explicit reversal. These require order flow decomposition (cumulative buy/sell volume) and sequential tick state tracking that are not available in the allowed indicator set. The signal also references undefined threshold parameters (THRESHOLD_NEEDED) that must be calibrated via walk-forward analysis, not static values.",
+  "translation_notes": "This is an event-driven, volume-imbalance bar sampling rule that cannot be fully expressed with price-based or aggregate volume indicators alone. It fundamentally requires: (1) signed volume (buy vs sell side separation), (2) cumulative state tracking across ticks, and (3) dynamic threshold calibration. A partial proxy using vol_ratio_20 or hvol_20 would lose the directional imbalance and reversal logic essential to the rule."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "HARRIS_DRY_14_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires bid/ask spread data and spread percentile ranking, which are not available in the allowed indicators list. The core logic depends on: (1) calculating current spread width relative to historical percentiles, (2) comparing spreads across a lookback period, and (3) dynamically scaling position size inversely to spread ratio. None of these market microstructure metrics (bid/ask spread, spread percentile, dealer profitability thresholds) are provided in ALLOWED_INDICATORS. This is a regime/context rule that modulates position sizing based on liquidity conditions, not a directional entry/exit signal translatable to price-based technical indicators.",
+  "translation_notes": "This signal is fundamentally about order submission strategy and position sizing based on market microstructure (spread width), not directional trading. It requires real-time bid/ask data and historical spread percentiles that fall outside technical price/volume indicators. The entry conditions state 'Any market condition where order submission is warranted by directional thesis' \u2014 meaning directional entry is separate and determined elsewhere. The spread assessment acts as a position scaling multiplier, not a binary trade signal. Recommend: (1) implement spread monitoring in a separate liquidity module, (2) use ATR or bb_bandwidth as proxies for volatility/liquidity if spread data unavailable, or (3) classify this as a position management rule rather than a backtest entry/exit condition."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_132_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires dynamic weighting of volatility based on time-to-expiration (options Greeks concept), which cannot be expressed using only price/technical indicators. The backtest engine lacks: (1) time-to-expiration input, (2) multi-period volatility decomposition capability, (3) dynamic weight adjustment functions, and (4) mean reversion regime detection. The signal requires parameterized lookback periods, weighted volatility composites, and deviation tracking that are beyond standard technical indicator capabilities.",
+  "translation_notes": "NATENBERG_DRY_132_0 is a volatility weighting framework for options pricing rather than a discrete trading signal. It requires: lookback_period, long_term_mean_weight, recent_vol_weight, short_dated_threshold, deviation_threshold_std_dev, consecutive_days_threshold, and weight_adjustment_amount\u2014all marked as [THRESHOLD_NEEDED]. A proper implementation would require: (a) separate historical volatility curves at different tenors, (b) explicit time-to-expiration input, (c) weight calculation engine, and (d) mean reversion detection. Provided placeholder uses hvol_20 as proxy for recent volatility only, but cannot capture the inverse weighting mechanism or mean reversion logic described in the rule."
+}

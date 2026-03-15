@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'tight consolidation for N bars near recent swing high' and 'consolidation range is N ATR' \u2014 these require multi-bar pattern recognition and relative range comparisons that cannot be expressed as single-bar indicator conditions. The 'dulling signal' (price moves N in M bars) requires lookback window aggregation not available in the allowed operators. Multiple THRESHOLD_NEEDED parameters lack concrete values. Consolidation detection and relative volatility contraction require pattern-matching beyond point-in-time indicator comparisons.",
+  "translation_notes": "Attempted to capture core logic: breakout (closes above Donchian upper after consolidation), volume expansion, and ATR contraction exit signal. However, the consolidation detection itself is untranslatable without multi-bar analysis. The signal is inherently pattern-based rather than indicator-threshold-based."
+}

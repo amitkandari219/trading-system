@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_110",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option expiration detection and multi-leg spread management (diagonal to bull spread conversion). This is a structural trade management rule involving specific options expirations and strike rollovers that cannot be expressed using only price/technical indicators. Requires option chain state tracking and position management logic outside standard backtesting conditions.",
+  "translation_notes": "The core logic captures the price condition (stock below 35 at April expiration), but the signal's true mechanics\u2014detecting front-month call expiration, closing the diagonal spread, and establishing a new bull call spread by selling July 35 against July 30\u2014require options-specific logic (expiration calendar, multi-leg position handling) not available in the allowed indicator set. A full implementation would need dedicated options backtesting framework with spread management capabilities."
+}

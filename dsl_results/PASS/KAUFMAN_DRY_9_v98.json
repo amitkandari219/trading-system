@@ -1,0 +1,108 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_40"
+      },
+      {
+        "left": "sma_40",
+        "operator": "crosses_above",
+        "right": "sma_80"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_40"
+      },
+      {
+        "left": "sma_40",
+        "operator": "crosses_below",
+        "right": "sma_80"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_40"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_40"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "3-crossover method: Entry requires 20-day MA to cross above/below 40-day MA AND 40-day MA to cross above/below 80-day MA. Exit on reversal of the 20-40 crossover. Direction is context-dependent (long on uptrend, short on downtrend). Parameters mapped to allowed SMA indicators: sma_20, sma_40, sma_80."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_40"
+      },
+      {
+        "indicator": "sma_40",
+        "op": "crosses_above",
+        "value": "sma_80"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_40"
+      },
+      {
+        "indicator": "sma_40",
+        "op": "crosses_below",
+        "value": "sma_80"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_40"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_40"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "3-crossover method: Entry requires 20-day MA to cross above/below 40-day MA AND 40-day MA to cross above/below 80-day MA. Exit on reversal of the 20-40 crossover. Direction is context-dependent (long on uptrend, short on downtrend). Parameters mapped to allowed SMA indicators: sma_20, sma_40, sma_80."
+  },
+  "source_rule_text": "Use a 3-crossover method combining 20-day, 40-day, and 80-day moving averages for trend-following entries on Eurobunds."
+}

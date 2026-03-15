@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references 'intraday R1, R2, R3' resistance levels and a '[THRESHOLD_NEEDED]' moving average period which are placeholder values. The allowed 'pivot' indicator set only provides r1/s1 (single level) and does not support intraday multiple resistance tiers (R1, R2, R3 as distinct levels). The moving average period is unspecified ('[THRESHOLD_NEEDED]' is a template variable requiring domain expertise to resolve). Translated using r1 as proxy for resistance and sma_50 as reasonable default MA, but this does not fully capture the multi-level resistance confirmation logic.",
+  "translation_notes": "Entry requires price above resistance (using r1 as proxy for intraday R1) AND above a moving average (sma_50 assumed as threshold). Exit is a reversal below the MA line. The sequential confirmation of R1\u2192R2\u2192R3 breakouts cannot be expressed without array indexing or custom bar-history logic. Original threshold MA period needs specification."
+}

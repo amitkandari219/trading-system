@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires IV-RV spread measurement, IV rank percentile, delta hedge rebalancing logic, vega exposure monitoring, and catalyst identification\u2014none of which are available in the allowed indicator set. The allowed indicators lack: (1) implied volatility data, (2) realized volatility calculation, (3) IV rank percentile, (4) option greeks (delta, vega), (5) catalyst detection mechanism. Approximated entry using hvol_20 < india_vix as a proxy for IV > RV, but this is incomplete and does not capture the full complexity of the rule.",
+  "translation_notes": "This is a volatility arbitrage / short vol strategy requiring options Greeks and IV-RV spread data. The proxies used (hvol_20 as realized vol proxy, india_vix as IV proxy, elevated VIX threshold) are crude approximations. The exit condition on IV compression and vega limits cannot be properly encoded without access to option pricing inputs and Greeks. The delta hedging / rehedging logic cannot be translated to price-only indicators. This rule requires a dedicated options backtester with volatility surface modeling."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal is a regime filter/avoidance rule rather than a tradeable entry/exit signal. Core requirement is to detect trendless/range-bound markets where directional trades should be avoided. While 'RANGING' regime can be identified, the signal explicitly instructs to AVOID trades or FADE boundaries, which requires either: (1) a volatility/whipsaw metric not in allowed indicators (whipsaw_definition references price crossing MA repeatedly but no crossing frequency/count metric available), or (2) a reversal of standard entry logic (stay away). The signal fundamentally operates as a regime filter that vetoes other signals rather than providing independent entry/exit conditions. Parameters for moving_average_type and moving_average_period are marked AUTHOR_SILENT, making specific MA selection impossible.",
+  "translation_notes": "This is a regime-based avoidance signal. To operationalize: (1) Use adx_14 < 25 as proxy for trendless markets, (2) Apply bb_bandwidth < median(bb_bandwidth, 20) for flat MA environment, or (3) Implement as a filter that blocks entry when regime == 'RANGING' rather than as standalone entry/exit rules. Author did not specify which MA period or type to use for whipsaw detection."
+}

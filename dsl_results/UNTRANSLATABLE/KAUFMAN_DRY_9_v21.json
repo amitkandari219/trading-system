@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Parameter 'n' is marked AUTHOR_SILENT with no default value specified. The exact lookback period for n-day momentum calculation cannot be determined. While returns indicator captures price change conceptually, without knowing the specific n-period lookback, this cannot be precisely implemented. Recommend: clarify the default n value (e.g., n=5, n=10, n=20) from source material or trading context.",
+  "translation_notes": "Signal uses n-day momentum (price change over n days). Mapped to 'returns' indicator as closest match for momentum direction. Entry/exit logic implemented as simple reversal on returns sign flip. Direction set to CONTEXT_DEPENDENT per signal specification. Target regime 'TRENDING' mapped from source but not a standard allowed regime; recommend TRENDING_UP or TRENDING_DOWN for backtester compatibility."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) 'horizontal' moving averages (no horizontal/flatness indicator available), (2) 'time_window_for_first_entry' logic (30-minute bar constraint cannot be expressed with available indicators), (3) 'second attempt to rise from levels near previous close' (requires pattern recognition and swing high/low matching logic not supported by indicator-based conditions), (4) 'swing lows and swing highs of two days match' (requires multi-bar pattern matching unavailable in allowed operators). The core sideways regime check can be approximated via sma_20 and sma_200 proximity, but the entry timing and pattern-based logic cannot be reliably translated.",
+  "translation_notes": "Attempted partial translation: Regime check via moving averages + lower open condition. However, critical entry logic involving 30-minute timing window and second-attempt rise pattern requires bar-time awareness and swing point tracking not available in the allowed indicator set. Recommend either: (1) adding indicators for volatility/range compression and bar-time tracking, or (2) implementing this rule outside the backtest engine with custom pattern detection."
+}

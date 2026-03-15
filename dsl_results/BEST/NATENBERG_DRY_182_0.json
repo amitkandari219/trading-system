@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_182_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires monitoring of interest rate levels and early exercise probability of American put options, which are not available in the allowed indicators list. The signal depends on: (1) external interest rate data (not in price/technical indicators), (2) American option-specific Greeks (delta, rho, early exercise probability), and (3) position management rules tied to option contract specifications. These require external macro data feeds and options analytics not present in the technical indicator set.",
+  "translation_notes": "This is a regime-based position management signal from Natenberg regarding interest rate sensitivity of long American puts. It requires: interest_rate_level, interest_rate_change, option_rho, early_exercise_probability, and position_greeks \u2014 none of which are available. The signal is fundamentally about adjusting existing positions based on macro interest rate regime, not about entry/exit based on price action or technical indicators. Backtest would require integration with interest rate data source and American option pricing model."
+}

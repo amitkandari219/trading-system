@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_35_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) volatility percentile ranking against historical distribution (not available as direct indicator), (2) volatility trend analysis (no trend indicator for volatility itself), (3) directional hedge testing at specific sigma moves (requires derivative calculation not in allowed set), (4) position sizing logic tied to risk capital allocation (portfolio-level parameter, not price-based). The core concept is volatility-based strategy selection rather than a specific entry/exit trigger. Available indicators hvol_20 and india_vix provide partial volatility signals but cannot replicate the percentile-based thresholds, trend detection, or sigma-move hedging specified.",
+  "translation_notes": "This signal is primarily a meta-strategy framework emphasizing volatility analysis as an alternative to directional trading, rather than a specific mechanical trading rule. It contains multiple thresholds marked [THRESHOLD_NEEDED] that were never specified in the source material. Attempted to represent the HIGH_VOL regime preference using hvol_20 and india_vix as proxies, but the actual implementation requires custom percentile calculations, volatility trend filters, and risk-based position sizing that fall outside the allowed indicator and operator set."
+}

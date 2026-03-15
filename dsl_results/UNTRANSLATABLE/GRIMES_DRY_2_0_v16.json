@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_2_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a portfolio-level diversification rule (maintaining two counterbalancing setups from different categories) rather than a price-action entry/exit rule. It requires: (1) meta-logic to identify and classify trade 'categories' (not defined in source), (2) position-level portfolio rebalancing logic across multiple independent setups, (3) undefined allocation_ratio and rebalance_frequency thresholds, and (4) a 'setup mastery' validation criterion. These are position management and risk allocation rules that operate at the strategy composition level, not at the bar-level indicator level. The allowed indicators and operators cannot express category classification, setup correlation detection, or portfolio-level position weighting logic.",
+  "translation_notes": "GRIMES_DRY_2_0 is a meta-rule for strategy construction and position diversification, not a tradeable technical signal. To implement this rule, the backtest engine would need: (1) separate entry/exit JSON rules for each setup category, (2) portfolio-level constraint logic to enforce minimum of 2 active setups, (3) allocation weighting logic, and (4) correlation/counterbalance metrics between setup types. Recommend translating the individual 'Primary setup' and 'Counterbalancing setup' patterns as separate signals with explicit category tags, then enforce the 2-setup minimum at the portfolio orchestration layer."
+}

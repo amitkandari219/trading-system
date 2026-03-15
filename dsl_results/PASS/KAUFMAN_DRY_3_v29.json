@@ -1,0 +1,92 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_3",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "high",
+        "operator": "==",
+        "right": "dc_upper"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal implements key reversal logic: (1) uptrend condition approximated as close > sma_20 representing n-day uptrend; (2) current day highest price of n-days mapped to high == dc_upper (Donchian channel upper band over 20 periods); (3) lower low condition as low < prev_low; (4) lower close as close < prev_close. Volatility enhancement condition omitted as 'noticeably higher' lacks numeric threshold and hvol_20 not explicitly referenced. Exit uses reversal to uptrend (close > sma_20). Parameters n and volatility_threshold marked as AUTHOR_SILENT; n approximated as 20-period lookback for Donchian channel and SMA."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "high",
+        "op": "==",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal implements key reversal logic: (1) uptrend condition approximated as close > sma_20 representing n-day uptrend; (2) current day highest price of n-days mapped to high == dc_upper (Donchian channel upper band over 20 periods); (3) lower low condition as low < prev_low; (4) lower close as close < prev_close. Volatility enhancement condition omitted as 'noticeably higher' lacks numeric threshold and hvol_20 not explicitly referenced. Exit uses reversal to uptrend (close > sma_20). Parameters n and volatility_threshold marked as AUTHOR_SILENT; n approximated as 20-period lookback for Donchian channel and SMA."
+  },
+  "source_rule_text": "Enter a key reversal trade when an uptrend exists over n-days, the current day is the highest price of n-days, a lower low has occurred, and the close is lower, with preference for entries when volatility is noticeably higher than previous days."
+}

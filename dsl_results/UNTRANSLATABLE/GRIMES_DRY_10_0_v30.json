@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) 'established multimonth uptrend' detection \u2014 no single indicator can objectively identify multimonth trend establishment without specifying lookback period; (2) 'distinct change of character' \u2014 this is qualitative and not measurable with allowed indicators; (3) 'price breaks established support level' \u2014 requires dynamic support detection not available in indicator set; (4) multiple threshold parameters marked [THRESHOLD_NEEDED] lack concrete values; (5) 'required_confirming_signals' count is unspecified. The core logic (countertrend entry in uptrend when price closes below MA with volume and RSI confirmation) is translatable, but the entry conditions lack sufficient objective criteria.",
+  "translation_notes": "Partial translation provided: SHORT entry uses close below sma_50 (proxy for MA break in uptrend), vol_ratio_20 > 1.5 (volume confirmation), and rsi_14 < 40 (oversold condition). Exit uses close back above sma_50. However, the signal's requirement for 'established uptrend' context and 'change of character' cannot be objectively coded without additional parameters or regime detection. ATR-based exits require specification of ATR multiplier values. Recommend: (1) specify exact lookback for trend confirmation, (2) define support level calculation method, (3) provide concrete threshold values for all parameters, (4) clarify 'change of character' with measurable metrics (e.g., volatility expansion, reversal bar patterns)."
+}

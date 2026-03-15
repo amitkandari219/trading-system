@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires implied volatility (IV) and realized volatility (RV) indicators that are not in the allowed indicator list. The core logic depends on: (1) IV > RV spread measurement, (2) delta-hedging validation, and (3) IV-RV spread convergence tracking. None of these can be expressed using only price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, or bar properties. The signal is fundamentally about volatility structure arbitrage, not directional price prediction.",
+  "translation_notes": "SINCLAIR_DRY_4_0 describes a volatility mean reversion strategy (short high IV, long low IV) with delta-hedging. Required indicators missing: implied_volatility, realized_volatility, delta, vega. The india_vix is available but is a market-wide index, not the asset's own IV or RV. Entry requires IV-RV spread > threshold and delta-hedged position verification. Exit requires spread narrowing and delta drift monitoring. This strategy cannot be implemented with the available indicator set."
+}

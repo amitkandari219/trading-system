@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'commercials positions' and 'other groups positions' from COT (Commitment of Traders) data. These are not in the allowed indicators list, which only supports price, technical indicators, and volume metrics. The rule fundamentally depends on institutional positioning data not available in standard OHLCV indicators.",
+  "translation_notes": "Attempted proxy translation using Stochastic oscillator as a rough representation of extreme positioning (>80 for overbought/short bias, <20 for oversold/long bias) with holding period of 3-6 months (180 days max). However, this is NOT a valid translation of the original signal, which explicitly requires COT commercials vs. other groups data. A proper backtest requires integration of actual COT positioning data."
+}

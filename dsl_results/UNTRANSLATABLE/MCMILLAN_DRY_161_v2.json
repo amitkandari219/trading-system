@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_161",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a position substitution rule, not a price-action or technical indicator-based entry/exit strategy. It requires option pricing data (moneyness, implied volatility, Greeks) and position management logic that cannot be expressed using only the allowed price/technical indicators. The rule depends on: (1) detecting existing stock positions, (2) evaluating option moneyness relative to underlying, (3) comparing risk/reward of substituting options for stock. None of these can be quantified with close, RSI, MACD, etc. The source text references interest rate and volatility positioning, which would require term structure and implied vol data not in the allowed indicator set.",
+  "translation_notes": "Signal MCMILLAN_DRY_161 is a tactical position management/substitution strategy from options trading literature. It addresses when to replace long stock with long calls (or short stock with long puts) to manage duration and volatility exposure. This is fundamentally a portfolio/options construction rule, not a directional entry/exit rule based on price patterns or technical indicators. A backtest engine using only price/technical data cannot implement this signal without significant extension to include option chain data and valuation models."
+}

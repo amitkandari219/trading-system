@@ -1,0 +1,106 @@
+{
+  "signal_id": "GUJRAL_DRY_14",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_14",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_lower"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_lower"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_upper"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_middle"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used Donchian channels (dc_upper, dc_lower, dc_middle) to represent range boundaries. Entry long when price crosses above lower boundary, entry short when price crosses below upper boundary. Exit conditions use middle line as reversal point per AUTHOR_SILENT guidance. Range duration approximated as 5 days for hold period. The signal is context-dependent: long at lower boundary, short at upper boundary."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_lower"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_upper"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_middle"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used Donchian channels (dc_upper, dc_lower, dc_middle) to represent range boundaries. Entry long when price crosses above lower boundary, entry short when price crosses below upper boundary. Exit conditions use middle line as reversal point per AUTHOR_SILENT guidance. Range duration approximated as 5 days for hold period. The signal is context-dependent: long at lower boundary, short at upper boundary."
+  },
+  "source_rule_text": "When price hits the boundary of a ranging market, go short at the top boundary and go long at the lower boundary."
+}

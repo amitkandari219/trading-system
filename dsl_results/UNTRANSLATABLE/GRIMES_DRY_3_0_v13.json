@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of 'non-climactic impulse move' and specific Fibonacci retracement levels, which are not available in the allowed indicator set. Also requires volume comparison between impulse and pullback phases (multi-bar lookback logic not expressible with simple 3-field conditions). Requires ATR offset calculation for exit which needs parameterization. Provided best-effort translation using volume ratio and RSI directional bias, but core impulse/pullback structure cannot be fully captured.",
+  "translation_notes": "Attempted to capture: (1) lighter volume during pullback via volume < prev_volume; (2) directional bias via RSI above/below 50 for long/short; (3) pullback reversal exit via close crossing previous bar extremes. Missing: explicit impulse detection, Fibonacci level thresholds, ATR-based profit target calculation, and multi-bar volume comparison logic. Signal author should define specific Fibonacci levels (e.g., 0.382, 0.618) and volume thresholds (e.g., vol_ratio_20 < 0.8) to make this rule fully translatable."
+}

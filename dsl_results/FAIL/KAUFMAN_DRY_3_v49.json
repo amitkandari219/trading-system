@@ -1,0 +1,66 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [
+    {
+      "left": "body",
+      "operator": ">",
+      "right": "prev_body"
+    },
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "prev_close"
+    },
+    {
+      "left": "open",
+      "operator": "<",
+      "right": "prev_close"
+    }
+  ],
+  "entry_short": [
+    {
+      "left": "body",
+      "operator": ">",
+      "right": "prev_body"
+    },
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "prev_close"
+    },
+    {
+      "left": "open",
+      "operator": ">",
+      "right": "prev_close"
+    }
+  ],
+  "exit_long": [
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "prev_close"
+    }
+  ],
+  "exit_short": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "prev_close"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 5,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Bullish engulfing: current candle body larger than previous body, close higher than previous close, and open lower than previous close (prior candle was black/down). Bearish engulfing: current candle body larger than previous body, close lower than previous close, and open higher than previous close (prior candle was white/up). Exit conditions inferred as reversal crossovers of previous close since AUTHOR_SILENT. Used bar properties (body, close, open) with prev_ references to detect 2-candle sequence patterns.",
+  "validation_issues": [
+    "entry_long: unknown right value 'prev_body'",
+    "entry_short: unknown right value 'prev_body'"
+  ]
+}

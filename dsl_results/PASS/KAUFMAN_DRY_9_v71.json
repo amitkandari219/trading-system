@@ -1,0 +1,108 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_40"
+      },
+      {
+        "left": "stoch_k_5",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_40"
+      },
+      {
+        "left": "stoch_k_5",
+        "operator": ">",
+        "right": "80"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_40"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_40"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used close vs sma_40 as proxy for 40-day trend direction (trend up = close > sma_40, trend down = close < sma_40). Used stoch_k_5 for 5-day stochastic K-line. Exit conditions implemented as trend reversals per signal description (exit long when trend turns down, exit short when trend turns up)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_40"
+      },
+      {
+        "indicator": "stoch_k_5",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_40"
+      },
+      {
+        "indicator": "stoch_k_5",
+        "op": ">",
+        "value": 80.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_40"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_40"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used close vs sma_40 as proxy for 40-day trend direction (trend up = close > sma_40, trend down = close < sma_40). Used stoch_k_5 for 5-day stochastic K-line. Exit conditions implemented as trend reversals per signal description (exit long when trend turns down, exit short when trend turns up)."
+  },
+  "source_rule_text": "Buy when the 40-day trend is up and the 5-day stochastic is below 20; sell when the 40-day trend is down and the 5-day stochastic is above 80."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_118_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires real-time dividend calendar data, option chain ITM depth analysis (calls vs puts), early exercise probability modeling, and multi-leg position state tracking. These require external data feeds and position-level logic not available in price/volume indicators. Specifically: (1) Ex-dividend date imminent detection needs corporate action calendar, (2) ITM-to-dividend ratio comparison requires options data, (3) Assignment probability on specific strikes requires Greeks/option pricing, (4) Multi-leg position tracking requires portfolio state. Proxy conditions using IV and volatility percentiles are provided but cannot capture the core early exercise/assignment asymmetry logic.",
+  "translation_notes": "This is a sophisticated options spread management signal (80/85 call vertical + reverse conversion context) requiring options Greeks, dividend calendar, and multi-leg position monitoring. The entry proxy uses low historical volatility (hvol_20 < 25%) as a stand-in for 'low uncertainty about exercise' and VIX as a secondary IV proxy. Exit uses price weakness detection. However, the true signal logic\u2014managing asymmetric profit capture across reverse conversion legs based on early exercise probability\u2014cannot be adequately captured by price/volume indicators alone and requires options-specific data unavailable in the permitted indicator set."
+}

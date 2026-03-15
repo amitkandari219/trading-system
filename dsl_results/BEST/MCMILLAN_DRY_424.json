@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_424",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a tax qualification rule for covered calls based on days-to-expiration and strike price relative to stock price benchmarks. These are option contract properties and timing rules (30+ days DTE, strike >= ASP benchmark) that cannot be expressed using the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Position, Bar Properties, Returns). The signal requires option metadata (expiration date, strike selection, option moneyness) and tax code logic that fall outside technical analysis indicators. The 'specific_benchmark_value' is marked AUTHOR_SILENT, making the strike threshold indeterminate.",
+  "translation_notes": "Signal MCMILLAN_DRY_424 is a tax compliance rule for options strategies, not a tradeable technical signal. It requires: (1) options chain data with explicit expiration dates and strike prices; (2) stock price benchmark determination logic; (3) moneyness calculations not available in standard technical indicators. Recommend implementing as a separate options screening module outside the backtest engine, or provide explicit benchmark values and option contract data fields."
+}

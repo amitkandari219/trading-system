@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_110",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is an options strategy (diagonal bull spread with specific strike prices, expirations, and debit costs) that cannot be expressed using only price-based technical indicators. The signal requires option-chain data (strikes, expirations, premiums, Greeks) which are not available in the allowed indicator set. The backtest engine would need options-specific data structures and pricing models to properly implement this strategy.",
+  "translation_notes": "Signal MCMILLAN_DRY_110 describes a multi-leg options strategy involving buying July 30 call + selling April 35 call. While a simplified proxy entry (close > 30) and exit (close > 35) condition has been provided, this does not capture the core mechanics: (1) specific option strike selection, (2) time decay dynamics across two different expirations, (3) debit/credit calculations, (4) early assignment risk on short call. A proper implementation requires an options backtest engine with Greeks and implied volatility surface modeling."
+}

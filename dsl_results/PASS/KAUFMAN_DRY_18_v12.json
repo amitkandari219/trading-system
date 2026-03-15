@@ -1,0 +1,86 @@
+{
+  "signal_id": "KAUFMAN_DRY_18",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_18",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_lower"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "bb_upper"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_upper"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "bb_lower"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped 1.5 standard deviations cluster definition to Bollinger Bands (which use 2 standard deviations by default, but represent similar volatility-based clustering). Entry triggers when price returns into the band range (crosses back into cluster). Exit triggers when price breaks out of the cluster boundary. Context-dependent direction handles both long entries (price crosses above lower band) and short entries (price crosses below upper band) within the ranging regime."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_lower"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "bb_upper"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_upper"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "bb_lower"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mapped 1.5 standard deviations cluster definition to Bollinger Bands (which use 2 standard deviations by default, but represent similar volatility-based clustering). Entry triggers when price returns into the band range (crosses back into cluster). Exit triggers when price breaks out of the cluster boundary. Context-dependent direction handles both long entries (price crosses above lower band) and short entries (price crosses below upper band) within the ranging regime."
+  },
+  "source_rule_text": "Use 1.5 standard deviations (approximately 86% of a cluster) as a starting point to define the center of a price cluster, and trade signals generated when price moves back into this range."
+}

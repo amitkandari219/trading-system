@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_82",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific logic (bull spread with October 40 call, covered write, expiration-based mechanics, strike prices). The backtest engine appears to be designed for price/technical indicator conditions only. Key missing elements: (1) ability to model options contracts and strikes, (2) expiration date as a trigger condition, (3) profit calculation based on option payoff diagrams rather than price alone. The condition 'maximum profit realized at expiration if XYZ above 45' cannot be expressed without options pricing/payoff logic.",
+  "translation_notes": "This is an options strategy signal (bull call spread + covered call combination) that requires derivatives modeling beyond standard technical indicator analysis. A price-only approximation (buy at 40, target exit at 45) has been structured above, but this loses the essential risk/reward dynamics of the original options strategy."
+}

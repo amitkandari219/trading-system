@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_18",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires custom zone calculations based on yesterday's OHLC prices (Average, High2, High1, Low1, Low2) that cannot be expressed using only the allowed indicators. The logic demands: (1) Computing derived price levels from previous bar OHLC, (2) Comparing today's price against 6 dynamically calculated zones, (3) Trading direction determined by which zone price falls into. These calculations require custom indicator computation beyond the allowed indicator set. The [THRESHOLD_NEEDED] placeholders in the original signal also indicate incomplete specification.",
+  "translation_notes": "Signal describes an intraday zone-trading strategy (Kaufman's Daily Zones for floor traders) that dynamically partitions the price range into 6 zones based on yesterday's prices. While individual components use prev_high, prev_low, prev_close, the multi-step zone calculation and zone-dependent direction logic cannot be mapped to a simple entry/exit condition structure. This requires a custom indicator or preprocessing step outside the standard backtest engine."
+}

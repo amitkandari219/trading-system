@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'cross-entropy loss' (CE), a market microstructure metric measuring forecast accuracy of market makers. This is not a price-based technical indicator and cannot be derived from the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume ratios, Returns, Bar properties). Cross-entropy loss requires direct access to market maker order flow predictions and actual outcomes, which are not available in standard OHLCV backtesting data.",
+  "translation_notes": "This signal is a regime-detection rule based on microstructure mechanics rather than price action. To implement this backtest, you would need: (1) historical market maker forecast data, (2) actual realized outcomes, (3) computation of rolling cross-entropy loss. Consider proxying with high volatility regime detection using hvol_20, india_vix, or adx_14 > 25 as alternatives, but these would not capture the specific adverse selection logic intended."
+}

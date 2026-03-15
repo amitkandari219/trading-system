@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of: (1) initial profit target zone (not a standard indicator), (2) previous pivot points/swing highs/lows (requires swing detection logic not available), (3) momentum confirmation at target (undefined metric), (4) specific buffer distances from pivots (THRESHOLD_NEEDED values not provided). The core pattern\u2014pullback trade failure near profit targets\u2014cannot be fully operationalized without swing point detection and explicit profit target placement parameters.",
+  "translation_notes": "Partial translation provided: Entry uses trend confirmation (ADX > 25) and price relative to SMA_20 to detect pullback setup in trending regimes. Exit conditions reference pivot levels (s1/r1) as proxy for prior swing points, but the signal's emphasis on 'third pullback failure' and momentum-based exits at target zones requires manual threshold calibration and swing point detection not available in the allowed indicator set. Recommend: (1) define buffer_from_pivot_pips and exit_proximity_distance as backtester parameters, (2) implement swing point detection separately, (3) calibrate profit target zone offset from recent swing highs/lows."
+}

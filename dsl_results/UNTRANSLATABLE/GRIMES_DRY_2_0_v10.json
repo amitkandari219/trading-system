@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_2_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires counting historical patterns (number of failed bounces within N bars, count of upthrust attempts, wick-to-body ratio threshold comparisons across multiple prior bars) which cannot be expressed as single-bar indicator comparisons. The logic demands: (1) tracking bounce failures over a lookback window, (2) counting false breakout events with specific properties, (3) multi-bar pattern recognition. These require custom lookback loops or pattern-matching functions not available in the allowed operators (>, <, >=, <=, ==, crosses_above, crosses_below, is).",
+  "translation_notes": "Attempted to capture the core SHORT entry (price below support with upper wicks indicating rejection) and exit conditions (bounce back above support or strong close into range), but the full signal's sophisticated multi-bar pattern detection (failed bounces count, upthrust attempts count, threshold comparisons) cannot be fully encoded. The source signal is inherently a pattern-recognition rule requiring sequential bar analysis, not compatible with stateless indicator conditions."
+}

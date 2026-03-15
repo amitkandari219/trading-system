@@ -1,0 +1,88 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "book_id": "HILPISCH",
+  "dsl_rule": {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "entry_long": [
+      {
+        "left": "sma_40",
+        "operator": ">",
+        "right": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_40",
+        "operator": "<",
+        "right": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_40",
+        "operator": "crosses_below",
+        "right": "sma_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_40",
+        "operator": "crosses_above",
+        "right": "sma_200"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires SMA(42) and SMA(252). Mapped to closest available indicators: sma_40 (short period) and sma_200 (long period). Direction is CONTEXT_DEPENDENT as the strategy trades both long and short depending on SMA relationship. Target regime set to TRENDING_UP and TRENDING_DOWN as specified in the original signal's TRENDING regime."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_40",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_40",
+        "op": "<",
+        "value": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_40",
+        "op": "crosses_below",
+        "value": "sma_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_40",
+        "op": "crosses_above",
+        "value": "sma_200"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires SMA(42) and SMA(252). Mapped to closest available indicators: sma_40 (short period) and sma_200 (long period). Direction is CONTEXT_DEPENDENT as the strategy trades both long and short depending on SMA relationship. Target regime set to TRENDING_UP and TRENDING_DOWN as specified in the original signal's TRENDING regime."
+  },
+  "source_rule_text": "Generate trading signals by comparing the relationship between a shorter-period and longer-period Simple Moving Average; go long when the shorter SMA is above the longer SMA, and go short when it is below."
+}

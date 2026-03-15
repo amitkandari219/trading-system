@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_12_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct measurement of bid-ask spread width and spread narrowing dynamics. These market microstructure indicators (spread, spread rolling average, spread threshold levels) are not available in the allowed indicator list. The signal also requires tracking 'seller lifts' vs 'buyer aggressive bids' which are order flow direction signals not present in the allowed indicators. ATR and true_range used as proxies for volatility/spread behavior, but this is an imperfect approximation of the intended spread-based regime detection.",
+  "translation_notes": "Attempted to capture spread widening/narrowing dynamics using ATR (volatility proxy) and price movement direction with volume confirmation. However, the core signal relies on explicit spread microstructure data which is not available. Original signal requires bid-ask spread width measurements and order flow analysis that cannot be adequately represented with the allowed indicators."
+}

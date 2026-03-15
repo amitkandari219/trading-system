@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of MA slope magnitude (pips per bar) and majority-side price positioning over a lookback window. These require custom derived indicators not in the allowed list. Specifically: (1) MA slope cannot be expressed as a single comparison operator against allowed indicators, (2) 'majority of last N bars on one side of MA' requires historical bar-by-bar logic not supported by point-in-time comparisons, (3) 'slope magnitude in pips per bar' requires differentiation and scaling logic not available. Provided JSON uses simplified MA crossover as approximation only.",
+  "translation_notes": "This signal is fundamentally untranslatable with the allowed indicator set. The core logic requires: (1) calculating slope of MA over a period, (2) checking percentage of historical bars above/below MA, (3) comparing slope magnitude to a threshold. These are derived metrics requiring custom calculations. The JSON above offers a basic MA-crossover substitute (close vs sma_50) but loses the nuanced majority-positioning and slope-magnitude conditions that define GRIMES_DRY_7_0."
+}

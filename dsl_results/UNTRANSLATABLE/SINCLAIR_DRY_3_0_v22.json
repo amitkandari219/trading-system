@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit measurement of: (1) realized vs implied volatility divergence in standard deviations, (2) volatility curve slope quantification/direction, and (3) smile/skew component isolation and P&L exposure attribution. Available indicators (hvol_20, india_vix, ATR) cannot decompose volatility surface into level/slope/smile components or provide curve slope direction. The 'curve_slope_confirmation' and smile exposure thresholds require volatility surface analysis not available in the allowed indicator set.",
+  "translation_notes": "Attempted proxy using hvol_20 (realized vol) vs india_vix (implied vol level) divergence for direction context, but this loses the critical slope and smile dynamics specified in the original rule. The signal fundamentally requires volatility surface decomposition capabilities beyond standard price-based technical indicators. For proper implementation, access to term structure of volatility and skew/smile metrics would be necessary."
+}

@@ -1,0 +1,72 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_12",
+    "entry_long": [
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "high",
+        "operator": ">=",
+        "right": "r1"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal detects higher low formation (low > prev_low) combined with price positioned above central pivot point as entry signal. Exit targets R1 resistance level. Market condition restricted to RANGING regime. Stop loss and hold period set conservatively for range-bound trades."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "high",
+        "op": ">=",
+        "value": "r1"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal detects higher low formation (low > prev_low) combined with price positioned above central pivot point as entry signal. Exit targets R1 resistance level. Market condition restricted to RANGING regime. Stop loss and hold period set conservatively for range-bound trades."
+  },
+  "source_rule_text": "In ranged markets, enter long when price forms higher lows showing increased chances of breakout; target the R1 (first resistance) level."
+}

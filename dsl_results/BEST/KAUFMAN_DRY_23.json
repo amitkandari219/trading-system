@@ -1,0 +1,60 @@
+{
+  "signal_id": "KAUFMAN_DRY_23",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_23",
+    "entry_long": [
+      {
+        "left": "rsi_7",
+        "operator": "<",
+        "right": "30"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "rsi_7",
+        "operator": ">",
+        "right": "70"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal specifies RSI(8) but only rsi_7, rsi_14, rsi_21 are available. Used rsi_7 as closest match. Entry window of 5 days maximum is captured in hold_days_max. Direction is LONG (buy condition); SHORT exit omitted as signal is directional."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "rsi_7",
+        "op": "<",
+        "value": 30.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "rsi_7",
+        "op": ">",
+        "value": 70.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal specifies RSI(8) but only rsi_7, rsi_14, rsi_21 are available. Used rsi_7 as closest match. Entry window of 5 days maximum is captured in hold_days_max. Direction is LONG (buy condition); SHORT exit omitted as signal is directional."
+  },
+  "source_rule_text": "Buy when RSI(8) falls below 30; sell when RSI(8) rises above 70, with a maximum 5-day window to enter after the initial signal."
+}

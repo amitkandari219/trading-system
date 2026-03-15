@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_18",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires six dynamically calculated zones based on today's high, low, and atr_14 (10-day ATR), with zone boundaries that are multi-level price thresholds. The allowed indicator set does not support: (1) storing or referencing dynamic zone boundaries computed within a single bar; (2) conditional entry logic that depends on which specific zone (0-5) price enters; (3) zone-relative price positioning logic. The signal requires: Zone 5 = high + atr_14; Zone 4 = between high and Zone 5; Zone 3 = between (high+low)/2 and Zone 4; Zone 2 = between low and Zone 3; Zone 1 = between (low - atr_14) and Zone 2; Zone 0 = below Zone 1. This multi-zone classification system cannot be expressed as simple binary conditions on allowed indicators.",
+  "translation_notes": "This is a sophisticated multi-zone trading range projection system that requires custom zone calculation and zone-entry detection logic. A proper implementation would need: (1) pre-calculated zone boundaries as separate fields/columns; (2) zone assignment logic to classify current price into one of six zones; (3) zone-transition detection to trigger entries. Standard backtest engines with simple indicator-based rule systems cannot natively support this pattern without custom zone computation layers."
+}

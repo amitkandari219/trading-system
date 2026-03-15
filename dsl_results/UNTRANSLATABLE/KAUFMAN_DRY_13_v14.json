@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-instrument ratio analysis (S&P-to-Russell ratio) and macroeconomic regime detection ('economic recovery expected'). The backtesting engine does not support cross-instrument ratio calculations or external economic indicators. The 'declining ratio' condition cannot be expressed using single-instrument OHLCV-derived indicators only. Reversal logic on price/SMA used as fallback, but this does not capture the original signal intent.",
+  "translation_notes": "KAUFMAN_DRY_13 is context-dependent and regime-specific, requiring: (1) two separate instruments with ratio comparison, (2) macroeconomic regime detection not available in indicator set. Entry conditions 'declining S&P/Russell ratio' and 'economic recovery expected' are untranslatable. Exit condition 'AUTHOR_SILENT' interpreted as mean-reversion using SMA. This translation is approximate and should not be used without manual review and external ratio/macro data sources."
+}

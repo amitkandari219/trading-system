@@ -1,0 +1,128 @@
+{
+  "signal_id": "GUJRAL_DRY_5",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_5",
+    "entry_long": [
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_200"
+      },
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "sma_50",
+        "operator": ">",
+        "right": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_20",
+        "operator": "<",
+        "right": "sma_200"
+      },
+      {
+        "left": "sma_20",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "sma_50",
+        "operator": "<",
+        "right": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_20",
+        "operator": "<",
+        "right": "sma_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_200"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes MA alignment and slope direction. Translated using sma_20 and sma_200 (explicitly mentioned by author). Entry conditions check that shorter MA is above longer MA (uptrend) or below (downtrend) AND that MA is sloping in trend direction (comparing current close to previous). Exit reverses the trend condition. The 'parallel alignment' concept is approximated by checking both MAs move in the same direction relative to price. CONTEXT_DEPENDENT direction handles both long and short entry conditions separately."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "sma_50",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_20",
+        "op": "<",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "sma_20",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "sma_50",
+        "op": "<",
+        "value": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_20",
+        "op": "<",
+        "value": "sma_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal describes MA alignment and slope direction. Translated using sma_20 and sma_200 (explicitly mentioned by author). Entry conditions check that shorter MA is above longer MA (uptrend) or below (downtrend) AND that MA is sloping in trend direction (comparing current close to previous). Exit reverses the trend condition. The 'parallel alignment' concept is approximated by checking both MAs move in the same direction relative to price. CONTEXT_DEPENDENT direction handles both long and short entry conditions separately."
+  },
+  "source_rule_text": "When all moving average lines slope in the direction of the trend and line up parallel, a well-established trend is in place and is tradeable."
+}

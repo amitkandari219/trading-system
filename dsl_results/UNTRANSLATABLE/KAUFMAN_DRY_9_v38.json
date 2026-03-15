@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparing MA3 slope (MA3_today - MA3_yesterday) which is a derived calculation. MA3 period is AUTHOR_SILENT (unknown). The framework only allows comparison of single indicators or price, not mathematical differences between consecutive bar values. To implement this rule, the MA3 period must be specified and a slope indicator would need to be pre-calculated external to this rule engine.",
+  "translation_notes": "Attempted to proxy the slope condition using sma_20 comparison with previous close, but this does not accurately represent the intended MA3 slope logic. The original signal specifically requires: (1) MA3 type definition, (2) MA3 period definition, and (3) slope calculation between bars. Without these parameters provided by the author, an accurate translation is not possible within the allowed indicator set."
+}

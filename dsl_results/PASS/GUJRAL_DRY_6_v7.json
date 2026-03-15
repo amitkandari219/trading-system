@@ -1,0 +1,80 @@
+{
+  "signal_id": "GUJRAL_DRY_6",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_6",
+    "entry_long": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "pivot"
+      },
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Translated 'long bottom tail' as lower_wick > body. Candle body in upper end of range expressed as close >= pivot (price position in upper half). Green body preferred but red acceptable is captured by body > 0 condition (body positive for green, pattern valid regardless). Rejection of lower prices captured by lower tail being longer than body. Exit condition AUTHOR_SILENT converted to reasonable reversal: close crossing below sma_20 indicates trend failure."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "pivot"
+      },
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Translated 'long bottom tail' as lower_wick > body. Candle body in upper end of range expressed as close >= pivot (price position in upper half). Green body preferred but red acceptable is captured by body > 0 condition (body positive for green, pattern valid regardless). Rejection of lower prices captured by lower tail being longer than body. Exit condition AUTHOR_SILENT converted to reasonable reversal: close crossing below sma_20 indicates trend failure."
+  },
+  "source_rule_text": "Buy when a candle has a long bottom tail with a green body, or even a red body if the lower tail is long and rejects lower prices, as this is super bullish."
+}

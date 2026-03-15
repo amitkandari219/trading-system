@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The condition 'CPR stays horizontal and adjacent to CPR of nearby days' requires comparison of CPR values across multiple historical bars. The allowed indicators and operators do not support multi-bar CPR comparison logic. Additionally, the exact matching condition 'prev_high == r1 and prev_low == s1 on many days' requires statistical pattern detection across multiple periods, which is not expressible with single-bar comparison operators.",
+  "translation_notes": "Attempted to express the sideways market logic by: (1) checking that price remains between S1 and R1, (2) matching previous day's levels to current pivot levels. However, the core signal requires pattern recognition across multiple days (CPR consistency, horizontal orientation verification) and relative adjacency checks that cannot be fully captured with the available single-condition operators. The rule is fundamentally about identifying a multi-day market regime, which requires either a dedicated CPR_CONSISTENCY indicator or array-based historical lookback capability."
+}

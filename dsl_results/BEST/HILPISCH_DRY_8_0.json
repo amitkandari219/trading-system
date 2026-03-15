@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a pre-calculated 'momentum' indicator derived from log returns over resampled intervals with specific lookback periods and confirmation logic. The momentum indicator is not in the allowed indicator list. Additionally, the signal references 'dr[\"momentum\"].iloc[-2]' which implies momentum is a separate calculated series, and the exact resampling interval (5 seconds) and lookback periods are marked [THRESHOLD_NEEDED] and cannot be determined. The log_returns proxy used here is insufficient without the momentum calculation logic.",
+  "translation_notes": "The original signal uses a momentum indicator calculated from log returns over resampled 5-second intervals. Since this custom momentum indicator is not available in the allowed indicators list, and critical parameters (momentum_lookback_periods and signal_confirmation_periods) are marked as [THRESHOLD_NEEDED], this signal cannot be fully translated. A partial translation using log_returns directly is provided but does not capture the momentum calculation, resampling, or confirmation requirements."
+}

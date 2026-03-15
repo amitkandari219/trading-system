@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_187_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific metrics not available in price/technical indicators: (1) Days-to-expiration (DTE) thresholds cannot be expressed with available indicators; (2) Implied volatility (IV) levels and IV percentiles not in allowed indicator list; (3) Open interest (OI) percentile filters not available; (4) Specific IV-to-HV spread in basis points requires direct IV calculation; (5) Earnings/economic event calendar detection not supported. The signal is fundamentally an options volatility arbitrage strategy requiring derivatives pricing data and calendar/event feeds beyond the scope of price-action and technical indicators.",
+  "translation_notes": "Attempted proxy using hvol_20 (historical volatility) > india_vix (market IV proxy) and vol_ratio_20 for elevated OI signal, but these are insufficient proxies for the precise threshold-based logic required. Original signal cannot be reliably backtested with available indicators."
+}

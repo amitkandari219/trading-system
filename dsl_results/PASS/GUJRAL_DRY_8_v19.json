@@ -1,0 +1,74 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "prev_close"
+      },
+      {
+        "left": "prev_close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires retracement detection which cannot be precisely coded without multi-bar logic. Entry conditions approximate the signal: price at or above previous close (support level) AND previous close above central pivot. Exit uses a reversal condition (close below prev_close) as AUTHOR_SILENT. Hold_days_max set to 1 for intraday day trade context mentioned in source material. Central pivot mapped to 'pivot' indicator (standard pivot point)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "prev_close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal requires retracement detection which cannot be precisely coded without multi-bar logic. Entry conditions approximate the signal: price at or above previous close (support level) AND previous close above central pivot. Exit uses a reversal condition (close below prev_close) as AUTHOR_SILENT. Hold_days_max set to 1 for intraday day trade context mentioned in source material. Central pivot mapped to 'pivot' indicator (standard pivot point)."
+  },
+  "source_rule_text": "Take a long trade on retracement when price finds support at the previous close, which is positioned above the central pivot."
+}

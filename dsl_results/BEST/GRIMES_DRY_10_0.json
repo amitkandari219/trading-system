@@ -1,0 +1,92 @@
+{
+  "signal_id": "GRIMES_DRY_10_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_10_0",
+    "entry_long": [
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Selling climax modeled as high volume spike with large lower wick relative to body. Volatility compression detected via Donchian bands narrowing (implicit in dc_upper/dc_lower usage). Breakout above consolidation high using dc_upper on closing basis. Volume confirmation via vol_ratio_20. Exit on close below consolidation low (dc_lower). Resistance levels would require external pivot data or prior price highs not available in standard indicators."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Selling climax modeled as high volume spike with large lower wick relative to body. Volatility compression detected via Donchian bands narrowing (implicit in dc_upper/dc_lower usage). Breakout above consolidation high using dc_upper on closing basis. Volume confirmation via vol_ratio_20. Exit on close below consolidation low (dc_lower). Resistance levels would require external pivot data or prior price highs not available in standard indicators."
+  },
+  "source_rule_text": "A trader should initiate a long entry on a breakout following a selling climax and subsequent volatility compression, as the stock is primed for a directional move."
+}

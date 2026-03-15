@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_251",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calendar-based exit logic (exit during last 2-3 weeks before futures expiration) and multi-asset position management (long stocks + short futures hedge). This requires contract expiration date tracking and relative value comparisons between spot and futures that are not expressible using the allowed price/technical indicators alone. Position entry conditions also reference fair value calculations and premium spreads that require external data (futures fair value computations) not available in the indicator set.",
+  "translation_notes": "MCMILLAN_DRY_251 is a calendar-driven hedge liquidation rule, not a price-action or technical signal. It requires: (1) tracking days-to-expiration on the futures contract, (2) monitoring the fair value premium/discount of the futures relative to spot, and (3) executing exits based on calendar windows rather than price levels. The entry conditions reference 'hedge established over fair value' which requires multi-leg position tracking across asset classes. Standard backtesting engines using only price/technical indicators cannot implement this signal without extensions for contract metadata and cross-asset position management."
+}

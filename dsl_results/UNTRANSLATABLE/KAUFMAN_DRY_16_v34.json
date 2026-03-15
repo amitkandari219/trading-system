@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Gap magnitude definition (AUTHOR_SILENT - no value provided), (2) Designated bar identification (AUTHOR_SILENT - no bar number specified), (3) Dynamic stop-and-reverse at intraday extremes (high/low at entry time), which requires tracking entry bar's high/low separately from current bar values. The framework does not support time-of-entry extremes or intraday stop adjustment logic. Additionally, 'stop and reverse' logic (closing position + reversing direction) is not directly expressible with standard entry/exit conditions.",
+  "translation_notes": "The signal is event-driven (opening gap) with context-dependent direction, but critical parameters are marked AUTHOR_SILENT. Gap detection attempted using open vs prev_close comparison, but true gap magnitude and designated bar number are missing. The stop-and-reverse mechanism at day's extreme at time of entry and EOD exit require custom logic beyond standard condition rules."
+}

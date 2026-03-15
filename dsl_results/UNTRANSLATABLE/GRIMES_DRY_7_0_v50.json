@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe analysis (higher/middle/lower timeframes with specific ratio thresholds and cross-timeframe confirmations). Backtest engine processes single timeframe. Cannot encode: timeframe_ratio_higher_to_middle, timeframe_ratio_middle_to_lower, consolidation_bars_minimum, trend_bars_minimum, confirmation_candles_lower_timeframe, or cross-timeframe momentum alignment logic.",
+  "translation_notes": "Approximated multi-timeframe consolidation+trend logic using single-timeframe proxies: bb_bandwidth for consolidation detection, adx_14 for trend confirmation, pivot levels for support/resistance breaks, and volume confirmation. This is a simplified representation; true implementation requires explicit multi-timeframe orchestration outside standard backtest engine capabilities."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires tick-based bar sampling with Jarque-Bera normality testing and transaction count thresholds. The backtest engine does not support: (1) tick-count based bar aggregation (only time/volume bars available), (2) Jarque-Bera statistical test implementation, (3) transaction count tracking, or (4) dynamic IID Gaussian distribution validation. These are advanced statistical regime detection features beyond standard OHLCV indicators. The signal cannot be expressed using only the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume ratios, Returns) and allowed operators.",
+  "translation_notes": "LOPEZ_DRY_0_0 is a meta-statistical regime detection signal based on market microstructure theory (tick sampling vs time sampling). It requires custom tick aggregation logic and statistical inference capabilities not available in standard indicator-based backtesting. Recommend: (1) implement custom tick bar aggregator, (2) add Jarque-Bera p-value indicator, or (3) approximate using returns normality via volatility clustering detection (e.g., switching between high_vol and low_vol regimes based on hvol_20 changes)."
+}

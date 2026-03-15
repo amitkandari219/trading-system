@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculating morning session high-low range and its percentile levels (lower 25% and upper 75%), which requires intra-session range calculations not available in the allowed indicators list. The logic also requires session-aware time conditions (afternoon vs morning) and position-dependent entry/exit logic that cannot be fully expressed with static indicators. Indicators needed: morning_range_high, morning_range_low, morning_range_lower_25pct, morning_range_upper_75pct, and session_time context.",
+  "translation_notes": "This signal is a classic intraday range-breakout pattern that requires: (1) tracking morning session OHLC separately, (2) calculating percentile levels within that range, (3) session-aware entry timing. The backtest engine would need custom preprocessing to compute morning range statistics before afternoon conditions can be evaluated. Consider implementing as a custom rule in the backtest engine rather than using generic indicators."
+}

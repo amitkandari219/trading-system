@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking volatility state from exit day and comparing current volatility to one-quarter of that historical value. The engine lacks: (1) a mechanism to store and reference volatility at trade exit time, (2) an operator to compute fractional relationships (one-quarter), and (3) context-dependent directional logic that depends on the direction of the just-exited trade. These require stateful logic beyond the allowed indicator/operator vocabulary.",
+  "translation_notes": "This is a reentry signal with memory requirements. It needs to: capture hvol_20 on exit day, compute exit_day_hvol * 0.25 as a threshold, then reenter when current hvol_20 falls below that threshold. The direction of reentry mirrors the exited trade direction. Standard backtest engines would need custom variables or callbacks to track exit-time volatility state and apply fractional thresholds."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Rate of Change (ROC) indicator which is not in the allowed indicators list. ROC(5) and ROC(252) are standard technical indicators but not available. The 'consecutive_days_requirement': 2 parameter also cannot be directly expressed in the single-bar condition structure without multi-bar lookback logic not supported by the schema.",
+  "translation_notes": "KAUFMAN_DRY_9 signal requires ROC (Rate of Change) calculations over 5-day and 252-day periods with a 2-day persistence check. These indicators are not available in the allowed set. The allowed indicators do not include ROC, momentum, or multi-period comparison operators. To properly implement this signal, ROC indicators would need to be added to the allowed indicators list, and the engine would need to support multi-bar state tracking for the consecutive days requirement."
+}

@@ -1,0 +1,65 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requests 'high of the past 40 days' which is a 40-day highest high. The Donchian Channel upper band (dc_upper) is the standard technical indicator for this (highest high over a lookback period, typically 20 days). Since 40-day Donchian is not in the allowed list, dc_upper (20-day) was used as the closest available proxy. For AUTHOR_SILENT exit, applied a reasonable reversal: exit when price breaks below the Donchian lower band (opposite of entry condition)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal requests 'high of the past 40 days' which is a 40-day highest high. The Donchian Channel upper band (dc_upper) is the standard technical indicator for this (highest high over a lookback period, typically 20 days). Since 40-day Donchian is not in the allowed list, dc_upper (20-day) was used as the closest available proxy. For AUTHOR_SILENT exit, applied a reasonable reversal: exit when price breaks below the Donchian lower band (opposite of entry condition)."
+  },
+  "source_rule_text": "Buy when today's high exceeds the high of the past 40 days."
+}

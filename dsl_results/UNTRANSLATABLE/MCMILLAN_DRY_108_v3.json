@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_108",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is an options strategy signal (reverse call spread) requiring multi-leg options pricing and Greeks (delta, theta, vega). The signal depends on: (1) establishing a specific options structure with defined strikes and extrinsic values, (2) calculating break-even points dynamically based on premium paid/received, and (3) evaluating P&L at expiration. Standard equity price/technical indicators cannot model options spread pricing, implied volatility decay, or strike-relative profitability. The 'upside break-even point' is not a market indicator but a calculated parameter dependent on option premiums negotiated at entry. Backtesting this requires options pricing engine, not equity signal logic.",
+  "translation_notes": "Signal describes a reverse call spread (2 long calls at lower strike K1, 1 short call at higher strike K2). Max profit = (K2-K1) \u00d7 contracts - net debit. Max loss = net debit paid. Profit zone starts at K2 + net debit. This requires options module to: (1) define strikes K1, K2, and net debit from entry, (2) track underlying price relative to break-even at expiration date, (3) calculate P&L including time decay. Cannot be converted to equity-only technical rule set."
+}

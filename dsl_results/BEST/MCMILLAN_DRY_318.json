@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_318",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options-specific indicators (call pricing, time decay, implied volatility, option spreads, futures contract spreads) that are not available in the price/technical indicator set. Calendar spread mechanics, strike selection, contract month premiums, and theoretical option valuation cannot be expressed using only OHLCV and standard technical indicators.",
+  "translation_notes": "Signal describes a calendar spread strategy across two futures contract months (March/May) with specific option Greeks and pricing relationships. The backtest engine appears to be designed for spot/futures price action only. Entry conditions reference absolute option prices (14 points, 21 points, 7 points debit) and futures spreads (4-point premium) which require options chain data. Exit conditions marked AUTHOR_SILENT suggest position management based on unspecified criteria. Recommend: (1) enhance engine to support options data, (2) convert to synthetic equivalent using underlying futures, or (3) use specialized options backtester."
+}

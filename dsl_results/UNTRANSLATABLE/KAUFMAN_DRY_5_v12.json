@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a parameterized lookback period N for Donchian channel (N-day high/low), but the available Donchian indicator (dc_upper, dc_lower) does not expose the period parameter. The exact value of N is marked AUTHOR_SILENT and cannot be determined. Additionally, the exit conditions are AUTHOR_SILENT and have been approximated as reversal conditions, which may not match the original intent.",
+  "translation_notes": "Mapped 'high of prior N days' to Donchian upper band (dc_upper) and 'low of prior N days' to Donchian lower band (dc_lower) as the closest available indicators for N-period extremes. Without the specific N value, the exact lookback period cannot be configured. Exit conditions assume reversal logic (exit long on lower band break, exit short on upper band break)."
+}

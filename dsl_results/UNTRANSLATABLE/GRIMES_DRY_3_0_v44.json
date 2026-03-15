@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of swing highs/lows and pivot detection across multiple bars with lookback logic. The 'lower high' confirmation and 'prior pivot low' require dynamic pivot tracking and multi-bar pattern recognition not available in the allowed indicator set. Specifically: (1) 'pivot_low_break_threshold_atr_multiple' parameter is undefined, (2) 'prior_pivot_lookback_bars' is undefined, (3) detecting a 'lower high' requires comparing current swing high to previous swing high across variable lookback periods, (4) the Pivots indicator (s1/r1) provides fixed support/resistance but not dynamic swing-based pivots. The ATR multiple threshold for the break needs explicit parameterization.",
+  "translation_notes": "Attempted partial translation using Pivot indicator support level (s1) as proxy for 'previous pivot low', but this does not capture the dynamic swing detection required by the signal. The signal fundamentally requires a swing high/low detector and multi-bar pattern confirmation logic beyond the scope of the allowed indicators."
+}

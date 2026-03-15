@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_30_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit implied volatility calculation and divisor-based expected move computations (\u00f716 daily, \u00f77.2 weekly) which are not available in the allowed indicator set. The signal also requires monitoring theta decay against a specific threshold [THRESHOLD_NEEDED], which requires options-specific Greeks not in the allowed indicators. hvol_20 and atr_14 are used as proxies for volatility but do not replicate the exact Natenberg methodology.",
+  "translation_notes": "This is a volatility-based signal from Natenberg's option pricing work requiring custom volatility calculations. Entry conditions use historical volatility as a proxy for IV. Exit uses ATR as a proxy for expected move magnitude. The divisor method (IV/16 for daily, IV/7.2 for weekly) and theta monitoring cannot be accurately translated with available indicators. Confidence bands (2 in 3 = \u00b12.75 moves, 1 in 20 = \u00b15.50 moves) are approximated via ATR thresholds."
+}

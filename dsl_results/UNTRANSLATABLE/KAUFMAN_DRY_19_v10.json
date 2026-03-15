@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_19",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe alignment detection (hourly, daily, weekly confluence of support/resistance levels) which cannot be expressed as single-timeframe indicator conditions. The core logic demands cross-timeframe structure validation that exceeds the scope of single-candle indicator comparisons. Pivot points are used as proxy for energy levels, but true multi-timeframe confluence analysis requires external preprocessing or a dedicated multi-timeframe indicator not in the allowed list.",
+  "translation_notes": "This signal is fundamentally about multi-timeframe confluence and structure hierarchy. The backtest engine would need to either: (1) precompute multi-timeframe support/resistance confluences and inject them as synthetic price levels, or (2) use a dedicated multi-timeframe indicator. The pivot/support/resistance operators attempted here are a best-effort approximation but do not capture the true intent of respecting higher timeframe energy points. CONTEXT_DEPENDENT direction preserved as the signal applies to both long and short entries depending on which side of the structure price approaches."
+}

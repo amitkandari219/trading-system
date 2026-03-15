@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires sign-based regression model with empirical coefficient thresholds and hit-ratio confidence metrics that cannot be expressed using only the allowed technical indicators. The core mechanism (regression model fit, coefficient magnitude evaluation, and hit-ratio backtesting) is a meta-model that operates outside standard indicator-based rules. The specific THRESHOLD_NEEDED values and regression coefficients are not provided and cannot be reverse-engineered from price action alone.",
+  "translation_notes": "This signal describes a machine-learning regression methodology rather than a rule-based technical pattern. It requires: (1) training a sign-based logistic/linear regression model on historical data, (2) evaluating coefficient magnitudes against an unknown threshold, (3) comparing empirical hit ratios against a 51.9% baseline. These are model hyperparameters that must be determined through walk-forward optimization, not static indicator thresholds. To implement, use a separate ML pipeline outside the backtest engine."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires weekly pivot calculations (s1, r1, etc.) computed from weekly timeframe and applied to daily chart. The available 'pivot' indicators (pivot, r1, s1, r2, s2) are computed on the current timeframe only. Weekly pivot values need to be pre-calculated or sourced externally and cannot be dynamically computed from daily chart data using allowed indicators.",
+  "translation_notes": "Attempted to use s1 (weekly support level 1) as proxy for weekly pivot, with entry conditions: (1) open < s1, (2) close breaks below s1. Exit on close > s1 (reversal). Assumes s1 values are pre-calculated weekly pivots. Signal expects same-day moves from ~1,724 to 1,550 (~126 points), suggesting high-volatility intraday trades. Set hold_days_max=1 for same-day exit."
+}

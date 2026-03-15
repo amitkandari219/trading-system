@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_128",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a complex options strategy (straddle adjustment with dynamic rebalancing based on price direction and partial proceeds allocation). The core logic involves: (1) detecting upward/downward price moves to trigger option leg sales, (2) reinvesting proceeds into additional puts, and (3) managing a multi-leg derivatives position. The backtest engine appears designed for single price-based conditions, not options portfolio management with partial proceeds reallocation. Requires options pricing module, position tracking across multiple legs, and proceeds-based sizing logic not expressible in the allowed indicator/operator schema.",
+  "translation_notes": "Signal is from McMillan's options strategy framework. The entry condition 'already holding a straddle' is a portfolio state requirement, not a price/indicator condition. Exit conditions reference selling specific option legs conditionally, which requires options state tracking. Price direction detection (upward/downside move) can be approximated as close > prev_close or close < prev_close, but the rebalancing logic (using proceeds to buy second put) cannot be expressed without options Greeks, pricing, and dynamic position sizing. Recommend implementing this as a custom options strategy handler outside the standard backtest rule engine."
+}

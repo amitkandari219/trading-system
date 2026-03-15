@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_12_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multi-asset spread analysis (Asset A - Asset B spread calculation, rolling correlation between two assets, and mean reversion of the computed spread). The allowed indicator set contains only single-asset technical indicators and does not support: (1) cross-asset spread computation, (2) rolling correlation calculation between two distinct assets, (3) dynamic mean/std dev of a derived spread series, or (4) asset pair selection logic. The signal fundamentally requires a pairs trading framework with dual-asset support that is not present in the single-asset indicator vocabulary provided.",
+  "translation_notes": "GRIMES_DRY_12_0 is a pairs/spread trading strategy that cannot be expressed using single-asset indicators. To implement this signal, the backtest engine would need to support: (a) explicit asset pair definitions, (b) spread = price_A - price_B calculation, (c) rolling_correlation(asset_A, asset_B, period), (d) rolling_mean(spread, period), (e) rolling_std(spread, period), and (f) cross-asset entry/exit logic. The current indicator set is insufficient for mean-reversion spread trading."
+}

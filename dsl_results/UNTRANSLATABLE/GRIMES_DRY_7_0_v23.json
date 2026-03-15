@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'climactic move identified (new extreme in price with indicator at extreme/compressed state)' and 'wait for stabilization bars' which need multi-bar pattern recognition and historical comparison logic not expressible with single-bar conditions. Also requires 'indicator divergence from price extreme' which needs cross-indicator state comparison over time. Parameters like stabilization_bars_required and indicator_compression_threshold_percentile are marked [THRESHOLD_NEEDED] and cannot be translated without domain-specific calibration values from the source material.",
+  "translation_notes": "This signal is fundamentally about regime detection and temporal sequencing (climax \u2192 stabilization \u2192 trade) that exceeds the single-bar conditional logic of this schema. The rule describes a multi-stage process: (1) identify climax via compression + extreme, (2) wait N bars, (3) confirm divergence + volume normalization. Approximated entry as compressed indicators (bb_bandwidth) + extreme volatility (atr spike) + volume normalization, but this loses the critical temporal ordering and stabilization requirement."
+}

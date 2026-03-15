@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic optimization of lookback period 'n' by minimizing standard deviation of forecast errors across multiple candidate periods. This requires: (1) calculation of linear regression slopes for multiple n values, (2) generation of 1-day-ahead forecasts for each n, (3) computation of forecast error series for each n, (4) calculation of standard deviation for each error series, and (5) dynamic selection of optimal n based on minimum StdDev. This optimization loop cannot be expressed as static entry/exit conditions using the allowed indicators and operators. The signal is a meta-algorithm for parameter optimization, not a tradeable rule.",
+  "translation_notes": "KAUFMAN_DRY_12 is fundamentally a parameter-tuning methodology rather than a direct trading signal. It specifies HOW to find the best lookback period for linear regression forecasts, but does not define entry/exit trigger conditions. The allowed indicator set does not include LinearRegSlope() or error standard deviation calculations. To implement this signal, a backtest engine would need to: (1) support dynamic parameter optimization loops, (2) include linear regression slope as a native indicator, (3) allow conditional indicator calculation with error metrics. Recommend treating this as a pre-backtest optimization step rather than an in-backtest rule."
+}

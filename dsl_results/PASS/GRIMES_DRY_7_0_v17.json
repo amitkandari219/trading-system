@@ -1,0 +1,148 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_7_0",
+    "entry_long": [
+      {
+        "left": "rsi_14",
+        "operator": ">=",
+        "right": "70"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_upper"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "rsi_14",
+        "operator": "<=",
+        "right": "30"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "bb_lower"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "bb_lower"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_upper"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires specific thresholds for momentum extremes (RSI) and consolidation bar count which were not provided in source. Used RSI 70/30 extremes as standard for overbought/oversold conditions. Consolidated price movement approximated by Bollinger Band breakouts with volume confirmation. Momentum confirmation implied through RSI divergence logic (RSI failing to reach new extreme while price does). Consolidation approximated by entry requiring volume ratio confirmation on breakout."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "rsi_14",
+        "op": ">=",
+        "value": 70.0
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_upper"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "rsi_14",
+        "op": "<=",
+        "value": 30.0
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "bb_lower"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "bb_lower"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 50.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_upper"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 50.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires specific thresholds for momentum extremes (RSI) and consolidation bar count which were not provided in source. Used RSI 70/30 extremes as standard for overbought/oversold conditions. Consolidated price movement approximated by Bollinger Band breakouts with volume confirmation. Momentum confirmation implied through RSI divergence logic (RSI failing to reach new extreme while price does). Consolidation approximated by entry requiring volume ratio confirmation on breakout."
+  },
+  "source_rule_text": "Momentum precedes price; a sharp momentum move pressing toward new highs will usually be followed by another move in the same direction after consolidation."
+}

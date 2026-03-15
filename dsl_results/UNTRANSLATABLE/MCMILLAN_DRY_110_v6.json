@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_110",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options-specific logic (diagonal spread conversion, bull spread construction, and position management based on expiration dates and strike prices). The backtest engine is equity price-based and cannot handle: (1) options contract management and conversion, (2) strike-price-specific position transformations (July 30 call outright long), (3) spread construction and modification logic. The core price triggers (30, 35) are translatable, but the action rules (convert to July bull spread vs. close spread vs. leave outright long) require an options-aware execution layer not present in this engine.",
+  "translation_notes": "Signal is EVENT-based triggered at April expiration. Entry conditions translate to price between 30-35. Exit conditions are multi-branch: above 35 (close), below 30 (close or convert to outright), between 30-35 (convert spread). The price-level triggers are captured, but the position management actions are not compatible with this equity-only backtest framework. Recommend implementing in an options-specific backtester or manual rule system."
+}

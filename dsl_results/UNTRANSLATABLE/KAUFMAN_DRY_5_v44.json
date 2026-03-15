@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires Donchian channels calculated over exactly 4 full calendar weeks (20 trading days approximately). The available dc_upper and dc_lower indicators do not specify the lookback period, and it is unclear if they are configured for the 4-week window required. Additionally, the signal specifies calendar weeks rather than trading days, which cannot be precisely expressed with standard technical indicators. The exit condition referencing 'last day of the month preceding expiration (for futures)' also cannot be translated without contract metadata.",
+  "translation_notes": "Attempted translation uses dc_upper/dc_lower as a proxy for Donchian channel breakouts, but the exact 4-week calendar period specification cannot be guaranteed with available indicators. This is a Donchian breakout system (trend-following, similar to Kaufman's Adaptive Moving Average concept). Manual verification of Donchian period configuration is required before backtesting."
+}

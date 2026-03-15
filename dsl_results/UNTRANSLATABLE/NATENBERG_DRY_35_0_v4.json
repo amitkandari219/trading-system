@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_35_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit implied volatility (IV) level monitoring and ATM option theoretical value tracking. Available indicators (hvol_20, india_vix) provide historical volatility proxies but not true implied volatility shifts or option Greeks (delta, vega, gamma). ATM dollar change and option-specific sensitivity cannot be directly modeled without access to options chain data and Greeks calculation.",
+  "translation_notes": "Approximated volatility shift detection using hvol_20 (20-period historical volatility) as a proxy for IV changes. Entry triggers on elevated volatility with volume confirmation. Exit on volatility mean reversion. This is a structural limitation\u2014the signal fundamentally requires options-specific data (IV levels, option prices, Greeks) that are not available in the standard price/volume indicator set. A proper implementation would need access to options market data feeds."
+}

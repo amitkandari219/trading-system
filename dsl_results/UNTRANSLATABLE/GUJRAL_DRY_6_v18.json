@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires calculation of swing points (swing lows and swing highs) and measurement of retracement percentages relative to prior trending moves. The allowed indicators do not include swing detection, trend move amplitude measurement, or retracement ratio calculation. Specifically: (1) identifying swing low/high pivots requires multi-bar pattern logic not available in the indicator set; (2) measuring 'prior trending move' amplitude requires historical swing-to-swing distance; (3) calculating retracement as a percentage of that move requires custom computational logic. While Donchian channels (dc_upper, dc_lower) could approximate support/resistance, they do not measure retracement ratios. ATR could proxy volatility but not retracement percentage. This signal is fundamentally chart-pattern/manual-analysis based rather than indicator-based.",
+  "translation_notes": "GUJRAL_DRY_6 encodes a classic swing-analysis principle: a trend is valid if counter-trend pulls do not exceed 50% of the prior move (i.e., price does not retrace more than halfway). This requires: (1) identification of swing highs/lows, (2) measurement of move size (e.g., from swing low to swing high), (3) tracking the counter-move (retracement), and (4) comparing retracement/move as a ratio. None of these computations are expressible with the given indicator set. A practical workaround would require custom indicators for swing detection or a rules engine that tracks multi-bar patterns, which is outside the scope of this conversion."
+}

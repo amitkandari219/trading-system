@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_195",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Box spread arbitrage requires real-time options chain data (bid-ask spreads, implied volatility, Greeks, strike prices, carrying costs) and multi-leg spread evaluation. These require dedicated options pricing models and are not expressible using only price-based technical indicators (OHLCV, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume ratios, Returns). The signal mandates: (1) calculation of debit call spread cost vs. credit call spread credit, (2) debit put spread cost vs. credit put spread credit, (3) comparison against strike price differential plus carrying costs/interest earned. None of these calculations can be performed with the allowed indicators.",
+  "translation_notes": "This is a pure volatility arbitrage signal requiring options market microstructure data. It cannot be translated to a price-action only backtest engine. Would require: options pricing engine, real-time options chain, implied volatility surface, interest rates, bid-ask spreads, and multi-leg position evaluation."
+}

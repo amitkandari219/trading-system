@@ -1,0 +1,36 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "rules": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_10",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "stoch_k_5",
+        "op": ">",
+        "value": 50
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "stoch_k_5",
+        "op": "<=",
+        "value": 50
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 0,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG"
+  },
+  "tier": "TIER_A",
+  "fix_description": "Corrected stochastic period from 14 to 5 (per book), changed close to prev_close (per book: \"yesterday's close\")",
+  "original_rule": "Buy when a 10-day moving average is less than yesterday's close AND a 5-day stochastic is greater than 50.",
+  "source": "Trading Systems and Methods, Perry Kaufman, Ch.20, p.865"
+}

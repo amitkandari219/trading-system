@@ -1,0 +1,42 @@
+[
+  {
+    "signal_id": "SINCLAIR_DRY_7_0",
+    "book_id": "SINCLAIR",
+    "source_citation": "Options Trading, Euan Sinclair, Ch.10, p.199-249",
+    "raw_chunk_text": "Another enhancement is to take advantage of the fact that selling\noptions will do better in stable or declining VIX environments. If we\nonly sell options when the VIX is below its moving average (here",
+    "rule_text": "A trader should only sell options when the VIX is below its moving average, as this regime filter improves performance by avoiding high-volatility environments unfavorable to short option positions.",
+    "signal_category": "VOL|REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "VIX < EWMA(VIX, period=60, decay=0.95)",
+      "Options selling setup identified"
+    ],
+    "parameters": {
+      "ma_period": 60,
+      "decay_factor": 0.95,
+      "vix_threshold": "moving_average_only"
+    },
+    "exit_conditions": [
+      "VIX crosses above EWMA",
+      "Position max profit or loss target hit"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "MA period of 60 not specified in source - only decay factor 0.95 mentioned",
+      "Exit conditions not mentioned in excerpt - purely inferred",
+      "Second entry condition 'Options selling setup identified' is vague and not from source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry condition specifies a quantifiable technical trigger (VIX < EWMA with defined parameters) that can be directly implemented in code, and the exit conditions provide clear, measurable criteria for position management.",
+    "hallucination_recommendation": "REVISE"
+  }
+]

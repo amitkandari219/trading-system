@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_23",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic parameterization (moving average period from 10-100 days in increments of 10, stop-loss factor from 2-10 in increments of 2) and standard deviation-based stop-loss calculation. Standard deviation is not in the allowed indicators list. Backtest engine must support parameter optimization loops and custom volatility-based stops to fully implement this signal. Using sma_50 as approximation for MA period range and cannot express SD-multiple stops.",
+  "translation_notes": "Mapped price crosses to sma_50 as central point in the 10-100 range. Exit uses sma_40 as reversal signal. The original signal requires optimization across multiple parameter combinations and a standard deviation stop-loss (not available in indicator list). This translation captures the directional intent but loses the optimization and precise volatility-based exit mechanics."
+}

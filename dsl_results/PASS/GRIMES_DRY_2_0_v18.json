@@ -1,0 +1,88 @@
+{
+  "signal_id": "GRIMES_DRY_2_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_2_0",
+    "entry_long": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "This signal emphasizes regime filtering and setup pattern matching rather than specific entry/exit prices. Translated as: enter when trend strength is confirmed (ADX > 25 indicating strong trending environment), exit when trend weakens (ADX < 20). The core rule is a meta-strategy principle\u2014wait for favorable regime match. ADX_14 serves as a proxy for trending regime detection. The actual setup pattern criteria would need to be defined separately by the trader implementing this rule."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "This signal emphasizes regime filtering and setup pattern matching rather than specific entry/exit prices. Translated as: enter when trend strength is confirmed (ADX > 25 indicating strong trending environment), exit when trend weakens (ADX < 20). The core rule is a meta-strategy principle\u2014wait for favorable regime match. ADX_14 serves as a proxy for trending regime detection. The actual setup pattern criteria would need to be defined separately by the trader implementing this rule."
+  },
+  "source_rule_text": "A trader should wait for market environments that favor their specific setup or pattern rather than forcing trades across all conditions, thereby reducing mental and financial capital waste."
+}

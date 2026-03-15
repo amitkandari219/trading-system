@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_136_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit measurement of HV-IV divergence magnitude (threshold points), sustained divergence duration confirmation, and IV under-response ratio quantification. The allowed indicators hvol_20 (historical volatility) and india_vix (proxy for IV) can establish directional convergence but cannot precisely measure: (1) the point-value threshold increase in HV, (2) confirmation bar count for sustained divergence, (3) the exact under-response ratio (IV_change < 0.5 * HV_change). Position sizing based on notional exposure also cannot be expressed with available operators. Original signal parameters [THRESHOLD_NEEDED] require manual calibration external to this rule engine.",
+  "translation_notes": "Used hvol_20 as historical volatility proxy and india_vix as implied volatility proxy. Entry conditions reflect IV under-response (IV < HV). Exit conditions capture convergence (IV >= HV) and loss limit (returns < -2%). Direction set CONTEXT_DEPENDENT to preserve mean-reversion signal flexibility. Signal is theoretically sound but requires parameter calibration and more granular volatility metrics than available in the indicator set."
+}

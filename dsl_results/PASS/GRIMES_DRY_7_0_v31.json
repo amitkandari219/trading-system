@@ -1,0 +1,148 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_7_0",
+    "entry_long": [
+      {
+        "left": "macd",
+        "operator": ">",
+        "right": "macd_signal"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "macd",
+        "operator": "<",
+        "right": "macd_signal"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "macd",
+        "operator": "<",
+        "right": "macd_signal"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "macd",
+        "operator": ">",
+        "right": "macd_signal"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires detecting 'extreme MACD readings sustained for extended period' and 'new trend high/low'. Translated as: MACD crossing signal line (indicating extreme readings) combined with price making new highs/lows (prev_high/prev_low) and strong trend confirmation (ADX > 25). Entry conditions detect trend-continuation setups. Exit conditions trigger on MACD mean-reversion signal or price reversal. CONTEXT_DEPENDENT direction allows both long and short entries based on trend direction. Position size parameter left unspecified as source does not provide concrete threshold."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "macd",
+        "op": ">",
+        "value": "macd_signal"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "macd",
+        "op": "<",
+        "value": "macd_signal"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "macd",
+        "op": "<",
+        "value": "macd_signal"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "macd",
+        "op": ">",
+        "value": "macd_signal"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires detecting 'extreme MACD readings sustained for extended period' and 'new trend high/low'. Translated as: MACD crossing signal line (indicating extreme readings) combined with price making new highs/lows (prev_high/prev_low) and strong trend confirmation (ADX > 25). Entry conditions detect trend-continuation setups. Exit conditions trigger on MACD mean-reversion signal or price reversal. CONTEXT_DEPENDENT direction allows both long and short entries based on trend direction. Position size parameter left unspecified as source does not provide concrete threshold."
+  },
+  "source_rule_text": "Do not fade extreme MACD readings during strong trends; sustained extreme indicator readings reflect conviction behind price movement and should trigger trend-continuation trades, not mean-reversion trades."
+}

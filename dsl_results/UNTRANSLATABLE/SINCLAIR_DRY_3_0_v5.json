@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires VIX regime detection with deviation thresholds, regime persistence confirmation over N days, and dynamic mean-reversion targets. The allowed indicators lack: (1) explicit VIX regime classification logic, (2) deviation percentile calculations within regime ranges, (3) persistence confirmation over rolling periods. Parameters THRESHOLD_NEEDED and regime_confirmation_period_days are undefined and cannot be quantified from source text. india_vix is available but insufficient for full regime-switching logic required.",
+  "translation_notes": "Partial translation using india_vix for HIGH (20-40) and QUIET (10-20) regime detection. Entry conditions simplified to regime boundaries. Exit conditions approximate reversion to midpoints (30 for HIGH, 15 for QUIET). Missing: dynamic deviation thresholds, persistence validation, and regime-switching triggers that require custom logic beyond standard indicators."
+}

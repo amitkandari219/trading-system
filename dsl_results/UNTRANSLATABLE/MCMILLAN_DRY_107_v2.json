@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_107",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking implied volatility (IV) changes and option Greeks (theta, vega) which are not available in the allowed indicator list. The core mechanics\u2014selling near-term and buying longer-term options at same strike with profit from IV decay or price moves\u2014cannot be fully replicated with price/technical indicators alone. Used hvol_20 as a proxy for volatility environment, but this does not capture the directional option spread P&L accurately.",
+  "translation_notes": "Reverse calendar spreads are inherently options strategies requiring IV tracking and time decay analysis. The signal describes profit from IV drop (vega positive long-term leg, vega negative short-term leg) and directional moves at expiration. Without access to IV levels, implied volatility surface, or option pricing indicators, the entry/exit conditions are approximations only. Recommend implementing this signal in an options-specific backtest engine with IV data rather than a price-action engine."
+}

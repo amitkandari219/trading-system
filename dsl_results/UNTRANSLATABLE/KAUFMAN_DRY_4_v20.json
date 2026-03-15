@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of a 'major declining channel' with specific 15% proximity calculation to upper band. The allowed indicators (Donchian, Bollinger Bands, pivots) do not natively measure channel width or calculate proximity as a percentage of that width. Channel detection and the precise 15% proximity threshold cannot be expressed with the available indicators without custom channel detection logic.",
+  "translation_notes": "Attempted approximation using Donchian channels (dc_upper/dc_lower) as a proxy for price channel bands, with ADX > 20 to confirm downtrend strength. However, this does NOT capture: (1) the specific 'major channel' formation from the source, (2) the 15% proximity calculation to upper band, or (3) the distinction between 'approaching' vs 'penetrating'. A proper implementation would require custom channel detection indicators."
+}

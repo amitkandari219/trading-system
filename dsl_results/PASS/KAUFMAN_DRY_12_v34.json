@@ -1,0 +1,124 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_12",
+    "entry_long": [
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "prev_volume"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses volume-price confirmation logic. Entry conditions translate to: rising volume + rising price = BUY, rising volume + falling price = SELL. Exit logic triggers on weak rally condition (falling volume with rising price) to close long positions or when price reversal occurs. Volume trend detected via volume > prev_volume (rising) or volume < prev_volume (falling). Price trend detected via close > prev_close (rising) or close < prev_close (falling)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses volume-price confirmation logic. Entry conditions translate to: rising volume + rising price = BUY, rising volume + falling price = SELL. Exit logic triggers on weak rally condition (falling volume with rising price) to close long positions or when price reversal occurs. Volume trend detected via volume > prev_volume (rising) or volume < prev_volume (falling). Price trend detected via close > prev_close (rising) or close < prev_close (falling)."
+  },
+  "source_rule_text": "When volume is rising and price is rising, volume confirms the price rise as a buy signal; when volume is rising and price is falling, volume confirms the price drop as a sell signal; when volume is falling and price is rising, volume indicates a weak rally suggesting caution on long positions."
+}

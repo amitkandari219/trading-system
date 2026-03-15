@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_186",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific data (put intrinsic value, put pricing, strike comparison, ex-dividend dates, and dividend amounts) which are not available in the allowed indicator set. The backtest engine does not support options chains, dividend calendars, or option Greeks. The core arbitrage logic (put trading below intrinsic value + imminent ex-dividend) cannot be expressed using only price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, or technical bar properties.",
+  "translation_notes": "This is a calendar + options arbitrage strategy from McMillan's work. It requires: (1) real-time option bid-ask spreads, (2) intrinsic value calculation (max(strike - stock_price, 0) for puts), (3) ex-dividend date matching, (4) dividend amount verification. A proper backtest would need an options data source with corporate actions calendar. The simplified price-based condition (close < 50) captures only that the stock is below strike, but misses the critical arbitrage trigger: put trading below intrinsic value relative to dividend timing."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_155",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a multi-leg options strategy (ratio put calendar spread) requiring simultaneous management of multiple derivative positions with different expirations and strike relationships. Price-based indicators cannot express: (1) long-term put purchase at specific strike, (2) short 2x near-term puts at same strike, (3) net credit calculation across legs, (4) expiration-based exit timing, (5) ratio/quantity management. Backtesting this requires derivatives pricing model and portfolio-level position tracking, not price-based technical indicators.",
+  "translation_notes": "Signal describes a complex multi-leg options spread strategy. The core directional assumption (stock stays above strike = profit) has been partially translated as SHORT direction with price above strike as entry condition, but this loses critical information: the exact structure (calendar spread), ratio (2:1), credit requirement, and expiration mechanics cannot be captured by price indicators alone. A proper backtest would require an options-aware engine with Greeks, time decay modeling, and multi-leg position management."
+}

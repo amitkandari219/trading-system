@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_106",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific parameters (strike selection, term structure comparison, implied volatility monitoring) that cannot be expressed using equity price/volume indicators. The core logic of 'sell long-term call, buy short-term call at same strike' and profit from vol shrink or large price moves requires options chain data and IV tracking, not available in the allowed indicators list.",
+  "translation_notes": "Attempted to proxy the signal intent using HIGH_VOL regime detection (hvol_20 > 0.02) and TRENDING condition (adx_14 > 25) as entry signals, with exit when volatility contracts (hvol_20 < 0.015). However, this is fundamentally a structural options strategy requiring IV term structure and option-specific Greeks that cannot be properly replicated with equity indicators alone. A proper backtest would require options pricing module."
+}

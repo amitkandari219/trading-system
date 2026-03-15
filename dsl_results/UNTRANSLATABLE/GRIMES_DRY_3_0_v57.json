@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of: (1) custom trendline construction and dynamic trendline breaks (not available as standard indicators), (2) buying climax detection (behavioral signal requiring pattern recognition), (3) consolidation period quality assessment (requires custom duration + volatility logic). The pivot point used as proxy for trendline, but true trendline geometry cannot be expressed with allowed indicators. RSI overbought (>70) approximates post-climax state.",
+  "translation_notes": "This signal fundamentally requires custom trendline drawing and pattern detection unavailable in the indicator library. A partial approximation uses: pivot as trendline proxy, rsi_14 > 70 for overbought/climax detection, and crosses_above pivot for entry trigger. However, this loses the critical elements of: (a) explicit trendline break to downside followed by recovery, (b) consolidation duration validation, (c) stop placement 'below break bar low' which requires bar-by-bar trendline tracking. Recommend implementing as custom rule in backtest engine with explicit trendline support."
+}

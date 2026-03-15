@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The Strength Oscillator is a custom calculated metric (Average(Close_t - Close_t-n) / Average(High_t - Low_t)) that is not available in the allowed indicators list. The signal requires: (1) a specific lookback period 'n' marked AUTHOR_SILENT, (2) an oscillator_threshold_entry marked AUTHOR_SILENT, and (3) a fair_value_definition marked AUTHOR_SILENT. Without these parameters and the custom oscillator calculation, the rule cannot be fully translated. The concept could be approximated using returns divided by range, but this does not capture the multi-period averaging behavior of the original oscillator.",
+  "translation_notes": "Signal references a custom Strength Oscillator comparing price momentum to volatility range. Core logic approximated as: enter when returns are positive (trend strengthening) and range is expanding. Exit when returns turn negative. However, the exact oscillator calculation, lookback period, and thresholds are all undocumented (AUTHOR_SILENT), making a precise translation impossible. This signal would require either: (1) custom indicator development, or (2) author clarification on parameters."
+}

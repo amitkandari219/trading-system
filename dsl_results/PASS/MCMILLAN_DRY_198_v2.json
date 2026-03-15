@@ -1,0 +1,70 @@
+{
+  "signal_id": "MCMILLAN_DRY_198",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_198",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "45"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "45"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "45"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Event-driven merger arbitrage signal (McMillan DRY 198). Entry when XYZ closes below the 45 threshold ('hook' level in merger). Exit when price rallies back above 45, representing the damaging loss scenario described. The ratio hedge (0.556 XYZ short per LMN long) and LMN position management are positional accounting details outside the scope of price-based entry/exit rules. Signal context indicates pre-merger conditions with CONTEXT_DEPENDENT direction resolved to SHORT based on explicit short position instruction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 45.0
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": 45.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": 45.0
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Event-driven merger arbitrage signal (McMillan DRY 198). Entry when XYZ closes below the 45 threshold ('hook' level in merger). Exit when price rallies back above 45, representing the damaging loss scenario described. The ratio hedge (0.556 XYZ short per LMN long) and LMN position management are positional accounting details outside the scope of price-based entry/exit rules. Signal context indicates pre-merger conditions with CONTEXT_DEPENDENT direction resolved to SHORT based on explicit short position instruction."
+  },
+  "source_rule_text": "When XYZ falls below 45 before merger closing, establish a short position of 0.556 shares of XYZ for each share of LMN held long; if XYZ rallies back above 45 after establishing this ratio, the arbitrageur faces damaging losses due to diverging price action."
+}

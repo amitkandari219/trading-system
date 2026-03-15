@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_61_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct spread calculation between two correlated instruments (Notes vs Bonds), statistical deviation thresholds (sigma-based), mean reversion rate analysis, and liquidity confirmation on individual legs. Backtest engine indicators operate on single-instrument price series. Spread pair trading, correlation analysis, and multi-leg liquidity checks are not available in the allowed indicator set. Thresholds marked [THRESHOLD_NEEDED] lack specific values.",
+  "translation_notes": "Attempted proxy mapping: bb_pct_b approximates deviation from mean (0=mean, <0=below, >1=above), vol_ratio_20 approximates liquidity confirmation. However, this does not capture the core mean-reversion spread mechanics. A proper implementation requires: (1) spread = price_instrument_A - price_instrument_B, (2) zscore = (spread - sma(spread)) / stdev(spread), (3) entry when |zscore| > threshold, (4) exit when zscore crosses zero or reaches profit target. Signal ID: NATENBERG_DRY_61_0 is a pair trading strategy requiring multi-instrument support."
+}

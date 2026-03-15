@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_115_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific indicators (delta, intrinsic value, parity status, time value) that are not available in the standard price/technical indicator set. Delta is a Greeks measure from option pricing models, not a market price indicator. Intrinsic value and parity require option contract knowledge (strike, spot, option price) unavailable in the allowed indicator list. The signal is fundamentally an options trading rule, not a price-action or technical analysis rule suitable for backtest engine translation.",
+  "translation_notes": "NATENBERG_DRY_115_0 describes early exercise decision logic for American options based on Greeks and option pricing theory. The allowed indicators are designed for equities/futures price action, not derivatives pricing. To implement this rule would require: (1) delta calculation from an option pricing model, (2) real-time intrinsic value computation, (3) option contract specifications. Recommend implementing as a custom module outside the backtest engine using a dedicated options analytics library."
+}

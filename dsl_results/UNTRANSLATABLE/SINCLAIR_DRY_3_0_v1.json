@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of rolling mean and standard deviation of realized volatility with dynamic threshold multipliers. The specific thresholds (marked as [THRESHOLD_NEEDED]) are not provided. Available volatility indicator (hvol_20) is a pre-computed 20-day historical volatility, but the signal requires: (1) custom rolling mean-std deviation bands around realized vol, (2) confirmation of vol movement % away from mean in prior bar, and (3) parameterized threshold multipliers. These calculations require statistical aggregation functions and custom volatility metrics not available in the allowed indicator list.",
+  "translation_notes": "Signal logic is sound but requires: (1) realized_volatility indicator (not in allowed list), (2) rolling_mean() and rolling_std() functions, (3) threshold parameters to be specified. The asymmetry note about volatility upward vs downward jumps cannot be operationalized without skewness metrics. Recommend: specify [THRESHOLD_NEEDED] values, provide realized_vol indicator, or implement as custom Python rule outside backtest engine constraints."
+}

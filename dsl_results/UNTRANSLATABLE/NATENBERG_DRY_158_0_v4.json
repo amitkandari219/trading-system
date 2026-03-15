@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_158_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-leg options pricing (implied volatility ratios between two underlyings, delta-adjusted position sizing, and premium-based P&L targets). These require real-time IV surface data, cross-asset correlation analysis, and Greeks calculations not available in the allowed indicator set. The allowed indicators lack: IV data for individual options, cross-asset IV ratios, realized volatility forecasts by underlying, option Greeks (delta, gamma, theta), and premium amount tracking. This signal is designed for derivatives pricing models, not candle-based technical analysis.",
+  "translation_notes": "Attempted approximation using hvol_20 (realized volatility proxy) and adx_14 (trending regime filter) to identify low-volatility, non-trending environments where volatility dispersion trades are typically deployed. However, this is a significant oversimplification of the original signal's requirements and should not be used for production trading without proper options analytics infrastructure."
+}

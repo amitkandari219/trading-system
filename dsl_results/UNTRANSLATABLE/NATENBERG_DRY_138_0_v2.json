@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_138_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit delta-neutral position construction (long calls + short futures hedge), realized volatility vs implied volatility spread comparison, theta decay quantification as % of notional, and vega gain tracking. These are derivatives portfolio construction mechanics and Greeks-based metrics not available in the allowed indicator set. The allowed indicators (hvol_20, atr_14, india_vix) provide only proxies for volatility regimes, not the precise delta-hedging rules, theta/vega P&L decomposition, or RV-vs-IV comparative analysis required by this options-specific signal.",
+  "translation_notes": "Attempted proxy mapping: hvol_20 (realized volatility proxy) >= india_vix (implied volatility proxy) for entry, with atr_14 as secondary volatility confirmation. However, this loses critical signal semantics: (1) no delta-hedging enforcement, (2) no theta decay rate monitoring, (3) no vega gain vs time decay tradeoff calculation, (4) no explicit holding period profit/loss mechanics. This signal requires options Greeks and portfolio Greeks calculations outside backtest engine scope."
+}

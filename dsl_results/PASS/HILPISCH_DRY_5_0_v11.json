@@ -1,0 +1,88 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "book_id": "HILPISCH",
+  "dsl_rule": {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "entry_long": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Classic Moving Average Crossover strategy (MA(10) vs MA(20)). SMA1_period and SMA2_period were marked as THRESHOLD_NEEDED in the original signal; used sma_10 and sma_20 as reasonable defaults for a fast/slow pair. The source code references self.SMA1 and self.SMA2 but specific periods are not hardcoded in the provided excerpt. Entry and exit conditions use crosses_above/crosses_below operators to capture the crossover logic explicitly."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Classic Moving Average Crossover strategy (MA(10) vs MA(20)). SMA1_period and SMA2_period were marked as THRESHOLD_NEEDED in the original signal; used sma_10 and sma_20 as reasonable defaults for a fast/slow pair. The source code references self.SMA1 and self.SMA2 but specific periods are not hardcoded in the provided excerpt. Entry and exit conditions use crosses_above/crosses_below operators to capture the crossover logic explicitly."
+  },
+  "source_rule_text": "Generate trading signals by comparing two moving averages of different periods; take long positions when the faster MA exceeds the slower MA, and short positions when it falls below."
+}

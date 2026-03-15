@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cross-timeframe analysis (monthly \u2192 weekly \u2192 daily \u2192 intraday validation) with dynamic support/resistance level identification and confirmation counting. The backtest engine does not have built-in multi-timeframe aggregation or support/resistance detection capabilities. The signal cannot be accurately expressed using single-timeframe indicators and static thresholds. Specifically: (1) 'Same level confirmed on [timeframe] with [THRESHOLD_NEEDED] price touches' requires dynamic S/R detection across multiple timeframes, (2) '[THRESHOLD_NEEDED]' placeholders are undefined in the signal specification, (3) The preservation of drawn S/R lines across timeframe switches is a charting/execution concern, not an indicator-based rule.",
+  "translation_notes": "This signal is fundamentally about multi-timeframe confluence validation rather than indicator-based entry/exit logic. A proper implementation would require: (1) An S/R detection algorithm operating on monthly/weekly/daily timeframes, (2) Touch-counting logic to validate each level, (3) A mechanism to preserve level definitions across timeframe switches in the backtest engine, (4) Definition of THRESHOLD_NEEDED parameter values. The rule is qualitatively sound but cannot be reduced to indicator conditions without losing its core validation logic."
+}

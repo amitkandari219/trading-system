@@ -1,0 +1,88 @@
+{
+  "signal_id": "KAUFMAN_DRY_8",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_8",
+    "entry_long": [
+      {
+        "left": "sma_40",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_40",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_40",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_40",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses a 40-day moving average as the trendline. Entry conditions detect direction changes by comparing current trendline value (sma_40) against previous bar close as a proxy for the previous trendline value. Long entry when trendline crosses above (upward direction change), short entry when it crosses below (downward direction change). Exit conditions use reversal logic since author provided no explicit exit criteria."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_40",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_40",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_40",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_40",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses a 40-day moving average as the trendline. Entry conditions detect direction changes by comparing current trendline value (sma_40) against previous bar close as a proxy for the previous trendline value. Long entry when trendline crosses above (upward direction change), short entry when it crosses below (downward direction change). Exit conditions use reversal logic since author provided no explicit exit criteria."
+  },
+  "source_rule_text": "Buy when the trendline changes direction upward; sell short when the trendline changes direction downward."
+}

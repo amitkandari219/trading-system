@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_125_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic position sizing ratios (low_iv_buy_ratio, low_iv_sell_ratio, high_iv_buy_ratio, high_iv_sell_ratio) which cannot be expressed as simple entry/exit conditions. The rule is a portfolio construction strategy adjusting leverage and directional exposure based on IV regime, not a discrete entry/exit trigger. IV levels must be inferred via hvol_20 as a proxy, but the core mechanic\u2014adjusting option purchase vs sale ratios\u2014requires position management logic outside backtest engine scope.",
+  "translation_notes": "Used hvol_20 (20-period historical volatility) as proxy for implied volatility regime detection. LOW_IV regime approximated as hvol_20 < 0.15; HIGH_IV regime approximated as hvol_20 > 0.25. Neutral zone assumed around hvol_20 = 0.20. Original signal from Natenberg context discusses delta-hedging and position sizing ratios which are position-level mechanics, not entry/exit signals. This translation captures IV regime detection but loses the ratio adjustment component."
+}

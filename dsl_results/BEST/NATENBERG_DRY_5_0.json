@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific metrics (strike selection relative to ATM, option premium levels, time decay, moneyness) and directional conviction assessment that cannot be expressed using equity price/technical indicators alone. Options pricing dynamics (implied volatility, theta decay, delta sensitivity) are not representable in the allowed indicator set.",
+  "translation_notes": "This signal is fundamentally an options strategy rule, not a price/technical analysis rule. The core logic\u2014'buy OTM calls when bullish'\u2014requires measuring: (1) option moneyness vs current price, (2) premium cost vs expected return, (3) time value decay. The entry conditions reference 'bullish directional view' and 'acceptable premium level,' which are subjective and require option-chain context unavailable in standard OHLCV indicators. A best-effort proxy using trend + momentum (close > SMA20 AND RSI > 50) captures 'bullish conviction,' but cannot encode strike selection, premium evaluation, or breakeven analysis. Recommended: Mark as untranslatable or implement as a separate options-specific rule engine."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_386",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of volatility skewing across all strikes (an options surface property), which cannot be expressed using the available indicators. The allowed indicator set contains only price action, moving averages, and single-asset momentum indicators. Options volatility skewing is a cross-strike phenomenon requiring IV surface data not available in the allowed indicator list. The signal also requires identifying expiration dates programmatically, which is not a tradeable indicator condition.",
+  "translation_notes": "This is an options volatility surface-based strategy that fundamentally requires options chain data (strike-by-strike IV levels) to detect skewing patterns. The concept of 'skewing disappearing at expiration' is specific to options pricing mechanics and cannot be translated to price/volume/momentum indicators on a single underlying asset. A practical backtest would require options data integration beyond the current indicator scope."
+}

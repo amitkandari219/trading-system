@@ -1,0 +1,86 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "r1"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses pivot point levels (R1, S1, pivot) which are available in allowed indicators. Entry conditions trigger on breakouts above R1 (bullish) or below S1 (bearish). Exit conditions implement rejection behavior by reversing when price drifts back to central pivot point. Context-dependent direction allows both long and short entries based on which level breaks first. Hold period set conservatively at 5 days for ranging market context."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "r1"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses pivot point levels (R1, S1, pivot) which are available in allowed indicators. Entry conditions trigger on breakouts above R1 (bullish) or below S1 (bearish). Exit conditions implement rejection behavior by reversing when price drifts back to central pivot point. Context-dependent direction allows both long and short entries based on which level breaks first. Hold period set conservatively at 5 days for ranging market context."
+  },
+  "source_rule_text": "If price breaks above R1 or below S1 (successfully taking out these levels), the market accepts the new value and price will move further in that direction; if price rejects these levels, it drifts back to the central pivot point."
+}

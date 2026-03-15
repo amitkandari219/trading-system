@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking VIX high as a 10-day rolling maximum (dc_upper approximation used), but the core logic needs: (1) VIX range comparison across multiple prior days which cannot be expressed without array indexing or a dedicated 'vix_range_max_3d' indicator, and (2) precise time-based exit ('after 3 days') which requires bar counter logic not supported by the three-field condition schema. The instrument is also VIX-based but entry/exit applies to S&P futures\u2014this instrument switching is not expressible in the current schema.",
+  "translation_notes": "Attempted partial translation: india_vix used as VIX proxy; dc_upper (Donchian 10-period upper) approximates 10-day high; range and hvol_20 attempt to capture range expansion logic. However, the requirement to compare today's VIX range against the maximum of the past 3 days' ranges requires either array indexing or a pre-calculated indicator. The 3-day exit is approximated with hold_days_max=3 but 'close after 3 days' is not a standard exit condition operator."
+}

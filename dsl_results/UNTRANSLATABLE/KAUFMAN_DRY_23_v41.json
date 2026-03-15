@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_23",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The profit target calculation requires dynamic entry price tracking and multiplication by an unspecified factor (profit_target_factor). The backtest engine must support entry-price-relative exit targets with a configurable multiplier. Additionally, the 're-entry restriction until next trend' requires trend-state memory that is not expressible in simple conditional logic. The exact profit_target_factor value is missing from the source.",
+  "translation_notes": "Signal uses sma_5 and sma_80 crossovers on 60-minute euro futures. Exit condition uses atr_20 as the volatility measure with an unknown multiplier factor. The rule 'wait for next trend before re-entering' implies trend-following logic that requires state management beyond this rule structure. Recommend: (1) specify the profit_target_factor value, (2) implement entry-price-relative exits in backtest engine, (3) add trend-state tracking for re-entry logic."
+}

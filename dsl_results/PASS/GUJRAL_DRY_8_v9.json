@@ -1,0 +1,74 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "TRENDING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires daily pivot levels applied to intraday chart. Entry conditions: price opens below central pivot AND stays below it (approximated by close remaining below pivot). Exit condition inferred as reversal above pivot (AUTHOR_SILENT). Used 'pivot' indicator which represents the central pivot point. Stop loss set conservatively at 2% for intraday short trade. Hold time limited to 5 days maximum for regime-based signal."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN",
+      "TRENDING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal requires daily pivot levels applied to intraday chart. Entry conditions: price opens below central pivot AND stays below it (approximated by close remaining below pivot). Exit condition inferred as reversal above pivot (AUTHOR_SILENT). Used 'pivot' indicator which represents the central pivot point. Stop loss set conservatively at 2% for intraday short trade. Hold time limited to 5 days maximum for regime-based signal."
+  },
+  "source_rule_text": "When price opens and stays below the central pivot from the beginning of the day, it signals weakness; short the stock as price will likely fall further."
+}

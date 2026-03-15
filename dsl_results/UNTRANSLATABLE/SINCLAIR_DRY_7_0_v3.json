@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific metrics (Implied Volatility, option delta, bid-ask spreads, volatility skew/slope) that are not available in the allowed indicator set. The allowed indicators are equity price/technical indicators only. Options Greeks (delta, vega), IV term structure, and skew measurements cannot be replicated from price-based indicators alone.",
+  "translation_notes": "Attempted partial translation using available volatility proxies: india_vix as IV proxy, hvol_20 as realized volatility proxy, and bb_pct_b as proxy for extreme OTM positioning. However, this loses critical signal components: (1) delta threshold for strike selection, (2) bid-ask spread liquidity filter, (3) IV-RV spread quantification in std devs, (4) skew slope measurement. A proper implementation requires options data feeds with Greeks and IV surface."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe analysis with lower timeframe confluence validation (prior bar breakout + support/resistance + swing point alignment on lower timeframe). The framework does not support cross-timeframe indicator comparisons or dynamic lower timeframe thresholds. Parameters 'lower_timeframe_ratio', 'required_confluence_signals', and 'bars_back_for_support_resistance' lack specific numeric values marked as [THRESHOLD_NEEDED] and cannot be operationalized without additional context.",
+  "translation_notes": "Translated primary breakout logic (price above/below prior bar extremes) into basic conditions. The core signal intent\u2014validating breakouts via lower timeframe confluence\u2014requires multi-timeframe backtesting capability not available in this single-timeframe rule engine. Consider: (1) implementing separate lower timeframe rules and filtering entries, (2) using pivot levels (pivot, s1, r1) as proxy for support/resistance, or (3) adding ADX + volume confluence (vol_ratio_20) to approximate multi-timeframe confluence."
+}

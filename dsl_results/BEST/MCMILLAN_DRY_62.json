@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_62",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option Greeks (delta, time_value_premium) and option-specific mechanics (naked call writing, strike price relationships) which are not available in the equity price/technical indicator set. The core strategy depends on option contract characteristics that cannot be expressed using only OHLCV and technical indicators.",
+  "translation_notes": "Attempted to proxy the 'deeply in-the-money call' condition using price position relative to a reference level, but this is a weak substitute. The signal fundamentally requires option chain data (delta \u2248 1.0, minimal extrinsic value) to be properly implemented. The example uses stock at 60 vs strike at 50 (deeply ITM), but without actual delta and time value inputs, entry conditions cannot be accurately captured. Exit when stock approaches strike (55 in example) is partially translatable as a price-based exit, but the profit mechanics described depend on option pricing dynamics unavailable in this indicator set."
+}

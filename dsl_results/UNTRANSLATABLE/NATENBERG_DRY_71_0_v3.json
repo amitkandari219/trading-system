@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_71_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific indicators (implied volatility, theta decay, time-to-expiration, term-structure analysis, volatility mean-reversion) and option spread mechanics (calendar spreads, theta comparison between strikes) not available in the allowed indicator set. The allowed indicators are equity price action only; options Greeks and volatility surface mechanics cannot be modeled.",
+  "translation_notes": "This signal is fundamentally an options trading rule from Natenberg's work on time spreads. It requires: (1) IV forecasting with confidence thresholds, (2) theta decay comparison between options of different expirations, (3) IV change tolerances, and (4) days-to-expiration monitoring. None of these can be accurately translated using only equity price and volume indicators. The attempted mapping to hvol_20 and bb_bandwidth is a crude proxy that misses the core signal logic."
+}

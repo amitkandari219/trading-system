@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_51",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes an options strategy (call spread) with strike prices and spread widths. The backtest engine uses equity price data only and cannot model options derivatives, net debits, strike pricing, or expiration mechanics. The core logic (price >= higher_strike at expiration = max profit) cannot be meaningfully translated without options contract data, Greeks, and volatility inputs.",
+  "translation_notes": "Signal MCMILLAN_DRY_51 is a vertical call spread strategy from options trading. It requires: (1) options contract specification (strike X, strike Y, expiration date), (2) options pricing and Greeks calculations, (3) net debit tracking across the spread, and (4) expiration-aware position management. Standard equity backtesting engines cannot replicate these mechanics. Recommend: use an options-specific backtest framework or convert to synthetic equity strategy if possible."
+}

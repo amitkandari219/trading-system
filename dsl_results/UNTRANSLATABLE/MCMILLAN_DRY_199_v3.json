@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_199",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of weighted average value across tendered and post-tender share pools, which is a fundamental valuation model outside the scope of technical indicators. The entry condition depends on: (1) tender_offer_price (not provided by author), (2) expected_post_tender_price (not provided by author), (3) allocation_split percentages, and (4) dynamic weighting logic that cannot be expressed as a simple indicator comparison. Additionally, the exit depends on tender offer expiration timing which is an event-based condition, not a price/technical trigger.",
+  "translation_notes": "MCMILLAN_DRY_199 is a statistical arbitrage strategy rooted in corporate event analysis. The rule requires: weighted_avg = (0.5 \u00d7 tender_offer_price) + (0.5 \u00d7 expected_post_tender_price), then entry when close < weighted_avg. Without the specific tender_offer_price and expected_post_tender_price parameters (marked AUTHOR_SILENT), this cannot be operationalized. The example suggests XYZ at $70 for half the company, implying weighted_avg \u2248 $35 if post-tender equals $0 or lower, but this is speculative. Exit on tender expiration is an event date, not a technical condition. A backtest engine would need corporate events API integration and fundamental inputs to execute this signal."
+}

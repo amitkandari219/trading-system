@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) 'clustered pulsed execution pattern' - requires pattern recognition of multi-cycle volume behavior not expressible as simple indicator comparisons; (2) 'market memory of inflection points' - requires historical inflection point identification and tracking across multiple bars/regimes; (3) 'absorption phase duration tracking' - requires temporal state management beyond single-bar comparisons. The signal fundamentally describes a multi-phase sequence detection algorithm that cannot be reduced to 3-4 discrete indicator conditions. Volume spike thresholds are context-dependent multipliers without concrete values.",
+  "translation_notes": "Attempted partial translation using volume ratio proxies (volume vs sma_20) and price confirmation, but this omits the core pattern: sequential large-buy spurt \u2192 absorption pause \u2192 second spurt with price memory. The original signal requires a state machine or rolling window analyzer, not a rule engine. Recommend implementing as custom pattern detector outside this framework."
+}

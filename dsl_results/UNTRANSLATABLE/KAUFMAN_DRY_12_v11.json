@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom PFOBV (Price-Filtered On-Balance Volume) indicator which is not in the allowed indicators list. The entry condition requires comparing absolute price change against a dynamic threshold calculated as average(price_change, n) + f*stddev(price_change, n), where both 'f_multiplier' and 'n_period' are marked AUTHOR_SILENT (unknown). Without these parameters and the custom volume-based indicator, the signal cannot be accurately translated to the standard indicator set.",
+  "translation_notes": "This is a volatility filter signal (Category: VOL) designed to ignore noise below a statistical threshold and update a custom volume metric. The original source mentions 25 basis points (+0.25) or 1-point moves as examples of thresholds, but without the specific f_multiplier and n_period values, and without PFOBV in the allowed indicators, a precise translation is impossible. A partial proxy using ATR crossing could approximate volatility filtering, but would not capture the true intent of the price-filtered on-balance volume logic."
+}

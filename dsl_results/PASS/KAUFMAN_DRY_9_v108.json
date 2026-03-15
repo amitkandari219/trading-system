@@ -1,0 +1,74 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "macd_hist",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Bearish divergence detected by combining price direction (close > prev_close for rising prices) with momentum direction (macd_hist < 0 for falling momentum). MACD histogram is used as the primary momentum indicator as it directly represents momentum slope. Exit condition uses reversal logic: close < prev_close triggers exit when bullish conditions reverse. The signal strength assessment mentioned in original parameters (slope comparison) is implicit in the MACD histogram divergence magnitude but cannot be explicitly quantified without additional slope calculation indicators."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "macd_hist",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Bearish divergence detected by combining price direction (close > prev_close for rising prices) with momentum direction (macd_hist < 0 for falling momentum). MACD histogram is used as the primary momentum indicator as it directly represents momentum slope. Exit condition uses reversal logic: close < prev_close triggers exit when bullish conditions reverse. The signal strength assessment mentioned in original parameters (slope comparison) is implicit in the MACD histogram divergence magnitude but cannot be explicitly quantified without additional slope calculation indicators."
+  },
+  "source_rule_text": "Enter SHORT when prices are rising while momentum is falling (bearish divergence); assess signal strength primarily by momentum slope or by the net difference between rising price slope and falling momentum slope."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "HARRIS_DRY_17_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pairs trading with correlated instruments (spread analysis between two instruments, mean-reversion of price ratio/spread). Current allowed indicators do not include multi-instrument spread calculations, z-score of spread divergence, or historical mean relation tracking. The rule cannot be fully expressed with single-instrument indicators. Translation uses Bollinger Bands as proxy for mean-reversion, but this does not capture the true pairs trading logic.",
+  "translation_notes": "Attempted approximation using Bollinger Bands percentage B (bb_pct_b) as a proxy for mean-reversion: bb_pct_b < 0.2 indicates price near lower band (cheap/long entry), bb_pct_b > 0.8 indicates price near upper band (expensive/short entry). Exit when bb_pct_b returns to middle (0.5). Bandwidth condition ensures sufficient volatility/divergence exists. However, this does not replicate true pairs trading which requires dual-instrument correlation analysis and z-score threshold comparisons."
+}

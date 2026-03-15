@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_17",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a volatility-based dynamic parameter adjustment rule, not a traditional entry/exit signal. It requires: (1) real-time calculation of price change standard deviation, (2) dynamic moving average period calculation via non-linear interpolation formula (n_t = (30-5) \u00d7 ((volatility - 0.25) / 1.5) + 5), and (3) conditional application of different MA periods (5, 30, or interpolated values). The backtest engine does not support dynamic indicator parameterization based on volatility calculations within condition logic. This would require a custom volatility regime detector and MA period selector outside the standard condition framework.",
+  "translation_notes": "KAUFMAN_DRY_17 describes an adaptive moving average strategy (similar to Kaufman's Adaptive Moving Average) that adjusts the MA period based on volatility regime. While hvol_20 could approximate volatility measurement, the allowed indicators and operators cannot express: (1) standard deviation calculation of returns, (2) the interpolation formula between bounds, or (3) conditional MA period assignment. Recommend implementing as a custom strategy wrapper or regime-based MA selector outside the JSON rule engine."
+}

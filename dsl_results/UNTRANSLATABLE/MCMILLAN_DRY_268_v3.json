@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_268",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of implied volatility differential between TWO INDICES (spread trading). The allowed indicators set contains only single-instrument volatility measures (india_vix, hvol_20). Cross-index IV differential calculation is not supported by the available indicator set. This is a multi-leg derivative strategy that cannot be expressed with single-instrument indicators.",
+  "translation_notes": "Original signal requires establishing an index spread when IV differential >= 2% (0.02 decimal). Attempted proxy using india_vix as general HIGH_VOL regime trigger, but this does not capture the core logic of comparing two different index implied volatilities. The spread direction (LONG vs SHORT) is context-dependent and requires external determination of which index IV is higher."
+}

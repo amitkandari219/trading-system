@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_198",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires event-driven conditions (merger announcement detection, stock ratio collar validation, options market data availability) and multi-leg derivative position construction (simultaneous long equity + long put options with specific strike/expiration/premium parameters). These cannot be expressed using only price/technical indicators. The signal also references external event catalysts and options chain conditions not available in the allowed indicator set.",
+  "translation_notes": "Partial translation provided: Converted acquiring company stock price drop (close < 45) as entry trigger and collar upper bound (close >= 55) as exit. However, the core strategy requires: (1) merger announcement detection, (2) verification of share ratio collar structure (0.455-0.556 range), (3) options market monitoring (put availability, time value < 0.5 points), (4) multi-leg position coordination (10,000 shares + 56 put contracts), and (5) merger close date tracking. A proper implementation requires event data and options chain feeds beyond standard OHLCV indicators."
+}

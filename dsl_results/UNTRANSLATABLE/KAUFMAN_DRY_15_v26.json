@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-day pattern recognition across specific weekdays (Monday > Friday, Tuesday reversal, Wednesday up, Thursday/Friday down). This requires temporal indexing to past specific calendar days, which cannot be expressed with available indicators that only reference prev_close/prev_open (1 bar back) or fixed moving averages. The 69% probability threshold also requires historical pattern matching, not a single-bar condition. A proper implementation would need day-of-week indexing and multi-bar lookback arrays.",
+  "translation_notes": "KAUFMAN_DRY_15 is a complex calendar-based pattern that requires: (1) identifying the previous Monday's close vs. Friday before, (2) confirming Tuesday reversed, (3) confirming Wednesday was up, (4) confirming Thursday and Friday were down, then (5) entering Monday with 69% win probability. Without day-of-week context and multi-bar indexed arrays, this cannot be faithfully translated to the available indicator set. A workaround would require custom code for weekday detection and rolling 5-day pattern validation."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_133_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'long-term mean HV' (unavailable; hvol_20 is 20-day only), 'IV slope is negative' and 'HV slope is negative' (no slope/derivative operators available), and 'volatility regime elevated but declining' as a composite regime condition. The india_vix proxy is imperfect for implied volatility. Without slope calculation operators or long-term volatility baseline, full signal intent cannot be accurately captured.",
+  "translation_notes": "Attempted approximation using hvol_20 as historical volatility proxy and india_vix as implied volatility proxy. Entry conditions 1-2 capture elevated vol and IV>HV logic. Condition 3 uses price as weak proxy for negative slope (price declining = vol declining trend). Exit uses IV<HV reversal. Recommend: (1) add hvol_100 or hvol_200 for long-term mean, (2) add slope/derivative operators, (3) clarify IV source (current implementation uses india_vix as approximation only)."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_151",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options pricing data (straddle prices, near-term vs longer-term comparisons) and precise strike price alignment. These are derivatives market inputs not available in the allowed equity/volatility indicators. The 2/3 straddle ratio and months-to-expiration conditions cannot be accurately translated without options market data. Used proxies (price_pos_20 for 'near middle strike', hvol_20 for volatility) as best effort, but this is fundamentally an options strategy that requires options-specific data inputs.",
+  "translation_notes": "MCMILLAN_DRY_151 is an options diagonal butterfly spread strategy. (1) 'Stock price near middle striking price' approximated as price_pos_20 between 0.4-0.6 (middle 40-60% of 20-bar range). (2) 'Somewhat volatile' approximated as hvol_20 > 0.015 (1.5% threshold). (3) 'Near-term straddle \u2265 2/3 of longer-term straddle' is untranslatable without options data. (4) '2-4 months to expiration' set as hold_days_max=120 days. Exit when price moves below 30th percentile (mean reversion assumption). Direction marked CONTEXT_DEPENDENT per original signal. This strategy fundamentally requires options Greeks and pricing, not available in equity indicators."
+}

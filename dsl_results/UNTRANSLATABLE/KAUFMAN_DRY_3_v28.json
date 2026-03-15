@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Cup formation detection requires pattern recognition logic unavailable in the allowed indicators. Specifically: (1) identifying three consecutive days where the middle day has the lowest low or close, (2) confirming this is the lowest point of a downtrend (requires historical context beyond lookback), and (3) tracking entry window timing (within 3 days of formation). The allowed operators (>, <, >=, <=, ==, crosses_above, crosses_below, is) and indicators cannot express the multi-bar sequential pattern matching required for this technical chart pattern.",
+  "translation_notes": "This signal requires custom pattern detection logic. A backtest engine would need to implement a dedicated cup_formation() function that scans for the specific 3-day candlestick arrangement and downtrend context. Suggest implementing as a custom indicator or external pattern scanner rather than JSON rule logic."
+}

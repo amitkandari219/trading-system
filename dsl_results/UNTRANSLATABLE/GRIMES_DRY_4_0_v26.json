@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe analysis (weekly overextension vs daily conviction) which cannot be expressed in single-timeframe indicator logic. 'Weekly is overextended' and 'Daily shows lack of conviction at extremes' require explicit weekly/daily timeframe comparison operators not available in the engine. Translated entry conditions as proxies: RSI extremes (overextension), low body_pct (indecision), declining volume, and no new highs. This is a best-effort approximation only.",
+  "translation_notes": "CRITICAL: This signal fundamentally requires multi-timeframe logic that cannot be properly expressed in a single-timeframe backtest engine. The original rule compares weekly chart extremes against daily price action indecision\u2014this requires simultaneous analysis of two timeframe contexts. Translated using: (1) RSI >70/<30 as proxy for 'overextended on higher timeframe', (2) body_pct <0.3 for 'indecisive/lack of conviction', (3) volume < hvol_20 for 'declining volume on final push', (4) no new highs/lows vs previous bar. Exit uses sma_20 crossover as mean reversion trigger. Recommend implementing with explicit dual-timeframe rules in backtest engine for accuracy."
+}

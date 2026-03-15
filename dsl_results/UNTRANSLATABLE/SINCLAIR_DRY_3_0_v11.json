@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a volatility forecasting methodology rather than a tradeable entry/exit rule. It requires: (1) detection of event-driven volatility spikes (not available in standard indicators\u2014requires external event calendar and attribution logic), (2) exclusion/reweighting of specific historical volatility observations (a data preprocessing step, not a trading condition), and (3) forward-looking regime identification tied to scheduled vs. unscheduled events (requires event database integration). The allowed indicator set contains only historical price/volume derivatives and cannot identify causation (earnings spike vs. market spike) or forecast future event occurrences. Implementation requires custom event detection, volatility regime segmentation, and conditional lookback filtering outside the backtest engine's standard condition evaluation framework.",
+  "translation_notes": "Signal SINCLAIR_DRY_3_0 describes a volatility modeling adjustment (exclude singular event spikes from exponential decay forecasts) suitable for portfolio construction or risk model calibration, not order entry/exit logic. To implement: build a separate volatility forecast module that (a) flags hvol_20 spikes coinciding with known events, (b) applies full_removal or reweighting to those periods, (c) recalibrates forecasts for periods without similar scheduled events. Consider translating as a pre-signal data filter rather than a live trading rule."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_112",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes an options strategy (calendar spread: short call + long call with different expirations) that cannot be expressed using equity price/technical indicators alone. The core logic requires: (1) option Greeks (theta decay, time value premium) which are not in the allowed indicator set, (2) strike price relationships and expirations which are not price-based inputs, and (3) explicit time decay capture mechanics over a specific holding period. A backtest engine working with equity price action cannot directly model options premium decay and calendar spread P&L.",
+  "translation_notes": "MCMILLAN_DRY_112 is a calendar spread strategy from option theory literature. The signal requires option-specific parameters (short_term_call_duration, long_term_call_duration, strike_price_relationship, time_decay_capture_period) that have no equivalent in price-action technical analysis. This strategy is fundamentally untranslatable to a rules engine limited to OHLCV and standard technical indicators."
+}

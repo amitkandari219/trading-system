@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires (1) calculation of 'average daily range' which is not a directly available indicator\u2014ATR_14 is used as a proxy but the exact lookback period is marked AUTHOR_SILENT; (2) time-based entry condition 'after first hour of trading' cannot be expressed with available operators and indicators (no intrabar timing logic supported); (3) operator '+' (addition) is not in ALLOWED_OPERATORS list\u2014the rule needs to express 'low + range' as an entry price level which requires arithmetic not supported by the schema",
+  "translation_notes": "This signal requires intraday timing logic ('after first hour') and custom arithmetic (low + average range) that fall outside the backtest engine's capability. The closest approximation would use ATR_14 as a volatility measure, but without time-based filtering and arithmetic operators, the signal cannot be faithfully translated. Recommend implementing custom entry logic or upgrading engine to support intrabar conditions and arithmetic expressions."
+}

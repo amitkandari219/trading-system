@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic MA length selection based on timeframe context ([THRESHOLD_NEEDED] is a placeholder). MA slope confirmation over N bars requires rate-of-change calculation not directly available in indicator set. Implementation requires external parameter configuration or a momentum indicator (e.g., MACD) as proxy for MA slope. The rule is conceptually sound but cannot be fully encoded without parameterization logic or slope detection operators.",
+  "translation_notes": "Translated using sma_50 as a standard intermediate-term MA. Entry requires price crossing above MA with positive slope (approximated by MA > prev_close). Exit on crossbelow. Signal architecture is adaptive and requires backtester to accept MA_LENGTH as an optimization parameter rather than a fixed value. Consider using MACD or ADX_14 in production to detect trend strength and slope direction."
+}

@@ -1,0 +1,70 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_20",
+    "entry_long": [
+      {
+        "left": "ema_20",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "rsi_7",
+        "operator": "<",
+        "right": "50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "rsi_7",
+        "operator": ">=",
+        "right": "50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used ema_20 as the 20-day exponential (EMA is exponential moving average). Used prev_low for 'yesterday's low'. Used rsi_7 as closest available RSI period to the specified 10-day RSI (rsi_14 available but rsi_10 not in allowed list; rsi_7 is the closest match). Exit condition inferred as RSI crossing above 50 since AUTHOR_SILENT was specified."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "ema_20",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "rsi_7",
+        "op": "<",
+        "value": 50.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "rsi_7",
+        "op": ">=",
+        "value": 50.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Used ema_20 as the 20-day exponential (EMA is exponential moving average). Used prev_low for 'yesterday's low'. Used rsi_7 as closest available RSI period to the specified 10-day RSI (rsi_14 available but rsi_10 not in allowed list; rsi_7 is the closest match). Exit condition inferred as RSI crossing above 50 since AUTHOR_SILENT was specified."
+  },
+  "source_rule_text": "Buy on weakness when a 20-day exponential is less than yesterday's low AND a 10-day RSI is less than 50."
+}

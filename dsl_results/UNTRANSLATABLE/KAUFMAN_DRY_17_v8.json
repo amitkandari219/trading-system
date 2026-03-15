@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_17",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires dynamic indicator selection based on volatility thresholds (varying moving average period between sma_5 and sma_30 based on standard deviation of price changes). The allowed indicator set does not include standard deviation calculation or conditional indicator switching logic. The rule describes a meta-strategy (parameter adjustment) rather than entry/exit conditions that can be expressed as fixed indicator comparisons. Implementation requires custom volatility-based period selection logic outside the scope of the condition-based backtest engine.",
+  "translation_notes": "KAUFMAN_DRY_17 is a regime-detection and parameter-tuning strategy rather than a traditional entry/exit signal. It requires: (1) computing standard deviation of returns or price changes, (2) comparing current volatility to historical volatility thresholds, and (3) dynamically switching between moving average indicators (sma_5 through sma_30). None of these dynamic selections can be expressed in the fixed indicator comparison framework. To implement: create a volatility regime classifier upstream, then apply different fixed moving average rules per regime."
+}

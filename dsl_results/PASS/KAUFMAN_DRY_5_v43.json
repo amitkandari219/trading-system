@@ -1,0 +1,88 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_5",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "N-day breakout strategy implemented using Donchian channels with N=5 days. Entry occurs when price breaks above the 5-day high (dc_upper) for long trades or below the 5-day low (dc_lower) for short trades. Exit occurs when the opposite breakout reverses the signal. The Donchian indicator directly captures the N-day high/low range referenced in the original signal."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "N-day breakout strategy implemented using Donchian channels with N=5 days. Entry occurs when price breaks above the 5-day high (dc_upper) for long trades or below the 5-day low (dc_lower) for short trades. Exit occurs when the opposite breakout reverses the signal. The Donchian indicator directly captures the N-day high/low range referenced in the original signal."
+  },
+  "source_rule_text": "Enter a trade when price breaks above the N-day high or below the N-day low; exit when price reverses the N-day high or low in the opposite direction."
+}

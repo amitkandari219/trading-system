@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a spatial arbitrage strategy between two distinct price feeds (two banks) that requires real-time multi-venue price comparison and simultaneous execution across venues. The backtest engine operates on single-instrument OHLCV data and does not support: (1) multi-venue/multi-bank price data feeds, (2) bid-ask spread comparison logic, (3) credit line status checks, (4) synchronized cross-venue execution constraints. The core tradeable condition (price_difference_threshold between two banks exceeds bid-ask spread) cannot be expressed using single-instrument technical indicators. This requires a dedicated arbitrage execution system with access to multiple interbank feeds.",
+  "translation_notes": "Signal KAUFMAN_DRY_13 is an interbank spatial arbitrage rule, not a technical signal suitable for standard backtesting. It would require: (a) dual data feeds with real-time interbank quotes from multiple venues, (b) counterparty credit management systems, (c) execution infrastructure for simultaneous orders across venues, and (d) transaction cost modeling specific to interbank spreads. Recommend implementing in a dedicated FX arbitrage platform rather than a technical backtest engine."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires analyst forecast dispersion measurement (not in allowed indicators), implied volatility regime detection, and earnings event calendar data. The allowed indicators lack direct access to: (1) analyst forecast dispersion percentile ranking, (2) comparison of current IV to historical average IV, (3) days-to-earnings event data. While hvol_20 and india_vix can proxy volatility conditions, they cannot capture analyst disagreement dispersion or earnings event timing. Thresholds marked [THRESHOLD_NEEDED] in original signal are unspecified. This signal is fundamentally dependent on external data sources (analyst consensus, earnings calendar) not representable in price-action indicators alone.",
+  "translation_notes": "Attempted partial translation using hvol_20 as volatility proxy and india_vix as IV proxy, but core logic cannot be fully captured. Entry conditions require: (1) analyst forecast dispersion in 75th percentile (untranslatable), (2) IV below historical average (requires IV regime data), (3) minimum days to earnings (requires event calendar). Exit conditions include profit/loss targets and pre-earnings exit that require parametrization. This signal requires integration with external data feeds beyond candlestick-derived indicators."
+}

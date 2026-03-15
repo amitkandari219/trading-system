@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_63_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires delta-neutral options portfolio construction and management across multiple legs (long/short calls and puts with specific delta values). The backtest engine's allowed indicators are limited to price-based technical indicators (moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, and price positioning). The signal requires: (1) calculation of total delta across option positions, (2) monitoring of vega and gamma Greeks, (3) implied volatility tracking, and (4) multi-leg options position management. None of these capabilities are expressible using the allowed technical indicators. Options Greeks (delta, gamma, vega) and implied volatility are not available in the indicator set.",
+  "translation_notes": "This is a volatility-based options spreads strategy (specifically a delta-neutral calendar/ratio spread construction). To implement this signal, the backtest engine would need to support options contract data (strike prices, expirations, Greeks calculations) and IV surface modeling, which are outside the scope of price/volume technical indicator rules."
+}

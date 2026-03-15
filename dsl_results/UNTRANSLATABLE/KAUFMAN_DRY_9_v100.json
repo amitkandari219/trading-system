@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal specifies two alternative configurations (rsi_14 with 70-30 zones OR rsi_10 with 80-20 zones). Available indicators only include rsi_7, rsi_14, rsi_21 \u2014 rsi_10 is not available. Cannot fully represent the dual-parameter strategy without rsi_10. Implemented compromise using rsi_14 only with both threshold pairs as alternative entry conditions.",
+  "translation_notes": "KAUFMAN_DRY_9 requires flexibility between two RSI configurations. Used rsi_14 (available) for standard setup with 70-30 zones. The frequent-trade variant (rsi_10 with 80-20 zones) cannot be precisely implemented due to lack of rsi_10 indicator. Configured entry_long and entry_short as OR conditions to allow either threshold to trigger. Exit conditions set to reverse the entry signals (standard mean reversion logic). Direction set to CONTEXT_DEPENDENT to reflect that both long and short signals are valid depending on RSI position."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific metrics (implied volatility, strike distances in standard deviations, gamma exposure, DTE tracking, strangle/strip construction) that are not available in the equity price/technical indicator set. The core logic of multi-strike volatility positioning, gamma concentration targets, and strike selection relative to ATM cannot be fully expressed using only the allowed indicators. Used hvol_20 vs IV proxy as partial approximation, but strike-level gamma positioning is untranslatable.",
+  "translation_notes": "SINCLAIR_DRY_4_0 is an options volatility strategy requiring derivatives metrics. Attempted translation uses hvol_20 (realized volatility) as proxy for volatility thesis, bb_bandwidth for volatility regime detection, and atr_14 as proxy for move magnitude exit. However, this loses the essential signal logic: multi-strike gamma distribution, strike selection by moneyness/stdev, and DTE-based exit timing. Original signal is not suitable for equity-only backtest engine."
+}

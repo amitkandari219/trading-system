@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires comparison of 'high of new day minus low of current column' against a 'swing filter value'. The swing filter value is marked AUTHOR_SILENT (undefined). Additionally, the signal references 'current column' and 'new column' concepts which are chart pattern/swing analysis constructs not directly expressible in bar-by-bar indicator logic. The range comparison should theoretically be: (high - prev_low) > swing_filter, but without a defined swing_filter parameter value, this cannot be properly instantiated. Consider defining swing_filter_value as a multiple of ATR (e.g., 2.0 * atr_14) or as an absolute parameter.",
+  "translation_notes": "Attempted partial translation using range > atr_14 as a proxy for swing filter detection, but the 'current column low' vs 'new day high' column-based logic and undefined swing_filter_value prevent full accurate translation. This signal requires clarification of: (1) swing_filter_value definition, and (2) explicit bar indexing for the two-column swing reversal pattern."
+}

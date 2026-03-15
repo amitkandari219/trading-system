@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_19_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires probability distribution modeling and Gaussian tail weighting (probability_concentration_std_dev, tail_probability_floor) which are not available in the allowed indicator set. The core concept of assigning probability weights based on distance from spot price cannot be expressed as discrete entry/exit conditions using only price-action and volatility indicators. This is a volatility smile/skew model requiring option-specific calculations, not a directional trading rule.",
+  "translation_notes": "Attempted approximation uses realized vs implied volatility comparison (hvol_20 vs india_vix) as proxy for the signal's volatility regime assessment. Entry conditions restricted to low volatility ranging markets. However, the fundamental probability weighting mechanism cannot be translated into the rule engine's conditional logic structure."
+}

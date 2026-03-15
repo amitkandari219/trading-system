@@ -1,0 +1,88 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_4",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "r1"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "s1"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "s1"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "r1"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped 'previous pivot high' to r1 (resistance 1) and 'previous pivot low' to s1 (support 1) using the Pivots indicator set. Signal supports both long entries (upside breaks) and short entries (downside breaks) for trend-following in trending regimes. Entry/exit use crosses_above/crosses_below to capture breakouts through pivot levels. Max hold set to 20 days per parameter guidance."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "r1"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "s1"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "s1"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "r1"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mapped 'previous pivot high' to r1 (resistance 1) and 'previous pivot low' to s1 (support 1) using the Pivots indicator set. Signal supports both long entries (upside breaks) and short entries (downside breaks) for trend-following in trending regimes. Entry/exit use crosses_above/crosses_below to capture breakouts through pivot levels. Max hold set to 20 days per parameter guidance."
+  },
+  "source_rule_text": "Buy on an upwards move through the previous pivot high and sell on a break through the previous pivot low for trend following."
+}

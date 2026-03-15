@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_138_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit options position mechanics (delta-neutral construction, implied vs realized volatility comparison, time decay modeling) which cannot be expressed using available price/technical indicators. The rule fundamentally depends on options-specific metrics (delta, implied volatility surface, theta decay) not present in the allowed indicator set. Approximated entry using realized volatility proxy (hvol_20) vs VIX proxy (india_vix), but this does not capture the delta-neutral rebalancing requirements or options pricing dynamics described in the original signal.",
+  "translation_notes": "Attempted approximation using hvol_20 (historical volatility) as proxy for realized volatility and india_vix as proxy for implied volatility environment. However, the core signal is an options-specific trading principle about delta-neutral position management under volatility regime changes\u2014requires dedicated options Greeks indicators (delta, vega, theta) and implied volatility data not available in this indicator set. Manual implementation with options data strongly recommended."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a REGIME AVOIDANCE rule, not a directional entry signal. It requires detecting: (1) a sharp spike through one Bollinger Band, (2) an immediate reversal through the opposite band within N bars, and (3) subsequent triangle consolidation confirmation. While individual components (price vs bb_upper/bb_lower) are translatable, the pattern detection logic\u2014specifically identifying 'equally sharp reversals' and 'triangle consolidation formation'\u2014requires multi-bar pattern recognition and volatility contraction analysis that cannot be expressed as simple 3-field conditions. The rule is prescriptive (DO NOT TRADE) rather than directional entry/exit. Recommend implementing as a separate regime detection module or pre-filter rather than standard entry/exit conditions.",
+  "translation_notes": "Signal GRIMES_DRY_7_0 describes a market regime to AVOID rather than a tradeable pattern. The core logic would require: (a) bb_upper and bb_lower crossover detection across multiple bars, (b) relative velocity/sharpness comparison (not available), and (c) consolidation pattern recognition (triangle shape detection not in indicator set). Consider using bb_bandwidth contraction as a proxy for consolidation, but this alone does not capture the full reversal-spike-through-band pattern."
+}

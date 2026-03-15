@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_348",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit 'implied volatility shrinking' condition. The allowed indicators include hvol_20 (historical volatility), but not implied volatility (IV). The entry condition comparing hvol_20 to itself is a placeholder and cannot properly express 'IV shrinks while stock rises' without access to an IV indicator. Additionally, the context-dependent nature of this signal (profit outlook improves vs. losses worsen based on stock direction) requires conditional logic beyond the supported operators.",
+  "translation_notes": "This signal describes a volatility-based option spread strategy that cannot be fully translated without access to implied volatility indicators. The rule is fundamentally tied to options pricing dynamics (bull spread P&L sensitivity to IV changes) which are outside the scope of price-action and historical volatility indicators. A proper backtest would require iv_index or similar IV tracking indicator."
+}

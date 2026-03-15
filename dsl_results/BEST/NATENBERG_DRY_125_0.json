@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_125_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific inputs (implied volatility regime detection, time spread delta calculation, strike selection, and hedge ratio targeting) that cannot be expressed using only equity price/technical indicators. The core concept of 'buy time spreads when IV is low' and 'sell when IV is high' can be approximated via hvol_20 and india_vix proxies, but the delta-based directional hedging logic, strike selection, and spread ratio optimization are untranslatable without options pricing data.",
+  "translation_notes": "Approximated 'low implied volatility regime' using hvol_20 < 0.15 and india_vix < 20 for LONG entry (buy spreads). Approximated 'high implied volatility regime' using hvol_20 > 0.30 and india_vix > 30 for SHORT entry (sell spreads). Exit conditions use vol expansion/contraction as proxies for spread deterioration. This translation loses the critical delta-hedging and time decay optimization logic that defines the original signal's intent."
+}

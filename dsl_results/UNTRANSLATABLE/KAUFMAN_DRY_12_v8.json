@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom linear regression slope calculation (LinearRegSlope function) which is not available in the allowed indicator set. The forecast formula 'Pf = Close + LinearRegSlope(close, n)' cannot be expressed using only the provided indicators. Additionally, the lookback_period_n, weighting_factors_for_volume_open_interest, and exit conditions are marked AUTHOR_SILENT, making complete specification impossible. The probability model condition referencing relationships between price, volume, and open interest cannot be quantified without specific thresholds.",
+  "translation_notes": "This signal fundamentally requires: (1) a linear regression slope indicator not in the allowed set, (2) a custom 1-day-ahead forecast calculation, (3) volume and open interest relationship weighting (not provided), and (4) specific parameter values marked AUTHOR_SILENT. As a fallback, used SMA_20 crossover as a trend-following proxy, but this does not capture the intended linear regression forecast mechanism."
+}

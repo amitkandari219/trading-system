@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_249",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires external market data not in the allowed indicator set: (1) 'incremental return from futures arbitrage' \u2014 a computed spread/differential between stock-futures pricing that is not available as a standard price indicator, (2) 'T-bill return' \u2014 a fixed-income instrument yield external to the stock/futures universe. The signal is fundamentally about comparing two different asset classes and their returns, which cannot be expressed using only price action, technical indicators, and volume metrics on a single instrument. This is a macro/portfolio allocation decision rather than a technical entry/exit rule.",
+  "translation_notes": "MCMILLAN_DRY_249 describes an arbitrage opportunity selection rule that compares the relative attractiveness of stocks-versus-futures arbitrage against alternative fixed-income instruments. Both key parameters (arbitrage return differential and T-bill return threshold) are marked AUTHOR_SILENT with no numerical guidance provided in the source text. The decision logic is quantitative but requires external data feeds (futures basis, T-bill yields) outside the scope of single-instrument technical indicators. To implement this rule, a backtest engine would need custom data sources for (a) basis spread between spot and futures, and (b) current T-bill yield, plus a user-configured return threshold."
+}

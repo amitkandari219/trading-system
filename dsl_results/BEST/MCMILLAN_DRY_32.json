@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_32",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires detection of: (1) existing covered call position with locked-in loss state, (2) support level breaks, and (3) important trend line breaks. These are portfolio/position-level constructs and technical chart patterns that cannot be expressed using only the allowed price/indicator-based operators. Support levels and trend lines require manual chart identification or multi-bar pattern logic not available in the allowed indicator set. The action ('roll down position') is also a portfolio management directive, not a price entry/exit signal.",
+  "translation_notes": "MCMILLAN_DRY_32 is a risk management rule for covered call positions rather than a pure price-action entry/exit signal. It requires contextual knowledge of position P&L state and manual identification of support/resistance levels. To operationalize this in a backtest, you would need: (1) a position tracking module, (2) support/resistance detection algorithms (e.g., swing point identification), or (3) manual regime definition. As written, it is not translatable to indicator-only conditions."
+}

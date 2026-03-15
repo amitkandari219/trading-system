@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires measuring absolute price shock magnitude (e.g., 'closed higher or lower by $4') and reversion target in absolute dollar terms ('$2 lower'). Available indicators provide only relative measures (RSI, percentage-based returns, ATR ratios). The 'range' indicator approximates intrabar volatility but cannot directly measure close-to-close shock direction or magnitude. Reversion target of '$2 lower' cannot be expressed without knowing the entry price or absolute price level, which are not available as formula-based indicators.",
+  "translation_notes": "KAUFMAN's original signal is commodity-price specific and relies on absolute dollar movements. The entry condition approximates the $4/barrel shock via 'range >= 4' but this measures high-low spread, not directional close shocks. The exit condition is speculative (assumes price reversal to $2 below entry) but cannot be properly encoded without entry price tracking. For live use, implement custom logic: detect daily close moves >$4 in either direction, then exit on $2 reversion within 3-4 bars."
+}

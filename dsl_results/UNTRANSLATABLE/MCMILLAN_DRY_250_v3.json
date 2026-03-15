@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_250",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of 'current market spread value' vs 'theoretical spread value' \u2014 neither metric exists in allowed indicators. This is a futures roll arbitrage decision based on spread pricing and fair value calculations that cannot be expressed using price, volume, or technical indicators alone. Requires custom spread valuation logic external to standard price-based indicators.",
+  "translation_notes": "MCMILLAN_DRY_250 is a position management rule for rolling futures contracts (e.g., S&P 500 3-month roll, XMI/OFX 1-month roll). Entry context: long stocks + short futures. Actions: buy back short futures, sell next series. The decision hinge is comparing realized spread vs theoretical/fair-value spread \u2014 a quantitative arbitrage assessment that requires access to real-time bid-ask data, carry costs, and dividend adjustments. This cannot be reduced to technical indicators without custom spread fields."
+}

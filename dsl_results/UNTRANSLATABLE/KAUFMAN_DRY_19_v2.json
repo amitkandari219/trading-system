@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_19",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Force Index indicator is not available in the allowed indicator set. The signal specifically requires a 2-day exponential of Force Index (price \u00d7 volume derivative) with comparison to its center line and multiweek low constraint. These measurements cannot be precisely replicated using only the available indicators (MACD, ADX, RSI, ATR, etc.). Substituted MACD as closest proxy for momentum/divergence analysis, but this is NOT an accurate translation of the original Force Index logic.",
+  "translation_notes": "CRITICAL: This translation is approximate and does NOT match the original signal intent. Force Index = (close - prev_close) \u00d7 volume, and the signal requires its 2-day EMA to stay above the multiweek low while crossing below its center line. No available indicator set can replicate this precisely. Used ADX > 25 for uptrend confirmation, MACD < signal for momentum weakness (proxy for Force Index falling), and MACD > Donchian lower for the constraint. Consider implementing custom Force Index indicator or mark this signal as non-tradeable with current indicator library."
+}

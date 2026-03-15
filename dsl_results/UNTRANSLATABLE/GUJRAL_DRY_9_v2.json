@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'Narrow Central Pivot Range (CPR)' persistence over 3 days and comparison of pivot_range_width against author-silent thresholds. The ALLOWED INDICATORS list contains only individual pivot levels (pivot, r1, s1, r2, s2) but no CPR width measurement, historical pivot comparisons, or range contraction metric. Cannot express multi-day range narrowness without custom indicators or lookback logic beyond the operator set.",
+  "translation_notes": "Attempted partial translation using pivot breakouts as proxy for breakout condition. Entry requires breakout above R2 (long) or below S2 (short) following narrow range context. Exit uses mean reversion to pivot. However, the core regime identification (narrow vs wide range persistence) cannot be properly encoded with available indicators. Recommend adding: cpr_width indicator or bb_bandwidth as ATR-normalized range proxy, and ability to compare historical pivot ranges."
+}

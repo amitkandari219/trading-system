@@ -1,0 +1,18 @@
+{
+  "signal_id": "HARRIS_DRY_14_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tick-level bid/ask data and alternating bid/ask jump detection. Available indicators lack explicit bid/ask prices, tick sequence tracking, and spread measurement. The core logic (detecting reversals between bid and ask prices, measuring spread widening) cannot be accurately represented using OHLCV-based indicators alone.",
+  "translation_notes": "Attempted approximation using small body_pct (small candles suggesting bid/ask oscillation) and close reversals (prev_close comparison) to simulate mean reversion behavior. However, this is a crude proxy: the original signal requires market microstructure data (bid/ask queue imbalances, order flow direction) not available in standard candlestick indicators. A proper implementation would need tick data access and bid/ask level APIs."
+}

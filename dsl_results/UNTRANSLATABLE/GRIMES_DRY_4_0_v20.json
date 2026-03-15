@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of 'previously identified support/resistance levels' and tracking of 'successive test counts' (2-3 times). These require dynamic level detection and multi-bar memory logic not available in single-bar indicator set. Pivot points (s1/r1) used as proxy, but true implementation requires custom level-tracking state machine and test-count accumulation across multiple bars.",
+  "translation_notes": "Attempted approximation using pivot point levels (s1/r1) as support/resistance proxies. Volume comparison (volume < prev_volume) represents 'weaker momentum on approach.' However, the core signal logic\u2014detecting weakening of levels across multiple successive tests\u2014cannot be fully expressed without custom state tracking. A backtest engine would need: (1) dynamic S/R level detection, (2) test counter per level, (3) strength degradation metric across tests. Recommend implementing as custom indicator or state-machine rule in backtest harness."
+}

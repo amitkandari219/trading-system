@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires market-specific breakout thresholds in ticks (Bonds: \u00b18/\u00b116 ticks, S&P 500, Soybeans, Cattle thresholds incomplete in source). Exact threshold values for each asset class are marked [THRESHOLD_NEEDED] and cannot be translated without these specific parameters. Additionally, 'overnight hold' exit requires next day's open price which is not available in backtest engine at entry time. The adaptive volatility-based alternative entry basis (atr_14) could replace fixed ticks, but source data is insufficient to determine the multiplier or conversion factor from ticks to price units.",
+  "translation_notes": "This is an Opening Range Breakout (ORB) strategy with asset-class-specific thresholds. The signal structure suggests: LONG entry when open breaks above prev_open by X ticks, SHORT entry when open breaks below prev_open by X ticks, both held until next day open. Source table provides profitability data for Bonds (+16, +8, -8, -16 tick levels) but S&P 500, Soybeans, and Cattle thresholds are incomplete. To make this translatable, provide: (1) exact tick thresholds for each asset, (2) conversion rates from ticks to price units, and (3) clarification on 'overnight hold' mechanics (end-of-day close or next-day open)."
+}

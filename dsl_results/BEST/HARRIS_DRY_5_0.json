@@ -1,0 +1,18 @@
+{
+  "signal_id": "HARRIS_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of round-number price clustering and dynamic limit order offset calculation (offset_distance_ticks from round numbers like 1.00, 0.50, 0.25, etc.). No indicator in the allowed list can identify clustering proximity or execute algorithmic order placement logic. The core mechanic is order execution strategy, not a price/volume condition.",
+  "translation_notes": "Attempted to capture entry conditions: high realized volatility (hvol_20) and low average daily volume (vol_ratio_20 < 1.0). Exit on volume spike suggesting order fill or condition normalization. However, the actual signal is about limit order placement tactics relative to round-number zones, which is an execution/micro-structure pattern beyond standard technical indicators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_2_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires forecasted volatility and implied volatility with gamma-based profit proxy calculation. Available indicators (hvol_20, india_vix) represent historical and market volatility but cannot directly implement: (1) forward volatility forecasting model, (2) options-specific implied volatility surface, (3) gamma weighting of volatility differential, (4) quantitative profit proxy threshold logic. Proxy solution uses hvol_20 as forecast and india_vix as market implied vol, but this is a simplified approximation that may not capture the signal's intended option volatility arbitrage mechanics.",
+  "translation_notes": "Attempted translation using hvol_20 (historical volatility) as proxy for forecasted volatility and india_vix as proxy for implied volatility. However, the original signal is fundamentally options-centric (gamma calculations, profit proxy formulas, position sizing by volatility differential magnitude) and requires derivatives-specific indicators not available in the backtest engine. The direction is marked CONTEXT_DEPENDENT per the original signal: buy when forecast > implied, sell when forecast < implied. Actual implementation would require integration of volatility forecasting models and options Greeks (gamma, vega) not present in the allowed indicator set."
+}

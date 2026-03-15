@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_353",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct measurement of implied volatility (IV) level and IV change magnitude (e.g., IV jump from 30 to 80). Available indicators include india_vix (volatility index proxy) but no direct IV surface data for options spreads, no IV percentile/rank, and no mechanism to measure instantaneous IV jumps of specific magnitudes (30% \u2192 80%). Options pricing mechanics (spread debit/credit width) cannot be expressed with equity price/volume indicators alone.",
+  "translation_notes": "This is an options-specific signal (vertical put bear spread construction, IV-driven spread width dynamics) that requires IV term structure data unavailable in the equity indicator set. The entry condition 'IV increases suddenly' and exit condition 'AUTHOR_SILENT' cannot be reliably translated without implied volatility derivatives or options Greeks. Consider integrating an IV index or options chain data source for proper backtesting."
+}

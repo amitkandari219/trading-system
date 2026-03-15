@@ -1,0 +1,18 @@
+{
+  "signal_id": "HARRIS_DRY_20_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires domain-specific metrics (inventory levels, production pipeline lead time, demand variation, storage costs, inventory divergence from normal) that cannot be expressed using available price/technical indicators. These require external data feeds or custom commodity-specific indicators not in the allowed set.",
+  "translation_notes": "Translated volatility spike detection using hvol_20 (historical volatility) as proxy for expected volatility spikes. Entry triggers when volatility exceeds baseline (0.02 = 2% daily volatility) and ATR shows expansion. Exit when volatility normalizes. However, the core signal logic depends on inventory imbalance persistence and production pipeline constraints which are NOT translatable to price-based indicators alone. This requires commodity flow data, inventory reports, or custom leading indicators."
+}

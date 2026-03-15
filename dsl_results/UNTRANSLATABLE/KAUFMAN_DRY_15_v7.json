@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires intraday time-of-day logic (1:00 p.m. evaluation window) and rally detection after open, which cannot be expressed with the allowed indicators and operators. The signal depends on: (1) detecting a rally that occurred between open and 1:00 p.m., (2) confirming price has returned to opening price specifically by 1:00 p.m., and (3) inferring intraday strength patterns. The allowed indicators operate on OHLC bars without intraday timestamp or session-relative positioning. Time-of-day conditions and intraday rally detection are not supported.",
+  "translation_notes": "KAUFMAN_DRY_15 is an intraday mean reversion signal tied to specific market hours (1:00 p.m. checkpoint). A minimal approximation (close == open at bar close) was provided, but this does not capture the true intraday rally-and-return pattern the author described. Proper implementation requires intraday bar data with timestamp filtering."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_354",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options-specific metrics (implied volatility, calendar spread mechanics, time value decay, strike-specific pricing) that are not available in the allowed indicator set. The core logic depends on: (1) comparing current implied volatility to a stock's historical normal level, (2) evaluating calendar spread P&L structure across expiration dates, (3) assessing time value premium composition\u2014none of which can be expressed using price/volume/momentum indicators alone. The signal is fundamentally an options strategy filter, not a price-action trading rule.",
+  "translation_notes": "Signal MCMILLAN_DRY_354 is a volatility regime filter for options traders. It advises against executing calendar spreads when IV is abnormally elevated. While the target regime HIGH_VOL is identifiable, the entry conditions require explicit IV measurement and options pricing data (implied vol vs. historical vol, call option valuations at different expirations) that fall outside the scope of technical indicators. A backtest engine using only OHLCV and standard technical indicators cannot operationalize this rule without options market data feeds."
+}

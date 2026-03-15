@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_21",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal specifies a calculation period between 45-75 days, but no SMA with this exact range exists in the allowed indicators list (only sma_5, sma_10, sma_20, sma_40, sma_50, sma_80, sma_100, sma_200 available). The optimal period must be optimized within backtest constraints, not hardcoded to a specific SMA. Additionally, 'TRENDING' is not in ALLOWED_REGIMES (only TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY available).",
+  "translation_notes": "Signal describes a parametric moving average crossover strategy tested on NASDAQ futures (1991-2011) with transaction costs of $50-$150 round-turn. Used sma_50 as closest proxy to the 45-75 day range, but this is approximate. The rule is context-dependent (long/short both possible). Exit condition 'AUTHOR_SILENT' interpreted as reversal of entry condition. Backtest engine should allow optimization of SMA period within the 45-75 day range and account for specified transaction cost scenarios."
+}

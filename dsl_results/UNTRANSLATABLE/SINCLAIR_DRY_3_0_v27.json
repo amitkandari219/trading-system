@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires domain-specific inputs not available in allowed indicators: (1) Days to earnings announcement \u2014 requires earnings calendar data not in price/technical indicator set; (2) IV percentile and expected IV target percentile \u2014 requires implied volatility surface and historical IV percentile ranking data; (3) Vega/gamma/theta P&L tracking \u2014 requires derivatives Greeks calculation engine; (4) IV expansion prediction \u2014 requires volatility forecasting model. The core logic (buy low IV before expected rise, exit on earnings/theta decay) cannot be fully expressed with only price action and hvol_20/india_vix proxies.",
+  "translation_notes": "Attempted proxy: Used hvol_20 < india_vix as a weak substitute for 'current IV percentile < threshold' and 'HV < IV spread', with exit when relationship reverses. However, this misses critical earnings timing, IV percentile calibration, and P&L attribution to Greeks. This signal is fundamentally untranslatable without options data integration."
+}

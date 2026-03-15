@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 2-day RSI of VIX (rsi_2), but only rsi_7, rsi_14, and rsi_21 are available. The signal header mentions EMA/SMA crossovers on VIX but the source text describes RSI conditions on VIX index instead. These are conflicting rule definitions.",
+  "translation_notes": "Translated from source text (MarketSci Blog): Buy when (1) S&P closes above 200-day MA, (2) 2-day RSI of VIX > 90, (3) Today's VIX open > yesterday's VIX close. Exit when 2-day RSI closes above 65. Used india_vix as proxy for VIX index. Cannot satisfy 2-day RSI requirement with available indicators (minimum is rsi_7). Signal ID header describes different rule (EMA/SMA crossover) which conflicts with source text."
+}

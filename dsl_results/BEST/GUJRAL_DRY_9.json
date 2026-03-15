@@ -1,0 +1,138 @@
+{
+  "signal_id": "GUJRAL_DRY_9",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_9",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s1"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "r1"
+      },
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "r1"
+      },
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "r1"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "r2"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is context-dependent on trend direction. Entry conditions for uptrend: price moves above S1 or between pivot and S1. Entry conditions for downtrend: open above pivot, above CPR (approximated as pivot), or between CPR and R1. Exit for uptrend targets R1/R2 or higher; exit for downtrend is reversal below pivot. CPR (Central Pivot Range) is approximated using pivot level. Author provided minimal exit guidance (AUTHOR_SILENT), so exit conditions use reasonable reversal logic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s1"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "r1"
+      },
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "r1"
+      },
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "r1"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "r2"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is context-dependent on trend direction. Entry conditions for uptrend: price moves above S1 or between pivot and S1. Entry conditions for downtrend: open above pivot, above CPR (approximated as pivot), or between CPR and R1. Exit for uptrend targets R1/R2 or higher; exit for downtrend is reversal below pivot. CPR (Central Pivot Range) is approximated using pivot level. Author provided minimal exit guidance (AUTHOR_SILENT), so exit conditions use reasonable reversal logic."
+  },
+  "source_rule_text": "In an uptrend, look for long entries when price moves up from S1 or between the central pivot and S1, targeting R1 and R2 or higher; in a downtrend, look for short entries when stock opens above the pivot, above the CPR, or between the CPR and R1."
+}

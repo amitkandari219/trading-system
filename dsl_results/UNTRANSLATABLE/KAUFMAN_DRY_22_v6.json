@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_22",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) detection of 'new trend signal' which is not defined by the author and cannot be expressed using allowed indicators; (2) instrument-specific logic (DAX vs Eurodollars) requiring multi-instrument comparison not supported by single-instrument rule structure; (3) 'reversal' definition left as AUTHOR_SILENT with no concrete indicator specification; (4) backtest engine structure does not support conditional logic that branches on instrument identity or multi-instrument cross-referencing",
+  "translation_notes": "KAUFMAN_DRY_22 describes a context-dependent entry strategy: wait for reversal after DAX trend signal vs immediate entry on Eurodollar trend signal. The core issue is that 'trend signal' is undefined (likely refers to Kaufman Adaptive Moving Average or similar, not in allowed indicators), and the rule requires cross-instrument logic (if DAX then wait; if EUR/USD then enter immediately) which cannot be expressed in a single-instrument rule format. The original source text is also illegible/corrupted, preventing verification of intended logic. Recommend: (1) define 'trend signal' operationally (e.g., price crosses above/below specific moving average); (2) split into separate rules per instrument; (3) clarify 'reversal' threshold (e.g., % pullback, support/resistance test, ATR-based)."
+}

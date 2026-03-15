@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_69_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific metrics (implied volatility skew, time decay, delta-neutral positioning, realized vs implied volatility spread) which are not available in the equity price/technical indicator set. The core logic of 'IV skew threshold', 'position delta tolerance', and 'time decay captured %' cannot be expressed with allowed indicators. Approximated entry with RANGING regime and low ATR conditions, but exit condition based on realized/implied vol comparison is not translatable.",
+  "translation_notes": "This is an options time-spread strategy requiring volatility term structure analysis. Translated the stable/ranging market condition and low realized volatility entry requirement using available indicators (RANGING regime + atr_14 proxy for low realized vol). Exit based on vol expansion is approximated as atr_14 > hvol_20. True implementation requires option chain data (IV term structure, greeks, time value decay) not available in standard technical indicators."
+}

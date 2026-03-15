@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fractional differentiation (fracDiff FFD), Augmented Dickey-Fuller (ADF) stationarity testing, and correlation analysis with original series. These are statistical pre-processing and validation techniques that are not available in the indicator list. The allowed indicators do not include stationarity tests, differencing operators, or correlation measurement tools. This signal defines a data transformation methodology rather than a price-action or technical indicator entry/exit rule.",
+  "translation_notes": "LOPEZ_DRY_1_0 is a regime validation methodology for achieving stationarity in time series before applying trading rules. It requires: (1) fractional differencing parameter d optimization, (2) ADF test for stationarity validation with p-value threshold, (3) correlation preservation check against original series. This is a preprocessing filter, not a tradeable signal. To implement: apply fracDiff transformation to close prices, validate ADF statistic < critical value at chosen confidence level (typically 95%), and ensure correlation with original series >= threshold (typically 0.95). Once stationarity is confirmed, apply directional signals to the differenced series."
+}

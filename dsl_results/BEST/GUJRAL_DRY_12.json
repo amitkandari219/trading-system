@@ -1,0 +1,126 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_12",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "is",
+        "right": "RANGING"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "is",
+        "right": "RANGING"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used Donchian channels (dc_upper, dc_lower) to define range extremes. Entry triggers when price reaches or breaks above/below these extremes while in RANGING regime. Stop loss placed just below entry bar (1.5% conservative estimate). Exit when price reaches opposite extreme or breaks through range boundary. Signal is bidirectional\u2014goes long at upper extreme, short at lower extreme."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "is",
+        "value": "RANGING"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "is",
+        "value": "RANGING"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used Donchian channels (dc_upper, dc_lower) to define range extremes. Entry triggers when price reaches or breaks above/below these extremes while in RANGING regime. Stop loss placed just below entry bar (1.5% conservative estimate). Exit when price reaches opposite extreme or breaks through range boundary. Signal is bidirectional\u2014goes long at upper extreme, short at lower extreme."
+  },
+  "source_rule_text": "In a ranging market, wait for price to reach the extremes of the range before entering; do not enter dips or rallies in the middle of the range."
+}

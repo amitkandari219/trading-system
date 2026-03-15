@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'N consecutive periods with same-sign returns' and 'cumulative return over lookback period' thresholds, which need parameterized lookback windows and multi-period historical comparison logic not supported by single-bar indicator operators. The signal also requires confirmation_periods parameter and time-series momentum persistence that cannot be expressed with point-in-time indicator comparisons alone.",
+  "translation_notes": "This is a time-series momentum strategy requiring rolling window analysis. The core concept (trade direction of recent returns) is captured by basic return sign conditions, but the confirmation logic (N consecutive same-sign periods, cumulative threshold validation, hold period management) requires custom multi-bar lookback functionality beyond the allowed indicator set. Recommend implementing as custom indicator or parameterized rolling return validator."
+}

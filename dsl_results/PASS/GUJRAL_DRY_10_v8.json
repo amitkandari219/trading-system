@@ -1,0 +1,92 @@
+{
+  "signal_id": "GUJRAL_DRY_10",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_10",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry conditions: (1) ADX > 25 confirms downtrend; (2) close below SMA_50 confirms downtrend; (3) close above pivot confirms retracement to resistance; (4) low of current candle below prev_high indicates bearish candle taking down the high of the last green candle. Stop-loss placed above entry candle high with 2% buffer. Exit when price closes above SMA_50 (trend reversal). Pivot used as resistance proxy since specific overhead MA not specified by author."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry conditions: (1) ADX > 25 confirms downtrend; (2) close below SMA_50 confirms downtrend; (3) close above pivot confirms retracement to resistance; (4) low of current candle below prev_high indicates bearish candle taking down the high of the last green candle. Stop-loss placed above entry candle high with 2% buffer. Exit when price closes above SMA_50 (trend reversal). Pivot used as resistance proxy since specific overhead MA not specified by author."
+  },
+  "source_rule_text": "In a downtrend, enter short once a bearish candle appears (low of the last green candle is taken down) after price retraces to resistance."
+}

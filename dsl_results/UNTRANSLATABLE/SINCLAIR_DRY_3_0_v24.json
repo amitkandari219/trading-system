@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references 'EWMA' (Exponential Weighted Moving Average) which is not in the allowed indicators list. The closest allowed alternatives are ema_5, ema_10, ema_20, ema_50, ema_100, ema_200. Additionally, the signal specifies '[THRESHOLD_NEEDED]' for both the ewma_period parameter and standard deviation multiplier, indicating required parameter values were not provided in the source material. Bollinger Bands (bb_upper, bb_lower) are used as a proxy, but the exact EWMA period and standard deviation threshold cannot be determined.",
+  "translation_notes": "Translated using Bollinger Bands as the primary indicator since the signal is explicitly about BB bands on mean-reverting instruments. Entry conditions use bb_upper and bb_lower (equivalent to EWMA \u00b1 2 std devs). Exit is set to next day close via hold_days_max=1 constraint. Direction set to CONTEXT_DEPENDENT since signal generates both long (buy) and short (sell) signals based on price action. Missing parameters: EWMA period and exact standard deviation threshold."
+}

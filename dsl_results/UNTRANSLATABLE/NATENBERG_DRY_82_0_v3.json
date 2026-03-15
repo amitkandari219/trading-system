@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_82_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a theoretical principle about convergence of realized P&L to theoretical spread value based on volatility estimation bias, not a practical technical trading rule. It requires: (1) tracking cumulative P&L across multiple trades with identical spread structure, (2) comparing realized vs theoretical P&L with statistical significance testing (\u03c3-based thresholds), (3) detecting regime shifts via vol changes, and (4) maintaining trade-level metadata. None of these can be expressed as single-bar technical indicator conditions. The signal describes a meta-rule for validating trading system performance rather than actionable entry/exit triggers.",
+  "translation_notes": "NATENBERG_DRY_82_0 is a statistical principle about option spread performance convergence under unbiased volatility forecasting. Key untranslatable components: (a) requires multi-trade aggregation and rolling P&L tracking across 'identical spread structure' trades\u2014not available in OHLCV data, (b) threshold parameters marked [THRESHOLD_NEEDED] are undefined and user-specific, (c) comparison of 'Realized P&L vs theoretical expectation' requires pre-calculated theoretical spread prices which are not standard indicators, (d) regime detection on 'vol changes >[THRESHOLD_NEEDED]%' is defined but insufficient without the actual threshold value. To implement: user must create custom position-tracking engine, define spread parameters and theoretical pricing model, and backtest at the position/trade level rather than bar level."
+}

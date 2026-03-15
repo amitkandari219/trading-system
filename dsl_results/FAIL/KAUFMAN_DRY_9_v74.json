@@ -1,0 +1,57 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "prev_close"
+    },
+    {
+      "left": "macd_hist",
+      "operator": "<",
+      "right": "prev_macd_hist"
+    }
+  ],
+  "entry_short": [
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "prev_close"
+    },
+    {
+      "left": "macd_hist",
+      "operator": ">",
+      "right": "prev_macd_hist"
+    }
+  ],
+  "exit_long": [
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "prev_close"
+    }
+  ],
+  "exit_short": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "prev_close"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 5,
+  "direction": "BOTH",
+  "target_regime": [
+    "TRENDING_UP",
+    "TRENDING_DOWN"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Signal requires 20-day momentum divergence detection. Momentum is not directly available in the indicator list. Used MACD histogram as a leading momentum proxy (macd_hist approximates momentum direction). Bullish divergence: price declining (close < prev_close) AND momentum rising (macd_hist > prev_macd_hist). Bearish divergence: price rising (close > prev_close) AND momentum falling (macd_hist < prev_macd_hist). Exit conditions reversed from entry (AUTHOR_SILENT interpreted as trend reversal). Note: True 20-day momentum calculation (ROC or price change) is not available; MACD histogram serves as a substitute momentum indicator.",
+  "validation_issues": [
+    "entry_long: unknown right value 'prev_macd_hist'",
+    "entry_short: unknown right value 'prev_macd_hist'"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of confluence between weekly and intraday pivot levels (R1, R2, R3 overlapping across timeframes) and sequential breakout through all three levels. The allowed indicators only provide single-timeframe pivot data (pivot, r1, r2, s1, s2) without multi-timeframe confluence logic or the ability to compare intraday vs weekly pivots. Sequential level breakout logic cannot be expressed with simple 3-field conditions.",
+  "translation_notes": "Attempted partial translation using available pivot and moving average indicators. Entry condition simplified to: r1 == r2 (partial confluence proxy), close crosses above r2 (resistance breakout), and close above sma_200 (trend confirmation). Exit uses sma_200 crossbelow as reversal signal. A full translation would require custom multi-timeframe pivot confluence functions not available in the allowed indicator set."
+}

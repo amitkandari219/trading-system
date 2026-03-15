@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'impulse move magnitude' and 'extremely strong' impulse moves, which require custom volatility/momentum thresholds not directly available in indicator set. Also requires identification of 'pullback/bounce in progress' as a pattern state, which cannot be reliably expressed using only price and standard indicators without custom pattern recognition logic.",
+  "translation_notes": "Approximated using MACD histogram for impulse direction, ATR ratio for impulse strength dampening (smaller ATR suggests less extreme move), and RSI extremes to avoid climax conditions. Entry conditions use: (1) momentum continuation via MACD, (2) impulse not extreme via ATR compression, (3) RSI not in climax zone. Exit on trend break or RSI extremes. Parameters impulse_strength_threshold, pullback_countertrend_momentum_limit, and reversal_threshold_percent remain undefined due to signal ambiguity and require manual calibration."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_2_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a volatility estimation methodology adjustment rather than a tradeable entry/exit rule. It requires: (1) separate calculation and comparison of overnight return variance vs intraday return variance, (2) dynamic weighting of return periods by time length, and (3) custom variance ratio computation. The allowed indicators do not include overnight_variance, intraday_variance, or variance_ratio metrics. The signal is a risk model adjustment (parameter: overnight_weight), not a price action or standard technical indicator condition. Three threshold parameters are undefined: [THRESHOLD_NEEDED] for variance_threshold_multiplier, annualization_periods_per_year, and the overnight variance multiplier baseline. Without these thresholds and without indicators that decompose variance by return frequency and time-of-day, this cannot be translated into actionable entry/exit conditions.",
+  "translation_notes": "Signal SINCLAIR_DRY_2_0 is a volatility model enhancement from Sinclair's work on time-weighted volatility adjustment for overnight gaps in equities. It affects position sizing and risk estimation rather than entry/exit timing. To implement, requires custom preprocessing: calculate overnight_returns (close[t-1] to open[t]) separately from intraday_returns (30-min bars), compute variance ratio, and apply conditional weighting in volatility calculations. Recommend implementing as a position-sizing filter or volatility multiplier in the backtest engine rather than as discrete entry/exit conditions."
+}

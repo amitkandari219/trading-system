@@ -1,0 +1,3102 @@
+[
+  {
+    "signal_id": "HARRIS_DRY_25_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.?, pp.96-98",
+    "raw_chunk_text": "the limit buy order for his own account.\nThe dealer also may place a limit order into the NYSE specialist\u2019s limit order book at the same\nprice. If the NYSE order fills, he will fill his agency limit o",
+    "rule_text": "A trader should benchmark their execution quality against a reference market (e.g., primary exchange) by placing a parallel order at the reference price, to ensure their actual execution does not exceed the reference execution cost.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Receive a marketable order for execution",
+      "Dealer offers to execute order",
+      "Primary exchange (e.g., NYSE) has established limit order book"
+    ],
+    "parameters": {
+      "reference_price_offset": 0,
+      "cancellation_lag_ms": 0,
+      "comparison_threshold_basis_points": 0
+    },
+    "exit_conditions": [
+      "Client order fills \u2192 immediately cancel reference order",
+      "Reference order fills \u2192 immediately cancel client order",
+      "Both orders fill \u2192 reconcile and report discrepancy"
+    ],
+    "instrument": "EQUITY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Exit condition 'Both orders fill \u2192 reconcile and report discrepancy' is not mentioned in the source text",
+      "Parameters are all set to 0 without source justification",
+      "Target regimes 'ANY' is overly broad without source support"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete, detectable states (receipt of a marketable order, dealer execution offer, and existence of a reference limit order book) that can be monitored programmatically, and the exit conditions define clear fill scenarios that trigger specific actions.",
+    "hallucination_recommendation": "REVISE",
+    "review_status": "AUTO_APPROVED_TIER1"
+  },
+  {
+    "signal_id": "HARRIS_DRY_10_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, Ch. 10, pp. 46-48",
+    "raw_chunk_text": "i i i\nforecast. The expected forecast error is zero because the forecasts are unbiased. The individual\nforecast errors might be quite large in absolute value, however.\nLet each trader\u2019s desired positi",
+    "rule_text": "A trader should size her desired position proportionally to the magnitude of her forecast error (difference between her value forecast and market price), going long when forecast exceeds price and short when price exceeds forecast.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Forecast value (f_i) \u2260 Market price (P)",
+      "Position direction determined by sign of (f_i - P)"
+    ],
+    "parameters": {
+      "proportionality_constant_a": "[THRESHOLD_NEEDED]",
+      "position_size_formula": "D_i = a * (f_i - P)"
+    },
+    "exit_conditions": [
+      "Forecast value converges to market price (difference < [THRESHOLD_NEEDED])",
+      "Market price exceeds forecast by reversal threshold [THRESHOLD_NEEDED]"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Parameters section contains completely fabricated values - the source only mentions 'a is some constant of proportionality' without specifying 0.25",
+      "Position size formula incorrectly uses absolute value |f_i - P| when source formula is D_i = a(f_i - P) without absolute value",
+      "Minimum forecast error threshold of 0.02 is not mentioned in source",
+      "Exit conditions are entirely fabricated - source text does not discuss exit conditions",
+      "Instrument specification as 'FUTURES' not mentioned in source",
+      "Target regimes 'RANGING' and 'ANY' not discussed in source text"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, codeable entry conditions (comparing forecast value to market price) and exit conditions (monitoring convergence and reversal thresholds) that a programmer could implement with defined thresholds.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "proportionality_constant_a = 0.25",
+      "position_size_formula coefficient 0.25",
+      "minimum_forecast_error_threshold = 0.02"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_1_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.1, pp.11-18",
+    "raw_chunk_text": "bought or by buying back what they have sold. In effect, clients pay dealers to take their trading\nproblems. The dealers then try to solve them at a profit. Dealers profit by buying low and\nselling hi",
+    "rule_text": "Patient traders obtain better prices than impatient traders because they expend effort to find favorable execution terms; impatient traders pay a premium for immediacy.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify desired entry price level with [THRESHOLD_NEEDED] margin above fair value",
+      "Set minimum search duration of [THRESHOLD_NEEDED] bars or [THRESHOLD_NEEDED] trading days before accepting market price",
+      "Only enter when price touches or crosses the patient-entry target"
+    ],
+    "parameters": {
+      "max_execution_urgency": "[THRESHOLD_NEEDED]",
+      "acceptable_price_slippage_pct": "[THRESHOLD_NEEDED]",
+      "minimum_search_duration_bars": "[THRESHOLD_NEEDED]",
+      "patience_threshold_days": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Exit if price moves [THRESHOLD_NEEDED] unfavorably and search period not elapsed",
+      "Exit if target price achieved within patience window"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical parameters (+2% to +3% margin, 20+ bars, 5+ trading days) not mentioned in source text",
+      "Entry conditions with precise price targets and search durations are fabricated",
+      "Exit conditions with 2% unfavorable move threshold are invented",
+      "Futures instrument specification not mentioned in source",
+      "Target regimes (RANGING, ANY) not discussed in excerpt",
+      "Technical parameters like max_execution_urgency and minimum_search_duration_bars are completely fabricated"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, actionable entry conditions (identify price level with +2-3% margin, set 20+ bar/5+ day minimum, enter on price touch) that a programmer could code to detect from market data, though some subjectivity exists in determining 'fair value'.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "+2% to +3% margin above fair value",
+      "20+ bars",
+      "5+ trading days",
+      "2% unfavorably",
+      "0.2 (max_execution_urgency)",
+      "2.0 (acceptable_price_slippage_pct)",
+      "20 (minimum_search_duration_bars)",
+      "5 (patience_threshold_days)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_1_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.1, pp.11-18",
+    "raw_chunk_text": "Traders who offer to trade give other people options to trade. These options sometimes are quite\nvaluable. Traders who expose their offers can lose to clever traders who use various front-\nrunning tra",
+    "rule_text": "A trader should carefully control the exposure and selectivity of their offers to minimize the risk of being adversely selected by well-informed speculators who can extract option value from revealed quotes.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Counterparty has prior trading history with trader",
+      "Counterparty historical win rate vs trader is [THRESHOLD_NEEDED]",
+      "Counterparty trade frequency is accommodation-driven (not speculative)",
+      "Bid-ask spread exceeds [THRESHOLD_NEEDED] normal market spread"
+    ],
+    "parameters": {
+      "counterparty_prequalification_required": true,
+      "max_counterparties_per_session": "[THRESHOLD_NEEDED]",
+      "information_asymmetry_threshold_percentile": "[THRESHOLD_NEEDED]",
+      "offer_broadcast_duration_ms": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Any sign of informed speculation detected (repeated adverse selection)",
+      "Counterparty win rate vs trader exceeds [THRESHOLD_NEEDED]",
+      "Trade completed successfully"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions contain specific numerical thresholds (<45% win rate, 3x spread) not mentioned in source",
+      "Parameters include precise technical specifications (100ms duration, 80th percentile) not in original text",
+      "Instrument specified as FUTURES but source text is general about trading",
+      "Target regimes HIGH_VOL and ANY are not referenced in the excerpt",
+      "Counterparty historical tracking requirements are overly specific given the general nature of the source advice"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, actionable entry conditions including quantifiable metrics (win rate <45%, spread >3x normal) and detectable behavioral patterns (accommodation-driven frequency, prior history) that a programmer could implement with market data and trade history.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "45% (counterparty historical win rate)",
+      "3x (bid-ask spread multiplier)",
+      "55% (counterparty win rate exit threshold)",
+      "3 (max counterparties per session)",
+      "80 (information asymmetry threshold percentile)",
+      "100 (offer broadcast duration in milliseconds)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_1_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, Ch.1, pp.11-18",
+    "raw_chunk_text": "information presentation systems, and the information communication systems of a market.\nMarket structure determines what traders can do, and what they can know. It therefore affects\ntrader strategies",
+    "rule_text": "A trader should continuously monitor whether their trading strategy remains profitable relative to market competition and free entry/exit dynamics, and exit the strategy when competitive entry has eroded profits below a sustainable threshold.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy has generated above-average profits for initial [THRESHOLD_NEEDED] trading days",
+      "Current [THRESHOLD_NEEDED]-day rolling profit > [THRESHOLD_NEEDED] standard deviations above zero"
+    ],
+    "parameters": {
+      "profit_erosion_threshold_stddev": "[THRESHOLD_NEEDED]",
+      "lookback_baseline_periods": "[THRESHOLD_NEEDED]",
+      "erosion_detection_window": "[THRESHOLD_NEEDED]",
+      "exit_trigger_percentile": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "[THRESHOLD_NEEDED]-day rolling profit declines to < [THRESHOLD_NEEDED] standard deviations above baseline mean",
+      "Rolling Sharpe ratio falls below [THRESHOLD_NEEDED]"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions specify concrete metrics (10 trading days, 1.5 standard deviations) not mentioned in source",
+      "All numerical parameters are invented - source contains no specific thresholds or timeframes",
+      "Exit conditions contain detailed metrics (0.5 standard deviations, Sharpe ratio 0.8) not in source",
+      "Instrument specification as 'FUTURES' has no basis in the excerpt",
+      "Source text is conceptual/theoretical but rule presents specific quantitative implementation"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry and exit conditions specify quantifiable thresholds (standard deviation multiples and Sharpe ratio levels) that can be computed from historical profit data and programmatically detected.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "10 trading days",
+      "5-day rolling window",
+      "1.5 standard deviations",
+      "0.5 standard deviations",
+      "0.8 Sharpe ratio",
+      "20 lookback periods",
+      "50th percentile"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_1_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.1, pp.11-18",
+    "raw_chunk_text": "mechanisms. They process information about who wants to trade, how much, and at what prices.\nThe resulting prices aggregate information about fundamental values. The growth in information\ntechnologies",
+    "rule_text": "A trader should monitor and trade in markets where similar instruments compete, as order flow externality will eventually concentrate liquidity in the dominant market.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify set of closely related markets trading similar instruments",
+      "Measure liquidity concentration ratio (dominant_market_volume / sum_all_related_markets)",
+      "Enter dominant market only when concentration_ratio >= [THRESHOLD_NEEDED]"
+    ],
+    "parameters": {
+      "dominance_threshold": "[THRESHOLD_NEEDED]",
+      "observation_period_bars": "[THRESHOLD_NEEDED]",
+      "market_similarity_correlation_min": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Exit when concentration_ratio falls below [THRESHOLD_NEEDED]",
+      "Exit when correlation between markets drops below [THRESHOLD_NEEDED]"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (0.65, 0.60, 0.8, 50 bars) are not mentioned in source text",
+      "Mathematical formulas for concentration ratios and correlation calculations are not provided in source",
+      "Instrument specification as 'FUTURES' is not mentioned in the excerpt",
+      "Entry and exit conditions with precise metrics are fabricated beyond what source suggests",
+      "Source only advises to 'pay attention' to related markets, not specific trading actions"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (concentration_ratio >= 0.65) and exit conditions (concentration_ratio < 0.60, correlation < 0.70) that can be programmatically calculated from market data.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "0.65 (dominance entry threshold)",
+      "0.60 (dominance exit threshold)",
+      "0.70 (correlation exit threshold)",
+      "0.8 (market similarity correlation minimum)",
+      "50 (observation period bars)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_4_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, Ch. untitled, pp. 25-28",
+    "raw_chunk_text": "but only if he can trade during the current trading session and only if he can trade the entire\nquantity at once. He would issue an all-or-nothing, day order to sell 7,600 shares of XON, limit\n41.05 d",
+    "rule_text": "A trader who cannot continuously monitor the market should use pre-specified orders (with defined price limits and execution constraints) to represent their trading intentions rather than attempting to arrange trades manually during inattention periods.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trader cannot monitor market in real-time",
+      "Specific quantity requirement is defined",
+      "Price target is set"
+    ],
+    "parameters": {
+      "limit_price_offset_percent": "[THRESHOLD_NEEDED]",
+      "order_type": "all-or-nothing",
+      "order_duration": "day_only",
+      "quantity_flexibility": "100_percent_or_zero"
+    },
+    "exit_conditions": [
+      "Order fills completely at limit or better",
+      "Trading session ends (order auto-cancels)"
+    ],
+    "instrument": "EQUITIES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Price target constraint '0.5% of current market price' not mentioned in source",
+      "Specific percentage '0.5' in limit_price_offset_percent has no basis in text",
+      "Target regimes 'RANGING' and 'LOW_VOL' are completely fabricated - no market regime discussion in source",
+      "Instrument specification as 'EQUITIES' inferred from XON example but not explicitly stated as rule constraint",
+      "Entry condition about price targeting adds specificity not present in original"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are actionable: trader monitoring status can be detected from system state, quantity requirement is explicitly defined, and price target proximity to market price is a quantifiable metric.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "limit_price_offset_percent: 0.5% (not found in source)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_4_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges by Larry Harris, Chapter on Trading Principles, Pages 25-28",
+    "raw_chunk_text": "Traders who arrange their own trades have an advantage over traders who use orders to express\ntheir intentions. The former can respond to market conditions as they change. The latter must\nanticipate s",
+    "rule_text": "Traders using orders must anticipate market changes and write detailed contingencies into orders to avoid losses from execution delays or inability to adapt to changing conditions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Order is placed using limit orders with wide bands around current price",
+      "Contingency thresholds set to trigger at [THRESHOLD_NEEDED] price movement from entry level",
+      "Multiple price tiers defined in order to capture varying scenarios"
+    ],
+    "parameters": {
+      "contingency_threshold_pct": "[THRESHOLD_NEEDED]",
+      "order_bands_pct": "[THRESHOLD_NEEDED]",
+      "num_contingency_tiers": "[THRESHOLD_NEEDED]",
+      "max_time_to_cancel_seconds": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Exit if original conditions are no longer valid",
+      "Exit if time to market response exceeds [THRESHOLD_NEEDED]"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions contain specific numerical thresholds (0.5%, 2.0%) not mentioned in source text",
+      "Parameters section introduces completely fictional quantitative values not found in original",
+      "Instrument specification as 'FUTURES' has no basis in the source material",
+      "Target regimes 'HIGH_VOL' and 'ANY' are not referenced in the excerpt",
+      "Specific technical implementation details like 'limit orders with wide bands' are not in source",
+      "Max time parameters and multiple price tiers are fabricated additions"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, actionable entry conditions (limit orders with defined bands, 0.5% contingency thresholds, multiple price tiers) and exit conditions (time-based trigger with max_time_to_cancel_seconds) that a programmer could detect from order state and market data.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "contingency_threshold_pct: 0.5",
+      "order_bands_pct: 2.0",
+      "num_contingency_tiers: 5",
+      "max_time_to_cancel_seconds: 30"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_4_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.DRAFT (pp.25-28), section 'use orders to trade'",
+    "raw_chunk_text": "use orders to trade.\nIn general, traders who can respond most quickly to changes in market conditions have an\nadvantage over slower traders. Traders who submit and cancel orders manually are slower th",
+    "rule_text": "A trader should use automated order management systems with fast response times and standardized order types when trading in fast markets, because speed of execution and communication clarity reduce costly errors.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Market volatility [THRESHOLD_NEEDED]",
+      "Order book depth stable",
+      "Trader uses only standard order types (Market, Limit, Stop-Limit)",
+      "Manual review before each order submission enabled"
+    ],
+    "parameters": {
+      "max_latency_ms": "[THRESHOLD_NEEDED]",
+      "automation_level": "semi-automated",
+      "order_standardization_requirement": "100%",
+      "manual_confirmation_required": true
+    },
+    "exit_conditions": [
+      "Position held [THRESHOLD_NEEDED]",
+      "Manual order review queue delays exceed [THRESHOLD_NEEDED]"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions contradict source text - excerpt emphasizes FAST markets, but rule specifies low volatility and stable conditions",
+      "Parameters include specific numeric values (5000ms latency, 2 seconds delay) not mentioned in source",
+      "Manual confirmation requirement contradicts source emphasis on speed and automation",
+      "Exit conditions about position holding time and review delays are not supported by source text",
+      "Futures instrument specification not mentioned in excerpt",
+      "Target regimes of 'RANGING' and 'LOW_VOL' contradict source focus on fast markets",
+      "Rule assumes semi-automation but source suggests full automation is preferred for speed"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry conditions are specific and measurable: volatility can be calculated from historical data, order book depth can be monitored, order type usage can be detected from trader behavior, and manual review timestamps can be logged and verified.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "Market volatility < 1.5x 20-day average",
+      "Position held > 1 hour",
+      "Manual order review queue delays exceed 2 seconds",
+      "max_latency_ms: 5000"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_5_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.5, pp.29-31",
+    "raw_chunk_text": "sixteenths. In markets with decimal prices, prices that are integer multiples of 1.00, 0.50, 0.25,\n0.20, 0.10, and 0.05 are likewise most common. The clustering of prices is most pronounced\nwhen the m",
+    "rule_text": "A trader should place limit orders slightly away from round-number price clustering points to gain better execution priority, especially when market conditions favor clustering behavior.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Minimum price increment is small fraction of current price",
+      "Realized volatility is high",
+      "Average daily volume is low",
+      "Placing a limit order to buy or sell"
+    ],
+    "parameters": {
+      "offset_distance_ticks": 1,
+      "round_number_definition": "integer multiples of 1.00, 0.50, 0.25, 0.20, 0.10, and 0.05"
+    },
+    "exit_conditions": [
+      "Order filled",
+      "Market conditions normalize"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (75th percentile volatility, 20th percentile volume, <1% price increment) are not mentioned in source",
+      "Exit conditions including 'volatility drops below 50th percentile' are completely fabricated",
+      "Instrument specification as 'FUTURES' is not supported by text",
+      "Round number definition excludes 0.20, 0.10, 0.05 mentioned in source",
+      "Offset distance of 1 tick is not specified in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry conditions are quantifiable thresholds (price increment %, volatility percentile, volume percentile) that can be detected programmatically from market data, and the signal specifies a clear actionable trigger (place limit orders away from round numbers).",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "Realized volatility > 75th percentile",
+      "Average daily volume < 20th percentile",
+      "Volatility drops below 50th percentile"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_6_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.6, pp.32-34",
+    "raw_chunk_text": "The price priority rule gives precedence to the traders who bid and offer the best prices. Traders\ncannot accept bids or offers at any inferior price. Buyers can accept only the lowest priced offers\na",
+    "rule_text": "A trader should only accept bids or offers at the best available price in the market, never at inferior prices, because price priority is self-enforcing among honest traders searching for optimal execution.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Buy order: accept ONLY at current best ask price or better",
+      "Sell order: accept ONLY at current best bid price or better",
+      "Reject any fill that occurs at price worse than best quote"
+    ],
+    "parameters": {
+      "max_slippage_ticks": "[THRESHOLD_NEEDED]",
+      "max_slippage_bps": "[THRESHOLD_NEEDED]",
+      "time_to_cancel_ms": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Order not filled at best price within [THRESHOLD_NEEDED]: cancel immediately"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_LIQUIDITY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Time constraint of 100ms not mentioned in source text",
+      "Zero slippage parameters not explicitly stated in source",
+      "Exit conditions with specific timing not supported by source",
+      "FUTURES instrument specification not mentioned in source",
+      "Market regime classifications (RANGING, HIGH_LIQUIDITY) not mentioned in source",
+      "SIZING signal category not supported by source text"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The rule contains specific, actionable entry conditions (accept only at best ask/bid, reject fills worse than best quote) and a concrete exit condition (cancel if not filled within 100ms) that a programmer could implement and monitor against market data and order fills.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "100ms time_to_cancel_ms",
+      "0 max_slippage_ticks",
+      "0 max_slippage_bps"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_6_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. 6.1.1.2 (Time Precedence), pp. 32-34",
+    "raw_chunk_text": "confusion and noise.\nTraders acquire price priority by bidding or offering prices that improve the current best bid or\noffer. Any trader may improve the best bid or offer at any time.\n6.1.1.2 Time Pre",
+    "rule_text": "A trader should establish and maintain a price improvement position early to secure time precedence, then hold that position while it remains uncontested to preserve priority standing.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price tests current best bid/offer without breakthrough",
+      "Trader improves best bid/offer by minimum viable increment",
+      "Volume profile shows clustering at current level"
+    ],
+    "parameters": {
+      "price_improvement_ticks": "minimum viable increment",
+      "minimum_tests_before_entry": "[THRESHOLD_NEEDED]",
+      "hold_duration_minutes": "until another trader accepts or rejects at new price"
+    },
+    "exit_conditions": [
+      "Another trader accepts the improved bid/offer",
+      "Another trader improves beyond the trader's quote",
+      "Price moves away from improved level"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions include specific technical requirements (3 tests, volume profile clustering) not mentioned in source",
+      "Parameters specify exact numerical values (1 tick, 3 tests, 5+ ticks) not found in original text",
+      "Instrument specification as FUTURES not mentioned in source excerpt",
+      "Target regimes as RANGING not discussed in source material",
+      "Rule implies strategic trading advice while source only describes auction mechanics",
+      "Exit condition of '5+ ticks' price movement is completely fabricated"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, measurable entry conditions (price tests 3+ times, minimum 1-tick improvement, volume clustering) and exit conditions (acceptance, improvement beyond, 5+ tick move) that can be detected from market data and order book state.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "3 tests (minimum_tests_before_entry)",
+      "1 tick (price_improvement_ticks - implied as minimum increment)",
+      "5+ ticks (price_moves_away_distance)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_6_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter 6, pp. 32-34",
+    "raw_chunk_text": "In oral auction markets, bids and offers generally are good only for a moment. Traders say, \u201cA\nquote is good only as long as the breath is warm.\u201d In practice, traders who do not honor their\nquotes for",
+    "rule_text": "A trader should maintain and actively refresh their price quotes at high frequency to preserve time precedence and force competitors to improve prices rather than match them.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Quote posted in oral auction market",
+      "No trade filled within last refresh cycle"
+    ],
+    "parameters": {
+      "quote_refresh_interval_seconds": "[THRESHOLD_NEEDED]",
+      "minimum_time_between_refreshes": "[THRESHOLD_NEEDED]",
+      "market_activity_multiplier": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Trade filled",
+      "Withdraw quote after [THRESHOLD_NEEDED] consecutive refresh cycles with no response"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Text mentions oral auction markets but rule specifies futures instruments without justification",
+      "Specific numeric parameters (30 seconds, 20 seconds, etc.) are not mentioned in source",
+      "Entry/exit conditions contain specific details not found in excerpt",
+      "Target regimes (ranging, low vol) not discussed in source text",
+      "Signal category marked as RISK but source discusses market mechanics, not risk management",
+      "Rule adds trading strategy elements beyond the market structure explanation in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete, detectable events (quote posted in oral auction market and no trade filled within a defined refresh cycle) that a programmer could identify from market data and trader activity logs.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "quote_refresh_interval_seconds: 30",
+      "minimum_time_between_refreshes: 20",
+      "market_activity_multiplier: 1.0",
+      "consecutive_refresh_cycles: 3"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_6_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.6 (Draft), pp.32-34",
+    "raw_chunk_text": "to trade ahead of a trader who has time precedence must improve the price. Time precedence\nrewards aggressive traders by giving them the exclusive right to trade first at the improved price.\nThe time ",
+    "rule_text": "A trader should improve the quoted price to gain priority when they want to trade ahead of existing orders, because time precedence at the same price level goes to the first bidder/offerer.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Existing order at price level P with time precedence",
+      "Trader has directional conviction (e.g., strong technical signal or vol regime change)",
+      "Bid-ask spread is [THRESHOLD_NEEDED]",
+      "Improve price by exactly [THRESHOLD_NEEDED] tick (minimum)"
+    ],
+    "parameters": {
+      "price_improvement_ticks": "[THRESHOLD_NEEDED]",
+      "min_spread_requirement_ticks": "[THRESHOLD_NEEDED]",
+      "conviction_threshold": "HIGH"
+    },
+    "exit_conditions": [
+      "Position target reached",
+      "Stop loss hit at [THRESHOLD_NEEDED] price improvement cost"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions include concepts not mentioned in source (directional conviction, technical signals, vol regime change)",
+      "Bid-ask spread requirement (3 ticks) is not discussed in the excerpt",
+      "Parameters like conviction_threshold and min_spread_requirement are fabricated",
+      "Exit conditions (position targets, stop losses) are completely absent from source material",
+      "Target regimes (TRENDING) not mentioned or implied in the text",
+      "The 1 tick improvement is specific to the example but presented as a general rule"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (existing order at price P, bid-ask spread < 3 ticks, price improvement by 1 tick) and quantifiable exit conditions (target reached, stop loss at 2x improvement cost) that a programmer could detect from market data and execute.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "price_improvement_ticks: 1",
+      "min_spread_requirement_ticks: 3",
+      "stop_loss_multiplier: 2x"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_6_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, pp. 32-34",
+    "raw_chunk_text": "precedence at 103.20. Of course, if you are quite impatient to trade, your best strategy may be to\nimmediately take the offer at 103.25.\nTime precedence is only meaningful when the minimum price incre",
+    "rule_text": "A trader should adjust their market entry urgency and price improvement strategy based on the tick size relative to the bid-ask spread, because tick size determines the tradeoff between time precedence advantage and the cost of price improvement.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Tick size / current_spread >= [THRESHOLD_NEEDED]",
+      "Desired fill price is competitive relative to time-weighted queue position"
+    ],
+    "parameters": {
+      "tick_to_spread_ratio_threshold": "[THRESHOLD_NEEDED]",
+      "urgency_to_accept_offer": "LOW - prioritize time precedence"
+    },
+    "exit_conditions": [
+      "Order fills via time precedence",
+      "Time limit exceeded (abandon queue after [THRESHOLD_NEEDED])"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific tick-to-spread ratio threshold of 0.5 is not mentioned in the source text",
+      "Entry conditions with mathematical formulas are fabricated",
+      "Exit conditions including '5 minutes' time limit are completely invented",
+      "Instrument specification as 'FUTURES' is not supported by the source",
+      "Parameters section contains specific values not found in the original text",
+      "The excerpt is incomplete and cuts off mid-sentence, making full rule extraction problematic"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has a specific quantitative entry condition (tick size / spread >= 0.50) that is programmable from market data, combined with a qualitative but measurable exit condition (order fills or 5-minute timeout) that can be implemented in trading logic.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "0.50 (tick_to_spread_ratio_threshold)",
+      "5 minutes (time limit for queue abandonment)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_8_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [excerpt section], pp. 39-41",
+    "raw_chunk_text": "An instrument is undervalued when its market price is below its fundamental value. It is\novervalued when its price is above fundamental value. Since nobody actually knows\nfundamental values, traders m",
+    "rule_text": "A trader should buy instruments estimated to be below fundamental value and sell instruments estimated to be above fundamental value, based on informed analysis of available or non-widely-known information.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Estimated fundamental value must exceed market price by at least [THRESHOLD_NEEDED]",
+      "Information source must be from detailed proprietary analysis or verified non-public data",
+      "Analyst confidence score must be >= [THRESHOLD_NEEDED]",
+      "Position size limited to [THRESHOLD_NEEDED] of portfolio per trade"
+    ],
+    "parameters": {
+      "mispricing_threshold": "[THRESHOLD_NEEDED]",
+      "confidence_minimum": "[THRESHOLD_NEEDED]",
+      "position_size_pct": "[THRESHOLD_NEEDED]",
+      "holding_period_days": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Exit when market price reaches estimated fundamental value",
+      "Exit if confidence score drops below [THRESHOLD_NEEDED]",
+      "Time-based exit after [THRESHOLD_NEEDED] days regardless of P&L"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "15% mispricing threshold not mentioned in source",
+      "Confidence score requirements (80, 70) not in source",
+      "2% position size limit not specified in source",
+      "60-day holding period not mentioned in source",
+      "Futures instrument specification not in source",
+      "Market regime targeting not discussed in source",
+      "Specific exit conditions beyond fundamental value convergence not in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains multiple specific, actionable entry conditions (15% valuation gap, confidence score >= 80, position sizing rule) and objective exit triggers (price reaching fundamental value, confidence dropping below 70, 60-day time limit) that can be systematically detected and coded, though the proprietary analysis component introduces some subjectivity in valuation estimation.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "mispricing_threshold: 0.15 (15%)",
+      "confidence_minimum: 80",
+      "confidence_drop_threshold: 70",
+      "position_size_pct: 2",
+      "holding_period_days: 60"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_10_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. 10 (Informed Traders), pp. 46-48",
+    "raw_chunk_text": "walk. Plots of random walks through time look like paths that wander up or down at random\nbecause random walks are completely unpredictable.\n10.2 Informed Traders\nInformed traders estimate fundamental",
+    "rule_text": "An informed trader should buy instruments trading below their estimated fundamental value and sell instruments trading above their estimated fundamental value, expecting prices to converge toward fundamental value.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price < Estimated_Fundamental_Value \u00d7 [THRESHOLD_NEEDED]",
+      "Buy signal triggered only when undervaluation exceeds [THRESHOLD_NEEDED]"
+    ],
+    "parameters": {
+      "undervaluation_threshold": "[THRESHOLD_NEEDED]",
+      "overvaluation_threshold": "[THRESHOLD_NEEDED]",
+      "position_size_pct": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Exit when price reaches Fundamental_Value \u00d7 [THRESHOLD_NEEDED]",
+      "Stop loss at entry_price \u00d7 [THRESHOLD_NEEDED]"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (15%, 85%, 98%, 92%) not mentioned in source text",
+      "Position size percentage (2%) not referenced in excerpt",
+      "Futures instrument specification not mentioned in source",
+      "Market regime targeting (RANGING, ANY) not discussed in excerpt",
+      "Detailed exit conditions and stop losses not provided in source text",
+      "Source only mentions 'significantly' undervalued/overvalued without quantification"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (Price < Estimated_Fundamental_Value \u00d7 0.85) and exit conditions (price reaches Fundamental_Value \u00d7 0.98, stop loss at entry_price \u00d7 0.92) that a programmer could code into an automated system, provided the Estimated_Fundamental_Value input is defined.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "0.85 (85% of fundamental value)",
+      "0.15 (15% undervaluation trigger)",
+      "0.98 (98% of fundamental value exit)",
+      "0.92 (92% stop loss)",
+      "0.02 (2% position size)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_10_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, pp. 46-48",
+    "raw_chunk_text": "instruments that they believe are significantly overvalued. They hope to profit when the prices\nof their purchases rise, and when the prices of their sales fall. Informed traders naturally hope\nthat t",
+    "rule_text": "A trader should exit or reduce positions when cumulative estimation errors exceed a defined loss tolerance threshold, as persistent poor valuation estimates will eventually force liquidation.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trade initiated based on fundamental value estimate",
+      "Position held with conviction in valuation thesis"
+    ],
+    "parameters": {
+      "loss_tolerance_pct": "[THRESHOLD_NEEDED]",
+      "consecutive_losses_trigger": "[THRESHOLD_NEEDED]",
+      "estimation_error_threshold": "high"
+    },
+    "exit_conditions": [
+      "Cumulative drawdown reaches [THRESHOLD_NEEDED] of account",
+      "[THRESHOLD_NEEDED] consecutive trades show losses indicating systematic valuation error",
+      "Exit immediately without waiting for recovery"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical parameters (10% loss tolerance, 5 consecutive losses) are not mentioned in source text",
+      "Exit conditions specify precise metrics not found in original excerpt",
+      "Instrument type 'FUTURES' is not mentioned in source - text only refers to generic 'instruments'",
+      "Source describes general consequences of poor estimation rather than specific trading rules"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The exit conditions contain specific, measurable triggers (cumulative drawdown of -10%, 5 consecutive losing trades) that can be detected programmatically from portfolio data and trade history.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "10% cumulative drawdown threshold",
+      "5 consecutive losses trigger",
+      "loss_tolerance_pct: 10"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_11_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (excerpt pages 49-51)",
+    "raw_chunk_text": "make. Squeezers try to exploit traders who must trade by cornering the market.\nOrder anticipators are parasitic traders. They profit only when they can prey on other traders.\nThey do not make prices m",
+    "rule_text": "A trader should identify and avoid order anticipators and parasitic traders by understanding their predatory patterns, especially regarding broker-exposed orders and large trade visibility.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Order size > [THRESHOLD_NEEDED] percentile of typical daily volume",
+      "Trading through broker channels",
+      "Market structure allows discretionary order splitting"
+    ],
+    "parameters": {
+      "order_size_threshold_percentile": "[THRESHOLD_NEEDED]",
+      "max_single_order_percent_adr": "[THRESHOLD_NEEDED]",
+      "fragment_into_n_pieces": "[THRESHOLD_NEEDED]",
+      "time_spread_minutes": "[THRESHOLD_NEEDED]",
+      "broker_relationship_risk_flag": true
+    },
+    "exit_conditions": [
+      "Entire position executed with no single order > [THRESHOLD_NEEDED] ADR",
+      "Stop execution if adverse move > [THRESHOLD_NEEDED] during execution window"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions contain specific numerical thresholds (25th percentile) not mentioned in source",
+      "Parameters section includes detailed numerical values (5% ADR, 10 pieces, 120 minutes) completely absent from source text",
+      "Exit conditions specify precise metrics (5% ADR, 2% adverse move) not found in original excerpt",
+      "Instrument specification as 'FUTURES' has no basis in the source text",
+      "Rule transforms general conceptual advice into specific algorithmic trading parameters without source support"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "Entry conditions specify quantifiable thresholds (order size percentile, broker channel routing, discretionary splitting capability) and exit conditions define measurable execution metrics (position completion ratios, order size limits, adverse price movements) that could be programmatically detected from market data and execution records.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "order_size_threshold_percentile: 25",
+      "max_single_order_percent_adr: 5",
+      "fragment_into_n_pieces: 10",
+      "time_spread_minutes: 120"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_11_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [excerpt from pages 49-51]",
+    "raw_chunk_text": "Jon\u2019s behavior does not reveal whether the order is a buy or sell order. Rifka often guesses\ncorrectly since she has noticed that Jon tends to buy after he has bought and sell after he has\nsold: At le",
+    "rule_text": "A trader should identify and exploit predictable order flow patterns exhibited by other market participants, particularly when those participants show behavioral consistency in their trading sequences.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Detect a market participant executing large orders",
+      "Confirm consecutive orders on the same side (buy-after-buy or sell-after-sell pattern)",
+      "Participant exhibits minimal order obfuscation",
+      "Wait for partial order execution to confirm directionality before committing capital"
+    ],
+    "parameters": {
+      "minimum_pattern_confirmations": "[THRESHOLD_NEEDED]",
+      "confidence_threshold": "[THRESHOLD_NEEDED]",
+      "position_size_pct_of_detected_order": "[THRESHOLD_NEEDED]",
+      "wait_for_execution_confirmation": true
+    },
+    "exit_conditions": [
+      "Close position once the detected large order completes",
+      "Exit if participant reverses directional pattern",
+      "Stop loss at [THRESHOLD_NEEDED] of entry price"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Parameters section contains specific numeric values (3+ confirmations, 0.75 confidence, 0.25 position size, 2% stop loss) not mentioned in source text",
+      "Instrument specified as FUTURES but source text doesn't mention any specific instrument type",
+      "Target regimes (TRENDING/RANGING) not discussed in source text",
+      "Entry conditions add specific requirements like '3+ consecutive orders' and 'minimal order obfuscation' that aren't explicitly stated",
+      "Exit conditions include specific stop loss percentage not found in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains actionable entry conditions (detect large orders, confirm 3+ consecutive same-side orders, check order obfuscation level, wait for partial execution) that a programmer could operationalize using order flow data and execution tracking, despite some qualitative elements like 'minimal obfuscation'.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "3+ consecutive orders (minimum_pattern_confirmations)",
+      "0.75 confidence_threshold",
+      "2% stop loss threshold",
+      "0.25 position_size_pct_of_detected_order"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_12_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter (pp. 52-55)",
+    "raw_chunk_text": "the company. They say to themselves, \"Because I certainly am among the first to see this news, I\nprobably can still profit by buying BNB stock. If I wait too long, price will continue to rise, and\nI w",
+    "rule_text": "A trader should avoid momentum-following strategies during manipulative price moves, as momentum traders are particularly susceptible to being exploited by informed actors who use price continuation to trigger predictable buying behavior.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price is rising on above-average volume",
+      "Recent news event or earnings announcement confirms upward move",
+      "Momentum buy signal is generated (e.g., price crosses above SMA)",
+      "Time-since-catalyst < [THRESHOLD_NEEDED] hours"
+    ],
+    "parameters": {
+      "min_news_relevance_score": "[THRESHOLD_NEEDED]",
+      "max_time_since_catalyst_hours": "[THRESHOLD_NEEDED]",
+      "min_fundamental_score": "[THRESHOLD_NEEDED]",
+      "momentum_signal_acceptance_rate": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Price stalls or reverses without additional fundamental support",
+      "Volume dries up on the up-move",
+      "Stop loss at [THRESHOLD_NEEDED]% from entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions specify detailed technical criteria not mentioned in the source text",
+      "All parameters (news relevance score, fundamental score, etc.) are completely fabricated",
+      "Exit conditions detail specific trading mechanics not found in the excerpt",
+      "Instrument specified as 'FUTURES' when source discusses stock trading",
+      "Signal category and specific technical requirements are not supported by the text"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, actionable entry conditions (price rising on above-average volume, momentum buy signal via SMA crossover, time-since-catalyst < 24 hours) that a programmer could detect from market data, though the 'manipulative price moves' detection itself would require additional definition.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "24 (max_time_since_catalyst_hours)",
+      "0.8 (min_news_relevance_score)",
+      "7 (min_fundamental_score)",
+      "0.3 (momentum_signal_acceptance_rate)",
+      "2 (stop loss percentage)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_13_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (56-58), EMPIRICAL",
+    "raw_chunk_text": "market conditions force them to sell at low prices or buy at high prices. These losses often occur\nafter they trade with informed traders.\nWhen dealers purchase something, they usually do not know to ",
+    "rule_text": "Passive traders who do not control trade timing must carefully manage position sizing and inventory risk because they face unknown exit prices and timing constraints.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position must be entered as passive order (market order or forced execution)",
+      "Exit price and timing cannot be predetermined with high confidence"
+    ],
+    "parameters": {
+      "max_position_size_pct_of_capital": "[THRESHOLD_NEEDED]",
+      "max_time_held_bars": "[THRESHOLD_NEEDED]",
+      "stop_loss_pips": "[THRESHOLD_NEEDED]",
+      "profit_target_pips": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Exit immediately upon stop loss hit (hard stop)",
+      "Exit on profit target or at bar [THRESHOLD_NEEDED], whichever comes first",
+      "Exit if passivity extends beyond predetermined time window"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical parameters (1.0% capital, 5 bars, 10 pips stop, 15 pips target) are not mentioned in source text",
+      "Exit conditions with specific timing and pip values are fabricated",
+      "FUTURES instrument specification not mentioned in source",
+      "HIGH_VOL and RANGING regime targets not discussed in excerpt",
+      "Source discusses dealer challenges conceptually but doesn't provide actionable trading parameters"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "Entry conditions specify passive order types and exit conditions define concrete triggers (stop loss, profit target, bar 5, time window) that a programmer can detect from market data and order state.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "max_position_size_pct_of_capital: 1.0",
+      "max_time_held_bars: 5",
+      "stop_loss_pips: 10",
+      "profit_target_pips: 15"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_13_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (Dealer Principles), pp. 56-58",
+    "raw_chunk_text": "passive traders do not control the timing of their trades, they must be very careful about how they\noffer to trade and to whom they offer to trade. They must ensure that when they do trade, their\ntrad",
+    "rule_text": "Dealers must actively screen counterparties and control trade execution terms to avoid adverse selection and information leakage to informed traders.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Counterparty identified as institutional/algorithmic with track record of profitable timing",
+      "Trade request size exceeds [THRESHOLD_NEEDED] of typical client size",
+      "Request timing coincides with news/earnings/economic data release window"
+    ],
+    "parameters": {
+      "informed_trader_probability_threshold": "[THRESHOLD_NEEDED]",
+      "spread_multiplier_vs_market": "[THRESHOLD_NEEDED]",
+      "max_position_size_offered": "[THRESHOLD_NEEDED] of typical client size",
+      "pre_trade_information_leakage_risk": "HIGH"
+    },
+    "exit_conditions": [
+      "Refuse trade or require significantly wider terms",
+      "Require post-trade reporting delay of [THRESHOLD_NEEDED] minutes"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (75th percentile, 0.7 probability, 1.5 spread multiplier, 25% position size) are not mentioned in source text",
+      "Instrument specification as 'FUTURES' contradicts source which mentions 'securities, commodities, or' (text cuts off)",
+      "Target regimes 'HIGH_VOL' and 'TRENDING' are not discussed in the excerpt",
+      "Exit conditions with specific timing (15+ minutes delay) and operational details are not in source",
+      "Entry conditions contain overly specific criteria not found in original text"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are specific and actionable: counterparty institutional status can be checked against a registry, trade size can be compared to historical percentiles, and request timing can be matched against calendars of news/earnings/economic releases.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "75th percentile",
+      "0.7 (informed_trader_probability_threshold)",
+      "1.5 (spread_multiplier_vs_market)",
+      "25% (max_position_size_offered)",
+      "15+ minutes (post-trade reporting delay)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_13_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.13, pp.56-58",
+    "raw_chunk_text": "Many dealers have gone bankrupt because they assumed risks that did not work out. Dealers\nconstantly think about the risks that they bear and how to avoid them. Since bearing risk is\nunpleasant, deale",
+    "rule_text": "A trader should demand appropriate compensation (wider bid-ask spread or risk premium) proportional to the size and nature of risk being borne, because dealers who undercompensate for risk exposure face bankruptcy.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bid-ask spread >= [THRESHOLD_NEEDED] of daily price movement",
+      "Option premium >= [THRESHOLD_NEEDED] of realized volatility annualized",
+      "Position size <= [THRESHOLD_NEEDED] of daily volume"
+    ],
+    "parameters": {
+      "risk_coverage_multiple": "[THRESHOLD_NEEDED]",
+      "max_position_size_pct_volume": "[THRESHOLD_NEEDED]",
+      "min_spread_to_volatility_ratio": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Mark-to-market loss exceeds [THRESHOLD_NEEDED] without compensation adjustment",
+      "Liquidity deteriorates below entry threshold"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ILLIQUID"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (3\u03c3, 5% volume) not mentioned in source text",
+      "Exit conditions with 2\u03c3 loss limits not referenced in excerpt",
+      "FUTURES instrument specification not supported by source text",
+      "Mathematical parameters and formulas absent from original text",
+      "Entry/exit conditions contain precise trading metrics not found in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions specify quantifiable thresholds (bid-ask spread in sigma units, option premium multiples, position size percentages, mark-to-market loss limits) that can be programmatically detected from market data and portfolio metrics.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "3\u03c3 (bid-ask spread multiple)",
+      "3\u03c3 (option premium multiple)",
+      "5% (position size limit)",
+      "2\u03c3 (mark-to-market loss threshold)",
+      "3.0 (risk_coverage_multiple)",
+      "5 (max_position_size_pct_volume)",
+      "3.0 (min_spread_to_volatility_ratio)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_13_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.13, pp.56-58",
+    "raw_chunk_text": "from well-informed traders, Dell must lower her bid to 34.6. To encourage traders to buy from\nher so that she can sell the security, she must lower her ask to 34.9.\nA buyer arrives and buys from Dell ",
+    "rule_text": "A dealer should price the side of the market they prefer to trade more aggressively (closer to fair value) than the side they wish to avoid, using the bid/ask spread as a selection mechanism.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Dealer has inventory bias direction identified (wants to buy OR wants to sell)",
+      "Current bid/ask spread is quantifiable"
+    ],
+    "parameters": {
+      "aggressive_side_offset_bps": "[THRESHOLD_NEEDED]",
+      "passive_side_offset_bps": "[THRESHOLD_NEEDED]",
+      "spread_ratio": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Inventory target reached on preferred side",
+      "Market conditions change direction preference"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical parameters (25 bps, 100 bps, 0.25 ratio) not mentioned in source text",
+      "Exit conditions about inventory targets and direction changes not discussed in excerpt",
+      "Instrument specified as FUTURES but source discusses Dell trading stock",
+      "Target regimes RANGING/ANY not mentioned or implied in source text",
+      "Signal category SIZING not clearly supported by dealer pricing strategy context"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry conditions are actionable: inventory bias direction can be detected from portfolio state/trader rules, and bid/ask spread is directly quantifiable from market data.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "aggressive_side_offset_bps: 25 (not in source)",
+      "passive_side_offset_bps: 100 (not in source)",
+      "spread_ratio: 0.25 (not in source)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_14_2",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.[Section on bid/ask spreads], pp.59-61",
+    "raw_chunk_text": "optimizing your order submission strategies, you must understand what determines bid/ask\nspreads so that you can judge whether they are wide or narrow, given current market conditions.\nThe spread is a",
+    "rule_text": "A trader should assess whether bid/ask spreads are wide or narrow relative to current market conditions before submitting orders, because spread width signals dealer profitability thresholds and predicts future market liquidity supply.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Any market condition where order submission is warranted by directional thesis",
+      "Position size adjusted: position_size = base_position \u00d7 ([THRESHOLD_NEEDED]_percentile_spread / current_spread)"
+    ],
+    "parameters": {
+      "spread_percentile_reference": "[THRESHOLD_NEEDED]",
+      "position_scaling_formula": "inverse_spread_ratio",
+      "lookback_period_days": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Exit based on directional thesis, not spread conditions",
+      "Position size floor: minimum [THRESHOLD_NEEDED]% of base position even at extreme spreads"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific position sizing formula (50th percentile spread / current spread) not mentioned in source",
+      "Mathematical parameters (0.5 percentile, 20-day lookback) completely absent from excerpt",
+      "Exit conditions with 20% position floor entirely fabricated",
+      "FUTURES instrument specification not supported by source text",
+      "Complex trading mechanics added that go far beyond source material"
+    ],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains a specific, programmable entry condition with a mathematical formula for position sizing based on spread percentiles that can be detected from market data.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "50th percentile (0.5) - not mentioned in source",
+      "20% minimum position size floor - not mentioned in source",
+      "20 day lookback period - not mentioned in source"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_14_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. 14, pp. 59-61",
+    "raw_chunk_text": "driven markets. We will discuss when immediacy is expensive, when it is cheap, and why. The\nmost important factors that determine spreads are adverse selection due to well-informed traders,\nvolatility",
+    "rule_text": "Uninformed traders lose money through trading costs and adverse selection; minimizing trading frequency is the primary defense against information asymmetry losses.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trade only when expected payoff exceeds [THRESHOLD_NEEDED] times the estimated spread cost",
+      "Maximum [THRESHOLD_NEEDED] trade per time period per instrument",
+      "Enter only in high-liquidity windows (bid-ask spread < [THRESHOLD_NEEDED] percentile for instrument)"
+    ],
+    "parameters": {
+      "max_trades_per_period": "[THRESHOLD_NEEDED]",
+      "spread_cost_multiple": "[THRESHOLD_NEEDED]",
+      "liquidity_percentile_threshold": "[THRESHOLD_NEEDED]",
+      "holding_period_days_minimum": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Exit on stop-loss at [THRESHOLD_NEEDED] times estimated spread cost",
+      "Exit on profit target at [THRESHOLD_NEEDED] times estimated spread cost",
+      "Exit on time: hold minimum [THRESHOLD_NEEDED] days regardless of P&L"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (3x spread cost, 10th percentile, 1 trade per week) not mentioned in source",
+      "Exit conditions with stop-loss and profit targets not discussed in excerpt",
+      "Futures instrument specification not mentioned in source text",
+      "Minimum holding period of 5 days not referenced in original text",
+      "Specific trading parameters appear to be fabricated rather than extracted"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "All entry/exit conditions are operationalized with specific quantitative thresholds (spread multiples, percentile ranks, time windows) that can be coded into automated detection logic from market data and P&L tracking.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "3x spread cost (expected payoff multiple)",
+      "1 trade per week (maximum trade frequency)",
+      "10th percentile (liquidity threshold)",
+      "2x spread cost (stop-loss multiple)",
+      "3x spread cost (profit target multiple)",
+      "5 days (minimum holding period)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_14_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.14, pp.59-61",
+    "raw_chunk_text": "regularly reverse. Price changes caused by a jump from the bid to the ask most frequently follow\nprice changes caused by a jump from the ask to the bid. Such price changes occur when the\norder flow in",
+    "rule_text": "A trader should exploit bid/ask bounce by fading price moves that reverse between bid and ask prices, since such reversals are transitory and caused by impatient order flow rather than fundamental value changes.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price moved from ask to bid on previous trade",
+      "Current price moved from bid to ask (or vice versa)",
+      "Last [THRESHOLD_NEEDED]+ trades show alternating bid/ask jumps",
+      "Spread is within normal range (not widened by adverse selection)"
+    ],
+    "parameters": {
+      "min_consecutive_reversals": "[THRESHOLD_NEEDED]",
+      "min_trades_to_confirm": "[THRESHOLD_NEEDED]",
+      "position_size_percent": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Price does not reverse within [THRESHOLD_NEEDED] bars",
+      "Spread widens beyond [THRESHOLD_NEEDED]x normal",
+      "Stop loss at [THRESHOLD_NEEDED]x recent bid-ask spread"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numeric parameters (4+ trades, 5 trades to confirm, 0.5% position size) are completely invented",
+      "Exit conditions with specific metrics (3 bars, 1.5x spread, 2x spread stop) are not mentioned in source",
+      "Futures instrument specification is not supported by the text",
+      "Entry conditions are overly specific compared to general concept described in source",
+      "The source only explains bid/ask bounce as a phenomenon, not as a trading strategy to exploit"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete, detectable patterns in price movements (alternating bid/ask jumps, spread measurements) and exit conditions define quantifiable thresholds (3 bars, 1.5x spread multiple, 2x stop loss) that a programmer could implement from market data.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "3 bars (exit condition)",
+      "1.5x normal spread widening",
+      "2x bid-ask spread for stop loss",
+      "4+ trades for alternating jumps",
+      "5 trades to confirm",
+      "0.5% position size"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_15_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (approx. 62-64), Draft Copy",
+    "raw_chunk_text": "block liquidity suppliers are unwilling to expose their interest. Many more might trade if asked,\nbut they have not yet issued orders to trade. Block traders must find these traders to complete\ntheir ",
+    "rule_text": "A trader should actively search for and contact counterparties with latent (unposted) trading demand rather than relying solely on visible order book liquidity, because many willing traders have not issued orders due to order management costs or lack of awareness.",
+    "signal_category": "EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Visible order book depth is minimal at best bid/ask",
+      "Estimated order management cost is significant relative to trade notional value",
+      "Trader has pre-identified list of potential counterparties"
+    ],
+    "parameters": {
+      "liquidity_threshold_percentile": "[THRESHOLD_NEEDED]",
+      "cost_threshold_pct": "[THRESHOLD_NEEDED]",
+      "minimum_counterparty_pool_size": "[THRESHOLD_NEEDED]",
+      "max_search_time_hours": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Counterparty found and negotiation begins",
+      "Search time exceeds [THRESHOLD_NEEDED] without contact",
+      "Visible liquidity returns to normal levels"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numeric thresholds (1 contract, 2.0%, 5+ counterparties, 4 hours) are not mentioned in source text",
+      "Source mentions '5 percent below market prices' as example but extracted rule uses 2.0% cost threshold for different concept",
+      "Futures instrument specification not mentioned in source",
+      "Market regime targets (RANGING, LOW_VOL) not discussed in source",
+      "Exit conditions are logical inferences but not stated in source text",
+      "Entry conditions about visible order book depth not explicitly stated in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has three specific, measurable entry conditions (order book depth < 1 contract, order management cost > 2.0%, and pre-identified counterparty list of 5+) that could be detected programmatically from market data and trader state, and clear exit conditions that define when the signal terminates.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "liquidity_threshold_percentile: 5",
+      "cost_threshold_pct: 2.0",
+      "minimum_counterparty_pool_size: 5",
+      "max_search_time_hours: 4",
+      "price discount percentage: 5 percent"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_15_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (extracted), pp. 62-64",
+    "raw_chunk_text": "prices 5 percent below their current market prices. If he creates and submits orders for each\nstock, he risks buying all the stocks should the market as a whole drop significantly. Since he\ncannot aff",
+    "rule_text": "A trader should limit concurrent order exposure across correlated instruments to avoid forced execution on adverse portfolio-wide moves, and should wait for exogenous events or compelling opportunities to trigger decision-making rather than maintaining standing orders across many positions.",
+    "signal_category": "SIZING|RISK|EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Portfolio correlation among active orders exceeds [THRESHOLD_NEEDED]",
+      "Exogenous event or news catalyst present",
+      "Current portfolio delta exposure below [THRESHOLD_NEEDED] of max acceptable loss"
+    ],
+    "parameters": {
+      "max_concurrent_orders": "[THRESHOLD_NEEDED]",
+      "correlation_threshold": "[THRESHOLD_NEEDED]",
+      "portfolio_delta_limit_pct": "[THRESHOLD_NEEDED]",
+      "event_requirement": "mandatory"
+    },
+    "exit_conditions": [
+      "Position filled OR [THRESHOLD_NEEDED] trading sessions elapsed without execution",
+      "Portfolio correlation drops below [THRESHOLD_NEEDED]"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical parameters (0.70 correlation, 30% delta limit, max 3 orders) are not mentioned in source text",
+      "Entry conditions with precise thresholds are fabricated",
+      "Exit conditions about 2 trading sessions and correlation drops are invented",
+      "Instrument specified as FUTURES but source discusses stocks",
+      "Technical trading terminology (delta exposure, correlation thresholds) not present in original",
+      "Source describes conceptual behavior, not quantified trading rules"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (portfolio correlation > 0.70, delta exposure < 30% threshold) and exit conditions (time-based or correlation-based triggers) that can be programmatically detected from portfolio data and market events, despite the qualitative nature of 'exogenous event' requiring some definition.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "0.70 (portfolio correlation entry threshold)",
+      "30% (portfolio delta limit)",
+      "0.60 (portfolio correlation exit threshold)",
+      "3 (max concurrent orders)",
+      "2 (trading sessions for exit)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_15_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [CHAPTER], pp. 62-64",
+    "raw_chunk_text": "traders. Buyers bid prices up, and sellers offer prices down to encourage responsive traders to\npay attention and respond. Block initiators give price concessions to block liquidity suppliers to\nencou",
+    "rule_text": "A trader should invest effort in building and maintaining relationships with counterparties and gathering intelligence on their trading interests and history to identify liquidity providers willing to trade at the lowest cost.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Block order initiated",
+      "Counterparty has traded same security in past [THRESHOLD_NEEDED] trading sessions",
+      "Counterparty average trade frequency >= [THRESHOLD_NEEDED] trades per week in target security"
+    ],
+    "parameters": {
+      "minimum_historical_trades": "[THRESHOLD_NEEDED]",
+      "minimum_trade_frequency_threshold": "[THRESHOLD_NEEDED]",
+      "frequency_lookback_period_weeks": "[THRESHOLD_NEEDED]",
+      "relationship_maintenance_intensity": "weekly_contact"
+    },
+    "exit_conditions": [
+      "Block executed at or better than benchmark mid-price",
+      "Counterparty declines or does not respond within [THRESHOLD_NEEDED] hour"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions specify concrete metrics (20+ trading sessions, 2 trades per week) not mentioned in source",
+      "Parameters contain specific numerical thresholds not present in original text",
+      "Exit conditions specify timing (1 hour) and benchmark criteria not in source",
+      "Instrument specified as FUTURES but source discusses general securities/block trading",
+      "Signal category SIZING not supported by source content"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are specific and measurable: block order initiation, trading history frequency thresholds, and execution price benchmarks can be detected programmatically from market data and counterparty records.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "20 (minimum_historical_trades)",
+      "2 (minimum_trade_frequency_threshold)",
+      "4 (frequency_lookback_period_weeks)",
+      "1 (hour response timeout)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_15_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter 15.2.2 'The Order Exposure Problem', pp. 62-64",
+    "raw_chunk_text": "when playing. Not surprisingly, good block traders spend most of their time on the telephone.\nMany enter copious notes into electronic contract management systems.\n15.2.2 The Order Exposure Problem\nWh",
+    "rule_text": "A trader should minimize order exposure duration and limit the number of counterparties who learn about pending block orders, because informed traders will exploit this information through front-running, same-side acceleration, or opposite-side retarding strategies that amplify price impact.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Block order size > [THRESHOLD_NEEDED] of typical daily volume",
+      "Order exposure limited to [THRESHOLD_NEEDED] pre-identified counterparties only",
+      "Execution timeline = same trading session only"
+    ],
+    "parameters": {
+      "counterparty_pool_size": "[THRESHOLD_NEEDED]",
+      "max_exposure_duration_minutes": "[THRESHOLD_NEEDED]",
+      "block_size_threshold_pct_adv": "[THRESHOLD_NEEDED]",
+      "information_leakage_tolerance": "minimal"
+    },
+    "exit_conditions": [
+      "Order fully executed or",
+      "End of trading session (auto-cancel)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (2% ADV, 30 minutes, 1-2 counterparties) are not mentioned in the source text",
+      "Futures instrument specification not supported by source text",
+      "High volatility and trending regime targeting not mentioned in excerpt",
+      "Detailed parameters like 'information_leakage_tolerance' are invented concepts",
+      "Exit conditions with auto-cancel and session-based rules are not from the source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (block order size threshold, counterparty limit, session timeline) and exit conditions that a programmer could implement through code to detect from portfolio state and execution data.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "block_size_threshold_pct_adv: 2.0",
+      "counterparty_pool_size: 1",
+      "max_exposure_duration_minutes: 30",
+      "entry_conditions counterparty_limit: 1-2"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_16_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.16, pp.65-67",
+    "raw_chunk_text": "who offer them immediacy. The dealers accumulate large long positions as they buy the\ninventory. Since they do not know their clients very well, they suspect that the uninformed\nliquidity demanders ma",
+    "rule_text": "A trader should exploit mean reversion to fundamental value when dealers are forced to accumulate inventory and lower prices below fair value to restore target positions.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price trades at [THRESHOLD_NEEDED] discount to estimated fundamental value",
+      "Dealer inventory accumulation signal triggered (e.g., sustained bid/ask imbalance [THRESHOLD_NEEDED] for [THRESHOLD_NEEDED] bars)",
+      "Volume spike indicates forced dealer buying"
+    ],
+    "parameters": {
+      "price_discount_threshold": "[THRESHOLD_NEEDED]",
+      "inventory_imbalance_ratio": "[THRESHOLD_NEEDED]",
+      "confirmation_bars": "[THRESHOLD_NEEDED]",
+      "volume_spike_multiplier": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Price recovers to within [THRESHOLD_NEEDED] of fundamental value",
+      "Stop loss at [THRESHOLD_NEEDED] below entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (4% discount, 60/40 ratio, 5+ bars) not mentioned in source text",
+      "Volume spike and confirmation bars concepts not present in excerpt",
+      "Futures instrument specification not supported by source text",
+      "Target regimes (RANGING, HIGH_VOL) not discussed in excerpt",
+      "Exit conditions with specific percentages (1.5%, 6%) are fabricated",
+      "Technical parameters like volume_spike_multiplier have no basis in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains three specific, quantifiable entry conditions (>4% discount, bid/ask imbalance >60/40 for 5+ bars, volume spike) and two concrete exit conditions that a programmer could code into an automated trading system using price, order flow, and volume data.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      ">4% discount to fundamental value",
+      "60/40 bid/ask imbalance ratio",
+      "5+ confirmation bars",
+      "1.5% recovery threshold",
+      "6% stop loss threshold",
+      "1.5x volume spike multiplier"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_17_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Pages 68-70",
+    "raw_chunk_text": "Arbitrageurs form opinions about the normal relations among correlated instruments. An\narbitrage opportunity arises when the prices of correlated instruments diverge from their normal\nrelations. Arbit",
+    "rule_text": "Buy instruments that have become relatively cheap and sell those that have become relatively expensive when prices diverge from their normal correlated relations, profiting when prices converge back to normal.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify normal relation between correlated instruments (e.g., price ratio, spread mean)",
+      "Current price divergence exceeds [THRESHOLD_NEEDED] standard deviations from historical mean relation",
+      "Divergence persists for minimum [THRESHOLD_NEEDED] bars to confirm it is not noise",
+      "Enter long cheap instrument and short expensive instrument simultaneously"
+    ],
+    "parameters": {
+      "lookback_window": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Exit when spread returns to within [THRESHOLD_NEEDED] standard deviations of mean",
+      "Stop loss if divergence expands beyond [THRESHOLD_NEEDED] standard deviations (signal broken)"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (2.5 standard deviations, 5 bars confirmation) are completely absent from source text",
+      "Exit conditions with specific 0.5 standard deviation convergence threshold not mentioned in original",
+      "Stop loss at 3.5 standard deviations is fabricated",
+      "Lookback window of 252 periods has no basis in source text",
+      "Technical implementation details like 'standard deviations' and 'bars' are not present in original conceptual description"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "CODE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies quantifiable entry conditions (2.5 standard deviation threshold, 5-bar confirmation, spread calculation) and exit conditions (0.5 and 3.5 standard deviation levels) that can be programmatically implemented on correlated instrument pairs.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "divergence_threshold_stddev: 2.5",
+      "confirmation_periods: 5",
+      "exit_convergence_stddev: 0.5",
+      "stop_loss_stddev: 3.5",
+      "lookback_window: 252"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_17_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (Section on Arbitrage), pp. 68-70",
+    "raw_chunk_text": "trades. People buy things when they value the item more than the money they exchange for it.\nThey sell things when they value the money more than the item. In a sense, all trades are\narbitrages since ",
+    "rule_text": "A trader should actively monitor and close arbitrage positions at favorable prices as soon as convergence occurs, because prices may diverge again after convergence, creating the need for real-time position management.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Arbitrage spread identified and quantified",
+      "Hedge portfolio constructed with multiple legs"
+    ],
+    "parameters": {
+      "convergence_threshold_bps": "[THRESHOLD_NEEDED]",
+      "monitoring_frequency_seconds": "[THRESHOLD_NEEDED]",
+      "max_slippage_tolerance_bps": "[THRESHOLD_NEEDED]",
+      "max_position_hold_hours": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Close when spread narrows to [THRESHOLD_NEEDED] from fair value",
+      "Exit immediately if spread re-widens by [THRESHOLD_NEEDED] after initial convergence",
+      "Force close if position held [THRESHOLD_NEEDED] regardless of convergence state"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "All specific numerical parameters (5 bps, 1 second, 2 bps, 4 hours) are completely absent from source text",
+      "Detailed exit conditions with specific thresholds and re-widening triggers are not mentioned in original",
+      "Target market regimes (RANGING, LOW_VOL) are not discussed in the excerpt",
+      "The 'real-time position management' and specific monitoring frequencies are not stated in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (arbitrage spread identified and quantified, hedge portfolio constructed) and measurable exit triggers (spread narrows to \u22645 bps, re-widens by >3 bps, time limit of 4 hours) that can be programmatically detected from market data and portfolio state.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "5 bps (convergence threshold)",
+      "3 bps (re-widening threshold)",
+      "4 hours (max position hold time)",
+      "1 second (monitoring frequency)",
+      "2 bps (max slippage tolerance)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_17_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.17 (Draft), pp.68-70",
+    "raw_chunk_text": "hedge portfolio are the legs of the arbitrage.\nHedge portfolios usually consist of one or more long positions and one or more short positions in\nvarious correlated instruments. Arbitrageurs generally ",
+    "rule_text": "Construct hedge portfolios by pairing long and short positions in correlated instruments to minimize total portfolio risk, or pair positions with inverse correlation (including options) when direct hedges are unavailable.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Primary position size established (long or short)",
+      "Identify hedge instrument with correlation >= [THRESHOLD_NEEDED] to primary position",
+      "Calculate hedge ratio to achieve net delta <= [THRESHOLD_NEEDED]"
+    ],
+    "parameters": {
+      "min_correlation": "[THRESHOLD_NEEDED]",
+      "target_net_delta": "[THRESHOLD_NEEDED]",
+      "hedge_ratio": "1.0 or higher to over-hedge"
+    },
+    "exit_conditions": [
+      "Primary position is closed",
+      "Correlation drops below [THRESHOLD_NEEDED] (rebalance required)",
+      "Net delta exceeds [THRESHOLD_NEEDED] (rebalance)"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific correlation threshold of 0.85 not mentioned in source text",
+      "Delta calculations and target net delta of 0.10 not discussed in excerpt",
+      "Hedge ratio of '1.0 or higher to over-hedge' not specified in source",
+      "Exit conditions with specific thresholds (0.80 correlation, 0.15 delta) are fabricated",
+      "Rebalancing triggers not mentioned in original text",
+      "Mathematical parameters appear to be added without textual basis"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions with quantifiable thresholds (correlation >= 0.85, net delta <= 0.10) and exit conditions (correlation < 0.80, net delta > 0.15) that can be programmatically detected from market data and portfolio metrics.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "min_correlation: 0.85",
+      "target_net_delta: 0.10",
+      "correlation_rebalance_trigger: 0.80",
+      "net_delta_rebalance_trigger: 0.15"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_17_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [Section on Hedge Portfolios], pp. 68-70",
+    "raw_chunk_text": "deep-in-the-money put contract is a good hedge for a long position in the underling instrument.)\nTraders usually identify one leg of the hedge portfolio as the arbitrage numerator or reference\ninstrum",
+    "rule_text": "A trader should construct hedge portfolios by selecting a reference instrument that represents the common risk factor, then adjust the ratio of holdings in each leg relative to that numerator to minimize total portfolio risk.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Portfolio delta or correlation to numerator instrument exceeds [THRESHOLD_NEEDED]",
+      "Volatility of hedge portfolio increases above baseline by [THRESHOLD_NEEDED]"
+    ],
+    "parameters": {
+      "rebalance_frequency_days": "[THRESHOLD_NEEDED]",
+      "tolerance_threshold_percent": "[THRESHOLD_NEEDED]",
+      "numerator_selection": "cash_instrument",
+      "max_leverage_ratio": "[THRESHOLD_NEEDED]",
+      "volatility_multiplier_trigger": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Hedge ratio variance falls below [THRESHOLD_NEEDED] of target",
+      "Underlying correlation to numerator drops below [THRESHOLD_NEEDED]"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions specify numerical thresholds (\u00b12%, 1.5x volatility) not mentioned in source",
+      "Parameters contain specific values (1 day rebalancing, 2.0% tolerance, 1.5 volatility multiplier, etc.) not found in excerpt",
+      "Exit conditions specify correlation threshold of 0.70 and 1% variance target not in source",
+      "Target regimes HIGH_VOL and RANGING are not mentioned in the original text",
+      "Source only provides general principle of minimizing risk through hedge ratios, not specific quantitative triggers"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (delta/correlation threshold of \u00b12%, volatility increase of 1.5x) and exit conditions (hedge ratio variance <1%, correlation <0.70) that can be programmatically detected from market data and portfolio metrics.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "\u00b12% portfolio delta/correlation threshold",
+      "1.5x volatility multiplier",
+      "1% hedge ratio variance threshold",
+      "0.70 correlation floor",
+      "1 day rebalance frequency",
+      "1.0 max leverage ratio"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_17_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [Empirical], pp. 68\u201370",
+    "raw_chunk_text": "The arbitrage spread is the difference between the basis and the fair value of the basis.\nArbitrageurs trade when the arbitrage spread is sufficiently large.\nThe values of the basis at which arbitrage",
+    "rule_text": "A trader should execute an arbitrage trade when the observed arbitrage spread exceeds the arbitrage bounds threshold, because the spread has widened sufficiently to overcome transaction costs and justify the offsetting long-short hedge positions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Arbitrage spread magnitude > [THRESHOLD_NEEDED] \u00d7 estimated transaction costs",
+      "Basis is outside fair value \u00b1 [THRESHOLD_NEEDED] bounds",
+      "Hedge portfolio correlation > [THRESHOLD_NEEDED] with underlying instruments"
+    ],
+    "parameters": {
+      "arbitrage_spread_threshold_multiplier": "[THRESHOLD_NEEDED]",
+      "min_correlation_offsetting_positions": "[THRESHOLD_NEEDED]",
+      "transaction_cost_buffer": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Arbitrage spread narrows back to fair value \u00b1 [THRESHOLD_NEEDED]",
+      "Basis returns within tighter bounds",
+      "Correlation of hedge deteriorates below [THRESHOLD_NEEDED]"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (3.0x transaction costs, 3\u03c3 bounds, 0.95 correlation) are not mentioned in the source text",
+      "Transaction cost buffer of 1.5 is completely absent from the excerpt",
+      "Exit conditions with 1\u03c3 bounds and 0.90 correlation thresholds are not supported by the source",
+      "The source only mentions that arbitrageurs trade when spread is 'sufficiently large' and basis is 'outside arbitrage bounds' without specific quantitative measures",
+      "Correlation requirements and hedge portfolio correlation metrics are not specified in the source text"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are quantifiable and can be programmed using market data: spread magnitude comparison to transaction costs, basis deviation in standard deviations, and correlation thresholds.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "3.0 (spread magnitude multiplier)",
+      "3\u03c3 (basis bounds standard deviations)",
+      "0.95 (entry correlation threshold)",
+      "1\u03c3 (exit spread threshold)",
+      "0.90 (correlation deterioration threshold)",
+      "1.5 (transaction cost buffer)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (pages 71-74)",
+    "raw_chunk_text": "Large traders also must pay close attention to how they display their orders. Traders who display\nlarge orders often attract front runners and scare away liquidity suppliers. Large traders\ntherefore m",
+    "rule_text": "Large traders should strategically control order display visibility and timing to minimize front-running and information leakage while maintaining access to liquidity.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position size is large relative to typical daily volume in instrument",
+      "Trader is buy-side with no urgent time constraint"
+    ],
+    "parameters": {
+      "visibility_threshold_pct_adv": "[THRESHOLD_NEEDED]",
+      "max_single_order_pct_adv": "[THRESHOLD_NEEDED]",
+      "time_spread_days": "[THRESHOLD_NEEDED]",
+      "broker_distribution": "multiple brokers",
+      "market_distribution": "multiple venues"
+    },
+    "exit_conditions": [
+      "Full position accumulated or dispersed",
+      "Market regime change increases urgency"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Parameters contain highly specific numerical values (0.75, 0.05, 10 days, 5+ brokers, 3+ venues) that are not mentioned anywhere in the source text",
+      "Instrument specified as 'FUTURES' but source text makes no mention of any specific instrument type",
+      "Entry condition '75th percentile of typical daily volume' introduces specific metric not in source",
+      "Exit conditions reference 'market regime change' concept not discussed in source text",
+      "Numerical thresholds appear to be completely fabricated rather than derived from source material"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "Entry conditions contain specific, measurable thresholds (position size > 75th percentile of daily volume) and identifiable trader characteristics (buy-side, no urgent constraint) that can be detected programmatically from market data and portfolio state.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "visibility_threshold_pct_adv: 0.75",
+      "max_single_order_pct_adv: 0.05",
+      "time_spread_days: 10",
+      "broker_distribution: 5+ (converted to 'multiple')",
+      "market_distribution: 3+ (converted to 'multiple')"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. Professor Larry Harris Trading and Exchanges Draft Copy, pp. 71-74",
+    "raw_chunk_text": "Display decisions are the most important trading decisions that large buy side traders make.\nThe decision to use limit orders versus market orders is related to the order display decision.\nTraders who",
+    "rule_text": "A trader should choose between limit orders (displayed or undisclosed) versus market orders based on whether revealing trading interest serves their strategic objectives, with informed traders making fundamentally different display choices than value traders.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trader possesses material non-public information or significant edge",
+      "Position size is large relative to typical market volume",
+      "Market impact cost estimation exceeds [THRESHOLD_NEEDED]"
+    ],
+    "parameters": {
+      "display_limit_order_usage_pct": 0,
+      "undisclosed_limit_order_usage_pct": 100,
+      "market_order_usage_pct": 0,
+      "information_sensitivity_threshold": "HIGH"
+    },
+    "exit_conditions": [
+      "Information advantage has dissipated or become public",
+      "Liquidity provider offers favorable pricing despite concealment cost"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions contain specific numeric thresholds (15 basis points) not mentioned in source",
+      "Parameters specify exact percentages and thresholds not found in original text",
+      "Exit conditions reference concepts like 'liquidity provider offers' not in source",
+      "Instrument specified as 'FUTURES' but source discusses general trading without instrument specificity",
+      "Source text is incomplete, cutting off mid-sentence about value traders"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify measurable thresholds (material non-public information presence, position size relative to volume, market impact cost >15bps) that could be operationalized through code to trigger the signal, despite the strategic objective aspect being somewhat qualitative.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "15 basis points (market impact cost threshold)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.14 (referenced in pages 71-74 of draft), Bid/Ask Spreads section",
+    "raw_chunk_text": "The equilibrium spread model presented in Chapter 14 (Bid/Ask Spreads) shows that order\nsubmission strategy does not matter when all traders have identical needs. Bid/ask spreads\nsimply adjust to ensu",
+    "rule_text": "Order submission strategy (market vs. limit orders) should be selected based on the trader's time urgency and exposure sensitivity relative to the bid-ask spread cost.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trader has time window to fill order",
+      "Order size is appropriate relative to market volume",
+      "Spread width is reasonable relative to historical average spread"
+    ],
+    "parameters": {
+      "limit_order_placement": "at_midpoint",
+      "execution_patience_threshold": "[THRESHOLD_NEEDED]",
+      "max_order_size_relative_to_volume": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Order filled",
+      "Time window exceeded; convert to market order"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific time thresholds (5 minutes, 300 seconds) not mentioned in source",
+      "Volume percentage limits (25%) not discussed in excerpt",
+      "Spread width conditions and historical comparisons not referenced",
+      "Midpoint placement strategy not specified in source",
+      "Futures instrument specification not mentioned",
+      "Market regime conditions (ranging, low volatility) not discussed",
+      "Conversion to market order timing not specified in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are specific and measurable from market data (time window, order size relative to volume, spread comparison), and exit conditions provide clear triggers that a programmer could detect and implement.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "5 minutes (execution_patience_threshold_seconds: 300)",
+      "25% of current bar volume (max_order_size_pct_volume: 0.25)",
+      "2x historical average spread"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (pages 71-74), Draft Copy",
+    "raw_chunk_text": "The rule is correct when traders know nothing about values. In our example, sellers benefit\ngreatly if they use market orders rather than limit orders, and buyers may be slightly better off\nwith marke",
+    "rule_text": "A trader should choose between limit and market orders based on their relative priority between execution certainty and execution price, calibrated to the bid-ask spread width.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bid-ask spread is narrow",
+      "Trader valuation certainty is high",
+      "Time urgency is low"
+    ],
+    "parameters": {
+      "spread_threshold_for_market_order_bps": "[THRESHOLD_NEEDED]",
+      "price_priority_weight": "[THRESHOLD_NEEDED]",
+      "execution_probability_weight": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Limit order not filled after [THRESHOLD_NEEDED] bars",
+      "Spread widens beyond [THRESHOLD_NEEDED] threshold"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions specify exact numeric thresholds (2.0 bps, high certainty, low urgency) not mentioned in source",
+      "Parameters contain specific numeric values (5.0 bps, 0.75, 0.25) that are completely absent from excerpt",
+      "Exit conditions about 5 bars and spread widening are not discussed in source text",
+      "FUTURES instrument specification not mentioned in original excerpt",
+      "RANGING/ANY market regimes not referenced in source material",
+      "Source only mentions 'narrow spread' qualitatively, not specific bps thresholds"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions contain specific, measurable thresholds (spread < 2.0 bps, high certainty, low urgency) and exit conditions (5 bars, 5 bps threshold) that a programmer could operationalize with market data and defined state variables, despite requiring some qualitative calibration of 'certainty' and 'urgency'.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "2.0 bps (bid-ask spread numeric threshold)",
+      "5 bars (exit bar count)",
+      "5 bps (spread widening threshold)",
+      "0.75 (price_priority_weight)",
+      "0.25 (execution_probability_weight)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [Unnamed], p. 71-74",
+    "raw_chunk_text": "Traders who are more concerned about trading than price will more likely use market orders.\nThe decision to use market orders versus limit orders also depends on what will happen when\nlimit orders do ",
+    "rule_text": "A trader should choose between market orders and limit orders based on the tradeoff between execution certainty and price quality, determined by their commitment to fill and tolerance for adverse price movement.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trader has a mandatory fill requirement (e.g., position closure deadline)",
+      "Market is moving away from desired price level"
+    ],
+    "parameters": {
+      "limit_order_offset_bps": "[THRESHOLD_NEEDED]",
+      "execution_urgency_threshold": "[THRESHOLD_NEEDED]",
+      "order_type_decision": "MARKET_ORDER"
+    },
+    "exit_conditions": [
+      "Order filled at market price",
+      "Position size target reached"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific parameter values (5 bps, 0.9 threshold) are completely fabricated - not mentioned in source",
+      "Exit conditions about 'position size target reached' not supported by text",
+      "FUTURES instrument specification not mentioned in source text",
+      "TRENDING and HIGH_VOL regime specifications are invented additions",
+      "Entry conditions add specificity (deadline, price movement) not explicitly stated in original"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry conditions are actionable: 'mandatory fill requirement' can be detected from position closure deadlines in a system, and 'market moving away from desired price level' can be measured by comparing current price to a reference level.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "limit_order_offset_bps: 5",
+      "execution_urgency_threshold: 0.9"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter on Trading Strategies (pp. 71-74)",
+    "raw_chunk_text": "limit orders or firm quotes to profit from the bid/ask spread. When their limit orders do not\nexecute, they simply cancel them or replace them with orders placed at new prices.\nTo derive optimal tradi",
+    "rule_text": "A trader should adjust limit order placement price based on current execution probability, which depends on queue depth at better prices, volatility regime, and market interest, to optimize the trade-off between execution likelihood and profit margin.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Limit order queue depth at better prices > [THRESHOLD_NEEDED]",
+      "Place order at price: mid + (current_spread \u00d7 [THRESHOLD_NEEDED])",
+      "Volatility regime is LOW or NORMAL"
+    ],
+    "parameters": {
+      "spread_offset_factor": "[THRESHOLD_NEEDED]",
+      "queue_depth_threshold_percentile": "[THRESHOLD_NEEDED]",
+      "min_volatility_for_tighter_placement": "NORMAL"
+    },
+    "exit_conditions": [
+      "Order fills",
+      "Order cancelled after [THRESHOLD_NEEDED] seconds without fill"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (75th percentile, 0.40 spread factor, 300 seconds) are not mentioned in source text",
+      "FUTURES instrument specification not present in original excerpt",
+      "RANGING and LOW_VOL target regimes not specified in source",
+      "Exact entry conditions with mathematical formulas are fabricated",
+      "SIZING signal category not explicitly stated in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The rule contains specific, quantifiable entry conditions (queue depth percentile threshold, spread-based price calculation, volatility regime classification) and clear exit triggers (order fill or 300-second timeout) that can be programmatically detected from market data.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "75th percentile (queue depth threshold)",
+      "0.40 (spread offset factor)",
+      "300 seconds (order cancellation timeout)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.18, pp.71-74",
+    "raw_chunk_text": "generators that suggest order strategies based on current market conditions.\nTraders also acquire information about the relation between execution probabilities and limit\norder prices through experien",
+    "rule_text": "A trader should continuously monitor and revaluate order execution strategies as market conditions change, rather than executing rigidly against initial conditions.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Order placed in current market regime",
+      "Monitor for regime change exceeding threshold"
+    ],
+    "parameters": {
+      "revaluation_frequency_minutes": "[THRESHOLD_NEEDED]",
+      "spread_change_threshold_percent": "[THRESHOLD_NEEDED]",
+      "volatility_change_threshold_percent": "[THRESHOLD_NEEDED]",
+      "liquidity_depth_change_threshold_percent": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Original order filled",
+      "Major regime shift detected (spread [THRESHOLD_NEEDED], vol [THRESHOLD_NEEDED], depth [THRESHOLD_NEEDED])",
+      "Reassess and maintain or modify strategy"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numeric parameters (15 minutes, 25%, 30%, 35%) are completely fabricated and not mentioned in source",
+      "Futures instrument specification is not supported by the excerpt",
+      "Trending/ranging regime targets are not discussed in the source text",
+      "Technical implementation details exceed what can be inferred from general principle stated"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable exit thresholds (spread +25%, vol +30%, depth -35%) and actionable entry conditions (order placement and regime monitoring) that a programmer could implement as detectable triggers in code.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "revaluation_frequency_minutes: 15",
+      "spread_change_threshold_percent: 25",
+      "volatility_change_threshold_percent: 30",
+      "liquidity_depth_change_threshold_percent: 35"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_19_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. 19.1.1 (Unilateral Searches), pp. 75-77",
+    "raw_chunk_text": "bilateral search strategies easier to understand if you first understand unilateral search strategies.\n19.1.1 Unilateral Searches\nIn a unilateral search, you actively search for a good match\u2014a good pr",
+    "rule_text": "Continue searching for better trading opportunities as long as the expected benefit from additional search exceeds the expected cost of that search; stop when marginal benefit falls below marginal cost.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Cumulative search improvement (best price found vs initial quote) >= [THRESHOLD_NEEDED] basis points",
+      "Number of price inquiries >= [THRESHOLD_NEEDED]",
+      "Probability of finding incrementally better price <= [THRESHOLD_NEEDED] (declining from prior searches)"
+    ],
+    "parameters": {
+      "min_improvement_to_stop_bps": "[THRESHOLD_NEEDED]",
+      "min_inquiries_before_stop": "[THRESHOLD_NEEDED]",
+      "prob_improvement_threshold": "[THRESHOLD_NEEDED]",
+      "max_search_duration_seconds": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Execute order at current best price when any entry condition is met",
+      "Abandon search and execute at market if search duration exceeds [THRESHOLD_NEEDED] seconds"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions contain specific numeric thresholds (15 basis points, 3 inquiries, 40% probability) that are not mentioned in the source text",
+      "All parameter values are completely fabricated with no basis in the excerpt",
+      "Instrument specification as 'FUTURES' has no support in the source material",
+      "Target regimes 'HIGH_VOL' and 'TRENDING' are not referenced in the excerpt",
+      "30-second time limit for search duration is invented",
+      "The source text discusses general principles but provides no specific implementation details"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions contain specific, measurable thresholds (15 bps improvement, 3+ inquiries, \u226440% probability) that a programmer could operationalize from market data and search history, plus an objective exit condition based on elapsed time.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "15 basis points",
+      "3 inquiries",
+      "40% probability",
+      "30 seconds"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_19_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, Ch. Professor Larry Harris Trading and Exchanges, pp. 75-77",
+    "raw_chunk_text": "matches might be than the best match you have already found. As the search proceeds, the\npossible improvement declines as you find progressively better matches. At some point, your\nexpected benefit fr",
+    "rule_text": "Stop searching for better opportunities when the expected marginal benefit of continued search falls below the marginal cost of search effort.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trader has identified a current best execution price or match",
+      "Additional search opportunities remain available",
+      "Time spent searching is quantifiable"
+    ],
+    "parameters": {
+      "hourly_time_value_usd": 30
+    },
+    "exit_conditions": [
+      "When marginal cost of search >= expected marginal benefit of continued search",
+      "Transact immediately at best match discovered"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Parameters contain specific values (5%, $30/hour, 5 minutes, $2.5, 5% breakeven) that are from the camera example, not general trading rules",
+      "Exit conditions specify exact formula '(hourly_rate / 60) * minutes_searched >= 5% of best_price_found' which is not in the source text",
+      "Instrument specified as 'FUTURES' but source text discusses camera shopping, not financial instruments",
+      "The 5% threshold and specific dollar amounts are example-specific, not general rule parameters"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The exit condition provides a quantifiable formula comparing search cost (hourly_rate / 60 * minutes_searched) against a percentage threshold of best_price_found, which a programmer could operationalize given trader hourly rate and search time data.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "search_cost_threshold_pct_of_best_price: 5",
+      "minutes_per_search_iteration: 5",
+      "cost_per_iteration_usd: 2.5",
+      "breakeven_improvement_pct: 5"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_19_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, Ch.19, pp.75-77",
+    "raw_chunk_text": "sell the camera for 112 dollars. After another five minutes, he discovers that BNDPicture will\n\u00a92002 Oxford University Press Draft: March 5, 2002 19-2\nProfessor Larry Harris Trading and Exchanges Draf",
+    "rule_text": "A trader should cease searching for better prices when expected gain from continued search falls below the estimated cost of search.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Expected gain from next search calculated",
+      "Cost per search attempt estimated"
+    ],
+    "parameters": {},
+    "exit_conditions": [
+      "When (probability_of_better_price \u00d7 max_potential_savings) < search_cost",
+      "Immediately cease search and execute at current best price"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Parameters contain completely fabricated values not found in source text",
+      "Exit conditions specify a 3.0 ratio threshold that doesn't exist in the excerpt",
+      "Source shows expected gain of 2.50 dollars (10 \u00d7 0.25) but doesn't provide search cost for comparison",
+      "Gain-to-cost ratio threshold of 3.0 is invented",
+      "Max probability threshold of 0.15 contradicts source probability of 0.25",
+      "Max potential savings multiple of 8.0 has no basis in text"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (expected gain calculation, cost estimation) and a mathematical exit trigger (ratio < 3.0) that a programmer could implement as a testable rule in trading code.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "gain_to_cost_ratio_threshold: 3.0",
+      "max_probability_threshold: 0.15",
+      "max_potential_savings_multiple: 8.0"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_20_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. 20, pp. 78-81 (Storage Costs section)",
+    "raw_chunk_text": "straight bond. These creeping price changes are fully predictable and therefore do not contribute\nto fundamental volatility. Note, however, that if interest rates unexpectedly fall, the prices of\nzero",
+    "rule_text": "A trader should expect and prepare for sharp price spikes in commodities with high storage costs when inventory depletion occurs, because these markets cannot quickly build supply buffers.",
+    "signal_category": "VOL|EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Inventory level < [THRESHOLD_NEEDED] percentile of rolling distribution",
+      "Storage costs > median sector storage cost",
+      "Demand growth YoY > [THRESHOLD_NEEDED]%"
+    ],
+    "parameters": {
+      "inventory_percentile_threshold": "[THRESHOLD_NEEDED]",
+      "storage_cost_relative_to_median": "median",
+      "demand_growth_minimum_pct": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Inventory returns to [THRESHOLD_NEEDED] percentile",
+      "New production arrival confirmed",
+      "Price spike exceeds [THRESHOLD_NEEDED]% from entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (30th percentile, 5% demand growth) not mentioned in source",
+      "Entry conditions contain precise metrics not provided in original text",
+      "Parameters specify exact values not found in excerpt",
+      "Futures instrument not mentioned in source text",
+      "Exit condition '15% price spike' threshold not in original"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are quantifiable metrics (percentile-based inventory levels, storage cost comparisons, YoY demand growth) and exit conditions are specific price/inventory thresholds that a programmer could implement with market data.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "30th percentile inventory threshold",
+      "5% YoY demand growth threshold",
+      "50th percentile inventory exit threshold",
+      "15% price spike threshold"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_20_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter (Pricing in High Storage Cost Commodities), pp. 78-81",
+    "raw_chunk_text": "relieve the shortage. Conversely, when inventories are large and new product will soon arrive,\ndistributors may greatly discount the inventory to make room for the newly arrivals.\nPrice volatility in ",
+    "rule_text": "A trader should anticipate price volatility spikes in high-storage-cost commodities when production pipeline adjustments are slow or demand variation is high, because inventory imbalances persist longer and cannot be buffered by storage.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Commodity classified as high-storage-cost",
+      "Production pipeline lead time is long",
+      "Demand variation is high",
+      "Inventory levels diverge significantly from normal levels"
+    ],
+    "parameters": {},
+    "exit_conditions": [
+      "Inventory returns to normal levels",
+      "Production pipeline shortens",
+      "Demand volatility falls"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "All specific numerical thresholds (15%, 90 days, 0.25 CV, 1.0 std dev) are not mentioned in source text",
+      "Exit conditions with specific values (0.5 std dev, 60 days, 0.15) are completely invented",
+      "Options buying strategy is not mentioned or implied in the excerpt",
+      "Statistical measures like coefficient of variation and standard deviations are not referenced in source",
+      "Entry conditions specify precise quantitative criteria that don't exist in the original text"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All four entry conditions are quantifiable metrics (storage cost %, pipeline days, volatility coefficient, inventory standard deviations) that can be computed from market and operational data, and exit conditions are similarly measurable thresholds.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "storage_cost_threshold_pct: 15",
+      "pipeline_lead_days: 90",
+      "demand_cv_threshold: 0.25",
+      "inventory_deviation_std: 1.0",
+      "inventory_return_tolerance: 0.5",
+      "pipeline_shortening_days: 60",
+      "demand_cv_floor: 0.15"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_20_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (Portfolio Selection/Implementation), pp. 78-81",
+    "raw_chunk_text": "How well a portfolio performs depends on the instruments that are in the portfolio and upon the\ncosts of constructing and maintaining the portfolio. The problem of choosing the best\ninstruments to max",
+    "rule_text": "A trader should minimize trading costs relative to potential informational advantage, because excessive trading costs overwhelm any edge and cause consistent underperformance.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Expected profit from signal > [THRESHOLD_NEEDED] \u00d7 (commission + slippage + bid-ask spread)",
+      "Annual turnover ratio < [THRESHOLD_NEEDED]"
+    ],
+    "parameters": {
+      "edge_to_cost_ratio_threshold": "[THRESHOLD_NEEDED]",
+      "max_annual_turnover": "[THRESHOLD_NEEDED]",
+      "max_trades_per_month": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Position held until signal reverses or threshold drops below [THRESHOLD_NEEDED]\u00d7",
+      "Maximum position duration: [THRESHOLD_NEEDED] calendar days"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (5.0x ratio, 2.0 turnover, 4 trades/month) are not mentioned in source text",
+      "Entry conditions with exact mathematical formulas are fabricated",
+      "Exit conditions including 90-day duration limits are invented",
+      "FUTURES instrument specification not supported by source text",
+      "Parameters section contains entirely made-up numerical values",
+      "Source text discusses general concept but provides no specific trading implementation details"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (expected profit > 5.0\u00d7 costs and turnover < 2.0) and clear exit triggers (signal reversal, threshold drop, or 90-day duration limit) that a programmer could implement with defined metrics.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "5.0 (edge-to-cost multiplier)",
+      "2.0 (annual turnover ratio)",
+      "90 (maximum position duration in days)",
+      "4 (maximum trades per month)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_21_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [Chapter on Implementation], pp. 82-84",
+    "raw_chunk_text": "implemented their trading strategies. Traders must evaluate implementation to manage it\neffectively. They must know whether they have been trading too aggressively\u2014or not\naggressively enough\u2014to optimi",
+    "rule_text": "A trader should estimate and compare predicted transaction costs against expected strategy profits before implementation, adjusting position size downward if costs exceed profitability thresholds.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy generates a trade signal",
+      "Calculate estimated transaction costs (slippage + commissions + market impact)",
+      "Calculate expected profit from strategy",
+      "Transaction costs / Expected profit \u2264 [THRESHOLD_NEEDED]"
+    ],
+    "parameters": {
+      "cost_to_profit_ratio_threshold": "[THRESHOLD_NEEDED]",
+      "market_liquidity_adjustment": "Apply [THRESHOLD_NEEDED]x cost multiplier in illiquid markets",
+      "position_size_method": "Reduce position by [THRESHOLD_NEEDED]% if estimated in large size"
+    },
+    "exit_conditions": [
+      "Exit strategy as originally planned if entry was taken"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ILLIQUID"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical threshold of 0.25 for cost-to-profit ratio not mentioned in source",
+      "50% position size reduction is not specified in the text",
+      "1.5x cost multiplier for illiquid markets is invented",
+      "FUTURES instrument specification not mentioned in source",
+      "Exit conditions are not addressed in the excerpt",
+      "HIGH_VOL regime not discussed in the source text",
+      "Specific entry condition formula and calculations are too detailed compared to general principles in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify quantifiable calculations (transaction costs, expected profit, and a numerical threshold of 0.25) that can be computed and compared programmatically from market data and strategy parameters.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "0.25 (cost_to_profit_ratio_threshold)",
+      "1.5 (market_liquidity_adjustment multiplier)",
+      "50 (position_size_reduction_percentage)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_21_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy Ch.82-84, pp.82-84",
+    "raw_chunk_text": "bid/ask spread when trading. The spread is an obvious and important cost of trading. Likewise,\nwhen large buyers push prices up and large sellers push prices down, the price impacts of their\ntrading a",
+    "rule_text": "A trader should submit aggressive orders (closer to market price) rather than conservative limit orders when the cost of missing a trade opportunity exceeds the cost of accepting worse execution prices.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trader has directional conviction in target direction",
+      "Market shows low trending momentum (ADX < [THRESHOLD_NEEDED])"
+    ],
+    "parameters": {
+      "limit_order_discount_from_market": "[THRESHOLD_NEEDED]%",
+      "max_unfilled_duration_before_market_order": "[THRESHOLD_NEEDED] bars"
+    },
+    "exit_conditions": [
+      "Order unfilled after [THRESHOLD_NEEDED] bars elapsed \u2192 convert to market order",
+      "Price moves against position by [THRESHOLD_NEEDED]% \u2192 cancel and reassess"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Entry conditions about 'directional conviction' and 'ADX < 25' are completely fabricated",
+      "Specific parameters like '0.75%' discount and '10 bars' duration are not mentioned in source",
+      "Exit conditions about '10 bars elapsed' and '2% move against position' are invented",
+      "Target regimes 'RANGING' contradicts the example which shows trending behavior",
+      "Signal category 'SIZING' is incorrect - this is about order type selection, not position sizing"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions include specific, quantifiable metrics (ADX < 25) and detectable portfolio states (directional conviction), while exit conditions provide concrete time and price-based triggers (10 bars, 2% adverse move) that a programmer could implement as testable rules.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "ADX < 25",
+      "10 bars unfilled duration",
+      "2% price move against position",
+      "0.75% limit order discount"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_21_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. Draft (pp. 82-84)",
+    "raw_chunk_text": "traded more aggressively and filled the order at an average price of 65.25 cents, he would have\nmade 2.75 cents per pound, or 1,375 dollars for each 50,000-pound contract. Because the trader\nfailed to",
+    "rule_text": "A trader should systematically measure and monitor opportunity costs relative to execution aggressiveness to ensure trading intensity aligns with profit potential.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Calculate missed opportunity cost for last N trades",
+      "Calculate potential profit if executed at market aggression level",
+      "Opportunity cost ratio = missed_cost / potential_profit > [THRESHOLD_NEEDED]"
+    ],
+    "parameters": {
+      "opportunity_cost_threshold_pct": "[THRESHOLD_NEEDED]",
+      "lookback_trades": "[THRESHOLD_NEEDED]",
+      "aggressiveness_increase_basis_points": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Reduce aggressiveness if opportunity cost ratio falls below [THRESHOLD_NEEDED]",
+      "Rebalance quarterly"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (30%, 15%, 20 trades, 5 basis points) are not mentioned in the source",
+      "Detailed entry/exit conditions with formulas are not present in the excerpt",
+      "Target market regimes (ranging, low volatility) are not discussed in the source",
+      "Exit conditions about reducing aggressiveness and quarterly rebalancing are not mentioned",
+      "Mathematical calculations for opportunity cost ratios are added without source basis"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify calculable metrics (missed opportunity cost, potential profit, and a 0.30 ratio threshold) that a programmer could operationalize from historical trade data and execution records.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "opportunity_cost_threshold_pct: 30",
+      "lookback_trades: 20",
+      "aggressiveness_increase_basis_points: 5",
+      "opportunity_cost_ratio entry threshold: 0.30",
+      "opportunity_cost_ratio exit threshold: 15%"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_22_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.22 (Draft), pp.85-89",
+    "raw_chunk_text": "trading profits, they should stop trading.\nIn this chapter, we consider how to measure past performance and how to predict future\nperformance. The two questions are closely related. Most people measur",
+    "rule_text": "A speculator should only enter trades if they can demonstrate a reasonably reliable predictive model of future profitability; if prediction capability cannot be established, trading should be avoided entirely.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Historical backtest shows positive win rate over [THRESHOLD_NEEDED] trades",
+      "Positive expectancy demonstrated",
+      "Out-of-sample forward test confirms edge",
+      "Strategy performance metrics are favorable"
+    ],
+    "parameters": {},
+    "exit_conditions": [
+      "Actual win rate becomes unreliable over recent trades",
+      "Expectancy becomes negative",
+      "Performance metrics deteriorate"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (55% win rate, 200 trades, 1.5x margin, etc.) are not mentioned in the source text",
+      "Technical metrics like Sharpe ratio are not referenced in the excerpt",
+      "FUTURES instrument specification is not mentioned in the source",
+      "Market regimes (TRENDING/RANGING) are not discussed in the excerpt",
+      "Detailed exit conditions with specific parameters are not supported by the source text",
+      "The excerpt discusses general principles about prediction capability, not specific quantitative criteria"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are quantitative and measurable (win rate %, expectancy ratios, Sharpe ratio thresholds) that can be computed from historical trade data and monitored programmatically.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "win rate >= 55%",
+      "minimum 200 trades",
+      "expectancy margin >= 1.5x",
+      ">= 50 consecutive trades",
+      "Sharpe ratio >= 1.5",
+      "win rate drops below 50% over last 100 trades",
+      "rolling 100-trade window",
+      "Sharpe ratio falls below 1.0"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_28_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, pp. 105-107 (Price Accelerator section)",
+    "raw_chunk_text": "The Price Accelerator\nIncreases in prices transfer wealth from pessimistic traders who have short positions to optimistic\ntraders who have long positions. These transfers can cause accelerate price ch",
+    "rule_text": "A trader should enter long positions during price accelerations driven by forced buying (margin calls and wealth-induced purchases) from both pessimistic and optimistic traders, because these cascading flows create directional momentum beyond fundamental value.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price has risen for at least [THRESHOLD_NEEDED] consecutive periods",
+      "Rate of price change is accelerating (current_move > previous_move by at least [THRESHOLD_NEEDED]%)",
+      "Volume or open interest increases confirm forced buying activity",
+      "Short interest has visibly increased (pessimist positions are large)"
+    ],
+    "parameters": {
+      "acceleration_threshold_pct": "[THRESHOLD_NEEDED]",
+      "minimum_consecutive_bars": "[THRESHOLD_NEEDED]",
+      "position_size_pct_of_capital": "[THRESHOLD_NEEDED]",
+      "confirmation_indicators": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Acceleration flattens (rate of change decreases below entry threshold)",
+      "Price closes below [THRESHOLD_NEEDED]-period moving average",
+      "Forced buyers have liquidated (short covering volume normalizes)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical parameters (15%, 3 periods, 2% position size) are completely fabricated - not mentioned in source",
+      "Entry conditions with precise technical criteria are invented, source only explains the mechanism",
+      "Exit conditions are entirely made up with no basis in the excerpt",
+      "Futures instrument specification is not mentioned in source text",
+      "Volume/open interest confirmation requirements are not discussed in the excerpt",
+      "Moving average exit criteria is completely fabricated",
+      "Short interest measurement requirements are not specified in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (3 consecutive periods, 15% acceleration threshold, volume confirmation, short interest metrics) that a programmer could implement with market data, though some conditions like 'visibly increased' short interest require operationalization of the visibility metric.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "15% acceleration rate",
+      "3 consecutive periods",
+      "2-period moving average",
+      "2% position sizing",
+      "3 confirmation indicators"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_28_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, pp. 105-107",
+    "raw_chunk_text": "In both cases, the sellers will be traders who do not have such strong opinions. Mild pessimists\nwill sell because the increase in market price makes short positions more attractive. Mild\noptimists wi",
+    "rule_text": "A trader should recognize and act on price-value divergence, but position sizing and capital constraints may prevent effective arbitrage execution during bubbles.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price exceeds intrinsic value by detectable margin (price/value > [THRESHOLD_NEEDED])",
+      "Trader has confirmed short capacity availability",
+      "Available capital for short position >= [THRESHOLD_NEEDED] of position needed to materially impact price",
+      "Long inventory is substantial enough to liquidate without forced exit"
+    ],
+    "parameters": {
+      "capital_threshold_pct": "[THRESHOLD_NEEDED]",
+      "price_value_divergence_threshold": "[THRESHOLD_NEEDED]",
+      "min_short_capacity_check": true
+    },
+    "exit_conditions": [
+      "Price reverts to within [THRESHOLD_NEEDED] of intrinsic value",
+      "Available short capacity falls below [THRESHOLD_NEEDED] of position",
+      "Capital utilization exceeds [THRESHOLD_NEEDED] of portfolio"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (1.15 price/value ratio, 75% capital threshold, 5% reversion threshold) are not mentioned in source text",
+      "Entry and exit conditions contain precise percentages not supported by the excerpt",
+      "FUTURES instrument specification is not mentioned in the source",
+      "Parameters section introduces arbitrary numerical values not found in original text",
+      "Exit conditions are entirely fabricated with specific percentage triggers"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions contain specific, measurable thresholds (price/value ratios, capital percentages, inventory levels) that can be programmatically detected from market data and portfolio state.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "1.15 (price/value divergence)",
+      "0.75 (capital threshold percentage)",
+      "0.50 (minimum short capacity)",
+      "0.05 (price reversion tolerance)",
+      "0.85 (capital utilization limit)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_28_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.\"You Believe You Are Right, But...\", pp.105-107",
+    "raw_chunk_text": "not have enough capital to carry large short positions, or if they cannot easily sell short. They\nmay be unwilling to sell if they suspect that uninformed traders will continue to push prices up,\nor i",
+    "rule_text": "A trader should only execute a contrarian value trade when confidence in their valuation edge exceeds the psychological burden of trading against market consensus.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price deviates from estimated fundamental value by [THRESHOLD_NEEDED]",
+      "Confidence score (self-assessed edge certainty) >= [THRESHOLD_NEEDED]",
+      "Position sizing limited to [THRESHOLD_NEEDED] of portfolio per trade",
+      "Multiple independent valuation methodologies confirm mispricing in same direction"
+    ],
+    "parameters": {
+      "price_deviation_threshold": "[THRESHOLD_NEEDED]",
+      "confidence_threshold": "[THRESHOLD_NEEDED]",
+      "position_size_pct": "[THRESHOLD_NEEDED]",
+      "validation_methods_required": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Price converges to fundamental value \u00b1 [THRESHOLD_NEEDED]",
+      "Confidence deteriorates below [THRESHOLD_NEEDED]",
+      "Time stop at [THRESHOLD_NEEDED] if thesis hasn't played out"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "All specific numerical thresholds (25% price deviation, 0.85 confidence score, 1-2% position sizing) are not mentioned in the source text",
+      "Exit conditions including 6-month time stop and 5% convergence targets are completely absent from excerpt",
+      "Futures instrument specification has no basis in the source material",
+      "Multiple independent valuation methodologies requirement is not discussed in the excerpt",
+      "The excerpt focuses on psychological barriers to trading but doesn't provide concrete trading parameters"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, actionable entry conditions (price deviation >25%, confidence score \u22650.85, position sizing 1-2%, multiple valuation methods) that a programmer could operationalize through code, despite requiring some subjective inputs like confidence scoring and valuation methodology confirmation.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "0.25 (price deviation percentage)",
+      "0.85 (confidence score threshold)",
+      "1-2% (position sizing)",
+      "5% (price convergence tolerance)",
+      "0.75 (confidence deterioration threshold)",
+      "6 months (time stop duration)",
+      "2 (validation methods required)"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_28_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [Section: 'You Know You Are Right, But...'], pp.105-107",
+    "raw_chunk_text": "be long-term holders, early buyers who want to realize their gains, contrarians, value traders, or\narbitrageurs. Once their selling causes prices to fall, momentum buyers lose their interest.\nOverly o",
+    "rule_text": "A trader should reduce position size and tighten stop losses when price momentum reverses and confidence shifts, because cascading forced selling (margin calls, stop-outs, anticipatory selling) accelerates downward price movement.",
+    "signal_category": "RISK|SIZING|REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Already in a long position established during apparent uptrend",
+      "Price reverses downward by [THRESHOLD_NEEDED] from recent swing high"
+    ],
+    "parameters": {
+      "momentum_loss_threshold_pct": "[THRESHOLD_NEEDED]",
+      "position_reduction_pct": "[THRESHOLD_NEEDED]",
+      "stop_loss_placement_atr_multiples": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Exit [THRESHOLD_NEEDED] of position immediately on pullback from high",
+      "Move stop to breakeven on remaining [THRESHOLD_NEEDED]",
+      "Exit all if stop breached or price loses key support level"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific 2% threshold not mentioned in source text",
+      "50% position reduction percentage is arbitrary and not from text",
+      "ATR multiples and stop loss placement details completely absent from source",
+      "Futures instrument specification not mentioned in source",
+      "Entry/exit conditions are overly specific compared to general principles described",
+      "Breakeven stop placement not discussed in original text"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "PSYCHOLOGY",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (2% pullback from swing high, existing long position) and actionable exit rules (50% position exit on trigger, stop placement at breakeven, exit on support loss) that can be programmed into backtesting or live trading systems.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "2% pullback threshold",
+      "50% position reduction percentage",
+      "1.0 ATR multiple for stop placement"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  },
+  {
+    "signal_id": "HARRIS_DRY_28_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.28, pp.105-107",
+    "raw_chunk_text": "You Know You Are Right, But \u2026\n(Timing Is Everything)\nConsider the trade timing decisions that value traders must make when they believe that prices\nare too high:\nIf they initially have long positions,",
+    "rule_text": "A trader with a conviction about price direction must time entry to avoid premature liquidation due to interim adverse price movement and financing constraints, balancing conviction strength against capital adequacy.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Conviction score >= [THRESHOLD_NEEDED] (high confidence in direction thesis)",
+      "Excess capital >= [THRESHOLD_NEEDED] of position cost (can absorb adverse move)",
+      "Maximum leverage ratio <= [THRESHOLD_NEEDED]x account equity"
+    ],
+    "parameters": {
+      "conviction_threshold": "[THRESHOLD_NEEDED]",
+      "capital_buffer_percent": "[THRESHOLD_NEEDED]",
+      "max_leverage": "[THRESHOLD_NEEDED]",
+      "position_size_percent_of_buffer": "[THRESHOLD_NEEDED]"
+    },
+    "exit_conditions": [
+      "Stop loss at [THRESHOLD_NEEDED] below entry",
+      "Conviction drops below [THRESHOLD_NEEDED]",
+      "Drawdown exceeds capital buffer"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "FAIL",
+    "hallucination_issues": [
+      "Specific numerical thresholds (8/10 conviction, 60% capital buffer, 1.5x leverage) are not mentioned in source",
+      "30% stop loss is not mentioned in source",
+      "FUTURES instrument specification not in source",
+      "TRENDING regime specification not in source",
+      "Conviction scoring system (8/10, 6/10) not referenced in source",
+      "Specific percentage-based parameters are invented rather than derived from text"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains three specific, actionable entry conditions (conviction score threshold, excess capital percentage, leverage ratio) and three measurable exit conditions that a programmer could operationalize from trader conviction inputs, portfolio data, and price levels.",
+    "hallucination_recommendation": "REVISE",
+    "thresholds_removed": [
+      "conviction_threshold: 8.0",
+      "capital_buffer_percent: 60",
+      "max_leverage: 1.5",
+      "position_size_percent_of_buffer: 25",
+      "stop_loss_percent: 30",
+      "conviction_floor: 6/10"
+    ],
+    "strip_status": "STRIPPED",
+    "review_status": "AUTO_APPROVED_TIER2_NEEDS_THRESHOLD"
+  }
+]

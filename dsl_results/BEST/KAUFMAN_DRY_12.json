@@ -1,0 +1,130 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_12",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "prev_volume"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "prev_volume"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "This is a regime identification signal, not a directional entry signal. It classifies market conditions based on price direction (close vs prev_close) and volume direction (volume vs prev_volume). The 9 entry conditions represent the 3x3 matrix of price/volume combinations. Entry logic uses AND to detect clear regime shifts. Exit logic reverses to detect regime change. Direction set to CONTEXT_DEPENDENT since the signal determines whether to trade long or short based on identified regime."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "This is a regime identification signal, not a directional entry signal. It classifies market conditions based on price direction (close vs prev_close) and volume direction (volume vs prev_volume). The 9 entry conditions represent the 3x3 matrix of price/volume combinations. Entry logic uses AND to detect clear regime shifts. Exit logic reverses to detect regime change. Direction set to CONTEXT_DEPENDENT since the signal determines whether to trade long or short based on identified regime."
+  },
+  "source_rule_text": "Identify market regime (uptrend, downtrend, or sideways) by analyzing the combination of price direction and volume direction to determine accumulation, distribution, or trend strength."
+}

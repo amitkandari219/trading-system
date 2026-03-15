@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires momentum indicator (momentum <= 0) which is not in the ALLOWED INDICATORS list. Only MACD-derived momentum proxies (macd, macd_signal, macd_hist) are available. Additionally, the exact threshold value for 'price falls below SMA by threshold amount' is marked as [THRESHOLD_NEEDED] in the source and cannot be determined without explicit calibration.",
+  "translation_notes": "Attempted to capture mean reversion logic: entry when price closes below SMA_20 with price positioned in lower 30% of 20-bar range. Exit on mean reversion (close crosses above SMA_20). Original source code shows momentum-based exit (momentum <= 0) but momentum indicator is not available in allowed set. Consider using macd_hist <= 0 as alternative if momentum exit is critical."
+}

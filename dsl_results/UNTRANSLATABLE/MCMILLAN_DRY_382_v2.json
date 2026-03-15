@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_382",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires three conditions: (1) implied volatility at extreme percentile, (2) large discrepancy between historical and implied volatility, (3) trend reversal in IV chart. Available indicators india_vix and hvol_20 provide partial proxies for IV levels and HV magnitude, but: (a) no direct 'implied volatility percentile' indicator available to measure IV against its historical distribution; (b) no explicit 'IV-HV discrepancy' indicator available; (c) no chart-based trend reversal detection operator available (would require derivative/slope calculation or pattern recognition). The translation uses india_vix extremes and hvol_20 magnitude as approximate proxies, but does not fully capture the original signal's intent around percentile analysis and IV chart technical analysis.",
+  "translation_notes": "Proxied 'implied volatility extreme percentile' with india_vix > 75 (extreme high) and india_vix < 25 (extreme low). Proxied 'large discrepancy between HV and IV' with hvol_20 < 0.15 (low HV vs high IV) or hvol_20 > 0.35 (high HV vs low IV). Exit when IV mean-reverts toward 50. Signal direction is CONTEXT_DEPENDENT: long when IV high (vol spike), short when IV low (vol crush). Original signal incomplete in source text (cuts off at 'c. Interpret the chart...'). Cannot fully encode IV trend reversal without slope/derivative operators."
+}

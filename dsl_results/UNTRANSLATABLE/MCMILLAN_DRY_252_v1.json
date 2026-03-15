@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_252",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires domain-specific calculations not available in standard technical indicators: (1) Futures fair value computation (requires dividend yield, interest rates, and time-to-expiration), (2) Basis/discount tracking between spot and futures, (3) Arbitrage cost thresholds that are input-driven rather than price-derived. The signal logic (buy stock/sell futures spread) is a multi-asset strategy that cannot be expressed using single-asset price indicators. Parameters marked with [THRESHOLD_NEEDED] lack numerical definitions and require external data sources.",
+  "translation_notes": "This is an index arbitrage signal (cash-and-carry/reverse cash-and-carry) requiring real-time futures basis monitoring and simultaneous execution across two markets (spot index and futures). It cannot be implemented in a single-asset backtest engine using only technical indicators on one price series."
+}

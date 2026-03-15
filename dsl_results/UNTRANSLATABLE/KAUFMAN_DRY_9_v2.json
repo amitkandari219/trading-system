@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "TRIX (triple exponential moving average) is not available in the allowed indicators list. TRIX requires three layers of EMA smoothing applied sequentially to log prices, which cannot be replicated using only the base indicators provided (sma, ema, macd, etc.). The signal's consecutive-day rise/decline logic also cannot be precisely expressed without access to the raw TRIX values or a multi-bar lookback mechanism beyond prev_close/prev_high/prev_low/prev_open.",
+  "translation_notes": "Attempted proxy using MACD (which uses EMA smoothing) and close price comparison to simulate trend direction changes, but this does not accurately represent the triple-smoothed trendline behavior described in the original signal. A proper implementation requires TRIX indicator support or custom indicator calculation capability."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_108_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of synthetic options pricing relationships (strike spreads, synthetic equivalence across instruments, bid-ask spread analysis, and multi-leg option strategy evaluation). These require options-specific instruments (call/put prices at specific strikes, synthetic positions) not available in the provided price-action and technical indicator set. The core logic of detecting price advantage between strike spreads and synthetic equivalents cannot be expressed using only OHLCV-derived indicators.",
+  "translation_notes": "Attempted to proxy the signal's intent (identifying favorable pricing conditions before execution) using volume ratio and historical volatility as market condition filters. However, the actual decision rule\u2014comparing March 105 calls vs synthetic equivalent (March 100 calls + put spread)\u2014requires direct options pricing data. The signal is fundamentally an options arbitrage/equivalent comparison rule that cannot be translated to a price-action only backtest engine."
+}

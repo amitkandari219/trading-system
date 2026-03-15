@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_12",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "r1"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 0.5,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry conditions: (1) Price near/at R1 level after failed breakout, (2) Close below the prior day's high indicating rejection, (3) MA convergence/crossover suggesting weakness. Exit: Price reaches previous low (target). Stop loss set at 0.15% above entry to protect against quick reversal. Used prev_high and prev_low to reference prior day's levels without array indexing. The 'repeated rejection at R1' is captured by the price touching R1 but failing to sustain, reflected in close < prev_high condition."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "r1"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.005,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry conditions: (1) Price near/at R1 level after failed breakout, (2) Close below the prior day's high indicating rejection, (3) MA convergence/crossover suggesting weakness. Exit: Price reaches previous low (target). Stop loss set at 0.15% above entry to protect against quick reversal. Used prev_high and prev_low to reference prior day's levels without array indexing. The 'repeated rejection at R1' is captured by the price touching R1 but failing to sustain, reflected in close < prev_high condition."
+  },
+  "source_rule_text": "In a ranged market where a breakout attempt fails, sell from the top of the range (resistance/R1 level) with a target at the previous low when confluence signals (MA convergence, repeated rejection at a level) indicate weakness."
+}

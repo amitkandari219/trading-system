@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of momentum divergence patterns between price swings with intermediate retracement validation. This requires multi-bar pattern recognition, swing point identification, and comparative analysis of momentum indicator peaks/troughs across non-adjacent bars. No single allowed indicator can directly measure: (1) divergence between price swing extrema and momentum indicator extrema, (2) swing point validation vs minor pullback distinction, or (3) retracement magnitude between measurement points. While MACD histogram or RSI could serve as momentum proxies, the core logic demands pattern-matching capabilities beyond simple threshold comparisons or crossovers.",
+  "translation_notes": "GRIMES_DRY_7_0 describes a sophisticated swing divergence filter requiring: (a) identification of two price swings with measurable intermediate retracement, (b) confirmation that momentum indicator diverges from price action between these swings, (c) validation that retracement is 'distinct' not 'minor'. This requires either: custom divergence indicator, historical swing detection logic, or multi-condition pattern arrays with bar-relative logic. The 'CONTEXT_DEPENDENT' direction indicates entries/exits depend on divergence type (bullish vs bearish), further requiring conditional logic not expressible in the current 3-field condition schema. Recommend: (1) add custom 'divergence_strength' or 'swing_confirm' indicator, or (2) use macd_hist crosses with atr_14 ratio filters as weak proxy."
+}

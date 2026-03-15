@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal contains multiple [THRESHOLD_NEEDED] placeholders that require calibration: histogram_reversal_bars_minimum, price_extension_std_dev (requires Bollinger Bands or manual std dev calculation), and exhaustion_confirmation_bars. The exhaustion zone concept and momentum persistence threshold lack precise mathematical definition in source material. Profit target multiplier (Nx risk) requires dynamic stop-loss calculation not directly supported. Source text is incomplete and does not provide concrete parameter values.",
+  "translation_notes": "Translated core MACD histogram reversal logic: entry on histogram sign change (crosses above/below zero) with price confirmation vs SMA_20. Exit on reverse histogram signal. Price extension beyond std dev could use bb_pct_b or bb_upper/bb_lower but exact threshold undefined. Assumed 20-bar hold period and 2% stop loss as placeholder values pending parameter specification. Direction set to CONTEXT_DEPENDENT per original signal. This rule requires extensive parameter tuning before backtesting."
+}

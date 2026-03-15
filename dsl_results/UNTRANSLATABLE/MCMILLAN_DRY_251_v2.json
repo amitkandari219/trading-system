@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_251",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of futures price vs fair value and parity levels, which are not available in the allowed indicators list. Fair value and discount-to-parity are derivatives of spot-futures basis calculations that require external data feeds (spot price, cost of carry, interest rates). Additionally, the signal requires logic to detect if we are in the last 2-3 weeks before expiration and conditional logic to either exit or roll positions, which cannot be expressed using only the allowed operators and indicators. The pivot point used as a proxy for fair value is insufficient for this specialized futures arbitrage strategy.",
+  "translation_notes": "This is a specialized index arbitrage/cash-and-carry hedge signal that requires real-time futures basis monitoring and expiration calendar logic. The core conditions (futures below fair value, discount to parity, days-to-expiration, roll logic) depend on data structures and calculations not present in standard technical indicator libraries. A proper implementation would require custom basis calculators and position management logic external to a standard backtest engine."
+}

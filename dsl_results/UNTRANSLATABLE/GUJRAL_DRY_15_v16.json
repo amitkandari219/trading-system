@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe analysis (5-minute and 60-minute contexts simultaneously) and detection of narrow range breakouts. The allowed indicator set does not support: (1) explicit timeframe switching for sma_20 on 5-min vs 60-min charts, (2) narrow range detection (requires historical price volatility analysis), (3) 'price action well above MA' as a quantifiable threshold, and (4) 'slow and steady move with multiple entry opportunities' as a measurable condition. Monthly pivot resistance (r1) is available but the multi-timeframe confirmation logic cannot be properly encoded.",
+  "translation_notes": "Attempted to capture: close > sma_20 (price above 20MA), sma_20 crosses above sma_50 (overlap at support interpreted as crossover), and close > r1 (breakout above monthly pivot resistance). However, this loses the critical multi-timeframe context and narrow range detection that are core to this signal. A proper backtest would require custom indicators for timeframe-specific MAs and range detection."
+}

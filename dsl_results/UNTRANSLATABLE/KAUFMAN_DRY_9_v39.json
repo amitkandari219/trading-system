@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic parameterization based on 'observed trend length' which cannot be expressed as a fixed condition. The rule demands: (1) calculating trend length dynamically, (2) comparing moving average period to trend_length/4, and (3) rejecting optimization results >= 6 months. These require meta-parameters and dynamic thresholds not available in the allowed indicator set. The signal is algorithmic/meta-level rather than a direct price/indicator comparison.",
+  "translation_notes": "This signal describes an optimization constraint and regime-specific parameter selection rule rather than a tradeable condition. It requires: (a) prior trend length calculation, (b) adaptive MA period selection based on that calculation, and (c) rejection logic for optimization failures. These cannot be hardcoded as static indicator conditions. To implement, would need custom trend-length detection logic external to the backtest engine, then feed optimized MA period as a parameter constraint rather than a runtime condition."
+}

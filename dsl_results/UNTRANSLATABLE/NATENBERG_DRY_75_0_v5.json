@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_75_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific Greeks (delta, vega) and volatility spread analysis that are not available in the allowed indicator set. The core logic depends on: (1) delta proximity to zero [requires delta calculation from options chain], (2) theoretical edge on volatility spread [requires volatility surface analysis and pricing model], (3) vega exposure magnitude [requires vega Greeks]. Standard price/technical indicators cannot replicate these derivatives-specific measures. This is an options strategy that cannot be translated to price-action rules.",
+  "translation_notes": "NATENBERG_DRY_75_0 is a volatility-focused options spread strategy from Sheldon Natenberg's work. It requires real-time Greeks calculations and volatility thesis validation which fall outside the scope of technical indicator-based backtesting. To implement this signal, a backtest engine would need: delta tracking, vega positioning metrics, implied volatility surface analysis, and options pricing models. Recommend using a derivatives-specific backtester or adding Greeks as custom indicators."
+}

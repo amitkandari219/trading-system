@@ -1,0 +1,39 @@
+[
+  {
+    "signal_id": "LOPEZ_DRY_1_0",
+    "book_id": "LOPEZ",
+    "source_citation": "Advances in Financial Machine Learning, Lopez de Prado, Ch. 7.4.2, pp. 78-143",
+    "raw_chunk_text": "L\nFigure 7.2 Purging overlap in the training set\n7.4.2 Embargo\nFor those cases where purging is not able to prevent all leakage, we can impose\nan embargo on training observations after every test set.",
+    "rule_text": "Prevent information leakage in backtests by imposing an embargo period after test sets, removing training observations that occur within a forward-looking window after testing ends.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify each test period endpoint t_j",
+      "Set embargo window h = 0.05 * T (5% of training set length)"
+    ],
+    "parameters": {
+      "embargo_ratio_h": 0.05,
+      "embargo_application": "Remove all Y_i where t_j < t_i <= (t_j + h)"
+    },
+    "exit_conditions": [
+      "Resume training data collection after embargo period expires"
+    ],
+    "instrument": "NA_BACKTESTING_PARAMETER",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Embargo ratio specified as 0.05 (5%) but source text mentions h \u2248 .01 T (1%)",
+      "Entry conditions infer specific implementation steps not detailed in source",
+      "Exit conditions describe resuming training which is implied but not explicitly stated"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete, actionable steps: identify test period endpoints (deterministic from backtest structure) and calculate embargo window as a fixed percentage of training set length (h = 0.05 * T), which a programmer can implement as code logic.",
+    "hallucination_recommendation": "REVISE"
+  }
+]

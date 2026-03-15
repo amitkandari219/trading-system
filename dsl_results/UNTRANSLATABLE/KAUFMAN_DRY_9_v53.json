@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires '3-day momentum' and 'lower band' penetration logic. '3-day momentum' is not in allowed indicators (MACD histogram used as proxy). 'Lower band' references Bollinger Bands (bb_lower), but the signal requires detecting penetration of a band after a trend signal\u2014this requires sequential logic not expressible in simple 3-field conditions. The 'wait until penetration' instruction and trend confirmation sequencing cannot be fully captured.",
+  "translation_notes": "Attempted approximation: Used ADX_14 > 25 as trend signal confirmation and MACD_hist < 0 as proxy for momentum penetration of lower threshold. Exit condition uses ADX_14 < 20 to detect trend reversal. However, the precise 3-day momentum indicator and band-crossing mechanics are not available in the allowed indicator set, requiring manual rule refinement."
+}

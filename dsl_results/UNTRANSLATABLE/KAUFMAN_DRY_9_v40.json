@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detecting direction changes in a 16-day moving average trendline using swing analysis (3-month swing period with 1-quarter calculation ratio). This requires custom trendline fitting or swing high/low detection logic not available in the allowed indicator set. The allowed indicators provide price levels and standard MAs, but not trendline direction detection or swing analysis.",
+  "translation_notes": "Attempted to use sma_20 as closest approximation to 16-day MA (sma_20 is nearest allowed period). However, the core requirement of detecting 'trendline direction changes' cannot be accurately expressed with simple crossing operators on a single MA. The signal requires derivative/slope analysis or swing point identification which is outside the scope of the allowed indicators. A proper implementation would need a custom 'trendline_direction' or 'swing_high/low' indicator."
+}

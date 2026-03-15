@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of 'significant support/resistance levels' and detection of 'failed breakout with volume confirmation' which are subjective/dynamic level detection tasks. Pivot points (r1, s1) used as proxy for support/resistance, but the signal's core mechanic of detecting brief penetration failure and reversal requires custom level detection logic not expressible in the allowed indicator set. Volume threshold for 'failure excursion' is parameterized but lacks specific breakout detection semantics.",
+  "translation_notes": "Used pivot r1/s1 as proxies for significant resistance/support levels. Used vol_ratio_20 < threshold to represent 'volume on failure excursion less than average'. Entry triggers on price crossing back through the level. Stop loss placed at 1.5 ATR equivalent penetration distance. Signal is direction-agnostic (counter-trend), so both LONG and SHORT entries included with opposite conditions. True implementation would require custom level detection and breakout-failure confirmation logic."
+}

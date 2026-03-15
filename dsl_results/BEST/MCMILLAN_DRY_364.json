@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_364",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a volatility estimation methodology, not a tradeable entry/exit rule. It requires computing custom historical volatility metrics (hvol_20, hvol_50, hvol_100) and their median, which cannot be expressed as conditional logic using the allowed indicators. The allowed indicator list only includes hvol_20, not hvol_50 or hvol_100. Additionally, there is no operator or indicator to express 'median of multiple calculations' in the rule schema. This is a calculation procedure rather than a market timing signal.",
+  "translation_notes": "Signal MCMILLAN_DRY_364 describes a volatility calculation method (median of 20/50/100-day historic volatility) rather than entry/exit conditions. While hvol_20 exists in the allowed indicators, hvol_50 and hvol_100 do not. The median aggregation cannot be implemented within the three-field condition structure (left, operator, right). This rule would need to be implemented as a preprocessing step that computes a custom 'median_hvol' indicator outside the backtest engine, then use that indicator in subsequent entry/exit rules."
+}

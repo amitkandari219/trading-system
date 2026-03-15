@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_24_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires (1) 'Realized volatility percentile of historical distribution' and (2) 'Implied volatility rank' \u2014 neither direct historical percentile rank nor implied volatility rank indicators are available in the allowed set. Available volatility indicators (hvol_20, india_vix) do not provide percentile/rank transformations. (3) 'Time decay exceeds daily loss threshold' requires option Greeks (theta) not in allowed indicators. (4) Position sizing logic ('buy options in HIGH_VOL, sell/avoid in LOW_VOL') is directional context that cannot be encoded as a simple condition triplet without option-specific Greeks.",
+  "translation_notes": "Proxied entry with hvol_20 > 0.65 (high realized volatility) and india_vix > 0.70 (elevated implied vol). Exit when hvol_20 < 0.35 (volatility mean reversion). Original signal requires implied volatility rank (IV percentile) and theta/time-decay metrics which are not in the allowed indicator set. Position sizing and instrument selection rules are strategic overlays that require separate portfolio-level logic outside the backtest rule engine scope."
+}

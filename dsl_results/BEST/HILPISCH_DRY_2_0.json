@@ -1,0 +1,128 @@
+{
+  "signal_id": "HILPISCH_DRY_2_0",
+  "book_id": "HILPISCH",
+  "dsl_rule": {
+    "signal_id": "HILPISCH_DRY_2_0",
+    "entry_long": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_10"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_10"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses generic SMA crossover without specified periods. Used sma_10 (shorter-term) and sma_50 (longer-term) as standard trend-following periods. Volume confirmation added using prev_volume comparison. Price close conditions use the shorter SMA (sma_10) as reference. Direction is CONTEXT_DEPENDENT per original signal specification\u2014entries and exits trigger in both directions based on crossover direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_above",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_below",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses generic SMA crossover without specified periods. Used sma_10 (shorter-term) and sma_50 (longer-term) as standard trend-following periods. Volume confirmation added using prev_volume comparison. Price close conditions use the shorter SMA (sma_10) as reference. Direction is CONTEXT_DEPENDENT per original signal specification\u2014entries and exits trigger in both directions based on crossover direction."
+  },
+  "source_rule_text": "A trader should initiate a long position when a shorter-term SMA exceeds a longer-term SMA, and initiate a neutral or short position when the opposite occurs."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_373",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit volatility convergence measurement and options pricing models (straddle profitability threshold). Available indicators (hvol_20, india_vix) provide volatility proxies but cannot measure: (1) implied volatility directly, (2) straddle greeks and P&L, (3) convergence profitability threshold, (4) minimum spread width requirement. The signal logic requires options-specific calculations unavailable in price/technical indicator set.",
+  "translation_notes": "Attempted translation uses hvol_20 as historical volatility proxy and india_vix as implied volatility proxy. Entry requires historical vol > implied vol with meaningful spread. Exit triggers when convergence occurs (implied rises to meet historical). However, this is a simplified approximation; the original signal requires options pricing framework to validate straddle profitability at convergence targets."
+}

@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_9",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_9",
+    "entry_long": [
+      {
+        "left": "pivot",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s1"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal identifies uptrend conditions using CPR (Central Pivot Range represented by pivot level) and S1 support. Entry requires uptrend confirmation (price above pivot acting as dynamic support) and price holding above S1. Exit triggers when price closes below CPR (pivot level). The 'rising CPR' condition is approximated by requiring pivot to be above sma_20 as a trend confirmation filter. Stop loss set conservatively at 2% given support-based nature of the strategy."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "pivot",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s1"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal identifies uptrend conditions using CPR (Central Pivot Range represented by pivot level) and S1 support. Entry requires uptrend confirmation (price above pivot acting as dynamic support) and price holding above S1. Exit triggers when price closes below CPR (pivot level). The 'rising CPR' condition is approximated by requiring pivot to be above sma_20 as a trend confirmation filter. Stop loss set conservatively at 2% given support-based nature of the strategy."
+  },
+  "source_rule_text": "In an uptrend, do not trade short as price will not close below the CPR and/or below S1, and the CPR acts as support."
+}

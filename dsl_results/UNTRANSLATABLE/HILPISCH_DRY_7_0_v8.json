@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "THRESHOLD_NEEDED parameter value is not specified in the signal. The rule requires a dynamic threshold offset (price < SMA - [THRESHOLD_NEEDED]) but the exact threshold amount is undefined. The source code snippet is incomplete and does not provide the threshold value. Cannot create precise entry conditions without this parameter.",
+  "translation_notes": "Signal implements mean-reversion strategy with bidirectional entries/exits. Used crosses_below/crosses_above operators to capture crossing behavior and sma_50 as a representative SMA (original source references 'SMA' without specific period). Exit conditions are straightforward reversions to the SMA level. Without the threshold value, the entry conditions cannot be fully quantified."
+}

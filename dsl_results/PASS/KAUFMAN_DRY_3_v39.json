@@ -1,0 +1,82 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_3",
+    "entry_long": [
+      {
+        "left": "hvol_20",
+        "operator": "<",
+        "right": "0.15"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "s1"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used hvol_20 (historical volatility) to proxy 'low volatility conditions'. Used pivot levels (s1 = support level 1) to represent major support level tests. Volume confirmation via volume > prev_volume. 'Long consolidating base' is a regime condition captured by target_regime RANGING rather than a specific indicator. Stop-loss expressed as percentage (2.0%) to trigger on new lows near support. Open interest requirement for futures cannot be expressed with allowed indicators\u2014this is a regime/market filter handled at backtest execution level."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "hvol_20",
+        "op": "<",
+        "value": 0.15
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "s1"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Used hvol_20 (historical volatility) to proxy 'low volatility conditions'. Used pivot levels (s1 = support level 1) to represent major support level tests. Volume confirmation via volume > prev_volume. 'Long consolidating base' is a regime condition captured by target_regime RANGING rather than a specific indicator. Stop-loss expressed as percentage (2.0%) to trigger on new lows near support. Open interest requirement for futures cannot be expressed with allowed indicators\u2014this is a regime/market filter handled at backtest execution level."
+  },
+  "source_rule_text": "Buy at tests of major support levels in markets with long consolidating bases and low volatility, with stop-loss on new lows and volume confirmation."
+}

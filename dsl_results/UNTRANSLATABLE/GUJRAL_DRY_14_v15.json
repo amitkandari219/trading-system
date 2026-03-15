@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-candle pattern recognition (3-candle sequence with uptrend context) that cannot be expressed in single-bar indicator conditions. Specifically: (1) detection of 'strong counter-trend bar' requires relative comparison to previous trend strength; (2) 'setup candle' requires 2-bar lookback; (3) entry on 'third candle' requires 3-bar pattern state tracking; (4) 'original uptrend' context requires trend confirmation logic not available in point-in-time indicators. The rule is inherently a pattern-based multi-bar strategy that requires sequence validation logic.",
+  "translation_notes": "Attempted approximation using body direction and lower_low detection, but this loses critical pattern context. A proper implementation would require custom pattern recognition code or bar-state machine logic outside the allowed indicator set."
+}

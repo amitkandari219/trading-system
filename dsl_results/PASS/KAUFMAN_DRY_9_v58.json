@@ -1,0 +1,88 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "macd",
+        "operator": "crosses_above",
+        "right": "macd_signal"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "macd",
+        "operator": "crosses_below",
+        "right": "macd_signal"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "macd",
+        "operator": "crosses_below",
+        "right": "macd_signal"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "macd",
+        "operator": "crosses_above",
+        "right": "macd_signal"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "MACD crossover strategy using allowed indicators macd and macd_signal. Direction is CONTEXT_DEPENDENT: LONG entries on upward crosses, SHORT entries on downward crosses. Exit conditions are reversal crosses of opposite direction. Target regimes set to TRENDING variants as specified in signal."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "macd",
+        "op": "crosses_above",
+        "value": "macd_signal"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "macd",
+        "op": "crosses_below",
+        "value": "macd_signal"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "macd",
+        "op": "crosses_below",
+        "value": "macd_signal"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "macd",
+        "op": "crosses_above",
+        "value": "macd_signal"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "MACD crossover strategy using allowed indicators macd and macd_signal. Direction is CONTEXT_DEPENDENT: LONG entries on upward crosses, SHORT entries on downward crosses. Exit conditions are reversal crosses of opposite direction. Target regimes set to TRENDING variants as specified in signal."
+  },
+  "source_rule_text": "Buy when the MACD line crosses upwards through the signal line; sell when the MACD line crosses from above to below the signal line."
+}

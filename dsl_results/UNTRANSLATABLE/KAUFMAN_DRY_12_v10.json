@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a volume filter/data quality rule, not a directional trading signal. It requires calculating dynamic volume thresholds (average_volume - volumefilter * stdev_volume) and conditionally updating indicator calculations based on daily volume comparisons. The backtest engine does not support: (1) custom calculated thresholds stored as state variables, (2) conditional indicator recalculation logic, or (3) day-skipping/filtering rules. This is a preprocessing filter that should be implemented at the data preparation stage, not as a trading rule condition.",
+  "translation_notes": "KAUFMAN_DRY_12 describes a volume-based data filter that prevents indicator updates on low-volume days. While 'volume' is an allowed indicator, the rule requires: (a) rolling mean and stdev of volume over period n, (b) comparison logic (volume >= mean - volumefilter*stdev), and (c) conditional branching to skip indicator updates. These capabilities exceed the condition-evaluation scope of standard backtest rules. Recommend implementing as a pre-processing step that marks or excludes low-volume bars before backtesting."
+}

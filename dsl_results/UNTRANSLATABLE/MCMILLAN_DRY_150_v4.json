@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_150",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a multi-leg options strategy (short straddle with staged buyback management) that requires real-time tracking of separate put and call positions, directional reversals within a straddle framework, and explicit option premium levels (3 points, 1/2 point, 1/4 point, 2 1/2 points). The backtest engine does not support: (1) multi-leg options position management, (2) individual leg pricing tracking, (3) time-decay and volatility-based exit targets for options, (4) staged partial closure logic based on option premiums. This is an options-specific tactical rule that cannot be meaningfully translated into price/technical indicator conditions.",
+  "translation_notes": "Signal MCMILLAN_DRY_150 is inherently untranslatable to a price-based backtest engine. It requires options-chain data, Greeks tracking (delta/gamma/vega), and premium-based exit logic. A simplified NEUTRAL-direction proxy was partially structured (directional reversal detection via ATR and moving average crossover) but this fundamentally misrepresents the straddle buyback mechanics and the 3-point premium target constraint."
+}

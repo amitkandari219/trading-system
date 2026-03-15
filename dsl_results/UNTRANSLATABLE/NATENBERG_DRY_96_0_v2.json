@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_96_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of market implied volatility (from option prices) against trader's volatility estimate using a pricing model. Neither implied volatility from options nor theoretical option pricing models are available in the allowed indicators list. Only historical volatility (hvol_20) is available as a proxy, which does not capture market implied volatility or spread mispricing. The core logic of comparing IV curves and identifying mispriced spreads cannot be accurately expressed with equity price-based indicators alone.",
+  "translation_notes": "Attempted proxy: Used hvol_20 (20-period historical volatility) crossed against the 20% volatility_estimate parameter, with direction determined by volatility regime. However, this fundamentally misses the signal's intent, which is options-specific (implied vs realized vol comparison for spread pricing). This translation is incomplete without access to option market data and volatility surface indicators."
+}

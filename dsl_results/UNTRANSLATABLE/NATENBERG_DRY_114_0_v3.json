@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_114_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires American option-specific derivatives (intrinsic value, time value decay, ex-dividend dates, option exercise mechanics). These are not equity price/technical indicators and cannot be expressed using the allowed indicator set. The signal also requires comparison to dynamic threshold 'underlying_price - strike_price' which requires real-time option chain data unavailable in standard OHLCV backtest engines.",
+  "translation_notes": "This is a volatility arbitrage signal specific to options markets. It compares option market price to intrinsic value (parity) to detect early exercise opportunities and arbitrage mismatches. The core conditions (market_price < intrinsic_value AND time_value \u2248 0) require option-specific data structures not present in equity technical analysis indicators. A full implementation requires an options pricing module with access to strike prices, underlying prices, volatility surfaces, and dividend dates."
+}

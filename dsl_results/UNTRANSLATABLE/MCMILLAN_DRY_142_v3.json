@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_142",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is an options strategy (calendar spread with puts at same strike) that requires tracking multiple option legs with different expirations and premiums. Standard price/technical indicators cannot fully express: (1) selling near-term put vs buying longer-term put as separate legs, (2) net debit cost tracking, (3) time decay differential between two expirations, (4) strike price selection logic. The exit condition 'stock exactly at striking price' requires options pricing mechanics unavailable in equity price indicators.",
+  "translation_notes": "MCMILLAN_DRY_142 describes a neutral calendar spread strategy. While we can express a basic exit when price equals strike, the core mechanics (option leg management, premium tracking, time decay capture) require options-specific calculations and multi-leg position handling that are outside the scope of a price-based backtest engine. This strategy is better implemented in an options backtesting framework with Greeks and volatility surface modeling."
+}

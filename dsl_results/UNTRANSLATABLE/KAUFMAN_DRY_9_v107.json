@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Detection of bearish divergence pattern (three rising price peaks with three declining momentum peaks) \u2014 pattern recognition beyond allowed indicators; (2) 'FastK' stochastic variant not in allowed list (only stoch_k, stoch_k_5 available); (3) Conditional momentum thresholds (60/40 based on +10/-10 parameter) requiring dynamic parameterization; (4) 'momentum' indicator not in allowed list \u2014 unclear if this refers to ROC, MACD, or another oscillator.",
+  "translation_notes": "Partially translatable: Exit condition using stoch_d <= 50 is valid. However, the core entry (bearish divergence pattern detection) requires multi-bar price/momentum relationship analysis not expressible with single-bar indicators. The momentum parameter conditions and FastK alternative exit path cannot be implemented with available indicators. Recommendation: Implement bearish divergence detection in preprocessing or use MACD divergence as proxy if appropriate for strategy intent."
+}

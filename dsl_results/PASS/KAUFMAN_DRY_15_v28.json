@@ -1,0 +1,72 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_15",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "prev_open"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_open"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry requires previous day to be downtrend (assumed from context) and next day to open OR close lower than previous day's open. Exit uses reversal logic (close above previous close) per AUTHOR_SILENT instruction. Used prev_open and prev_close for bar comparison without array indexing."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "prev_open"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_open"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry requires previous day to be downtrend (assumed from context) and next day to open OR close lower than previous day's open. Exit uses reversal logic (close above previous close) per AUTHOR_SILENT instruction. Used prev_open and prev_close for bar comparison without array indexing."
+  },
+  "source_rule_text": "A downward trend day continuation signal occurs when the next day opens lower or closes lower."
+}

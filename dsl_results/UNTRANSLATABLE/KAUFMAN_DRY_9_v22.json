@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal specifies a custom 15-day weighted moving average (TYPE C with specific weighting structure: most recent 5 days weight 3, next 5 days weight 2, last 5 days weight 1). This custom weighted MA is not available in the allowed indicators list. The closest approximation uses sma_20, but this does not accurately represent the intended custom weighting. Additionally, the 250-point penetration threshold cannot be precisely modeled as a dynamic offset from the MA without a custom indicator.",
+  "translation_notes": "Attempted approximation using sma_20 as proxy for the 15-day weighted MA and treating 250 points as an absolute price level rather than a relative offset. However, the signal's core logic\u2014penetration of 250 points above/below a custom-weighted MA calculated from prior day close\u2014cannot be accurately expressed with standard indicators. Entry conditions trigger on intraday high/low penetration; exit mirrors reversal at the MA level."
+}

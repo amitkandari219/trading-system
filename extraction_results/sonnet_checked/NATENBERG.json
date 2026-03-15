@@ -1,0 +1,707 @@
+[
+  {
+    "signal_id": "NATENBERG_DRY_72_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 8, pp. 164\u2013165",
+    "raw_chunk_text": "154 Chapter 8\nWhile the March and June Evodollar futures contracts are related, they are not\nidentical. It is not impossible fo\u2018 one futures contract to go up while the other goes\ndown. As a result, i",
+    "rule_text": "A trader should hedge directional risk in an option spread by executing an offsetting futures spread when the underlying futures contracts are imperfectly correlated.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Option spread (long June/short March Eurodollar calls or puts) is initiated",
+      "Futures spread basis is measured at entry",
+      "Hedge ratio = 1.0x notional exposure of option spread"
+    ],
+    "parameters": {
+      "hedge_ratio": 1.0,
+      "basis_threshold_to_entry": 0.0,
+      "time_to_hedge_initiation": "immediate"
+    },
+    "exit_conditions": [
+      "Option spread is closed",
+      "Futures spread is closed simultaneously with options"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Entry conditions specify 'long June/short March' but text shows 'June/March' spread without clear direction specification",
+      "Hedge ratio of 1.0 is assumed but not explicitly stated in the excerpt",
+      "Exit conditions are logical inferences but not mentioned in the source text",
+      "The text is incomplete - cuts off mid-sentence describing the futures spread execution"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (option spread initiation, futures spread basis measurement, and a concrete hedge ratio of 1.0x) that a programmer could detect from market data and portfolio state.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_105_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Chapter 11, pp. 235-236",
+    "raw_chunk_text": "226 Chapter 11\nSince conversions and reversals are common strategies in all option markets, a\ntrader who has an at-the-money conversion and is worried about pin risk can be fairly\ncertain that there a",
+    "rule_text": "A trader holding a conversion or reversal position exposed to pin risk should seek to cross their position with an opposing trader at fair value to mutually eliminate pin risk.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position type is conversion or reversal",
+      "Underlying is at-the-money (strike within 0.5% of spot)",
+      "Days to expiration <= 14",
+      "Opposing position signal detected in market"
+    ],
+    "parameters": {
+      "atm_distance_threshold": "0.5%",
+      "dte_threshold": 14,
+      "fair_value_slippage_tolerance": "0 (even-money only)"
+    },
+    "exit_conditions": [
+      "Cross executed at fair value with opposing position",
+      "Both positions eliminated simultaneously"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Specific numeric thresholds (0.5% ATM distance, 14 days DTE) are not mentioned in source text",
+      "Source only mentions 'at-the-money' without defining precise proximity metrics",
+      "Pin risk timing context not explicitly stated as expiration-dependent in excerpt"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry conditions are specific and programmatically detectable: position type can be identified from portfolio data, ATM status uses a precise 0.5% threshold, DTE is a numerical comparison, and opposing signal detection can be implemented as a market data rule.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_187_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 8, pp. 406-407",
+    "raw_chunk_text": "398 Chapter [8\nmodel-generated values become. Consequently, traders pay less and less attention to\nmodel-generated values as expiration approaches. It is common practice among floor\ntraders on option ",
+    "rule_text": "As expiration approaches and model reliability decreases, reduce reliance on theoretical pricing models and shift toward experience-based decision-making.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Days to expiration \u2264 5 days",
+      "Model reliability index < 0.85 (author: 'model is known to be incorrect')"
+    ],
+    "parameters": {
+      "days_to_expiration_threshold": 5,
+      "model_weight_reduction_pct": 25,
+      "experience_weight_increase_pct": 25,
+      "min_model_weight_floor": 0.5
+    },
+    "exit_conditions": [
+      "Switch to pure experience-based when DTE \u2264 2 days"
+    ],
+    "instrument": "OPTIONS_BUYING|OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Entry condition specifies '\u2264 5 days' but text doesn't give this specific threshold",
+      "Model reliability index with specific threshold (0.85) is not mentioned in source",
+      "Specific percentage values for weight adjustments are not provided in original text",
+      "Signal category 'REGIME' is inferred rather than explicitly stated"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry conditions are specific and quantifiable (DTE \u2264 5 days and Model reliability index < 0.85), allowing a programmer to code detection logic, even though the exit action ('experience-based decision-making') is subjective.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_72_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 8, pp. 164-165",
+    "raw_chunk_text": "also executes a futures spread bypurchasing March futures and selling June futures, he\nwill have a position which willoffset any loss to the option spread resulting from a\nwidening in the futures spre",
+    "rule_text": "When executing an option spread, hedge with a futures spread sized to achieve delta neutrality across the entire combined position.",
+    "signal_category": "SIZING|RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Option spread position is established",
+      "Calculate net delta: (long_option_delta \u00d7 long_qty) - (short_option_delta \u00d7 short_qty)",
+      "Net delta exposure is non-zero"
+    ],
+    "parameters": {
+      "hedge_ratio": 1.0,
+      "futures_contracts_to_trade": "ABS(net_delta_exposure) / futures_contract_delta",
+      "delta_tolerance": 0
+    },
+    "exit_conditions": [
+      "Close futures spread when option spread is closed",
+      "Rebalance if net delta drifts beyond \u00b125 deltas"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Exit conditions contain hallucinated elements not mentioned in source text",
+      "Delta tolerance of 0 is too strict - source doesn't specify exact tolerance",
+      "Rebalancing trigger of \u00b125 deltas is completely fabricated"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The rule contains specific, actionable entry conditions (option spread establishment, delta calculation formula, non-zero delta threshold) and exit conditions (spread closure, delta drift beyond \u00b125) that a programmer could implement using portfolio state and Greeks data.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_73_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 8, pp. 166\u2013167",
+    "raw_chunk_text": "March 100 call 3.05 2.53 2.07 1.66 1.31\nCall Spread Value 2.87 2.28 1.75 1.31 95\nJune 100 put 3.76 4.62 \u00a7.62 6.75 8,01\nMarch 100 put 2.37 2.84 3.37 3.96 4.62\nPut Spread Value 1.39 1.78 2.25 2.79 3.39\n",
+    "rule_text": "A trader should avoid or actively hedge time spread positions when borrowing constraints exist or corporate actions (tender offers, stock calls) create forced assignment risk before the spread's intended expiration cycle completes.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Long calendar/time spread established (long-dated call/put, short near-dated)",
+      "Stock borrow rate increases OR borrow availability drops below 100%",
+      "Corporate action announced (tender offer, special dividend, merger)"
+    ],
+    "parameters": {
+      "days_to_near_expiration_threshold": 45,
+      "borrow_availability_threshold_percent": 100,
+      "action_trigger": "immediately_upon_announcement"
+    },
+    "exit_conditions": [
+      "Close entire spread at market upon any borrow constraint detection",
+      "Exit upon any M&A or corporate action announcement affecting underlying stock"
+    ],
+    "instrument": "OPTIONS_BUYING|SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Specific numerical thresholds (45 days, 100% borrow availability) not mentioned in source text",
+      "Borrow rate increases as trigger condition not explicitly stated in excerpt",
+      "Exit timing specificity ('immediately upon announcement') goes beyond source detail",
+      "Special dividends and mergers mentioned but not in source excerpt"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, detectable entry conditions (borrow rate increases, borrow availability drops below 100%, corporate action announcements) that can be monitored from market data feeds and portfolio systems, with clear exit triggers that a programmer can implement.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_116_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 12, p. 257-258",
+    "raw_chunk_text": "through intuition, or through slight adjustments to Black-Scholes generated values. For\nexample, when a stock is expected to pay a dividend, an American call value can be\napproximated by comparing the",
+    "rule_text": "When theoretical option value falls below intrinsic value (parity), adjust the valuation floor to parity rather than accepting below-intrinsic theoretical prices.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Theoretical option value from Black-Scholes model calculated",
+      "Intrinsic value (parity) calculated for the option",
+      "Theoretical value < intrinsic value"
+    ],
+    "parameters": {
+      "adjustment_threshold": 0.0,
+      "floor_level": "exact_parity",
+      "apply_to_instruments": [
+        "put_options_on_stock",
+        "options_on_futures"
+      ]
+    },
+    "exit_conditions": [
+      "Use adjusted (parity) value for position sizing and risk management decisions"
+    ],
+    "instrument": "OPTIONS_BUYING|OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Entry conditions add procedural steps not explicitly mentioned in source",
+      "Exit conditions specify application to 'position sizing and risk management' which is not mentioned in the original text",
+      "Target regimes marked as 'ANY' is reasonable inference but not stated in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are specific and quantifiable: Black-Scholes theoretical value and intrinsic value can be calculated from market data, and their comparison is a concrete mathematical operation that code can execute.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_148_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 15, pp. 325-326",
+    "raw_chunk_text": "exercise,\nSuppose a trader owns a stock which settles at a price of $50 when trading ceases\nat 4:00 PM on the primary stock exchange. Suppose also that the trader has the right to\nsell that stock to s",
+    "rule_text": "A trader should exercise an embedded right (option) when market conditions move adversely relative to the exercise price, even if the original holding intention was passive, because the optionality provides asymmetric protection against unfavorable price movement.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Underlying price at secondary exchange < (settlement_price \u00d7 0.98)",
+      "Embedded put/selling right is still available",
+      "Time to expiration > 1 hour remaining"
+    ],
+    "parameters": {
+      "adverse_move_threshold": 0.02,
+      "min_time_to_expiry_hours": 1.0
+    },
+    "exit_conditions": [
+      "Exercise the right immediately upon threshold breach",
+      "Let option expire worthless if threshold not breached at expiration"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "The 2% threshold (0.98 multiplier) is inferred from the example ($50 to $48 = 4% drop) but not explicitly stated as a rule",
+      "The 1-hour minimum time to expiry is inferred but not specified in the text",
+      "Instrument categorized as 'OPTIONS_BUYING' when the example shows an embedded right/option that the trader already owns",
+      "Exit conditions are logical inferences but not explicitly stated in the excerpt"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains three specific, quantifiable entry conditions (price comparison to settlement threshold, embedded right availability, time remaining) that a programmer could detect from market data and portfolio state, combined with a clear action trigger (immediate exercise upon threshold breach).",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_150_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 15, pp. 329-330",
+    "raw_chunk_text": "is assigned on an in-the-money stock index option, not only does assignment cause a\nnegative cash flow, but the deltas associated with the assigned options completely\ndisappear. If the trader knows im",
+    "rule_text": "A trader should reduce or hedge short deeply in-the-money index option positions before market open to avoid unhedged delta exposure from overnight assignment that cannot be managed until the next trading day.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Short index option position exists",
+      "Option moneyness > 1.5% in-the-money (intrinsic value / strike > 0.015)",
+      "Time to expiration \u2264 7 days",
+      "Approaching market close on expiration week"
+    ],
+    "parameters": {
+      "moneyness_threshold": 0.015,
+      "days_to_expiration_limit": 7,
+      "action": "close_or_full_hedge"
+    },
+    "exit_conditions": [
+      "Position closed before market close",
+      "Full delta hedge established (long underlying or long calls to offset)",
+      "All in-the-money short options removed from book"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Specific moneyness threshold of 1.5% (0.015) not mentioned in source text",
+      "7-day expiration limit not specified in original excerpt",
+      "'Expiration week' timing not explicitly stated in source",
+      "Specific hedge ratios and implementation details not provided in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry conditions are specific and measurable (portfolio position existence, quantifiable moneyness threshold >1.5%, days to expiration \u22647, and identifiable time period), allowing programmatic detection from market data and portfolio state.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_186_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 18, pp. 404-405",
+    "raw_chunk_text": "nine months to expiration, but it was devastating with one day to expiration.\nThe reason that the gap caused such a dramatic change in the one-day straddle was\nthat the delta of the 100 straddle was m",
+    "rule_text": "A trader should reduce gamma exposure or hedge delta dynamically when holding short gamma positions with limited time to expiration, as high gamma amplifies losses from adverse price moves and gaps eliminate adjustment opportunities.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position contains short gamma (short straddle, strangle, or short options)",
+      "Gamma >= 15.0 per $1 move in underlying",
+      "Days to expiration <= 30"
+    ],
+    "parameters": {
+      "gamma_threshold": 15.0,
+      "dte_threshold": 30,
+      "position_reduction_percent": 100
+    },
+    "exit_conditions": [
+      "Reduce or close entire position upon meeting entry conditions",
+      "Or hedge with long futures equal to delta before market opens"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Gamma threshold of 15.0 is not mentioned in source text (actual examples show 2.2 and 38.1)",
+      "DTE threshold of 30 days is not specified in source (source only contrasts 9 months vs 1 day)",
+      "100% position reduction is not explicitly stated as the solution",
+      "Target regimes are not discussed in the excerpt"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (short gamma position type, gamma >= 15.0, days to expiration <= 30) that a programmer could detect from portfolio data and market feeds, with clear exit actions (reduce position or hedge delta).",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_187_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 8, pp. 406-407",
+    "raw_chunk_text": "trading from model-generated values when the model is known to be incorrect.\nAs a result of the gaps which occur in the real world, both a trader\u2019s experience\nand empirical evidence seem to indicate t",
+    "rule_text": "A trader should reduce or avoid short positions in at-the-money options as expiration approaches, because traditional pricing models undervalue them and gaps in the underlying can cause catastrophic losses.",
+    "signal_category": "RISK|SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position is short options",
+      "Delta between -0.55 and +0.55 (ATM region)",
+      "Days to expiration \u2264 21 days"
+    ],
+    "parameters": {
+      "dte_threshold": 21,
+      "delta_atm_lower_bound": -0.55,
+      "delta_atm_upper_bound": 0.55,
+      "max_short_contracts_allowed": 0,
+      "experience_level_restriction": "All traders, especially new traders"
+    },
+    "exit_conditions": [
+      "Close or reduce all ATM short positions immediately if days-to-expiration \u2264 21"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Specific delta range (-0.55 to +0.55) not mentioned in source text",
+      "21-day threshold is not specified in original text",
+      "Max contracts set to 0 is more restrictive than source suggests",
+      "Exit conditions add immediacy not present in original"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are specific and measurable (short position status, delta range 0.55, days to expiration \u226421), allowing programmatic detection from market data and portfolio state.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_37_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 5, pp. 93-94",
+    "raw_chunk_text": "of 0 to 100, and an underlying contract will always have a delta of 100.!\nGoing back to our example, in order to make correct use of the option\u2019s theoretical\nvalue, we also need to know the deita, in ",
+    "rule_text": "A trader should hedge an options position by selling the underlying futures in proportion to the option's delta to establish a delta-neutral position.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Long option position established with known delta",
+      "Underlying futures available for sale",
+      "Calculate hedge ratio: option_quantity \u00d7 delta"
+    ],
+    "parameters": {
+      "hedge_ratio": 1.0,
+      "rounding_direction": "down",
+      "rehedge_threshold_delta_change": 0.05
+    },
+    "exit_conditions": [
+      "Close long option position",
+      "Delta moves beyond \u00b15% of neutral",
+      "Underlying contract expiration"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Parameters like 'rounding_direction: down' and 'rehedge_threshold_delta_change: 0.05' are not mentioned in the source text",
+      "Exit conditions such as 'Delta moves beyond \u00b15% of neutral' and 'Underlying contract expiration' are not specified in the excerpt",
+      "The excerpt mentions rounding to whole contracts but doesn't specify 'down' as the rounding direction",
+      "No rehedging thresholds or exit criteria are discussed in the source material"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (long option with known delta, futures available, explicit hedge ratio calculation) and exit conditions (position closure, delta threshold breach, contract expiration) that a programmer could detect from market data and portfolio state.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_40_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 5, pp. 99-100",
+    "raw_chunk_text": "every profitable hedge requires us to maintain the position until expiration. In practice,\nhowever, this may not be necessary. Suppose, for example, that immediately after we\nestablished the hedge the",
+    "rule_text": "A trader should close a hedge early when implied volatility has risen sufficiently to lock in a profit on the option leg, rather than holding until expiration.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Hedge position is established (long/short futures paired with short/long options)",
+      "Implied volatility has increased from entry level",
+      "Option leg has gained 15% or more of its initial premium value"
+    ],
+    "parameters": {
+      "profit_threshold_on_option_leg_percent": 15,
+      "iv_change_monitoring": "continuous"
+    },
+    "exit_conditions": [
+      "Close entire hedge (exit both option and futures legs simultaneously)",
+      "Lock in profit from IV expansion on option leg"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Specific 15% profit threshold is not mentioned in source text - this is fabricated",
+      "Source shows 19.4% profit (.63/3.25) but rule uses 15% threshold without justification",
+      "Instrument type 'SPREAD' is inferred - source describes futures-options hedge",
+      "Entry conditions are reasonable inferences but not explicitly stated in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, measurable entry conditions (hedge position exists, IV increased, option leg gained 15%+ premium) that a programmer could detect from market data and portfolio state, and a clear exit action (close both legs simultaneously).",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_74_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 8, pp. 168-169",
+    "raw_chunk_text": "of movement in the underlying contract and only secondarily with the direction of\nmovement. Therefore all volatility spreads will be approximately delta neutral (the\ndeltas will add up to approximatel",
+    "rule_text": "A trader should construct volatility spreads with delta-neutral positioning, where directional exposure remains secondary to volatility exposure; if delta becomes large enough that directional considerations dominate, the position ceases to be a volatility spread and should be reconsidered or exited.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Net position delta between -0.05 and +0.05",
+      "Position is constructed as a recognized volatility spread (backspread, long straddle, long strangle, short butterfly, etc.)",
+      "Gamma is positive for movement-beneficial spreads"
+    ],
+    "parameters": {
+      "delta_neutral_band": 0.05,
+      "rebalance_threshold": 0.1,
+      "max_directional_delta_tolerance": 0.1
+    },
+    "exit_conditions": [
+      "Absolute net delta exceeds 0.10",
+      "Directional PnL component becomes larger than volatility PnL component",
+      "Position no longer qualifies as delta-neutral volatility spread"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Specific numerical delta thresholds (0.05, 0.10) are not mentioned in the source text",
+      "Parameters like 'rebalance_threshold' and 'delta_neutral_band' are not referenced in the excerpt",
+      "Target regimes 'RANGING' and 'HIGH_VOL' are inferred but not explicitly stated",
+      "The concept of comparing directional vs volatility PnL components is inferred from the text but not explicitly described"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (delta range -0.05 to +0.05, positive gamma) and exit conditions (delta exceeds 0.10) that a programmer could implement by monitoring portfolio Greeks and position characteristics against market data.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_78_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 8, pp. 176-179",
+    "raw_chunk_text": "time his delta position reaches this limit. Unlike the trader who adjusts at regular\nintervals, a trader who adjusts based on a fixed number of deltas cannot be sure\nhow often he will need to adjust h",
+    "rule_text": "A trader should rebalance their delta-neutral position based on a fixed delta threshold that matches their position size and risk capital, rather than on fixed time intervals.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position delta accumulates to \u00b1100 deltas from neutral",
+      "Cumulative delta drift detected since last rebalance"
+    ],
+    "parameters": {
+      "delta_rebalance_threshold": 100,
+      "trader_profile": "small_independent",
+      "position_size_relative_to_capital": "small"
+    },
+    "exit_conditions": [
+      "Execute rebalancing trades to return position to delta neutral"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Specific delta threshold of 100 not mentioned in text - text only gives examples of 200 deltas for small traders and 'several thousand' for large firms",
+      "Text mentions 200 deltas as threshold for small independent traders, but rule uses 100",
+      "Instrument type (OPTIONS_SELLING) not explicitly stated in excerpt",
+      "Target regimes not discussed in excerpt"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify quantifiable triggers (position delta accumulates to \u00b1100 deltas, cumulative delta drift detection) that can be programmatically monitored from portfolio state data, and the exit condition provides a clear action (rebalance to delta neutral).",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_84_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 9, pp. 192-193",
+    "raw_chunk_text": "associated with spread 5 for the more desirable positive gamma characteristics.\nA trader who executes spread 5 will have a positive gamma, so he has no gamma\nrisk, But he will have a theta risk if the",
+    "rule_text": "A trader should monitor time decay of positive gamma positions and exit before theta erosion eliminates the theoretical edge.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position has positive gamma characteristics",
+      "Position structure is long vega (spread 5 type)",
+      "Trade is initiated with known theta decay timeline"
+    ],
+    "parameters": {
+      "days_remaining_threshold": 9,
+      "decay_percentage_allowed": 0.5,
+      "reference_horizon_days": 18
+    },
+    "exit_conditions": [
+      "Exit when calendar days elapsed exceed 50% of theta decay horizon (9 days)",
+      "Exit immediately if underlying shows no movement by day 9"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "The 9-day threshold (50% of 18 days) is not explicitly stated in the source text",
+      "The 0.5 decay percentage parameter is not mentioned in the original excerpt",
+      "Exit conditions are more specific than what the source material provides",
+      "Entry conditions include 'long vega' terminology not present in the source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (positive gamma, long vega spread type, known theta timeline) and quantifiable exit triggers (50% of 9-day horizon = day 4.5, or no underlying movement by day 9) that can be detected programmatically from portfolio metrics and market data.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_125_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch.13, pp.275-276",
+    "raw_chunk_text": "this, since volatility trading can be highly profitable. But a true hedger ought not lose\nsight of what his ultimate goal is: to protect an existing position, and to keep the cost of\nthis protection a",
+    "rule_text": "A hedger should construct delta-matched volatility spreads that provide partial protection aligned to the desired hedge ratio, allowing cost optimization while retaining directional exposure.",
+    "signal_category": "SIZING|RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Existing position exists requiring protection",
+      "Desired hedge ratio is specified (e.g., 50% protection)",
+      "Calculate required spread delta = desired_hedge_ratio \u00d7 position_delta"
+    ],
+    "parameters": {
+      "spread_type": "time_spread",
+      "delta_match_target": 1.0,
+      "delta_tolerance": "\u00b15%",
+      "position_size_ratio": "1:1"
+    },
+    "exit_conditions": [
+      "Spread delta drifts beyond \u00b15% of target",
+      "Underlying moves to predefined boundary of protection range",
+      "Time decay reaches 50% of spread life"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Exit conditions not mentioned in source text - all three conditions are fabricated",
+      "Parameters include specific tolerances (\u00b15%) and ratios not found in excerpt",
+      "Target regimes 'RANGING' and 'LOW_VOL' not referenced in source",
+      "Spread_type limited to 'time_spread' when source mentions both time spreads and butterflies"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, actionable entry conditions (existing position + specified hedge ratio + calculable delta requirement) and quantifiable exit triggers (delta drift thresholds, boundary levels, time decay percentage) that a programmer could implement as automated detection rules.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "NATENBERG_DRY_149_0",
+    "book_id": "NATENBERG",
+    "source_citation": "Option Volatility and Pricing, Natenberg, Ch. 15, p. 327-328",
+    "raw_chunk_text": "If the trader does not want to liquidate his short position in the 410 calls, he can look\nfor another way of taking in 780 deltas. If other stock exchanges are still open and the\ntrader can purchase t",
+    "rule_text": "When unable to liquidate a problematic options position, neutralize directional delta exposure by purchasing equivalent delta amount through alternative instruments (stock or futures) rather than closing the original position.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Short options position has accumulated directional delta exposure",
+      "Liquidating the short options position is not preferred",
+      "Alternative instruments (futures or stock) are available for purchase"
+    ],
+    "parameters": {
+      "delta_hedge_ratio": 1.0,
+      "instrument_selection_priority": [
+        "futures_on_index",
+        "underlying_stock"
+      ],
+      "execution_timing": "immediate"
+    },
+    "exit_conditions": [
+      "Delta exposure is fully neutralized",
+      "Original short options position is eventually closed"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Instrument field specifies 'FUTURES' but excerpt mentions both futures and stock as options",
+      "Target_regimes 'ANY' is not supported by the excerpt text",
+      "Exit condition about 'eventually closing original position' is not mentioned in the excerpt",
+      "Delta_hedge_ratio of 1.0 is inferred but excerpt shows buying 800 deltas to offset 780 delta loss"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are actionable: delta exposure can be calculated from portfolio positions, liquidation preference can be set as a trader rule/parameter, and alternative instrument availability can be determined from market data.",
+    "hallucination_recommendation": "REVISE"
+  }
+]

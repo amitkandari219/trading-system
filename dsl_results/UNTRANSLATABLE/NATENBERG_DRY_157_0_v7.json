@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_157_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multi-leg options strategy logic (ratio spread with correlation-weighted entry/exit rules, implied volatility spread thresholds between two underlyings, and relative strength comparisons). The backtest engine indicators provided cannot model: (1) correlation between two underlyings, (2) implied volatility for specific strikes, (3) multi-leg position ratio management, (4) relative underlying strength divergence tracking. These are derivative pricing and portfolio correlation metrics beyond single-instrument technical indicators.",
+  "translation_notes": "Signal describes a sophisticated volatility arbitrage strategy (selling higher IV put on stronger underlying ABC, buying lower IV put on weaker underlying XYZ) expecting relative divergence. While we can approximate elevated volatility regimes with hvol_20 and directional context with regime filters, the core logic\u2014correlation pairs trading, IV spread optimization, and strike-specific option mechanics\u2014cannot be faithfully translated to a single-instrument technical indicator framework. Recommend: (1) implement as custom multi-leg strategy module with correlation and IV inputs, or (2) simplify to vol-expansion short bias on single underlying."
+}

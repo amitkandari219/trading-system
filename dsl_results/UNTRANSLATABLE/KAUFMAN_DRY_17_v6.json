@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_17",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "SAR (Parabolic Stop and Reverse) is not in the allowed indicators list. The signal requires SAR initialization at recent high with AF=0.02, dynamic SAR calculation based on lowest low, and floor constraints (SAR cannot be below today's or prior day's high). These SAR-specific mechanics cannot be expressed using only the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Position, Previous Bar, Returns, Bar Props). A custom SAR indicator or engine support is required.",
+  "translation_notes": "The core logic involves a SAR-based trailing stop system with AF acceleration factor. Without SAR as an available indicator, the exact reversal condition (penetration of SAR with floor constraints) cannot be accurately translated. The entry condition is recognizable as SAR initialization, but the exit relies on SAR values which are not computable from allowed indicators."
+}

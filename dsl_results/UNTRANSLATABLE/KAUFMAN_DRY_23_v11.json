@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_23",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires NYSE new 52-week highs and lows data (High Low Logic Index), which are market breadth indicators not available in the allowed indicator set. The calculation requires external market data (number of new highs, new lows, and total issues traded) that cannot be derived from standard OHLCV price action indicators.",
+  "translation_notes": "KAUFMAN_DRY_23 is a breadth-based volatility regime detector requiring Norman Fosback's High Low Logic Index (HLLI = min(new_highs, new_lows) / total_issues_traded). This requires real-time NYSE breadth data unavailable in standard technical indicator libraries. The signal triggers when both new_highs >= 2.8% of advancing/declining issues AND new_lows >= 2.8% occur on the same day, indicating high two-sided volatility. Exit condition 'AUTHOR_SILENT' suggests holding until regime changes or exit signal is generated separately."
+}

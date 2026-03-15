@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a rolling mean of returns over a configurable window (rolling_window_days parameter), which is not available in the allowed indicators list. The allowed list contains only fixed-period moving averages (sma_5, sma_10, etc.) and return indicators (returns, log_returns), but not a dynamic rolling mean of returns. The strategy's core sensitivity to window length cannot be properly expressed without this indicator.",
+  "translation_notes": "Source code shows: np.sign(data['returns'].rolling(3).mean()) with position.shift(1) lag. Position is +1 when rolling mean > 0, -1 when < 0, 0 when = 0. Exit occurs on sign change or period end. Unable to translate the dynamic rolling window parameter without a rolling_mean_returns or equivalent indicator."
+}

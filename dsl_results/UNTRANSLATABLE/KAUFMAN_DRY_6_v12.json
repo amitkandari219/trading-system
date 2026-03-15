@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Linear regression slope calculation is not available in the allowed indicators list. The signal requires LinearRegSlope or LinearRegAngle to project future prices, but these indicators are not provided. The backtest engine would need a dedicated linear_regression_slope or linear_regression_angle indicator to implement price projections and threshold-based entry logic. Additionally, critical parameters (lookback_period, slope_threshold_for_entry, minimum_slope_value) are marked AUTHOR_SILENT or [THRESHOLD_NEEDED] and cannot be determined.",
+  "translation_notes": "Signal requires custom linear regression slope indicator not in allowed set. Entry conditions depend on: (1) calculating LR slope from historical prices, (2) projecting future price as Today's price + n\u00d7Slope, (3) comparing projected price to thresholds. Without access to linear_regression_slope indicator and with missing threshold parameters, this signal cannot be expressed using only the allowed indicators (moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, etc.). To make this translatable, either: add linear_regression_slope to allowed indicators, or reformulate using trend-following MAs like ema_5 > ema_20 with adx_14 > 25 as a TRENDING proxy."
+}

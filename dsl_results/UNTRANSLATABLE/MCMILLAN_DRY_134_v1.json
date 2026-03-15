@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_134",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific inputs (moneyness, strike prices, option Greeks, expiration dates) that are not available in the price/technical indicator universe. The entry conditions reference 'out-of-the-money put', 'out-of-the-money call', and 'stock approximately centered between striking prices' \u2014 these are derivatives pricing concepts requiring option chain data, not price/volume/technical indicators. The regime condition (RANGING) has been approximated, but core position construction logic cannot be expressed without option-specific parameters.",
+  "translation_notes": "Signal is an options strategies rule that cannot be translated to a price-action backtest engine. Would require: (1) option chain data with strike prices and moneyness calculations, (2) options Greeks or implied volatility, (3) position sizing relative to strike spacing. Exit condition 'AUTHOR_SILENT' has been replaced with a reversal logic (Bollinger Band breaks) as a proxy for when the strangle may no longer be appropriate, but this is a poor substitute for proper position management rules that should be authored."
+}

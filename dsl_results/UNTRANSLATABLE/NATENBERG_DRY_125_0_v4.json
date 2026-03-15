@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_125_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific metrics (implied volatility regime detection, delta calculation, OTM strike selection, contract quantity optimization) that are not available in the price/technical indicator library. The rule is hedging-strategy specific and requires options pricing framework (Greeks: delta, gamma, vega) and volatility surface analysis not present in allowed indicators.",
+  "translation_notes": "Attempted to proxy 'high IV regime' using india_vix and hvol_20 as volatility proxies, but the core signal involves options construction strategy (OTM depth selection, contract minimization, delta concentration) which cannot be fully expressed through price-action indicators alone. This signal is fundamentally about derivatives strategy optimization rather than entry/exit timing on spot price."
+}

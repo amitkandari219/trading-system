@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references '[THRESHOLD_NEEDED]' as a placeholder threshold value that has not been specified. The stochastic %D (slower) calculation is available as stoch_d, but the exact threshold value must be provided (typically 80 for overbought in reversion strategies). Additionally, the signal specifies a '20-day lookback period' and '%D-slow signal line' but the allowed stochastic indicators (stoch_d and stoch_d_5) do not expose configurable periods\u2014their calculations are fixed.",
+  "translation_notes": "Mapped slower %D stochastic to stoch_d (0-100 scale). Used stoch_d_5 as a proxy for the signal line comparison. The condition 'slower %D crosses signal line moving down' was interpreted as stoch_d crossing below its signal line. A reasonable exit condition (reversal: signal line crossing above stoch_d) was applied per Rule 8. Cannot proceed without the numeric threshold value."
+}

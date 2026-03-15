@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'immediate post-gap price action' (recovery vs continuation) which requires intrabar or tick-level analysis. The parameters 'gap_threshold_percent', 'recovery_window_minutes', and conditional stop placement based on intrabar momentum cannot be expressed with available daily/bar-level indicators. MACD, RSI, or momentum indicators would need specific intrabar thresholds not provided in source material.",
+  "translation_notes": "Attempted to capture: (1) Entry: long position held overnight + market gaps down = open < prev_close, (2) Exit condition 1: if market presses lower = low breaks below open, (3) Exit condition 2 (implicit): if market recovers = close > open, set new stop under day's low. However, the core decision logic\u2014distinguishing recovery attempts from continuations based on immediate post-gap price action within a specific time window\u2014cannot be reliably encoded without intrabar data or minute-level price action rules."
+}

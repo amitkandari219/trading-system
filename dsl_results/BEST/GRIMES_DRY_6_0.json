@@ -1,0 +1,168 @@
+{
+  "signal_id": "GRIMES_DRY_6_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_6_0",
+    "entry_long": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "atr_14",
+        "operator": "<",
+        "right": "atr_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "70"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "atr_14",
+        "operator": "<",
+        "right": "atr_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "30"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "80"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is context-dependent (pullbacks in both uptrends and downtrends). Entry conditions operationalize: (1) trend confirmation via ADX > 25, (2) price near MA (pullback into MA), (3) reduced bar range via ATR_14 < ATR_20 (current bars narrower than recent), (4) absence of countertrend momentum via RSI not in extreme zones. Exit conditions trigger on trend break (price crosses MA) or strong countertrend momentum (RSI extremes). Stop-loss and hold parameters are conservative defaults for pullback trades."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "atr_14",
+        "op": "<",
+        "value": "atr_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 70.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "atr_14",
+        "op": "<",
+        "value": "atr_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 30.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 80.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is context-dependent (pullbacks in both uptrends and downtrends). Entry conditions operationalize: (1) trend confirmation via ADX > 25, (2) price near MA (pullback into MA), (3) reduced bar range via ATR_14 < ATR_20 (current bars narrower than recent), (4) absence of countertrend momentum via RSI not in extreme zones. Exit conditions trigger on trend break (price crosses MA) or strong countertrend momentum (RSI extremes). Stop-loss and hold parameters are conservative defaults for pullback trades."
+  },
+  "source_rule_text": "A trader should enter pullback trades in trending markets when price retraces with reduced bar ranges and absent countertrend momentum, as these conditions indicate valid pullbacks suitable for trend continuation participation."
+}

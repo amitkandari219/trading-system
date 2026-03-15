@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting 'upward price shocks of 30 points' which needs precise intra-bar shock detection or gap measurement. The allowed indicators do not include a dedicated shock detector. Using close vs prev_close with range approximation as proxy, but this does not capture the exact 'shock' mechanics described in the source material.",
+  "translation_notes": "Approximated 'upward price shock > 30 points' using range > 30 combined with upward close movement. Expected decline of ~40 points suggests a reversal trade with short hold period. Exit condition AUTHOR_SILENT was replaced with a simple reversal (close < prev_close) as a reasonable mean-reversion exit. The signal is conceptually untranslatable without a true shock detector or volatility spike indicator."
+}

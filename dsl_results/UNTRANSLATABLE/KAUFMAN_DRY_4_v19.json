@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detecting when price approaches even round numbers (e.g., $60.00) and placing orders at odd offsets (e.g., $60.25). This requires: (1) mathematical detection of round number proximity, (2) fractional price level identification, and (3) order placement logic with dynamic offset calculation. None of these operations are supported by the allowed indicators and operators. The allowed indicator set does not include 'price modulo' or 'fractional part detection', and operators do not support mathematical expressions like 'close % 1 == 0' or dynamic offset calculations.",
+  "translation_notes": "This is a sophisticated market microstructure signal based on order clustering at psychological round levels. It cannot be translated into the backtest engine's constraint-based rule language because: (1) detecting round numbers requires modulo arithmetic not available in operators, (2) the offset placement (0.25 above) requires parametric order placement logic beyond entry/exit conditions, (3) this strategy depends on order book visualization and execution tactics rather than technical indicators. Consider implementing this as a custom execution algorithm in a separate trading system rather than in the backtester."
+}

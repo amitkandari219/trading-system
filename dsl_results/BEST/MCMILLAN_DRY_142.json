@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_142",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is an options strategy (bearish calendar spread with put options) that requires options-specific parameters including strike selection, time decay decay modeling, and option expiration dates. The backtest engine indicators provided are equity price/technical indicators only and do not support options pricing, Greeks (delta, theta, vega), strike price relationships, or expiration-based exit logic. Core components like 'sell near-term put', 'buy longer-term put', 'stock above strike price', and 'near-term expiration' cannot be expressed using only the allowed price and technical indicators.",
+  "translation_notes": "Attempted partial translation using close price > strike (50) as entry proxy and close <= strike as exit proxy, but this loses critical optionality aspects: (1) no way to model time value decay differential between January and April puts, (2) no way to specify 'near-term expires' condition based on calendar days, (3) no way to encode the specific strike selection logic for OTM puts, (4) no way to model the spread's actual P&L which depends on implied volatility changes and theta decay rates. A proper implementation would require options Greeks indicators (theta, vega), implied volatility levels, and expiration date tracking."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_92_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires (1) Implied Volatility levels which are not in the allowed indicator set - only historical volatility (hvol_20) and VIX proxy (india_vix) available; (2) Delta-aligned directional bias requires options chain analysis and delta values not available; (3) Specific delta_tolerance threshold parameter cannot be operationalized without direct delta indicators; (4) IV reversion detection requires explicit IV data not present in price/technical indicators only",
+  "translation_notes": "Attempted proxy using hvol_20 vs india_vix to detect elevated volatility conditions, but this does not capture the core signal intent of selling overpriced options based on implied volatility skew. The directional delta hedge component is untranslatable without options greeks data. This signal fundamentally requires volatility surface and options-specific data beyond the allowed technical indicator set."
+}

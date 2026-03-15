@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of (1) 'volume dries up to [THRESHOLD_NEEDED]% of breakout volume for consecutive bars' \u2014 this requires dynamic comparison of current volume against a prior breakout bar's volume with a parameterized threshold, which cannot be expressed with static indicators; (2) 'confirmation_bars' parameter for consecutive bar counting is not directly supported; (3) 'volume_expansion_ratio' threshold comparison lacks a specific reference point in allowed indicators. The signal is fundamentally context-dependent on identifying a specific prior breakout event and measuring relative volume changes from that anchor point, which exceeds the capabilities of the allowed indicator set.",
+  "translation_notes": "Attempted partial translation using pivot as proxy for 'breakout level', volume comparison to historical volatility (hvol_20) as proxy for volume dryup, and close crossing above pivot for re-entry. However, the core logic of waiting for capitulation (volume dryup for N bars below breakout) before aggressive re-entry cannot be accurately captured without: (1) dynamic state tracking of the breakout bar's volume, (2) consecutive bar counters, and (3) parameterized thresholds for volume_dryup_threshold_percent and confirmation_bars. Recommend implementing custom indicator or state machine in backtest engine."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_103",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is an options strategy (ratio calendar spread) requiring multi-leg derivative pricing and Greeks (delta, theta, vega) not supported by price/technical indicators. The signal requires tracking: (1) Long July 50 call position, (2) Short 2x April 50 calls position, (3) Time decay differential between legs, (4) Implied volatility changes. These require an options pricing model and portfolio Greeks analysis, not available in the allowed indicator set.",
+  "translation_notes": "Calendar spreads are derivatives strategies dependent on relative time decay (theta), implied volatility (vega), and strike/expiration relationships. The backtest engine described only supports equity price and technical analysis indicators. To implement this signal, a dedicated options backtester with Black-Scholes or binomial pricing, Greeks calculation, and multi-leg position tracking is required. The simplified condition (stock < strike at near expiration) captures only the directional intent, not the core spread mechanics."
+}

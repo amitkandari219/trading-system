@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) ADR indicator not in allowed list; (2) N-day high/low band oscillation detection requires lookback window indexing (close[1..N]) which violates rule 6; (3) 'consecutive days' constraint requires multi-bar state tracking not expressible in single-bar condition format; (4) Model switching logic (sticky_strike vs sticky_delta) is a portfolio/pricing rule, not a price-action entry/exit condition; (5) ATR expansion baseline comparison requires historical volatility regime benchmarking outside standard indicator scope.",
+  "translation_notes": "This signal describes a volatility surface modeling regime adaptation rule rather than a traditional price-action trading signal. The core requirement\u2014switching between sticky strike and sticky delta models based on market regime\u2014is a quantitative finance pricing assumption, not a tradeable entry/exit condition. A proper implementation would require: custom ADR calculation, multi-bar pattern recognition, regime persistence filters, and volatility model state management at the portfolio optimization level, not the backtest engine condition level."
+}

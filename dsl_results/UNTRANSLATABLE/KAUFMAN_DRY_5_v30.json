@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Point-and-figure charting with 3-box reversal and formation pattern detection requires specialized chart construction (box sizing, column tracking, X/O patterns) and formation recognition logic that cannot be expressed using the available OHLCV indicators and standard operators. This requires custom point-and-figure chart engine implementation not supported by standard indicator calculations.",
+  "translation_notes": "Signal requires: (1) Dynamic box value calculation based on price level (AUTHOR_SILENT parameter), (2) Point-and-figure column state tracking (not available via OHLCV), (3) Formation pattern matching (simple buy/sell formations), (4) 3-box reversal detection logic. These are chart-construction primitives rather than indicator-based conditions. Recommend implementing as custom chart type in backtest engine with dedicated P&F pattern detector."
+}

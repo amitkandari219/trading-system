@@ -1,0 +1,92 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_3",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "prev_close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "high",
+        "operator": ">=",
+        "right": "dc_upper"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes a reversal setup within an uptrend: (1) previous close above MA confirms uptrend context; (2) high makes new n-day high (mapped to Donchian upper band as proxy for highest(high[1],n)); (3) low penetrates below previous low indicating rejection; (4) close below previous close confirms reversal bar. Exit on close above previous close (reversal of reversal). Parameter 'n' mapped to Donchian 20-period lookback. Target regime set to TRENDING_UP as signal occurs within uptrends."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "prev_close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "high",
+        "op": ">=",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal describes a reversal setup within an uptrend: (1) previous close above MA confirms uptrend context; (2) high makes new n-day high (mapped to Donchian upper band as proxy for highest(high[1],n)); (3) low penetrates below previous low indicating rejection; (4) close below previous close confirms reversal bar. Exit on close above previous close (reversal of reversal). Parameter 'n' mapped to Donchian 20-period lookback. Target regime set to TRENDING_UP as signal occurs within uptrends."
+  },
+  "source_rule_text": "Enter a short position when price closes below the previous close after making a new n-day high within an uptrend, with the low penetrating below the previous low."
+}

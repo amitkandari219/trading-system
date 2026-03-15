@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_109_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires derivatives pricing logic (vertical spread theoretical value ordering, bid-ask quote simultaneity, strike parity restoration) that cannot be expressed using only standard technical indicators (price, moving averages, RSI, ATR, etc.). The rule depends on: (1) options pricing model calculations across multiple strikes, (2) real-time bid-ask spread monitoring for multiple simultaneous legs, (3) theoretical value comparisons between different strike combinations, and (4) mispricing magnitude thresholds relative to strike width\u2014none of which are available in the allowed indicator set. This is an options arbitrage signal requiring live options market data and pricing models, not a spot/futures price-action rule.",
+  "translation_notes": "NATENBERG_DRY_109_0 is a pure options relative-value arbitrage pattern. It requires: (a) access to call/put spread quotes at multiple strikes simultaneously, (b) options pricing model (Black-Scholes or binomial) to compute theoretical values, (c) comparison logic between spreads at different strike levels. The backtest engine would need to be extended with options pricing capabilities and multi-leg order management to implement this signal. No workaround using only spot price technicals is possible without losing the signal's core logic."
+}

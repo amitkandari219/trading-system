@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires dynamic calculation of breakout thresholds: upper_threshold = open + (atr_20 * volatility_factor) and lower_threshold = open - (atr_20 * volatility_factor). The allowed operators do not support arithmetic operations (multiplication and addition) to compute these derived thresholds. The volatility_factor is also a configurable parameter (max 2.0-4.0) that requires runtime calculation rather than static comparison. This requires custom indicator computation beyond the allowed indicator set.",
+  "translation_notes": "Signal uses atr_20 which is available, but the dynamic threshold calculation (ATR * volatility_factor \u00b1 open) cannot be expressed with allowed operators. Reversal-based exits (price crossing back through open) are inferred from AUTHOR_SILENT exit conditions. Parameters: n_bars=20 (or daily bar count), volatility_factor=variable (2.0-4.0 max)."
+}

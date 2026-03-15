@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires VIX threshold, IV rank calculation, strangle-specific mechanics (20-delta, position width multiplier for stops), and max profit exit targets that cannot be expressed with allowed indicators and operators. VIX is approximated by india_vix, but IV rank and delta-based entry/exits are not available. Missing indicators: implied_volatility, iv_rank, strangle_width, profit_target_pct. This is an options-specific volatility premium strategy requiring derivative-level data not in the allowed indicator set.",
+  "translation_notes": "Partially translated entry conditions using india_vix as proxy for volatility regime filter and hvol_20 for low volatility confirmation. Exit conditions use generic return-based profit target (2%) as placeholder since strangle-specific mechanics and delta adjustments are not supported. Direction marked CONTEXT_DEPENDENT per original signal. The core logic of entering volatility premium trades in low-IV regimes is captured, but position-specific exit rules (strangle width multiples, delta management) cannot be translated."
+}

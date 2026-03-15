@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal references a custom 'Lorca indicator' which is not in the ALLOWED INDICATORS list. The three entry conditions also contain multiple [THRESHOLD_NEEDED] placeholders with undefined values, and the conditions reference comparing Lorca values across different bar lookbacks (e.g., 'Lorca1_[THRESHOLD_NEEDED] bars ago') which cannot be expressed without knowing the specific Lorca calculation and threshold values. Additionally, conditions 2 and 3 are identical in the source, suggesting incomplete specification.",
+  "translation_notes": "Attempted to capture the core volatility expansion logic using Donchian channels (as a proxy for highest high) and range expansion (current range > previous range), but this is a significant simplification and may not represent the intended signal. The custom Lorca indicator must be implemented separately in the backtest engine before this signal can be properly translated."
+}

@@ -1,0 +1,128 @@
+{
+  "signal_id": "KAUFMAN_DRY_22",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_22",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "ema_10"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "ema_50"
+      },
+      {
+        "left": "ema_10",
+        "operator": "<",
+        "right": "ema_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "ema_10"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "ema_50"
+      },
+      {
+        "left": "ema_10",
+        "operator": ">",
+        "right": "ema_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "ema_10",
+        "operator": ">",
+        "right": "ema_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "ema_10",
+        "operator": "<",
+        "right": "ema_200"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped 'faster moving average' to ema_10 and 'slower moving average' to ema_50 based on typical Kaufman-style multi-timeframe trend logic. 'Long-term moving average conflict' interpreted as ema_200 crossing conditions for neutral/exit signals. Entry conditions require price above both fast/slow MAs with fast MA below slow MA (bullish setup), reversed for shorts. Open interest measurement cannot be translated without futures-specific indicators; excluded from JSON. Signal is CONTEXT_DEPENDENT per source: buy on bullish MA alignment, sell on bearish alignment or long-term MA conflict."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "ema_10"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "ema_50"
+      },
+      {
+        "indicator": "ema_10",
+        "op": "<",
+        "value": "ema_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "ema_10"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "ema_50"
+      },
+      {
+        "indicator": "ema_10",
+        "op": ">",
+        "value": "ema_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "ema_10",
+        "op": ">",
+        "value": "ema_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "ema_10",
+        "op": "<",
+        "value": "ema_200"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mapped 'faster moving average' to ema_10 and 'slower moving average' to ema_50 based on typical Kaufman-style multi-timeframe trend logic. 'Long-term moving average conflict' interpreted as ema_200 crossing conditions for neutral/exit signals. Entry conditions require price above both fast/slow MAs with fast MA below slow MA (bullish setup), reversed for shorts. Open interest measurement cannot be translated without futures-specific indicators; excluded from JSON. Signal is CONTEXT_DEPENDENT per source: buy on bullish MA alignment, sell on bearish alignment or long-term MA conflict."
+  },
+  "source_rule_text": "Buy when current prices are above both faster and slower moving averages with the faster average below the slower average, and sell on the opposite condition; consider the trend neutral if the long-term moving average conflicts with the other two factors."
+}

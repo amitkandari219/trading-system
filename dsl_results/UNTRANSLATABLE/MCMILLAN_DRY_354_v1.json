@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_354",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct measurement of implied volatility (IV) and vega exposure on option spreads. Available indicators lack: (1) implied volatility data, (2) option Greeks (vega, gamma, theta), (3) spread position Greeks. India_vix used as volatility proxy, but cannot measure vega differential between long and short call legs or confirm net positive vega structure required by the rule.",
+  "translation_notes": "MCMILLAN_DRY_354 is an options strategy rule dependent on IV changes and vega exposure. The signal fundamentally requires options pricing data and Greeks not available in the price/technical indicator set. Attempted approximation using india_vix as volatility proxy for entry/exit, but this does NOT capture the core logic: the relative vega between spread legs. For proper implementation, a dedicated options analytics layer would be needed."
+}

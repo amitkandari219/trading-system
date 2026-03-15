@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires intraday time-of-day filtering (morning vs. midday vs. afternoon) which cannot be expressed using only OHLCV indicators and standard technical analysis metrics. A time-of-day filter or session-based rule is needed but not available in the allowed indicator set. Additionally, the specific volume decline pattern toward midday and recovery toward close requires temporal/session awareness beyond bar-level data.",
+  "translation_notes": "Attempted to capture the core volume requirement using vol_ratio_20 as a proxy for above-average volume and prev_volume comparison. However, the critical constraint\u2014avoiding midday trades and favoring opening/closing sessions\u2014is fundamentally a time-based rule that cannot be implemented with the allowed indicators. Direction marked NEUTRAL per signal specification. The rule is regime-locked to HIGH_VOL as specified."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_18",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires TPO (Time Price Opportunity) count distribution analysis and custom value area calculation based on TPO frequency distribution. These are market profile-specific indicators not available in the allowed indicator set. Attempted approximation using Bollinger Bands (2 std dev equivalent) as a proxy, but TPO-side imbalance detection cannot be accurately replicated without TPO data.",
+  "translation_notes": "KAUFMAN_DRY_18 is a market profile-based signal requiring TPO analysis. Used Bollinger Bands with 2 standard deviations as structural approximation for value area detection (price exceeding upper/lower bands = outside value area). However, the core signal element\u2014counting TPO distribution imbalance on either side of the value area center\u2014cannot be translated without access to actual TPO data. Recommend implementing custom TPO indicator if available in backtest engine."
+}

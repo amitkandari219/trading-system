@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external event detection (related company announcement, sentiment shifts, sector-wide news) and cross-asset correlation analysis. These are fundamentally macro/news-driven inputs not available in the price/technical indicator universe. The 'rub-off effect' and spillover detection require real-time news sentiment and inter-stock correlation matrices that cannot be expressed using only OHLCV-derived technical indicators. Suggested workaround: implement as event-triggered rule with external news/sentiment data source rather than pure price-action backtest.",
+  "translation_notes": "Attempted to approximate using price breakout above recent highs (close > high of lookback period) with volume surge, but this loses the core requirement of detecting sentiment shifts and spillover effects from related company news. The signal is inherently event-driven and multi-asset, requiring sentiment/NLP processing or explicit news event timestamps not available in standard technical indicator sets."
+}

@@ -1,0 +1,72 @@
+{
+  "signal_id": "MCMILLAN_DRY_140",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_140",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "60"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "70"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "70"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Iron condor / credit spread entry occurs when stock is between the two strikes (60 put strike and 70 call strike). Exit triggered if stock rallies above the call strike (70), threatening unlimited loss on the short call. Maximum hold is set to typical monthly options expiration (~30 days). Stop loss set to 1% as conservative risk management on the 1-point net credit received. The strategy profits if stock stays between 60-70 at expiration (both options expire worthless)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": 60.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 70.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": 70.0
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Iron condor / credit spread entry occurs when stock is between the two strikes (60 put strike and 70 call strike). Exit triggered if stock rallies above the call strike (70), threatening unlimited loss on the short call. Maximum hold is set to typical monthly options expiration (~30 days). Stop loss set to 1% as conservative risk management on the 1-point net credit received. The strategy profits if stock stays between 60-70 at expiration (both options expire worthless)."
+  },
+  "source_rule_text": "Buy an out-of-the-money put and simultaneously sell an out-of-the-money call at a higher strike to create a credit spread that profits if the stock stays between the two strikes at expiration."
+}

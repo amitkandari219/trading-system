@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_12_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking rolling P&L variance decline relative to prior period and consecutive winning days count\u2014neither of which are available as direct indicators. The signal is fundamentally about trader performance monitoring and position sizing adjustment based on statistical analysis of historical P&L, not price-action or technical indicators. Available indicators (returns, hvol_20) are imperfect proxies. Parameters like 'lookback_period_days', 'variance_decline_threshold_pct', 'position_size_reduction_pct', and 'consecutive_winning_days_required' are all marked [THRESHOLD_NEEDED] and require domain knowledge to calibrate. This signal is better implemented as a custom trading journal rule or risk management protocol outside the technical indicator framework.",
+  "translation_notes": "GRIMES_DRY_12_0 is a meta-signal about trader self-diagnosis and risk management, not a price-action entry/exit rule. It requires: (1) rolling P&L analysis across multiple periods, (2) variance measurement of returns, (3) position sizing logic, and (4) win/loss streak tracking. While 'returns' can proxy for P&L direction and 'hvol_20' for volatility, the core logic\u2014identifying root causes and adjusting size based on diagnosis\u2014cannot be expressed as technical indicator conditions. Recommend implementing as a separate position sizing module with custom metrics tracking."
+}

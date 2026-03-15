@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires calculation and storage of dynamic price objectives based on measured leg length (L) and Rule of Seven multipliers. The backtest engine cannot compute: (1) automatic detection of initial leg length from extreme points, (2) identification of pullback completion, (3) dynamic target calculation using formulas like 'prior_low + (L \u00d7 7/4)', and (4) tracking multiple price objectives (upwards_objective_1/2/3, downwards_objective_1/2/3). These require state management and complex pattern recognition beyond simple indicator conditions. Signal is translatable to a trend-following entry/exit logic only, but loses the core Rule of Seven targeting mechanism.",
+  "translation_notes": "Converted to basic trend-following entry/exit (price above/below previous extremes) as a proxy for trend confirmation, but this does NOT implement the actual Rule of Seven price objective calculation. A full implementation would require custom indicator development or a position-management module that tracks leg length and applies the multiplier formulas to set dynamic profit targets."
+}

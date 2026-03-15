@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_156_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct measurement of implied volatility (IV) vs realized volatility (fair value estimation) and options-specific Greeks/pricing logic. Available indicators include hvol_20 (historical volatility) and india_vix (volatility index proxy), but the signal explicitly requires: (1) IV deviation quantification from fair value, (2) options vs outright derivatives selection logic, (3) conviction assessment metric. None of these can be constructed from the allowed price/technical indicators. The core edge (IV mispricing detection relative to realized vol) cannot be operationalized without implied volatility data.",
+  "translation_notes": "Attempted proxy using hvol_20 vs india_vix crossover as volatility regime detector, but this does not capture the actual IV-vs-fair-value comparison required by Natenberg's principle. The signal is fundamentally an options pricing arbitrage strategy requiring volatility surface inputs unavailable in standard OHLCV backtest engines."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "ARIMA confidence bands are not available in the allowed indicator set. The signal specifically requires ARIMA model outputs (95% and 50% confidence bands with trend forecast), which cannot be replicated using only the provided technical indicators. Bollinger Bands were used as a conceptual proxy (lower band \u2248 95% confidence extreme, middle band \u2248 50% median), but this does not capture ARIMA's time-series forecasting logic or trend direction component.",
+  "translation_notes": "Signal requires ARIMA-specific indicators not in allowed list. Substituted Bollinger Bands as nearest structural equivalent: bb_lower approximates extreme oversold (95% confidence band), bb_middle approximates return level (50% band). However, ARIMA trend forecast directionality cannot be encoded without the actual ARIMA indicator. Original signal intent: mean reversion in RANGING regimes with trend confirmation."
+}

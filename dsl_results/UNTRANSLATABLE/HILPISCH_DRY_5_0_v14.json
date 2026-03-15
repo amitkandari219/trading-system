@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Original signal references a 42-day SMA but source text is incomplete; exact long-window threshold not specified. Multiple [THRESHOLD_NEEDED] placeholders in entry conditions (trend confirmation days, position sizing) cannot be resolved without additional parameter values. The 'price has been in uptrend for at least [THRESHOLD_NEEDED] consecutive days' condition requires multi-bar lookback logic not directly expressible with available operators.",
+  "translation_notes": "Used sma_10 (short-term) and sma_50 (long-term) as reasonable proxies given the 42-day reference in source text. Added volume confirmation on crossover. Direction set to CONTEXT_DEPENDENT since signal automatically reverses based on SMA crossover direction. Stop-loss estimated at 2% as placeholder. Cannot implement exact trend persistence check without explicit threshold values or multi-bar evaluation capability."
+}

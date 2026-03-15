@@ -1,0 +1,18 @@
+{
+  "signal_id": "HARRIS_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires order book state tracking (best bid/offer levels, trader identity detection, price improvement by minimum tick increment, and time precedence priority logic). These are microstructure and market depth features not representable in OHLCV-based technical indicators. Requires: (1) real-time bid/ask quote tracking, (2) order book depth analysis, (3) trader identity/competition detection, (4) tick-level price improvement measurement. Backtester lacks order book replay and counterparty detection capabilities.",
+  "translation_notes": "This is a market microstructure / order book prioritization rule that cannot be translated to technical indicator conditions. The core logic depends on: establishing improved quotes vs current best bid/offer, monitoring whether other traders accept or beat those quotes, and maintaining time priority. These concepts require full limit order book data and trader tracking, not available in standard OHLCV backtests. A pragmatic but imperfect proxy would use pivot points as support/resistance levels, but this loses the essential time precedence and quote improvement semantics."
+}

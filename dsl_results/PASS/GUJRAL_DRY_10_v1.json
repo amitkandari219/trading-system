@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_10",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_10",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_200"
+      },
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_200"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_200"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Converted 'multiday range breakout' to Donchian channel upper band (dc_upper) as the closest available indicator for range-based breakouts. 'Price and 20MA rising above 200MA' translated to two separate conditions: close > sma_200 and sma_20 > sma_200. Exit condition (AUTHOR_SILENT) interpreted as a reversal signal: close crossing below sma_200. Hold period set conservatively to 5 days based on 'multiday' language in source material."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_200"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Converted 'multiday range breakout' to Donchian channel upper band (dc_upper) as the closest available indicator for range-based breakouts. 'Price and 20MA rising above 200MA' translated to two separate conditions: close > sma_200 and sma_20 > sma_200. Exit condition (AUTHOR_SILENT) interpreted as a reversal signal: close crossing below sma_200. Hold period set conservatively to 5 days based on 'multiday' language in source material."
+  },
+  "source_rule_text": "Enter a long trade when price and 20MA line are rising above the 200MA line while breaking out above a multiday range."
+}

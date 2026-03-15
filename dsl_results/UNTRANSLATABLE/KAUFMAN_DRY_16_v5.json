@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal is a MARKET SELECTION and RISK MANAGEMENT rule, not a traditional entry/exit signal. It requires comparative analysis across multiple markets (selecting highest volume AND highest volatility relative to similar markets) and order type restrictions (avoid Market Orders and Stop Orders in thin markets). The backtest engine conditions can only evaluate single-market indicator thresholds, not cross-market ranking or order type logic. Attempted partial translation: volume screening and high volatility regime detection, but this does not capture the core requirement of comparative market selection.",
+  "translation_notes": "This signal is primarily a portfolio/market selection filter rather than a trade entry signal. It states: (1) avoid light volume markets, (2) select index markets with highest volume AND highest volatility combined, (3) avoid Market Orders and Stop Orders in thin markets. A traditional rule-based backtest engine cannot implement cross-market comparison (ranking markets) or order type restrictions. To properly implement this signal, you would need: (a) a market selection module that ranks available markets by volume and volatility, (b) order execution logic that enforces order type restrictions based on market liquidity. The partial conditions above attempt to flag HIGH_VOL regimes with above-average volume, but this is incomplete."
+}

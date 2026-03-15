@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_132_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires weighted multi-period historical volatility analysis with exponential decay weighting across multiple lookback windows (nearest, next, next, furthest periods). The backtest engine's ALLOWED INDICATORS list only includes hvol_20 as a single fixed-period volatility measure. This signal requires: (1) dynamic calculation of volatility across 4+ distinct lookback periods, (2) proximity-based weighting algorithm that compares option time horizon to each period duration, (3) exponential decay function with configurable steepness parameter, and (4) composite volatility output. These capabilities exceed indicator-based comparison logic and require custom algorithmic weighting not expressible via the allowed operators and indicators.",
+  "translation_notes": "This is a sophisticated volatility weighting methodology from Natenberg's options framework. It mandates adaptive weighting based on option remaining life vs. historical lookback period duration. The [THRESHOLD_NEEDED] placeholders for weight percentages (nearest, next, next, furthest) and decay_steepness parameter require domain expertise to set. Suggest implementing as a custom pre-processor that outputs a single 'weighted_hvol' indicator before strategy execution, or as a dedicated volatility surface module outside the standard indicator framework."
+}

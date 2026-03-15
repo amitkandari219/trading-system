@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_9_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a meta-level portfolio control process that monitors system performance statistics (win_rate, profit_factor, standard deviation of returns) against historical baselines. These are aggregate portfolio/strategy metrics, not individual price-based technical indicators. The allowed indicator set contains only price, volume, and technical chart indicators. There is no indicator for 'win_rate', 'profit_factor', or 'rolling performance standard deviation' in the ALLOWED INDICATORS list. This signal requires position management and performance tracking logic at the strategy/portfolio level rather than bar-by-bar technical rule conditions.",
+  "translation_notes": "Signal GRIMES_DRY_9_0 is a regime detection and strategy adaptation rule, not a traditional entry/exit signal. It requires: (1) tracking win_rate or profit_factor over rolling periods, (2) calculating historical mean and standard deviation of performance metrics, (3) detecting when current performance falls >N std devs below mean. These are portfolio-level monitoring conditions that must be implemented in the backtest engine's risk management module, not as a technical indicator rule."
+}

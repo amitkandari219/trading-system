@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit calculation of 'historical volatility premium' (IV minus realized vol) and adjustment logic that cannot be expressed with allowed indicators. The signal demands: (1) computing realized volatility from price data, (2) measuring implied volatility from option prices, (3) subtracting the premium from IV, and (4) comparing the adjusted IV to realized vol by a meaningful margin. While hvol_20 (historical volatility) and india_vix (implied volatility proxy) are available, the signal's core logic requires dynamic premium adjustment and a configurable 'meaningful margin' threshold that cannot be hardcoded without the specific parameters. The direction is also truly CONTEXT_DEPENDENT (conditional on calculated values), not purely SHORT.",
+  "translation_notes": "Attempted partial translation using hvol_20 as realized volatility proxy and india_vix as implied volatility proxy. However, this misses the critical 'premium adjustment' step. Entry should trigger only when: (adjusted_IV = IV - historical_premium) > realized_vol by threshold. Exit should trigger when realized_vol exceeds adjusted_IV forecast. Parameters 'premium_adjustment' and 'minimum_iv_edge_after_adjustment' cannot be operationalized without additional context or lookup tables."
+}

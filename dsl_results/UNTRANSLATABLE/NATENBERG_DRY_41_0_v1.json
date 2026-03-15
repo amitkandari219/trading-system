@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_41_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct measurement of realized volatility vs implied volatility with specific thresholds ('[THRESHOLD_NEEDED]' values unspecified), persistence over N consecutive days, and event detection (earnings/major events). Available indicators hvol_20 and india_vix approximate realized and implied volatility respectively, but the signal's core logic\u2014gradual convergence over time with confirmation periods and event filtering\u2014cannot be fully expressed with allowed operators and indicators. The parametric thresholds must be calibrated externally.",
+  "translation_notes": "Attempted partial translation using hvol_20 (realized volatility proxy) and india_vix (implied volatility proxy). Entry triggers when realized exceeds implied by a reasonable margin (3%). Exit when convergence occurs. However, the original signal's emphasis on gradual adjustments over confirmation periods, avoidance of discrete jumps, and event-calendar filtering requires domain-specific logic beyond the backtest engine's operator set. All [THRESHOLD_NEEDED] parameters require manual calibration: vol_deviation_threshold_pct (suggest 3-5%), confirmation_period_days (suggest 3-5), convergence_window_days (suggest 10-20)."
+}

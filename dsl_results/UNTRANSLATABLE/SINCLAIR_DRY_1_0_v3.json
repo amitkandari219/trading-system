@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires specialized volatility calculations (Yang-Zhang method, Parkinson, Rogers-Satchell, Garman-Klass) and option market implied volatility data that are not available in the allowed indicators list. The signal also depends on comparing measured volatility forecasts against market IV in standard deviations, which requires external option data sources and custom volatility estimation methods beyond the scope of price/volume-based technical indicators. Allowed indicators contain only hvol_20 (historical volatility proxy), but lack: (1) Yang-Zhang volatility, (2) alternative volatility estimators (Parkinson, Rogers-Satchell, Garman-Klass), (3) option market implied volatility, (4) statistical divergence measures in standard deviations, (5) option expiration time decay tracking.",
+  "translation_notes": "SINCLAIR_DRY_1_0 is a volatility arbitrage signal requiring sophisticated options market data and multi-method volatility comparison. This cannot be implemented in a price-action only backtest engine. Would require: custom hvol indicators using Yang-Zhang/Parkinson/Rogers-Satchell/Garman-Klass methods, real-time implied volatility feeds, options chain data, and statistical z-score calculations across multiple volatility estimators."
+}

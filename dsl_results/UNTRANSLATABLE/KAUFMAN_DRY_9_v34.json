@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires constructing dynamic thresholds (MA5 + 1*ATR, MA20 + 1*ATR, MA5 - 1*ATR, MA20 - 1*ATR) which cannot be expressed using the allowed operators. The engine does not support arithmetic operations between indicators (e.g., sma_5 + atr_14). Additionally, the ATR basis is specified as 'average true range based on the longer moving average' which does not map to standard ATR_period indicators (atr_7, atr_14, atr_20). A proper translation would require either: (1) pre-computed indicator columns combining MA+ATR offsets, or (2) support for arithmetic expressions in the rule engine.",
+  "translation_notes": "Signal KAUFMAN_DRY_9 requires conditional logic with MA\u00b1ATR bands that exceeds current rule engine capabilities. The source material references 'average true range based on the longer moving average' (ATR_20 context) but the exact ATR calculation period and offset application cannot be reliably reconstructed from available indicators alone."
+}

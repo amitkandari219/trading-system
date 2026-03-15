@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires order imbalance measurement, persistence correlation tracking across consecutive intervals, and institutional order size classification\u2014none of which are available in the allowed indicator set. The original signal depends on order book microstructure data (bid/ask imbalance, order book depth, remaining volume decay curves) that cannot be synthesized from OHLCV and technical indicators alone. vol_ratio_20 is a weak proxy for volume imbalance but does not capture the persistent order imbalance pattern or institutional execution algorithm detection required by the strategy.",
+  "translation_notes": "This signal fundamentally requires real-time order book data and institutional order tracking capabilities not present in a standard backtest engine. The core logic (detecting persistent imbalance \u2192 front-running institutional orders) cannot be reliably approximated using only price, volume, and technical indicators. A proper implementation would need access to level 2/3 market data, order flow analysis, and predictive models of institutional execution patterns."
+}

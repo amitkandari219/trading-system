@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of 'ratio of current day's true range to average true range of prior two days' \u2014 this requires a custom ratio calculation not available in the allowed indicators. true_range is available but averaging prior 2 days and computing the ratio requires a derived metric (atr_7 or sma of true_range) that isn't explicitly supported. The threshold of 3.0 from source text cannot be properly implemented without this ratio metric.",
+  "translation_notes": "Source text specifies ratio > 3.0 indicates news-driven shock. The allowed indicators include true_range but not a 2-day lookback ratio. atr_14 exists but represents a 14-day average, not 2-day. A backtest engine would need to support custom ratio calculations or add a 2-day ATR variant to properly translate this signal."
+}

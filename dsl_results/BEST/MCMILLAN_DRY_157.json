@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_157",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking options position state (ratio put spread with near-term/longer-term combinations, original credit received, buy-back pricing logic). These are position-level derivatives constructs not expressible through price/technical indicators alone. The core logic\u2014'buy back near-term combination for less than original credit'\u2014requires options Greeks, bid-ask spreads, and position P&L tracking, which are outside the scope of OHLCV-based indicators.",
+  "translation_notes": "This is an options income strategy signal from McMillan's work on spreads. The entry requires an established ratio put spread position (not a market entry condition), and the exit is a position management decision based on option pricing relative to original credit received\u2014both require options-specific data. A simplified proxy using 'close == prev_close' (stock unchanged) for entry and 'close > prev_close' (stock moved up) for exit captures the market regime intent but does not reflect the actual options buyback logic."
+}

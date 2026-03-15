@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires applying RSI to a custom derived series (difference between 10-week and 40-week MA). The allowed indicator list does not include: (1) 10-week or 40-week moving averages (only up to sma_100 which is daily-based), (2) ability to compute RSI on a custom spread/difference series. The closest approximation would use rsi_14 on price directly, but this fundamentally changes the signal logic by removing the MA spread component.",
+  "translation_notes": "KAUFMAN_DRY_9 cannot be accurately translated because it requires a custom indicator pipeline: RSI(MA10w - MA40w). The engine supports standard RSI periods (rsi_7, rsi_14, rsi_21) applied to price, not to derived spreads. Additionally, weekly-period moving averages are not available in the allowed indicator set. To implement this signal, the backtest engine would need: (1) support for custom indicator composition, or (2) pre-computed RSI of the MA spread as a native indicator."
+}

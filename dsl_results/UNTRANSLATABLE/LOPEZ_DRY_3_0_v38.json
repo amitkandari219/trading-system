@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires monitoring 'round-sized trade frequency' and deviations from baseline. This metric is derived from order-level microstructure data (identifying round-number trade sizes) which is not available in the ALLOWED INDICATORS list. The allowed indicators are limited to OHLCV, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, and price position\u2014none of which capture order-size distribution or round-number trade clustering. This signal requires custom data preprocessing at the tick/order level that cannot be expressed using standard candlestick-derived indicators.",
+  "translation_notes": "LOPEZ_DRY_3_0 is a regime-detection signal based on order-flow microstructure analysis. While the logic is sound (elevated round-sized trades \u2192 trend-following conviction; suppressed round-sized trades \u2192 range-bound algorithmic trading), it requires access to trade-level data and order-book analysis. To implement this signal, the backtest engine would need to: (1) parse incoming trades and classify them by size (round vs. non-round), (2) compute the proportion of round-sized trades over a baseline lookback window, (3) measure standard deviation of this proportion, and (4) trigger regime signals based on deviation thresholds. Parameters marked [THRESHOLD_NEEDED] would need domain-expert calibration (suggested baseline_lookback_period: 100\u2013500 trades; deviation_threshold_std: 1.5\u20132.5; confirmation_window_trades: 10\u201350)."
+}

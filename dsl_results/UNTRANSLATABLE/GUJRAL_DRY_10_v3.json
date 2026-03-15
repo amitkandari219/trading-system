@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit multi-timeframe trend alignment verification (daily, hourly, 15-minute) with qualitative 'same direction' logic. The backtest engine cannot natively check if three different timeframe trends are aligned without cross-timeframe indicator comparison logic or a dedicated 'trend_alignment' indicator. The signal also specifies 'earliest possible entry within aligned trend' which requires order execution logic beyond standard condition rules. Translated entry uses price-SMA cross as a proxy for trend alignment, but this does not capture the multi-timeframe confirmation requirement.",
+  "translation_notes": "This signal emphasizes multi-timeframe confluence (daily + hourly + 15-min) which cannot be fully expressed in single-timeframe indicators. Used SMA_20 as a basic trend proxy on the assumed primary timeframe (intraday). For proper implementation, the backtest engine would need: (1) cross-timeframe indicator comparison, (2) explicit trend state tracking across multiple timeframes, or (3) a pre-computed 'multi_tf_alignment' flag. Exit conditions assumed to be trend reversal (price crossing SMA) due to AUTHOR_SILENT."
+}

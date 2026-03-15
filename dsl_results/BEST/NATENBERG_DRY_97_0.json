@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_97_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific metrics (implied volatility, at-the-money strikes, strike selection for spreads, vertical spread construction logic) that are not available in equity/futures price-action indicators. hvol_20 is used as a proxy for realized volatility, but this does not capture implied volatility levels or options-specific entry/exit logic. The signal is inherently options-strategy focused and cannot be fully translated to a price-action backtester.",
+  "translation_notes": "Attempted proxy: hvol_20 (20-day historical volatility) substituted for 'implied volatility' concept. The original signal's core logic (buy ATM when IV low, sell when IV high) maps conceptually to long vol / short vol positions, but without true IV surface data and options Greeks, this translation is incomplete. A proper backtest requires options pricing data and implied volatility surface."
+}

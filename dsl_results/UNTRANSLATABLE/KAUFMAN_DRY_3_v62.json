@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) specific threshold proximity measurement '[THRESHOLD_NEEDED]' which is not quantified, (2) bear market regime detection not expressible with allowed regime operators (only TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY available), (3) 'unusually long wicks' and 'unusually tall' are subjective qualitative measures without precise thresholds. Used ATR-based approximations for wick/range length, but exact signal intent cannot be fully translated.",
+  "translation_notes": "Attempted approximation: modeled 'closing price within threshold of bar low' as close > low (all candles satisfy this); 'unusually long wicks' as lower_wick > atr_14; 'unusually tall' as range > atr_14; 'higher volume' as volume > hvol_20. Bear market condition cannot be encoded with allowed operators. Exit condition assumes mean reversion on SMA crossover due to AUTHOR_SILENT. Direction set CONTEXT_DEPENDENT per signal specification."
+}

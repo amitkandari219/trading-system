@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_40_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit implied volatility (IV) and realized volatility comparison with dynamic threshold multiplier [THRESHOLD_NEEDED]. The allowed indicators hvol_20 (historical volatility) and india_vix (volatility index proxy) are approximations, but the core logic requires: (1) precise IV from option pricing models not available in standard OHLCV indicator set, (2) parameterized threshold multiplier [THRESHOLD_NEEDED] that was not specified, (3) position-sizing constraint relative to account equity that requires portfolio-level context beyond bar-level indicators, (4) rebalancing P&L tracking across multiple hedge legs. This is a sophisticated volatility arbitrage signal requiring options analytics beyond backtest engine scope.",
+  "translation_notes": "Attempted translation uses hvol_20 as proxy for realized volatility and india_vix as proxy for implied volatility, but this is fundamentally incomplete. The signal's core value requires parameterization of volatility_threshold_multiplier, lookback_period_days, and position_size_pct_of_account\u2014none of which were provided. Exit condition on cumulative rebalancing P&L cannot be expressed in bar-level indicators. Recommend: (1) specify threshold multiplier value, (2) provide IV data source (option prices or volatility surface), (3) implement in options-aware backtester."
+}

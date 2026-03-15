@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_188_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires asset class classification (agricultural vs precious metals vs equities vs bonds) and directional volatility asymmetry comparison (vol during rises vs falls), which cannot be expressed with available indicators. No indicator exists for: (1) asset class identification, (2) historical vol differential by direction, (3) volatility regime switching based on market direction. The core logic requires comparing realized volatility in rising vs falling periods\u2014this requires custom preprocessing or asset class metadata not available in the indicator set.",
+  "translation_notes": "Attempted partial translation using hvol_20 as proxy for volatility elevation and sma_20 for trend detection. However, the signal's fundamental requirement\u2014adjusting vol expectations based on directional bias specific to asset class\u2014cannot be fully captured. A proper implementation would need: (a) asset class filter input, (b) bifurcated vol calculation (vol_up vs vol_down), (c) regime-dependent vol adjustment multiplier by asset class."
+}

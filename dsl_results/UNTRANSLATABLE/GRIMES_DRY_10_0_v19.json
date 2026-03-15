@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit detection of: (1) established downtrend measured by 'lower highs and lower lows for [THRESHOLD_NEEDED] bars' \u2014 this requires multi-bar pattern recognition not available via single indicator comparison; (2) small consolidation range as percentage of prior impulse move \u2014 requires historical impulse measurement and dynamic range calculation; (3) precise breakdown extension multiplier validation; (4) consolidation highs/lows as dynamic reference points. These pattern-matching requirements exceed the capability of simple indicator comparisons. Translated entry uses ADX (trend confirmation), Donchian lower (breakdown signal), and volume ratio as proxies, but this is a degraded approximation of the intended logic.",
+  "translation_notes": "CONTEXT_DEPENDENT direction set because signal describes both potential short entry (breakdown) and avoidance of long positions. Consolidation pattern and impulse measure thresholds cannot be expressed without custom pattern detection. Used Donchian channels as proxy for consolidation highs/lows and atr_14 for stop placement (exit uses close > dc_upper as reversal signal). Original signal emphasizes risk management ('being caught long on breakdown is unacceptable') which suggests priority on avoiding false breakdowns \u2014 volume confirmation included. All threshold parameters remain as placeholders since specific values not provided in source text."
+}

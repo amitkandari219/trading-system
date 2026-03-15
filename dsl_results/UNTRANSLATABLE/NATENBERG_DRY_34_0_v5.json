@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_34_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of Implied Volatility (IV) vs Historical Volatility (HV) with standard deviation thresholds and specific threshold parameters (iv_to_hv_threshold_stddev, lookback_period_days, minimum_gap_percentage). Allowed indicators include hvol_20 (20-day historical volatility) and india_vix (volatility proxy), but: (1) IV is not directly available in the allowed indicators list; (2) standard deviation-based thresholds cannot be parameterized; (3) time decay measurement is not available. The translated conditions above use hvol_20 vs india_vix as a proxy approximation, but this does not capture the precise IV-HV spread methodology required by Natenberg's rule.",
+  "translation_notes": "Attempted proxy mapping: hvol_20 represents 20-day historical volatility; india_vix is used as a volatility measure proxy for implied volatility. However, this is a significant simplification. The original signal requires: (a) explicit IV calculations from option prices, (b) configurable standard deviation thresholds, and (c) time decay monitoring\u2014none of which are available in the restricted indicator set. Manual parameter tuning of threshold values (iv_to_hv_threshold_stddev, lookback_period_days, minimum_gap_percentage) will be required by the trader. Context-dependent direction preserved to allow both long (buy low IV) and short (sell high IV) entries."
+}

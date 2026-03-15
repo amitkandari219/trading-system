@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparing two independent stochastic indicators (presumably on two different securities in a pairs trade). The allowed indicator list contains only stoch_k and stoch_d, which represent a single stochastic pair. There is no mechanism to define, reference, or compare stochastic values from two separate securities. Additionally, the subtraction operator (-) is not in the ALLOWED_OPERATORS list. A proper implementation would require dual-security support and difference calculation operators not available in this schema.",
+  "translation_notes": "This is a pairs trading signal that requires simultaneous analysis of two securities with their respective stochastics. The current backtest engine structure appears to support single-security analysis only. The threshold of 7 cannot be meaningfully applied without the ability to compute and compare differences between two independent stochastic calculations."
+}

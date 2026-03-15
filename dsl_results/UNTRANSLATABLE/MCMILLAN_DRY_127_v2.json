@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_127",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Straddle is an options strategy requiring simultaneous long call and put positions at identical strike prices. The backtest engine does not have options contract support, implied volatility data, or the ability to execute multi-leg option spreads. Strike price selection, option premium calculations, and Greeks-based management are not translatable to equity price/technical indicators.",
+  "translation_notes": "Signal describes a volatility-selling straddle entry in HIGH_VOL regime. Substituted hvol_20 (historical volatility) as a proxy for volatility environment detection, but this cannot replicate actual straddle mechanics. Exit condition inverted to assume position closure when volatility contracts. Author did not specify entry strike or exit triggers, limiting precision further. Recommend manual implementation or dedicated options backtesting platform."
+}

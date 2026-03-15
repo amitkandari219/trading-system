@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit IV percentile calculations, IV vs Realized Vol spread measurement in standard deviations, and dynamic lookback period analysis. These derived volatility metrics (iv_percentile, iv_rv_spread_std_dev) are not available in the allowed indicator set. The signal also requires a 'documented decision rule' validation which is qualitative and non-quantifiable. Proxy conditions using hvol_20 vs india_vix provided, but core edge definition cannot be fully translated without IV term structure and RV decomposition indicators.",
+  "translation_notes": "SINCLAIR_DRY_3_0 emphasizes selectivity and clear, measurable edges in extreme volatility regimes. Attempted proxy: entry requires both a measurable spread between historical volatility and broad market vol index (hvol_20 vs india_vix) AND confirmation that market volatility is at extreme levels (india_vix > 75). Exit triggers mean reversion when the spread normalizes. However, the signal's core requirement\u2014that the edge pass a 'documented decision rule that can be back-tested'\u2014is a meta-rule about rule construction itself and cannot be operationalized as a technical condition. Parameters iv_percentile_threshold, iv_rv_spread_std_dev, and lookback_period_days remain undefined and require domain expertise to calibrate."
+}

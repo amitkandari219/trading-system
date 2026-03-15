@@ -1,0 +1,108 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "r1"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes a breakaway pattern where price breaks both the previous day's range (prev_high/prev_low) AND pivot levels (pivot, r1, s1). Entry triggered when close breaks above r1 AND prev_high (upside) or below s1 AND prev_low (downside). Exit when price reverts toward the pivot level, indicating exhaustion of the magnified move. Context-dependent direction reflects the bidirectional nature of the pattern."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "r1"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal describes a breakaway pattern where price breaks both the previous day's range (prev_high/prev_low) AND pivot levels (pivot, r1, s1). Entry triggered when close breaks above r1 AND prev_high (upside) or below s1 AND prev_low (downside). Exit when price reverts toward the pivot level, indicating exhaustion of the magnified move. Context-dependent direction reflects the bidirectional nature of the pattern."
+  },
+  "source_rule_text": "When price breaks away from both the previous day's range and the pivot level, expect a more dramatic and magnified move in the direction of the break."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_110_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific indicators (time decay, bid-ask spreads, near-term vs far-term option value comparison, moneyness tolerance thresholds) that are not available in equity price/technical indicator universe. The core logic of 'time spread profitability at ATM' cannot be directly mapped to standard OHLCV indicators. Attempted proxy: used pivot as ATM reference and bb_bandwidth as volatility/value proxy, but this does not capture the essential time decay and options Greeks components of the original rule.",
+  "translation_notes": "This signal is fundamentally an options strategy rule (time spreads, theta decay advantage) and cannot be faithfully translated to a price-action backtest without options Greeks indicators (theta, vega, delta). The entry condition of 'underlying at strike price' was approximated using close==pivot (ATM proxy). Exit conditions based on price moving away from ATM and loss thresholds were approximated using price_pos_20 bands. A proper implementation would require theta, vega, and implied volatility term structure indicators."
+}

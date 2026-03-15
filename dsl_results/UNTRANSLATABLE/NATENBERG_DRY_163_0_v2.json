@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_163_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct measurement of implied volatility levels, relative volatility mispricing between instruments, and greeks (gamma, theta, vega). None of these can be directly constructed from allowed indicators. The signal is a multi-leg volatility spread strategy that requires options Greeks and cross-instrument volatility comparison\u2014not available in price/technical indicators. Approximated entry with low hvol and tight bandwidth as proxy for 'vol too low', but exit conditions and spread construction cannot be accurately translated.",
+  "translation_notes": "This is a volatility arbitrage signal requiring options Greeks and implied vs realized vol tracking. Backtesting requires options data and Greeks calculations not available in price-based indicators. The structured spread construction (delta-neutral, long gamma/vega, short theta) cannot be represented in entry/exit rules alone."
+}

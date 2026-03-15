@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_57",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking of multi-leg position state (existing short + long calls, then adding second short leg). Backtest engine indicators do not support options position tracking, strike prices, call exercise logic, or complex derivative interactions. Entry condition 'already holding protected short sale position' cannot be expressed with price/technical indicators alone. Exit logic depends on option expiration and exercise mechanics which are outside scope of available indicators.",
+  "translation_notes": "This is an advanced multi-leg options strategy (covered short sale with protective calls). The core mechanics involve: (1) detecting existing protected short position (requires position state tracking), (2) adding a second short leg at higher price, (3) profit scenarios tied to call strike prices and exercise at expiration. Attempted approximation using pivot levels (r1/s1) as price thresholds, but this does not capture the true signal intent which requires options analytics and position accounting beyond standard technical indicators."
+}

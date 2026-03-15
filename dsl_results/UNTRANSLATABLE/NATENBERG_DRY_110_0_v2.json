@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_110_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options-specific indicators (straddle pricing, moneyness, theoretical values, implied volatility comparison across strikes) that are not available in the provided indicator set. The core logic involves: (1) identifying two straddles at different strike prices, (2) calculating their theoretical values relative to moneyness, (3) comparing price differentials as percentages of ATM straddle value, and (4) executing relative value trades based on straddle mispricing. None of these calculations can be performed with equity price/volume indicators (OHLCV, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume ratios, or bar properties). Required but unavailable: implied volatility (IV), options pricing models, strike-relative valuations, and options Greeks.",
+  "translation_notes": "NATENBERG_DRY_110_0 is a volatility arbitrage pattern for options spreads. It requires options market data and derivatives pricing frameworks. To implement this signal, the backtest engine must support: (1) options chain data with bid/ask for multiple strikes and expirations, (2) implied volatility surface calculations, (3) theoretical pricing models (Black-Scholes or similar), and (4) Greeks calculations (delta, gamma, vega). The thresholds [THRESHOLD_NEEDED] in the original signal must be calibrated empirically (e.g., price_discrepancy_threshold_pct: 3-5%, moneyness_delta_min_dollars: varies by underlying, position_size_pct_of_capital: 1-3%, exit_days_before_expiration: 5-10)."
+}

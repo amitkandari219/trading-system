@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_149",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a complex multi-leg options strategy (short-term at-the-money straddle + long-term out-of-the-money put/call spread). The backtest engine indicators provided are equity price/technical indicators only. Options-specific parameters required include: strike selection relative to spot price, volatility levels for moneyness determination, time decay dynamics, and implied volatility surfaces across multiple expiration dates. These cannot be expressed using the allowed price and technical indicators (RSI, ATR, MACD, etc.). A proper implementation would require an options pricing module with Greeks calculations and strike/expiration management.",
+  "translation_notes": "Signal MCMILLAN_DRY_149 is an advanced volatility/options income strategy that requires options chain analysis, IV rank, and Greeks-based risk management. The entry condition references selling a straddle at-the-money and buying OTM wings simultaneously\u2014this is a calendar/volatility spread structure that cannot be reduced to price-based technical signals. Recommend implementing this as a dedicated options strategy module rather than a price-based backtest rule."
+}

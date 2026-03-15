@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_132_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a volatility weighting methodology for options pricing (proportional weighting of historical volatility across multiple time periods matched to time-to-expiration). It requires: (1) multi-period historical volatility calculations with custom weighting logic, (2) time-to-expiration as an input variable, (3) dynamic lookback period selection based on option lifecycle. These are portfolio/derivative-level calculations that cannot be expressed as discrete entry/exit conditions using the allowed price-action and technical indicators. The signal is a volatility estimation framework, not a tradeable entry/exit rule.",
+  "translation_notes": "NATENBERG_DRY_132_0 is a volatility forecasting principle from options theory. While hvol_20 exists in the allowed indicators, it represents a single 20-period historical volatility snapshot. The signal requires weighted aggregation of multiple volatility periods with weights that vary based on option expiration, which exceeds the scope of condition-based rule expressions. This is better implemented as a custom pricing library function rather than a backtest rule."
+}

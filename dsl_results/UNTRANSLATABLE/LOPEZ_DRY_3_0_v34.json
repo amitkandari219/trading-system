@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Chow-type test and CUSUM statistical regime detection methods which are not available in the allowed indicator set. These are advanced econometric tests for structural break detection that cannot be replicated using only price-based technical indicators. The translation uses ADX + MACD as a practical proxy for regime transition detection, but this does not capture the mathematical rigor of the original structural break probability framework.",
+  "translation_notes": "Used ADX > 25 to detect regime transition onset (increasing directional strength) combined with MACD histogram crossover to confirm break direction. Volume spike confirmation approximates the 'forced liquidation' mechanics. Stop loss set at 2% ATR-equivalent. Exit triggers on ADX collapse (regime reversion). This is a simplified proxy \u2014 the original signal's statistical rigor cannot be fully captured without econometric backtesting libraries."
+}

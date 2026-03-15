@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_111",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes an options spreads strategy (diagonal call spread with 1:2 ratio, even-money entry, and multi-leg management) that cannot be fully expressed in equity price/indicator conditions. The strategy requires: (1) options chain data with strike prices and expirations, (2) multi-leg position management (simultaneous short and long calls at different strikes/dates), (3) credit/debit calculations, and (4) ratio-based position sizing. The backtest engine appears designed for single-leg equity trades using technical indicators, not options spreads with time-decay and strike-specific mechanics.",
+  "translation_notes": "MCMILLAN_DRY_111 is an advanced options strategy from McMillan's 'Options as a Strategic Investment'. Core mechanics: Sell short-term ATM/OTM call (30 strike, April expiry, 3-point credit) and simultaneously buy 2x longer-term OTM calls (35 strike, July expiry, 1.44 points each = 2.88 debit). Entry is 'even money' (3 credit = 2.88 debit). Position profits if stock stays below 30 at April expiration (short call expires worthless), locks in gains, and retains 2x longer-dated calls at reduced cost basis. Exit by closing short call early at profit or letting it expire worthless; manage long calls separately. This requires options-specific backtesting infrastructure, not equity-only technical analysis."
+}

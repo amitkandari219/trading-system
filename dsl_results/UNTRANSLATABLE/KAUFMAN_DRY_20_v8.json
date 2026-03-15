@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detecting when a 40-day moving average trendline 'turns up' (direction change), which cannot be expressed as a single comparison operator condition without historical slope calculation. Additionally, 20-day standard deviation is not in the allowed indicators list; hvol_20 (20-day historical volatility) is used as the closest approximation. The exact threshold 'above 3 standard deviations' cannot be precisely quantified without the raw standard deviation indicator.",
+  "translation_notes": "Used hvol_20 as proxy for 20-day volatility measure. Set threshold at 0.03 (3% decimal equivalent) as conservative interpretation of '3 standard deviations' threshold. The trendline 'turn' condition requires slope detection beyond simple crossing logic. For practical implementation, consider using prev_close comparisons or ADX_14 > threshold to confirm trend direction change."
+}

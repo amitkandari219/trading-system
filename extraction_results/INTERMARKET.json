@@ -1,0 +1,1045 @@
+[
+  {
+    "signal_id": "INTERMARKET_DRY_1_0",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Chapter 2, pp. 9-23",
+    "raw_chunk_text": "book\u2019s main thesis was that technical analysts needed to broaden their chart horizon\nto take these intermarket relationships into consideration. Analysis of the stock\nmarket by itself, for example, wa",
+    "rule_text": "A trader should incorporate analysis of related financial markets (dollar, bonds, commodities) as leading indicators or confirmation signals before making directional decisions in a primary market (stocks), rather than analyzing that market in isolation.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Stock chart shows primary trend signal (e.g., breakout, MA cross)",
+      "Dollar index aligns with stock signal direction",
+      "Bond yields/prices align with stock signal direction",
+      "Commodity index aligns with stock signal direction"
+    ],
+    "parameters": {
+      "required_confirmations": 3,
+      "confirmation_strength": "all_three_markets",
+      "lookback_period_days": 20
+    },
+    "exit_conditions": [
+      "Any of the three intermarket relationships breaks alignment",
+      "Nonconfirmation appears in 2+ related markets"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_1_1",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Chapter 2, pp. 9-23",
+    "raw_chunk_text": "book\u2019s main thesis was that technical analysts needed to broaden their chart horizon\nto take these intermarket relationships into consideration. Analysis of the stock\nmarket by itself, for example, wa",
+    "rule_text": "A trader should incorporate analysis of related financial markets (dollar, bonds, commodities) as leading indicators or confirmation signals before making directional decisions in a primary market (stocks), rather than analyzing that market in isolation.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Stock chart shows primary trend signal",
+      "At least 2 of 3 related markets (dollar, bonds, commodities) align with stock signal",
+      "No market shows explicit nonconfirmation"
+    ],
+    "parameters": {
+      "required_confirmations": 2,
+      "confirmation_strength": "majority_two_of_three",
+      "lookback_period_days": 15
+    },
+    "exit_conditions": [
+      "Two or more intermarket relationships show nonconfirmation",
+      "Primary trend reversal occurs in any related market"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_1_2",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Chapter 2, pp. 9-23",
+    "raw_chunk_text": "book\u2019s main thesis was that technical analysts needed to broaden their chart horizon\nto take these intermarket relationships into consideration. Analysis of the stock\nmarket by itself, for example, wa",
+    "rule_text": "A trader should incorporate analysis of related financial markets (dollar, bonds, commodities) as leading indicators or confirmation signals before making directional decisions in a primary market (stocks), rather than analyzing that market in isolation.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Stock chart shows primary trend signal",
+      "At least one of three related markets (dollar, bonds, commodities) shows leading directional alignment OR does not contradict the signal"
+    ],
+    "parameters": {
+      "required_confirmations": 1,
+      "confirmation_strength": "any_one_or_noncontradiction",
+      "lookback_period_days": 10
+    },
+    "exit_conditions": [
+      "All three intermarket relationships show nonconfirmation simultaneously"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_0",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "Some understanding of how the different asset classes interact with each other is\nimportant for at least two reasons. First, such an understanding helps you appreciate\nhow other \u0000nancial markets in\u0000ue",
+    "rule_text": "A trader should monitor intermarket relationships\u2014specifically bond-stock correlation inversions\u2014because turns in the bond market precede turns in the stock market, and falling bond yields (rising bond prices) signal negative risk to equity positions.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "10-year Treasury yield declines for 5+ consecutive trading days",
+      "Bond price appreciation exceeds 1.5% over the period",
+      "Stock index remains in uptrend (higher highs, higher lows)"
+    ],
+    "parameters": {
+      "bond_yield_decline_lookback_periods": 5,
+      "bond_price_appreciation_threshold_pct": 1.5,
+      "confirmation_bars_required": 5
+    },
+    "exit_conditions": [
+      "Exit long equity positions at market open following 5-day confirmation",
+      "Or exit 50% at signal, 50% on first lower high in stocks"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_1",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "Some understanding of how the different asset classes interact with each other is\nimportant for at least two reasons. First, such an understanding helps you appreciate\nhow other \u0000nancial markets in\u0000ue",
+    "rule_text": "A trader should monitor intermarket relationships\u2014specifically bond-stock correlation inversions\u2014because turns in the bond market precede turns in the stock market, and falling bond yields (rising bond prices) signal negative risk to equity positions.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "10-year Treasury yield declines for 2-3 consecutive trading days",
+      "Bond price appreciation exceeds 0.8% over the period",
+      "Stock index shows weakness (lower close, elevated selling volume relative to 20-day avg)"
+    ],
+    "parameters": {
+      "bond_yield_decline_lookback_periods": 2,
+      "bond_price_appreciation_threshold_pct": 0.8,
+      "confirmation_bars_required": 2
+    },
+    "exit_conditions": [
+      "Reduce equity position by 33% on signal",
+      "Exit remaining 67% if yields continue lower or stock index closes below 5-day moving average"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_2",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "Some understanding of how the different asset classes interact with each other is\nimportant for at least two reasons. First, such an understanding helps you appreciate\nhow other \u0000nancial markets in\u0000ue",
+    "rule_text": "A trader should monitor intermarket relationships\u2014specifically bond-stock correlation inversions\u2014because turns in the bond market precede turns in the stock market, and falling bond yields (rising bond prices) signal negative risk to equity positions.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "10-year Treasury yield declines for 1 trading day",
+      "Bond price appreciation exceeds 0.3% intraday",
+      "Stock index shows any close below prior close (intraday confirmation not required)"
+    ],
+    "parameters": {
+      "bond_yield_decline_lookback_periods": 1,
+      "bond_price_appreciation_threshold_pct": 0.3,
+      "confirmation_bars_required": 1
+    },
+    "exit_conditions": [
+      "Flatten entire equity position immediately or at next signal bar open",
+      "Re-enter only after bonds stabilize (2-day yield flat or rising)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_0",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "Figure 1.1 compares the yield on the 10\u2010year Treasury note to the S&P 500 during\n2000. After peaking that January (\u0000rst arrow), the bond yield started falling a lot\nfaster than the stock market. By th",
+    "rule_text": "Bond yields are a leading indicator of equity market direction at major turning points; falling bond yields precede stock market declines and provide early warning signals.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "10-year Treasury yield declines 50+ basis points over 4-8 weeks",
+      "S&P 500 remains flat or in sideways consolidation during same period",
+      "Yield decline rate exceeds equity decline rate by 2:1 or greater",
+      "Confirm with second intermarket indicator (e.g., dollar strength, credit spreads)"
+    ],
+    "parameters": {
+      "yield_decline_threshold_bps": 50,
+      "lookback_weeks": 8,
+      "min_divergence_ratio": 2.0,
+      "confirmation_required": true
+    },
+    "exit_conditions": [
+      "Bond yields stabilize or bounce higher for 2+ weeks",
+      "Equity market breaks out above consolidation range"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_1",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "Figure 1.1 compares the yield on the 10\u2010year Treasury note to the S&P 500 during\n2000. After peaking that January (\u0000rst arrow), the bond yield started falling a lot\nfaster than the stock market. By th",
+    "rule_text": "Bond yields are a leading indicator of equity market direction at major turning points; falling bond yields precede stock market declines and provide early warning signals.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "10-year Treasury yield declines 30+ basis points over 4-6 weeks",
+      "S&P 500 shows no corresponding decline (flat to +2% during same period)",
+      "Yield decline rate exceeds equity decline rate by 1.5:1 or greater",
+      "Optional confirmation: treasury outperformance vs equities on relative strength"
+    ],
+    "parameters": {
+      "yield_decline_threshold_bps": 30,
+      "lookback_weeks": 6,
+      "min_divergence_ratio": 1.5,
+      "confirmation_required": false
+    },
+    "exit_conditions": [
+      "Bond yields stabilize for 1+ week",
+      "Equity market rallies above pre-divergence level"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_2",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "Figure 1.1 compares the yield on the 10\u2010year Treasury note to the S&P 500 during\n2000. After peaking that January (\u0000rst arrow), the bond yield started falling a lot\nfaster than the stock market. By th",
+    "rule_text": "Bond yields are a leading indicator of equity market direction at major turning points; falling bond yields precede stock market declines and provide early warning signals.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "10-year Treasury yield declines 20+ basis points over 2-4 weeks",
+      "S&P 500 remains unchanged or positive during same period",
+      "Yield decline velocity (bps/week) exceeds prior 12-week average by 1.5x",
+      "No confirmation required; enter on divergence signal alone"
+    ],
+    "parameters": {
+      "yield_decline_threshold_bps": 20,
+      "lookback_weeks": 4,
+      "min_divergence_ratio": 1.25,
+      "confirmation_required": false
+    },
+    "exit_conditions": [
+      "Stop loss: yields bounce +15 bps from entry signal",
+      "Profit taking: reduce at 50% if equities decline 3-5%"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_0",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "changes direction before stocks at major turning points and is often a leading\nindicator of the stock market. Figure 1.1 also demonstrates why it\u2019s so important for\nstock analysts to take trends in th",
+    "rule_text": "Monitor leading intermarket indicators (bonds, commodities, currency) to anticipate directional changes in your primary market before they occur.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bond yield trend reverses for 2+ consecutive weekly closes",
+      "Commodity index diverges from stock index for 3+ weeks",
+      "USD index shows sustained directional move (2+ weeks)",
+      "At least 2 of 3 conditions must align"
+    ],
+    "parameters": {
+      "lookback_period_weeks": 2,
+      "required_confirmations": 2,
+      "timeframe": "WEEKLY"
+    },
+    "exit_conditions": [
+      "Primary market (stocks) confirms the intermarket signal with its own directional move (2+ weeks in predicted direction)",
+      "Or intermarket signal reverses"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_1",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "changes direction before stocks at major turning points and is often a leading\nindicator of the stock market. Figure 1.1 also demonstrates why it\u2019s so important for\nstock analysts to take trends in th",
+    "rule_text": "Monitor leading intermarket indicators (bonds, commodities, currency) to anticipate directional changes in your primary market before they occur.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bond yields decline while stocks rally (or vice versa) for 5+ consecutive days",
+      "OR commodity prices spike >3% while stock trends flat/declining",
+      "OR USD strengthens while foreign equity index outperforms domestic stocks"
+    ],
+    "parameters": {
+      "lookback_period_days": 5,
+      "required_confirmations": 1,
+      "timeframe": "DAILY",
+      "commodity_move_threshold_percent": 3
+    },
+    "exit_conditions": [
+      "Primary market begins to move in direction predicted by intermarket signal (3-5 days confirmation)",
+      "Or original intermarket signal reverses on close"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_2",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "changes direction before stocks at major turning points and is often a leading\nindicator of the stock market. Figure 1.1 also demonstrates why it\u2019s so important for\nstock analysts to take trends in th",
+    "rule_text": "Monitor leading intermarket indicators (bonds, commodities, currency) to anticipate directional changes in your primary market before they occur.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bond yields reverse intraday while stocks continue in previous direction",
+      "OR commodity index gaps up/down >2% while stocks show weakness/strength divergence",
+      "OR USD makes single-day reversal after multi-day move"
+    ],
+    "parameters": {
+      "lookback_period_days": 1,
+      "required_confirmations": 0,
+      "timeframe": "INTRADAY",
+      "commodity_gap_threshold_percent": 2,
+      "position_lead_days": 1
+    },
+    "exit_conditions": [
+      "Stock market fails to follow predicted direction within 1-2 trading days",
+      "Or take profit when stock trend reverses (first 2-3% move in predicted direction)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_0",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "had a strong run since 2002.\nConsider the relative performance of those four asset classes since the start of\n2002 when the U.S. dollar started a major decline that eventually took it to a record\nlow.",
+    "rule_text": "A trader should establish long commodity positions when the U.S. dollar enters a downtrend, and conversely, reduce or exit commodity longs when the dollar trends upward, because commodities and the U.S. dollar trend in opposite directions.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "U.S. Dollar Index closes below its 200-day moving average",
+      "Dollar Index lower low is lower than prior lower low (confirmed downtrend)",
+      "CRB Commodity Index closes above its 50-day moving average"
+    ],
+    "parameters": {
+      "dollar_ma_period": 200,
+      "commodity_ma_period": 50,
+      "minimum_downtrend_bars": 20
+    },
+    "exit_conditions": [
+      "U.S. Dollar Index closes above its 200-day moving average",
+      "CRB Commodity Index closes below its 50-day moving average"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_1",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "had a strong run since 2002.\nConsider the relative performance of those four asset classes since the start of\n2002 when the U.S. dollar started a major decline that eventually took it to a record\nlow.",
+    "rule_text": "A trader should establish long commodity positions when the U.S. dollar enters a downtrend, and conversely, reduce or exit commodity longs when the dollar trends upward, because commodities and the U.S. dollar trend in opposite directions.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "U.S. Dollar Index closes below its 100-day moving average",
+      "Dollar Index shows lower high compared to prior swing (momentum weakening)",
+      "CRB Commodity Index closes above its 30-day moving average"
+    ],
+    "parameters": {
+      "dollar_ma_period": 100,
+      "commodity_ma_period": 30,
+      "minimum_downtrend_bars": 10
+    },
+    "exit_conditions": [
+      "U.S. Dollar Index closes above its 100-day moving average",
+      "CRB Commodity Index closes below its 30-day moving average"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_2",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "had a strong run since 2002.\nConsider the relative performance of those four asset classes since the start of\n2002 when the U.S. dollar started a major decline that eventually took it to a record\nlow.",
+    "rule_text": "A trader should establish long commodity positions when the U.S. dollar enters a downtrend, and conversely, reduce or exit commodity longs when the dollar trends upward, because commodities and the U.S. dollar trend in opposite directions.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "U.S. Dollar Index closes below its 50-day moving average",
+      "Dollar Index lower than its close 5 bars ago (directional weakness)",
+      "CRB Commodity Index closes above its 14-day moving average"
+    ],
+    "parameters": {
+      "dollar_ma_period": 50,
+      "commodity_ma_period": 14,
+      "minimum_downtrend_bars": 3
+    },
+    "exit_conditions": [
+      "U.S. Dollar Index closes above its 50-day moving average",
+      "CRB Commodity Index closes below its 14-day moving average"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_0",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch.1, p.24-30",
+    "raw_chunk_text": "Figure 1.2 compares the trend of the U.S. Dollar Index to the CRB Index of\ncommodity prices between 2000 and 2008. It\u2019s clear that the two markets trended\nin opposite directions. It can also be seen t",
+    "rule_text": "A trader should initiate long positions in commodities and commodity-linked currencies when the U.S. Dollar Index begins a sustained decline, as the inverse relationship between dollar strength and commodity prices is one of the most consistent intermarket relationships.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Dollar Index closes below 50-period moving average on daily timeframe",
+      "Dollar Index makes a lower low relative to prior swing high (structural confirmation)",
+      "Commodity index (CRB) closes above its 50-period moving average",
+      "Both conditions confirmed on weekly timeframe as well"
+    ],
+    "parameters": {
+      "dollar_ma_period": 50,
+      "commodity_ma_period": 50,
+      "lookback_swings": 2,
+      "timeframe_confluence": "daily_and_weekly"
+    },
+    "exit_conditions": [
+      "Dollar Index closes above 50-period MA on daily",
+      "Commodity index closes below 50-period MA on daily",
+      "Trailing stop at 2% below entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_1",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch.1, p.24-30",
+    "raw_chunk_text": "Figure 1.2 compares the trend of the U.S. Dollar Index to the CRB Index of\ncommodity prices between 2000 and 2008. It\u2019s clear that the two markets trended\nin opposite directions. It can also be seen t",
+    "rule_text": "A trader should initiate long positions in commodities and commodity-linked currencies when the U.S. Dollar Index begins a sustained decline, as the inverse relationship between dollar strength and commodity prices is one of the most consistent intermarket relationships.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Dollar Index closes below 30-period moving average",
+      "Commodity index closes above 30-period moving average",
+      "Dollar Index has declined more than 2% from recent swing high",
+      "Sustained for minimum 3 consecutive daily closes"
+    ],
+    "parameters": {
+      "dollar_ma_period": 30,
+      "commodity_ma_period": 30,
+      "dollar_decline_threshold": 0.02,
+      "confirmation_bars": 3
+    },
+    "exit_conditions": [
+      "Dollar Index closes back above 30-period MA",
+      "Stop loss at 3% below entry",
+      "Take profit at 5% above entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_2",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch.1, p.24-30",
+    "raw_chunk_text": "Figure 1.2 compares the trend of the U.S. Dollar Index to the CRB Index of\ncommodity prices between 2000 and 2008. It\u2019s clear that the two markets trended\nin opposite directions. It can also be seen t",
+    "rule_text": "A trader should initiate long positions in commodities and commodity-linked currencies when the U.S. Dollar Index begins a sustained decline, as the inverse relationship between dollar strength and commodity prices is one of the most consistent intermarket relationships.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Dollar Index closes below 20-period moving average",
+      "Commodity index shows any upturn (closes above prior day)",
+      "Dollar Index down 1% or more from recent swing high",
+      "Single bar confirmation"
+    ],
+    "parameters": {
+      "dollar_ma_period": 20,
+      "commodity_ma_period": 20,
+      "dollar_decline_threshold": 0.01,
+      "confirmation_bars": 1
+    },
+    "exit_conditions": [
+      "Stop loss at 2% below entry",
+      "Take profit target at 3% above entry",
+      "Dollar Index retest of recent highs"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_0",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, p. 24-30",
+    "raw_chunk_text": "the leaders and out of the laggards. You\u2019ll also learn how tracking sector rotation\noffers valuable insights into the direction of the stock market and the economy.\nNear the start of a new bull market",
+    "rule_text": "A trader should monitor sector rotation leadership patterns as a market regime indicator, because sector leadership sequence (cyclicals leading at bottoms, energy leading near tops) reveals inflection points in bull/bear market cycles.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Energy sector 4-week relative strength > 60th percentile vs broad market",
+      "Energy sector outperformance confirmed over last 3 consecutive weeks",
+      "Cyclical stocks (consumer discretionary, technology, transportation) showing relative weakness (< 40th percentile)",
+      "Bull market in place for minimum 12+ months (established trend)"
+    ],
+    "parameters": {
+      "energy_outperformance_lookback_weeks": 3,
+      "relative_strength_threshold_percentile": 60,
+      "minimum_bull_market_duration_months": 12,
+      "confirmation_periods_required": 3
+    },
+    "exit_conditions": [
+      "Energy leadership reverts to historical mean (50th percentile) for 2 consecutive weeks",
+      "Cyclicals resume outperformance for 2 weeks"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_1",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, p. 24-30",
+    "raw_chunk_text": "the leaders and out of the laggards. You\u2019ll also learn how tracking sector rotation\noffers valuable insights into the direction of the stock market and the economy.\nNear the start of a new bull market",
+    "rule_text": "A trader should monitor sector rotation leadership patterns as a market regime indicator, because sector leadership sequence (cyclicals leading at bottoms, energy leading near tops) reveals inflection points in bull/bear market cycles.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Energy sector 2-week relative strength > 55th percentile vs S&P 500",
+      "Consumer discretionary + technology + transportation combined relative strength < 45th percentile",
+      "Bull market duration 6+ months (mid-to-late cycle)",
+      "Energy outperformance confirmed for 2 consecutive weeks"
+    ],
+    "parameters": {
+      "energy_outperformance_lookback_weeks": 2,
+      "relative_strength_threshold_percentile": 55,
+      "minimum_bull_market_duration_months": 6,
+      "confirmation_periods_required": 2
+    },
+    "exit_conditions": [
+      "Energy relative strength drops below 50th percentile for 1 week",
+      "Early-cycle leaders (tech, consumer discretionary) resume outperformance"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_2",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, p. 24-30",
+    "raw_chunk_text": "the leaders and out of the laggards. You\u2019ll also learn how tracking sector rotation\noffers valuable insights into the direction of the stock market and the economy.\nNear the start of a new bull market",
+    "rule_text": "A trader should monitor sector rotation leadership patterns as a market regime indicator, because sector leadership sequence (cyclicals leading at bottoms, energy leading near tops) reveals inflection points in bull/bear market cycles.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Energy sector 1-week relative strength > 52nd percentile vs S&P 500",
+      "Prior 4 weeks show cyclical leadership fading (tech/consumer disc < 48th percentile)",
+      "Any bull market environment (minimum 3 months duration)",
+      "Energy outperformance evident in most recent week"
+    ],
+    "parameters": {
+      "energy_outperformance_lookback_weeks": 1,
+      "relative_strength_threshold_percentile": 52,
+      "minimum_bull_market_duration_months": 3,
+      "cyclical_weakness_lookback_weeks": 4
+    },
+    "exit_conditions": [
+      "Energy leadership does not persist to week 2 (reverts below 52nd percentile)",
+      "Cyclicals resume strength immediately"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_0",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch.1, p.24-30",
+    "raw_chunk_text": "in stocks. Energy leadership is almost always a dangerous warning sign for the stock\nmarket. One of the ways to tell that the stock market is peaking is when money\nstarts to \u0000ow out of energy stocks a",
+    "rule_text": "A trader should recognize sector rotation from growth to defensive sectors as an early warning signal that the stock market is approaching a peak, and should act on this intermarket shift before the broader market decline.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Energy sector underperforms broad market by 3%+ over trailing 20 days",
+      "Consumer staples, health care, and utilities sectors outperform energy by 5%+ cumulatively",
+      "Relative strength of defensive basket (XLP+XLV+XLU)/XLE > 1.05",
+      "Confirmed over minimum 15 trading days of observation"
+    ],
+    "parameters": {
+      "energy_underperformance_threshold": "-3%",
+      "defensive_outperformance_threshold": "+5%",
+      "relative_strength_ratio": 1.05,
+      "observation_period_days": 15
+    },
+    "exit_conditions": [
+      "Rotation reverses (energy outperforms by 2%+ for 5 consecutive days)",
+      "Market makes new all-time high after rotation signal",
+      "Time-based exit after 30 calendar days"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_1",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch.1, p.24-30",
+    "raw_chunk_text": "in stocks. Energy leadership is almost always a dangerous warning sign for the stock\nmarket. One of the ways to tell that the stock market is peaking is when money\nstarts to \u0000ow out of energy stocks a",
+    "rule_text": "A trader should recognize sector rotation from growth to defensive sectors as an early warning signal that the stock market is approaching a peak, and should act on this intermarket shift before the broader market decline.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Energy sector underperforms broad market by 2%+ over trailing 15 days",
+      "Consumer staples, health care, and utilities sectors outperform energy by 3%+ cumulatively",
+      "Relative strength of defensive basket (XLP+XLV+XLU)/XLE > 1.03",
+      "Confirmed over minimum 10 trading days of observation"
+    ],
+    "parameters": {
+      "energy_underperformance_threshold": "-2%",
+      "defensive_outperformance_threshold": "+3%",
+      "relative_strength_ratio": 1.03,
+      "observation_period_days": 10
+    },
+    "exit_conditions": [
+      "Rotation reverses (energy outperforms by 1%+ for 3 consecutive days)",
+      "Market makes new all-time high after rotation signal",
+      "Time-based exit after 20 calendar days"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_2",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch.1, p.24-30",
+    "raw_chunk_text": "in stocks. Energy leadership is almost always a dangerous warning sign for the stock\nmarket. One of the ways to tell that the stock market is peaking is when money\nstarts to \u0000ow out of energy stocks a",
+    "rule_text": "A trader should recognize sector rotation from growth to defensive sectors as an early warning signal that the stock market is approaching a peak, and should act on this intermarket shift before the broader market decline.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Energy sector underperforms broad market by 1%+ over trailing 10 days",
+      "Consumer staples, health care, and utilities sectors outperform energy by 1.5%+ cumulatively",
+      "Relative strength of defensive basket (XLP+XLV+XLU)/XLE > 1.01",
+      "Confirmed over minimum 5 trading days of observation"
+    ],
+    "parameters": {
+      "energy_underperformance_threshold": "-1%",
+      "defensive_outperformance_threshold": "+1.5%",
+      "relative_strength_ratio": 1.01,
+      "observation_period_days": 5
+    },
+    "exit_conditions": [
+      "Rotation reverses (energy outperforms for 2 consecutive days)",
+      "Energy sector rallies 2%+ in single day",
+      "Time-based exit after 10 calendar days"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_0",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "The same is true at market bottoms. The ending of the last two recessions during\n2003 and 2009 followed market upturns a few months earlier. When the stock\nmarket weakens, money tends to rotate out of",
+    "rule_text": "A trader should monitor intermarket money rotation patterns (stocks\u2194bonds, bonds\u2194commodities) as leading indicators of market regime transitions, because asset class peaks and troughs follow a predictable cyclical order during business cycle turns.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bond yield trend reverses from down to up (or vice versa) over 20+ trading days",
+      "Stock/Bond relative strength ratio crosses its 50-day moving average",
+      "Commodity index shows opposite directional pressure to stocks for 15+ consecutive days"
+    ],
+    "parameters": {
+      "confirmation_period_days": 20,
+      "asset_pairs_required": 2,
+      "relative_strength_lookback": 50,
+      "rotation_persistence_days": 15
+    },
+    "exit_conditions": [
+      "Rotation signal reverses back to prior regime for 10+ consecutive days",
+      "Stop loss at -2% from entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_1",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "The same is true at market bottoms. The ending of the last two recessions during\n2003 and 2009 followed market upturns a few months earlier. When the stock\nmarket weakens, money tends to rotate out of",
+    "rule_text": "A trader should monitor intermarket money rotation patterns (stocks\u2194bonds, bonds\u2194commodities) as leading indicators of market regime transitions, because asset class peaks and troughs follow a predictable cyclical order during business cycle turns.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bond/stock relative strength ratio (TLT/SPY or equivalent) crosses its 20-day moving average",
+      "Intramarket: yield curve steepness changes by 15+ bps over 5 trading days",
+      "Volume in contrarian asset class (bonds during stock weakness) exceeds 30-day average by 20%+"
+    ],
+    "parameters": {
+      "confirmation_period_days": 10,
+      "asset_pairs_required": 1,
+      "relative_strength_lookback": 20,
+      "volume_threshold_percentile": 120
+    },
+    "exit_conditions": [
+      "Rotation reverses for 5+ consecutive days",
+      "Stop loss at -1.5% from entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_2",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch. 1, pp. 24-30",
+    "raw_chunk_text": "The same is true at market bottoms. The ending of the last two recessions during\n2003 and 2009 followed market upturns a few months earlier. When the stock\nmarket weakens, money tends to rotate out of",
+    "rule_text": "A trader should monitor intermarket money rotation patterns (stocks\u2194bonds, bonds\u2194commodities) as leading indicators of market regime transitions, because asset class peaks and troughs follow a predictable cyclical order during business cycle turns.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bond/stock relative strength ratio crosses its 5-day moving average",
+      "Daily change in TLT/SPY spread exceeds 1.5 standard deviations from 20-day mean",
+      "Single day: contrarian asset class shows 2x+ average volume"
+    ],
+    "parameters": {
+      "confirmation_period_days": 3,
+      "asset_pairs_required": 1,
+      "relative_strength_lookback": 5,
+      "volume_spike_multiplier": 2.0
+    },
+    "exit_conditions": [
+      "Rotation reverses for 2+ consecutive days",
+      "Stop loss at -1.0% from entry",
+      "Time stop: exit after 15 calendar days regardless"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_0",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch.1, pp.24-30",
+    "raw_chunk_text": "JOHN\u2019S TIPS\nBonds usually change direction \u0000rst at tops and bottoms, stocks turn second, and\ncommodities third.\nThat knowledge will help you determine where to be at different stages of the business\nc",
+    "rule_text": "Monitor bond price direction changes as a leading indicator of business cycle shifts, then use subsequent stock and commodity directional confirmations to stage portfolio positioning across asset classes in sequence.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bond prices decline for 5+ consecutive trading days after an established uptrend",
+      "Stock index closes below its 20-day moving average (confirming bonds' lead)",
+      "Oil/commodity index breaks below its 20-day moving average (confirming sequence)"
+    ],
+    "parameters": {
+      "bond_reversal_lookback": 5,
+      "stock_ma_period": 20,
+      "commodity_ma_period": 20,
+      "required_confirmations": 3,
+      "time_window_for_sequence": 30
+    },
+    "exit_conditions": [
+      "Any asset class reverses back above its moving average, invalidating the sequence",
+      "Portfolio reaches target defensive allocation (50% equities, 30% bonds, 20% cash)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_1",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch.1, pp.24-30",
+    "raw_chunk_text": "JOHN\u2019S TIPS\nBonds usually change direction \u0000rst at tops and bottoms, stocks turn second, and\ncommodities third.\nThat knowledge will help you determine where to be at different stages of the business\nc",
+    "rule_text": "Monitor bond price direction changes as a leading indicator of business cycle shifts, then use subsequent stock and commodity directional confirmations to stage portfolio positioning across asset classes in sequence.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bond index closes below its 10-day high and below 10-day moving average",
+      "Stock index breaks below 10-day moving average within 10 days of bond signal",
+      "Oil closes below 10-day moving average within 15 days of stock signal"
+    ],
+    "parameters": {
+      "bond_reversal_lookback": 10,
+      "stock_ma_period": 10,
+      "commodity_ma_period": 10,
+      "required_confirmations": 3,
+      "time_window_for_sequence": 15
+    },
+    "exit_conditions": [
+      "10-day moving average crossed back upward by price",
+      "Target defensive allocation reached (40% equities, 40% bonds, 20% cash)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "INTERMARKET_DRY_2_2",
+    "book_id": "INTERMARKET",
+    "source_citation": "Intermarket Analysis, John Murphy, Ch.1, pp.24-30",
+    "raw_chunk_text": "JOHN\u2019S TIPS\nBonds usually change direction \u0000rst at tops and bottoms, stocks turn second, and\ncommodities third.\nThat knowledge will help you determine where to be at different stages of the business\nc",
+    "rule_text": "Monitor bond price direction changes as a leading indicator of business cycle shifts, then use subsequent stock and commodity directional confirmations to stage portfolio positioning across asset classes in sequence.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bond index closes below 5-day high (early peak detection)",
+      "Stock index closes below 5-day moving average within 3 days of bond signal (minimal lag confirmation)",
+      "Oil directional bias can confirm but is not required for position entry"
+    ],
+    "parameters": {
+      "bond_reversal_lookback": 3,
+      "stock_ma_period": 5,
+      "commodity_ma_period": 5,
+      "required_confirmations": 2,
+      "time_window_for_sequence": 3
+    },
+    "exit_conditions": [
+      "5-day moving average crossed back upward",
+      "Stop loss at 2% portfolio drawdown from entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  }
+]

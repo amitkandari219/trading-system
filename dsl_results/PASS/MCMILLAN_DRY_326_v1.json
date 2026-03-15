@@ -1,0 +1,86 @@
+{
+  "signal_id": "MCMILLAN_DRY_326",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_326",
+    "entry_long": [
+      {
+        "left": "india_vix",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "india_vix",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "india_vix",
+        "operator": ">=",
+        "right": "dc_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "india_vix",
+        "operator": "<=",
+        "right": "dc_middle"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used india_vix as proxy for implied volatility. Donchian channels (dc_upper, dc_lower, dc_middle) represent the long-term established trading range. Entry signals trigger at range extremes (near lows for long, near highs for short). Exit conditions target the midpoint of range or reversal, consistent with mean-reversion behavior. The signal is inherently context-dependent (buy lows/sell highs), so entry conditions are split between long and short directions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "india_vix",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "india_vix",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "india_vix",
+        "op": ">=",
+        "value": "dc_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "india_vix",
+        "op": "<=",
+        "value": "dc_middle"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used india_vix as proxy for implied volatility. Donchian channels (dc_upper, dc_lower, dc_middle) represent the long-term established trading range. Entry signals trigger at range extremes (near lows for long, near highs for short). Exit conditions target the midpoint of range or reversal, consistent with mean-reversion behavior. The signal is inherently context-dependent (buy lows/sell highs), so entry conditions are split between long and short directions."
+  },
+  "source_rule_text": "Buy implied volatility near the lows of its trading range and sell it near the highs, potentially selling short near the highs and covering when it declines, as implied volatility tends to return at least to the midpoint of its trading range and sometimes continues to the other side."
+}

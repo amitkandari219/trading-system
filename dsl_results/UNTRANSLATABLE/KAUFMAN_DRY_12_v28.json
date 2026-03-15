@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires market breadth data (declining stocks count/ratio) which is not available in the allowed indicator set. The source text references 'declining stocks' and 'market breadth' metrics that would typically require NYSE advance/decline line or similar breadth indicators. vol_ratio_20 used as a proxy for volume breadth but does not capture declining stock counts.",
+  "translation_notes": "This is a mean-reversion/counter-trend signal from Kaufman's work. The core concept\u2014using declining stock breadth as a leading indicator for long entries in RANGING regimes\u2014requires breadth-of-market data not present in the allowed indicators. Entry condition uses vol_ratio_20 as an imperfect substitute for breadth expansion. Exit uses price crossing below SMA_20 as a reasonable reversal condition given the AUTHOR_SILENT specification. Parameters (threshold_basis_points, breadth_measurement_method, decline_magnitude) are marked AUTHOR_SILENT and cannot be precisely calibrated without original source specifications."
+}

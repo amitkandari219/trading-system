@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires tracking the high and low established during the first 60 minutes of trading (opening_range_high and opening_range_low), which are context-derived values not available as base indicators in the allowed list. The exit condition referencing 'projected range high' (average daily range + today's low) also requires composite calculation not expressible with allowed indicators alone.",
+  "translation_notes": "This is a classic opening range breakout (ORB) strategy. The core logic requires: (1) calculation of first-hour high/low extremes, and (2) detection of breakouts beyond those levels. While the directional logic (LONG on high breakout, SHORT on low breakout) can be expressed conceptually, the backtesting engine would need custom support for opening range calculation and the projected range exit metric. A practical implementation would need to add 'opening_range_high', 'opening_range_low', and 'avg_daily_range' as pre-calculated indicators."
+}

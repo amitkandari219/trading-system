@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "CHADTP oscillator is not available in the allowed indicators list. CHADTP requires custom calculation of (Sum(AdvancingNYSE,5) - Sum(DecliningNYSE,5))/5, where AdvancingNYSE and DecliningNYSE are breadth data not provided in the allowed indicators. The signal requires specific threshold comparisons (+400 and -400) that cannot be replicated with available price/technical indicators. The 10 basis points offset condition has been approximated as prev_high/prev_low comparisons, but the core oscillator logic is untranslatable.",
+  "translation_notes": "Signal requires CHADTP breadth oscillator which is not available. Price conditions (10 bps above/below previous day levels) have been approximated as crosses above prev_high and below prev_low. This is a significant simplification and does not capture the original intent. Recommend implementing CHADTP as a custom indicator in the backtest engine."
+}

@@ -1,0 +1,514 @@
+[
+  {
+    "signal_id": "TALEB_BS_DRY_2_0",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Ch. Banking System as Black Swan, pp. 371-447",
+    "raw_chunk_text": "Seneca is the one who taught Nietzsche the amor fati, \"love fate,\" which\nprompted Nietzsche to just shrug and ignore adversity, mistreatment by his\ncritics, and his disease, to the point of being bore",
+    "rule_text": "Reduce dependence on accumulated gains and emotional attachment to wealth to insulate yourself from loss aversion bias and the disproportionate pain of reversal.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Cumulative unrealized gains exceed 10% of starting capital",
+      "Position has been held for >5 trading sessions",
+      "Trader reports emotional attachment to position (self-assessment)"
+    ],
+    "parameters": {
+      "gain_threshold_percent": 10,
+      "position_size_reduction": 0.5,
+      "mental_accounting_compartments": 3,
+      "rebalance_frequency_days": 5
+    },
+    "exit_conditions": [
+      "Close 50% of position when gains reach 10%",
+      "Move remaining position to mental 'loss account' to reset loss aversion baseline"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_2_1",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Ch. Banking System as Black Swan, pp. 371-447",
+    "raw_chunk_text": "Seneca is the one who taught Nietzsche the amor fati, \"love fate,\" which\nprompted Nietzsche to just shrug and ignore adversity, mistreatment by his\ncritics, and his disease, to the point of being bore",
+    "rule_text": "Reduce dependence on accumulated gains and emotional attachment to wealth to insulate yourself from loss aversion bias and the disproportionate pain of reversal.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Cumulative unrealized gains exceed 25% of starting capital",
+      "Position volatility has stabilized (20-day realized vol within historical range)",
+      "Holding period >10 trading sessions"
+    ],
+    "parameters": {
+      "gain_threshold_percent": 25,
+      "position_size_reduction": 0.33,
+      "mental_accounting_compartments": 2,
+      "rebalance_frequency_days": 10
+    },
+    "exit_conditions": [
+      "Close 33% of position when gains reach 25%",
+      "Close another 33% if gains reach 50%",
+      "Hold remainder with stop-loss at +15% (accept drawdown from peak)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_2_2",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Ch. Banking System as Black Swan, pp. 371-447",
+    "raw_chunk_text": "Seneca is the one who taught Nietzsche the amor fati, \"love fate,\" which\nprompted Nietzsche to just shrug and ignore adversity, mistreatment by his\ncritics, and his disease, to the point of being bore",
+    "rule_text": "Reduce dependence on accumulated gains and emotional attachment to wealth to insulate yourself from loss aversion bias and the disproportionate pain of reversal.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Cumulative unrealized gains exceed 50% of starting capital",
+      "Position has matured >20 trading sessions",
+      "Explicitly reframe gains as 'house money' mentally separate from starting capital"
+    ],
+    "parameters": {
+      "gain_threshold_percent": 50,
+      "position_size_reduction": 0.2,
+      "mental_accounting_compartments": 1,
+      "rebalance_frequency_days": 20
+    },
+    "exit_conditions": [
+      "Close 20% of position only at +50% gains (realization milestone)",
+      "Allow remaining 80% to run with trailing stop at +35%",
+      "Accept full reversal possibility as price of asymmetric upside"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_2_0",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Ch.2 (Banking System), pp.371-447",
+    "raw_chunk_text": "Seneca's credibility as a moral philosopher (to me) came from the fact that,\nunlike other philosophers, he did not denigrate the value of wealth, ownership,\nand property because he was poor. Seneca wa",
+    "rule_text": "A trader must mentally prepare daily to lose their entire position or wealth, maintaining psychological readiness for total loss regardless of current prosperity, to avoid the moral and practical hazards of overconfidence that accumulate in wealthy or successful states.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Portfolio in consecutive winning period (2+ days)",
+      "Cumulative unrealized P&L > 2% of account equity"
+    ],
+    "parameters": {
+      "daily_position_reduction_pct": 2.0,
+      "winning_streak_threshold_days": 5,
+      "mental_reset_frequency_days": 1,
+      "max_position_size_after_gains_pct": 95
+    },
+    "exit_conditions": [
+      "Rebalance to base allocation after threshold met",
+      "End of trading day (daily mental reset)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_2_1",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Ch.2 (Banking System), pp.371-447",
+    "raw_chunk_text": "Seneca's credibility as a moral philosopher (to me) came from the fact that,\nunlike other philosophers, he did not denigrate the value of wealth, ownership,\nand property because he was poor. Seneca wa",
+    "rule_text": "A trader must mentally prepare daily to lose their entire position or wealth, maintaining psychological readiness for total loss regardless of current prosperity, to avoid the moral and practical hazards of overconfidence that accumulate in wealthy or successful states.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Weekly cumulative P&L > 5% of account equity",
+      "Position duration > 5 trading days"
+    ],
+    "parameters": {
+      "mental_reset_frequency_days": 7,
+      "position_reduction_pct_per_10pct_gain": 1.0,
+      "stress_test_drawdown_assumption_pct": 50,
+      "max_position_size_after_gains_pct": 90
+    },
+    "exit_conditions": [
+      "Weekly rebalance to 90% of max exposure",
+      "Completion of weekly stress test"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_2_2",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Ch.2 (Banking System), pp.371-447",
+    "raw_chunk_text": "Seneca's credibility as a moral philosopher (to me) came from the fact that,\nunlike other philosophers, he did not denigrate the value of wealth, ownership,\nand property because he was poor. Seneca wa",
+    "rule_text": "A trader must mentally prepare daily to lose their entire position or wealth, maintaining psychological readiness for total loss regardless of current prosperity, to avoid the moral and practical hazards of overconfidence that accumulate in wealthy or successful states.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Monthly cumulative P&L > 20% of account equity",
+      "Position duration > 20 trading days"
+    ],
+    "parameters": {
+      "mental_reset_frequency_days": 30,
+      "position_reduction_trigger_pct_gain": 20,
+      "stress_test_drawdown_assumption_pct": 30,
+      "max_position_size_after_gains_pct": 100
+    },
+    "exit_conditions": [
+      "Monthly rebalance only if gains > 20%",
+      "Completion of monthly worst-case scenario analysis"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_6_0",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Chapter 10, pp. 465\u2013481",
+    "raw_chunk_text": "Imitation chains and pathologies: An informational cascade is a process where\na purely rational agent elects a particular choice ignoring his own private\ninformation (or judgment) to follow that of ot",
+    "rule_text": "A trader should resist blindly following the consensus behavior of other market participants, especially when it contradicts their own analysis, because imitation chains create bubbles and collective irrationality rather than reflecting true fundamental value.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Consensus crowd direction identified via price momentum, social sentiment, or flow data",
+      "Independent technical/fundamental analysis generates opposite signal with confidence threshold \u226585%",
+      "Position size is minimal relative to portfolio"
+    ],
+    "parameters": {
+      "consensus_strength_threshold": 0.75,
+      "independent_signal_confidence_required": 0.85,
+      "max_position_size_percent": 1.0,
+      "fade_duration_bars": 20
+    },
+    "exit_conditions": [
+      "Exit when independent signal confidence drops below 75%",
+      "Exit after 20 bars regardless of outcome",
+      "Exit if position reaches -2% loss"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_6_1",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Chapter 10, pp. 465\u2013481",
+    "raw_chunk_text": "Imitation chains and pathologies: An informational cascade is a process where\na purely rational agent elects a particular choice ignoring his own private\ninformation (or judgment) to follow that of ot",
+    "rule_text": "A trader should resist blindly following the consensus behavior of other market participants, especially when it contradicts their own analysis, because imitation chains create bubbles and collective irrationality rather than reflecting true fundamental value.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Consensus crowd direction identified via price acceleration, sentiment extremes, or unusual volume clustering",
+      "Independent technical/fundamental analysis generates opposite signal with confidence threshold \u226570%",
+      "Valuation or technical metric indicates stretched extremes (>2 std dev from mean)"
+    ],
+    "parameters": {
+      "consensus_strength_threshold": 0.7,
+      "independent_signal_confidence_required": 0.7,
+      "max_position_size_percent": 2.5,
+      "fade_duration_bars": 40,
+      "extremeness_threshold_stddev": 2.0
+    },
+    "exit_conditions": [
+      "Exit when independent signal confidence drops below 60%",
+      "Exit after 40 bars regardless of outcome",
+      "Exit if position reaches -3% loss",
+      "Exit if consensus reverses (momentum shifts direction)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_6_2",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Chapter 10, pp. 465\u2013481",
+    "raw_chunk_text": "Imitation chains and pathologies: An informational cascade is a process where\na purely rational agent elects a particular choice ignoring his own private\ninformation (or judgment) to follow that of ot",
+    "rule_text": "A trader should resist blindly following the consensus behavior of other market participants, especially when it contradicts their own analysis, because imitation chains create bubbles and collective irrationality rather than reflecting true fundamental value.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price/indicator reaches statistical extreme (>3 std dev from 200-bar mean)",
+      "Crowd positioning is heavily skewed (>70% of flow in same direction)",
+      "Independent analysis shows any divergence signal (>50% confidence) or volatility spike"
+    ],
+    "parameters": {
+      "consensus_strength_threshold": 0.5,
+      "independent_signal_confidence_required": 0.5,
+      "max_position_size_percent": 5.0,
+      "fade_duration_bars": 60,
+      "extremeness_threshold_stddev": 3.0,
+      "crowd_flow_skew_threshold": 0.7
+    },
+    "exit_conditions": [
+      "Exit when position reaches +5% gain",
+      "Exit after 60 bars regardless of outcome",
+      "Exit if position reaches -5% loss",
+      "Exit if extremeness reduces below 1.5 std dev"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_7_0",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Ch. 18, pp. 482-483",
+    "raw_chunk_text": "Nobel family: \"Nobel Descendant Slams Economics Prize,\" The Local,\nSeptember 28, 2005, Stockholm.\nDouble bubble: The problem of derivatives is that if the underlying security has\nmild fat tails and fo",
+    "rule_text": "A trader should avoid or heavily stress-test models (especially derivatives strategies) out-of-sample because in-sample calibration performs well but fails dramatically on unseen data, particularly when the underlying exhibits fat tails.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Out-of-sample model error < 50% of in-sample error",
+      "Tail exponent of underlying >= 4.0 (mild fat tails at minimum)",
+      "Strategy does not use squared payoff (simple payoff only)"
+    ],
+    "parameters": {
+      "max_out_of_sample_error_multiplier": 0.5,
+      "min_tail_exponent_allowed": 4.0,
+      "payoff_complexity_limit": "linear"
+    },
+    "exit_conditions": [
+      "Out-of-sample error exceeds 50% of in-sample error",
+      "Realized tail exponent falls below 4.0"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_7_1",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Ch. 18, pp. 482-483",
+    "raw_chunk_text": "Nobel family: \"Nobel Descendant Slams Economics Prize,\" The Local,\nSeptember 28, 2005, Stockholm.\nDouble bubble: The problem of derivatives is that if the underlying security has\nmild fat tails and fo",
+    "rule_text": "A trader should avoid or heavily stress-test models (especially derivatives strategies) out-of-sample because in-sample calibration performs well but fails dramatically on unseen data, particularly when the underlying exhibits fat tails.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Out-of-sample model error < 100% of in-sample error",
+      "Tail exponent of underlying >= 3.0 (includes mild power law)",
+      "If using squared payoff derivatives, apply 2x risk discount"
+    ],
+    "parameters": {
+      "max_out_of_sample_error_multiplier": 1.0,
+      "min_tail_exponent_allowed": 3.0,
+      "squared_payoff_risk_adjustment": 2.0
+    },
+    "exit_conditions": [
+      "Out-of-sample error exceeds 100% of in-sample error",
+      "Realized tail exponent falls below 3.0"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_7_2",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Ch. 18, pp. 482-483",
+    "raw_chunk_text": "Nobel family: \"Nobel Descendant Slams Economics Prize,\" The Local,\nSeptember 28, 2005, Stockholm.\nDouble bubble: The problem of derivatives is that if the underlying security has\nmild fat tails and fo",
+    "rule_text": "A trader should avoid or heavily stress-test models (especially derivatives strategies) out-of-sample because in-sample calibration performs well but fails dramatically on unseen data, particularly when the underlying exhibits fat tails.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Out-of-sample model error < 150% of in-sample error",
+      "Tail exponent of underlying >= 2.5",
+      "Rolling out-of-sample window shows improving trend"
+    ],
+    "parameters": {
+      "max_out_of_sample_error_multiplier": 1.5,
+      "min_tail_exponent_allowed": 2.5,
+      "revalidation_frequency_days": 20
+    },
+    "exit_conditions": [
+      "Out-of-sample error exceeds 150% of in-sample error",
+      "Three consecutive revalidation windows show degradation"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_8_0",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Ch. 19, pp. 406-407",
+    "raw_chunk_text": "into commonly used logic that dates from Aristotle and is all or nothing. An all\nor nothing acceptance and rejection (\"I believe\" or \"I do not believe\") is\ninadequate with the highly improbable. We ne",
+    "rule_text": "A trader should actively cut negative exposure and limit positions in areas of high uncertainty rather than maintain binary all-or-nothing beliefs, adopting graduated conviction levels that reflect incomplete knowledge.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position has negative gamma (short gamma or negative convexity)",
+      "Confidence level in market outlook \u2264 75% (shades of belief framework)"
+    ],
+    "parameters": {
+      "max_negative_convex_exposure_pct": 10,
+      "confidence_threshold_for_full_position": 85,
+      "reduction_trigger": "Any loss exceeding 3% on the position"
+    },
+    "exit_conditions": [
+      "Exit 50% of negative convex exposure when uncertainty increases",
+      "Exit remaining 50% if confidence falls below 60%"
+    ],
+    "instrument": "OPTIONS_SELLING|SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_8_1",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Ch. 19, pp. 406-407",
+    "raw_chunk_text": "into commonly used logic that dates from Aristotle and is all or nothing. An all\nor nothing acceptance and rejection (\"I believe\" or \"I do not believe\") is\ninadequate with the highly improbable. We ne",
+    "rule_text": "A trader should actively cut negative exposure and limit positions in areas of high uncertainty rather than maintain binary all-or-nothing beliefs, adopting graduated conviction levels that reflect incomplete knowledge.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position has negative gamma or tail risk exposure",
+      "Conviction confidence level is between 60-80% (graduated belief)"
+    ],
+    "parameters": {
+      "max_negative_convex_exposure_pct": 25,
+      "confidence_threshold_for_full_position": 75,
+      "reduction_trigger": "Loss exceeding 5% OR confidence falls below 65%"
+    },
+    "exit_conditions": [
+      "Reduce position size by (100 - confidence_level)% of original exposure",
+      "Full exit if confidence drops below 50%"
+    ],
+    "instrument": "OPTIONS_SELLING|SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "TALEB_BS_DRY_8_2",
+    "book_id": "TALEB_BS",
+    "source_citation": "The Black Swan, Nassim Taleb, Ch. 19, pp. 406-407",
+    "raw_chunk_text": "into commonly used logic that dates from Aristotle and is all or nothing. An all\nor nothing acceptance and rejection (\"I believe\" or \"I do not believe\") is\ninadequate with the highly improbable. We ne",
+    "rule_text": "A trader should actively cut negative exposure and limit positions in areas of high uncertainty rather than maintain binary all-or-nothing beliefs, adopting graduated conviction levels that reflect incomplete knowledge.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position has negative gamma exposure",
+      "Conviction confidence level \u2264 50% (very low certainty scenario)"
+    ],
+    "parameters": {
+      "max_negative_convex_exposure_pct": 40,
+      "confidence_threshold_for_full_position": 50,
+      "reduction_trigger": "Loss exceeding 10% OR extreme market dislocations"
+    },
+    "exit_conditions": [
+      "Exit only if confidence collapses below 40% or 15% drawdown occurs",
+      "Otherwise maintain position as long as thesis remains somewhat plausible"
+    ],
+    "instrument": "OPTIONS_SELLING|SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "PSYCHOLOGY"
+  }
+]

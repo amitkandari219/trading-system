@@ -1,0 +1,34 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "entry_long": [
+    {
+      "left": "hvol_20",
+      "operator": "<",
+      "right": "[THRESHOLD_OPTIMIZED]"
+    }
+  ],
+  "entry_short": [],
+  "exit_long": [
+    {
+      "left": "hvol_20",
+      "operator": ">=",
+      "right": "[THRESHOLD_OPTIMIZED]"
+    }
+  ],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "HIGH_VOL"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Volatility filter signal. Used hvol_20 (historical volatility over 20 days) as the closest available indicator for 'standard deviation of returns over the past 20 days'. The threshold value should be optimized between 0.05 and 1.0 in steps of 0.05 during backtest parameter optimization. Entry condition: take trades only when volatility is BELOW the optimized threshold. Exit condition: reversal when volatility crosses ABOVE the threshold. Direction is NEUTRAL because this is a filter/overlay condition applied to other trading signals, not a directional signal itself.",
+  "validation_issues": [
+    "entry_long: unknown right value '[THRESHOLD_OPTIMIZED]'",
+    "exit_long: unknown right value '[THRESHOLD_OPTIMIZED]'"
+  ]
+}

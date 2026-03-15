@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of front futures contract vs cash VIX spread and daily convergence calculation. These are multi-leg spread mechanics and forward curve analysis that cannot be expressed using single-asset price/indicator comparisons. The [THRESHOLD_NEEDED] parameter is undefined. Additionally, the expected daily convergence metric is a forward-looking calculation not available in standard OHLCV indicators.",
+  "translation_notes": "Attempted to use india_vix as proxy for VIX cash and close as proxy for futures, but this loses the essential basis convergence logic. The signal fundamentally requires: (1) access to term structure (front vs back contracts), (2) basis spread calculation, (3) convergence rate estimation. Standard backtester indicators cannot model these derivatives mechanics."
+}

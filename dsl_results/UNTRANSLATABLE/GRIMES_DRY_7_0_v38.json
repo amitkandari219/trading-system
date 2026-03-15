@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe analysis framework (lower/intermediate/macro timeframe hierarchy with alignment validation, contradiction detection across timeframes, and support/resistance/pattern/momentum recognition). The backtest engine schema only supports single-timeframe indicator conditions. The core logic\u2014'validate lower timeframe setup against higher timeframe structure and macro bias'\u2014cannot be expressed as atomic conditions on allowed indicators. This requires: (1) timeframe parameter specification, (2) cross-timeframe comparison operators, (3) pattern/structure recognition beyond price/indicator thresholds, and (4) contradiction/alignment scoring logic. Provided fallback uses trend alignment proxy via moving average crossovers, but loses the essential multi-timeframe filter mechanism.",
+  "translation_notes": "GRIMES_DRY_7_0 is a meta-rule about trade validation methodology, not a mechanical trading rule. The signal describes a decision framework (use HTF to filter/confirm LTF setups) rather than specific entry/exit triggers. Fallback conditions approximate trend-following with MA alignment but cannot capture: (1) the prohibition of trades contradicted by any HTF level, (2) the requirement for positive HTF confirmation, (3) the distinction between invalidation (contradictions) vs. validation (alignment). Recommend implementing this as a separate filter module in backtest engine rather than as a condition-based rule."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) 'extended trend establishment' with configurable min_trend_bars threshold, (2) climax bar identification (extreme high/low with volume spike), (3) prior consolidation/range period detection with min_range_duration_bars threshold. These composite pattern-recognition conditions cannot be expressed using only the allowed point-in-time indicators and binary operators. The signal needs multi-bar pattern analysis and contextual memory of prior price action structure that exceeds the scope of single-bar indicator comparisons.",
+  "translation_notes": "Attempted partial translation using ADX>25 (trend confirmation), volume spike detection (hvol_20), and climactic bar proxies (prev_high/low breaks). However, the core logic\u2014distinguishing climactic breakouts FROM ranges (avoid) versus climaxes AFTER trends (trade)\u2014requires pattern-state tracking impossible with allowed operators. A full implementation would need: (1) lookback window analysis for trend duration, (2) range identification algorithm, (3) climax bar detection (body size, wick properties, volume confirmation). Parameters min_trend_bars, min_range_duration_bars, and volume_spike_threshold_percentile are untranslatable to fixed thresholds without domain expertise."
+}

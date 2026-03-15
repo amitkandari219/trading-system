@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_242",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires real-time comparison of synthetic option prices vs futures fair value pricing across two different instruments (UVX options vs ZYX futures). This requires live pricing spreads, volatility surfaces, and synthetic pricing calculations that are not available in the provided indicator set. The signal depends on: (1) UVX options selling at >fair value (178.00 vs 177.50 fair value), (2) ZYX futures trading below fair value (15 cents under), and (3) computing relative execution advantage of options vs futures. None of these multi-leg synthetic pricing comparisons can be expressed using only OHLC, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, or Returns indicators.",
+  "translation_notes": "This is an advanced relative-value arbitrage signal requiring options chain data, futures basis calculations, and synthetic spread pricing that exceeds the scope of technical indicators. Implementation requires a dedicated options pricing module with access to real-time bid-ask spreads across both instruments."
+}

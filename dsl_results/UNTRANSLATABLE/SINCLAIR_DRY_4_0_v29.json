@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit IV vs realized volatility comparison with quantified thresholds (iv_realized_ratio_threshold, strike_distance_std_devs, min_dte, max_profit_pct). The allowed indicators do not include implied volatility (IV) as a direct input, only india_vix as a proxy. Strike selection distance in standard deviations and DTE-based entry/exit rules cannot be expressed with the given indicator set. Original source text is incomplete, preventing accurate parameter extraction.",
+  "translation_notes": "Attempted partial translation using india_vix (volatility proxy) vs hvol_20 (historical volatility) as proxy for IV > realized vol comparison. However, this is fundamentally insufficient because: (1) the signal requires explicit IV data not in allowed indicators, (2) strike distance thresholds require option-chain specific data, (3) DTE-based conditions require temporal data not available, (4) all threshold values are marked [THRESHOLD_NEEDED] in source. A proper implementation requires IV surface data, option Greeks, and DTE calculations."
+}

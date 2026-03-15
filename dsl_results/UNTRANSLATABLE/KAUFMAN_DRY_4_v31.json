@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires counting non-consecutive days matching a condition (close[i] < close[i-2]) until reaching a threshold, plus tracking setup-stage highs and detecting multi-day patterns (sell setup = [THRESHOLD_NEEDED] consecutive closes above corresponding closes [THRESHOLD_NEEDED] days earlier). The backtest engine structure does not support: (1) stateful countdown accumulation across non-consecutive bars, (2) historical lookback windowing with conditional accumulation, (3) referencing intraday high extrema from a prior setup stage, or (4) detecting multi-bar sequential patterns. These require custom state management beyond the 3-field condition structure.",
+  "translation_notes": "This is a complex multi-stage DeMark Sequential pattern requiring: (1) initial setup detection, (2) intersection validation, (3) stateful countdown tracking across non-consecutive bars where close < close[2-bars-ago], (4) disqualification rules monitoring sell setup patterns, (5) reference to the highest intraday high from the setup stage. A single condition with prev_close cannot capture this logic. Recommend implementing as a custom indicator or state machine outside the standard rule engine."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_157_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multi-leg spread analysis with implied volatility vs historical volatility deviation tracking, leg correlation monitoring, and dynamic instrument substitution (futures vs options) logic. These capabilities are beyond single-instrument technical indicator scope: (1) IV deviation from HV requires option pricing model data not in allowed indicators, (2) inter-leg correlation requires multi-instrument covariance calculation not supported, (3) context-dependent directional decisions require portfolio-level volatility opinion tracking, (4) instrument substitution logic (futures\u2192options) is a portfolio construction rule, not a price-action entry/exit condition. This is a volatility arbitrage and portfolio construction strategy requiring dedicated options analytics module.",
+  "translation_notes": "NATENBERG_DRY_157_0 is a sophisticated volatility-based spread trading strategy from 'The Volatility Smile' framework. It describes conditional instrument selection within a crack spread trade based on volatility mispricing. The signal fundamentally requires: (a) option implied volatility surfaces, (b) multi-leg correlation matrices, (c) relative value decision logic, and (d) portfolio-level rebalancing rules. Standard OHLCV technical indicators cannot capture the nuanced IV vs HV comparison or cross-leg correlation breakpoints needed. Recommend implementing this as a dedicated volatility arbitrage module with option chain data feeds rather than as a standard backtest rule."
+}

@@ -1,0 +1,94 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_3",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "0.02"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Bearish key reversal day pattern: (1) New high above previous high confirms uptrend continuation, (2) Reversal low below previous low, (3) Close below previous close completes the reversal, (4) Higher volatility condition captured via hvol_20. Exit triggered on close above the reversal candle's high, indicating pattern failure. Well-established trend is implicit in regime filter TRENDING_UP. Exit condition reasonably inferred as pattern invalidation when price recovers above the reversal bar."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 0.02
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "HIGH_VOL"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Bearish key reversal day pattern: (1) New high above previous high confirms uptrend continuation, (2) Reversal low below previous low, (3) Close below previous close completes the reversal, (4) Higher volatility condition captured via hvol_20. Exit triggered on close above the reversal candle's high, indicating pattern failure. Well-established trend is implicit in regime filter TRENDING_UP. Exit condition reasonably inferred as pattern invalidation when price recovers above the reversal bar."
+  },
+  "source_rule_text": "Enter a short position when a bearish key reversal day forms: a new high in an uptrend followed by a reversal to a low below the previous low and close below the previous close, especially with higher volatility and in a well-established trend."
+}

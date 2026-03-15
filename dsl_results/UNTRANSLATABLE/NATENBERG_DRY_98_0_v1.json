@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_98_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options-specific parameters (vertical spreads, strike selection, delta anchoring, implied volatility assessment) that cannot be expressed using only equity price/volume indicators. The rule requires: (1) multi-leg options construction logic, (2) strike selection relative to ATM moneyness, (3) IV regime classification, and (4) delta behavior monitoring across volatility regimes. None of these can be translated to OHLCV or the allowed technical indicators (RSI, MACD, ATR, Bollinger, etc.). Options Greeks (delta, gamma, theta, vega) and IV term structure are required but not available.",
+  "translation_notes": "Signal NATENBERG_DRY_98_0 is an options strategy rule from volatility theory. It describes spread construction methodology (ITM preference, ATM anchoring) and exit timing (RV vs IV confirmation) but relies entirely on options Greeks and implied volatility inputs. Suitable for options backtesting engine with Greek calculations, not for equity price-action backtesting."
+}

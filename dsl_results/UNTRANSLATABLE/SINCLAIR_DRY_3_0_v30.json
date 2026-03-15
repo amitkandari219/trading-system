@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires front-month vs second-month ATM IV spread comparison and event-driven scheduling logic. These derivatives (IV term structure, specific event dates, option moneyness tracking) are not available in the allowed indicator set. hvol_20 is used as a volatility proxy, but cannot replicate the precise IV spread quantification or event-aware entry/exit timing described in the original rule.",
+  "translation_notes": "Approximated as SHORT volatility trade using historical volatility as proxy. Original signal requires: (1) explicit front/second-month IV levels, (2) event calendar integration, (3) days-to-event threshold management, (4) precise event announcement timing. The source example shows selling 1 day before unemployment report (Thursday close) and exiting at event (Friday open), but this requires external event scheduling not available in price/technical indicator framework."
+}

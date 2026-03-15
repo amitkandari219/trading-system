@@ -1,0 +1,72 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 1,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Translated 'opens above previous day's range' as open > prev_high (upper boundary of previous range). Translated 'builds further in that direction' as close > open (continuation of upward movement). Exit condition uses reversal logic (close < open) since AUTHOR_SILENT. Set hold_days_max to 1 since signal focuses on intraday price action during first ticks after opening."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Translated 'opens above previous day's range' as open > prev_high (upper boundary of previous range). Translated 'builds further in that direction' as close > open (continuation of upward movement). Exit condition uses reversal logic (close < open) since AUTHOR_SILENT. Set hold_days_max to 1 since signal focuses on intraday price action during first ticks after opening."
+  },
+  "source_rule_text": "When price opens above the previous day's range and builds further in that direction, expect higher levels during the day due to active participant behavior."
+}

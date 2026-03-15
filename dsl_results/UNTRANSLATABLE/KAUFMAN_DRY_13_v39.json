@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of crude oil futures prices vs. product futures prices (crack spread synthetic). The allowed indicators list does not include separate crude oil or refined product price feeds. This is a multi-leg commodity spread requiring explicit crude and product price inputs that cannot be expressed using single-instrument technical indicators (open, high, low, close, volume, moving averages, RSI, ATR, etc.). The signal also requires delivery month alignment logic which is a contract specification parameter, not a price-based technical condition.",
+  "translation_notes": "KAUFMAN_DRY_13 is a fundamental energy market arbitrage signal (reverse crack spread) that operates on inter-commodity relationships rather than technical price patterns. To implement this signal, the backtest engine would need: (1) separate price feeds for crude oil futures and petroleum product futures (e.g., gasoline, diesel), (2) delivered cost calculation logic, (3) contract month matching logic. Standard technical indicators cannot capture this relationship."
+}

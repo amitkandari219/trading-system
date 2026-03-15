@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_116",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a conversion arbitrage strategy (synthetic long stock position via options) rather than a directional price-based trading rule. It requires: (1) Options pricing/strike selection logic not available in price/technical indicators, (2) Carrying cost and dividend yield calculations not in allowed indicators, (3) Simultaneous multi-leg execution logic (100 shares + 1 put + 1 call at same strike) which requires options chain data and real-time pricing unavailable in standard backtest engine. The entry conditions reference 'a certain striking price' (AUTHOR_SILENT) with no technical trigger. This is a structural arbitrage requiring options valuation models, not technical analysis.",
+  "translation_notes": "Signal MCMILLAN_DRY_116 is an options conversion strategy from McMillan's 'Options as a Strategic Investment'. It requires options Greeks, carrying costs, dividend schedules, and interest rates\u2014none of which are available in the allowed indicator set. The backtest engine would need an options pricing module (Black-Scholes or binomial) and options chain data to execute this properly."
+}

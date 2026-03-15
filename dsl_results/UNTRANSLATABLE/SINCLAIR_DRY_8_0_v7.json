@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific metrics (implied volatility, realized volatility forecast, vega exposure, vega value decay) that are not available in the equity price/technical indicator universe. The signal also requires explicit profit calculations based on volatility differentials and vega hedging logic, which cannot be expressed using only OHLCV-derived indicators. Proxy substitution (india_vix for implied vol, hvol_20 for realized vol) is approximate and loses critical semantic meaning of the original signal's risk/reward framework.",
+  "translation_notes": "This is a volatility-selling (short vega) strategy designed for options markets with explicit vega-based position sizing and P&L attribution. The core logic (IV > RV forecast \u2192 sell vol) can be weakly approximated using india_vix > hvol_20, but this loses: (1) the option lifetime component, (2) vega notional thresholds, (3) expected profit calculations tied to vega decay, (4) cumulative loss limits tied to initial expected vega value, and (5) the drawdown tolerance philosophy. A proper backtest requires an options pricing engine with Greeks. Recommend flagging for manual rule design with options data."
+}

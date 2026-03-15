@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal references 'LBR/RSI indicator' which is not in the allowed indicators list. The custom 'Momentum Pinball' indicator mentioned in the source text is also not available. Additionally, the signal requires tracking the 'first hour's high' and 'first hour's low' which requires intraday bar segmentation not supported by the standard daily OHLCV indicators provided. The RSI_14 substitution is approximate but cannot capture the specific '3-day RSI of 1-day rate of change' requirement.",
+  "translation_notes": "Attempted partial translation: Substituted rsi_14 for the unavailable LBR/RSI indicator (threshold <30 on previous day). Used prev_high as proxy for first hour high breakout and prev_low as proxy for first hour low stop. However, this loses critical intraday structure and the custom indicator specification. A complete implementation would require access to intraday bars and the custom LBR/RSI formula."
+}

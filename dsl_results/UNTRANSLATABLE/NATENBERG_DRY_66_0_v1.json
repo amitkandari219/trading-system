@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_66_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific metrics (Implied Volatility, options premium decay, straddle position mechanics) which are not available in the equity price/technical indicator set. Cannot map: (1) IV vs HV comparison with specific threshold, (2) expected move magnitude in standard deviations, (3) time-to-expiration constraints, (4) options entry/exit triggers based on profit percentages from premium paid. The underlying signal is a multi-leg options strategy that cannot be expressed using only OHLCV and technical indicators.",
+  "translation_notes": "This is a classical options volatility trading signal from Natenberg. The core logic (sell premium when IV < HV, expect large moves) can be approximated with hvol_20 and atr_14, but the straddle-specific mechanics (simultaneous call+put sale, theta decay management, strike selection) require options Greeks not in the allowed indicator set. Recommend implementing this signal in a dedicated options backtester with IV term structure and Greeks."
+}

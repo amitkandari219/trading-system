@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The entry condition requires comparing intraday low to 'daily lows of the previous 55 days' (a rolling 55-day minimum), which cannot be expressed with allowed indicators. The closest allowed indicator price_pos_20 only provides 20-day positioning. Additionally, the exit condition references 'S1 or S2 reversal' which requires pivot point logic not fully specified, and the portfolio-relative loss (2% of portfolio value) cannot be expressed as a simple indicator comparison.",
+  "translation_notes": "Attempted to map: (1) Entry: intraday low vs 55-day low minimum \u2192 used price_pos_20 as fallback but this is insufficient; (2) Exit: intraday high vs 20-day high maximum \u2192 mapped to dc_upper (Donchian 20-day upper) which represents highest high of 20 days; (3) S1/S2 pivot reversals not translatable without explicit pivot reversal detection; (4) Portfolio-relative stop loss not expressible. Signal requires custom indicator support for rolling 55-day minimum or explicit 55-day Donchian channel."
+}

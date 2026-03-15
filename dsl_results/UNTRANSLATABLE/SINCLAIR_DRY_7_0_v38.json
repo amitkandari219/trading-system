@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific parameters (implied volatility vs historical volatility comparison, strike delta selection, days-to-expiration thresholds, position sizing as % of portfolio risk) that cannot be expressed using only the allowed price/technical indicators. The rule is fundamentally an options strategy requiring vol surface data, strike prices, and option Greeks not available in this backtester's indicator set. Approximated entry with hvol_20 < india_vix as a volatility premium proxy, but this is a poor substitute for true IV-HV spread and ATM strike selection.",
+  "translation_notes": "SINCLAIR_DRY_7_0 is an options selling strategy with structural edge thesis. Cannot translate thresholds for: (1) IV-HV spread magnitude, (2) delta ranges for ATM strikes, (3) minimum DTE, (4) portfolio risk per trade %, (5) profit target %, (6) specific exit at X% of max profit. Used hvol_20 (realized vol proxy) vs india_vix (implied vol proxy) as crude approximation, but this fundamentally misses the signal's option-gamma and theta dynamics. Direction set to SHORT (selling options). Regime set to RANGING and ANY as specified. Recommend manual implementation or custom option-chain data integration."
+}

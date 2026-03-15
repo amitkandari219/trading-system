@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_2_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of 'support level' (dynamic threshold), 'time spent below support' (temporal duration tracking), 'minimal closes below support' (count-based condition), and 'institutional accumulation' (volume/order flow inference). These require: (1) dynamic support level detection not available in indicator set, (2) temporal analysis beyond single-bar lookback, (3) multi-bar count conditions not supported by condition schema, (4) order flow/accumulation volume metrics not in allowed indicators. Approximation provided using pivot s1 as static support proxy, lower_wick as shadow proxy, but cannot capture institutional intent or time duration thresholds.",
+  "translation_notes": "Attempted approximation: Used s1 (pivot support level 1) as proxy for identified support; lower_wick as proxy for lower shadow extension; close > s1 for close above support. However, the core signal mechanics\u2014time duration below support, count of closes below support, and institutional accumulation detection\u2014cannot be reliably translated with available indicators and single-condition logic. A proper implementation would require: custom support/resistance detection, bar-by-bar time tracking, and volume accumulation analysis (e.g., OBV, PVT, or institutional volume indicators not in the list)."
+}

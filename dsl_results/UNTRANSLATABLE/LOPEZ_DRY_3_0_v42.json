@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific indicators not in allowed list: (1) 'call_volatility_spread' and 'put_volatility_spread' - measure IV differential between calls/puts, (2) 'volatility_spread_percentile' - requires cross-sectional universe ranking, (3) 'volatility_spread_change_week_over_week' - option vol change metric, (4) 'option_liquidity' and 'bid_ask_spread' - derivatives market microstructure. The allowed indicator set contains only equity price/volume and technical indicators (RSI, MACD, ATR, etc.). Options volatility spreads are fundamentally different from price volatility (hvol_20) and cannot be derived from equity price data alone.",
+  "translation_notes": "This is a volatility smile/skew arbitrage signal requiring real-time options market data. The signal identifies mispricings between call and put IV across a stock universe and requires percentile ranking within that universe. Cannot be implemented with equity price/volume indicators only. Would require integration of options data feeds."
+}

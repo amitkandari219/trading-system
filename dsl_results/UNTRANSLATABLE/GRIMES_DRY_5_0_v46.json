@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) previous swing high identification (not directly available), (2) consolidation period detection spanning N bars (requires lookback window analysis not expressible in single-bar conditions), (3) time constraint 'closes back below within N bars' (requires multi-bar sequential logic), (4) ATR-based thresholds with specific multipliers not yet parameterized. The [THRESHOLD_NEEDED] placeholders indicate incomplete parameter specification in source signal.",
+  "translation_notes": "Partial translation provided based on core logic: entry when price closes below previous high AND makes lower low with volume confirmation (approximating breakout failure). Exit uses simple reversal above previous high. However, the signal's critical elements\u2014swing high detection, consolidation confirmation, and time-window constraints\u2014cannot be fully expressed within single-condition 3-field format. Recommend parameterizing consolidation lookback period, max_bars_to_retest, and ATR multiplier values before production use."
+}

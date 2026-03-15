@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Point and Figure column-based logic and swing state tracking (current swing direction, swing high/low persistence across columns) which cannot be expressed in bar-by-bar indicator comparisons. The 'swing_filter_value' parameter is author-silent and undefined. The rule requires maintaining swing state and multi-column logic incompatible with standard OHLC bar analysis.",
+  "translation_notes": "This is a classic Kaufman Point and Figure pattern that requires columnar state management. The logic cannot be translated to standard technical indicators without: (1) explicit swing_filter_value definition, (2) multi-bar column tracking, and (3) swing direction state variables. A backtest engine would need P&F-specific logic rather than indicator conditions."
+}

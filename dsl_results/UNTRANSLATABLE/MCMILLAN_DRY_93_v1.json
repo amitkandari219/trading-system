@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_93",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is an options strategy (butterfly spread) that requires multi-leg options contract management, strike selection relative to current price, and options-specific pricing mechanics (IV, theta decay, Greeks). The backtest engine is equity price-based and cannot model options positions, synthetic strike prices, or the portfolio margin structure of a spread. The entry conditions depend on identifying ATM/ITM/OTM strikes dynamically, which requires options pricing data not available in the provided equity indicators.",
+  "translation_notes": "MCMILLAN_DRY_93 describes a low-cost iron butterfly (call spread) options strategy. While the signal specifies a bullish bias and expectation of price movement to the short strike, these cannot be operationalized as equity price conditions without options contract data. The strategy fundamentals (buy ATM, sell 2x higher, buy 1x even higher) are architecture-dependent on options Greeks and cannot be reduced to price-based entry/exit rules. Manual implementation in an options-capable backtester is required."
+}

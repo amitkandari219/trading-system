@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "SADF (Sequential Augmented Dickey-Fuller) statistic is a specialized econometric test for detecting explosive roots/bubble behavior. This indicator is not in the allowed indicators list and cannot be directly computed from standard OHLCV data without implementing a complex recursive ADF regression framework. The 'SADF spikes' and 'SADF reversion to baseline' conditions require actual SADF values which would need to be pre-calculated or sourced externally. Substituted hvol_20 as a proxy for volatility regime detection, but this does not capture the true recursive bubble detection mechanism described in the signal.",
+  "translation_notes": "Signal requires SADF statistic computation which is not available in the allowed indicators. Used hvol_20 (historical volatility) as a partial proxy for detecting elevated volatility regimes, and sma_20 crossover to detect uptrend, but these do not replicate the specific bubble-detection capability of SADF. The minimum_duration_bars parameter [THRESHOLD_NEEDED] was not quantified in the source material and cannot be translated without explicit values. Recommend implementing SADF as a custom pre-calculated indicator external to the backtest engine."
+}

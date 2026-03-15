@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_129_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires historical volatility percentile calculation and dynamic thresholds based on distribution analysis. The available indicator hvol_20 (20-period historical volatility) cannot compute exact percentile bands without additional statistical operators not in the allowed set. Original signal specifies [THRESHOLD_NEEDED] placeholders for lower_percentile_threshold, upper_percentile_threshold, and lookback_period_days which require calibration against specific historical distributions. Used hvol_20 as proxy with approximate ranges (20th and 80th percentile equivalents), but this is imprecise.",
+  "translation_notes": "Signal is a volatility mean-reversion strategy requiring percentile-based thresholds. Used hvol_20 as the closest available volatility indicator. Entry conditions approximate extreme percentiles (below 20th or above 80th). Exit targets the median zone (40th-60th percentile range). Minimum 14-day holding period enforced per original rule. Maximum 30-day exit enforces reversion deadline. Direction marked CONTEXT_DEPENDENT as original signal specifies long positions on low vol and short on high vol. Manual calibration of percentile thresholds against actual historical distribution required before live use."
+}

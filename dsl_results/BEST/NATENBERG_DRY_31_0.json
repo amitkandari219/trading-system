@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_31_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a 10-year historical volatility range calculation with dynamic upper/lower percentile bounds. The exact percentile thresholds (percentile_lower_bound and percentile_upper_bound) are marked as [THRESHOLD_NEEDED] in the original parameters and are not specified. hvol_20 provides 20-period historical volatility only, not a 10-year anchored range. A proper implementation would require custom pre-calculated fields for the 10-year historical volatility min/max bounds.",
+  "translation_notes": "Attempted translation uses hvol_20 (20-period historical volatility) with bounds of 0.10-0.30 (10%-30%) as inferred from source text, but this is a simplified proxy. The original signal requires anchoring to a 10-year realized volatility range, which cannot be expressed with the available indicators without pre-computed historical bounds. Position scaling logic ('reduce position if forecast near bounds') cannot be expressed in this rule format."
+}

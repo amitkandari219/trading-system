@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_157_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-instrument implied volatility comparison (IV_A > IV_B), delta measurements across two separate instruments, and ratio spread construction logic. These are OPTIONS-SPECIFIC metrics (implied_volatility, delta, option_greeks) that are NOT available in the provided indicator list, which only contains price-action and technical indicators. Additionally, MEAN_REVERSION is not in ALLOWED_REGIMES list (only TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY are allowed). This signal requires an options-aware backtesting framework with cross-instrument volatility surface data.",
+  "translation_notes": "This is a sophisticated volatility arbitrage strategy from Natenberg's work on option spreads. It cannot be translated to price-action indicators alone. Required inputs: (1) Instrument A implied_volatility, (2) Instrument B implied_volatility, (3) Short leg delta values, (4) Long leg delta values, (5) Relative pricing between instruments. The strategy also requires regime detection for MEAN_REVERSION which is outside the allowed regime set."
+}

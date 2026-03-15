@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires tracking specific day-of-week conditions (Monday closed lower AND Tuesday closed lower, entry on Wednesday open). The allowed indicators do not include day-of-week or multi-bar lookback comparisons with day filtering. The condition 'if Monday and Tuesday were both lower' requires comparing closes across specific calendar days, which cannot be expressed with the available indicators (prev_close only references the immediate previous bar, not 2 bars ago with day-of-week filtering).",
+  "translation_notes": "Signal logic requires: (1) Monday close < Sunday close, (2) Tuesday close < Monday close, (3) Entry at Wednesday open. This requires calendar-aware bar indexing and multi-day lookback comparisons not supported by the indicator set. A simplified approximation using prev_close comparisons is provided above but does not capture the day-of-week requirement."
+}

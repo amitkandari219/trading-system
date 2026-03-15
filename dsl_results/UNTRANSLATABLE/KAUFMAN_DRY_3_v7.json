@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Body momentum indicator is not in the ALLOWED INDICATORS list. The signal requires a custom calculation: Body_momentum = B_up / (B_up + B_down) where B_up = sum of days with (close - open) > 0 and B_down = sum of days with (close - open) < 0 over a 14-day lookback. This requires tracking cumulative counts of up/down body days, which is not available as a pre-computed indicator. The 'body' indicator exists but only provides current bar body, not the momentum ratio calculation needed.",
+  "translation_notes": "The signal requires custom calculation of body momentum over a 14-period lookback window. While individual bar 'body' values are available, the normalized momentum ratio (B_up divided by sum of absolute body values) must be computed by the backtest engine. Entry conditions are directional (long when > 70, short when < 20). Exit conditions use midpoint (50) as reversal signal since AUTHOR_SILENT was specified."
+}

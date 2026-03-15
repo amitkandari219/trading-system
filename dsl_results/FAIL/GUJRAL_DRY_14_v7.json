@@ -1,0 +1,43 @@
+{
+  "signal_id": "GUJRAL_DRY_14",
+  "entry_long": [
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "dc_lower"
+    },
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "sma_200"
+    },
+    {
+      "left": "body",
+      "operator": ">",
+      "right": "prev_body"
+    }
+  ],
+  "entry_short": [],
+  "exit_long": [
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "sma_200"
+    }
+  ],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 5,
+  "direction": "LONG",
+  "target_regime": [
+    "RANGING"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Tight range modeled using Donchian channels (dc_lower for lower boundary break). Rejection candles approximated as candles with smaller bodies relative to previous candle. Strong bullish candles approximated as larger body size. Entry occurs when price closes above sma_200 after breaking below range low, indicating trap reversal. Exit uses reversal signal when price closes back below 200MA.",
+  "validation_issues": [
+    "entry_long: unknown right value 'prev_body'"
+  ]
+}

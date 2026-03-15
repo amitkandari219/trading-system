@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires precise intrabar entry location (within X% of breakout bar range above swing high) and dynamic swing high/resistance detection across multiple timeframes. These require: (1) multi-bar lookback logic to identify swing highs, (2) intrabar execution timing (not available in OHLC indicators), (3) relative position within bar range (partially addressable via range but not with the specificity needed). The '[THRESHOLD_NEEDED]' parameters for entry offset and exit bar count are undefined. The 'consolidation forms' exit trigger requires pattern recognition beyond available indicators.",
+  "translation_notes": "Attempted to capture core breakout logic: price breaking above previous swing high (prev_high) with close confirmation. However, the signal's core value proposition\u2014entry location within the breakout bar and its effect on RR geometry\u2014cannot be expressed using only OHLC and standard technical indicators. A full translation would require custom intrabar logic, swing detection functions, and undefined threshold parameters."
+}

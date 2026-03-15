@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_180",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes an options calendar spread strategy with delta-adjusted position sizing. The core logic requires tracking: (1) delta values of two different options contracts, (2) dynamic quantity adjustments based on those deltas, (3) multi-leg option position management, and (4) tracking proximity of underlying to strike price at near-term expiration. None of these concepts can be expressed using only single-bar price/technical indicators. The backtest engine appears designed for equity/futures price-action rules, not options portfolio construction. Requires options pricing model (Black-Scholes or similar) and contract-level management.",
+  "translation_notes": "Signal MCMILLAN_DRY_180 is fundamentally an options strategy requiring Greeks-based position management. A simplified equity proxy (e.g., 'buy when price near support in ranging market, exit on breakout') could approximate neutral stance but would lose the essential delta-hedging logic. Recommend implementing this as a separate options module rather than forcing into price-action rules engine."
+}

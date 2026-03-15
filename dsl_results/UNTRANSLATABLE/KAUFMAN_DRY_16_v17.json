@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The core condition 'low occurs first during the day' cannot be expressed with available indicators. This requires intraday bar sequence analysis (comparing timestamps of low vs high within the same candle), which is not available. The signal also references 'buying day' as a discrete classification not defined in available indicators. A proxy entry using lower open + lower low in uptrend is provided, but does not capture the exact order-of-extremes logic.",
+  "translation_notes": "Attempted proxy: Used sma_50 crossover to confirm uptrend context, lower open (prev_close) to signal lower opening, and lower low to approximate the pattern. However, this cannot replicate Taylor's strict requirement that the low timestamp must precede the high timestamp within the same trading day, nor does it account for the 'buying day' classification system referenced in the original rule."
+}

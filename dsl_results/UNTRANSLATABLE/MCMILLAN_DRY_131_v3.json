@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_131",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking a user-defined striking price and measuring distance from that strike. The allowed indicators do not include strike price or straddle-specific metrics (straddle premium, strike reference point). 'THRESHOLD_NEEDED' is a parameterized variable (4 points in source text) that requires domain-specific position tracking not available in the indicator set. ATR was used as a proxy for volatility-based distance, but this does not accurately represent the straddle strike distance logic.",
+  "translation_notes": "This is an options strategy (straddle writing) that requires position-level tracking of strike prices and straddle entry prices. The core logic is: exit SHORT when price moves less than THRESHOLD_NEEDED points from strike. Used true_range < 4 as a weak proxy, but the true signal requires custom position state (strike price memory) not supported by standard price/indicator metrics. A proper implementation would need a straddle position object with strike_price and entry_premium fields."
+}

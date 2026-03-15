@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a data preprocessing/filtering rule for tick bar construction, not a trade entry/exit signal. It requires: (1) tick-level volume analysis with custom median lookback across individual ticks (not bar-level indicators), (2) time-of-day filtering relative to market open/close in minutes, and (3) action to exclude outliers from bar counting logic. The allowed indicators operate on candle/bar data, not individual ticks. The signal's purpose is to clean data before bar construction, not to generate trade signals post-construction.",
+  "translation_notes": "LOPEZ_DRY_0_0 describes a data quality filter for auction-driven outliers at market open/close. This belongs in the data ingestion/preprocessing layer (tick aggregation logic) rather than in a backtest engine's signal/rule evaluation layer. To implement: (1) track tick volumes in a rolling window, (2) calculate median tick volume, (3) flag ticks with volume > outlier_multiplier \u00d7 median, (4) exclude flagged ticks from tick bar counting if they occur within auction windows. Recommend implementing in the bar construction module with parameters: outlier_multiplier=2-3, median_lookback_ticks=20-50, auction_window_open_minutes=5-15, auction_window_close_minutes=5-15."
+}

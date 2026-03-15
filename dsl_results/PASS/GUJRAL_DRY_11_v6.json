@@ -1,0 +1,74 @@
+{
+  "signal_id": "GUJRAL_DRY_11",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_11",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires detection of multi-day downtrend (2-3 days) followed by upside gap. Entry conditions capture: (1) gap up opening (open > prev_close), (2) continuation upward (close > prev_close). The 'wait for confirmation' and 'reversal established' are satisfied by requiring price to continue higher. Exit uses reversal logic (close < open indicating trend failure). The specific 2-3 day downtrend duration cannot be precisely encoded without bar indexing, but the upside gap after downtrend is captured. 'Author's standard entry tactics' is abstracted as basic price continuation confirmation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal requires detection of multi-day downtrend (2-3 days) followed by upside gap. Entry conditions capture: (1) gap up opening (open > prev_close), (2) continuation upward (close > prev_close). The 'wait for confirmation' and 'reversal established' are satisfied by requiring price to continue higher. Exit uses reversal logic (close < open indicating trend failure). The specific 2-3 day downtrend duration cannot be precisely encoded without bar indexing, but the upside gap after downtrend is captured. 'Author's standard entry tactics' is abstracted as basic price continuation confirmation."
+  },
+  "source_rule_text": "After a downtrend lasting two or three days, when the market gaps up (opposite direction to the current trend), wait for confirmation and enter a long trade using standard entry tactics after the reversal is established."
+}

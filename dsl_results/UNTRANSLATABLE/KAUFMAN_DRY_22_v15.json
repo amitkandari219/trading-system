@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_22",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of 1-day trading range (high-low) to a reference period's average range, parameterized by [THRESHOLD_NEEDED] and [reference period]. The allowed indicators do not include a direct 'reference period range' or configurable rolling range comparison. While 'range' (high-low) can be calculated, and atr_14 or hvol_20 could proxy volatility, the signal's intent to identify a price shock as a multiple of a dynamic reference period cannot be precisely expressed without custom rolling window aggregation. Additionally, shock_threshold_multiplier and reference_period are marked as author-silent, leaving critical parameters undefined.",
+  "translation_notes": "This is an EVENT/NEUTRAL detection signal for identifying price shocks rather than directional entry/exit. To implement, would need: (1) explicit threshold_multiplier value, (2) explicit reference_period definition (e.g., 20-day), (3) custom indicator for rolling range comparison (current_day_range > threshold_multiplier * reference_period_avg_range). Consider using atr_14 or hvol_20 as volatility proxies if parameters are clarified."
+}

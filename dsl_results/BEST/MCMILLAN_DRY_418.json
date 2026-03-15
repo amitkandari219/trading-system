@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_418",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of percent deviation of implied volatilities (IV) across multiple options strikes. This requires: (1) access to options chain data with individual IV values per strike, (2) ability to calculate statistical dispersion (percent deviation/coefficient of variation) across those IV values. The allowed indicators do not include individual option IV data or a percent_deviation_iv indicator. While india_vix and hvol_20 measure volatility, they are single aggregate values, not option-chain-level IV deviation metrics required by this signal.",
+  "translation_notes": "This is an options-specific vol arbitrage signal that requires options market microstructure data (IV skew/smile analysis) rather than price-based technical indicators. Implementation would require custom options analytics outside the standard indicator set."
+}

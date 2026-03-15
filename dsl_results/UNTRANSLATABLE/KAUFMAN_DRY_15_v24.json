@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of intraday reversal patterns (Tuesday reverses/does not reverse) and conditional probabilities for future days (Thursday, Friday behavior). This requires: (1) explicit day-of-week filtering not available in indicators, (2) detection of price reversals within specific bar context not expressible with allowed operators, (3) probabilistic conditional logic (IF Tuesday reverses THEN Thursday reverses with X% probability) which cannot be encoded as deterministic entry/exit rules. The signal is a statistical pattern observation rather than a mechanistic trading rule.",
+  "translation_notes": "Source material (Table 15.9) shows probability thresholds (55% mentioned) but incomplete data. Signal structure requires: (a) day-of-week context (Tuesday, Thursday, Friday), (b) reversal detection methodology undefined, (c) probabilistic outcomes that exceed backtest engine capability for deterministic rule execution. Recommend: Define reversal as specific price action (e.g., close > open after prior close < open), provide complete threshold table, specify entry/exit as absolute price levels or indicator crossovers, and clarify single-instrument focus."
+}

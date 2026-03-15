@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires smoothed moving average of shadow sequences and comparison of MA trends over time. The allowed indicators list does not include a pre-computed 'shadow_ma' or derivative trend indicator. The moving_average_period is marked AUTHOR_SILENT, making it impossible to specify exact MA parameters. Shadow trending logic (whether upper/lower shadows are rising or falling relative to their own MA) cannot be expressed with single-bar conditions using allowed operators.",
+  "translation_notes": "Attempted to use upper_wick and lower_wick as proxies for upper and lower shadows. However, the core logic requires: (1) calculating moving averages of shadow sequences separately, (2) comparing current shadow sizes to their respective MAs, and (3) determining directional trend of shadows over time. This requires multi-bar state or custom indicators not available in the allowed set. A proper implementation would need either a custom 'shadow_trend' indicator or explicit MA period specification to smooth shadow sequences."
+}

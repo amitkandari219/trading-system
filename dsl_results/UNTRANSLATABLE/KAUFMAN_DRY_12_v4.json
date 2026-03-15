@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Sibbett's Demand Index requires calculation of upside volume vs downside volume at the daily level. The allowed indicators do not include upside_volume, downside_volume, or a pre-calculated Demand Index. The signal requires volume decomposition by price direction (up/down days) which is not available in the allowed indicator set. Only vol_ratio_20 and hvol_20 are available, neither of which implement this specific calculation.",
+  "translation_notes": "Signal ID KAUFMAN_DRY_12 describes a custom volume-based oscillator (Sibbett's Demand Index) that requires: (1) identification of up vs down days, (2) summation of volume on up days over 10-period lookback, (3) summation of volume on down days over same period, (4) ratio calculation. Without upside_volume and downside_volume primitives or a pre-computed Demand Index indicator, this cannot be expressed using allowed indicators. The signal is direction-agnostic (CONTEXT_DEPENDENT) and lacks defined thresholds for entry/exit, further limiting implementation."
+}

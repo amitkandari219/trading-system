@@ -1,0 +1,128 @@
+{
+  "signal_id": "GRIMES_DRY_3_2",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_3_2",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Translated 'higher highs and higher lows' (uptrend) and 'lower lows and lower highs' (downtrend) into comparable bar logic. Used ADX_14 > 25 as proxy for 'momentum shift from prior regime' to confirm trend strength. Pattern violation (break of prior swing) serves as exit. Original thresholds marked [THRESHOLD_NEEDED] could not be precisely quantified from source text, so conservative defaults applied (ADX confirmation, 1-bar swing breaks). Entry conditions use price_pos comparisons relative to previous bars to detect directional persistence."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Translated 'higher highs and higher lows' (uptrend) and 'lower lows and lower highs' (downtrend) into comparable bar logic. Used ADX_14 > 25 as proxy for 'momentum shift from prior regime' to confirm trend strength. Pattern violation (break of prior swing) serves as exit. Original thresholds marked [THRESHOLD_NEEDED] could not be precisely quantified from source text, so conservative defaults applied (ADX confirmation, 1-bar swing breaks). Entry conditions use price_pos comparisons relative to previous bars to detect directional persistence."
+  },
+  "source_rule_text": "A trader should identify and enter trending markets by recognizing persistent directional price movement (higher highs and higher lows in uptrends, or lower lows and lower highs in downtrends) across the chart structure, selecting entry timing based on their risk tolerance and trend maturity preference."
+}

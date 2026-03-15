@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking multi-bar sequence (breakout \u2192 pullback \u2192 retest) with relative volume ratios and time-based state management. The rule demands comparing current bar volume to a specific prior breakout bar's volume (not just prev_volume), tracking pullback depth as percentage, and counting bars between events. These temporal dependencies and proportional comparisons across non-adjacent bars cannot be expressed with allowed indicators and operators. Specifically: (1) 'pullback_threshold_percent' requires measuring retracement depth dynamically, (2) 'volume_confirmation_ratio' requires ratio of current vol to initial breakout vol (not previous bar), (3) 'time_between_test_bars' requires counting and conditional logic across bar sequences.",
+  "translation_notes": "This is a multi-stage pattern recognition rule requiring state tracking across multiple bars and proportional comparisons. The core logic (break \u2192 pullback \u2192 retest with volume confirmation) is a sophisticated order-flow pattern that exceeds the scope of a simple 3-condition rule set. A proper implementation would require a custom indicator or multi-step state machine in the backtest engine."
+}

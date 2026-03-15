@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires custom indicators not in the allowed list: (1) tick imbalance magnitude (2v* - E_y[v_t]), (2) expected tick imbalance E_p[T], and (3) exponentially-weighted bar-level aggregation logic. These are specialized microstructure metrics requiring custom bar construction and cannot be expressed using only standard price/volume/momentum indicators. The signal also requires dynamic bar size adjustment based on imbalance detection, which is a structural feature of the data feed, not a trading condition that can be evaluated on fixed OHLCV bars.",
+  "translation_notes": "LOPEZ_DRY_0_0 describes an information-imbalanced bar detection system from advanced market microstructure analysis. It segments bars dynamically when tick imbalance exceeds its exponentially-weighted moving expectation. This requires: (a) custom tick-level data aggregation, (b) computation of 2v* (signed volume imbalance) and its conditional expectation, (c) exponential smoothing at the bar level. Standard backtesting engines operating on fixed OHLCV bars cannot implement this without custom indicator development. Parameters [THRESHOLD_NEEDED] indicate the signal specification is incomplete and requires empirical calibration."
+}

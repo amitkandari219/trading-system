@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires identification of proximity to multiple reference levels (20MA, 50MA, 200MA, floor pivot levels, previous day's close, swing turning points, prior highs/lows) AND confirmation of reversal patterns/candles at those locations. The 'location proximity' concept and 'reversal pattern recognition' require either: (1) a proximity/distance operator not in the allowed set, (2) pattern detection logic (rejection candles, giant trending candles) that cannot be expressed with allowed indicators/operators, or (3) swing point/turning point detection which is not available. The rule also emphasizes 'location priority over pattern' which requires conditional logic not expressible in the structured format.",
+  "translation_notes": "This signal is fundamentally about multi-level proximity detection and pattern confirmation at those levels. While we can express individual MA comparisons (sma_20, sma_50, sma_200) and pivot/prior level comparisons (pivot, s1, s2, r1, r2, prev_close, prev_high, prev_low), we cannot: (1) express 'proximity within N pips' without a distance operator, (2) detect reversal/rejection candle patterns without pattern indicators, (3) identify swing turning points without swing detection, (4) express the logical priority that location confirmation must precede pattern confirmation. A proper implementation would require custom indicators for proximity detection and candle pattern recognition."
+}

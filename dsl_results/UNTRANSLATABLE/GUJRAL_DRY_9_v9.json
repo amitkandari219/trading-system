@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of confluence between daily pivot S1 and weekly support pivot across multiple timeframes. Available pivot indicator (pivot, r1, s1, r2, s2) does not distinguish timeframe context or support weekly pivots separately. Cannot algorithmically detect 'close to' proximity without explicit distance parameter (marked AUTHOR_SILENT). Multi-timeframe pivot alignment detection is not expressible with single-timeframe indicators.",
+  "translation_notes": "The core logic\u2014retesting a support level after breakdown signals larger correction, successful retest signals larger move upward\u2014can be approximated as: enter long when price approaches/tests S1 (entry condition simplified to price at or below S1), exit when price closes back above S1 (signaling retest or breakdown). However, the critical multi-timeframe confluence detection (daily S1 aligned with weekly support) cannot be reliably expressed without explicit weekly pivot data and proximity thresholds, making this signal fundamentally untranslatable to the available indicator set."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_77",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a derivatives strategy (call spread) with strike prices and expiration dates, which are option-specific parameters not available in the allowed indicators list. The entry conditions require establishing a specific options position (sell call at lower strike, buy call at higher strike) with coordinated strikes and expirations. Exit conditions reference absolute strike price levels which cannot be expressed using only price action and technical indicators without external strike price parameters. A backtest engine operating on spot/futures prices alone cannot execute multi-leg options strategies.",
+  "translation_notes": "Signal is a theoretical options payoff diagram description rather than a price action trading rule. Requires: (1) options chain data with strike prices and implied volatility, (2) position management for multi-leg spreads, (3) explicit strike price parameters as inputs. Standard equity backtesting indicators cannot express 'close >= higher_strike' without pre-defined strike values external to the indicator set."
+}

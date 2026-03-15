@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_355",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility (IV) as a direct indicator, which is not available in the allowed indicator set. The signal logic is: increase in IV is beneficial (entry condition) / decrease in IV is detrimental (exit condition) for a backspread strategy. Available volatility indicators (hvol_20, india_vix) measure historical volatility or market-wide volatility, not the option-implied volatility specific to the backspread position. Cannot accurately translate without direct IV access.",
+  "translation_notes": "MCMILLAN_DRY_355 describes a volatility regime dependency for backspread strategies. While india_vix could serve as a market volatility proxy, it does not capture the implied volatility of the specific options in the backspread structure. A proper implementation would require IV surface data or ticker-specific IV levels."
+}

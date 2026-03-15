@@ -1,0 +1,72 @@
+{
+  "signal_id": "MCMILLAN_DRY_134",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_134",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "60"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "70"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "77"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Strangle write strategy: Entry when price is between lower strike (60) and upper strike (70). Exit condition uses upside breakeven (77 = 70 call strike + 7 points premium). The signal specifies holding to expiration where profit occurs if price remains between strikes. Actual strike prices (70 call, 60 put) and premiums (4 and 3 = 7 total) are author-silent, so conditions use the concrete example values from the source text. Exit at upside breakeven represents a defined risk management point; downside exit would trigger at 53 breakeven (60 - 7) but configured as primary exit for simplicity."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": 60.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 70.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": 77.0
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Strangle write strategy: Entry when price is between lower strike (60) and upper strike (70). Exit condition uses upside breakeven (77 = 70 call strike + 7 points premium). The signal specifies holding to expiration where profit occurs if price remains between strikes. Actual strike prices (70 call, 60 put) and premiums (4 and 3 = 7 total) are author-silent, so conditions use the concrete example values from the source text. Exit at upside breakeven represents a defined risk management point; downside exit would trigger at 53 breakeven (60 - 7) but configured as primary exit for simplicity."
+  },
+  "source_rule_text": "Sell a strangle (sell out-of-the-money call and out-of-the-money put) when underlying is between the two strike prices to profit from time decay if price stays between strikes at expiration."
+}

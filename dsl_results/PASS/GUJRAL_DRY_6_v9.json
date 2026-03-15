@@ -1,0 +1,70 @@
+{
+  "signal_id": "GUJRAL_DRY_6",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_6",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "range"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Translated 'long top shadow' to upper_wick > body, indicating price rejection. Entry requires a significant top shadow relative to total candle range. Exit condition uses a reversal signal (close above previous high) since AUTHOR_SILENT was specified. The signal mentions red body increases bearishness but does not provide a quantifiable threshold, so the core mechanic (top shadow rejection) drives the short entry. Parameters like 'larger red body' and 'Doji with long top tail' are captured by the relative proportions of upper_wick and body measurements."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": "range"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Translated 'long top shadow' to upper_wick > body, indicating price rejection. Entry requires a significant top shadow relative to total candle range. Exit condition uses a reversal signal (close above previous high) since AUTHOR_SILENT was specified. The signal mentions red body increases bearishness but does not provide a quantifiable threshold, so the core mechanic (top shadow rejection) drives the short entry. Parameters like 'larger red body' and 'Doji with long top tail' are captured by the relative proportions of upper_wick and body measurements."
+  },
+  "source_rule_text": "A candle with a long top shadow represents rejection of higher prices and signals bearishness, increasing chances of the next candle moving downward."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_44_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires dividend yield data, ex-dividend dates, and option position state tracking (long calls vs. short puts vs. stock ownership). None of these are available in the allowed indicators list. The signal is fundamentally an options portfolio rebalancing rule based on dividend announcements and term structure changes, not a price/technical indicator-based entry/exit system. Required external data: dividend_yield, ex_dividend_date, current_option_position_type, dividend_yield_change_bps. The backtest engine would need dedicated dividend data feeds and options position management logic to implement this rule.",
+  "translation_notes": "NATENBERG_DRY_44_0 is a qualitative portfolio management guideline for options traders adjusting hedge ratios around dividend events. It cannot be expressed as a technical trading rule using only price, volume, and momentum indicators. Implementation requires: (1) dividend calendar data integration, (2) options Greeks calculation (vega, theta sensitivity to dividend yield), (3) position state tracking, and (4) ex-dividend date proximity logic. This is a regime/context rule, not a signal."
+}

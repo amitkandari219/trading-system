@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_156_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit implied volatility (IV) metrics, percentile rank calculations, and IV deviation measured in standard deviations. The allowed indicator set contains only historical volatility (hvol_20), which is backward-looking realized volatility, not forward-looking implied volatility. IV percentile rank and IV standard deviation threshold cannot be computed from available indicators. Used hvol_20 as closest proxy but this is a material semantic difference from the original signal intent.",
+  "translation_notes": "Substituted hvol_20 for implied volatility as best available alternative. Thresholds are approximate and require calibration. Entry conditions use price_pos_20 as volatility regime confirmation. Original signal requires IV-specific inputs (iv_deviation_threshold_stddev, iv_percentile_threshold) that cannot be replicated with provided indicators."
+}

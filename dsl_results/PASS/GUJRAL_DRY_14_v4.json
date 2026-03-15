@@ -1,0 +1,106 @@
+{
+  "signal_id": "GUJRAL_DRY_14",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_14",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_lower"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal captures failed breakouts/breakdowns using Donchian channels to define range boundaries (dc_upper/dc_lower). Entry conditions detect price breaking past boundary then reversing: LONG when price breaks above upper boundary then pulls back but still above prior close (trapped shorts covering); SHORT when price breaks below lower boundary then rebounds but still below prior close (trapped longs covering). Exit conditions are simple reversals of the reversal move. Magnitude_of_move and specific boundary detection method left to backtest engine discretion per AUTHOR_SILENT parameters."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal captures failed breakouts/breakdowns using Donchian channels to define range boundaries (dc_upper/dc_lower). Entry conditions detect price breaking past boundary then reversing: LONG when price breaks above upper boundary then pulls back but still above prior close (trapped shorts covering); SHORT when price breaks below lower boundary then rebounds but still below prior close (trapped longs covering). Exit conditions are simple reversals of the reversal move. Magnitude_of_move and specific boundary detection method left to backtest engine discretion per AUTHOR_SILENT parameters."
+  },
+  "source_rule_text": "Trade the failed range breakouts and breakdowns where price reverses sharply after breaking a boundary, as trapped traders covering positions create sharp moves."
+}

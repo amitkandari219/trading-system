@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) dynamic support/resistance zone identification with parameterized \u00b1[THRESHOLD]% band\u2014no indicator directly identifies SR levels; (2) 'pause behavior' detection (price closure consistency within zone for N bars)\u2014requires multi-bar state tracking not expressible in single-bar condition syntax; (3) secondary confirmation signal (divergence detection)\u2014divergence requires multi-bar comparison logic and MACD/RSI trend analysis beyond basic operator constraints; (4) parameterized thresholds ([THRESHOLD_NEEDED]) are placeholders requiring domain-specific SR detection algorithm.",
+  "translation_notes": "Attempted pragmatic translation using price_pos_20 (Donchian 20-bar position) as proxy for zone proximity and dc_upper/dc_lower as breakout boundaries. However, the core signal philosophy\u2014treating SR as probabilistic zones with pause confirmation and secondary divergence signals\u2014requires algorithmic SR detection and multi-bar state logic incompatible with atomic condition rules. Recommend implementing custom SR detector upstream or hybrid rule engine."
+}

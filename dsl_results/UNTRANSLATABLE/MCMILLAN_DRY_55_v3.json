@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_55",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires tracking multi-leg options positions (short stock + long calls with quantity ratios) and monitoring relative profitability thresholds ('stock rises far enough' or 'falls far enough'). The backtest engine cannot express: (1) position-level constraints like call_quantity_ratio > 1, (2) strike price relationships, (3) option Greeks or implied volatility, (4) multi-leg P&L triggers, or (5) options expiration monitoring. The signal is fundamentally an options strategy requiring options-specific parameters and calculations beyond price/volume/volatility indicators.",
+  "translation_notes": "MCMILLAN_DRY_55 describes a Reverse Hedge (Simulated Straddle) \u2014 an advanced options strategy requiring options contract management and multi-leg position tracking. Standard equity backtest engines cannot model this without options pricing modules, strike specifications, and position-level logic unavailable in the allowed indicator set."
+}

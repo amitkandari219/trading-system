@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_108_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific metrics (synthetic spread pricing, implied volatility rank, credit/debit margins, strike spread notionals) which are not available in the allowed indicator set. The signal is fundamentally designed for options trading with multi-leg spread mechanics (box, jelly roll, backspread) that cannot be expressed using only futures price/volume indicators. Thresholds for margin percentage, IV rank percentile, and volume percentile are parameterized but cannot be operationalized without options-specific data feeds.",
+  "translation_notes": "Attempted to approximate using vol_ratio_20 for volume threshold and hvol_20 for IV rank proxy, but this is a significant degradation of the original signal intent. The signal requires dedicated options market data (implied volatility, option spreads, Greeks) which fall outside the scope of this futures-based indicator library. CONTEXT_DEPENDENT direction preserved as specified. Recommend implementing with an options-aware backtesting platform."
+}

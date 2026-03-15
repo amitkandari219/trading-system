@@ -1,0 +1,70 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_20",
+    "entry_long": [
+      {
+        "left": "sma_10",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "stoch_k_5",
+        "operator": ">",
+        "right": "50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "stoch_k_5",
+        "operator": "<",
+        "right": "50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used stoch_k_5 for 5-day stochastic. Exit condition inferred as reversal (stochastic crosses below 50) per AUTHOR_SILENT rule."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_10",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "stoch_k_5",
+        "op": ">",
+        "value": 50.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "stoch_k_5",
+        "op": "<",
+        "value": 50.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Used stoch_k_5 for 5-day stochastic. Exit condition inferred as reversal (stochastic crosses below 50) per AUTHOR_SILENT rule."
+  },
+  "source_rule_text": "Buy when a 10-day moving average is less than yesterday's close AND a 5-day stochastic is greater than 50."
+}

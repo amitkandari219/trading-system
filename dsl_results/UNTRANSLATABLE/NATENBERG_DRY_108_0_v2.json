@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_108_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires calculation of fair roll value based on cost-of-carry formula (S \u00d7 (t/12) \u00d7 r), which involves: (1) underlying price S, (2) time period in months, and (3) interest rate r. The allowed indicators do not include direct access to: underlying asset price, contract expiration dates, interest rates, or synthetic spread pricing. Additionally, the signal requires comparing actual roll prices against calculated fair values with dynamic thresholds\u2014this requires multi-leg derivative pricing that is outside the scope of single-instrument OHLCV technical indicators.",
+  "translation_notes": "NATENBERG_DRY_108_0 is a calendar roll valuation strategy from options theory. It cannot be meaningfully translated into a technical indicator-based rule without: (1) explicit interest rate data input, (2) contract-specific expiration metadata, (3) multi-leg spread pricing logic, and (4) cost-of-carry calculations. This is a fundamental derivatives pricing model, not a price-action technical pattern. Recommend implementing as a custom module in backtest engine with dedicated calendar spread analytics rather than as a technical rule."
+}

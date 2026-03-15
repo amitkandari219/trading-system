@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_97_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific metrics (implied volatility, delta, at-the-money proximity, fair value estimates) that cannot be expressed using only the allowed equity/futures indicators. The core logic of 'trade ATM option first based on IV relative to fair value' and 'delta drift from ATM' requires option Greeks and IV surface data not available in the allowed indicator set.",
+  "translation_notes": "Attempted proxy using hvol_20 (realized volatility) and india_vix as HIGH_VOL regime detectors, but this does NOT capture the essential option-specific logic: (1) identifying ATM option vs wings, (2) measuring implied vs fair-value volatility, (3) monitoring delta drift. The execution_sequence parameter 'trade_atm_first_then_wings' is an order construction rule, not a price-action condition. This signal is fundamentally an options strategy framework and cannot be accurately translated to equity price-action rules."
+}

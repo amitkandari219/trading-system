@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_157_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit IV (implied volatility) values, delta-weighted spread construction logic, and option-specific parameters (delta ranges, bid-ask spreads on option legs) which are not available in the provided indicator set. The engine supports spot price indicators and volatility proxies (hvol_20, india_vix) but lacks: (1) direct IV data, (2) delta calculations, (3) options chain data, (4) spread-leg pairing logic. A full implementation requires options market data and IV surface modeling outside this backtester's scope.",
+  "translation_notes": "Attempted proxy mapping: hvol_20 as realized volatility forecast component, india_vix as market IV proxy, bb_pct_b for relative valuation positioning. However, this loses the core signal intent: delta-weighted spread construction requires actual option deltas and IV term structure, neither of which can be derived from spot price indicators alone. Recommend: (1) upgrade data source to include options chains, or (2) reclassify as non-backtestable derivative strategy."
+}

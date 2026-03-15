@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Point-and-figure chart logic (Os and Xs boxes, pullback detection, upswing confirmation, lowest box of Os tracking, fourth box offset calculation) cannot be expressed using the allowed indicators. This signal requires explicit point-and-figure data structures and box tracking that are not available in the standard OHLCV indicator set.",
+  "translation_notes": "Signal requires point-and-figure charting with explicit box counting and Os/Xs pattern recognition. The entry condition depends on detecting a pullback (Os) followed by an upswing (Xs transition) and placing an order 4 boxes above the lowest Os box. The stop-loss is defined as the new trend reversal point (4 boxes of risk). Without access to point-and-figure specific indicators, this cannot be accurately translated. A generic trend-following approximation (close > prev_close with exit on close < prev_low) is provided but does NOT capture the original signal's box-based logic."
+}

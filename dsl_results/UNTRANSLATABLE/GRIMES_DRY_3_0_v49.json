@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking relative magnitude and duration of individual upswings vs downswings across multiple cycles, plus comparison of current vs prior upswing metrics. This requires custom swing detection logic not available in standard indicators. The signal needs: (1) identification of swing highs/lows, (2) measurement of time duration between swings, (3) comparison of current swing magnitude to prior swing magnitude. ATR approximates volatility magnitude but cannot isolate individual upswing vs downswing duration or compare across swing cycles. No allowed indicator can measure time length of individual upswings or compare upswing duration across periods.",
+  "translation_notes": "Attempted approximation using ATR expansion/contraction as proxy for upswing/downswing magnitude changes, but this loses the critical time-duration component and swing-cycle comparison logic that are core to the signal. Parameters [THRESHOLD_NEEDED] and lookback_periods cannot be populated without domain knowledge of optimal values for this specific pattern."
+}

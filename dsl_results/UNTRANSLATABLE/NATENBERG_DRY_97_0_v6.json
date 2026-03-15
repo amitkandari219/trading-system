@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_97_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific parameters (delta proximity to 50, strike selection based on delta rather than spot price, IV percentile thresholds, position sizing constraints) that cannot be expressed using equity price-action indicators. IV percentile levels and delta thresholds are not available in the allowed indicator set. This is an options trading rule that requires derivative-specific market data and Greeks not present in equity backtesting frameworks.",
+  "translation_notes": "Attempted proxy: Used india_vix as a volatility measure (low <30 for buy signal, high >70 for sell signal, reversion to ~50 as exit). However, this is a crude approximation. The original signal's core logic\u2014buying ATM options when IV is low and selling when IV is high, with strike selection based on delta proximity\u2014cannot be properly translated to an equity-based backtest engine. The rule requires: (1) implied volatility percentile rankings, (2) delta calculations on specific strikes, (3) IV reversion to historical median measurement, and (4) profit/loss targets as separate parameters. Recommend implementing this signal in a dedicated options backtester with full Greeks and IV term structure support."
+}

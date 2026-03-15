@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_21",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a custom 'moving average percentage band' indicator (MA \u00b1 percentage offset) that is not in the allowed indicator list. The allowed list contains standard moving averages (sma, ema) and Bollinger Bands, but not a parameterized percentage band around an arbitrary moving average. To implement this signal, a custom band indicator would need to be added to the backtest engine.",
+  "translation_notes": "Signal uses a non-standard 'moving average percentage band' construct. Attempted approximation using simple moving average crossovers (sma_20 as a representative mid-point) for entry/exit, but this does not capture the full band-penetration logic. The parameters (moving_average_period: 10-50 days, percentage_band: 1-4%) cannot be accurately expressed with the available indicators. Consider using Bollinger Bands (bb_upper/bb_lower) as an alternative if the source meant standard deviation bands instead."
+}

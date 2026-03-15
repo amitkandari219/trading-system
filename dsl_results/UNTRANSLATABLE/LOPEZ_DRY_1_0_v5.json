@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a preprocessing/feature engineering methodology for fractional differentiation (d \u2208 [0,1]) and weight-loss tolerance (t \u2208 [0,1]) applied to time series data. It does not specify actionable trading entry/exit conditions based on price, indicators, or market regimes. The rule addresses data transformation and stationarity testing rather than trade signals. Requires: (1) custom fractional differentiation calculation not available in allowed indicators, (2) cumulative weight-loss function A_l not in indicator list, (3) lag identification logic (l*) not expressible with allowed operators. This is a methodological framework, not a conditional trade rule.",
+  "translation_notes": "LOPEZ_DRY_1_0 is a meta-rule for time series preprocessing from machine learning in finance literature. It should be applied upstream of signal generation as a data preparation step, not as a real-time trading condition. To operationalize: implement fractional differentiation as a preprocessing module with configurable d and t parameters, then apply standard trend/reversal signals to the resulting differentiated series."
+}

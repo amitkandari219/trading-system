@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_191_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires volatility skew analysis across multiple strike prices and implied volatility (IV) curve interpolation. The backtest engine indicators provided do not include: (1) implied volatility data by strike, (2) volatility skew metrics, (3) IV interpolation/smoothness measures, (4) Greeks (vega), or (5) options spread construction logic. The signal is fundamentally an options volatility structure trade that cannot be expressed using only equity price/volume indicators (close, sma, rsi, atr, etc.). Implementation requires access to options pricing data and IV term structure analysis.",
+  "translation_notes": "Signal NATENBERG_DRY_191_0 is a sophisticated volatility skew exploitation strategy from Natenberg's options trading framework. It requires: (1) calculation of IV deviations from smooth interpolation across strikes, (2) vega-weighted position sizing, (3) butterfly/spread construction at specific strike levels, and (4) convergence-based exit logic. None of these can be expressed with the available equity market indicators. To implement this signal, the backtest engine would need to be extended with: options_iv_by_strike, iv_skew_deviation, iv_interpolation_smoothness, position_vega, and spread_construction modules."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking absolute swing filter threshold (20 big points) and multi-bar swing identification logic that cannot be expressed with single-bar indicator comparisons. The swing filter mechanism requires state tracking and pattern recognition across multiple bars to identify swings relative to an initialized baseline\u2014functionality not available in the allowed indicator set.",
+  "translation_notes": "Attempted proxies use prev_high/prev_low crossovers to simulate swing detection, but this does not capture the true swing filter logic described in the source material which requires: (1) initialization with Day 1 high/low, (2) threshold comparison against 20 big points, and (3) multi-swing pattern tracking. A proper implementation would need custom swing-tracking logic outside this rule engine's scope."
+}

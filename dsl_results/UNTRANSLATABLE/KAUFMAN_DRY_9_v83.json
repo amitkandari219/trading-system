@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires monitoring 'relative movement' and 'slope divergence' between price slope and momentum slope. The allowed indicator list does not include slope calculations, derivative indicators, or divergence measures. The signal specifically calls for detecting when slopes are 'no longer constant or moving apart', which requires slope comparison logic not available in the allowed indicators. Additionally, 'double smoothing of 20-20-20' (momentum smoothed twice with 20-day exponentials) is not a pre-calculated indicator in the allowed list and would require custom calculation beyond standard indicators.",
+  "translation_notes": "This is a slope-divergence/convergence strategy that requires calculating price slope and momentum slope, then comparing their relative movements. The entry condition is triggered when these slopes transition from being constant/divergent to converging. This type of technical analysis requires derivative-based indicators not present in the allowed set. To implement this signal would require: (1) a slope or rate-of-change indicator, (2) a momentum indicator with custom double-smoothing, and (3) a divergence comparison operator."
+}

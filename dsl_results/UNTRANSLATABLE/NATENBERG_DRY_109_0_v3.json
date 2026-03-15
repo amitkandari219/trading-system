@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_109_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multi-leg options pricing calculations (call spread convexity violations, butterfly spreads, no-arbitrage bound detection) that cannot be expressed using only single-instrument price and technical indicators. The core logic involves: (1) calculating spreads across 3+ strikes simultaneously, (2) detecting second-order derivative violations (convexity breaches), (3) comparing theoretical bounds to market prices, and (4) assessing carrying costs and dividend adjustments. None of these operations are available in the allowed indicator set, which is limited to single-instrument OHLCV and standard technical analysis. This is fundamentally an options arbitrage detection strategy requiring live options chain data and multi-leg pricing logic.",
+  "translation_notes": "NATENBERG_DRY_109_0 is a volatility arbitrage / options spread exploitation rule from Natenberg's work on option pricing. It cannot be mechanically translated to a single-instrument backtest engine without: (a) access to options prices across multiple strikes, (b) ability to compute call spreads and convexity metrics in real-time, (c) transaction cost models specific to options. The signal is valid for live options trading but not for equity index backtest engines."
+}

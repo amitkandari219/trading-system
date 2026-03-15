@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_33_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific calculations (theoretical option pricing via Black-Scholes/binomial models, implied volatility extraction, volatility forecast comparison) that are not available in the allowed indicator set. The signal depends on: (1) calculated theoretical option value based on volatility assumptions, (2) comparison of market price to this theoretical value with unspecified thresholds, (3) implied volatility curve analysis across strikes/expirations, and (4) bid-ask spread verification. None of these can be constructed from the available price/volume/technical indicators which are designed for equity/futures price action analysis, not derivative pricing models.",
+  "translation_notes": "NATENBERG_DRY_33_0 is a volatility estimation and mispricing detection rule from Natenberg's options trading framework. It requires building option pricing models and extracting implied volatility surfaces\u2014capabilities outside the scope of a price-action backtest engine. The rule is context-dependent because action depends on identifying whether divergence is due to volatility forecast error or market inefficiency, requiring qualitative judgment. To implement this signal, the backtest engine would need to support: option pricing functions, volatility term structure analysis, and bid-ask spread data for multiple strikes/expirations."
+}

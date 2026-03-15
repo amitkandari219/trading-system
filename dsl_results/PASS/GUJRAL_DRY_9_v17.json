@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_9",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_9",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "r1"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "r1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry conditions: (1) Stock opens higher than previous close (upward gap/open), (2) High does not break above R1 resistance pivot level, (3) Close below open indicates resumption of downtrend (bearish reversal). Exit when price breaks above R1, confirming downtrend has ended. Downtrend context is implied by target_regime TRENDING_DOWN rather than explicit ADX condition since ADX not mentioned in original signal."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "r1"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "r1"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry conditions: (1) Stock opens higher than previous close (upward gap/open), (2) High does not break above R1 resistance pivot level, (3) Close below open indicates resumption of downtrend (bearish reversal). Exit when price breaks above R1, confirming downtrend has ended. Downtrend context is implied by target_regime TRENDING_DOWN rather than explicit ADX condition since ADX not mentioned in original signal."
+  },
+  "source_rule_text": "In a downtrend, keep a stock in the sell list if it opens higher but does not break above R1 (Resistance 1), indicating resumption of the downtrend."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_64_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'directional bias conviction score' and 'IV percentile' which are not in the allowed indicators list. Conviction score is a composite metric not directly available, and implied volatility percentile requires options market data beyond the allowed price/technical indicators.",
+  "translation_notes": "Interpreted 'forecasted directional move >= threshold \u00d7 ATR' as close movement relative to ATR. Used hvol_20 as proxy for volatility regime (excluded RANGING by omitting it from target_regime). Avoided low-volatility/ranging environments by requiring high historical volatility. Entry conditions use directional bias (LONG vs SHORT) with volatility confirmation. Exit uses simple profit target approach as specific percentages were not provided in source material. Parameters marked as [THRESHOLD_NEEDED] cannot be set without additional specification."
+}

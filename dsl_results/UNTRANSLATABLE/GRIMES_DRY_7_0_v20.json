@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'significant new extreme' and 'prior trend' direction, which need multi-bar lookback pattern recognition and relative extrema detection not directly expressible with allowed operators. Parameters like lookback_period, percentile_threshold, and consolidation_bars_minimum are marked [THRESHOLD_NEEDED] in the original signal. The core logic of comparing current MACD extreme to historical range over a dynamic lookback period cannot be implemented with simple cross/comparison operators.",
+  "translation_notes": "Attempted partial translation using MACD crossover and histogram positivity as proxies for momentum extreme, and price breakout above previous swing high. However, the signal's intent to identify 'significant new extremes relative to prior trend' requires dynamic percentile/threshold calculations that exceed the schema's capabilities. The exit condition to 'monitor for break above consolidation zone' also requires zone detection logic not available. Recommend: (1) Define explicit threshold values for percentile_threshold and macd_histogram_minimum, (2) Specify lookback_period in bars, (3) Clarify consolidation detection method."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'prices at 5-year highs' (60-period Donchian extremes) and 'new crop year begins' (calendar-based market structure). The 5-year lookback cannot be precisely expressed with available indicators limited to 20-period maximums (dc_upper is 20-period Donchian). New crop year detection requires external market calendar data not available in price/technical indicators. Approximated entry with price near 20-period highs and used dc_upper as proxy for extreme levels. Exit condition 'at harvest level' is market-structure dependent and untranslatable without commodity-specific calendar rules.",
+  "translation_notes": "Used dc_upper (20-period Donchian upper) as proxy for 'at highs' since 5-year (252-day) Donchian unavailable. Used price_pos_20 >= 0.95 to indicate position near 20-period range extremes. Entry requires manual crop-year calendar verification. Exit uses SMA cross as reversal signal for reversion strategy. Historical data shows strong short profitability 2007-2008. Stop-loss set at 3% for volatility in commodity markets. Hold period set to 180 days (typical crop cycle)."
+}

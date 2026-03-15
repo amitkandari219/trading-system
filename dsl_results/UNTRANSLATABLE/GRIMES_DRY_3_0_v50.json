@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires swing-by-swing analysis: tracking successive upswing price ranges, comparing consecutive upswing durations, and measuring downswing magnitudes relative to prior upswings. This requires swing detection (identifying local highs/lows) and multi-bar comparison logic not expressible with point-in-time indicator values. Thresholds for downswing excess are also undefined [THRESHOLD_NEEDED]. ATR and ADX used as proxies for trend weakness detection, but cannot capture the specific swing pattern logic.",
+  "translation_notes": "The original signal is a swing-structure pattern recognition rule that cannot be directly translated to bar-by-bar technical indicators. The core logic requires: (1) swing detection and labeling, (2) measurement of swing ranges across multiple prior swings, (3) duration comparison across bars. Used ADX > 25 as a proxy for established trend, and SMA crossover as a surrogate exit condition for trend failure. A proper implementation would require custom swing-tracking logic external to standard indicator evaluation."
+}

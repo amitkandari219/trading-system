@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires day-of-week pattern detection (Monday vs Tuesday vs Thursday) which is not expressible with the allowed indicators. The XO/XOXO pattern matching across specific weekdays requires temporal/calendar logic not available in the indicator set. Additionally, 'THRESHOLD_NEEDED' is undefined and pattern probability thresholds cannot be directly encoded in the 3-field condition structure.",
+  "translation_notes": "Attempted to approximate the XO pattern (up then down) using price action proxies: Monday up = prev_close > prev_open; Tuesday down = close < prev_close. However, the core signal logic of matching weekday sequences and probability thresholds across multi-day windows cannot be faithfully represented. The exit condition uses a simple reversal (close above SMA) as substitute for the undefined exit criteria. This is a structural limitation of rule-based systems for calendar/pattern-matching strategies."
+}

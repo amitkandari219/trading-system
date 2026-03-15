@@ -1,0 +1,108 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "ema_10",
+        "operator": "crosses_above",
+        "right": "ema_20"
+      },
+      {
+        "left": "ema_10",
+        "operator": ">",
+        "right": "ema_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "ema_10",
+        "operator": "crosses_below",
+        "right": "ema_20"
+      },
+      {
+        "left": "ema_10",
+        "operator": "<",
+        "right": "ema_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "ema_10",
+        "operator": "crosses_below",
+        "right": "ema_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "ema_10",
+        "operator": "crosses_above",
+        "right": "ema_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses two moving averages of different speeds: faster (ema_10) for timing/surge detection, slower (ema_50) for primary trend direction. Entry occurs when faster MA crosses and aligns with slower MA trend. Exit on reversal of faster MA. ema_20 used as intermediate trend confirmation. Parameters left as provided by allowed indicators since author did not specify exact periods\u2014chose common Kaufman-aligned periods (10/20/50)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "ema_10",
+        "op": "crosses_above",
+        "value": "ema_20"
+      },
+      {
+        "indicator": "ema_10",
+        "op": ">",
+        "value": "ema_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "ema_10",
+        "op": "crosses_below",
+        "value": "ema_20"
+      },
+      {
+        "indicator": "ema_10",
+        "op": "<",
+        "value": "ema_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "ema_10",
+        "op": "crosses_below",
+        "value": "ema_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "ema_10",
+        "op": "crosses_above",
+        "value": "ema_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses two moving averages of different speeds: faster (ema_10) for timing/surge detection, slower (ema_50) for primary trend direction. Entry occurs when faster MA crosses and aligns with slower MA trend. Exit on reversal of faster MA. ema_20 used as intermediate trend confirmation. Parameters left as provided by allowed indicators since author did not specify exact periods\u2014chose common Kaufman-aligned periods (10/20/50)."
+  },
+  "source_rule_text": "Enter a trade when there is a recent short-term surge of prices in the direction of the major trend, identified by using a faster moving average for timing aligned with a slower moving average for the primary trend direction."
+}

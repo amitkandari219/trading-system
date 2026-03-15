@@ -1,0 +1,88 @@
+{
+  "signal_id": "GUJRAL_DRY_5",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_5",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_10"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_10"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_10"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_10"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is context-dependent: enters LONG on price crossing above MA (uptrend reversal), enters SHORT when price stays below MA (downtrend confirmation). Used sma_10 as the source text references '10MA'. Exit conditions reversed from entry conditions per standard crossover logic. The AUTHOR_SILENT parameters (moving_average_period and minimum_price_movement) were inferred: sma_10 for period and crossover mechanism for price movement detection."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_10"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_10"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_10"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_10"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is context-dependent: enters LONG on price crossing above MA (uptrend reversal), enters SHORT when price stays below MA (downtrend confirmation). Used sma_10 as the source text references '10MA'. Exit conditions reversed from entry conditions per standard crossover logic. The AUTHOR_SILENT parameters (moving_average_period and minimum_price_movement) were inferred: sma_10 for period and crossover mechanism for price movement detection."
+  },
+  "source_rule_text": "When price crosses above a moving average line, it signals a trend reversal from downtrend to uptrend; when price stays below MA lines, it confirms a downtrend."
+}

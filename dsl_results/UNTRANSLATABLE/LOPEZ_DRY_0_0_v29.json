@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of structural breaks, ML-extracted signal confidence scores, and microstructural phenomena analysis. These are higher-order statistical/machine learning constructs not available in the allowed indicator set. Allowed indicators are limited to technical price/volume metrics (RSI, MACD, ATR, Bollinger Bands, etc.) and do not include: structural break detection algorithms, ML confidence scores, event detection mechanisms, or macroeconomic event calendars. The signal's core logic\u2014'initiate positions upon occurrence of significant market events rather than relying on time/price sampling'\u2014requires external event detection infrastructure and ML model outputs that cannot be expressed using only price, volume, and standard technical indicators.",
+  "translation_notes": "This is a meta-strategy rule about event-driven trading vs. time-series sampling. It requires: (1) Structural break detector (e.g., CUSUM, Chow test) - not available; (2) ML signal confidence output - not available; (3) Volatility spike detection tied to macroeconomic calendar - not available; (4) Microstructure deviation metrics - not available. To operationalize this strategy, add custom indicators for: structural_break_confidence, ml_signal_confidence, event_type, macroeconomic_release_flag. Alternatively, approximate with: {hvol_20 > '0.02', adx_14 > '25'} for event detection, but this loses the core 'predictive power' logic."
+}

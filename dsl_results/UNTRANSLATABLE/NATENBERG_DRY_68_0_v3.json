@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_68_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'Realized volatility percentile of trailing 252-day distribution', 'Underlying strike distance pricing', and 'Implied volatility rank' \u2014 none of which are available in the allowed indicator set. IV rank, realized vol distribution tracking, and options-specific strike proximity metrics are not provided. Substituted with hvol_20 and atr_14 as proxies for volatility regime detection, but the original signal's options-specific logic (butterfly wing strikes, IV rank) cannot be accurately translated.",
+  "translation_notes": "This signal is fundamentally options-focused and requires strike-relative positioning and implied volatility metrics not available in a typical equity backtest indicator set. The entry/exit conditions provided use volatility (hvol_20) and ATR as directional proxies only. For proper implementation, add: iv_rank, realized_vol_20, realized_vol_252, and strike_proximity indicators. The CONTEXT_DEPENDENT direction reflects the signal's 'buy vs sell based on expected movement' logic, but backtest engines typically require explicit LONG or SHORT direction per rule."
+}

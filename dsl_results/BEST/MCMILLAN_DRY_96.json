@@ -1,0 +1,60 @@
+{
+  "signal_id": "MCMILLAN_DRY_96",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_96",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "60"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "70"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.5,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Bear spread conversion of butterfly spread. Entry at or below lower strike (60) to establish short call spread (sell 60 call / buy 70 call). Exit when price reverses above upper strike (70), indicating maximum risk zone. Stop loss set to maximum risk of 3.5 points. Options expiration context (July) noted but not enforced at indicator level as backtest engine handles contract mechanics separately."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": 60.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": 70.0
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.035,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Bear spread conversion of butterfly spread. Entry at or below lower strike (60) to establish short call spread (sell 60 call / buy 70 call). Exit when price reverses above upper strike (70), indicating maximum risk zone. Stop loss set to maximum risk of 3.5 points. Options expiration context (July) noted but not enforced at indicator level as backtest engine handles contract mechanics separately."
+  },
+  "source_rule_text": "Convert a butterfly spread into a bear spread position when stock price reversal to below the lower strike is desired, accepting a modest increase in maximum risk for significantly improved profit potential across a wider price range."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_156_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of Implied Volatility (IV) against Trader Volatility Forecast. Implied Volatility is not available in the allowed indicators list (only india_vix as a market volatility proxy, not option-specific IV). Trader Volatility Forecast is a subjective input parameter, not a calculable indicator. The signal is fundamentally about options pricing vs theoretical value, which requires option Greeks and volatility surface data not present in the allowed indicators.",
+  "translation_notes": "This is a volatility forecasting and options pricing signal from Natenberg that cannot be mechanically translated using only price-action and technical indicators. It requires: (1) Option Implied Volatility data, (2) A volatility forecast model/parameter input, (3) Theoretical option pricing model. The allowed indicators contain only hvol_20 (historical volatility) and india_vix (market volatility index), neither of which directly measure option implied volatility or support the buy-when-IV-low / sell-when-IV-high logic. Recommend: implement separately using an options data feed with IV curves or add implied_vol and volatility_forecast to the indicator whitelist."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references 'accumulation indexes' and 'long-term smoothed volume applied to accumulation indexes' which are not in the allowed indicator list. The concept of identifying trend changes via smoothed accumulation volume and volume peaks preceding price peaks cannot be precisely modeled with available indicators. Used vol_ratio_20 and hvol_20 as proxies, but this does not capture the full intended logic.",
+  "translation_notes": "KAUFMAN_DRY_12 signal relies on accumulation index methodology not available in allowed indicators. Approximated using vol_ratio_20 (20-period volume ratio) to detect high volume confirmation and hvol_20 (20-period historical volatility) to detect extreme volume. Entry requires elevated volume ratio plus volume increasing from previous bar. Exit triggers on extreme volume (hvol breach) combined with price reversal. Direction set to CONTEXT_DEPENDENT as signal rules state entry for both long and short depending on price direction confirmation."
+}

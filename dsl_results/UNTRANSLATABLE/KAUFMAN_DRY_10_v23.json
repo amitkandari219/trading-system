@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires conditional logic based on seasonal vs nonseasonal year classification and month-specific entry dates (July vs January with October exit). The backtest engine lacks: (1) a seasonal year classifier indicator, (2) calendar month filtering operators, (3) ability to compute 5-year high-low range percentile dynamically, and (4) conditional branching based on year type. The 'price_pos_20' indicator computes percentile position over 20 bars, not a 5-year lookback. The signal also references [THRESHOLD_NEEDED] as an undefined parameter requiring external specification. A proper implementation would need calendar awareness and multi-year lookback calculation not available in the indicator set.",
+  "translation_notes": "Original signal uses 5-year high-low range percentile with undefined threshold. Entry is conditional on year type (seasonal/nonseasonal) with different entry months (July/January). Exit is fixed to October 31st. The indicator set lacks: (1) 5-year range calculation, (2) seasonal year classification, (3) month-based conditional entry logic, and (4) proper calendar date targeting. price_pos_20 was attempted as a percentile proxy but operates on 20-bar window, not 5-year lookback."
+}

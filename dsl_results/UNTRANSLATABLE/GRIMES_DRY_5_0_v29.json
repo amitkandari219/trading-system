@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires quantifiable pullback depth thresholds (pullback_depth_max_pct), number of pivot tests (required_pivot_tests), and momentum/volume divergence detection. These parameters are marked [THRESHOLD_NEEDED] in source and cannot be inferred. Momentum divergence requires comparing current vs. historical RSI/MACD patterns which is not expressible with single-bar comparisons. Shallow pullback percentage and confirmation candle requirements need explicit calibration.",
+  "translation_notes": "Translated core concept of failed pullback at pivot extremes using Pivot points (r1, s1, pivot). Entry triggers when price fails to hold support (s1) with long entry or fails to hold resistance (r1) with short entry. Volume confirmation added using hvol_20. Exit when price reclaims pivot with strong conviction. Stop loss set at 2% ATR equivalent. This is a conservative approximation\u2014the original signal's emphasis on pullback depth analysis and divergence confirmation cannot be fully captured without the missing threshold parameters."
+}

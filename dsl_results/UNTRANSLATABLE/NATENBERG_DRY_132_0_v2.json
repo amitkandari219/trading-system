@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_132_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires (1) exponential moving average with custom decay_factor weighting recent periods more heavily than standard EMA, (2) realized volatility calculation with serial correlation estimation not available in allowed indicators, (3) forward volatility forecasting model, and (4) comparison between forecasted volatility and implied volatility. The allowed indicator set lacks: custom-decay EMA variants, realized_vol, forward_vol_forecast, and iv (implied volatility). Substituted hvol_20 and india_vix as closest proxies for volatility trending, but this does not capture the core serial correlation forecasting logic.",
+  "translation_notes": "The signal's fundamental mechanism\u2014weighting recent volatility to forecast future volatility via serial correlation\u2014cannot be accurately translated using only the allowed indicators. hvol_20 (historical volatility) and india_vix serve as proxies for volatility regime detection, but lack the exponential weighting decay and forward forecasting capability required. Parameters [THRESHOLD_NEEDED] could not be populated without domain calibration. Recommend adding realized_vol, iv, and custom_ema_decay indicators to support this strategy."
+}

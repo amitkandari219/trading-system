@@ -1,0 +1,62 @@
+{
+  "signal_id": "HILPISCH_DRY_7_0",
+  "book_id": "HILPISCH",
+  "dsl_rule": {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "entry_long": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "sma_10",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal specifies SMA1 and SMA2 without concrete periods. Used sma_10 (faster) and sma_20 (slower) as standard trend-following pair. Original source code was incomplete/corrupted. Stop-loss threshold was marked as [THRESHOLD_NEEDED] in source, defaulted to 2.0% as reasonable risk parameter for trend-following strategy. Entry condition 'Current position in [0, -1]' is enforced by backtest engine position management, not included as explicit condition."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "sma_10",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal specifies SMA1 and SMA2 without concrete periods. Used sma_10 (faster) and sma_20 (slower) as standard trend-following pair. Original source code was incomplete/corrupted. Stop-loss threshold was marked as [THRESHOLD_NEEDED] in source, defaulted to 2.0% as reasonable risk parameter for trend-following strategy. Entry condition 'Current position in [0, -1]' is enforced by backtest engine position management, not included as explicit condition."
+  },
+  "source_rule_text": "Enter a long position when the faster moving average crosses above the slower moving average, signaling an uptrend initiation."
+}

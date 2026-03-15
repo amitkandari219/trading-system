@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_109_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires domain-specific derivatives pricing inputs (synthetic call price calculation, put prices, futures prices, strike prices, carrying costs) that are not available in the standard OHLCV indicator set. The rule compares synthetic_call_price > direct_call_price, which requires real-time option chain data and futures contract data not present in allowed indicators. The threshold parameters [THRESHOLD_NEEDED] are also unspecified in the source material.",
+  "translation_notes": "NATENBERG_DRY_109_0 is a derivatives arbitrage rule requiring: (1) put price input, (2) futures price input, (3) strike price input, (4) carrying cost estimation, (5) direct call market price. None of these data types are available through the OHLCV/technical indicator framework. This rule is designed for options market-making/arbitrage trading, not price action analysis. To implement, a custom data feed with options chain and futures quotes would be required."
+}

@@ -1,0 +1,108 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_3",
+    "entry_long": [
+      {
+        "left": "dc_upper",
+        "operator": "crosses_above",
+        "right": "close"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.40"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "dc_lower",
+        "operator": "crosses_below",
+        "right": "close"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.60"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires observation period > 40 days (enforced at backtest engine level, not in JSON rules). Used Donchian breakouts (dc_upper/dc_lower) as proxy for N-day breakout methodology. Price position indicator (price_pos_20) captures retracement levels mentioned in source (1-6% retracements). Entry conditions detect breakaway gap continuation. Exit on moving average crossover represents reasonable reversal condition per AUTHOR_SILENT guidance. Context-dependent direction allows both long and short entries based on breakout direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "dc_upper",
+        "op": "crosses_above",
+        "value": "close"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.4
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "dc_lower",
+        "op": "crosses_below",
+        "value": "close"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.6
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires observation period > 40 days (enforced at backtest engine level, not in JSON rules). Used Donchian breakouts (dc_upper/dc_lower) as proxy for N-day breakout methodology. Price position indicator (price_pos_20) captures retracement levels mentioned in source (1-6% retracements). Entry conditions detect breakaway gap continuation. Exit on moving average crossover represents reasonable reversal condition per AUTHOR_SILENT guidance. Context-dependent direction allows both long and short entries based on breakout direction."
+  },
+  "source_rule_text": "Use N-day breakout, swing trading, or pivot point breakout strategies when the observation period is greater than 40 days to take advantage of breakaway gaps that continue trend direction."
+}

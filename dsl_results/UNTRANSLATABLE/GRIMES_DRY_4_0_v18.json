@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'spike velocity' and 'bounce confirmation reversal within N bars' which are not directly available as indicators. Spike velocity needs multi-bar momentum comparison (true_range spike relative to ATR approximated). Bounce confirmation % within specific bar count requires look-ahead logic not expressible in simple rule format. Threshold values for std-dev bands, velocity multiplier, bounce %, and volume multiplier are placeholders requiring calibration.",
+  "translation_notes": "Translated overextension (spike beyond Bollinger Bands) + high velocity (true_range > ATR) + volume confirmation. Used pivot points (S1/R1) as support/resistance levels. Entry is CONTEXT_DEPENDENT (LONG on lower band break, SHORT on upper band break). Exit conditions set at support/resistance break. Unable to express exact bar-count bounce confirmation without look-ahead."
+}

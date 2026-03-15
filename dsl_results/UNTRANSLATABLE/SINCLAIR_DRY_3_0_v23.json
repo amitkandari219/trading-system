@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires specific threshold values for standard deviation multiplier, number of confirmation indicators required, lookback period, and minimum move periods. These are marked as [THRESHOLD_NEEDED] in source and cannot be determined without additional specification. Additionally, 'consecutive periods in same direction' cannot be expressed with allowed operators without array indexing. Source figure (5.7) is illegible and provides no numerical guidance.",
+  "translation_notes": "Interpreted mean-reversion logic using Bollinger Bands (price deviation from mean) as proxy for standard deviation threshold, RSI 14 for overbought/oversold confirmation, and VIX as the primary mean-reverting series. Used india_vix deviation from sma_20 to approximate mean reversion signal. Context-dependent direction reflects that entry can be long or short depending on whether deviation is above or below mean. Maximum hold set to 5 days as conservative estimate for mean-reversion timeframe."
+}

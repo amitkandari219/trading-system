@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of implied volatility (IV) against historical realized volatility distribution and percentile positioning. Implied volatility data is not available in the allowed indicators list (only hvol_20 for realized volatility is available). The signal also requires: (1) IV forecast comparison (not available), (2) IV percentile ranking within historical cone (requires percentile calculation logic not expressible with allowed operators), (3) median reversion detection (requires distributional properties of IV, not available). Entry condition 'Current IV is at [THRESHOLD_NEEDED] percentile' cannot be mechanically expressed without IV data and percentile-based logic. This is an implied volatility-specific signal that cannot be translated to price/volume-based indicators.",
+  "translation_notes": "SINCLAIR_DRY_3_0 is a volatility cone and implied volatility trading signal. While hvol_20 (20-day historical volatility) is available, it measures realized volatility backward-looking, not forward-looking implied volatility or percentile positioning within a volatility cone. The signal's core logic (IV forecast vs realized vol distribution) requires options market data and distributional analysis that falls outside the allowed indicator set."
+}

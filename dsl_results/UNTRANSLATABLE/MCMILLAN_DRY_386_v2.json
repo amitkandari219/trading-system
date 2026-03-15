@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_386",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'positive volatility skew' which is an options-specific market microstructure condition. Volatility skew cannot be calculated from standard OHLCV indicators. The strategy also specifies options strategies (call bull spreads, put backspreads, call ratio spreads) which operate on derivatives rather than spot price. The allowed indicator set contains no skew measurement, implied volatility term structure, or options-specific metrics needed to identify this regime or execute these strategies.",
+  "translation_notes": "This signal is fundamentally based on options market structure (volatility skew) and requires options-specific execution. It cannot be translated into a backtest rule using only spot price and technical indicators. A proper implementation would require: (1) volatility surface data, (2) skew calculation methods, and (3) options execution framework\u2014none of which are available in the allowed indicator set."
+}

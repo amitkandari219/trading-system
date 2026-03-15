@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_64_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is an options volatility spread strategy (backspread). Critical parameters cannot be expressed with equity price/technical indicators alone: (1) net premium received vs paid requires options pricing data not in allowed indicators, (2) strike ratio validation requires options chain data, (3) days to expiration and IV skew analysis require derivatives-specific inputs. The allowed indicator set lacks volatility surface, options Greeks, and premium flow metrics necessary to properly implement this strategy.",
+  "translation_notes": "Attempted proxy using HIGH_VOL regime detection (hvol_20, india_vix) as entry filter, but this is insufficient without actual options premium calculations. A proper backtest engine for this strategy would require: option_premium_received, option_premium_paid, strike_ratio, time_to_expiration, and implied_volatility_level indicators."
+}

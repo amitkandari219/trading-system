@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Elliott Wave pattern detection (5-wave identification and Wave 1 extremes) requires manual pattern recognition or specialized wave-counting logic not available in standard OHLCV indicators. Wave 3 and Wave 5 objectives are calculated values derived from Wave 1 range, which must be pre-computed externally and passed as custom variables (wave_3_objective, wave_5_objective) to the backtest engine. The entry condition 'CONTEXT_DEPENDENT' cannot be expressed with allowed operators and indicators without explicit wave labels.",
+  "translation_notes": "Signal requires: (1) external Elliott Wave pattern detection to identify the 5-wave structure and establish Wave 1 high/low; (2) pre-calculated wave objectives using the provided Fibonacci formulas: Wave 3 = 0.618 \u00d7 (Wave1_High \u2212 Wave1_Low) + Wave1_High, and Wave 5 = 1.618 \u00d7 (Wave1_High \u2212 Wave1_Low) + Wave1_High. Exit conditions use OR logic: exit when either Wave 3 or Wave 5 objective is reached. Direction is CONTEXT_DEPENDENT because Elliott Wave patterns can be bullish or bearish. Recommend implementing custom wave detection module upstream of this rule."
+}

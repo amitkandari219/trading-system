@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires arithmetic operations (price - SMA > threshold) that cannot be expressed with allowed operators. The ALLOWED_OPERATORS list does not include subtraction, addition, or distance calculations. A mean reversion threshold relative to SMA requires custom indicator computation not available in the operator set.",
+  "translation_notes": "Signal is mathematically unexpressible with available operators. The core logic (deviation distance from SMA) requires subtraction/difference operators which are not in the allowed set. Attempted to approximate using directional crosses but this loses the threshold magnitude requirement. Recommend adding 'sma_deviation' or similar pre-computed indicator, or extending operators to include arithmetic."
+}

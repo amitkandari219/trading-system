@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) dynamic std dev threshold '[THRESHOLD_NEEDED]' not provided; (2) 'confirmation_candles_required' count '[THRESHOLD_NEEDED]' not specified; (3) 'mean_reversion_filter' logic not expressible with allowed operators; (4) subsequent price action monitoring and confirmation candle logic requires multi-bar sequential conditions beyond simple 3-field rule structure. Used Bollinger Bands as proxy for volatility-adaptive bands but cannot enforce exact threshold, confirmation sequence, or mean reversion filter.",
+  "translation_notes": "Mapped 'outer bands' to bb_upper/bb_lower (using default 2 std dev). Entry requires touch followed by reversal back toward middle band (proxy for 'confirmation candle closes toward SMA'). Exit triggers on breach of opposite band or failure to mean-revert. Direction is bidirectional (LONG/SHORT variants provided). Regime filter applied to RANGING and MEAN_REVERTING as specified. Critical thresholds and confirmation logic remain untranslatable without explicit parameters."
+}

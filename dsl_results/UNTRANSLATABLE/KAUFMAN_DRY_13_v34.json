@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires correlation analysis (0.50-0.70 range) and cointegration testing between multiple stocks/industrial groups. These are portfolio-level statistical measures requiring multi-asset comparison, not single-bar indicators. The backtest engine must implement correlation matrix and cointegration tests at the portfolio construction level before applying mean-reversion logic to selected pairs/groups.",
+  "translation_notes": "This is a pair/group selection strategy, not a single-asset entry/exit signal. Correlation screening (0.50-0.70) and cointegration analysis must occur during portfolio setup phase. Exit conditions marked AUTHOR_SILENT translated to mean-reversion reversal logic (exit long on negative returns, exit short on positive returns). Direction is CONTEXT_DEPENDENT because once pairs are selected, individual legs can be long or short depending on the arbitrage opportunity."
+}

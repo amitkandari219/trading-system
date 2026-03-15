@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires specialized options-specific indicators and calculations that are not available in the allowed indicator set. The rule depends on: (1) delta-neutral position construction (requires option Greeks: delta, vega calculations), (2) vega asymmetry measurement (requires implied volatility surfaces and vega comparison across strikes), (3) sticky delta regime detection (requires vol smile stability analysis over time), (4) OTM strike selection by standard deviations (requires option pricing model outputs). None of these can be expressed using only price-based technical indicators (RSI, ATR, Moving Averages, etc.). This is a volatility arbitrage strategy that operates in options space, not underlying price space.",
+  "translation_notes": "SINCLAIR_DRY_3_0 is an advanced options volatility strategy fundamentally incompatible with a price-based backtest engine. To implement this signal requires: (a) an options pricing module with Greeks calculation, (b) implied volatility surface modeling, (c) dynamic delta tracking and rebalancing logic, (d) vol smile regime classification. The strategy exploits vega asymmetry in delta-neutral risk reversals\u2014a pure derivatives arbitrage that cannot be translated to candlestick technicals. Recommend using a dedicated options backtesting framework instead."
+}

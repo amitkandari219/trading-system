@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal relies on FuzzySmall() and FuzzyLong() fuzzy membership functions with custom coefficients (onecof, zerocof). These are custom fuzzy logic functions not available in the allowed indicators list. The fuzzy membership calculations and minimum operator logic cannot be expressed using only the allowed indicators and standard comparison operators. Translated pattern logic as best approximation using basic body comparison, but fuzzy logic weighting is not supported.",
+  "translation_notes": "Approximated Bullish Engulfing Pattern using available bar properties: current candle has larger body than previous, current close > current open (bullish), current open < previous close (engulfing), and previous body is smaller. The fuzzy membership logic for small/long bodies and the FuzzyBullishEngulf aggregation function cannot be directly implemented. Exit condition uses reversal signal (bearish candle close) as author specified AUTHOR_SILENT."
+}

@@ -1,0 +1,118 @@
+{
+  "signal_id": "GUJRAL_DRY_5",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_5",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_200"
+      },
+      {
+        "left": "sma_200",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_200"
+      },
+      {
+        "left": "sma_200",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_200"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is context-dependent (both long and short). Entry long requires price cross above 200DMA while 200DMA and 20DMA turn up. Entry short requires price stay below 200DMA during downtrend. Exit conditions use reversal of entry signals (AUTHOR_SILENT handled via cross reversals). Used sma_200 and sma_20 per parameters. The '1,000 point rally' observation is qualitative context, not a tradeable condition."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "sma_200",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "sma_200",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_200"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is context-dependent (both long and short). Entry long requires price cross above 200DMA while 200DMA and 20DMA turn up. Entry short requires price stay below 200DMA during downtrend. Exit conditions use reversal of entry signals (AUTHOR_SILENT handled via cross reversals). Used sma_200 and sma_20 per parameters. The '1,000 point rally' observation is qualitative context, not a tradeable condition."
+  },
+  "source_rule_text": "Enter long when price crosses above the moving average line after it has turned up; enter short when price stays below the MA line during a downtrend."
+}

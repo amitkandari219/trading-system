@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting when MACD fast line is 'dramatically extended into extremes' \u2014 a qualitative, threshold-dependent concept. No allowed indicator directly measures MACD extension magnitude or statistical extremeness. Implementation would require: (1) defining specific thresholds for 'dramatic extension', (2) measuring deviation from historical ranges, or (3) using percentile-based logic \u2014 none of which are expressible with the allowed operators and indicators. The entry conditions specify filtering OUT overdone moves, but without a quantitative extreme threshold, the filter cannot be properly encoded.",
+  "translation_notes": "The signal's core intent is reversion-based filtering: avoid entering when MACD shows exhaustion. The conditions provided (entry_long/entry_short) represent the OPPOSITE of the desired filter\u2014they show when to enter, not when to avoid. A proper translation would require conditions like 'macd_hist > some_extreme_threshold' or 'macd_hist is in top 10% of range', which require unavailable operators or parameters."
+}

@@ -1,0 +1,88 @@
+{
+  "signal_id": "KAUFMAN_DRY_21",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_21",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "ema_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "ema_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "ema_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "ema_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses 'exponential smoothing trendline' which maps to EMA. Selected ema_20 as a reasonable intermediate-term exponential moving average for trend following. The signal is context-dependent (both long and short entries), so both entry_long/exit_long and entry_short/exit_short are populated with mirror conditions. Exit conditions are reversal-based: long exits when price crosses below the trendline, short exits when price crosses above it."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "ema_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "ema_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "ema_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "ema_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses 'exponential smoothing trendline' which maps to EMA. Selected ema_20 as a reasonable intermediate-term exponential moving average for trend following. The signal is context-dependent (both long and short entries), so both entry_long/exit_long and entry_short/exit_short are populated with mirror conditions. Exit conditions are reversal-based: long exits when price crosses below the trendline, short exits when price crosses above it."
+  },
+  "source_rule_text": "Buy when prices move above the exponential smoothing trendline; sell when prices move below it."
+}

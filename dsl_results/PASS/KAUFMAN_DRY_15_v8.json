@@ -1,0 +1,70 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_15",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "0.02"
+      },
+      {
+        "left": "low",
+        "operator": "==",
+        "right": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gap detection: returns >= 0.02 (2% in decimal scale). Entry requires gap open of +2.0% and low occurring at the open. Exit condition inferred as reversal (close < open) since AUTHOR_SILENT. Note: The expected_high_location 'at the close' cannot be directly validated as a forward-looking condition in entry rules; this pattern recognition aspect should be verified separately or used for signal confirmation post-entry."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": 0.02
+      },
+      {
+        "indicator": "low",
+        "op": "==",
+        "value": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Gap detection: returns >= 0.02 (2% in decimal scale). Entry requires gap open of +2.0% and low occurring at the open. Exit condition inferred as reversal (close < open) since AUTHOR_SILENT. Note: The expected_high_location 'at the close' cannot be directly validated as a forward-looking condition in entry rules; this pattern recognition aspect should be verified separately or used for signal confirmation post-entry."
+  },
+  "source_rule_text": "Following a strong upward gap of +2.0%, expect the low of the day to occur at the open and the high of the day to be more likely at the close than at the open, which can serve as an intraday breakout signal basis."
+}

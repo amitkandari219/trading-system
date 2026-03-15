@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_162",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific conditions (moneyness, LEAPS expiration, option type selection) that cannot be expressed using equity price/technical indicators. The rule requires detecting: (1) whether an instrument is an option vs stock, (2) option moneyness status, (3) option expiration classification (LEAPS = >1 year), and (4) conditional logic based on underlying position direction. None of these can be determined from the allowed price/volume/volatility indicators. This is a position substitution strategy requiring derivatives-specific data.",
+  "translation_notes": "MCMILLAN_DRY_162 describes a tactical substitution rule: replace long stock with ITM LEAPS calls, or short stock with ITM LEAPS puts. The entry condition 'Position is in-the-money' and expiration check 'LEAPS' require option Greeks and contract specifications unavailable in standard OHLCV backtest engines. The source text emphasizes favorable positioning for interest rate and volatility movements\u2014suggesting entries should occur during specific vol/rate regimes\u2014but the signal itself provides no quantitative threshold. This requires an options-enabled backtester with implied volatility, option moneyness, and contract metadata."
+}

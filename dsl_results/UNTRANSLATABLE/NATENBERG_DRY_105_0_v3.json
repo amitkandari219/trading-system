@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_105_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires synthetic spread mispricing calculation (sell call - buy put + futures - strike vs theoretical carry), interest rate monitoring, and pin risk probability assessment. These domain-specific derivatives pricing metrics and macro-level interest rate thresholds are not available in the standard indicator library. The 'theoretical_carry_3month_8pct' computation and risk metrics require external pricing models not expressible via OHLCV indicators alone.",
+  "translation_notes": "Attempted partial translation: Close > 5.96 approximates the mispricing edge (5.00 call - buy put + 102 futures - 100 strike = synthetic spread exceeding fair value of ~1.96). Low volatility (hvol_20 < 0.08) and good liquidity (vol_ratio_20 > 1.0) proxy for stable rates and low pin risk. However, the core logic requires explicit interest rate data, options pricing surfaces, and put-call-futures arbitrage calculations that fall outside the indicator framework."
+}

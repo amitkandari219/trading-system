@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires tick-level directional imbalance analysis (\u03b8_t vs E_t[T] \u00d7 max{P[b_t=1], 1-P[b_t=1]}) and exponentially-weighted tick statistics that cannot be constructed from the allowed bar-level indicators (OHLCV, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume Ratios, Returns). The signal operates on individual tick run imbalances within bars and requires custom tick-count aggregation logic not representable with standard OHLC-derived indicators. Additionally, three critical parameters (threshold_multiplier, ewma_window_expected_ticks, ewma_window_buy_proportion) are marked [THRESHOLD_NEEDED] with no values provided.",
+  "translation_notes": "Signal LOPEZ_DRY_0_0 describes a tick-run-imbalance bar formation rule from advanced market microstructure analysis. It requires: (1) tick-level directional bias tracking, (2) EWMA estimates of expected tick counts per bar, (3) EWMA estimates of buy-side tick proportion, and (4) comparison logic between observed tick imbalance and statistical threshold. None of these constructs are available from standard OHLCV indicators. This rule would require a custom tick-aggregation module upstream of the backtest engine. Parameters remain unspecified in the source."
+}

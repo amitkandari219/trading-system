@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of non-random price action patterns including: (1) multiple price tests with clustering detection\u2014requires lookback window analysis not available in indicator-only format; (2) reversal candlestick pattern recognition\u2014requires pattern matching logic beyond simple indicator comparison; (3) divergence on momentum indicators\u2014requires comparing price extrema to indicator extrema across time, not expressible as single-bar conditions; (4) price deceleration measurement\u2014requires rate-of-change analysis not available. Pivot levels (s1/r1) used as proxy for support/resistance, but core edge-validation logic cannot be translated to structured conditions.",
+  "translation_notes": "GRIMES_DRY_4_1 emphasizes non-random price action at support/resistance as the core edge\u2014specifically: clustering of tests, reversal patterns, divergences, and volume surges. These are pattern-recognition and multi-bar analysis requirements that exceed the scope of single-indicator threshold rules. The rule is fundamentally about detecting ORDER FLOW CONVICTION, not price levels alone. Recommend implementing as custom pattern detection module rather than threshold-based backtest rules. Favorable R:R ratio is mentioned but not quantified in source material. Entry uses pivot s1/r1 with volume confirmation as best available proxy; exit uses invalidation logic (close beyond level)."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a sector/portfolio-level segmentation and exclusion rule, not a price-action or indicator-based trading rule. It requires: (1) sector classification metadata not available in price/indicator data, (2) portfolio-level Sharpe ratio and win rate calculations across sectors, (3) comparative performance metrics between sectors, and (4) position management logic (exclude sectors, close positions). None of these can be expressed using the allowed price/indicator indicators (OHLCV, RSI, MACD, ATR, etc.). This is a meta-strategy rule for risk management and portfolio construction, not a tactical entry/exit signal.",
+  "translation_notes": "Signal SINCLAIR_DRY_6_0 describes a regime detection and exclusion framework based on sector performance statistics. To implement this in a backtest engine, you would need: (1) sector/market segment labeling in the data, (2) portfolio-level metrics calculation module, (3) lookback window for Sharpe ratio and win rate computation, (4) position filtering logic. Suggest creating a separate portfolio-level rule engine or custom pre-processing step that tags trades by sector and applies exclusion filters before the indicator-based signal engine."
+}

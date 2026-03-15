@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires peer group relative performance ranking and percentile-based selection (top X% vs bottom X%), which cannot be expressed using single-instrument indicators. The core logic demands cross-sectional ranking across a peer universe, rebalancing based on updated rankings, and equal-weight long/short construction\u2014all requiring portfolio-level logic not available in single-instrument indicator set. Threshold parameters (lookback_days, holding_period_days, percentile cutoffs) are critical but unspecified in source text.",
+  "translation_notes": "This is a classic relative momentum/pairs trading strategy requiring cross-sectional peer comparison. Single-instrument returns indicator alone cannot capture the relative outperformance/underperformance ranking logic. Recommend implementing as a custom backtest rule with: (1) peer group definition, (2) rolling return calculation over lookback window, (3) percentile ranking, (4) long/short bucket construction, (5) rebalance schedule. Typical parameters: lookback_days=20-63, holding_period_days=20-63, percentile thresholds=25th/75th or 10th/90th."
+}

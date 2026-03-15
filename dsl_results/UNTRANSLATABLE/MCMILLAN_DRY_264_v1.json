@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_264",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a spread trading strategy (buying ZYX-ABX spread at 45.00 and selling at 50.00). The backtest engine as configured operates on single instrument price bars, not multi-leg spread instruments. Spread prices, the spread relationship between two indices, and cross-instrument arbitrage logic cannot be expressed using the provided single-instrument indicators. The signal requires: (1) ability to construct and track a synthetic spread instrument (ZYX - ABX), (2) multi-leg entry/exit logic, and (3) spread-specific price levels that are derived from two independent price series.",
+  "translation_notes": "Signal requires spread trading capability across two indices (ZYX and ABX). The direction is marked NEUTRAL because profit is supposedly consistent regardless of market direction, but this is a spread arbitrage strategy, not a directional strategy. Expected profit of $2,500 on 5-point move ($500/point) cannot be modeled without spread construction logic."
+}

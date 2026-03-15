@@ -1,0 +1,150 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_4_0",
+    "entry_long": [
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.25"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.02"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.75"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.02"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING",
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires identification of established trading range edges (support/resistance). Used Donchian channels (dc_upper, dc_lower) as proxy for range boundaries over 20-period lookback. Price consolidation near edge modeled using price_pos_20 (< 0.25 for lower edge, > 0.75 for upper edge). Consolidation tightness captured via bb_bandwidth threshold. Breakout confirmation requires close beyond range boundary plus volume above 20-period historical average. Exit conditions reverse trend on return to opposite range boundary."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.25
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.02
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.75
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.02
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "RANGING",
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires identification of established trading range edges (support/resistance). Used Donchian channels (dc_upper, dc_lower) as proxy for range boundaries over 20-period lookback. Price consolidation near edge modeled using price_pos_20 (< 0.25 for lower edge, > 0.75 for upper edge). Consolidation tightness captured via bb_bandwidth threshold. Breakout confirmation requires close beyond range boundary plus volume above 20-period historical average. Exit conditions reverse trend on return to opposite range boundary."
+  },
+  "source_rule_text": "A trader should anticipate a breakout when price consolidates tightly near one edge of a trading range, as this indicates pressure building against that boundary rather than equilibrium."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of a dynamic resistance level and tracking of multiple subsequent penetrations through it. The allowed indicators do not include a dynamic resistance level detector or mechanism to track penetrations across multiple bars. The signal logic depends on: (1) identifying/maintaining a specific resistance line position, (2) detecting when high penetrates above it, (3) confirming close is below high (failed breakout), and (4) expecting repeated penetrations. This requires state tracking and dynamic level management not available in the indicator set. Donchian channels (dc_upper) could approximate support/resistance but do not capture the specific 'original resistance line' concept or the multi-bar penetration pattern expectation.",
+  "translation_notes": "This is a pattern recognition signal that identifies a failed breakout in a ranging market. It is fundamentally about tracking a specific resistance level and monitoring subsequent price action relative to it. The signal is NEUTRAL because it does not initiate a directional trade but rather confirms a continuation of the sideways pattern. To implement this would require custom resistance level detection, failed breakout confirmation (high > resistance AND close < high), and multi-bar penetration counting\u2014none of which fit the simple indicator-based rule structure."
+}

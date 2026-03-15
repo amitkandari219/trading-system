@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires pair-trading logic (comparative stochastic levels between two securities with inverse positions). Standard backtesting rule structure does not support multi-security relative condition comparisons. Thresholds for 'high' and 'low' stochastic are author-silent and require domain interpretation.",
+  "translation_notes": "This is a pairs-trading strategy comparing stochastic values across two securities (HPQ vs SUN) to establish counter positions. The rule cannot be fully translated to single-security conditions without: (1) explicit threshold definitions for 'high' (e.g., >70) and 'low' (e.g., <30) stochastic levels, (2) cross-security comparison logic not supported in standard rule engines. Provided conditions represent idealized entry/exit based on stochastic reversal alone, but miss the critical pair-relative component."
+}

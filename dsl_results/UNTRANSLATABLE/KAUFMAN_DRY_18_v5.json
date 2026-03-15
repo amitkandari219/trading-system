@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_18",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic zone calculations based on 3-year price range divided into 5 equal 20% increments. This requires custom preprocessing to compute zone_1_threshold, zone_2_threshold, zone_4_threshold, and zone_5_threshold from historical price data. These derived thresholds are not available as pre-calculated indicators in the allowed list.",
+  "translation_notes": "The KAUFMAN_DRY_18 signal defines a five-zone regime framework where Zone 1 = lowest 20%, Zone 2 = 20-40%, Zone 3 = 40-60%, Zone 4 = 60-80%, Zone 5 = highest 20% of a 3-year price range. Entry/exit logic shown above assumes zone thresholds are pre-calculated. To implement: (1) Calculate 3-year high/low, (2) Compute range = high - low, (3) Set zone_1_threshold = low + 0.2*range, zone_2_threshold = low + 0.4*range, zone_4_threshold = low + 0.8*range, zone_5_threshold = low + range. Entry long when close <= zone_4, entry short when close >= zone_2, avoid zone 1 (sell reversal) and zone 5 (buy reversal)."
+}

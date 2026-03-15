@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_171_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires tracking absolute delta values, delta changes relative to entry delta, and volatility level comparisons that are not available in the allowed indicator set. The strategy requires: (1) position delta measurement at entry, (2) volatility level at entry, (3) current delta vs entry delta comparison, (4) volatility drift detection. None of these can be constructed from price-based technical indicators (RSI, ATR, Bollinger Bands, MACD, etc.). Delta and volatility are option-specific Greeks/metrics that require options pricing models or direct market data feeds, not candlestick price analysis.",
+  "translation_notes": "NATENBERG_DRY_171_0 is a volatility-driven delta rebalancing rule from options theory. It describes how falling volatility pushes deltas away from 50 and rising volatility pulls them toward 50. This requires: (a) stored entry delta state, (b) entry volatility baseline, (c) current volatility measurement, (d) delta movement tracking. While hvol_20 (historical volatility) exists in the allowed set, there is no delta indicator, no mechanism to store entry-state values, and no way to express 'delta moved X points from entry delta'. This signal is incompatible with equity price-action backtesting and requires an options-aware portfolio system."
+}

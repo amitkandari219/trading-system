@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal relies on intraday time-of-day pattern (1:00 PM - 4:00 PM) and historical mean reversion based on bar close comparisons across morning vs afternoon periods. The allowed indicators do not include time-of-day filtering or historical bar comparison operators. The core logic requires comparing the mean of afternoon bars against the mean of morning bars within a rolling window, which cannot be expressed with the provided indicator set (no bar_time, no historical mean comparisons, no conditional aggregation operators).",
+  "translation_notes": "The signal is fundamentally about intraday timing and comparative performance between time buckets rather than technical indicator levels. A proper translation would require: (1) time-of-day gating functionality, (2) ability to compare current bar against historical mean of bars in specific time windows, or (3) a pre-computed indicator that encodes the afternoon-premium pattern. None of these capabilities exist in the allowed indicator list."
+}

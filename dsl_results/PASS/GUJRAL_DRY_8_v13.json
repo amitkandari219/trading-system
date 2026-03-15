@@ -1,0 +1,128 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "s1"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "r1"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "r2"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "s2"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal translated as context-dependent with separate long and short entry/exit conditions. Long entries: open above pivot, pullback confirmed by close above pivot and above S1 support. Short entries: open below pivot, pullback confirmed by close below pivot and below R1 resistance. Exits target R2/S2 as primary profit targets. Stop-loss and holding period not specified by author; backtest engine should apply defaults. Conditions use pivot point levels (pivot, r1, r2, s1, s2) as core decision variables per signal specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "s1"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "r1"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "r2"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "s2"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal translated as context-dependent with separate long and short entry/exit conditions. Long entries: open above pivot, pullback confirmed by close above pivot and above S1 support. Short entries: open below pivot, pullback confirmed by close below pivot and below R1 resistance. Exits target R2/S2 as primary profit targets. Stop-loss and holding period not specified by author; backtest engine should apply defaults. Conditions use pivot point levels (pivot, r1, r2, s1, s2) as core decision variables per signal specification."
+  },
+  "source_rule_text": "On an up-open above pivot or R1, buy pullbacks to the pivot or R1 for uptrend continuation to R2/R3+; on a down-open below pivot or S1, sell pullbacks to the pivot or S1 for downtrend continuation to S2/S3 or lower."
+}

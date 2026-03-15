@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires inter-commodity spread analysis (old crop vs new crop price convergence) which cannot be expressed using single-instrument indicators. The core logic involves: (1) monitoring spread narrowing between two different futures contracts, (2) detecting relative velocity of price changes between instruments, and (3) identifying convergence to carrying charge limits. These multi-leg spread mechanics are not representable with the allowed single-price indicators.",
+  "translation_notes": "This is a spread trading signal (short old crop, long new crop) that requires tracking two separate commodity contracts simultaneously. The allowed indicators only support single-instrument analysis. A proper translation would require spread-specific indicators like: spread_price, spread_momentum, spread_convergence_rate, or inter-contract correlation metrics. The attempted translation above uses a proxy with SMA crossover, but this does not capture the actual signal logic of crop cycle supply uncertainty and carrying charge dynamics."
+}

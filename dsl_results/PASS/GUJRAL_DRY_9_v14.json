@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_9",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_9",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "pivot"
+      },
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "s1"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 1,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal captures intraday reversion: (1) Price opens below daily pivot (entry condition 1), (2) Price stays above S1 support throughout the day (entry condition 2), (3) Price attempts to move higher shown by close > open (entry condition 3). Exit when price closes below S1, indicating support break. CPR reference treated as pivot-based. 'Dip type: intraday only' constrains hold_days_max to 1. 'Additional factors' noted but not explicitly quantifiable from allowed indicators."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "pivot"
+      },
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "s1"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal captures intraday reversion: (1) Price opens below daily pivot (entry condition 1), (2) Price stays above S1 support throughout the day (entry condition 2), (3) Price attempts to move higher shown by close > open (entry condition 3). Exit when price closes below S1, indicating support break. CPR reference treated as pivot-based. 'Dip type: intraday only' constrains hold_days_max to 1. 'Additional factors' noted but not explicitly quantifiable from allowed indicators."
+  },
+  "source_rule_text": "During an intraday dip, consider a stock for a buy when price stays above S1 (first support) and attempts to move higher, even if it opened below the daily pivot or CPR."
+}

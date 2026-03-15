@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_127",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit straddle valuation across dual probability scenarios (25% upside + 25% downside expected value calculations in 90-day horizon), option pricing model inputs (strike selection, implied volatility surfaces), and comparative margin analysis. Standard OHLCV indicators cannot replicate the quantitative options pricing logic needed to 'calculate straddle value in 90 days' or 'average expected values' from scenario analysis. The signal is fundamentally an options strategy rule requiring derivative pricing models, not a price-action or volatility indicator rule.",
+  "translation_notes": "This is a sophisticated options income strategy (long straddle on volatility mean reversion). Entry would require: (1) implied vol surface data, (2) time-decay and gamma calculations, (3) dual-scenario Monte Carlo or binomial pricing. As a proxy workaround, high historical volatility (hvol_20 > 0.25) might indicate elevated option premiums suitable for straddle entry, but this does NOT replicate McMillan's expected-value framework. Recommend implementing as custom Python function in backtest engine rather than indicator-based rule."
+}

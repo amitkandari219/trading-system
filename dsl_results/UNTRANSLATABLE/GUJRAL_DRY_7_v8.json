@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'extended move in one direction' which needs lookback period analysis and trend strength measurement not directly available in allowed indicators. The concept of 'narrow candles' is approximated using body < atr_14, but the extended move duration/magnitude threshold cannot be precisely operationalized without a custom trend-detection indicator or explicit bar-count parameter.",
+  "translation_notes": "Attempted approximation: narrow candles represented as small body relative to volatility (atr_14); support/resistance levels mapped to pivot points (s1/r1); reversal context inferred from price position relative to pivots. However, the core logic of 'after extended move' requires additional context that cannot be captured with standard indicators. Author silent on exits, so reversal through pivot breach is assumed. Signal is CONTEXT_DEPENDENT as direction depends on which support/resistance level is breached."
+}

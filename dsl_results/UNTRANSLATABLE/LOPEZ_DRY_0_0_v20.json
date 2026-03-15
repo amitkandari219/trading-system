@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a fundamental data timing rule that cannot be expressed using only price-based technical indicators. It requires: (1) detection of regulatory filing release dates vs reporting period end dates, (2) calendar day arithmetic relative to release lag thresholds, and (3) validation of actual public disclosure timestamps. These are meta-data and event-driven conditions outside the scope of OHLCV and technical indicator calculations. The signal requires a separate fundamental data calendar module and event detection system, not price-action rules.",
+  "translation_notes": "LOPEZ_DRY_0_0 is an anti-look-ahead bias framework for fundamental data alignment. It mandates temporal sequencing of regulatory disclosures (e.g., 10-K filing actual release date vs Q-end date) with buffer periods for market digestion. No technical indicator can replicate this; it requires integration with a corporate actions/earnings calendar database and timestamp validation logic in the backtest engine itself, not within the indicator rule layer."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires distinguishing between overreaction vs underreaction regimes and calibrating holding periods based on regime type. This requires multi-period pattern detection and regime classification logic not expressible through simple indicator comparisons. The original signal references [THRESHOLD_NEEDED] placeholders and requires: (1) volatility-adjusted price movement detection, (2) consecutive period counting without pullback detection, (3) dynamic position direction based on regime, and (4) regime-dependent holding periods. These require state machine logic beyond allowed operators and indicators.",
+  "translation_notes": "Attempted partial translation using volatility (true_range vs atr_14 for overreaction) and return thresholds for directional bias. However, the core regime distinction and adaptive holding period logic cannot be fully captured in structured rule format. The signal requires sophisticated pattern recognition and regime-switching behavior that needs custom backtest engine support."
+}

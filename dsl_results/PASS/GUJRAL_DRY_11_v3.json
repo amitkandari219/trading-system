@@ -1,0 +1,128 @@
+{
+  "signal_id": "GUJRAL_DRY_11",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_11",
+    "entry_long": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "pivot"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "pivot"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires detection of: (1) established trend\u2014proxied by ADX > 25; (2) gap in trend direction\u2014not directly observable from OHLC data alone, requires external bar comparison; (3) retracement to significant level\u2014approximated using pivot points and moving average (sma_20); (4) trend resumption\u2014entry triggered when price crosses back through pivot/MA in trend direction. Exit uses simple MA crossover as proxy for trend reversal per AUTHOR_SILENT instruction. Entry tactics reference cannot be operationalized without additional context. Context-dependent direction requires separate LONG/SHORT condition branches for bidirectional trend trading."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "pivot"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "pivot"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires detection of: (1) established trend\u2014proxied by ADX > 25; (2) gap in trend direction\u2014not directly observable from OHLC data alone, requires external bar comparison; (3) retracement to significant level\u2014approximated using pivot points and moving average (sma_20); (4) trend resumption\u2014entry triggered when price crosses back through pivot/MA in trend direction. Exit uses simple MA crossover as proxy for trend reversal per AUTHOR_SILENT instruction. Entry tactics reference cannot be operationalized without additional context. Context-dependent direction requires separate LONG/SHORT condition branches for bidirectional trend trading."
+  },
+  "source_rule_text": "In a trending market with a gap in the trend direction, wait for a retracement to a significant support/resistance level, then enter when the trend resumes using established entry tactics."
+}

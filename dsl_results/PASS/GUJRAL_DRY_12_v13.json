@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_12",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "r1"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.02"
+      },
+      {
+        "left": "prev_close",
+        "operator": ">=",
+        "right": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "pivot"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry conditions: (1) Price at/above R1 resistance level using close >= r1. (2) Big move on previous two days approximated using returns > 0.02 (2% move). (3) Market closed at high and proceeded further approximated using prev_close >= prev_high to detect previous day's strength. No consolidation condition omitted as it requires pattern recognition beyond allowed operators. Exit: Close <= pivot (central pivot point). Expected move 60-70 points translates to ~2.5% stop loss on typical index levels. Hold period set to 5 days based on short-term reversion nature."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "r1"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.02
+      },
+      {
+        "indicator": "prev_close",
+        "op": ">=",
+        "value": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "pivot"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry conditions: (1) Price at/above R1 resistance level using close >= r1. (2) Big move on previous two days approximated using returns > 0.02 (2% move). (3) Market closed at high and proceeded further approximated using prev_close >= prev_high to detect previous day's strength. No consolidation condition omitted as it requires pattern recognition beyond allowed operators. Exit: Close <= pivot (central pivot point). Expected move 60-70 points translates to ~2.5% stop loss on typical index levels. Hold period set to 5 days based on short-term reversion nature."
+  },
+  "source_rule_text": "When price faces resistance at R1 after a big move on previous days with no consolidation, take a short trade from R1 towards the central pivot point."
+}

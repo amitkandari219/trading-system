@@ -1,0 +1,106 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_16",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "0.005"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "-0.005"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses context-dependent direction based on opening gap direction. Entry conditions fade (trade against) the opening direction when gap is \u22640.50% (0.005 in decimal scale). Exit condition triggers when a new high or low occurs relative to the opening price, interpreted as reversal signal. The constraint 'only if opening was not an extreme' is implicitly satisfied by the reversal logic\u2014if opening was an extreme, the new high/low condition would not trigger a reversal trade. Gap size threshold set to 0.005 (0.50%) using returns indicator as proxy for opening gap magnitude."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": 0.005
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": -0.005
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses context-dependent direction based on opening gap direction. Entry conditions fade (trade against) the opening direction when gap is \u22640.50% (0.005 in decimal scale). Exit condition triggers when a new high or low occurs relative to the opening price, interpreted as reversal signal. The constraint 'only if opening was not an extreme' is implicitly satisfied by the reversal logic\u2014if opening was an extreme, the new high/low condition would not trigger a reversal trade. Gap size threshold set to 0.005 (0.50%) using returns indicator as proxy for opening gap magnitude."
+  },
+  "source_rule_text": "Fade the opening direction if the market opens with a minimum gap; reverse the trade when a new high or low occurs if the opening was not an extreme of the day."
+}

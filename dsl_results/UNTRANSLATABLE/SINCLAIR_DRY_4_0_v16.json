@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires advanced option Greeks (gamma notional \u03b3\u00b2), bid/ask spread dynamics (\u0394X), and volatility adjustment formulas based on position direction and rebalancing intervals. These require real-time options market microstructure data and volatility surface calculations not available in the standard indicator set. The core logic (\u03c3_adjusted = \u03c3\u2080\u221a(1 \u00b1 2\u03b3\u00b2\u0394X/w\u0394t)) cannot be expressed using price-based technical indicators alone. This is a quantitative vol/risk management rule requiring options pricing infrastructure, not a price-action backtest rule.",
+  "translation_notes": "SINCLAIR_DRY_4_0 is a sophisticated volatility adjustment framework for option hedging. Entry condition triggers on initiating a short option position with measurable transaction costs and rebalancing intervals. Exit condition should trigger when realized volatility exceeds the theoretically-adjusted volatility threshold. However, without access to gamma exposure, bid/ask spreads, and option rebalancing frequency as data inputs, a meaningful backtest rule cannot be constructed. Recommend: (1) Extract realized vs implied vol divergence as a proxy, (2) Use hvol_20 as volatility proxy, or (3) Implement as a risk model overlay rather than a standalone trading signal."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific data (in-the-money status at expiration, option pricing relative to intrinsic value, dividend payment dates and sizes, assignment probability) which are not available in the ALLOWED INDICATORS list. These are fundamentally different from equity price/volume indicators and require options market data (strike prices, intrinsic value, time value, ex-dividend dates) that cannot be expressed using standard OHLCV technical indicators.",
+  "translation_notes": "This is an options-specific event-driven signal designed for call option writers to manage assignment risk. The three entry circumstances (ITM at expiration, discount pricing, large dividend ex-dividend date) and exit conditions (close contract or cover position) operate in the options derivatives market, not the underlying equity price action. A proper backtest engine for this signal would require option chain data, Greek calculations, and corporate action calendars rather than technical indicators."
+}

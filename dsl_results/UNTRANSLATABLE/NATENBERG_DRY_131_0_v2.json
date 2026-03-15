@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_131_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires calculating a weighted composite volatility forecast across 4 specific historical periods (30d, 60d, 120d, 250d) with custom regressive weights (0.4, 0.3, 0.2, 0.1). No allowed indicator exists for multi-period weighted historical volatility composites. Only hvol_20 (20-period historical volatility) is available. The regime shift detection threshold for volatility regime changes is not specified ([THRESHOLD_NEEDED]). The direction is CONTEXT_DEPENDENT, which does not map to a single LONG/SHORT direction. Custom weighted volatility calculation requires a synthetic indicator not available in the allowed set.",
+  "translation_notes": "Signal requires custom volatility weighting logic across 4 distinct lookback periods with specific weights. The allowed indicators only provide hvol_20 (single 20-period measurement). No mechanism exists to blend 30d, 60d, 120d, and 250d volatility with specified weights. Exit condition references undefined volatility regime shift threshold. Direction marked CONTEXT_DEPENDENT cannot be resolved to LONG or SHORT without additional market context rules."
+}

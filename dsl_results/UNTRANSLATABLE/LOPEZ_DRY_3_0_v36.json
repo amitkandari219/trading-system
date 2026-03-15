@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Shannon entropy calculation over rolling windows of price returns is not available in the allowed indicator set. The signal requires a custom entropy indicator (entropy_calculation_method: Shannon_normalized) to determine market information content and switch between momentum vs mean-reversion strategies. Additionally, the signal requires three entropy thresholds ([THRESHOLD_NEEDED] appears 5 times) which are not specified in the original source material. Without entropy as a computable indicator and without concrete threshold values, this regime-switching logic cannot be translated into the structured rule format.",
+  "translation_notes": "This is a meta-strategy that adapts its core logic (momentum vs mean-reversion) based on market regime detected via Shannon entropy. While conceptually sound, it cannot be implemented without: (1) a Shannon entropy indicator in the allowed set, (2) specific numeric threshold values for entropy boundaries, and (3) the definition of momentum entry/exit logic and mean-reversion entry/exit logic that would be deployed conditionally. The author left implementation details unspecified."
+}

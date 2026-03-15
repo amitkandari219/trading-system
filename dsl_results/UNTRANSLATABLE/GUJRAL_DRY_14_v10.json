@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'failed breakthrough attempts' and 'decisiveness threshold' which cannot be operationalized with provided indicators alone. Parameters like 'number_of_failed_attempts_before_entry', 'range_definition', and 'decisiveness_threshold' are marked AUTHOR_SILENT. Used Donchian channels as proxy for range boundaries and reversal logic, but the fear-factor driven rapid mean-reversion mechanism and failed breakout detection require custom logic or additional parameters not available.",
+  "translation_notes": "Approximated range boundaries using Donchian channels (20-period). Entry logic triggers on failed crosses: LONG when price crosses below upper band but stays above lower band (rejection at upper boundary), SHORT when price crosses above lower band but stays below upper band (rejection at lower boundary). Exit on reversal through midpoint. This is a simplified interpretation; true implementation requires backtesting with explicit failed-attempt counting and decisiveness metrics."
+}

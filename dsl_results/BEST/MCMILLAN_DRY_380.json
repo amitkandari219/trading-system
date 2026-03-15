@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_380",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires a price movement histogram/distribution analysis across a range of price movements (x-axis: -1 to +1 points, y-axis: frequency distribution). This requires custom histogram analysis that cannot be expressed using only the allowed indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Returns, Bar Properties). The signal is a regime filter (avoid trading in certain conditions) rather than a directional entry/exit rule, and would require either: (1) a custom histogram clustering detector, or (2) a volatility/range clustering metric not in the allowed set.",
+  "translation_notes": "MCMILLAN_DRY_380 is a regime-avoidance filter that detects when price movements are clustered around break-even (low volatility, mean-reverting environment). While bb_bandwidth or adx_14 could serve as proxies for detecting low volatility clustering, they do not directly measure the histogram distribution pattern described. A practical approximation might use low bb_bandwidth combined with adx_14 < threshold, but this would be lossy relative to the intended signal logic."
+}

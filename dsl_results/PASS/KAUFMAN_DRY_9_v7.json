@@ -1,0 +1,84 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "rsi_7",
+        "operator": "<",
+        "right": "10"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "rsi_7",
+        "operator": ">",
+        "right": "90"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "rsi_7",
+        "operator": ">",
+        "right": "50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "rsi_7",
+        "operator": "<",
+        "right": "50"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal specifies RSI(2) which is not in the allowed indicator list. Used rsi_7 as the closest available RSI indicator. Exit conditions marked as AUTHOR_SILENT in original; implemented mean-reversion exit at RSI midpoint (50) for both long and short positions. Direction is CONTEXT_DEPENDENT as signal switches between long and short based on RSI thresholds."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "rsi_7",
+        "op": "<",
+        "value": 10.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "rsi_7",
+        "op": ">",
+        "value": 90.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "rsi_7",
+        "op": ">",
+        "value": 50.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "rsi_7",
+        "op": "<",
+        "value": 50.0
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal specifies RSI(2) which is not in the allowed indicator list. Used rsi_7 as the closest available RSI indicator. Exit conditions marked as AUTHOR_SILENT in original; implemented mean-reversion exit at RSI midpoint (50) for both long and short positions. Direction is CONTEXT_DEPENDENT as signal switches between long and short based on RSI thresholds."
+  },
+  "source_rule_text": "Enter long when RSI(2) falls below 10; enter short when RSI(2) rises above 90."
+}

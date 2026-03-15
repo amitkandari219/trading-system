@@ -1,0 +1,2622 @@
+[
+  {
+    "signal_id": "HARRIS_DRY_10_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, Ch. 10, pp. 46-48",
+    "raw_chunk_text": "i i i\nforecast. The expected forecast error is zero because the forecasts are unbiased. The individual\nforecast errors might be quite large in absolute value, however.\nLet each trader\u2019s desired positi",
+    "rule_text": "A trader should size her desired position proportionally to the magnitude of her forecast error (difference between her value forecast and market price), going long when forecast exceeds price and short when price exceeds forecast.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Forecast value (f_i) \u2260 Market price (P)",
+      "Position direction determined by sign of (f_i - P)"
+    ],
+    "parameters": {
+      "proportionality_constant_a": 0.25,
+      "position_size_formula": "D_i = 0.25 * |f_i - P|",
+      "minimum_forecast_error_threshold": 0.02
+    },
+    "exit_conditions": [
+      "Forecast value converges to market price (difference < threshold)",
+      "Market price exceeds forecast by reversal threshold"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, codeable entry conditions (comparing forecast value to market price) and exit conditions (monitoring convergence and reversal thresholds) that a programmer could implement with defined thresholds."
+  },
+  {
+    "signal_id": "HARRIS_DRY_21_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. 5 (Draft), pp. 82-84",
+    "raw_chunk_text": "When traders use a specified price benchmark, they estimate the per unit transaction cost as the\ndifference between the trade price and the benchmark price. For a purchase, the estimated cost is\nthe e",
+    "rule_text": "A trader should evaluate whether the estimated transaction cost (difference between trade price and benchmark price, scaled by trade size) justifies the trade execution, particularly when demanding liquidity.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Estimated transaction cost = TradeSize \u00d7 |TradePrice \u2212 BenchmarkPrice|",
+      "(Estimated Cost / (TradeSize \u00d7 BenchmarkPrice)) \u2264 0.005",
+      "Trader is NOT demanding liquidity (passive entry)"
+    ],
+    "parameters": {
+      "max_cost_percentage": 0.005,
+      "cost_relative_to": "position_value"
+    },
+    "exit_conditions": [
+      "Close position when estimated cost to exit exceeds 0.5% of current position value"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (transaction cost ratio \u2264 0.5%, passive liquidity demand) and exit conditions (cost to exit > 0.5% of position value) that can be computed from trade prices, benchmark prices, and position data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_1_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. 1 (Draft), pp. 11\u201318",
+    "raw_chunk_text": "\u2022 Transaction costs. Traders must effectively manage their transaction costs to trade\nsuccessfully. This book explains how to measure and manage transaction costs. If you trade\nactively, you must unde",
+    "rule_text": "A trader must measure and actively manage transaction costs, understand price efficiency, and comprehend volatility\u2014each according to their trading style and risk tolerance\u2014to trade successfully.",
+    "signal_category": "SIZING|RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trade frequency \u2264 2 times per week",
+      "Position size \u2264 2% of portfolio per trade",
+      "Expected edge > 3\u00d7 estimated transaction costs",
+      "Volatility regime is LOW or NORMAL (not elevated)"
+    ],
+    "parameters": {
+      "max_trade_frequency_per_week": 2,
+      "max_position_size_pct": 2,
+      "edge_to_txn_cost_ratio": 3.0,
+      "acceptable_volatility_percentile": 50
+    },
+    "exit_conditions": [
+      "Stop loss at 1.5\u00d7 initial risk estimate",
+      "Take profit when edge is realized or volatility spikes above 75th percentile"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "PSYCHOLOGY",
+    "haiku_testable": true,
+    "haiku_reason": "All entry conditions are specific and actionable: trade frequency can be counted from order history, position size is a quantifiable portfolio percentage, expected edge vs transaction costs can be compared numerically, and volatility regime can be determined from percentile calculations on historical data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_1_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.1, pp.11-18",
+    "raw_chunk_text": "bought or by buying back what they have sold. In effect, clients pay dealers to take their trading\nproblems. The dealers then try to solve them at a profit. Dealers profit by buying low and\nselling hi",
+    "rule_text": "Patient traders obtain better prices than impatient traders because they expend effort to find favorable execution terms; impatient traders pay a premium for immediacy.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify desired entry price level with +2% to +3% margin above fair value",
+      "Set minimum search duration of 20+ bars or 5+ trading days before accepting market price",
+      "Only enter when price touches or crosses the patient-entry target"
+    ],
+    "parameters": {
+      "max_execution_urgency": 0.2,
+      "acceptable_price_slippage_pct": 2.0,
+      "minimum_search_duration_bars": 20,
+      "patience_threshold_days": 5
+    },
+    "exit_conditions": [
+      "Exit if price moves 2% unfavorably and search period not elapsed",
+      "Exit if target price achieved within patience window"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, actionable entry conditions (identify price level with +2-3% margin, set 20+ bar/5+ day minimum, enter on price touch) that a programmer could code to detect from market data, though some subjectivity exists in determining 'fair value'."
+  },
+  {
+    "signal_id": "HARRIS_DRY_1_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.1, pp.11-18",
+    "raw_chunk_text": "Traders who offer to trade give other people options to trade. These options sometimes are quite\nvaluable. Traders who expose their offers can lose to clever traders who use various front-\nrunning tra",
+    "rule_text": "A trader should carefully control the exposure and selectivity of their offers to minimize the risk of being adversely selected by well-informed speculators who can extract option value from revealed quotes.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Counterparty has prior trading history with trader",
+      "Counterparty historical win rate vs trader is <45%",
+      "Counterparty trade frequency is accommodation-driven (not speculative)",
+      "Bid-ask spread exceeds 3x normal market spread"
+    ],
+    "parameters": {
+      "counterparty_prequalification_required": true,
+      "max_counterparties_per_session": 3,
+      "information_asymmetry_threshold_percentile": 80,
+      "offer_broadcast_duration_ms": 100
+    },
+    "exit_conditions": [
+      "Any sign of informed speculation detected (repeated adverse selection)",
+      "Counterparty win rate vs trader exceeds 55%",
+      "Trade completed successfully"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, actionable entry conditions including quantifiable metrics (win rate <45%, spread >3x normal) and detectable behavioral patterns (accommodation-driven frequency, prior history) that a programmer could implement with market data and trade history."
+  },
+  {
+    "signal_id": "HARRIS_DRY_1_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.1, pp.11-18",
+    "raw_chunk_text": "can. They then choose to buy or sell based upon which side they expect will be profitable.\nDealers lose to well-informed speculators because they end up being on the wrong side of the\ntrade. Prices te",
+    "rule_text": "A trader should avoid trading with well-informed speculators and instead identify opportunities to trade against uninformed traders, because dealers widen spreads to recover losses from informed traders, creating excess costs for uninformed traders.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bid-ask spread < 0.5 bps of mid-price",
+      "Trade volume > 75th percentile of historical average",
+      "Dealer inventory stable (no directional skew in flow)"
+    ],
+    "parameters": {
+      "spread_threshold_bps": 0.5,
+      "volume_percentile": 75,
+      "max_inventory_skew_pct": 10
+    },
+    "exit_conditions": [
+      "Spread widens to > 1.0 bps",
+      "Volume drops below 50th percentile",
+      "Hold position for max 1 session"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are quantifiable metrics (spread in bps, volume percentiles, inventory skew) that can be programmatically detected from market data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_1_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter 1 (Prof. Larry Harris Trading and Exchanges Draft Copy), pp. 11-18",
+    "raw_chunk_text": "Most traders want to trade in well-established markets because other traders trade there. When\nmany traders trade in the same place, arranging trades is very easy. The attraction of traders to\nother t",
+    "rule_text": "A trader should exploit price divergences across markets by buying in cheaper markets and selling in more expensive markets, as arbitrageurs profit from connecting geographically or structurally separated price levels.",
+    "signal_category": "EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price divergence between market A and market B exceeds 1.5% of the lower price",
+      "Both markets have bid-ask spreads below 0.4% of mid-price",
+      "Entry volume available at least 10x position size in both markets"
+    ],
+    "parameters": {
+      "divergence_threshold_pct": 1.5,
+      "max_acceptable_spread_pct": 0.4,
+      "liquidity_buffer_multiple": 10
+    },
+    "exit_conditions": [
+      "Price divergence narrows to 0.3% or less",
+      "Position held longer than 60 minutes without convergence"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions contain specific, quantifiable thresholds (1.5% divergence, 0.4% spreads, 10x volume, 0.3% convergence, 60 minutes) that can be programmatically detected from market data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_1_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, Ch.1, pp.11-18",
+    "raw_chunk_text": "information presentation systems, and the information communication systems of a market.\nMarket structure determines what traders can do, and what they can know. It therefore affects\ntrader strategies",
+    "rule_text": "A trader should continuously monitor whether their trading strategy remains profitable relative to market competition and free entry/exit dynamics, and exit the strategy when competitive entry has eroded profits below a sustainable threshold.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy has generated above-average profits for initial 10 trading days",
+      "Current 5-day rolling profit > 1.5 standard deviations above zero"
+    ],
+    "parameters": {
+      "profit_erosion_threshold_stddev": 1.5,
+      "lookback_baseline_periods": 20,
+      "erosion_detection_window": 5,
+      "exit_trigger_percentile": 50
+    },
+    "exit_conditions": [
+      "5-day rolling profit declines to < 0.5 standard deviations above baseline mean",
+      "Rolling Sharpe ratio falls below 0.8"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry and exit conditions specify quantifiable thresholds (standard deviation multiples and Sharpe ratio levels) that can be computed from historical profit data and programmatically detected."
+  },
+  {
+    "signal_id": "HARRIS_DRY_1_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.1, pp.11-18",
+    "raw_chunk_text": "mechanisms. They process information about who wants to trade, how much, and at what prices.\nThe resulting prices aggregate information about fundamental values. The growth in information\ntechnologies",
+    "rule_text": "A trader should monitor and trade in markets where similar instruments compete, as order flow externality will eventually concentrate liquidity in the dominant market.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify set of closely related markets trading similar instruments",
+      "Measure liquidity concentration ratio (dominant_market_volume / sum_all_related_markets)",
+      "Enter dominant market only when concentration_ratio >= 0.65"
+    ],
+    "parameters": {
+      "dominance_threshold": 0.65,
+      "observation_period_bars": 50,
+      "market_similarity_correlation_min": 0.8
+    },
+    "exit_conditions": [
+      "Exit when concentration_ratio falls below 0.60",
+      "Exit when correlation between markets drops below 0.70"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (concentration_ratio >= 0.65) and exit conditions (concentration_ratio < 0.60, correlation < 0.70) that can be programmatically calculated from market data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_4_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter 4 (Orders and Order Properties), pp. 25-28",
+    "raw_chunk_text": "Orders and Order Properties\nOrders are trade instructions. Orders specify what traders want to trade, whether to buy or sell,\nhow much, when and how to trade, and most importantly, on what terms. Trad",
+    "rule_text": "A trader should specify order parameters with precision before execution, because order submission strategy is the most important determinant of trading success and the proper order at the right time determines outcome quality.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trading intent is clearly defined (direction, size, time horizon)",
+      "Market conditions assessed for liquidity before order design",
+      "Limit price set with 3+ tick buffer from current mid-price in favor of entry"
+    ],
+    "parameters": {
+      "order_type_primary": "LIMIT",
+      "price_buffer_ticks": 3,
+      "position_size_pct_of_account": 1,
+      "order_time_in_force": "GTC",
+      "specification_review_frequency": "before_each_order"
+    },
+    "exit_conditions": [
+      "Order unfilled after 50% of intended trade duration elapsed",
+      "Market moves 5+ ticks against intended entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, measurable entry conditions (3+ tick buffer from mid-price, liquidity assessment) and exit conditions (50% time elapsed, 5+ tick adverse movement) that can be detected programmatically from market data and order state."
+  },
+  {
+    "signal_id": "HARRIS_DRY_4_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, Ch. untitled, pp. 25-28",
+    "raw_chunk_text": "but only if he can trade during the current trading session and only if he can trade the entire\nquantity at once. He would issue an all-or-nothing, day order to sell 7,600 shares of XON, limit\n41.05 d",
+    "rule_text": "A trader who cannot continuously monitor the market should use pre-specified orders (with defined price limits and execution constraints) to represent their trading intentions rather than attempting to arrange trades manually during inattention periods.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trader cannot monitor market in real-time",
+      "Specific quantity requirement is defined",
+      "Price target is set within 0.5% of current market price"
+    ],
+    "parameters": {
+      "limit_price_offset_percent": 0.5,
+      "order_type": "all-or-nothing",
+      "order_duration": "day_only",
+      "quantity_flexibility": "100_percent_or_zero"
+    },
+    "exit_conditions": [
+      "Order fills completely at limit or better",
+      "Trading session ends (order auto-cancels)"
+    ],
+    "instrument": "EQUITIES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are actionable: trader monitoring status can be detected from system state, quantity requirement is explicitly defined, and price target proximity to market price is a quantifiable metric."
+  },
+  {
+    "signal_id": "HARRIS_DRY_4_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges by Larry Harris, Chapter on Trading Principles, Pages 25-28",
+    "raw_chunk_text": "Traders who arrange their own trades have an advantage over traders who use orders to express\ntheir intentions. The former can respond to market conditions as they change. The latter must\nanticipate s",
+    "rule_text": "Traders using orders must anticipate market changes and write detailed contingencies into orders to avoid losses from execution delays or inability to adapt to changing conditions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Order is placed using limit orders with wide bands around current price",
+      "Contingency thresholds set to trigger at 0.5% price movement from entry level",
+      "Multiple price tiers defined in order to capture varying scenarios"
+    ],
+    "parameters": {
+      "contingency_threshold_pct": 0.5,
+      "order_bands_pct": 2.0,
+      "num_contingency_tiers": 5,
+      "max_time_to_cancel_seconds": 30
+    },
+    "exit_conditions": [
+      "Exit if original conditions are no longer valid",
+      "Exit if time to market response exceeds max_time_to_cancel_seconds"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, actionable entry conditions (limit orders with defined bands, 0.5% contingency thresholds, multiple price tiers) and exit conditions (time-based trigger with max_time_to_cancel_seconds) that a programmer could detect from order state and market data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_4_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.DRAFT (pp.25-28), section 'use orders to trade'",
+    "raw_chunk_text": "use orders to trade.\nIn general, traders who can respond most quickly to changes in market conditions have an\nadvantage over slower traders. Traders who submit and cancel orders manually are slower th",
+    "rule_text": "A trader should use automated order management systems with fast response times and standardized order types when trading in fast markets, because speed of execution and communication clarity reduce costly errors.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Market volatility < 1.5x 20-day average",
+      "Order book depth stable",
+      "Trader uses only standard order types (Market, Limit, Stop-Limit)",
+      "Manual review before each order submission enabled"
+    ],
+    "parameters": {
+      "max_latency_ms": 5000,
+      "automation_level": "semi-automated",
+      "order_standardization_requirement": "100%",
+      "manual_confirmation_required": true
+    },
+    "exit_conditions": [
+      "Position held > 1 hour",
+      "Manual order review queue delays exceed 2 seconds"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry conditions are specific and measurable: volatility can be calculated from historical data, order book depth can be monitored, order type usage can be detected from trader behavior, and manual review timestamps can be logged and verified."
+  },
+  {
+    "signal_id": "HARRIS_DRY_5_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.5, pp.29-31",
+    "raw_chunk_text": "sixteenths. In markets with decimal prices, prices that are integer multiples of 1.00, 0.50, 0.25,\n0.20, 0.10, and 0.05 are likewise most common. The clustering of prices is most pronounced\nwhen the m",
+    "rule_text": "A trader should place limit orders slightly away from round-number price clustering points to gain better execution priority, especially when market conditions favor clustering behavior.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Minimum price increment is < 1% of current price",
+      "Realized volatility > 75th percentile of historical distribution",
+      "Average daily volume < 20th percentile of historical average",
+      "Placing a limit order to buy or sell"
+    ],
+    "parameters": {
+      "offset_distance_ticks": 1,
+      "round_number_definition": "integer multiples of 1.00, 0.50, 0.25",
+      "volatility_threshold_percentile": 75,
+      "liquidity_threshold_percentile": 20
+    },
+    "exit_conditions": [
+      "Order filled",
+      "Market conditions normalize (volatility drops below 50th percentile)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry conditions are quantifiable thresholds (price increment %, volatility percentile, volume percentile) that can be detected programmatically from market data, and the signal specifies a clear actionable trigger (place limit orders away from round numbers)."
+  },
+  {
+    "signal_id": "HARRIS_DRY_6_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.6, pp.32-34",
+    "raw_chunk_text": "The price priority rule gives precedence to the traders who bid and offer the best prices. Traders\ncannot accept bids or offers at any inferior price. Buyers can accept only the lowest priced offers\na",
+    "rule_text": "A trader should only accept bids or offers at the best available price in the market, never at inferior prices, because price priority is self-enforcing among honest traders searching for optimal execution.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Buy order: accept ONLY at current best ask price or better",
+      "Sell order: accept ONLY at current best bid price or better",
+      "Reject any fill that occurs at price worse than best quote by any amount"
+    ],
+    "parameters": {
+      "max_slippage_ticks": 0,
+      "max_slippage_bps": 0,
+      "time_to_cancel_ms": 100
+    },
+    "exit_conditions": [
+      "Order not filled at best price within 100ms: cancel immediately"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_LIQUIDITY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The rule contains specific, actionable entry conditions (accept only at best ask/bid, reject fills worse than best quote) and a concrete exit condition (cancel if not filled within 100ms) that a programmer could implement and monitor against market data and order fills."
+  },
+  {
+    "signal_id": "HARRIS_DRY_6_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. 6.1.1.2 (Time Precedence), pp. 32-34",
+    "raw_chunk_text": "confusion and noise.\nTraders acquire price priority by bidding or offering prices that improve the current best bid or\noffer. Any trader may improve the best bid or offer at any time.\n6.1.1.2 Time Pre",
+    "rule_text": "A trader should establish and maintain a price improvement position early to secure time precedence, then hold that position while it remains uncontested to preserve priority standing.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price tests current best bid/offer at least 3 times without breakthrough",
+      "Trader improves best bid/offer by minimum viable increment (1 tick)",
+      "Volume profile shows clustering at current level"
+    ],
+    "parameters": {
+      "price_improvement_ticks": 1,
+      "minimum_tests_before_entry": 3,
+      "hold_duration_minutes": "until another trader accepts or rejects at new price"
+    },
+    "exit_conditions": [
+      "Another trader accepts the improved bid/offer",
+      "Another trader improves beyond the trader's quote",
+      "Price moves away from improved level by 5+ ticks"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, measurable entry conditions (price tests 3+ times, minimum 1-tick improvement, volume clustering) and exit conditions (acceptance, improvement beyond, 5+ tick move) that can be detected from market data and order book state."
+  },
+  {
+    "signal_id": "HARRIS_DRY_6_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter 6, pp. 32-34",
+    "raw_chunk_text": "In oral auction markets, bids and offers generally are good only for a moment. Traders say, \u201cA\nquote is good only as long as the breath is warm.\u201d In practice, traders who do not honor their\nquotes for",
+    "rule_text": "A trader should maintain and actively refresh their price quotes at high frequency to preserve time precedence and force competitors to improve prices rather than match them.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Quote posted in oral auction market",
+      "No trade filled within last refresh cycle"
+    ],
+    "parameters": {
+      "quote_refresh_interval_seconds": 30,
+      "minimum_time_between_refreshes": 20,
+      "market_activity_multiplier": 1.0
+    },
+    "exit_conditions": [
+      "Trade filled",
+      "Withdraw quote after 3 consecutive refresh cycles with no response"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete, detectable events (quote posted in oral auction market and no trade filled within a defined refresh cycle) that a programmer could identify from market data and trader activity logs."
+  },
+  {
+    "signal_id": "HARRIS_DRY_6_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.6 (Draft), pp.32-34",
+    "raw_chunk_text": "to trade ahead of a trader who has time precedence must improve the price. Time precedence\nrewards aggressive traders by giving them the exclusive right to trade first at the improved price.\nThe time ",
+    "rule_text": "A trader should improve the quoted price to gain priority when they want to trade ahead of existing orders, because time precedence at the same price level goes to the first bidder/offerer.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Existing order at price level P with time precedence",
+      "Trader has directional conviction (e.g., strong technical signal or vol regime change)",
+      "Bid-ask spread is < 3 ticks",
+      "Improve price by exactly 1 tick (minimum)"
+    ],
+    "parameters": {
+      "price_improvement_ticks": 1,
+      "min_spread_requirement_ticks": 3,
+      "conviction_threshold": "HIGH"
+    },
+    "exit_conditions": [
+      "Position target reached",
+      "Stop loss hit at 2x price improvement cost"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (existing order at price P, bid-ask spread < 3 ticks, price improvement by 1 tick) and quantifiable exit conditions (target reached, stop loss at 2x improvement cost) that a programmer could detect from market data and execute."
+  },
+  {
+    "signal_id": "HARRIS_DRY_6_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, pp. 32-34",
+    "raw_chunk_text": "precedence at 103.20. Of course, if you are quite impatient to trade, your best strategy may be to\nimmediately take the offer at 103.25.\nTime precedence is only meaningful when the minimum price incre",
+    "rule_text": "A trader should adjust their market entry urgency and price improvement strategy based on the tick size relative to the bid-ask spread, because tick size determines the tradeoff between time precedence advantage and the cost of price improvement.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Tick size / current_spread >= 0.50",
+      "Desired fill price is competitive relative to time-weighted queue position"
+    ],
+    "parameters": {
+      "tick_to_spread_ratio_threshold": 0.5,
+      "urgency_to_accept_offer": "LOW - prioritize time precedence"
+    },
+    "exit_conditions": [
+      "Order fills via time precedence",
+      "Time limit exceeded (abandon queue after 5 minutes)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has a specific quantitative entry condition (tick size / spread >= 0.50) that is programmable from market data, combined with a qualitative but measurable exit condition (order fills or 5-minute timeout) that can be implemented in trading logic."
+  },
+  {
+    "signal_id": "HARRIS_DRY_8_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [excerpt section], pp. 39-41",
+    "raw_chunk_text": "An instrument is undervalued when its market price is below its fundamental value. It is\novervalued when its price is above fundamental value. Since nobody actually knows\nfundamental values, traders m",
+    "rule_text": "A trader should buy instruments estimated to be below fundamental value and sell instruments estimated to be above fundamental value, based on informed analysis of available or non-widely-known information.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Estimated fundamental value must exceed market price by at least 15%",
+      "Information source must be from detailed proprietary analysis or verified non-public data",
+      "Analyst confidence score (0-100) must be >= 80",
+      "Position size limited to 2% of portfolio per trade"
+    ],
+    "parameters": {
+      "mispricing_threshold": 0.15,
+      "confidence_minimum": 80,
+      "position_size_pct": 2,
+      "holding_period_days": 60
+    },
+    "exit_conditions": [
+      "Exit when market price reaches estimated fundamental value",
+      "Exit if confidence score drops below 70",
+      "Time-based exit after 60 days regardless of P&L"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains multiple specific, actionable entry conditions (15% valuation gap, confidence score >= 80, position sizing rule) and objective exit triggers (price reaching fundamental value, confidence dropping below 70, 60-day time limit) that can be systematically detected and coded, though the proprietary analysis component introduces some subjectivity in valuation estimation."
+  },
+  {
+    "signal_id": "HARRIS_DRY_10_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. 10 (Informed Traders), pp. 46-48",
+    "raw_chunk_text": "walk. Plots of random walks through time look like paths that wander up or down at random\nbecause random walks are completely unpredictable.\n10.2 Informed Traders\nInformed traders estimate fundamental",
+    "rule_text": "An informed trader should buy instruments trading below their estimated fundamental value and sell instruments trading above their estimated fundamental value, expecting prices to converge toward fundamental value.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price < Estimated_Fundamental_Value \u00d7 0.85",
+      "Buy signal triggered only when undervaluation exceeds 15%"
+    ],
+    "parameters": {
+      "undervaluation_threshold": 0.15,
+      "overvaluation_threshold": 0.15,
+      "position_size_pct": 0.02
+    },
+    "exit_conditions": [
+      "Exit when price reaches Fundamental_Value \u00d7 0.98",
+      "Stop loss at entry_price \u00d7 0.92"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (Price < Estimated_Fundamental_Value \u00d7 0.85) and exit conditions (price reaches Fundamental_Value \u00d7 0.98, stop loss at entry_price \u00d7 0.92) that a programmer could code into an automated system, provided the Estimated_Fundamental_Value input is defined."
+  },
+  {
+    "signal_id": "HARRIS_DRY_10_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, pp. 46-48",
+    "raw_chunk_text": "instruments that they believe are significantly overvalued. They hope to profit when the prices\nof their purchases rise, and when the prices of their sales fall. Informed traders naturally hope\nthat t",
+    "rule_text": "A trader should exit or reduce positions when cumulative estimation errors exceed a defined loss tolerance threshold, as persistent poor valuation estimates will eventually force liquidation.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trade initiated based on fundamental value estimate",
+      "Position held with conviction in valuation thesis"
+    ],
+    "parameters": {
+      "loss_tolerance_pct": 10,
+      "consecutive_losses_trigger": 5,
+      "estimation_error_threshold": "high"
+    },
+    "exit_conditions": [
+      "Cumulative drawdown reaches -10% of account",
+      "5 consecutive trades show losses indicating systematic valuation error",
+      "Exit immediately without waiting for recovery"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The exit conditions contain specific, measurable triggers (cumulative drawdown of -10%, 5 consecutive losing trades) that can be detected programmatically from portfolio data and trade history."
+  },
+  {
+    "signal_id": "HARRIS_DRY_11_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (excerpt pages 49-51)",
+    "raw_chunk_text": "make. Squeezers try to exploit traders who must trade by cornering the market.\nOrder anticipators are parasitic traders. They profit only when they can prey on other traders.\nThey do not make prices m",
+    "rule_text": "A trader should identify and avoid order anticipators and parasitic traders by understanding their predatory patterns, especially regarding broker-exposed orders and large trade visibility.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Order size > 25th percentile of typical daily volume",
+      "Trading through broker channels",
+      "Market structure allows discretionary order splitting"
+    ],
+    "parameters": {
+      "order_size_threshold_percentile": 25,
+      "max_single_order_percent_adr": 5,
+      "fragment_into_n_pieces": 10,
+      "time_spread_minutes": 120,
+      "broker_relationship_risk_flag": true
+    },
+    "exit_conditions": [
+      "Entire position executed with no single order >5% ADR",
+      "Stop execution if adverse move >2% during execution window"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "Entry conditions specify quantifiable thresholds (order size percentile, broker channel routing, discretionary splitting capability) and exit conditions define measurable execution metrics (position completion ratios, order size limits, adverse price movements) that could be programmatically detected from market data and execution records."
+  },
+  {
+    "signal_id": "HARRIS_DRY_11_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [excerpt from pages 49-51]",
+    "raw_chunk_text": "Jon\u2019s behavior does not reveal whether the order is a buy or sell order. Rifka often guesses\ncorrectly since she has noticed that Jon tends to buy after he has bought and sell after he has\nsold: At le",
+    "rule_text": "A trader should identify and exploit predictable order flow patterns exhibited by other market participants, particularly when those participants show behavioral consistency in their trading sequences.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Detect a market participant executing large orders",
+      "Confirm 3+ consecutive orders on the same side (buy-after-buy or sell-after-sell pattern)",
+      "Participant exhibits minimal order obfuscation",
+      "Wait for partial order execution to confirm directionality before committing capital"
+    ],
+    "parameters": {
+      "minimum_pattern_confirmations": 3,
+      "confidence_threshold": 0.75,
+      "position_size_pct_of_detected_order": 0.25,
+      "wait_for_execution_confirmation": true
+    },
+    "exit_conditions": [
+      "Close position once the detected large order completes",
+      "Exit if participant reverses directional pattern",
+      "Stop loss at 2% of entry price"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains actionable entry conditions (detect large orders, confirm 3+ consecutive same-side orders, check order obfuscation level, wait for partial execution) that a programmer could operationalize using order flow data and execution tracking, despite some qualitative elements like 'minimal obfuscation'."
+  },
+  {
+    "signal_id": "HARRIS_DRY_11_2",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [Block Shopping Section], pp. 49-51",
+    "raw_chunk_text": "Shop the Block\nBrokers shop the block when they expose large orders. Not surprisingly, prices tend to rise when\nthey widely shop a large block buy order, and fall when they widely shop a large block s",
+    "rule_text": "A trader should trade in the direction of widely-shopped large block orders, because price moves predictably follow block exposure\u2014upward for buy blocks, downward for sell blocks\u2014creating a momentum opportunity before front runners fully extract the benefit.",
+    "signal_category": "EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Large block order is shopped or broadcast to multiple counterparties (any size >= 100 contracts or $1M notional)",
+      "Minimal price movement threshold (any directional tick within 60 seconds of block exposure)",
+      "No volume confirmation required; entry on first signal",
+      "Trade within 60 seconds of block exposure detection"
+    ],
+    "parameters": {
+      "block_size_minimum": 100,
+      "move_confirmation_bps": 1,
+      "volume_spike_threshold": 1.0,
+      "time_to_shop_window_minutes": 1
+    },
+    "exit_conditions": [
+      "Profit target: 100+ bps",
+      "Stop loss: 15 bps",
+      "Exit after 10 minutes regardless of P&L",
+      "Exit immediately if block is withdrawn or cancelled"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (block order >= 100 contracts or $1M notional, directional tick within 60 seconds, entry within 60 seconds) and measurable exit conditions (100+ bps profit target, 15 bps stop loss, 10-minute time exit) that can be programmatically detected from market data and order flow."
+  },
+  {
+    "signal_id": "HARRIS_DRY_12_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter (pp. 52-55)",
+    "raw_chunk_text": "the company. They say to themselves, \"Because I certainly am among the first to see this news, I\nprobably can still profit by buying BNB stock. If I wait too long, price will continue to rise, and\nI w",
+    "rule_text": "A trader should avoid momentum-following strategies during manipulative price moves, as momentum traders are particularly susceptible to being exploited by informed actors who use price continuation to trigger predictable buying behavior.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price is rising on above-average volume",
+      "Recent news event or earnings announcement confirms upward move",
+      "Momentum buy signal is generated (e.g., price crosses above SMA)",
+      "Time-since-catalyst < 24 hours"
+    ],
+    "parameters": {
+      "min_news_relevance_score": 0.8,
+      "max_time_since_catalyst_hours": 24,
+      "min_fundamental_score": 7,
+      "momentum_signal_acceptance_rate": 0.3
+    },
+    "exit_conditions": [
+      "Price stalls or reverses without additional fundamental support",
+      "Volume dries up on the up-move",
+      "Stop loss at -2% from entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, actionable entry conditions (price rising on above-average volume, momentum buy signal via SMA crossover, time-since-catalyst < 24 hours) that a programmer could detect from market data, though the 'manipulative price moves' detection itself would require additional definition."
+  },
+  {
+    "signal_id": "HARRIS_DRY_13_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [Dealers section], pp. 56-58",
+    "raw_chunk_text": "securities.\nAll dealers face the same problems regardless of what they trade. They must set prices, they\nmust market their services to acquire clients, they must manage their inventories, and they mus",
+    "rule_text": "A dealer should actively manage inventory position and avoid trading with better-informed counterparties to minimize losses that occur when market conditions force unfavorable execution prices.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Establish dealer/market-maker position (long or short inventory)",
+      "Monitor real-time bid-ask spread and volatility metrics"
+    ],
+    "parameters": {
+      "adverse_price_move_threshold_bps": 25,
+      "spread_widening_threshold_bps": 50,
+      "inventory_reduction_target_pct": 75,
+      "volatility_spike_multiplier": 1.5,
+      "time_to_exit_minutes": 5
+    },
+    "exit_conditions": [
+      "Close 75% of inventory when adverse price move exceeds 25 bps",
+      "Close 75% of inventory when bid-ask spread widens by 50 bps or more",
+      "Close 75% of inventory when realized volatility spikes 1.5x above baseline",
+      "Force complete liquidation if 5 minutes have elapsed without exit opportunity"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions specify quantifiable metrics (25 bps price moves, 50 bps spread widening, 1.5x volatility spikes, 5-minute elapsed time) that can be detected from real-time market data and portfolio state."
+  },
+  {
+    "signal_id": "HARRIS_DRY_13_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (56-58), EMPIRICAL",
+    "raw_chunk_text": "market conditions force them to sell at low prices or buy at high prices. These losses often occur\nafter they trade with informed traders.\nWhen dealers purchase something, they usually do not know to ",
+    "rule_text": "Passive traders who do not control trade timing must carefully manage position sizing and inventory risk because they face unknown exit prices and timing constraints.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position must be entered as passive order (market order or forced execution)",
+      "Exit price and timing cannot be predetermined with high confidence"
+    ],
+    "parameters": {
+      "max_position_size_pct_of_capital": 1.0,
+      "max_time_held_bars": 5,
+      "stop_loss_pips": 10,
+      "profit_target_pips": 15
+    },
+    "exit_conditions": [
+      "Exit immediately upon stop loss hit (hard stop)",
+      "Exit on profit target or at bar 5, whichever comes first",
+      "Exit if passivity extends beyond predetermined time window"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "Entry conditions specify passive order types and exit conditions define concrete triggers (stop loss, profit target, bar 5, time window) that a programmer can detect from market data and order state."
+  },
+  {
+    "signal_id": "HARRIS_DRY_13_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (Dealer Principles), pp. 56-58",
+    "raw_chunk_text": "passive traders do not control the timing of their trades, they must be very careful about how they\noffer to trade and to whom they offer to trade. They must ensure that when they do trade, their\ntrad",
+    "rule_text": "Dealers must actively screen counterparties and control trade execution terms to avoid adverse selection and information leakage to informed traders.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Counterparty identified as institutional/algorithmic with track record of profitable timing",
+      "Trade request size exceeds 75th percentile of typical client size",
+      "Request timing coincides with news/earnings/economic data release window"
+    ],
+    "parameters": {
+      "informed_trader_probability_threshold": 0.7,
+      "spread_multiplier_vs_market": 1.5,
+      "max_position_size_offered": "25% of typical client size",
+      "pre_trade_information_leakage_risk": "HIGH"
+    },
+    "exit_conditions": [
+      "Refuse trade or require significantly wider terms",
+      "Require post-trade reporting delay of 15+ minutes"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are specific and actionable: counterparty institutional status can be checked against a registry, trade size can be compared to historical percentiles, and request timing can be matched against calendars of news/earnings/economic releases."
+  },
+  {
+    "signal_id": "HARRIS_DRY_13_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.13, pp.56-58",
+    "raw_chunk_text": "Many dealers have gone bankrupt because they assumed risks that did not work out. Dealers\nconstantly think about the risks that they bear and how to avoid them. Since bearing risk is\nunpleasant, deale",
+    "rule_text": "A trader should demand appropriate compensation (wider bid-ask spread or risk premium) proportional to the size and nature of risk being borne, because dealers who undercompensate for risk exposure face bankruptcy.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bid-ask spread >= 3\u03c3 of daily price movement",
+      "Option premium >= 3\u03c3 of realized volatility annualized",
+      "Position size <= 5% of daily volume"
+    ],
+    "parameters": {
+      "risk_coverage_multiple": 3.0,
+      "max_position_size_pct_volume": 5,
+      "min_spread_to_volatility_ratio": 3.0
+    },
+    "exit_conditions": [
+      "Mark-to-market loss exceeds 2\u03c3 without compensation adjustment",
+      "Liquidity deteriorates below entry threshold"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ILLIQUID"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions specify quantifiable thresholds (bid-ask spread in sigma units, option premium multiples, position size percentages, mark-to-market loss limits) that can be programmatically detected from market data and portfolio metrics."
+  },
+  {
+    "signal_id": "HARRIS_DRY_13_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.13, pp.56-58",
+    "raw_chunk_text": "from well-informed traders, Dell must lower her bid to 34.6. To encourage traders to buy from\nher so that she can sell the security, she must lower her ask to 34.9.\nA buyer arrives and buys from Dell ",
+    "rule_text": "A dealer should price the side of the market they prefer to trade more aggressively (closer to fair value) than the side they wish to avoid, using the bid/ask spread as a selection mechanism.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Dealer has inventory bias direction identified (wants to buy OR wants to sell)",
+      "Current bid/ask spread is quantifiable"
+    ],
+    "parameters": {
+      "aggressive_side_offset_bps": 25,
+      "passive_side_offset_bps": 100,
+      "spread_ratio": 0.25
+    },
+    "exit_conditions": [
+      "Inventory target reached on preferred side",
+      "Market conditions change direction preference"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry conditions are actionable: inventory bias direction can be detected from portfolio state/trader rules, and bid/ask spread is directly quantifiable from market data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_14_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.14, pp.59-61",
+    "raw_chunk_text": "Professor Larry Harris Trading and Exchanges Draft Copy\nChapter 14\nBid/Ask Spreads\nThe bid/ask spread is the price impatient traders pay for immediacy. Impatient traders buy at the\nask price and sell ",
+    "rule_text": "A trader should choose market orders when bid/ask spreads are narrow (immediacy is cheap) and limit orders when spreads are wide (immediacy is expensive), based on the cost-benefit tradeoff of execution certainty versus execution delay.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bid/ask spread (in basis points) < 5 bps of mid-price",
+      "AND position size < 25% of average trade volume in that timeframe"
+    ],
+    "parameters": {
+      "spread_threshold_bps": 5,
+      "spread_to_position_ratio": 0.05,
+      "default_order_type": "LIMIT"
+    },
+    "exit_conditions": [
+      "Limit order not filled within 2x average time-to-fill for that instrument",
+      "Then switch to market order"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (spread < 5 bps, position size < 25% of volume) and a concrete exit trigger (limit order unfilled for 2x average time-to-fill) that can be detected and automated from market data and order state."
+  },
+  {
+    "signal_id": "HARRIS_DRY_14_2",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.[Section on bid/ask spreads], pp.59-61",
+    "raw_chunk_text": "optimizing your order submission strategies, you must understand what determines bid/ask\nspreads so that you can judge whether they are wide or narrow, given current market conditions.\nThe spread is a",
+    "rule_text": "A trader should assess whether bid/ask spreads are wide or narrow relative to current market conditions before submitting orders, because spread width signals dealer profitability thresholds and predicts future market liquidity supply.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Any market condition where order submission is warranted by directional thesis",
+      "Position size adjusted: position_size = base_position \u00d7 (50th_percentile_spread / current_spread)"
+    ],
+    "parameters": {
+      "spread_percentile_reference": 0.5,
+      "position_scaling_formula": "inverse_spread_ratio",
+      "lookback_period_days": 20
+    },
+    "exit_conditions": [
+      "Exit based on directional thesis, not spread conditions",
+      "Position size floor: minimum 20% of base position even at extreme spreads"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains a specific, programmable entry condition with a mathematical formula for position sizing based on spread percentiles that can be detected from market data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_14_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. 14, pp. 59-61",
+    "raw_chunk_text": "driven markets. We will discuss when immediacy is expensive, when it is cheap, and why. The\nmost important factors that determine spreads are adverse selection due to well-informed traders,\nvolatility",
+    "rule_text": "Uninformed traders lose money through trading costs and adverse selection; minimizing trading frequency is the primary defense against information asymmetry losses.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trade only when expected payoff exceeds 3x the estimated spread cost",
+      "Maximum 1 trade per week per instrument",
+      "Enter only in high-liquidity windows (bid-ask spread < 10th percentile for instrument)"
+    ],
+    "parameters": {
+      "max_trades_per_period": 1,
+      "spread_cost_multiple": 3.0,
+      "liquidity_percentile_threshold": 10,
+      "holding_period_days_minimum": 5
+    },
+    "exit_conditions": [
+      "Exit on stop-loss at 2x estimated spread cost",
+      "Exit on profit target at 3x estimated spread cost",
+      "Exit on time: hold minimum 5 days regardless of P&L"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "All entry/exit conditions are operationalized with specific quantitative thresholds (spread multiples, percentile ranks, time windows) that can be coded into automated detection logic from market data and P&L tracking."
+  },
+  {
+    "signal_id": "HARRIS_DRY_14_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter: Professor Larry Harris Trading and Exchanges Draft Copy, pp. 59-61",
+    "raw_chunk_text": "Monopoly dealers set their spreads so that the additional revenue from a slight decrease in spread\nis just equal to the additional cost of providing the additional liquidity that traders will demand a",
+    "rule_text": "A trader should monitor market spreads and entry barriers as leading indicators of excess dealer profitability; when spreads in a market remain persistently wide relative to competitive benchmarks, new dealers will enter, compressing spreads and reducing excess profits.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Spread in target market < 75th percentile of peer market spreads",
+      "Volume trend is increasing or stable"
+    ],
+    "parameters": {
+      "spread_percentile_threshold": 60,
+      "peer_market_lookback_periods": 252,
+      "minimum_competitive_markets_to_compare": 3
+    },
+    "exit_conditions": [
+      "Spread exceeds 60th percentile of competitive benchmarks",
+      "Spread widens >15% from entry spread in same session"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "CODE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry and exit conditions based on spread percentiles and volume metrics that can be programmatically detected from market data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_14_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.14, pp.59-61",
+    "raw_chunk_text": "regularly reverse. Price changes caused by a jump from the bid to the ask most frequently follow\nprice changes caused by a jump from the ask to the bid. Such price changes occur when the\norder flow in",
+    "rule_text": "A trader should exploit bid/ask bounce by fading price moves that reverse between bid and ask prices, since such reversals are transitory and caused by impatient order flow rather than fundamental value changes.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price moved from ask to bid on previous trade",
+      "Current price moved from bid to ask (or vice versa)",
+      "Last 4+ trades show alternating bid/ask jumps",
+      "Spread is within normal range (not widened by adverse selection)"
+    ],
+    "parameters": {
+      "min_consecutive_reversals": 4,
+      "min_trades_to_confirm": 5,
+      "position_size_percent": 0.5
+    },
+    "exit_conditions": [
+      "Price does not reverse within 3 bars",
+      "Spread widens beyond 1.5x normal",
+      "Stop loss at 2x recent bid-ask spread"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete, detectable patterns in price movements (alternating bid/ask jumps, spread measurements) and exit conditions define quantifiable thresholds (3 bars, 1.5x spread multiple, 2x stop loss) that a programmer could implement from market data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_15_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (approx. 62-64), Draft Copy",
+    "raw_chunk_text": "block liquidity suppliers are unwilling to expose their interest. Many more might trade if asked,\nbut they have not yet issued orders to trade. Block traders must find these traders to complete\ntheir ",
+    "rule_text": "A trader should actively search for and contact counterparties with latent (unposted) trading demand rather than relying solely on visible order book liquidity, because many willing traders have not issued orders due to order management costs or lack of awareness.",
+    "signal_category": "EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Visible order book depth < 1 contract at best bid/ask",
+      "Estimated order management cost > 2.0% of trade notional value",
+      "Trader has pre-identified list of 5+ potential counterparties"
+    ],
+    "parameters": {
+      "liquidity_threshold_percentile": 5,
+      "cost_threshold_pct": 2.0,
+      "minimum_counterparty_pool_size": 5,
+      "max_search_time_hours": 4
+    },
+    "exit_conditions": [
+      "Counterparty found and negotiation begins",
+      "Search time exceeds 4 hours without contact",
+      "Visible liquidity returns to normal levels"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has three specific, measurable entry conditions (order book depth < 1 contract, order management cost > 2.0%, and pre-identified counterparty list of 5+) that could be detected programmatically from market data and trader state, and clear exit conditions that define when the signal terminates."
+  },
+  {
+    "signal_id": "HARRIS_DRY_15_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (extracted), pp. 62-64",
+    "raw_chunk_text": "prices 5 percent below their current market prices. If he creates and submits orders for each\nstock, he risks buying all the stocks should the market as a whole drop significantly. Since he\ncannot aff",
+    "rule_text": "A trader should limit concurrent order exposure across correlated instruments to avoid forced execution on adverse portfolio-wide moves, and should wait for exogenous events or compelling opportunities to trigger decision-making rather than maintaining standing orders across many positions.",
+    "signal_category": "SIZING|RISK|EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Portfolio correlation among active orders exceeds 0.70",
+      "Exogenous event or news catalyst present",
+      "Current portfolio delta exposure < 30% of max acceptable loss"
+    ],
+    "parameters": {
+      "max_concurrent_orders": 3,
+      "correlation_threshold": 0.7,
+      "portfolio_delta_limit_pct": 30,
+      "event_requirement": "mandatory"
+    },
+    "exit_conditions": [
+      "Position filled OR 2 trading sessions elapsed without execution",
+      "Portfolio correlation drops below 0.60"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (portfolio correlation > 0.70, delta exposure < 30% threshold) and exit conditions (time-based or correlation-based triggers) that can be programmatically detected from portfolio data and market events, despite the qualitative nature of 'exogenous event' requiring some definition."
+  },
+  {
+    "signal_id": "HARRIS_DRY_15_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [CHAPTER], pp. 62-64",
+    "raw_chunk_text": "traders. Buyers bid prices up, and sellers offer prices down to encourage responsive traders to\npay attention and respond. Block initiators give price concessions to block liquidity suppliers to\nencou",
+    "rule_text": "A trader should invest effort in building and maintaining relationships with counterparties and gathering intelligence on their trading interests and history to identify liquidity providers willing to trade at the lowest cost.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Block order initiated",
+      "Counterparty has traded same security in past 20+ trading sessions",
+      "Counterparty average trade frequency >= 2 trades per week in target security"
+    ],
+    "parameters": {
+      "minimum_historical_trades": 20,
+      "minimum_trade_frequency_threshold": 2,
+      "frequency_lookback_period_weeks": 4,
+      "relationship_maintenance_intensity": "weekly_contact"
+    },
+    "exit_conditions": [
+      "Block executed at or better than benchmark mid-price",
+      "Counterparty declines or does not respond within 1 hour"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are specific and measurable: block order initiation, trading history frequency thresholds, and execution price benchmarks can be detected programmatically from market data and counterparty records."
+  },
+  {
+    "signal_id": "HARRIS_DRY_15_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter 15.2.2 'The Order Exposure Problem', pp. 62-64",
+    "raw_chunk_text": "when playing. Not surprisingly, good block traders spend most of their time on the telephone.\nMany enter copious notes into electronic contract management systems.\n15.2.2 The Order Exposure Problem\nWh",
+    "rule_text": "A trader should minimize order exposure duration and limit the number of counterparties who learn about pending block orders, because informed traders will exploit this information through front-running, same-side acceleration, or opposite-side retarding strategies that amplify price impact.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Block order size > 2% of typical daily volume",
+      "Order exposure limited to 1-2 pre-identified counterparties only",
+      "Execution timeline = same trading session only"
+    ],
+    "parameters": {
+      "counterparty_pool_size": 1,
+      "max_exposure_duration_minutes": 30,
+      "block_size_threshold_pct_adv": 2.0,
+      "information_leakage_tolerance": "minimal"
+    },
+    "exit_conditions": [
+      "Order fully executed or",
+      "End of trading session (auto-cancel)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (block order size threshold, counterparty limit, session timeline) and exit conditions that a programmer could implement through code to detect from portfolio state and execution data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_16_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.16, pp.65-67",
+    "raw_chunk_text": "who offer them immediacy. The dealers accumulate large long positions as they buy the\ninventory. Since they do not know their clients very well, they suspect that the uninformed\nliquidity demanders ma",
+    "rule_text": "A trader should exploit mean reversion to fundamental value when dealers are forced to accumulate inventory and lower prices below fair value to restore target positions.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price trades at >4% discount to estimated fundamental value",
+      "Dealer inventory accumulation signal triggered (e.g., sustained bid/ask imbalance >60/40 for 5+ bars)",
+      "Volume spike indicates forced dealer buying"
+    ],
+    "parameters": {
+      "price_discount_threshold": 0.04,
+      "inventory_imbalance_ratio": 0.6,
+      "confirmation_bars": 5,
+      "volume_spike_multiplier": 1.5
+    },
+    "exit_conditions": [
+      "Price recovers to within 1.5% of fundamental value",
+      "Stop loss at 6% below entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains three specific, quantifiable entry conditions (>4% discount, bid/ask imbalance >60/40 for 5+ bars, volume spike) and two concrete exit conditions that a programmer could code into an automated trading system using price, order flow, and volume data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_17_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, Ch. (Arbitrageurs), pp. 68-70",
+    "raw_chunk_text": "trade as informed traders.\nThis chapter continues our study of arbitrageurs. Besides being informed traders, we shall see\nthat arbitrageurs also supply liquidity, move liquidity, and produce financial",
+    "rule_text": "Arbitrageurs should predict when and where arbitrage opportunities will arise by analyzing quantity characteristics, rather than only reacting passively to opportunities as they occur, to improve profitability.",
+    "signal_category": "EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price differential detected between related instruments",
+      "Volume imbalance threshold breached in 2+ related markets simultaneously",
+      "Quantity characteristics show directional accumulation for 2+ periods"
+    ],
+    "parameters": {
+      "volume_confirmation_periods": 3,
+      "quantity_threshold_percentile": 75,
+      "min_simultaneous_signals": 2,
+      "lead_time_window_bars": 5
+    },
+    "exit_conditions": [
+      "Price differential closes",
+      "Quantity imbalance reverses"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify quantifiable market triggers (price differential detection, volume imbalance threshold breaching, directional accumulation patterns) that a programmer could operationalize into detection code using OHLCV data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_17_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Pages 68-70",
+    "raw_chunk_text": "Arbitrageurs form opinions about the normal relations among correlated instruments. An\narbitrage opportunity arises when the prices of correlated instruments diverge from their normal\nrelations. Arbit",
+    "rule_text": "Buy instruments that have become relatively cheap and sell those that have become relatively expensive when prices diverge from their normal correlated relations, profiting when prices converge back to normal.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify normal relation between correlated instruments (e.g., price ratio, spread mean)",
+      "Current price divergence exceeds 2.5 standard deviations from historical mean relation",
+      "Divergence persists for minimum 5 bars to confirm it is not noise",
+      "Enter long cheap instrument and short expensive instrument simultaneously"
+    ],
+    "parameters": {
+      "divergence_threshold_stddev": 2.5,
+      "confirmation_periods": 5,
+      "lookback_window": 252,
+      "exit_convergence_stddev": 0.5
+    },
+    "exit_conditions": [
+      "Exit when spread returns to within 0.5 standard deviations of mean",
+      "Stop loss if divergence expands beyond 3.5 standard deviations (signal broken)"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "CODE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies quantifiable entry conditions (2.5 standard deviation threshold, 5-bar confirmation, spread calculation) and exit conditions (0.5 and 3.5 standard deviation levels) that can be programmatically implemented on correlated instrument pairs."
+  },
+  {
+    "signal_id": "HARRIS_DRY_17_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (Section on Arbitrage), pp. 68-70",
+    "raw_chunk_text": "trades. People buy things when they value the item more than the money they exchange for it.\nThey sell things when they value the money more than the item. In a sense, all trades are\narbitrages since ",
+    "rule_text": "A trader should actively monitor and close arbitrage positions at favorable prices as soon as convergence occurs, because prices may diverge again after convergence, creating the need for real-time position management.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Arbitrage spread identified and quantified",
+      "Hedge portfolio constructed with multiple legs"
+    ],
+    "parameters": {
+      "convergence_threshold_bps": 5,
+      "monitoring_frequency_seconds": 1,
+      "max_slippage_tolerance_bps": 2,
+      "max_position_hold_hours": 4
+    },
+    "exit_conditions": [
+      "Close when spread narrows to \u22645 bps from fair value",
+      "Exit immediately if spread re-widens by >3 bps after initial convergence",
+      "Force close if position held >4 hours regardless of convergence state"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (arbitrage spread identified and quantified, hedge portfolio constructed) and measurable exit triggers (spread narrows to \u22645 bps, re-widens by >3 bps, time limit of 4 hours) that can be programmatically detected from market data and portfolio state."
+  },
+  {
+    "signal_id": "HARRIS_DRY_17_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.17 (Draft), pp.68-70",
+    "raw_chunk_text": "hedge portfolio are the legs of the arbitrage.\nHedge portfolios usually consist of one or more long positions and one or more short positions in\nvarious correlated instruments. Arbitrageurs generally ",
+    "rule_text": "Construct hedge portfolios by pairing long and short positions in correlated instruments to minimize total portfolio risk, or pair positions with inverse correlation (including options) when direct hedges are unavailable.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Primary position size established (long or short)",
+      "Identify hedge instrument with correlation >= 0.85 to primary position",
+      "Calculate hedge ratio to achieve net delta <= 0.10"
+    ],
+    "parameters": {
+      "min_correlation": 0.85,
+      "target_net_delta": 0.1,
+      "hedge_ratio": "1.0 or higher to over-hedge"
+    },
+    "exit_conditions": [
+      "Primary position is closed",
+      "Correlation drops below 0.80 (rebalance required)",
+      "Net delta exceeds 0.15 (rebalance)"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions with quantifiable thresholds (correlation >= 0.85, net delta <= 0.10) and exit conditions (correlation < 0.80, net delta > 0.15) that can be programmatically detected from market data and portfolio metrics."
+  },
+  {
+    "signal_id": "HARRIS_DRY_17_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [Section on Hedge Portfolios], pp. 68-70",
+    "raw_chunk_text": "deep-in-the-money put contract is a good hedge for a long position in the underling instrument.)\nTraders usually identify one leg of the hedge portfolio as the arbitrage numerator or reference\ninstrum",
+    "rule_text": "A trader should construct hedge portfolios by selecting a reference instrument that represents the common risk factor, then adjust the ratio of holdings in each leg relative to that numerator to minimize total portfolio risk.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Portfolio delta or correlation to numerator instrument exceeds \u00b12% threshold",
+      "Volatility of hedge portfolio increases above baseline by 1.5x"
+    ],
+    "parameters": {
+      "rebalance_frequency_days": 1,
+      "tolerance_threshold_percent": 2.0,
+      "numerator_selection": "cash_instrument",
+      "max_leverage_ratio": 1.0,
+      "volatility_multiplier_trigger": 1.5
+    },
+    "exit_conditions": [
+      "Hedge ratio variance falls below 1% of target",
+      "Underlying correlation to numerator drops below 0.70"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (delta/correlation threshold of \u00b12%, volatility increase of 1.5x) and exit conditions (hedge ratio variance <1%, correlation <0.70) that can be programmatically detected from market data and portfolio metrics."
+  },
+  {
+    "signal_id": "HARRIS_DRY_17_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, Ch. [Professor Larry Harris Trading and Exchanges], pp. 68-70",
+    "raw_chunk_text": "Traders choose their hedge ratios to minimize the total risk of the portfolio.\nArbitrageurs may have long or short positions in the hedge portfolio. They are long the hedge\nportfolio when they have a ",
+    "rule_text": "A trader should adjust hedge portfolio composition and sizing to minimize total portfolio risk, accounting for carrying costs associated with financing and holding positions.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify arbitrage spread opportunity (cash vs. futures, or synthetic vs. spot)",
+      "Calculate initial hedge ratio to achieve delta-neutral portfolio",
+      "Accumulate carrying cost budget of 10 basis points before entry"
+    ],
+    "parameters": {
+      "carrying_cost_threshold_bps": 10,
+      "rebalance_frequency_days": 1,
+      "max_hedge_portfolio_notional_multiple": 1.0,
+      "delta_drift_tolerance": 0.02
+    },
+    "exit_conditions": [
+      "Exit when cumulative carrying costs exceed 25 bps of initial spread",
+      "Exit if delta drifts beyond \u00b12% from neutral target",
+      "Exit when arbitrage spread closes below transaction costs"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (identify arbitrage spread, calculate delta-neutral hedge ratio, accumulate 10 bps carrying cost) and measurable exit triggers (25 bps cost threshold, \u00b12% delta drift, spread below transaction costs) that can be programmatically detected from market data and portfolio state."
+  },
+  {
+    "signal_id": "HARRIS_DRY_17_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [Empirical], pp. 68\u201370",
+    "raw_chunk_text": "The arbitrage spread is the difference between the basis and the fair value of the basis.\nArbitrageurs trade when the arbitrage spread is sufficiently large.\nThe values of the basis at which arbitrage",
+    "rule_text": "A trader should execute an arbitrage trade when the observed arbitrage spread exceeds the arbitrage bounds threshold, because the spread has widened sufficiently to overcome transaction costs and justify the offsetting long-short hedge positions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Arbitrage spread magnitude > 3.0 \u00d7 estimated transaction costs",
+      "Basis is outside fair value \u00b1 3\u03c3 bounds",
+      "Hedge portfolio correlation > 0.95 with underlying instruments"
+    ],
+    "parameters": {
+      "arbitrage_spread_threshold_multiplier": 3.0,
+      "min_correlation_offsetting_positions": 0.95,
+      "transaction_cost_buffer": 1.5
+    },
+    "exit_conditions": [
+      "Arbitrage spread narrows back to fair value \u00b1 1\u03c3",
+      "Basis returns within tighter bounds",
+      "Correlation of hedge deteriorates below 0.90"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are quantifiable and can be programmed using market data: spread magnitude comparison to transaction costs, basis deviation in standard deviations, and correlation thresholds."
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (pages 71-74)",
+    "raw_chunk_text": "Large traders also must pay close attention to how they display their orders. Traders who display\nlarge orders often attract front runners and scare away liquidity suppliers. Large traders\ntherefore m",
+    "rule_text": "Large traders should strategically control order display visibility and timing to minimize front-running and information leakage while maintaining access to liquidity.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position size > 75th percentile of typical daily volume in instrument",
+      "Trader is buy-side with no urgent time constraint"
+    ],
+    "parameters": {
+      "visibility_threshold_pct_adv": 0.75,
+      "max_single_order_pct_adv": 0.05,
+      "time_spread_days": 10,
+      "broker_distribution": "5+ brokers",
+      "market_distribution": "3+ venues"
+    },
+    "exit_conditions": [
+      "Full position accumulated or dispersed",
+      "Market regime change increases urgency"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "Entry conditions contain specific, measurable thresholds (position size > 75th percentile of daily volume) and identifiable trader characteristics (buy-side, no urgent constraint) that can be detected programmatically from market data and portfolio state."
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. Professor Larry Harris Trading and Exchanges Draft Copy, pp. 71-74",
+    "raw_chunk_text": "Display decisions are the most important trading decisions that large buy side traders make.\nThe decision to use limit orders versus market orders is related to the order display decision.\nTraders who",
+    "rule_text": "A trader should choose between limit orders (displayed or undisclosed) versus market orders based on whether revealing trading interest serves their strategic objectives, with informed traders making fundamentally different display choices than value traders.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trader possesses material non-public information or significant edge",
+      "Position size is large relative to typical market volume",
+      "Market impact cost estimation exceeds 15 basis points"
+    ],
+    "parameters": {
+      "display_limit_order_usage_pct": 0,
+      "undisclosed_limit_order_usage_pct": 100,
+      "market_order_usage_pct": 0,
+      "information_sensitivity_threshold": "HIGH"
+    },
+    "exit_conditions": [
+      "Information advantage has dissipated or become public",
+      "Liquidity provider offers favorable pricing despite concealment cost"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify measurable thresholds (material non-public information presence, position size relative to volume, market impact cost >15bps) that could be operationalized through code to trigger the signal, despite the strategic objective aspect being somewhat qualitative."
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.14 (referenced in pages 71-74 of draft), Bid/Ask Spreads section",
+    "raw_chunk_text": "The equilibrium spread model presented in Chapter 14 (Bid/Ask Spreads) shows that order\nsubmission strategy does not matter when all traders have identical needs. Bid/ask spreads\nsimply adjust to ensu",
+    "rule_text": "Order submission strategy (market vs. limit orders) should be selected based on the trader's time urgency and exposure sensitivity relative to the bid-ask spread cost.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trader has time window >= 5 minutes to fill order",
+      "Order size <= 25% of current bar volume",
+      "Spread width < 2x historical average spread"
+    ],
+    "parameters": {
+      "limit_order_placement": "at_midpoint",
+      "execution_patience_threshold_seconds": 300,
+      "max_order_size_pct_volume": 0.25
+    },
+    "exit_conditions": [
+      "Order filled",
+      "Time window exceeded; convert to market order"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are specific and measurable from market data (time window, order size relative to volume, spread comparison), and exit conditions provide clear triggers that a programmer could detect and implement."
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (pages 71-74), Draft Copy",
+    "raw_chunk_text": "The rule is correct when traders know nothing about values. In our example, sellers benefit\ngreatly if they use market orders rather than limit orders, and buyers may be slightly better off\nwith marke",
+    "rule_text": "A trader should choose between limit and market orders based on their relative priority between execution certainty and execution price, calibrated to the bid-ask spread width.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Bid-ask spread (bps) < 2.0",
+      "Trader valuation certainty is high",
+      "Time urgency is low"
+    ],
+    "parameters": {
+      "spread_threshold_for_market_order_bps": 5.0,
+      "price_priority_weight": 0.75,
+      "execution_probability_weight": 0.25
+    },
+    "exit_conditions": [
+      "Limit order not filled after 5 bars",
+      "Spread widens beyond 5 bps threshold"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions contain specific, measurable thresholds (spread < 2.0 bps, high certainty, low urgency) and exit conditions (5 bars, 5 bps threshold) that a programmer could operationalize with market data and defined state variables, despite requiring some qualitative calibration of 'certainty' and 'urgency'."
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [Unnamed], p. 71-74",
+    "raw_chunk_text": "Traders who are more concerned about trading than price will more likely use market orders.\nThe decision to use market orders versus limit orders also depends on what will happen when\nlimit orders do ",
+    "rule_text": "A trader should choose between market orders and limit orders based on the tradeoff between execution certainty and price quality, determined by their commitment to fill and tolerance for adverse price movement.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trader has a mandatory fill requirement (e.g., position closure deadline)",
+      "Market is moving away from desired price level"
+    ],
+    "parameters": {
+      "limit_order_offset_bps": 5,
+      "execution_urgency_threshold": 0.9,
+      "order_type_decision": "MARKET_ORDER"
+    },
+    "exit_conditions": [
+      "Order filled at market price",
+      "Position size target reached"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "Both entry conditions are actionable: 'mandatory fill requirement' can be detected from position closure deadlines in a system, and 'market moving away from desired price level' can be measured by comparing current price to a reference level."
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter on Trading Strategies (pp. 71-74)",
+    "raw_chunk_text": "limit orders or firm quotes to profit from the bid/ask spread. When their limit orders do not\nexecute, they simply cancel them or replace them with orders placed at new prices.\nTo derive optimal tradi",
+    "rule_text": "A trader should adjust limit order placement price based on current execution probability, which depends on queue depth at better prices, volatility regime, and market interest, to optimize the trade-off between execution likelihood and profit margin.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Limit order queue depth at better prices > 75th percentile of historical distribution",
+      "Place order at price: mid + (current_spread \u00d7 0.40)",
+      "Volatility regime is LOW or NORMAL"
+    ],
+    "parameters": {
+      "spread_offset_factor": 0.4,
+      "queue_depth_threshold_percentile": 75,
+      "min_volatility_for_tighter_placement": "NORMAL"
+    },
+    "exit_conditions": [
+      "Order fills",
+      "Order cancelled after 300 seconds without fill"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The rule contains specific, quantifiable entry conditions (queue depth percentile threshold, spread-based price calculation, volatility regime classification) and clear exit triggers (order fill or 300-second timeout) that can be programmatically detected from market data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_18_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.18, pp.71-74",
+    "raw_chunk_text": "generators that suggest order strategies based on current market conditions.\nTraders also acquire information about the relation between execution probabilities and limit\norder prices through experien",
+    "rule_text": "A trader should continuously monitor and revaluate order execution strategies as market conditions change, rather than executing rigidly against initial conditions.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Order placed in current market regime",
+      "Monitor for regime change exceeding threshold"
+    ],
+    "parameters": {
+      "revaluation_frequency_minutes": 15,
+      "spread_change_threshold_percent": 25,
+      "volatility_change_threshold_percent": 30,
+      "liquidity_depth_change_threshold_percent": 35
+    },
+    "exit_conditions": [
+      "Original order filled",
+      "Major regime shift detected (spread +25%, vol +30%, depth -35%)",
+      "Reassess and maintain or modify strategy"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable exit thresholds (spread +25%, vol +30%, depth -35%) and actionable entry conditions (order placement and regime monitoring) that a programmer could implement as detectable triggers in code."
+  },
+  {
+    "signal_id": "HARRIS_DRY_19_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. 19.1.1 (Unilateral Searches), pp. 75-77",
+    "raw_chunk_text": "bilateral search strategies easier to understand if you first understand unilateral search strategies.\n19.1.1 Unilateral Searches\nIn a unilateral search, you actively search for a good match\u2014a good pr",
+    "rule_text": "Continue searching for better trading opportunities as long as the expected benefit from additional search exceeds the expected cost of that search; stop when marginal benefit falls below marginal cost.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Cumulative search improvement (best price found vs initial quote) >= 15 basis points",
+      "Number of price inquiries >= 3",
+      "Probability of finding incrementally better price <= 40% (declining from prior searches)"
+    ],
+    "parameters": {
+      "min_improvement_to_stop_bps": 15,
+      "min_inquiries_before_stop": 3,
+      "prob_improvement_threshold": 0.4,
+      "max_search_duration_seconds": 30
+    },
+    "exit_conditions": [
+      "Execute order at current best price when any entry condition is met",
+      "Abandon search and execute at market if search duration exceeds 30 seconds"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions contain specific, measurable thresholds (15 bps improvement, 3+ inquiries, \u226440% probability) that a programmer could operationalize from market data and search history, plus an objective exit condition based on elapsed time."
+  },
+  {
+    "signal_id": "HARRIS_DRY_19_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, Ch. Professor Larry Harris Trading and Exchanges, pp. 75-77",
+    "raw_chunk_text": "matches might be than the best match you have already found. As the search proceeds, the\npossible improvement declines as you find progressively better matches. At some point, your\nexpected benefit fr",
+    "rule_text": "Stop searching for better opportunities when the expected marginal benefit of continued search falls below the marginal cost of search effort.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trader has identified a current best execution price or match",
+      "Additional search opportunities remain available",
+      "Time spent searching is quantifiable"
+    ],
+    "parameters": {
+      "search_cost_threshold_pct_of_best_price": 5,
+      "hourly_time_value_usd": 30,
+      "minutes_per_search_iteration": 5,
+      "cost_per_iteration_usd": 2.5,
+      "breakeven_improvement_pct": 5
+    },
+    "exit_conditions": [
+      "When (hourly_rate / 60) * minutes_searched >= 5% of best_price_found",
+      "Transact immediately at best match discovered"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The exit condition provides a quantifiable formula comparing search cost (hourly_rate / 60 * minutes_searched) against a percentage threshold of best_price_found, which a programmer could operationalize given trader hourly rate and search time data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_19_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, Ch.19, pp.75-77",
+    "raw_chunk_text": "sell the camera for 112 dollars. After another five minutes, he discovers that BNDPicture will\n\u00a92002 Oxford University Press Draft: March 5, 2002 19-2\nProfessor Larry Harris Trading and Exchanges Draf",
+    "rule_text": "A trader should cease searching for better prices when expected gain from continued search falls below the estimated cost of search.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Expected gain from next search calculated",
+      "Cost per search attempt estimated"
+    ],
+    "parameters": {
+      "gain_to_cost_ratio_threshold": 3.0,
+      "max_probability_threshold": 0.15,
+      "max_potential_savings_multiple": 8.0
+    },
+    "exit_conditions": [
+      "When (probability_of_better_price \u00d7 max_potential_savings) / search_cost < 3.0",
+      "Immediately cease search and execute at current best price"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (expected gain calculation, cost estimation) and a mathematical exit trigger (ratio < 3.0) that a programmer could implement as a testable rule in trading code."
+  },
+  {
+    "signal_id": "HARRIS_DRY_20_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. 20, pp. 78-81 (Storage Costs section)",
+    "raw_chunk_text": "straight bond. These creeping price changes are fully predictable and therefore do not contribute\nto fundamental volatility. Note, however, that if interest rates unexpectedly fall, the prices of\nzero",
+    "rule_text": "A trader should expect and prepare for sharp price spikes in commodities with high storage costs when inventory depletion occurs, because these markets cannot quickly build supply buffers.",
+    "signal_category": "VOL|EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Inventory level < 30th percentile of 3-year rolling distribution",
+      "Storage costs > median sector storage cost",
+      "Demand growth YoY > 5%"
+    ],
+    "parameters": {
+      "inventory_percentile_threshold": 30,
+      "storage_cost_relative_to_median": 1.0,
+      "demand_growth_minimum_pct": 5
+    },
+    "exit_conditions": [
+      "Inventory returns to 50th percentile",
+      "New production arrival confirmed",
+      "Price spike exceeds 15% from entry"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All three entry conditions are quantifiable metrics (percentile-based inventory levels, storage cost comparisons, YoY demand growth) and exit conditions are specific price/inventory thresholds that a programmer could implement with market data."
+  },
+  {
+    "signal_id": "HARRIS_DRY_20_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Chapter (Pricing in High Storage Cost Commodities), pp. 78-81",
+    "raw_chunk_text": "relieve the shortage. Conversely, when inventories are large and new product will soon arrive,\ndistributors may greatly discount the inventory to make room for the newly arrivals.\nPrice volatility in ",
+    "rule_text": "A trader should anticipate price volatility spikes in high-storage-cost commodities when production pipeline adjustments are slow or demand variation is high, because inventory imbalances persist longer and cannot be buffered by storage.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Commodity classified as high-storage-cost (storage cost > 15% annual value)",
+      "Production pipeline lead time > 90 days",
+      "Demand volatility (coefficient of variation) > 0.25",
+      "Inventory levels diverge >1 standard deviation from 2-year mean"
+    ],
+    "parameters": {
+      "storage_cost_threshold_pct": 15,
+      "pipeline_lead_days": 90,
+      "demand_cv_threshold": 0.25,
+      "inventory_deviation_std": 1.0
+    },
+    "exit_conditions": [
+      "Inventory returns to \u00b10.5 std dev of mean",
+      "Production pipeline shortens below 60 days",
+      "Demand volatility falls below 0.15"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All four entry conditions are quantifiable metrics (storage cost %, pipeline days, volatility coefficient, inventory standard deviations) that can be computed from market and operational data, and exit conditions are similarly measurable thresholds."
+  },
+  {
+    "signal_id": "HARRIS_DRY_20_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. (Portfolio Selection/Implementation), pp. 78-81",
+    "raw_chunk_text": "How well a portfolio performs depends on the instruments that are in the portfolio and upon the\ncosts of constructing and maintaining the portfolio. The problem of choosing the best\ninstruments to max",
+    "rule_text": "A trader should minimize trading costs relative to potential informational advantage, because excessive trading costs overwhelm any edge and cause consistent underperformance.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Expected profit from signal > 5.0 \u00d7 (commission + slippage + bid-ask spread)",
+      "Annual turnover ratio < 2.0"
+    ],
+    "parameters": {
+      "edge_to_cost_ratio_threshold": 5.0,
+      "max_annual_turnover": 2.0,
+      "max_trades_per_month": 4
+    },
+    "exit_conditions": [
+      "Position held until signal reverses or threshold drops below 5.0\u00d7",
+      "Maximum position duration: 90 calendar days"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (expected profit > 5.0\u00d7 costs and turnover < 2.0) and clear exit triggers (signal reversal, threshold drop, or 90-day duration limit) that a programmer could implement with defined metrics."
+  },
+  {
+    "signal_id": "HARRIS_DRY_21_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.21, pp.82-84",
+    "raw_chunk_text": "Professor Larry Harris Trading and Exchanges Draft Copy\nChapter 21\nLiquidity and Transaction Cost Measurement\nTraders pay attention to their transaction costs because transaction costs make implementa",
+    "rule_text": "A trader should measure and actively manage transaction costs relative to strategy edge, because transaction costs are the primary determinant of returns for active traders and excessive costs relative to alpha generated is the root cause of poor performance.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy is actively generating alpha (positive expected return exists)",
+      "Transaction costs can be reliably measured over rolling period"
+    ],
+    "parameters": {
+      "transaction_cost_threshold_pct_of_alpha": 0.25,
+      "measurement_window_bars": 252,
+      "minimum_alpha_threshold_bps": 10
+    },
+    "exit_conditions": [
+      "Exit when (total_measured_transaction_costs / realized_alpha) > 0.25",
+      "Reduce position size by 50% on first breach, exit fully on second breach within 10 bars"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific quantitative exit conditions (transaction costs / realized alpha ratio > 0.25, 50% reduction on first breach, full exit on second breach within 10 bars) that a programmer can code, though entry condition 'strategy is actively generating alpha' requires defining a measurable alpha calculation method."
+  },
+  {
+    "signal_id": "HARRIS_DRY_21_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [Chapter on Implementation], pp. 82-84",
+    "raw_chunk_text": "implemented their trading strategies. Traders must evaluate implementation to manage it\neffectively. They must know whether they have been trading too aggressively\u2014or not\naggressively enough\u2014to optimi",
+    "rule_text": "A trader should estimate and compare predicted transaction costs against expected strategy profits before implementation, adjusting position size downward if costs exceed profitability thresholds.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy generates a trade signal",
+      "Calculate estimated transaction costs (slippage + commissions + market impact)",
+      "Calculate expected profit from strategy",
+      "Transaction costs / Expected profit \u2264 0.25"
+    ],
+    "parameters": {
+      "cost_to_profit_ratio_threshold": 0.25,
+      "market_liquidity_adjustment": "Apply 1.5x cost multiplier in illiquid markets",
+      "position_size_method": "Reduce position by 50% if estimated in large size"
+    },
+    "exit_conditions": [
+      "Exit strategy as originally planned if entry was taken"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ILLIQUID"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify quantifiable calculations (transaction costs, expected profit, and a numerical threshold of 0.25) that can be computed and compared programmatically from market data and strategy parameters."
+  },
+  {
+    "signal_id": "HARRIS_DRY_21_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy Ch.82-84, pp.82-84",
+    "raw_chunk_text": "bid/ask spread when trading. The spread is an obvious and important cost of trading. Likewise,\nwhen large buyers push prices up and large sellers push prices down, the price impacts of their\ntrading a",
+    "rule_text": "A trader should submit aggressive orders (closer to market price) rather than conservative limit orders when the cost of missing a trade opportunity exceeds the cost of accepting worse execution prices.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trader has directional conviction in target direction",
+      "Market shows low trending momentum (ADX < 25)"
+    ],
+    "parameters": {
+      "limit_order_discount_from_market": "0.75%",
+      "max_unfilled_duration_before_market_order": "10 bars"
+    },
+    "exit_conditions": [
+      "Order unfilled after 10 bars elapsed \u2192 convert to market order",
+      "Price moves against position by 2% \u2192 cancel and reassess"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions include specific, quantifiable metrics (ADX < 25) and detectable portfolio states (directional conviction), while exit conditions provide concrete time and price-based triggers (10 bars, 2% adverse move) that a programmer could implement as testable rules."
+  },
+  {
+    "signal_id": "HARRIS_DRY_21_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. Draft (pp. 82-84)",
+    "raw_chunk_text": "traded more aggressively and filled the order at an average price of 65.25 cents, he would have\nmade 2.75 cents per pound, or 1,375 dollars for each 50,000-pound contract. Because the trader\nfailed to",
+    "rule_text": "A trader should systematically measure and monitor opportunity costs relative to execution aggressiveness to ensure trading intensity aligns with profit potential.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Calculate missed opportunity cost for last N trades",
+      "Calculate potential profit if executed at market aggression level",
+      "Opportunity cost ratio = missed_cost / potential_profit > 0.30"
+    ],
+    "parameters": {
+      "opportunity_cost_threshold_pct": 30,
+      "lookback_trades": 20,
+      "aggressiveness_increase_basis_points": 5
+    },
+    "exit_conditions": [
+      "Reduce aggressiveness if opportunity cost ratio falls below 15%",
+      "Rebalance quarterly"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify calculable metrics (missed opportunity cost, potential profit, and a 0.30 ratio threshold) that a programmer could operationalize from historical trade data and execution records."
+  },
+  {
+    "signal_id": "HARRIS_DRY_22_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.22 (Draft), pp.85-89",
+    "raw_chunk_text": "trading profits, they should stop trading.\nIn this chapter, we consider how to measure past performance and how to predict future\nperformance. The two questions are closely related. Most people measur",
+    "rule_text": "A speculator should only enter trades if they can demonstrate a reasonably reliable predictive model of future profitability; if prediction capability cannot be established, trading should be avoided entirely.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Historical backtest shows win rate >= 55% over minimum 200 trades",
+      "Positive expectancy (avg_win * win_rate) > (avg_loss * loss_rate) with margin >= 1.5x",
+      "Out-of-sample forward test confirms edge for >= 50 consecutive trades",
+      "Sharpe ratio of strategy >= 1.5"
+    ],
+    "parameters": {
+      "min_historical_trades": 200,
+      "required_win_rate": 0.55,
+      "expectancy_margin": 1.5,
+      "min_forward_test_trades": 50,
+      "min_sharpe_ratio": 1.5
+    },
+    "exit_conditions": [
+      "Actual win rate drops below 50% over last 100 trades",
+      "Expectancy becomes negative over rolling 100-trade window",
+      "Sharpe ratio falls below 1.0"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions are quantitative and measurable (win rate %, expectancy ratios, Sharpe ratio thresholds) that can be computed from historical trade data and monitored programmatically."
+  },
+  {
+    "signal_id": "HARRIS_DRY_25_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.?, pp.96-98",
+    "raw_chunk_text": "the limit buy order for his own account.\nThe dealer also may place a limit order into the NYSE specialist\u2019s limit order book at the same\nprice. If the NYSE order fills, he will fill his agency limit o",
+    "rule_text": "A trader should benchmark their execution quality against a reference market (e.g., primary exchange) by placing a parallel order at the reference price, to ensure their actual execution does not exceed the reference execution cost.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Receive a marketable order for execution",
+      "Dealer offers to execute order",
+      "Primary exchange (e.g., NYSE) has established limit order book"
+    ],
+    "parameters": {
+      "reference_price_offset": 0,
+      "cancellation_lag_ms": 0,
+      "comparison_threshold_basis_points": 0
+    },
+    "exit_conditions": [
+      "Client order fills \u2192 immediately cancel reference order",
+      "Reference order fills \u2192 immediately cancel client order",
+      "Both orders fill \u2192 reconcile and report discrepancy"
+    ],
+    "instrument": "EQUITY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete, detectable states (receipt of a marketable order, dealer execution offer, and existence of a reference limit order book) that can be monitored programmatically, and the exit conditions define clear fill scenarios that trigger specific actions."
+  },
+  {
+    "signal_id": "HARRIS_DRY_28_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Draft Copy, pp. 105-107 (Price Accelerator section)",
+    "raw_chunk_text": "The Price Accelerator\nIncreases in prices transfer wealth from pessimistic traders who have short positions to optimistic\ntraders who have long positions. These transfers can cause accelerate price ch",
+    "rule_text": "A trader should enter long positions during price accelerations driven by forced buying (margin calls and wealth-induced purchases) from both pessimistic and optimistic traders, because these cascading flows create directional momentum beyond fundamental value.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price has risen for at least 3 consecutive periods",
+      "Rate of price change is accelerating (current_move > previous_move by at least 15%)",
+      "Volume or open interest increases confirm forced buying activity",
+      "Short interest has visibly increased (pessimist positions are large)"
+    ],
+    "parameters": {
+      "acceleration_threshold_pct": 15,
+      "minimum_consecutive_bars": 3,
+      "position_size_pct_of_capital": 2,
+      "confirmation_indicators": 3
+    },
+    "exit_conditions": [
+      "Acceleration flattens (rate of change decreases below entry threshold)",
+      "Price closes below 2-period moving average",
+      "Forced buyers have liquidated (short covering volume normalizes)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, quantifiable entry conditions (3 consecutive periods, 15% acceleration threshold, volume confirmation, short interest metrics) that a programmer could implement with market data, though some conditions like 'visibly increased' short interest require operationalization of the visibility metric."
+  },
+  {
+    "signal_id": "HARRIS_DRY_28_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, pp. 105-107",
+    "raw_chunk_text": "In both cases, the sellers will be traders who do not have such strong opinions. Mild pessimists\nwill sell because the increase in market price makes short positions more attractive. Mild\noptimists wi",
+    "rule_text": "A trader should recognize and act on price-value divergence, but position sizing and capital constraints may prevent effective arbitrage execution during bubbles.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price exceeds intrinsic value by detectable margin (price/value > 1.15)",
+      "Trader has confirmed short capacity availability",
+      "Available capital for short position >= 75% of position needed to materially impact price",
+      "Long inventory is substantial enough to liquidate without forced exit"
+    ],
+    "parameters": {
+      "capital_threshold_pct": 0.75,
+      "price_value_divergence_threshold": 1.15,
+      "min_short_capacity_check": true
+    },
+    "exit_conditions": [
+      "Price reverts to within 5% of intrinsic value",
+      "Available short capacity falls below 50% of position",
+      "Capital utilization exceeds 85% of portfolio"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All entry and exit conditions contain specific, measurable thresholds (price/value ratios, capital percentages, inventory levels) that can be programmatically detected from market data and portfolio state."
+  },
+  {
+    "signal_id": "HARRIS_DRY_28_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.\"You Believe You Are Right, But...\", pp.105-107",
+    "raw_chunk_text": "not have enough capital to carry large short positions, or if they cannot easily sell short. They\nmay be unwilling to sell if they suspect that uninformed traders will continue to push prices up,\nor i",
+    "rule_text": "A trader should only execute a contrarian value trade when confidence in their valuation edge exceeds the psychological burden of trading against market consensus.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price deviates from estimated fundamental value by > 25%",
+      "Confidence score (self-assessed edge certainty) >= 0.85",
+      "Position sizing limited to 1-2% of portfolio per trade",
+      "Multiple independent valuation methodologies confirm mispricing in same direction"
+    ],
+    "parameters": {
+      "price_deviation_threshold": 0.25,
+      "confidence_threshold": 0.85,
+      "position_size_pct": 0.015,
+      "validation_methods_required": 2
+    },
+    "exit_conditions": [
+      "Price converges to fundamental value \u00b1 5%",
+      "Confidence deteriorates below 0.75",
+      "Time stop at 6 months if thesis hasn't played out"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, actionable entry conditions (price deviation >25%, confidence score \u22650.85, position sizing 1-2%, multiple valuation methods) that a programmer could operationalize through code, despite requiring some subjective inputs like confidence scoring and valuation methodology confirmation."
+  },
+  {
+    "signal_id": "HARRIS_DRY_28_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch. [Section: 'You Know You Are Right, But...'], pp.105-107",
+    "raw_chunk_text": "be long-term holders, early buyers who want to realize their gains, contrarians, value traders, or\narbitrageurs. Once their selling causes prices to fall, momentum buyers lose their interest.\nOverly o",
+    "rule_text": "A trader should reduce position size and tighten stop losses when price momentum reverses and confidence shifts, because cascading forced selling (margin calls, stop-outs, anticipatory selling) accelerates downward price movement.",
+    "signal_category": "RISK|SIZING|REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Already in a long position established during apparent uptrend",
+      "Price reverses downward by 2% from recent swing high"
+    ],
+    "parameters": {
+      "momentum_loss_threshold_pct": 2.0,
+      "position_reduction_pct": 50,
+      "stop_loss_placement_atr_multiples": 1.0
+    },
+    "exit_conditions": [
+      "Exit 50% of position immediately on 2% pullback from high",
+      "Move stop to breakeven on remaining 50%",
+      "Exit all if stop breached or price loses key support level"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "PSYCHOLOGY",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, quantifiable entry conditions (2% pullback from swing high, existing long position) and actionable exit rules (50% position exit on trigger, stop placement at breakeven, exit on support loss) that can be programmed into backtesting or live trading systems."
+  },
+  {
+    "signal_id": "HARRIS_DRY_28_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.28, pp.105-107",
+    "raw_chunk_text": "You Know You Are Right, But \u2026\n(Timing Is Everything)\nConsider the trade timing decisions that value traders must make when they believe that prices\nare too high:\nIf they initially have long positions,",
+    "rule_text": "A trader with a conviction about price direction must time entry to avoid premature liquidation due to interim adverse price movement and financing constraints, balancing conviction strength against capital adequacy.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Conviction score >= 8/10 (high confidence in direction thesis)",
+      "Excess capital >= 60% of position cost (can absorb 60% adverse move)",
+      "Maximum leverage ratio <= 1.5x account equity"
+    ],
+    "parameters": {
+      "conviction_threshold": 8.0,
+      "capital_buffer_percent": 60,
+      "max_leverage": 1.5,
+      "position_size_percent_of_buffer": 25
+    },
+    "exit_conditions": [
+      "Stop loss at 30% below entry",
+      "Conviction drops below 6/10",
+      "Drawdown exceeds capital buffer"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "EMPIRICAL",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains three specific, actionable entry conditions (conviction score threshold, excess capital percentage, leverage ratio) and three measurable exit conditions that a programmer could operationalize from trader conviction inputs, portfolio data, and price levels."
+  }
+]

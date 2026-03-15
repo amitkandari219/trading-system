@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tick-level analysis (tick direction classification 'b_t', cumulative tick imbalance, tick direction probability P[b=1]) and custom EWMA calculations on tick sequences. These are not available in the provided indicator set, which operates only at bar/candle level. The signal fundamentally requires intrabar tick data processing and custom probabilistic measures that cannot be mapped to standard OHLCV indicators.",
+  "translation_notes": "LOPEZ_DRY_0_0 is a tick imbalance bar formation rule from market microstructure theory. It triggers bar closures based on tick direction clustering, not price action. Required inputs: (1) tick-by-tick direction sequence, (2) cumulative imbalance tracking, (3) EWMA of tick probabilities. The allowed indicator set contains no tick-level metrics, volume profile analysis, or order flow measures. To implement this signal, a backtest engine would need custom tick data feed and microstructure preprocessing layer."
+}

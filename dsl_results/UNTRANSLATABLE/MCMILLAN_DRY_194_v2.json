@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_194",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Box spread signals require multi-leg options pricing calculations (strike prices, credit amounts, bid-ask spreads, implied volatility) and real-time options chain data that are not available in the allowed indicator set. The core entry condition 'total_credit > difference_in_striking_prices' cannot be expressed using only price/volume/technical indicators. This requires dedicated options analysis tools external to this framework.",
+  "translation_notes": "MCMILLAN_DRY_194 is an options arbitrage strategy (box spread) that inherently depends on options market microstructure (premiums, spreads, extrinsic value calculations) rather than underlying asset price action or technical indicators. Backtest engines designed for directional equity/futures trading cannot natively express or execute this strategy without custom options pricing modules."
+}

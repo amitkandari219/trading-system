@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_62_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility (IV) data from options markets, which is not available in the provided indicator set. The core logic depends on: (1) calculating normalized IV spreads between two legs using formula (IV_leg1 - IV_leg2) / ((IV_leg1 + IV_leg2) / 2), (2) comparing against a threshold, and (3) monitoring absolute IV level changes. Only 'india_vix' is available as a volatility proxy, but it does not provide leg-specific IV data needed for spread normalization. This is an options-specific strategy that requires IV term structure inputs not present in equity technical indicators.",
+  "translation_notes": "This signal from Natenberg's work is fundamentally about options volatility spreads and requires implied volatility curves. While hvol_20 (historical volatility) exists, it cannot replace the market-implied volatility data needed for this normalized spread calculation. The signal is conceptually sound but operationally untranslatable to a backtester limited to price-action and historical volatility indicators."
+}

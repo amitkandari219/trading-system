@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_251",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of futures spreads (near-term vs longer-term future prices) and fair value calculations specific to index arbitrage. Standard OHLCV indicators cannot capture spread price relative to fair value, futures expiration mechanics, or the multi-leg futures+stock execution strategy. The entry condition 'spread trades at 1.50 points over fair value' requires custom spread pricing and fair value model not available in standard indicator set.",
+  "translation_notes": "This is a sophisticated index arbitrage strategy involving futures spreads and fair value calculations. The core entry condition depends on: (1) calculating fair value of a 3-month spread, (2) comparing current spread price to fair value, and (3) executing a coordinated multi-leg trade (buy near-term future, sell longer-term future). Exit requires holding until near-term futures expiration and then buying the index constituents. These mechanics cannot be expressed using only basic price, moving average, and oscillator indicators. Backtesting would require custom spread pricing logic and futures contract data."
+}

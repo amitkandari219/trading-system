@@ -1,0 +1,80 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_3",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "low"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_middle"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_middle"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry condition 1: First bar closes strong (above previous close). Entry condition 2: Second bar closes near lows (current close at or below current low, approximated). Entry condition 3: Following days do not trade above midpoint of 2-bar reversal range (approximated using Donchian midpoint as proxy for 2-bar midpoint). Exit when price crosses above the 2-bar midpoint (Donchian middle used as reversal signal). Hold period set to 5 days ('few days' interpretation)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "low"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_middle"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_middle"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry condition 1: First bar closes strong (above previous close). Entry condition 2: Second bar closes near lows (current close at or below current low, approximated). Entry condition 3: Following days do not trade above midpoint of 2-bar reversal range (approximated using Donchian midpoint as proxy for 2-bar midpoint). Exit when price crosses above the 2-bar midpoint (Donchian middle used as reversal signal). Hold period set to 5 days ('few days' interpretation)."
+  },
+  "source_rule_text": "After a 2-bar reversal pattern (bullish bar followed by bearish bar closing near lows), sell when price does not trade above the midpoint of the 2-bar range in the following days."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of multi-bar patterns (congestion area formation over 3+ bars with specific sequencing: high followed by 2 lower closes, or low followed by 2 higher closes) and waiting period logic (10-day delay after breakouts). The backtest engine lacks bar-sequence pattern matching, multi-bar lookback with conditional logic, and time-based holding rules keyed to prior price action. Simplified conditions above capture approximate entry/exit but lose critical pattern recognition and waiting period requirements.",
+  "translation_notes": "KAUFMAN_DRY_4 is a complex multi-bar pattern detector with temporal logic. Attempted approximation uses consecutive close comparisons, but cannot encode: (1) the exact 3-bar sequence for congestion tops/bottoms, (2) the tick-tolerance rule for near-unchanged closes, (3) the 10-day waiting period conditional on prior breakout magnitude, or (4) the distinction between initial formation and cancellation. A proper implementation requires custom pattern detection logic outside standard indicator conditions."
+}

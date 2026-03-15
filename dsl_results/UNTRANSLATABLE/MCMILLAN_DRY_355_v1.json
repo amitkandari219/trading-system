@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_355",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct implied volatility (IV) measurement and volatility trend detection. Available indicators (india_vix, hvol_20) are proxies but do not directly measure option-implied volatility or its direction of change. The signal specifically requires detecting 'increasing implied volatility' as a negative condition for ratio call spreads, which requires IV time-series analysis not available in the allowed indicator set. Additionally, the signal is fundamentally about options strategy structure (ratio call spreads) which cannot be directly expressed through price/technical indicators alone.",
+  "translation_notes": "Attempted approximation: Used india_vix as a volatility proxy with prev_close comparison to infer volatility direction, but this is insufficient for the original signal's intent. The signal requires explicit IV tracking and options Greeks modeling, which are outside the scope of standard price-based technical indicators. This is a structural limitation for options-specific signals."
+}

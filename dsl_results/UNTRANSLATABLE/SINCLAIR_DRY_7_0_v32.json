@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit 'Implied Volatility' and 'Realized Volatility' indicators with a direct IV > RV comparison and IV percentile ranking. The allowed indicator set contains only 'india_vix' and 'hvol_20' as volatility proxies, but these do not directly represent implied vs realized volatility spread or IV percentile ranking. The signal also references 'variance premium' which requires decomposing IV-RV spread, not available in the indicator list.",
+  "translation_notes": "Attempted proxy mapping: india_vix \u2248 implied volatility level, hvol_20 \u2248 realized volatility. Entry conditions approximate IV > RV by using india_vix > hvol_20, with elevated IV regime (india_vix > 75 as high regime proxy). Low realized vol condition mapped as hvol_20 < sma_20. Exit maps IV-RV spread contraction as india_vix < hvol_20. However, this is a significant approximation and loses the percentile ranking and variance premium logic from the original signal."
+}

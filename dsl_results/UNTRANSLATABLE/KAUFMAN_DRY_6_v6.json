@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires forecasted next-bar close (F_{t+1}) and regression line residuals (R_t), neither of which are available in the allowed indicators list. The signal explicitly calls for: tomorrow's close > forecasted close + (2.0 \u00d7 std_dev_of_residuals). This requires predictive modeling and residual calculation from a fitted regression line, which are not supported by the allowed indicators.",
+  "translation_notes": "Attempted approximation using Bollinger Bands (bb_upper as confidence band proxy) and SMA reversal, but this does NOT accurately represent the original Kaufman signal which requires forward-looking regression forecast and residual-based confidence intervals. The original signal is a mean-reversion strategy with regression-based forecasting that cannot be reliably translated with only standard technical indicators."
+}

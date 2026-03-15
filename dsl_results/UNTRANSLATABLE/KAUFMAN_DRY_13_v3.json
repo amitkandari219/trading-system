@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a cash-futures arbitrage strategy requiring real-time comparison of futures prices vs. cash prices, uptick rule status monitoring, and transaction cost calculations across multiple stock issues. These require external data feeds (futures prices, regulatory status, multi-leg execution costs) and cross-asset comparisons that are not available in the single-instrument technical indicator set. The signal is fundamentally an order execution strategy rather than a price-action trading rule.",
+  "translation_notes": "Signal KAUFMAN_DRY_13 is a structural arbitrage trade requiring: (1) futures/cash price differential monitoring (not a technical indicator), (2) regulatory constraint tracking (uptick rule status), and (3) multi-leg transaction cost aggregation. These are execution parameters and external data dependencies, not chartable price conditions. The entry condition 'futures > cash' cannot be expressed without a futures_price indicator. The exit 'at delivery date' is a calendar-based mechanical condition, not a price action rule. Recommend implementing as a separate arbitrage module outside the technical backtest engine."
+}

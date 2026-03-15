@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_23",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires calculation of Efficiency Ratio (ER) to classify market noise levels and dynamically select between trending vs mean-reverting strategies. ER is not in the allowed indicator list. Additionally, the thresholds for low_noise_threshold and high_noise_threshold are marked AUTHOR_SILENT with no specific values provided. Without explicit threshold values and a noise metric indicator, the rule cannot be fully translated. Substituted ADX_14 as a proxy for trend/noise identification, but this does not capture the true Efficiency Ratio-based logic.",
+  "translation_notes": "Signal uses custom Efficiency Ratio metric not available in standard indicator set. Entry/exit conditions are context-dependent and require real-time noise classification. Used ADX > 25 as a trending proxy and ADX <= 25 as a ranging/mean-reverting proxy, but this is a workaround and does not implement the true ER-based regime detection intended by the original signal. Author did not specify numeric thresholds for noise levels, making precise translation impossible."
+}

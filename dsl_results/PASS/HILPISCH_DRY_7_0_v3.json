@@ -1,0 +1,108 @@
+{
+  "signal_id": "HILPISCH_DRY_7_0",
+  "book_id": "HILPISCH",
+  "dsl_rule": {
+    "signal_id": "HILPISCH_DRY_7_0",
+    "entry_long": [
+      {
+        "left": "sma_5",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_5",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_5",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_5",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses generic 'faster' and 'slower' MA without specific periods. Applied standard 5/20 SMA crossover as a reasonable default for trending strategies. The CONTEXT_DEPENDENT direction generates both long and short signals based on crossover direction. Entry conditions include crossover confirmation plus price position above/below the slower MA. Exit triggered immediately on reversal crossover per 'exit at market on crossover signal'."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_5",
+        "op": "crosses_above",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_5",
+        "op": "crosses_below",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_5",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_5",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses generic 'faster' and 'slower' MA without specific periods. Applied standard 5/20 SMA crossover as a reasonable default for trending strategies. The CONTEXT_DEPENDENT direction generates both long and short signals based on crossover direction. Entry conditions include crossover confirmation plus price position above/below the slower MA. Exit triggered immediately on reversal crossover per 'exit at market on crossover signal'."
+  },
+  "source_rule_text": "Generate buy signals when a faster moving average crosses above a slower moving average; generate sell signals when the faster moving average crosses below the slower moving average."
+}

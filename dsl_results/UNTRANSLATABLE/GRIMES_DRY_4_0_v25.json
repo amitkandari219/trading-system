@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe analysis (lower vs higher timeframe comparison) and relative momentum divergence detection across timeframes. The backtest engine structure does not support explicit timeframe_ratio parameter or cross-timeframe indicator comparisons. The thresholds for 'timeframe_ratio' and 'required_confirmation_signals' are not specified in source material.",
+  "translation_notes": "Attempted to capture the essence using single-timeframe continuation signals: ADX for trend confirmation, momentum divergence via MACD crossovers, and overextension via RSI extremes. However, this loses the core multi-timeframe hierarchy logic. The signal is fundamentally about resolving ambiguity by comparing lower and higher timeframes\u2014a capability not directly expressible in the current rule structure. Recommend manual implementation or engine enhancement to support timeframe ratio parameters."
+}

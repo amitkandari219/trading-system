@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external economic data (monthly unemployment figure and market expectations comparison). This is a macro-economic event-driven signal that cannot be expressed using only price-based technical indicators. The core condition 'market underestimated unemployment by at least 0.2%' requires real-time access to: (1) actual unemployment data release, (2) pre-release market consensus forecasts, and (3) calculation of the difference. None of these are available in the allowed indicator set, which is limited to price, volume, and technical analysis indicators.",
+  "translation_notes": "This is an EVENT-based signal requiring fundamental/macro data integration. To implement this signal, the backtest engine would need: (1) a calendar of unemployment report dates (first Friday of each month), (2) actual vs. expected unemployment data feeds, (3) logic to detect when actual < expected by >= 0.2%, and (4) conditional entry/exit logic tied to those events. The placeholder entry condition uses prev_close comparison as a dummy condition only\u2014the real trigger must be the economic event itself."
+}

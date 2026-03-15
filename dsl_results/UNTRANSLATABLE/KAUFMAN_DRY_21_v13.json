@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_21",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references 'market robustness score' and 'Table 21.9' which are custom metrics not available in standard indicator set. The 70% threshold for robustness and the distinction between 11 trending markets out of 17 requires external regime classification not expressible with allowed indicators. Used ADX_14 > 70 as a trend-strength proxy, but this does not capture the exact robustness scoring methodology described in the source material.",
+  "translation_notes": "The original signal is regime-selection logic (choose trend-following FOR trending markets) rather than a direct entry/exit signal. Converted to ADX-based trend detection as closest approximation. The true intent requires pre-computed robustness scores from Table 21.9 which must be provided externally or computed separately before applying this rule."
+}

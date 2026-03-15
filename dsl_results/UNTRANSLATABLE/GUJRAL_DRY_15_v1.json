@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of price level confluence across multiple timeframes and/or multiple technical tools (e.g., support/resistance alignment from RSI, MACD, Bollinger Bands, Donchian channels simultaneously, or same levels appearing on 5m, 15m, 1h, 4h charts). The backtest engine as specified does not support multi-timeframe analysis, multi-tool confluence scoring, or dynamic confluence detection. Pivot point used as proxy for key support/resistance, but this does not capture the core confluence requirement across tools and timeframes.",
+  "translation_notes": "GUJRAL_DRY_15 is fundamentally a confluence-detection strategy that requires architectural support for: (1) scanning multiple indicators for same price level alignment, (2) multi-timeframe data fusion, (3) confluence scoring/weighting. Current schema can only express single-indicator, single-timeframe conditions. A proper implementation would need a confluency detection module that compares support/resistance levels across RSI, MACD, Bollinger Bands, Donchian channels, Pivots, and moving averages, then scores alignment strength across multiple timeframes before triggering entry."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of 'previous rally high' and 'previous decline low' which are swing/pivot levels not directly available in the indicator set. The 10% separation threshold and 20% reversal confirmation thresholds cannot be precisely encoded without custom swing detection logic. Used prev_high/prev_low as proxies, but this does not capture the true intent of identifying multi-bar swing extrema.",
+  "translation_notes": "Attempted translation uses prev_high/prev_low as simplified breakout levels, but the signal's core logic depends on identifying swing highs/lows from previous complete rallies or declines, which requires swing detection not present in allowed indicators. Donchian channels (dc_upper, dc_lower) could approximate recent extrema but do not capture 'previous rally/decline' structure. The 10% and 20% thresholds are set as stop_loss_pct and implied in target_regime but cannot be strictly enforced without additional custom parameters."
+}

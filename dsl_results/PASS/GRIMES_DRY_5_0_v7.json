@@ -1,0 +1,148 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_5_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "pivot"
+      },
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "pivot"
+      },
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "pivot"
+      },
+      {
+        "left": "range",
+        "operator": "<",
+        "right": "atr_14"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "pivot"
+      },
+      {
+        "left": "range",
+        "operator": "<",
+        "right": "atr_14"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires bar range expansion relative to recent average (volatility ratio). Mapped using 'range' (high-low) compared to atr_14 as proxy for volatility threshold. Used pivot as support/resistance level substitute. Volume confirmation uses hvol_20 (20-bar historical volatility). Direction is CONTEXT_DEPENDENT as signal applies to both breakouts above (LONG) and below (SHORT) levels. Assumed 2% stop-loss and 20-day max hold as reasonable defaults for breakout trades."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "pivot"
+      },
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "pivot"
+      },
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "pivot"
+      },
+      {
+        "indicator": "range",
+        "op": "<",
+        "value": "atr_14"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "pivot"
+      },
+      {
+        "indicator": "range",
+        "op": "<",
+        "value": "atr_14"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires bar range expansion relative to recent average (volatility ratio). Mapped using 'range' (high-low) compared to atr_14 as proxy for volatility threshold. Used pivot as support/resistance level substitute. Volume confirmation uses hvol_20 (20-bar historical volatility). Direction is CONTEXT_DEPENDENT as signal applies to both breakouts above (LONG) and below (SHORT) levels. Assumed 2% stop-loss and 20-day max hold as reasonable defaults for breakout trades."
+  },
+  "source_rule_text": "A valid breakout that initiates an extended trend is characterized by increased volatility measured as the expansion of individual bar ranges relative to recent price action history."
+}

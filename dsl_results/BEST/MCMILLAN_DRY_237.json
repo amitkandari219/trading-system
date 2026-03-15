@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_237",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires comparing index futures prices to underlying stock basket pricing, which requires multi-instrument relative valuation (futures_price vs index_constituent_price_sum). The allowed indicators list contains only single-instrument technical indicators (RSI, MACD, Moving Averages, etc.) and does not include cross-instrument spread analysis, futures basis calculations, or index arbitrage metrics. The core entry condition 'index futures are overpriced relative to underlying stocks' cannot be expressed using the provided indicator set without access to futures basis spreads or index carry cost calculations.",
+  "translation_notes": "Signal MCMILLAN_DRY_237 is a statistical arbitrage/pairs trading strategy requiring: (1) real-time futures-to-cash basis measurement, (2) component stock correlation tracking, (3) transaction cost analysis for multi-leg execution, and (4) hedging ratio calculation. These are portfolio-level metrics, not single-price technical indicators. Implementation would require custom indicators: 'futures_basis_pct', 'index_mispricing', or similar. Direction marked CONTEXT_DEPENDENT because the trade is simultaneously LONG stocks and SHORT futures, making it a market-neutral hedge rather than a directional bet."
+}

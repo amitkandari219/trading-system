@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_100_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires synthetic option pricing calculations (call_price, put_price, strike_price) and forward price comparisons that cannot be expressed using the allowed indicators. The signal relies on derivatives market data and parity relationships (call - put vs underlying - strike) which are not available in the standard OHLCV-based indicator set. Requires: call prices, put prices, strike prices, and synthetic parity deviation metrics\u2014none of which are in the allowed indicators list.",
+  "translation_notes": "NATENBERG_DRY_100_0 is a derivatives arbitrage signal based on put-call parity. The core logic involves: (1) Computing synthetic_parity = call_price - put_price and theoretical_parity = underlying_price - strike_price, (2) Measuring deviation |actual - theoretical|, (3) Trading when deviation exceeds transaction cost thresholds. This is fundamentally an options-focused strategy incompatible with spot/futures price-only backtesting. The signal cannot be translated to equity/futures price action alone without access to options market data."
+}

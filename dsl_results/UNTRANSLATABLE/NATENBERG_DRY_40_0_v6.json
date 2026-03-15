@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_40_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct comparison of IV vs realized volatility, theoretical option pricing models, delta rebalancing triggers, and P&L threshold monitoring. These are derivatives/options-specific metrics not available in the standard indicator set (hvol_20 approximates realized vol, india_vix approximates IV, but no direct IV-RV comparison, theoretical value calculations, or options decay modeling available). Entry thresholds for 'IV discount', 'margin of safety %', and 'delta drift' cannot be operationalized with price-based indicators alone.",
+  "translation_notes": "Attempted proxy: hvol_20 (realized volatility proxy) compared to india_vix (IV proxy) for vol regime detection, combined with price proximity to SMA_20 as liquidity/volatility context. Exit on IV-RV convergence approximated as hvol approaching india_vix. However, this loses critical Natenberg concepts: (1) time decay race vs adjustment gains, (2) purchase price relative to theoretical value, (3) delta rebalancing frequency as trigger. Full implementation requires options Greeks (delta, theta, vega) and mark-to-model pricing not in allowed indicator set."
+}

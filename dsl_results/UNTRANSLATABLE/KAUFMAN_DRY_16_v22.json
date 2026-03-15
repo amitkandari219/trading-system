@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-day pattern recognition (NR4: detecting that 4th day range is smaller than all preceding 3 days), dynamic stop placement at specific tick offsets relative to pattern highs/lows, position reversal logic on intraday price crossing, and trailing stop implementation. The allowed indicators lack multi-bar lookback arrays and pattern detection capabilities. NR4 pattern detection requires comparing current bar range against three prior bars simultaneously, which cannot be expressed with single-bar indicator comparisons. Tick-based entry offsets and trailing stop mechanics are also not representable in the allowed operator set.",
+  "translation_notes": "This is a sophisticated intraday pattern signal requiring: (1) NR4 pattern detection across 4 bars, (2) conditional stop orders with tick offsets, (3) intraday reversal logic, and (4) trailing stop implementation. The backtest engine as specified does not support multi-bar lookback comparisons, dynamic stop order placement, or intraday reversal mechanics. A proper implementation would require custom pattern detection logic external to the standard indicator framework."
+}

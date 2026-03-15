@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires calculation of a custom volatility ratio: (current day true range) / (average true range lagged 30 days over 60-day period). While 'true_range' is available, the backtest engine does not support: (1) lagged moving averages (SMA/EMA computed on a specific past date, m=30 days ago), (2) custom ratio calculations between indicators, or (3) dynamic lookback windows with lag offsets. The closest available indicator 'atr_14' is a fixed 14-period ATR, not a 60-period lagged average. This exceeds the expressiveness of the allowed operators and indicators.",
+  "translation_notes": "Signal is EVENT/NEUTRAL category detecting volatility shocks. True range and ATR indicators exist, but the specific lagged moving average structure (n=60 period average, lagged m=30 days) and ratio division operation cannot be expressed within the constraint set. Recommend: (1) pre-compute the volatility ratio indicator in the data pipeline, or (2) expand engine to support lagged indicator calculations and arithmetic operations."
+}

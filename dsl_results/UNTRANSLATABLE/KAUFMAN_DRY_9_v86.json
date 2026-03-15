@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a custom adaptive Bollinger Band calculation methodology with exponential smoothing (M_t = a\u00d7C_t + (1-a)\u00d7M_{t-1}) and volatility-adjusted band corrections. The allowed indicator set includes standard bb_upper, bb_middle, bb_lower, and bb_bandwidth, but does NOT support: (1) custom smoothing constants 'a' as parameters, (2) recursive/iterative calculations across bars, (3) intermediate smoothed components (M_t, U_t, m_t), or (4) the corrected center line formula D_t = ((2-a)\u00d7M_t - U_t)/(1-a). The signal requires parametrization of smoothing_constant_a and approximated_period, both marked [THRESHOLD_NEEDED], making it incomplete. The custom adaptive band construction cannot be expressed using only the allowed indicators and operators.",
+  "translation_notes": "Signal requires custom indicator implementation. Recommend: (1) Define smoothing constant 'a' value (e.g., 0.1 for ~20-day EMA approximation), (2) Implement adaptive band calculation as custom preprocessing, (3) Once computed, reference via bb_upper/bb_lower or create named custom indicators, (4) Add entry/exit logic comparing price to adaptive bands. Direction marked NEUTRAL as no directional bias specified. Target regime HIGH_VOL aligns with signal purpose of correcting volatile period bulges."
+}

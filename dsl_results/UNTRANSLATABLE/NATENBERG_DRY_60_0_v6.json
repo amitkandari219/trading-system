@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_60_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a pairs trading signal requiring cross-instrument spread analysis (TBond vs TNote futures spread, rolling mean, standard deviation bands, and multi-source conviction confirmation). The allowed indicator set contains only single-instrument technical indicators and lacks: (1) inter-contract spread calculations, (2) rolling mean and standard deviation of spreads, (3) multi-source conviction aggregation, (4) interest rate directional analysis. The signal also requires instrument-specific thresholds marked [THRESHOLD_NEEDED] that cannot be derived from price action alone. This requires custom spread modeling beyond the scope of single-instrument backtesting.",
+  "translation_notes": "NATENBERG_DRY_60_0 is a sophisticated relative value / pairs trading strategy from an options/futures context. It requires: (a) dual-instrument data feeds with spread calculations, (b) fundamental interest rate analysis, (c) liquidity metrics per leg, (d) rolling volatility bands on the spread series itself. Standard technical indicators cannot capture the relationship mechanics. Recommend: implement as custom multi-leg strategy module with dedicated spread dataset and conviction scoring system."
+}

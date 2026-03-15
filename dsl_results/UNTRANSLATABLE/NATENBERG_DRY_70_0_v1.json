@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_70_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit options pricing data (implied volatility, time decay rates, calendar spread width, option expiration dates, and strike-specific Greeks). These are not available in the allowed indicator set, which contains only price-action and technical indicators. Calendar spread construction and theta decay comparison require options market microstructure data beyond standard OHLCV indicators.",
+  "translation_notes": "Attempted proxy using hvol_20 for 'above-average implied volatility', price_pos_20 for 'at-the-money' proximity, and a 45-day hold window for typical calendar spread duration. However, this is a weak approximation. The core signal (differential time decay between option expirations) cannot be translated without actual option chain data including bid-ask spreads, implied volatility surfaces, and theta values across multiple expiration dates."
+}

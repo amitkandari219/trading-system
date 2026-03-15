@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) climax moves defined as 'extremely large momentum move out of all proportion to recent history' - requires statistical deviation analysis or volatility percentile ranking not available in indicator set; (2) MACD rescaling behavior defined as 'recent history compressed into tight wiggly line' - requires analysis of MACD volatility/range compression relative to historical periods, which cannot be expressed with basic comparison operators on single MACD values. The signal is fundamentally a FILTER/AVOIDANCE rule (do NOT enter) rather than a directional entry signal, and the quantitative thresholds for 'climax' and 'rescaling' require multi-period statistical measures unavailable in the allowed indicator set.",
+  "translation_notes": "This is a contrarian reversion signal warning against trend continuation entries. Core logic: (1) Identify extreme momentum event (climax) relative to recent history - requires volatility ratio or Z-score; (2) Detect MACD compression/rescaling - requires measuring MACD range compression over rolling windows. Neither can be expressed with point-in-time indicator comparisons. Recommendation: Implement as custom indicator checking (atr_14 or hvol_20 percentile rank > 90th) for climax, and (macd recent_range / historical_range < threshold) for rescaling."
+}

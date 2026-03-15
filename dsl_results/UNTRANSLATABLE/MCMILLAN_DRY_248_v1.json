@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_248",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is an index arbitrage strategy requiring dual-leg execution (buy stocks, sell futures) with inputs that are not standard OHLCV price/volume indicators. The signal requires: (1) fair_value_premium calculation (not available as indicator), (2) actual_futures_premium (not available as indicator), (3) cross-asset comparison between stock index and futures contract, (4) precise cost accounting across multiple legs (stock commission, futures entry/exit costs). The backtest engine as specified can only work with single-asset price/technical indicators and cannot model multi-leg arbitrage execution or commission structures with per-share granularity.",
+  "translation_notes": "Signal references AUTHOR_SILENT parameters (fair_value_premium, actual_futures_premium) that cannot be derived from the allowed indicator set. The core logic\u2014'when futures premium exceeds fair value'\u2014requires real-time premium calculation not expressible through standard technical indicators. Entry condition approximated as close > 1.75% (150 bps excess premium) and exit as close < 1.23% (entry cost basis), but this is not a valid translation of the intended arbitrage rule."
+}

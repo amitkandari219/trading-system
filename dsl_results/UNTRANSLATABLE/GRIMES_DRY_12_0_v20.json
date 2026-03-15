@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_12_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires construction of lagged volatility bands with 1-period lag offset and dynamic standard deviation multiplier bands. The allowed indicator set does not include: (1) lagged moving average calculations offset by 1 day, (2) custom standard deviation bands built from lagged data, or (3) explicit band_width_multiplier implementation. While Bollinger Bands (bb_upper, bb_lower) are available, they cannot be configured with 1-day lag offset or custom multipliers as required. The thresholds [THRESHOLD_NEEDED] are placeholders that require parameter specification. Recommend implementing custom indicator: lagged_sma_20, lagged_std_20, vol_band_upper, vol_band_lower.",
+  "translation_notes": "Signal uses volatility bands with specific lag logic not expressible in standard indicator set. Entry based on price exceeding lagged moving average \u00b1 N standard deviations requires custom indicator construction. Lookback period of 20 days inferred from source text. Direction is CONTEXT_DEPENDENT per original signal specification."
+}

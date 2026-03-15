@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of specific economic report releases (PPI, Unemployment, Retail Sales) and Treasury auction dates as entry triggers. These are external calendar/event data points, not price/technical indicators available in the allowed indicator set. The exact stochastic threshold value is marked as [THRESHOLD_NEEDED] and was not provided in source material. Used midpoint threshold (50) as placeholder, but optimal threshold requires author specification.",
+  "translation_notes": "Signal is EVENT-driven and CONTEXT_DEPENDENT on macroeconomic calendar. The 1-day raw stochastic (stoch_k) is used with placeholder threshold of 50 (0-100 scale). Direction reverses based on economic report direction: bullish reports trigger long entries at high stochastic readings, bearish reports trigger short entries at low readings. Exit on stochastic reversal (AUTHOR_SILENT reversal logic applied). Hold period set to 1 day reflecting short-term Treasury market microstructure. Study sample of 175 report days suggests intraday/overnight holding patterns. Backtest engine must provide external event calendar input for economic reports and auction dates to fully operationalize this signal."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal specifies variable breakout sizes ranging from $0.05 to $1.00/bbl with direction determined by context (long or short based on direction of breakout), but no explicit directional bias or entry trigger mechanism is provided. The 'varying sizes' parameter cannot be directly encoded as a single threshold\u2014it would require dynamic threshold selection logic not supported by the condition-based rule engine. Additionally, 'no inside day restriction' is a constraint on eligible bars rather than an entry condition. No exit conditions were specified (AUTHOR_SILENT), so a reasonable reversal-based exit was inferred.",
+  "translation_notes": "Approximated breakout detection using true_range > 0.05 as a proxy for volatility-based entry trigger. Set hold_days_max=1 to enforce 'no overnight positions' rule. Direction marked CONTEXT_DEPENDENT per signal specification. True exit logic cannot be determined from source material; simple reversal exits were substituted as reasonable defaults."
+}

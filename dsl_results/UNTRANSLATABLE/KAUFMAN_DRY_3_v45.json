@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires dynamic profit target calculation based on measured price height from support levels. This requires: (1) identification of specific support level (not available as fixed indicator), (2) calculation of the height of the prior move (close - support_level), and (3) projection of that height downward from breakout point (support_level - height). The allowed indicators do not support dynamic multi-step calculations or user-defined support level storage. Pivot point s1 is used as a proxy for support level, but the core height-projection mechanism cannot be expressed with available operators.",
+  "translation_notes": "Entry condition simplified to: price breaks below pivot support (s1). Exit condition set to: price closes back above support (reversal logic per AUTHOR_SILENT guidance). The sophisticated height-measurement and projection-downward methodology from the original signal cannot be encoded in this rule structure. A custom backtest module would be needed to properly implement the target-projection algorithm."
+}

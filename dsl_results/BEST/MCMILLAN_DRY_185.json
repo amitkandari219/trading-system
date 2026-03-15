@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_185",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific indicators and pricing logic (call option discount from parity, strike price comparison, moneyness evaluation, immediate exercise mechanics) that are not available in the standard price/technical indicator set. The strategy involves options arbitrage with synthetic positions (long call + short stock) and requires real-time option pricing data (bid-ask spreads, implied volatility, time value decay) that cannot be expressed using only the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Returns). Additionally, the 'discount_threshold' parameter is marked AUTHOR_SILENT with no specific value provided.",
+  "translation_notes": "This is a classical options arbitrage strategy from McMillan's work on option spreads. It requires: (1) Options market data and pricing, (2) Real-time parity calculations (call_price vs spot - strike), (3) Moneyness assessment, (4) Options exercise logic. A backtest engine designed for equity price action alone cannot implement this strategy. Recommend using a dedicated options backtesting platform with Greeks calculations and exercise mechanics."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires calculation of a custom band derived from (10-day MA of high/low/close \u00b1 10-day MA of the high-low range). This is a Keltner Channel variant that requires computing intraday range-based moving averages not available in the allowed indicator set. ATR_14 is a close approximation but uses 14-day period instead of 10-day, and the exact band construction (midpoint as average of OHLC with range offset) cannot be precisely replicated with available indicators.",
+  "translation_notes": "Approximated using sma_10 as the central moving average and atr_14 as a volatility band proxy. The true signal requires a custom 10-day range-based band calculation. Position reversal on opposite band penetration is encoded in entry/exit logic. For production use, implement custom Keltner Channel (10,10) indicator."
+}

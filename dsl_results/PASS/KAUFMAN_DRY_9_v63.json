@@ -1,0 +1,108 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "stoch_k",
+        "operator": "crosses_above",
+        "right": "stoch_d"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "stoch_k",
+        "operator": "crosses_below",
+        "right": "stoch_d"
+      },
+      {
+        "left": "stoch_k",
+        "operator": ">",
+        "right": "80"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "stoch_k",
+        "operator": "crosses_below",
+        "right": "stoch_d"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "stoch_k",
+        "operator": "crosses_above",
+        "right": "stoch_d"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses 20-day stochastic (stoch_k and stoch_d are standard 14-period; 20-day variant not available in allowed indicators, so standard stochastic used as closest match). Trend determination inferred via ADX > 20 for uptrend context. Short entry requires stochastic K to penetrate above 80% threshold AND cross below signal line. Long entry requires stochastic K to cross above signal line in uptrend context. Exit conditions reversed from entry crossovers per standard practice."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "stoch_k",
+        "op": "crosses_above",
+        "value": "stoch_d"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "stoch_k",
+        "op": "crosses_below",
+        "value": "stoch_d"
+      },
+      {
+        "indicator": "stoch_k",
+        "op": ">",
+        "value": 80.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "stoch_k",
+        "op": "crosses_below",
+        "value": "stoch_d"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "stoch_k",
+        "op": "crosses_above",
+        "value": "stoch_d"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses 20-day stochastic (stoch_k and stoch_d are standard 14-period; 20-day variant not available in allowed indicators, so standard stochastic used as closest match). Trend determination inferred via ADX > 20 for uptrend context. Short entry requires stochastic K to penetrate above 80% threshold AND cross below signal line. Long entry requires stochastic K to cross above signal line in uptrend context. Exit conditions reversed from entry crossovers per standard practice."
+  },
+  "source_rule_text": "Enter a short sale after the trend has turned down on the first stochastic sell signal (stochastic crosses signal line going down); enter a long after the trend has turned up on the first stochastic buy signal."
+}

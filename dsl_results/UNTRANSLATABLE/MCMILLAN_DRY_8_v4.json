@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires real-time options market data (option pricing, intrinsic value, bid-ask spreads, strike prices) and execution of options contracts (buying calls, shorting stock, exercising). The backtest engine only supports equity price and technical indicators. Options arbitrage cannot be modeled without options chain data, Greeks, and multi-leg order execution capabilities.",
+  "translation_notes": "MCMILLAN_DRY_8 describes a pure options arbitrage strategy exploiting mispricing between call options and underlying stock. It requires: (1) options market data not available in the indicator set, (2) ability to simultaneously execute three correlated positions (buy call + short stock + exercise), (3) same-day settlement logic. This is beyond the scope of a technical indicator-based equity backtest engine. Would require dedicated options analysis framework."
+}

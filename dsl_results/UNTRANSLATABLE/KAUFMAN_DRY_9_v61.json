@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal specifies a custom '2-day RSI' variant (Michael Stokes) that replaces 1-day price changes with 2-day changes. This is not a standard RSI calculation and is not available in the allowed indicators list (rsi_7, rsi_14, rsi_21 are all standard RSI). The closest available indicator is rsi_7, but this does not match the custom 2-day calculation method described in the source material.",
+  "translation_notes": "Signal requires a proprietary 2-day RSI variant not present in allowed indicators. Used rsi_7 as best approximation, but this is an imperfect substitution. The custom calculation method (Pi - Pi-2 for overlapping 2-day data) cannot be replicated with standard indicators. Exit condition inferred as RSI mean reversion back above 30 since author provided AUTHOR_SILENT for exits."
+}

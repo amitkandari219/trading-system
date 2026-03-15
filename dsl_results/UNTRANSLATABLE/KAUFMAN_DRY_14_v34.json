@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 1.5\u00d7 ATR shock magnitude (close move relative to ATR) and directional context (upward vs downward shock). The allowed indicators cannot precisely measure shock directionality and magnitude relative to ATR in a single comparable condition. The signal's conditional logic (SHORT for upward shocks with lower closes, LONG for downward shocks with closes near highs) requires multi-bar shock detection not directly expressible with available operators.",
+  "translation_notes": "Attempted partial translation: Used price_pos_20 (0-1 scale) to approximate highest/lowest 20% of range (values <0.2 or >0.8). Used true_range vs atr_14 as proxy for shock threshold, but this does not capture the 1.5\u00d7 magnitude requirement. The directional shock logic (upward/downward + close position pairing) cannot be reliably encoded without custom operators or shock detection indicators. Recommend adding 'shock_magnitude' indicator to engine or using prev_close comparison with atr multiplier."
+}

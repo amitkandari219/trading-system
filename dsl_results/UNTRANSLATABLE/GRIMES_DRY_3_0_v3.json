@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'extended trading range duration' and 'confirmation bars held' as stateful conditions. These require lookback window logic and bar-counting not directly expressible with allowed operators. Parameters like range_duration_minimum_bars, confirmation_bars, and penetration_threshold_atr_multiples are marked [THRESHOLD_NEEDED] and cannot be translated without specific numerical values. Donchian channels used as proxy for range boundaries, but true range detection logic requires additional state management.",
+  "translation_notes": "Used Donchian channels (dc_upper/dc_lower/dc_middle) as proxy for dynamic range boundaries. Volume elevated condition mapped to hvol_20. ATR multiple penetration approximated with atr_14 > 0.02. Missing: explicit range duration validation, confirmation bar counter, and precise penetration threshold multiples."
+}

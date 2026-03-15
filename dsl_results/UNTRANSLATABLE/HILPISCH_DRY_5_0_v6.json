@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a custom rolling mean calculation over m periods (m \u2208 [1, 3, 5, 7, 9]) applied to log_returns. The allowed indicators list does not include a generic rolling mean operator or parameterized rolling window function. The signal logic depends on computing rolling_mean(log_returns, m) and taking its sign, then shifting by 1 bar for entry. This custom rolling statistic cannot be expressed using only the provided fixed indicators (sma_*, ema_*, rsi_*, etc.) without knowing the specific window parameter m or having access to a rolling_mean indicator.",
+  "translation_notes": "The core signal mechanism (sign of rolling mean of log returns) cannot be fully translated because: (1) no generic rolling mean indicator exists in the allowed list, (2) the window parameter m is variable and must be optimized, (3) entry timing requires shift(1) which is an execution rule, not a condition. A workaround approximation using log_returns sign alone is shown above, but this loses the rolling aggregation and threshold logic that defines the original signal."
+}

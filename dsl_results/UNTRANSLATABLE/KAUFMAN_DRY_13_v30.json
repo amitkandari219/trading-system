@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ratio construction between two correlated markets (crude oil / WERN) and ratio-based trend detection. The allowed indicator set does not support: (1) cross-market ratio calculations, (2) ratio-specific trend indicators, or (3) paired instrument logic. The 40-day trend application must be computed on the ratio itself, not on individual close prices. Ratio construction method and entry threshold are marked AUTHOR_SILENT.",
+  "translation_notes": "Attempted partial translation using sma_40 as the 40-day trend component, but this only represents the trend on a single instrument's close price, not the ratio trend between crude oil and WERN. A proper implementation would require custom ratio preprocessing before this rule engine can apply. Direction marked CONTEXT_DEPENDENT because the signal implies long crude / short WERN when ratio declines, but the exact entry/exit logic depends on ratio movement direction, which cannot be directly expressed with available indicators."
+}

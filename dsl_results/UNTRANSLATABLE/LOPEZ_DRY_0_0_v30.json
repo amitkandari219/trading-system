@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "CUSUM (Cumulative Sum Control Chart) filtering requires stateful cumulative computation and explicit drift adjustment parameters that cannot be expressed as simple indicator comparisons. The algorithm requires: (1) maintaining cumulative state S across bars, (2) computing S = max(0, S + (price_change - drift)), (3) threshold detection on cumulative values, and (4) state reset logic. These operations require custom algorithmic implementation beyond the allowed indicator/operator schema. Parameters h_threshold, drift_adjustment, and lookback_period are marked [THRESHOLD_NEEDED] and require domain expertise to calibrate.",
+  "translation_notes": "CUSUM is a sophisticated statistical process control method designed to detect regime changes through cumulative deviation analysis. The signal is best implemented as a custom indicator within the backtest engine rather than through the standard rule syntax. The entry conditions describe a state machine that cannot be replicated with simple cross-sectional comparisons of price and moving averages."
+}

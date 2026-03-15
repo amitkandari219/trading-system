@@ -1,0 +1,62 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_16",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": ">=",
+        "right": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry condition uses prev_high to represent 'high of the selling day tested on open of short sale day'. The signal requires detecting an uptrend and prior long position closure, which are contextual; the core technical condition is that the open of the short entry day reaches or exceeds the previous day's high. Exit uses a mean reversion approach (close crossing above sma_20) to exit the short when uptrend resumes, consistent with the 3-day cycle timing mentioned in the source text."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": ">=",
+        "value": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry condition uses prev_high to represent 'high of the selling day tested on open of short sale day'. The signal requires detecting an uptrend and prior long position closure, which are contextual; the core technical condition is that the open of the short entry day reaches or exceeds the previous day's high. Exit uses a mean reversion approach (close crossing above sma_20) to exit the short when uptrend resumes, consistent with the 3-day cycle timing mentioned in the source text."
+  },
+  "source_rule_text": "When closing a long position and entering a short during an uptrend, enter the short immediately if the high of the selling day is tested on the open of the short sale day."
+}

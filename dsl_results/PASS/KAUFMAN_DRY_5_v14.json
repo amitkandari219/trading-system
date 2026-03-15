@@ -1,0 +1,72 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_5",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "low",
+        "operator": ">=",
+        "right": "prev_low"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal applies swing-following logic: entry requires second day with higher high AND no lower low (i.e., low >= previous low). Exit uses reversal condition (close below previous close) since AUTHOR_SILENT. Stop loss derived from $5 swing threshold on gold (approximately 0.2-0.3% typical, rounded to 5% for safety margin). Regime set to TRENDING_UP per Category:TREND and Direction:LONG context."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "low",
+        "op": ">=",
+        "value": "prev_low"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal applies swing-following logic: entry requires second day with higher high AND no lower low (i.e., low >= previous low). Exit uses reversal condition (close below previous close) since AUTHOR_SILENT. Stop loss derived from $5 swing threshold on gold (approximately 0.2-0.3% typical, rounded to 5% for safety margin). Regime set to TRENDING_UP per Category:TREND and Direction:LONG context."
+  },
+  "source_rule_text": "If the second day shows a higher high but not a lower low, continue the upswing by extending the first swing higher and ignore the low of that day."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_110_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multi-leg option spread analysis across strikes and expirations (vertical spreads, calendar spreads, time spreads). It requires: (1) theoretical pricing models for option relative values based on strike spacing and time decay, (2) direct access to option chain data with multiple strikes and expirations, (3) calculation of expected price relationships via Black-Scholes or binomial models, (4) comparison of actual vs. theoretical spread prices. Single-instrument OHLCV candlestick data with the provided technical indicators cannot model uniform progression violations across option strikes or compute implied volatility surface anomalies. The signal is fundamentally an options volatility surface arbitrage requiring derivatives pricing infrastructure, not candlestick pattern recognition.",
+  "translation_notes": "NATENBERG_DRY_110_0 is an advanced options relative value strategy. The core logic\u2014detecting when time spreads or vertical spreads deviate from theoretical fair pricing and mean-reverting to fair value\u2014requires: (1) simultaneous quotes for multiple strikes/expirations, (2) volatility smile/skew modeling, (3) Greeks and theta decay calculations. The allowed indicators (RSI, MACD, moving averages, Bollinger Bands, etc.) are designed for spot/futures price action and cannot compute option-relative pricing anomalies. This signal cannot be translated without adding option chain-specific indicators such as: implied_vol_skew, time_spread_parity_deviation, vertical_spread_theoretical_value, calendar_spread_theta_ratio, and options_bid_ask_spread. Recommendation: Implement as a separate module with direct option market data feeds."
+}

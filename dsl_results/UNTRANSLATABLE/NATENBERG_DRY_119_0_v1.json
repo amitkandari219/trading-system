@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_119_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific metrics (American box premium vs European box premium, early exercise delta, time-value optionality differential) that are not available in the standard price/technical indicator toolkit. The core logic compares derivatives pricing across American vs European exercise styles, which cannot be derived from OHLCV or standard technical indicators alone. Approximated using volatility and trend strength as proxy conditions for optionality window and embedded value recognition.",
+  "translation_notes": "This is a derivatives arbitrage signal that fundamentally requires options pricing data (American vs European box spreads, delta confirmation of early exercise risk). Translated to closest proxy using high volatility regime (hvol_20 > 0.02) as indicator of embedded optionality value, and ADX > 25 to confirm trending conditions where optionality becomes more valuable. Exit condition uses volatility collapse as proxy for optionality value degradation. WARNING: This approximation loses the core signal logic and should not be used without actual options pricing data."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_75_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit IV (Implied Volatility) percentile, realized volatility comparison, and gamma/theta Greeks tracking. These are options-specific Greeks and volatility metrics not available in price-action indicators. hvol_20 (historical volatility) and india_vix (volatility index) are proxies but cannot accurately replicate IV percentile thresholds or gamma/theta dynamics. The core signal depends on options Greeks which require real-time IV surface data, not available in standard OHLCV backtesting.",
+  "translation_notes": "Attempted proxy mapping: hvol_20 vs india_vix comparison used to infer IV regime (high/low), with india_vix thresholds as volatility regime filters. However, this is a structural translation that loses the precise gamma-theta alignment logic and IV percentile calculations central to the original signal. This rule is fundamentally unsuitable for price-action-only backtesting without options market microstructure data."
+}

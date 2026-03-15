@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of market direction (falling/rising for several days) which cannot be expressed using only the allowed single-bar indicators. CPR (Central Pivot Range) is not in the allowed indicator list; using pivot as closest proxy. Market preceding condition (multi-day trend detection) requires lookback logic not supported by allowed operators.",
+  "translation_notes": "Translated CPR closure conditions to pivot crossovers. The core requirement to detect multi-day falling/rising trends before entry cannot be fully expressed with allowed indicators\u2014this would require custom logic comparing multiple historical bars or a trend-detection indicator like ADX or slope calculation over N periods. Recommend adding sma_5_vs_sma_20_slope or similar to properly implement the 'falling for several days' precondition."
+}

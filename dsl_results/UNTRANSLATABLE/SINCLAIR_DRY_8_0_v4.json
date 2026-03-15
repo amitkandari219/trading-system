@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking: (1) Implied Volatility levels and changes from entry (not available in price/technical indicators; requires options data), (2) Realized P/L as % of theoretical maximum (requires position tracking and options pricing model), (3) Entry-relative IV decline threshold comparison. The source text does not contain actionable price/volume conditions. This is an options-specific volatility management rule that cannot be expressed using only OHLCV and standard technical indicators.",
+  "translation_notes": "SINCLAIR_DRY_8_0 is a volatility-aware profit-taking rule for options traders. It requires: IV tracking (entry vs. current), options Greeks (especially vega), and position P&L monitoring relative to theoretical max. Standard candlestick indicators cannot capture implied volatility dynamics or options-specific profit targets. To implement, this signal needs: (a) IV data feed (e.g., VIX for index options or option chain implied vol), (b) position accounting for entry price/IV, (c) options pricing model to calculate theoretical max profit. Source text appears incomplete/narrative and does not provide concrete price levels or trade entry details."
+}

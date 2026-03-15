@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_133_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires regime persistence tracking (minimum consecutive days in regime), confidence scoring based on vol clustering, and dynamic regime boundary percentiles ([THRESHOLD_NEEDED] placeholders). These are meta-level backtest engine features (state tracking, regime classification logic, confidence calculation) rather than indicator-based conditions. The allowed indicators list lacks realized volatility regime classification with persistence counters and clustering-based confidence scoring. Additionally, the original source text excerpt does not provide specific threshold values or implementation details for regime detection.",
+  "translation_notes": "This signal is conceptually about matching strategy selection to realized volatility regime rather than forecasting absolute volatility levels. It requires: (1) Real-time regime classification (LOW/MID/HIGH based on percentiles), (2) Persistence counter for regime duration, (3) Vol clustering confidence metric, (4) Dynamic band boundaries. These should be implemented as part of the backtest engine's preprocessing/state management layer rather than as simple indicator conditions. The hvol_20 indicator alone cannot provide the regime classification, persistence tracking, and confidence thresholding required by this signal."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires decomposition of implied volatility term structure (\u03c3\u2081, \u03c3\u2082, \u03c3\u2091, \u03c3f) which are not available in the allowed indicators list. The signal demands: (1) front-month IV vs second-month IV comparison, (2) event volatility isolation and quantification, (3) forward volatility calculation using specific formula \u03c3f = \u221a[T\u2082\u00b2\u03c3\u2082\u00b2 - T\u2081\u00b2\u03c3\u2081\u00b2]/(T\u2082-T\u2081), and (4) relative magnitude thresholds between event vol and front-month IV. None of these volatility structure decomposition metrics exist in the allowed indicator set (which contains only india_vix, hvol_20, and atr-based volatility proxies). This is a fundamental mismatch between an options market microstructure signal and equity price-action indicators.",
+  "translation_notes": "SINCLAIR_DRY_3_0 is a volatility term structure arbitrage signal requiring real-time options implied volatility data across multiple expirations. The backtest engine would need to add: iv_front_month, iv_second_month, event_volatility, forward_volatility indicators to make this translatable. Current allowed indicators cannot decompose or measure IV term structure inversion or event-driven volatility isolation."
+}

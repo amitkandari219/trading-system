@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_97_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific indicators not in allowed list: (1) implied volatility percentile, (2) implied volatility in standard deviations above mean, (3) option delta values, (4) strike selection logic (ATM vs OTM spreads), (5) vega exposure measurement. These are derivatives market metrics not available in equity price/volume indicators. The signal is fundamentally about options spread construction strategy, which cannot be expressed using only price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, and bar properties.",
+  "translation_notes": "This is a volatility-based options trading rule from Natenberg's work on spreads. It requires: (a) direct IV measurement (india_vix available but insufficient\u2014it's index-level VIX not underlying IV), (b) option Greeks (delta, vega) which are not in the indicator set, (c) options-specific construct logic (spread legs, strike selection). While hvol_20 provides historical volatility proxy, it cannot replace implied volatility percentiles or standard deviation thresholds required for the entry conditions. The signal is untranslatable to equity-only backtesting without options Greeks data."
+}

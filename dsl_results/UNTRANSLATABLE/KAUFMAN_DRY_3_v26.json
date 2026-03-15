@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires comparison of a current bar against both the previous AND following bar simultaneously (pivot point detection with next bar lookahead). The indicator set only provides prev_close, prev_high, prev_low, prev_open for the previous bar\u2014there is no 'next_bar' indicator available. A true pivot reversal pattern requires forward-looking data that cannot be implemented in a standard backtest engine without future knowledge. Additionally, the distinction between 'island reversal' (entire bar above/below) vs 'spike' (only high/low violates) requires volatility classification that would need custom logic beyond the allowed operators.",
+  "translation_notes": "Signal KAUFMAN_DRY_3 describes a pivot point/island reversal pattern that fundamentally requires comparing current bar to both previous AND following bars. This is a lookahead bias issue incompatible with standard backtesting. The attempted conditions above show a directional structure but cannot accurately capture the intended pattern recognition logic."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of Implied Volatility (IV) against a trader's forecast volatility, and IV rank/percentile thresholds. These are options-market specific indicators not in the allowed list (india_vix is a volatility index proxy but not true implied volatility from option chains). The entry/exit thresholds (iv_to_forecast_multiple, min_iv_percentile, profit_target_pct_of_premium) are parameterized and cannot be translated without specific values. Historical volatility (hvol_20) and india_vix are used as proxies but do not accurately represent option implied volatility or IV percentile rank.",
+  "translation_notes": "Attempted proxy: used india_vix (equity volatility index) as a substitute for implied volatility and hvol_20 (20-day historical volatility) as a forecast volatility proxy. Entry conditions check if current vol/VIX is above historical vol AND above 75th percentile threshold. Exit when vol drops below forecast level. Signal is fundamentally an options volatility-selling strategy requiring IV data not available in price-action indicators. Manual parameter tuning required with actual IV data."
+}

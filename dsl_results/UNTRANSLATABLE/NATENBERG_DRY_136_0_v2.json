@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_136_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility (IV) and historical volatility (HV) indicators that are not in the allowed indicator list. The core logic depends on: (1) IV-to-HV spread calculation and comparison to standard deviation thresholds, (2) persistence duration tracking of the divergence, and (3) realized volatility trend direction assessment. Only hvol_20 (historical volatility) is available; implied volatility and IV-HV spread calculations are not supported. Additionally, the CONTEXT_DEPENDENT direction requires separate LONG and SHORT entry/exit logic that cannot be determined without thresholds and market regime context from the original signal parameters.",
+  "translation_notes": "This is a volatility mean-reversion signal from Natenberg's framework. It requires exotic derivatives volatility metrics (IV vs HV) that are not available in the backtest engine's indicator library. The signal also contains multiple [THRESHOLD_NEEDED] placeholders that require domain expertise to calibrate. To implement this signal, the engine would need to support: (1) implied_volatility indicator, (2) iv_hv_spread calculation, (3) realized_vol_trend or similar directional volatility indicator, and (4) duration/persistence tracking for multi-day conditions."
+}

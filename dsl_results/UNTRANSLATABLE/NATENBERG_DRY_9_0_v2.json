@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_9_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility percentile (IV_PERCENTILE), expected move forecasts (FORECAST_MOVE), and ATM straddle breakeven width calculations\u2014none of which are available in the allowed indicators list. The source also contains incomplete thresholds marked [THRESHOLD_NEEDED]. Best approximation uses hvol_20 and atr_14 as volatility proxies, but cannot accurately capture the straddle-specific logic.",
+  "translation_notes": "Attempted proxy: Used hvol_20 (historical volatility) to approximate IV regime detection. Used atr_14 to detect large expected moves. Used Bollinger Bands bandwidth to detect volatility expansion. LONG entry for buy straddles (low vol + expected large move). SHORT entry for sell straddles (high vol + ranging market). However, this is a structural approximation\u2014true straddle logic requires options-specific IV metrics and breakeven calculations not available in equity price/volume indicators."
+}

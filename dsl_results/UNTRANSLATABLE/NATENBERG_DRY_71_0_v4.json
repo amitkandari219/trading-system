@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_71_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility (IV) and IV percentile rank indicators which are not available in the allowed indicator set. The core logic depends on forecasting IV expansion and comparing IV percentile to median\u2014neither of which can be directly expressed with provided indicators. hvol_20 (historical volatility) is used as a proxy but does not capture implied volatility dynamics or percentile rank needed for this calendar spread strategy.",
+  "translation_notes": "Attempted partial translation using hvol_20 as proxy for volatility state and price_pos_20 for price stability/ranging conditions. Missing critical components: (1) implied volatility metric, (2) IV percentile rank vs median comparison, (3) event risk distance filter, (4) explicit time decay and max profit thresholds. This signal is fundamentally incompatible with available indicators and requires IV-specific data feeds."
+}

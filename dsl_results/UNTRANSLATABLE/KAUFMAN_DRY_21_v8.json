@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_21",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'weighted 3-day average' and 'weighted 10-day average' which are not in the allowed indicator list. Allowed moving averages are: sma_5, sma_10, sma_20, sma_40, sma_50, sma_80, sma_100, sma_200, ema_5, ema_10, ema_20, ema_50, ema_100, ema_200. Neither weighted moving averages (WMA) nor custom 3-day periods are supported. Additionally, the multi-day confirmation logic (persists for 2 additional days, 1 additional day) cannot be expressed without bar indexing or lookback functions not available in the schema.",
+  "translation_notes": "Attempted approximation using sma_10 (closest to 10-day) and sma_5 (closest available to 3-day), with cross conditions. However, this loses the 'weighted' specification and the multi-day persistence confirmation requirement which requires historical state tracking beyond single-bar comparisons."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires monitoring of implied volatility skew magnitude, volatility smile dynamics, and strike-specific volatility surface data. These are options market microstructure indicators not available in the allowed set (which contains only price/technical indicators). The signal also requires transaction cost monitoring relative to edge premium\u2014a portfolio-level metric. Operationalizing this requires access to: (1) implied_volatility by strike, (2) volatility_skew magnitude, (3) bid_ask_spread by strike, (4) option_premium by strike/delta. None of these indicators exist in the allowed list.",
+  "translation_notes": "SINCLAIR_DRY_3_0 is a volatility smile / options skew trading rule focused on selling mispriced volatility across the strike spectrum. It requires real-time options chain data and skew analytics. This signal cannot be translated into a price/volume/technical-only backtest engine. Consider: (1) adding implied_volatility, iv_skew, iv_smile_curvature, transaction_cost_bps to allowed indicators, or (2) routing this signal to an options-specific backtest platform that models the volatility surface."
+}

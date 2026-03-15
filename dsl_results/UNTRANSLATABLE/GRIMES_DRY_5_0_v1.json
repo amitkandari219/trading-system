@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'previous support/resistance levels' and 'reversal detection within N bars' which require multi-bar state management and custom level detection logic not available in the allowed indicator set. Specifically: (1) dynamic S/R level identification from price history, (2) sustained breakout confirmation over N closes, (3) reversal lookback detection within N bars. These require custom pivot detection or swing high/low tracking beyond the allowed indicators.",
+  "translation_notes": "Attempted translation uses pivot points (pivot, r1, s1) as proxy for support/resistance levels and volume ratio as breakout confirmation, but cannot fully express the sustained confirmation requirement (N closes beyond level), reversal lookback detection, or ATR-based stop loss without custom state tracking. The rule is CONTEXT_DEPENDENT and requires conditional logic to determine direction based on whether breakout is above or below levels."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit trend context detection (uptrend vs downtrend identification) and identification of 'counter trend candles' (bullish in downtrend, bearish in uptrend). The allowed indicators do not include a direct trend classifier or candle pattern detector. The rule also references 'the low of the counter trend bullish candle' and 'the high of the bearish candle' without a mechanism to identify and store these specific prior candles. A proper implementation would require trend regime input (TRENDING_UP or TRENDING_DOWN) and prior candle pattern recognition logic external to the core indicator set.",
+  "translation_notes": "This signal is inherently context-dependent and requires: (1) explicit regime detection to determine whether we are in uptrend or downtrend; (2) pattern recognition to identify counter-trend candles; (3) memory of prior candle highs/lows. The JSON above provides a simplified approximation using prev_high/prev_low, but this does not capture the full intent of identifying *counter-trend* candles specifically. For a proper backtest, the engine should pre-identify trend regimes and store reference levels for counter-trend candle extremes."
+}

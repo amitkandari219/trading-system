@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Point-and-Figure chart-specific logic: tracking 'boxes', 'highest box containing an X', 'lowest box containing an O', and box-height comparisons. These are proprietary P&F column state metrics not available in standard OHLCV indicator library. The [THRESHOLD_NEEDED] parameter is undefined and requires manual specification of box size in P&F scale. Standard price bars cannot directly implement P&F reversal and column tracking rules.",
+  "translation_notes": "KAUFMAN_DRY_5 is a Point-and-Figure pattern signal requiring chart construction state (column type, box counts, reversal thresholds). Simplified to basic high/low reversals, but this loses the multi-box threshold logic and O/X column state tracking essential to the original rule. Recommend implementing as custom P&F backtest module rather than generic price condition rules."
+}

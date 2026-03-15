@@ -1,0 +1,92 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">=",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "prev_high"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires price to open at/above central pivot (using pivot indicator), break above previous day's high (using prev_high), and confirm with larger move size (using range > ATR as proxy for significant momentum). Exit set as reversal below pivot when entry signal invalidates. Multi-day range breakout concept approximated through ATR comparison which adapts to volatility regimes."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">=",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal requires price to open at/above central pivot (using pivot indicator), break above previous day's high (using prev_high), and confirm with larger move size (using range > ATR as proxy for significant momentum). Exit set as reversal below pivot when entry signal invalidates. Multi-day range breakout concept approximated through ATR comparison which adapts to volatility regimes."
+  },
+  "source_rule_text": "Buy when price opens above or around the central pivot and breaks above previous day's high and range, with larger significance when breaking multi-day ranges."
+}

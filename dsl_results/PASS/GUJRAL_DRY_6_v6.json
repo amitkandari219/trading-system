@@ -1,0 +1,90 @@
+{
+  "signal_id": "GUJRAL_DRY_6",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_6",
+    "entry_long": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "low"
+      },
+      {
+        "left": "body_pct",
+        "operator": ">",
+        "right": "0.5"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Translated 'long bottom tail candle' using lower_wick > body ratio. 'Candle body located in top/upper end of range' approximated using body_pct > 0.5 (body in upper half) and close >= pivot (price above midpoint). Closing price above low confirms upward pullback from lows. Exit on bearish reversal (close < prev_close) since author provided no explicit exit condition."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "low"
+      },
+      {
+        "indicator": "body_pct",
+        "op": ">",
+        "value": 0.5
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Translated 'long bottom tail candle' using lower_wick > body ratio. 'Candle body located in top/upper end of range' approximated using body_pct > 0.5 (body in upper half) and close >= pivot (price above midpoint). Closing price above low confirms upward pullback from lows. Exit on bearish reversal (close < prev_close) since author provided no explicit exit condition."
+  },
+  "source_rule_text": "A long bottom tail candle, especially with a green body or even as a red candle/Doji, signals a bullish reversal when the candle body is positioned in the top/upper end of the range, indicating rejection of lower prices and buyer support."
+}

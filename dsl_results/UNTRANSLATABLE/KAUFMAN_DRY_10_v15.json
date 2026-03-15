@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calendar-based event detection (exchange holiday timing) which is not available in the ALLOWED INDICATORS list. This signal depends on external calendar data (T-3 days and T-1 days relative to exchange holidays) rather than price/technical indicators. Implementation requires a calendar module or external holiday dataset outside the scope of standard technical indicators.",
+  "translation_notes": "KAUFMAN_DRY_10 is an event-based seasonal strategy pioneered by Arthur Merrill. Entry occurs on close of third trading day before an exchange holiday; exit occurs on close one day before the holiday (2 days after entry). This requires calendar/event lookup functionality not present in allowed indicators. Recommend implementing via: (1) external calendar integration, (2) pre-computed holiday flags, or (3) rule engine extension for event detection."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_145_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires real-time calculation of futures fair value (derived from spot price, risk-free rate, and carry costs), bid-ask spread monitoring on derivatives, liquidity measurement, and simultaneous multi-leg execution across cash and futures markets. These require: (1) external fair value computation not available in standard OHLCV indicators, (2) order book depth data (not in allowed indicators), (3) multi-instrument correlation logic, and (4) execution coordination beyond single-instrument price conditions. The signal is fundamentally a statistical arbitrage/pairs trading strategy requiring quantitative derivatives pricing and execution infrastructure not expressible through the allowed indicator set.",
+  "translation_notes": "NATENBERG_DRY_145_0 describes a classic index arbitrage/cash-and-carry strategy. While the logic is sound, it cannot be translated into this backtester's framework because: (a) fair value deviation detection requires external pricing models with input parameters (spot, rates, dividends, time-to-expiration) not available as real-time indicators; (b) the bid-ask spread condition requires order book data; (c) slippage thresholds require execution simulation with market depth; (d) simultaneous liquidation at expiration with market-on-close requires multi-leg order coordination. To backtest this strategy, use a dedicated derivatives backtester with options pricing library and multi-asset execution simulator."
+}

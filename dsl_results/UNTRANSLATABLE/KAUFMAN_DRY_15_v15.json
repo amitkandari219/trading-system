@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-day directional tracking (Monday direction, Tuesday reversal detection, Thursday/Friday conditional logic) that cannot be expressed with single-bar indicators. The rule demands: (1) storing direction state from Monday, (2) detecting whether Tuesday reversed from Monday, (3) conditional logic on Thursday/Friday based on these prior states. Standard OHLC and technical indicators operate on current/previous bar only and lack inter-day state persistence and conditional branching across 4+ days. Requires custom backtest engine logic or state variables not available in indicator-based rule system.",
+  "translation_notes": "This is a multi-day pattern recognition rule that requires: (1) directional memory from Monday, (2) reversal detection logic comparing Tuesday to Monday, (3) context-dependent entry on Thursday and Friday based on prior week behavior. The signal is fundamentally structural/sequential in nature and cannot be decomposed into indicator threshold conditions. Would need custom Python logic in backtest engine with day-of-week filters and prior bar direction tracking."
+}

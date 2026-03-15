@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_273",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires calculation of a custom 'cash_value' metric derived from an underlying asset price (Cash Value = 10 + 10 \u00d7 1.15 \u00d7 (underlying_price/166.10 - 1)). This is a composite derived indicator that is not in the ALLOWED INDICATORS list. The backtest engine would need to support custom calculated fields or multi-asset reference pricing to implement this rule. 'cash_value' cannot be expressed using only the allowed price, moving average, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivot, Volume, or other standard indicators.",
+  "translation_notes": "Signal structure is clear (long entry when price < calculated value, exit when price >= value), but the cash value calculation itself requires external parameter mapping and underlying asset reference pricing that exceeds the scope of the allowed indicator set."
+}

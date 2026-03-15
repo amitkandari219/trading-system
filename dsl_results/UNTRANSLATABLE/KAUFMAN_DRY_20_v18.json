@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom calculations not available as indicators: (1) Range R_i = O_i - C_i with historical lookback averaging, (2) dynamic trigger levels (ztrig, onetrig) based on moving averages of range with unknown coefficients (zerocof, onecof marked AUTHOR_SILENT), (3) fuzzy tall candle scaling logic with conditional branching based on previous bar state, (4) custom FuzzyBullishEngulf function. The allowed indicator set does not include pre-calculated fuzzy membership functions, parameterized range averages, or pattern recognition beyond basic candle properties. Exit conditions marked AUTHOR_SILENT. Core parameters (n, zerocof, onecof) are undefined.",
+  "translation_notes": "This signal requires a custom indicator combining range analysis with fuzzy logic and pattern recognition. The 'range' indicator is available as a basic candle property, but the sophisticated multi-step calculation involving averaged ranges, dynamic scaling, conditional tall candle logic, and bullish engulfing confirmation cannot be expressed using only the standard indicators and three-field condition format. Recommend implementing as a custom indicator plugin rather than a rules-based entry."
+}

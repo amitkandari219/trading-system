@@ -1,0 +1,108 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "macd_hist",
+        "operator": ">",
+        "right": "0"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "40"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "macd_hist",
+        "operator": "<",
+        "right": "0"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "40"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "macd_hist",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "macd_hist",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires capturing fast momentum moves with high threshold. Translated 'momentum exceeds high threshold' to macd_hist > 0 (bullish) or < 0 (bearish) combined with adx_14 > 40 (strong trend strength). Exit on momentum reversal. High threshold approximated at ADX > 40 for strong directional moves. Hold duration set to 1 day max to capture 'small window of opportunity' characteristic. MACD histogram used as momentum proxy per allowed indicators list."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "macd_hist",
+        "op": ">",
+        "value": 0.0
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 40.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "macd_hist",
+        "op": "<",
+        "value": 0.0
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 40.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "macd_hist",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "macd_hist",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires capturing fast momentum moves with high threshold. Translated 'momentum exceeds high threshold' to macd_hist > 0 (bullish) or < 0 (bearish) combined with adx_14 > 40 (strong trend strength). Exit on momentum reversal. High threshold approximated at ADX > 40 for strong directional moves. Hold duration set to 1 day max to capture 'small window of opportunity' characteristic. MACD histogram used as momentum proxy per allowed indicators list."
+  },
+  "source_rule_text": "Trade in the direction of the price move only when momentum exceeds a high threshold level, capturing the small window of opportunity when prices are moving fast."
+}

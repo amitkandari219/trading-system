@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_114_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific Greeks (delta, intrinsic value, option premium) and corporate action calendar data (dividend ex-dates) that are not available in the allowed indicator set. The rule depends on: (1) delta threshold measurement, (2) parity tolerance between option premium and intrinsic value, (3) days until dividend ex-date, and (4) repositioning action triggers. None of these can be expressed using only OHLCV price data and standard technical indicators. This is a fundamental mismatch between options portfolio management logic and equity price-action indicators.",
+  "translation_notes": "NATENBERG_DRY_114_0 is a portfolio management rule for American options holders facing dividend risk, not a price-action trading signal. It requires: option Greeks (delta \u2248 1.0 for parity), dividend calendar awareness, and multi-leg execution logic (exercise vs. sell-buy stock substitute vs. exit). This cannot be mechanically translated to a OHLCV backtester without access to options chains, dividend calendars, and Greeks calculations. Recommend: (1) implement in an options-aware backtester with Greeks feeds, or (2) create a separate corporate-action awareness module that triggers alerts rather than mechanical entry/exit rules."
+}

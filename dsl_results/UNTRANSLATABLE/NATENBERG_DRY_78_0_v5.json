@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_78_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit vega measurement, IV percentile rank vs historical range, IV vs realized volatility spread in basis points, and theta acceleration/deceleration monitoring. These Greeks-based and volatility term-structure metrics are not available in the allowed indicator set. The translation uses volatility proxies (india_vix, hvol_20) as approximations, but cannot accurately capture negative vega positioning, IV percentile thresholds, or theta dynamics required by the original signal.",
+  "translation_notes": "NATENBERG_DRY_78 is a volatility mean-reversion strategy requiring options Greeks. Translated using available volatility indicators: india_vix for elevated IV regime entry, hvol_20 for realized vol confirmation. Entry assumes short bias (negative vega spreads profit from IV decline). Exit triggers on IV contraction. Signal fundamentally requires vega < 0 constraint and IV percentile backtesting which cannot be expressed with price-based indicators alone. Recommend using dedicated options backtest engine with Greeks calculations."
+}

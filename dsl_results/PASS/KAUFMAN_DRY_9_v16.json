@@ -1,0 +1,88 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "low",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "high",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal applies moving average separately to highs and lows. Calculation period marked AUTHOR_SILENT; used sma_20 as reasonable default for n-day moving average. Long entry when high crosses above the MA of highs; short entry when low crosses below the MA of lows. Exit conditions reversed: long exits on low crossing below MA, short exits on high crossing above MA, creating natural reversal logic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "low",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "high",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal applies moving average separately to highs and lows. Calculation period marked AUTHOR_SILENT; used sma_20 as reasonable default for n-day moving average. Long entry when high crosses above the MA of highs; short entry when low crosses below the MA of lows. Exit conditions reversed: long exits on low crossing below MA, short exits on high crossing above MA, creating natural reversal logic."
+  },
+  "source_rule_text": "Enter long positions when today's high crosses above the moving average of the highs, and enter short positions when today's low crosses below the moving average of the lows."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_212",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires real-time options pricing (Black-Scholes call valuation, theoretical put price calculation, and conversion arbitrage execution). These are derivative pricing calculations and arbitrage mechanics that cannot be expressed using the available technical indicators (price, moving averages, RSI, ATR, etc.). The signal also requires comparative pricing between call and put options relative to their theoretical values, which is not computable from equity price action alone.",
+  "translation_notes": "MCMILLAN_DRY_212 is a derivatives arbitrage rule (conversion strategy) that requires: (1) real-time options market data, (2) Black-Scholes option pricing model, (3) conversion pricing formula (put_price = call_price + strike - stock_price - carry_cost + dividends), and (4) the ability to execute simultaneous options and stock trades. None of these can be replicated using only technical indicators on underlying equity price/volume data. This rule belongs in an options-specific backtester with access to options chains and theoretical pricing models, not a price-action based equity signal engine."
+}

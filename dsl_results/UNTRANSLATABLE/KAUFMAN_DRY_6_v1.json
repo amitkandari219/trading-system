@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires monitoring the divergence between two separate assets (gold and ABX) using a regression-estimated relationship (ABX_estimated = 1.012 \u00d7 gold_indexed \u2212 2.586). The backtest engine indicators provided are single-asset based and do not support cross-asset pair trading logic, dual-instrument regression calculations, or dynamic estimation of one instrument's price based on another. The signal fundamentally requires a two-leg spread analysis that cannot be expressed using the allowed single-asset indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Returns, Bar Properties). To implement this signal, the backtest engine would need to support multi-asset correlation indicators, spread calculations, and pair trading logic.",
+  "translation_notes": "Signal requires cross-asset arbitrage logic between gold and ABX that exceeds single-asset indicator capabilities. Attempted placeholder using close price as proxy, but this does not capture the regression-estimated divergence that is core to the trading logic."
+}

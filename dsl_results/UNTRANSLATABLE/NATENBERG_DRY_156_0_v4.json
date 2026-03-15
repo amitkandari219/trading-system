@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_156_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cross-market correlation analysis between two separate instruments. The allowed indicator set contains only single-instrument technical indicators (RSI, MACD, moving averages, etc.). Correlation coefficient calculation between two markets and synchronized price movement validation across multiple timeframes cannot be expressed using the available indicators. This signal requires: (1) a correlation indicator comparing two market series, (2) multi-timeframe analysis capability, and (3) asset class relationship validation logic\u2014none of which are present in the allowed indicator list.",
+  "translation_notes": "This is a foundational intermarket spread rule from Natenberg emphasizing relationship strength before entry. The core logic (correlation >= threshold, same asset class, synchronized movements) and exit conditions (correlation breakdown, divergent action, fundamental change) cannot be mechanically encoded without cross-market correlation indicators and multi-instrument comparison operators. Implementation would require custom pre-processing to compute correlation between market pairs before applying the backtest engine."
+}

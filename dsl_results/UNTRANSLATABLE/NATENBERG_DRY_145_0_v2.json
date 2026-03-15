@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_145_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires quantitative inputs not available in the allowed indicator set: (1) futures contract fair value calculation based on theoretical models and interest rate inputs, (2) actual vs assumed interest rate comparison in basis points, (3) liquidity assessment across correlated assets (futures + underlying stocks), (4) time-to-expiration tracking. These are fundamental derivatives pricing and market microstructure metrics that cannot be derived from standard OHLCV-based technical indicators. The signal also specifies CONTEXT_DEPENDENT direction requiring dynamic position sizing based on mispricing direction (long or short depending on whether futures are over/undervalued relative to spot). Implementation requires external data feeds (interest rates, theoretical pricing models) and multi-asset coordination logic outside the scope of single-instrument technical analysis.",
+  "translation_notes": "Index arbitrage strategies operate at the intersection of derivatives pricing theory and spot-futures spread mechanics. The three undefined thresholds (mispricing_threshold_percent, interest_rate_deviation_bp, time_to_expiration_min_days) are critical calibration parameters that must be empirically determined or sourced from market data. This signal is fundamentally incompatible with technical-indicator-only backtest engines and requires a specialized multi-asset derivatives pricing framework."
+}

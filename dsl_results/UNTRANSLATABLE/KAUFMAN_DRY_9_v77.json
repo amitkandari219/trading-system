@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detecting visual line patterns (rising price highs line + falling MACD peaks line) which cannot be directly expressed with single-bar comparison operators. The indicator set lacks a 'line_slope' or 'divergence_detector' function. A bearish divergence requires multi-bar historical analysis to confirm both lines' directions, which exceeds point-in-time indicator capabilities.",
+  "translation_notes": "Attempted partial translation using basic directional conditions: price higher (high > prev_high) combined with MACD lower (macd < prev_close) and price confirming downside (close < prev_close). This is a simplified approximation. For production use, implement a custom divergence detection function that analyzes the last N bars to confirm uptrending highs and downtrending MACD peaks. Exit condition reverses entry logic (close above prior high)."
+}

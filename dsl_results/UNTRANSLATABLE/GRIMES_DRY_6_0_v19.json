@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires swing detection (AB and CD legs), volatility regime classification (LOW_VOL is not in ALLOWED_REGIMES), and dynamic profit-target zone calculation based on swing size ratios and ATR multipliers. These require algorithmic swing detection and zone-width calculation that cannot be expressed as simple three-field conditions. Missing thresholds: volatility_lookback_periods, swing_size_multiplier, atr_multiplier_for_zone_width, zone_expansion_factor. LOW_VOL regime is not in allowed list (use HIGH_VOL inverse logic instead).",
+  "translation_notes": "This pattern-based swing trading rule fundamentally depends on: (1) detecting completed swing legs A-B and initiating swing C-D, (2) measuring leg lengths and comparing ratios, (3) calculating dynamic profit zones using ATR and volatility, and (4) identifying reversals within zones. These requirements exceed simple indicator thresholds and require custom swing-detection logic external to the backtest engine's condition framework."
+}

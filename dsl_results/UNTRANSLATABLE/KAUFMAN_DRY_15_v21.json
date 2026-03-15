@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a configurable minimum_gap_filter threshold parameter that is not specified (marked as [THRESHOLD_NEEDED]). The exact gap percentage or absolute price threshold needed to trigger trades cannot be determined from the source material. Additionally, the signal specifies trading based on 'first 30-minute bar direction' which requires intraday bar-level analysis; this JSON schema operates on daily bars and cannot distinguish intraday 30-minute bar direction. Exit conditions marked AUTHOR_SILENT provide no explicit exit rule.",
+  "translation_notes": "Attempted to capture gap logic using open vs prev_close comparison, and direction-dependent entry/exit based on first bar behavior, but core threshold parameter and intraday observation period are not translatable to this daily-bar backtest engine."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of Fibonacci retracement levels (50%, 62%, 38%) which are not available as built-in indicators. The condition 'price approaches expected retracement level' cannot be expressed using only the allowed indicators. Additionally, 'slowing price movement' and 'declining volatility' are qualitative assessments that would require custom calculation or lookback logic not supported by the allowed operators. The phrase 'near_retracement_level' in the JSON above is a placeholder and cannot be evaluated with standard indicators.",
+  "translation_notes": "This signal fundamentally requires external retracement level calculation (Fibonacci or pivot-based). A practical implementation would need: (1) a custom retracement_level indicator or manual input of levels, (2) a bands comparison (e.g., price within \u00b10.5% of retracement), and (3) volatility confirmation via atr_14 or bb_bandwidth decline. The exit condition (new low on volume) is translatable but the entry requires architectural changes to support dynamic support/resistance zones."
+}

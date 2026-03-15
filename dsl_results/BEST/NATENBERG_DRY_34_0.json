@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_34_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of implied volatility (IV) against historical volatility benchmarks and theoretical pricing model inputs. Available indicators include hvol_20 (historical volatility) and india_vix (volatility proxy), but no explicit IV or theoretical pricing model indicators exist in the allowed set. The core requirement\u2014'theoretical model price differs from market price'\u2014cannot be operationalized without IV data and pricing model outputs.",
+  "translation_notes": "Attempted approximation using hvol_20 vs india_vix spread as a proxy for IV/HV divergence, but this does not capture the intended signal logic of comparing current IV against historical benchmarks or detecting theoretical mispricings. A proper implementation requires IV percentile, IV surface data, and access to a pricing model\u2014none of which are available in the indicator set."
+}

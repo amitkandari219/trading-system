@@ -1,0 +1,62 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_5",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses Donchian channels to express breakout logic: entry when intraday high exceeds the highest high of previous 55 days (approximated using dc_upper with 55-period Donchian), exit when intraday low falls below the lowest low of previous 20 days (approximated using dc_lower with 20-period Donchian). Note: Donchian indicators in the allowed list do not specify period, so implementation should use 55-period for entry dc_upper and 20-period for exit dc_lower. The signal mentions trader discretion allowing slightly shorter periods than 55 days\u2014backtest engine should support parameterization of the Donchian periods."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal uses Donchian channels to express breakout logic: entry when intraday high exceeds the highest high of previous 55 days (approximated using dc_upper with 55-period Donchian), exit when intraday low falls below the lowest low of previous 20 days (approximated using dc_lower with 20-period Donchian). Note: Donchian indicators in the allowed list do not specify period, so implementation should use 55-period for entry dc_upper and 20-period for exit dc_lower. The signal mentions trader discretion allowing slightly shorter periods than 55 days\u2014backtest engine should support parameterization of the Donchian periods."
+  },
+  "source_rule_text": "Enter a long position when the intraday high exceeds the daily highs of the previous 55 days; exit when the intraday low falls below the lowest low of the previous 20 days."
+}

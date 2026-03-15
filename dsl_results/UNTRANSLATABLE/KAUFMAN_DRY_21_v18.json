@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_21",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Market-specific N-day period parameters cannot be fully resolved. Source table shows Period Range values (U.S. bonds: 16-32, Eurobond: 60-80, Eurodollars: 28-60, S&P: 74-08 [incomplete], DAX: 66 [incomplete]) but exact N-day lookback for each market instrument is not clearly specified. The Donchian Channel indicator (dc_upper/dc_lower) approximates N-day breakout logic, but requires explicit period configuration per market that cannot be derived from the incomplete source data. Recommended: Populate N_day_period parameters for each market from the midpoint or specific value of the Period Range before backtesting.",
+  "translation_notes": "Signal translated as Donchian Channel breakout (price above N-period high = breakout). Exit uses reverse breakout (price below N-period low) as reasonable reversal condition since AUTHOR_SILENT. Original table data incomplete (S&P and DAX rows truncated). This translation requires explicit per-market Donchian period configuration during backtest setup."
+}

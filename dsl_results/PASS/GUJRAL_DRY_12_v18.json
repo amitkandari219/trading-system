@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_12",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "r1"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "9640"
+      },
+      {
+        "left": "sma_20",
+        "operator": "<=",
+        "right": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 0.5,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Converted 'price closes near upper end of range' to close >= R1 and close <= 9640 (resistance level). 'Confluence of 20MA and 50MA around pivot' translated to sma_20 <= pivot as alignment condition. Entry range 9,630-9,640 approximated as closure between R1 and 9640. Stop loss set at 0.15% (9,640-9,650 range ~0.10% above entry). Exit at previous low approximated as close < S1 (pivot support level). 'Failed breakout' and 'initial weakness' conditions cannot be explicitly coded without multi-bar pattern recognition, but are captured by the price action and MA confluence rules."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "r1"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": 9640.0
+      },
+      {
+        "indicator": "sma_20",
+        "op": "<=",
+        "value": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.005,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Converted 'price closes near upper end of range' to close >= R1 and close <= 9640 (resistance level). 'Confluence of 20MA and 50MA around pivot' translated to sma_20 <= pivot as alignment condition. Entry range 9,630-9,640 approximated as closure between R1 and 9640. Stop loss set at 0.15% (9,640-9,650 range ~0.10% above entry). Exit at previous low approximated as close < S1 (pivot support level). 'Failed breakout' and 'initial weakness' conditions cannot be explicitly coded without multi-bar pattern recognition, but are captured by the price action and MA confluence rules."
+  },
+  "source_rule_text": "Sell from the top end of a range when price closes near the upper end after a failed breakout attempt, targeting the previous low when confluence of moving averages and pivot level align with initial weakness."
+}

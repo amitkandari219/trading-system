@@ -1,0 +1,148 @@
+{
+  "signal_id": "GUJRAL_DRY_6",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_6",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      },
+      {
+        "left": "lower_wick",
+        "operator": "<",
+        "right": "body"
+      },
+      {
+        "left": "upper_wick",
+        "operator": "<",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      },
+      {
+        "left": "upper_wick",
+        "operator": "<",
+        "right": "body"
+      },
+      {
+        "left": "lower_wick",
+        "operator": "<",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Giant candle size is inferred from body size relative to ATR. Negligible tails are expressed as upper_wick and lower_wick both being smaller than body. Green/red determined by close vs open relationship. Exit conditions use reversal signal (opposite color candle) as author was silent. Direction is context-dependent: long on green giant candles with negligible tails, short on red giant candles with negligible tails."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": "<",
+        "value": "body"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": "<",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": "<",
+        "value": "body"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": "<",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Giant candle size is inferred from body size relative to ATR. Negligible tails are expressed as upper_wick and lower_wick both being smaller than body. Green/red determined by close vs open relationship. Exit conditions use reversal signal (opposite color candle) as author was silent. Direction is context-dependent: long on green giant candles with negligible tails, short on red giant candles with negligible tails."
+  },
+  "source_rule_text": "A giant green candle with negligible tails signals strong upward momentum from open to close, while a giant red candle with negligible tails signals strong downward momentum from open to close."
+}

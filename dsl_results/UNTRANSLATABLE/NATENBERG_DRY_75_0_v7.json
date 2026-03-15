@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_75_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific indicators (implied volatility, option pricing models, moneyness, Greeks, bid-ask spreads) that are not present in the allowed indicator list. The core logic depends on: (1) identifying underpriced vs overpriced options relative to a theoretical model, (2) comparing option prices across strikes and expiries, and (3) constructing multi-leg spread structures. None of these can be expressed using only price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, or bar properties. This is an options volatility arbitrage signal that requires dedicated options analytics.",
+  "translation_notes": "NATENBERG_DRY_75_0 is a volatility spread construction rule from options trading theory. It requires: (a) option implied volatility vs realized volatility comparison, (b) option-specific mispricing detection (bid-ask skew, model vs market), (c) multi-leg spread Greeks analysis. The backtest engine must support options chains, theoretical pricing models (Black-Scholes or similar), and Greek calculations to translate this signal. Standard OHLCV equity indicators cannot capture the relative valuation mechanics needed."
+}

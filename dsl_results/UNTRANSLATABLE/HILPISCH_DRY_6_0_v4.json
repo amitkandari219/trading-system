@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a machine learning classifier prediction output (model.predict()) which is not available in the allowed indicators list. The probability threshold (0.5 in source code) and sign-based position conversion require external ML model inference, not technical indicators. Additionally, the exact model type, training data, and feature set are not specified in the source material.",
+  "translation_notes": "Source code shows: (1) ML classifier predictions > 0.5 threshold, (2) conversion to binary positions (1/-1) based on prediction sign, (3) next-period reversal exits. This is a supervised learning strategy that cannot be expressed using only technical indicators. To implement this backtest, you would need to: supply pre-calculated model predictions as an additional data column, or integrate the trained model object directly into the backtest engine."
+}

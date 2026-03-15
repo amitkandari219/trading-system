@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_134",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific parameters (strike prices, premium collection, expiration date logic) that cannot be expressed using equity price/indicator indicators alone. The strangle strategy involves selling two options at different strikes and managing until expiration\u2014this requires options chain data, implied volatility, and time-decay mechanics not available in the standard indicator set. Exit condition depends on absolute strike price levels (upper_strike, lower_strike) which are strategy parameters, not calculable indicators.",
+  "translation_notes": "This is an options strategy signal (strangle writing) that fundamentally requires options-specific data structures. The entry would need: (1) identification of two strike prices, (2) implied volatility confirmation, and (3) premium received. The exit requires precise strike price thresholds and expiration date tracking. While a ranging regime filter was applied as the signal indicates maximum profit in sideways markets, the core logic cannot be translated to a backtest engine using only equity price/technical indicators."
+}

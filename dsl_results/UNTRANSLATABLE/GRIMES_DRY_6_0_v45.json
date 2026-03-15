@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of price gaps, failed resistance tests with specific lookback periods, and multi-bar pullback timing logic. Gap detection (comparing open to prev_close across a range), counting failed tests over a lookback window, and entry delay mechanics cannot be expressed as simple 3-field conditions. Parameters [THRESHOLD_NEEDED] for gap size %, failure test lookback, max failures tolerated, and entry delay bars are undefined and critical to the rule.",
+  "translation_notes": "Attempted to capture core concept: entry above resistance (r1) with volume confirmation, exit on close below resistance. However, the essential gap mechanics\u2014gap size threshold, failure test detection over a configurable lookback, and delayed entry after pullback\u2014require custom logic not expressible in the allowed operator/indicator framework. This signal needs a custom gap-detection module or parameter specification before backtesting."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a rolling mean return calculation over a parametrized lookback period (momentum_lookback_days). The allowed indicators list contains only 'returns' and 'log_returns' (single-bar returns), not a rolling average of returns over N days. To implement this signal correctly, a custom rolling_mean_return(N) indicator would need to be added to the allowed indicators list. The specific thresholds for entry_threshold and exit_threshold are also marked as [THRESHOLD_NEEDED] in the source, indicating they were not specified in the original text.",
+  "translation_notes": "Signal is context-dependent momentum-based strategy from Hilpisch. Entry uses rolling mean return > threshold; exit uses rolling mean return < threshold. Without rolling mean return as an allowed indicator, this cannot be accurately translated. Using raw 'returns' as a proxy shows intent but loses the rolling window logic essential to the strategy."
+}

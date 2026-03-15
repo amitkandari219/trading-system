@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_129",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a naked put writing strategy (options strategy), which requires position tracking, strike price parameters, and premium collection logic that cannot be expressed using only price/technical indicators. The strategy requires: (1) dynamic strike_price parameter (desired purchase price), (2) premium_received threshold (not available as indicator), (3) options assignment logic at expiration. Standard backtest engines operate on price action only; options Greeks, assignment mechanics, and premium income are not translatable to price/volume indicators.",
+  "translation_notes": "Signal MCMILLAN_DRY_129 is an options trading strategy that falls outside the scope of price-action-based backtesting. To implement this, a specialized options backtester with Greeks calculation, assignment simulation, and premium tracking would be required. The entry condition (write put at desired price) and exit condition (assignment if below strike at expiration) cannot be mapped to the allowed indicators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires quantification of 'pullback retraces large percentage of breakout thrust' which demands dynamic calculation of (pullback_depth / initial_breakout_thrust) ratio. This ratio-based comparison is not expressible with allowed operators and single-value indicators. Required parameters (pullback_retrace_threshold_pct, momentum_bars_lookback, pullback_duration_bars) were marked [THRESHOLD_NEEDED] in source and cannot be inferred from text excerpt alone.",
+  "translation_notes": "Attempted partial translation: Entry conditions captured weak momentum breakout (low volume relative to 20-day average, narrow range relative to ATR). Exit condition uses close reversal below breakout level. However, the core logic\u2014detecting failed breakouts via pullback retrace percentage\u2014requires custom multi-bar calculation logic unavailable in the allowed indicator set. This signal is better suited for implementation as a custom user-defined function in the backtest engine."
+}

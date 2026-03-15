@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_250",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-leg futures spread analysis with fair value calculation (comparing near-month vs forward-month contracts). Standard OHLCV indicators cannot model theoretical spread fair value or the contract-pair relationship. The signal needs custom spread calculation logic between two distinct futures contracts (March vs June) with premium adjustments (35\u00a2 and 3.25 respectively), which is beyond the scope of single-instrument technical indicators.",
+  "translation_notes": "This is an inter-contract spread trading strategy (calendar spread) that requires monitoring the price differential between two correlated futures contracts and comparing it to a calculated fair value. The entry condition is a market spread exceeding fair value (4.00 > 2.90), and exit is when spread reverts to fair value. This requires custom spread construction and cannot be expressed using standard price-based technical indicators alone."
+}

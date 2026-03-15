@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires tracking an 'early extreme' across multiple bars and measuring confidence based on consecutive bars without reversal. This requires stateful multi-bar analysis (i.e., remembering the early high/low from bar 1, confirming it with directional movement in subsequent bars, and accumulating confidence). The allowed operators and indicators cannot express: (1) dynamic reference points that shift based on pattern confirmation, (2) confidence accumulation across variable-length lookback windows, or (3) conditional extreme tracking. The signal requires custom bar state memory not available in the standard indicator set.",
+  "translation_notes": "KAUFMAN's 'early extreme' pattern is fundamentally about intraday range analysis and confirmation bias. A literal but incomplete interpretation: entry when price makes a new high (confirming an early low) or new low (confirming an early high), with exit on reversal. However, this loses the core logic of early-day extreme identification and progressive confidence building, which cannot be expressed without multi-bar state tracking or custom indicators."
+}

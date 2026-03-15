@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_111",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes an options spread strategy (diagonal bear call spread) with specific strike prices, expirations, and credit/debit mechanics. The backtest engine appears designed for price-based technical indicators on single instruments, not multi-leg derivative positions. Key untranslatable elements: (1) Near-term vs long-term call strikes and their relationship to underlying price; (2) Net credit received on entry; (3) Time decay and expiration-based exits; (4) Strike-relative profit/loss scenarios. Options spreads require pricing models and Greeks (delta, theta, vega) not represented in the allowed indicators.",
+  "translation_notes": "This is an options strategy signal, not a price-action signal. It requires: options chain data, strike selection logic, greeks calculations, and expiration-based position management. A backtest engine designed for candlestick technicals cannot properly model diagonal spreads. Recommend: (1) Use a dedicated options backtesting library, or (2) Convert to directional proxy (e.g., 'short the underlying when technical conditions match the profitable scenario') if approximation is acceptable."
+}

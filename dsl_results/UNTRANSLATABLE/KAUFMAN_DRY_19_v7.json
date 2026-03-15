@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_19",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires week-over-week comparison of MACD histogram values on a weekly timeframe. The allowed indicators do not include 'prev_macd_hist' \u2014 only price-related previous values (prev_close, prev_high, prev_low, prev_open) are supported. MACD histogram comparisons across multiple timeframes or with lagged indicator values are not expressible in the current schema.",
+  "translation_notes": "This is a context-dependent trend-following signal that requires comparing current MACD histogram to the previous period's value on weekly bars. While the logic structure is clear (entry on rising histogram for long, falling for short; exit on reversal), the technical constraint is that 'prev_macd_hist' is not an allowed indicator. To implement this signal, the backtest engine would need to support lagged indicator values or multi-timeframe indicator access."
+}

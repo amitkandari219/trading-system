@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detection of: (1) a completed price advance, (2) precise Fibonacci retracement measurement (0.618 of advance magnitude), and (3) projection of subsequent moves by Fibonacci ratios. These operations require multi-bar lookback arithmetic (identifying swing highs/lows, calculating advance magnitude, measuring retracement percentage, projecting targets) that cannot be expressed using only the allowed indicators and operators. The allowed indicator set does not include Fibonacci level calculators, swing detection, or relative advance/retracement measurement tools. This is a structural limitation of the available indicator library.",
+  "translation_notes": "Signal describes a complex Fibonacci-based pattern recognition strategy requiring custom calculation of swing points and Fibonacci levels. A simplified proxy entry (close above SMA_20 for uptrend confirmation) and exit (close crosses above SMA_50 for reversal signal) were provided, but these do not capture the core Fibonacci retracement logic of the original signal. Recommend implementing custom indicator: fib_retracement_level(swing_high, swing_low, ratio) and fib_projection(advance_start, advance_end, ratio)."
+}

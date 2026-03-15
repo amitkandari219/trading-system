@@ -1,0 +1,34 @@
+{
+  "signal_id": "HILPISCH_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [
+    {
+      "left": "close",
+      "operator": "<=",
+      "right": "sma_20"
+    }
+  ],
+  "exit_short": [
+    {
+      "left": "close",
+      "operator": ">=",
+      "right": "sma_20"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "TRENDING_UP",
+    "TRENDING_DOWN"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Signal describes a dynamic exit mechanism based on SMA crossback. SMA period was not specified in original text ([THRESHOLD_NEEDED]), so sma_20 was selected as a reasonable default for trend-following exits. The rule triggers exits when price crosses back through the SMA in the opposite direction: exit long positions when price drops to/below SMA, exit short positions when price rises to/above SMA. No entry conditions are defined in the original signal\u2014this is purely an exit rule that applies to existing positions.",
+  "validation_issues": [
+    "no entry conditions defined"
+  ]
+}

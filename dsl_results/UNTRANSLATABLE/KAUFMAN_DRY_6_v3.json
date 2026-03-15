@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "ARIMA forecast is a statistical model output not available in the allowed indicator set. The signal requires a 1-day-ahead ARIMA price forecast prediction (higher/lower prices), which cannot be computed from the available technical indicators. ARIMA is an external time-series model that must be pre-computed and provided as an external data feed.",
+  "translation_notes": "Signal references ARIMA process forecasting which is not available in the allowed indicators list. Attempted substitution uses price direction reversal logic (close vs prev_close) as a proxy, but this does NOT capture the actual ARIMA forecast logic specified in the signal. Recommend: (1) Add ARIMA forecast output as an external indicator, or (2) Use a built-in momentum indicator (MACD, RSI) as an alternative trend predictor."
+}

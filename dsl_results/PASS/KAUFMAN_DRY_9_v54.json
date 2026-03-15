@@ -1,0 +1,86 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "30"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "70"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "rsi_14",
+        "operator": "crosses_above",
+        "right": "50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "rsi_14",
+        "operator": "crosses_below",
+        "right": "50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses 'momentum' which is not in the allowed indicator list. Substituted RSI_14 as a widely-used momentum oscillator. Entry conditions: RSI < 30 for long (low momentum), RSI > 70 for short (high momentum). Exit conditions: RSI crosses back toward neutral (50) representing 'near zero momentum'. This is a reasonable interpretation of mean-reversion on momentum extremes returning to neutral."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 30.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 70.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "rsi_14",
+        "op": "crosses_above",
+        "value": 50.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "rsi_14",
+        "op": "crosses_below",
+        "value": 50.0
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses 'momentum' which is not in the allowed indicator list. Substituted RSI_14 as a widely-used momentum oscillator. Entry conditions: RSI < 30 for long (low momentum), RSI > 70 for short (high momentum). Exit conditions: RSI crosses back toward neutral (50) representing 'near zero momentum'. This is a reasonable interpretation of mean-reversion on momentum extremes returning to neutral."
+  },
+  "source_rule_text": "Exit a mean-reversion position (short from momentum high or long from momentum low) when momentum returns to near zero."
+}

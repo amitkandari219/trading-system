@@ -1,0 +1,74 @@
+{
+  "signal_id": "GUJRAL_DRY_5",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_5",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_50",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "TRENDING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "MA type and period were AUTHOR_SILENT; used sma_50 as a standard trend-following MA. 'MA line starts sloping down' is approximated by comparing current MA to previous bar's close (sma_50 < prev_close indicates downward slope). 'Price journey continues downward' is implicitly captured by the SHORT direction and downtrend regime filter. Exit condition set to price crossing back above MA (reversal signal). Target regime adjusted to TRENDING_DOWN as this is a bearish momentum shift signal."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_50",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN",
+      "TRENDING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "MA type and period were AUTHOR_SILENT; used sma_50 as a standard trend-following MA. 'MA line starts sloping down' is approximated by comparing current MA to previous bar's close (sma_50 < prev_close indicates downward slope). 'Price journey continues downward' is implicitly captured by the SHORT direction and downtrend regime filter. Exit condition set to price crossing back above MA (reversal signal). Target regime adjusted to TRENDING_DOWN as this is a bearish momentum shift signal."
+  },
+  "source_rule_text": "When price falls below the MA line from above and the MA line starts sloping down, this confirms a shift from bullish to bearish momentum."
+}

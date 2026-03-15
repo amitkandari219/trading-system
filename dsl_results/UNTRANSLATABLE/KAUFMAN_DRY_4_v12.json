@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires identifying an 'outside day' as a complete pattern condition (where current bar's high > prior high AND current bar's low < prior low). While individual bar properties can be expressed, the composite pattern detection and the exit condition 'close on the close of the third day after entry' require state tracking across multiple bars and time-indexed bar references that are not supported by the allowed indicators and operators. The stop loss placement logic ('just below the low' / 'just above the high') also requires dynamic price-level calculations not expressible in the schema.",
+  "translation_notes": "Outside day pattern requires multi-bar state tracking. Exit timing (day 3 after entry) requires temporal indexing beyond prev_* indicators. Consider implementing as a custom pattern detector in the backtest engine rather than rule-based conditions."
+}

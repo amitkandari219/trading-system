@@ -1,0 +1,86 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_5",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal implements a breakout reversal system based on daily highs and lows. Entry long when price breaks above the previous day's high (minor uptrend). Entry short when price breaks below the previous day's low (minor downtrend). Exits reverse positions: exit long when price breaks below previous low, exit short when price breaks above previous high. This creates a continuous reversal system suitable for trending markets."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal implements a breakout reversal system based on daily highs and lows. Entry long when price breaks above the previous day's high (minor uptrend). Entry short when price breaks below the previous day's low (minor downtrend). Exits reverse positions: exit long when price breaks below previous low, exit short when price breaks above previous high. This creates a continuous reversal system suitable for trending markets."
+  },
+  "source_rule_text": "Buy when the minor trend turns up (daily trend trades above its most recent high) and sell when the minor trend turns down (daily trend trades below its most recent low), always reversing position."
+}

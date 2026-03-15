@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_31",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal describes a covered call roll-down strategy with dynamic support level identification and timing conditions that cannot be fully expressed using only price-based indicators and pivot points. 'Technical support levels' requires dynamic calculation or manual identification. The condition 'avoid rolling down if stock reverses and rallies back above initial support level by expiration' requires tracking of entry-time support level and expiration-relative timing, which exceed the scope of simple indicator comparisons.",
+  "translation_notes": "Attempted to capture core logic: entry when price declines to support (using s1 as proxy for technical support) with negative returns confirmation; exit when price rallies back above that support level. However, this signal fundamentally requires: (1) dynamic support/resistance identification based on chart patterns, (2) position management relative to expiration date, and (3) entry-time reference prices to be tracked across multiple bars. These are position management and pattern-recognition features outside the allowed indicator set. Recommend implementing as custom algorithm or pattern-matching engine."
+}

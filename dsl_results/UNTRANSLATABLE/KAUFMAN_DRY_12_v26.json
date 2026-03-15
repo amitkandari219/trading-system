@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit volume moving average (10-day MA of volume) and differentiation between 20% threshold (trend confirmation) vs 40% threshold (price extremes). Available indicator vol_ratio_20 is a generic volume ratio but does not specify the exact 10-day MA basis or allow dual thresholds. The signal also requires directional inference from volume extremes (not provided). Approximated using vol_ratio_20 > 1.2 as a proxy for 20% increase, but cannot accurately model the 40% extreme detection or trend direction context.",
+  "translation_notes": "KAUFMAN signal uses volume MA smoothing as a trend-confirmation filter. Mapped 20% threshold to vol_ratio_20 > 1.2 (decimal scale). The 40% extreme threshold and context-dependent direction logic cannot be fully expressed with available indicators. Recommend implementing custom volume MA indicator (SMA of volume series) and dual-threshold logic in backtest engine for full fidelity."
+}

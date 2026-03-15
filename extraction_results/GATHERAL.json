@@ -1,0 +1,2728 @@
+[
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.x, pp.13-210",
+    "raw_chunk_text": "consistently priced with respect to each other\u2013that is, to satisfy the golden\nruleofabsenceofarbitrage.Anoperatorshouldnotbecapableofderiving\naprofitinreplicatingafinancialinstrumentbyusingacombinatio",
+    "rule_text": "Ensure maximal consistency between related derivative instruments by enforcing no-arbitrage constraints, using a model that makes minimal assumptions about true probability distributions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Detected arbitrage opportunity between digital option and call option of different maturities",
+      "Replication profit margin exceeds 0.5% of notional value",
+      "Model violates no-arbitrage constraint by >0.3%"
+    ],
+    "parameters": {
+      "arbitrage_detection_threshold": 0.005,
+      "model_consistency_tolerance": 0.003,
+      "distributional_assumption_penalty": "high"
+    },
+    "exit_conditions": [
+      "Model recalibrated to eliminate arbitrage",
+      "Arbitrage opportunity closes below 0.2% threshold",
+      "Switch to lower-assumption model (e.g., local vol over jump-diffusion)"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.x, pp.13-210",
+    "raw_chunk_text": "consistently priced with respect to each other\u2013that is, to satisfy the golden\nruleofabsenceofarbitrage.Anoperatorshouldnotbecapableofderiving\naprofitinreplicatingafinancialinstrumentbyusingacombinatio",
+    "rule_text": "Ensure maximal consistency between related derivative instruments by enforcing no-arbitrage constraints, using a model that makes minimal assumptions about true probability distributions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Detected arbitrage opportunity between related derivatives",
+      "Replication profit margin exceeds 1.0% of notional value",
+      "Model violates no-arbitrage constraint by >0.5%"
+    ],
+    "parameters": {
+      "arbitrage_detection_threshold": 0.01,
+      "model_consistency_tolerance": 0.005,
+      "distributional_assumption_penalty": "moderate"
+    },
+    "exit_conditions": [
+      "Model recalibrated to enforce no-arbitrage",
+      "Arbitrage opportunity closes below 0.5% threshold",
+      "Acceptable model with justified distributional assumptions adopted"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.x, pp.13-210",
+    "raw_chunk_text": "consistently priced with respect to each other\u2013that is, to satisfy the golden\nruleofabsenceofarbitrage.Anoperatorshouldnotbecapableofderiving\naprofitinreplicatingafinancialinstrumentbyusingacombinatio",
+    "rule_text": "Ensure maximal consistency between related derivative instruments by enforcing no-arbitrage constraints, using a model that makes minimal assumptions about true probability distributions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Detected arbitrage opportunity exceeds 2.0% of notional value",
+      "Model permits profitable replication strategy between related instruments",
+      "Statistical evidence of Mandelbrot-style power-law or scaled distributions present"
+    ],
+    "parameters": {
+      "arbitrage_detection_threshold": 0.02,
+      "model_consistency_tolerance": 0.01,
+      "distributional_assumption_penalty": "low"
+    },
+    "exit_conditions": [
+      "Arbitrage spread closes below 1.5% threshold",
+      "Replication leg fails or becomes unexecutable",
+      "Model distributional assumption invalidated in market stress"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. x, pp. 13-210",
+    "raw_chunk_text": "market prices. Their hedge ratios change accordingly in an uncontrolled\nway:SVmodelsbringsomeorderintothischaos.\nA practical point that is more pertinent to a recurring theme of this\nbook is that the ",
+    "rule_text": "A trader should account for volatility clustering and fat-tailed distributions when sizing positions and setting risk limits, because large moves follow large moves and markets exhibit extreme event risk beyond normal distribution assumptions.",
+    "signal_category": "SIZING|RISK|VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Historical volatility clustering indicator active (rolling 20-day vol > 50th percentile of trailing 252-day distribution)",
+      "Recent large move observed in past 5 trading days (|return| > 1.5 standard deviations)"
+    ],
+    "parameters": {
+      "max_position_size_pct_of_capital": 1.0,
+      "stop_loss_standard_deviations": 3.5,
+      "vol_clustering_lookback_days": 20,
+      "extreme_move_threshold_sigma": 1.5
+    },
+    "exit_conditions": [
+      "Stop-loss triggered at 3.5 sigma from entry",
+      "Volatility clustering indicator turns off (rolling vol < 50th percentile)",
+      "Position held for maximum 10 trading days regardless of profit"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. x, pp. 13-210",
+    "raw_chunk_text": "market prices. Their hedge ratios change accordingly in an uncontrolled\nway:SVmodelsbringsomeorderintothischaos.\nA practical point that is more pertinent to a recurring theme of this\nbook is that the ",
+    "rule_text": "A trader should account for volatility clustering and fat-tailed distributions when sizing positions and setting risk limits, because large moves follow large moves and markets exhibit extreme event risk beyond normal distribution assumptions.",
+    "signal_category": "SIZING|RISK|VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Historical volatility clustering indicator active (rolling 30-day vol > 40th percentile of trailing 252-day distribution)",
+      "Recent significant move observed in past 10 trading days (|return| > 1.0 standard deviations)"
+    ],
+    "parameters": {
+      "max_position_size_pct_of_capital": 2.0,
+      "stop_loss_standard_deviations": 2.5,
+      "vol_clustering_lookback_days": 30,
+      "extreme_move_threshold_sigma": 1.0
+    },
+    "exit_conditions": [
+      "Stop-loss triggered at 2.5 sigma from entry",
+      "Volatility clustering indicator weakens (rolling vol < 40th percentile)",
+      "Position held for maximum 20 trading days"
+    ],
+    "instrument": "OPTIONS_SELLING|SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. x, pp. 13-210",
+    "raw_chunk_text": "market prices. Their hedge ratios change accordingly in an uncontrolled\nway:SVmodelsbringsomeorderintothischaos.\nA practical point that is more pertinent to a recurring theme of this\nbook is that the ",
+    "rule_text": "A trader should account for volatility clustering and fat-tailed distributions when sizing positions and setting risk limits, because large moves follow large moves and markets exhibit extreme event risk beyond normal distribution assumptions.",
+    "signal_category": "SIZING|RISK|VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Volatility clustering momentum present (rolling 60-day vol > 30th percentile of trailing 252-day distribution)",
+      "Multiple recent large moves in past 15 days (3+ days with |return| > 0.75 standard deviations)"
+    ],
+    "parameters": {
+      "max_position_size_pct_of_capital": 3.5,
+      "stop_loss_standard_deviations": 2.0,
+      "vol_clustering_lookback_days": 60,
+      "extreme_move_threshold_sigma": 0.75
+    },
+    "exit_conditions": [
+      "Stop-loss triggered at 2.0 sigma from entry",
+      "Volatility clustering momentum reverses (rolling vol < 30th percentile)",
+      "Position held for maximum 30 trading days"
+    ],
+    "instrument": "OPTIONS_BUYING|FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. x, pp. 13-210",
+    "raw_chunk_text": "StochasticVolatilityandLocalVolatility 3\n(cid:1)0.20 (cid:1)0.15 (cid:1)0.10 (cid:1)0.05 0.00 0.05 0.10\n07\n06\n05\n04\n03\n02\n01\n0\nFIGURE1.2 Frequencydistributionof(77yearsof)SPXdailylogreturnscompared\nwi",
+    "rule_text": "Volatility exhibits mean reversion due to economic equilibrium constraints; a trader should position for reversion toward long-term volatility mean when current volatility deviates significantly from historical norms.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Current volatility > 2.0 standard deviations above 100-day rolling mean",
+      "Historical volatility percentile > 90th percentile",
+      "Regime confirmation: not in structural trend"
+    ],
+    "parameters": {
+      "deviation_threshold_std": 2.0,
+      "lookback_period_days": 100,
+      "percentile_threshold": 90,
+      "mean_reversion_window_days": 20
+    },
+    "exit_conditions": [
+      "Exit when volatility reverts to 1.0 std above mean",
+      "Exit on time stop at 20 trading days",
+      "Stop loss if volatility extends to 2.5 std above mean"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. x, pp. 13-210",
+    "raw_chunk_text": "StochasticVolatilityandLocalVolatility 3\n(cid:1)0.20 (cid:1)0.15 (cid:1)0.10 (cid:1)0.05 0.00 0.05 0.10\n07\n06\n05\n04\n03\n02\n01\n0\nFIGURE1.2 Frequencydistributionof(77yearsof)SPXdailylogreturnscompared\nwi",
+    "rule_text": "Volatility exhibits mean reversion due to economic equilibrium constraints; a trader should position for reversion toward long-term volatility mean when current volatility deviates significantly from historical norms.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Current volatility > 1.5 standard deviations above 60-day rolling mean",
+      "Historical volatility percentile > 75th percentile",
+      "Volume confirmation: above 50-day average"
+    ],
+    "parameters": {
+      "deviation_threshold_std": 1.5,
+      "lookback_period_days": 60,
+      "percentile_threshold": 75,
+      "mean_reversion_window_days": 15
+    },
+    "exit_conditions": [
+      "Exit when volatility reverts to 0.5 std above mean",
+      "Exit on time stop at 15 trading days",
+      "Stop loss if volatility extends to 2.0 std above mean"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. x, pp. 13-210",
+    "raw_chunk_text": "StochasticVolatilityandLocalVolatility 3\n(cid:1)0.20 (cid:1)0.15 (cid:1)0.10 (cid:1)0.05 0.00 0.05 0.10\n07\n06\n05\n04\n03\n02\n01\n0\nFIGURE1.2 Frequencydistributionof(77yearsof)SPXdailylogreturnscompared\nwi",
+    "rule_text": "Volatility exhibits mean reversion due to economic equilibrium constraints; a trader should position for reversion toward long-term volatility mean when current volatility deviates significantly from historical norms.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Current volatility > 1.0 standard deviation above 30-day rolling mean",
+      "Historical volatility percentile > 60th percentile",
+      "Direction: volatility ascending (acceleration confirmation)"
+    ],
+    "parameters": {
+      "deviation_threshold_std": 1.0,
+      "lookback_period_days": 30,
+      "percentile_threshold": 60,
+      "mean_reversion_window_days": 30
+    },
+    "exit_conditions": [
+      "Exit when volatility reverts to mean or below",
+      "Exit on time stop at 30 trading days",
+      "No hard stop loss; use 3.0 std as extreme invalidation"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2 (implied pp.13-210)",
+    "raw_chunk_text": "Finally, we could parameterize the risk-neutral distributions as in\nRubinstein (1998) or parameterize the implied volatility surface directly\nas in Shimko (1993) or Gatheral (2004). Although these app",
+    "rule_text": "A trader should avoid interpolating and extrapolating implied volatility surfaces in ways that introduce arbitrage opportunities (negative vertical spreads, negative butterflies, negative calendar spreads), as these violate no-arbitrage constraints and lead to unreliable local volatility estimates.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Implied volatility surface is incomplete (sparse bids/offers)",
+      "Proposed interpolation method has not been validated against no-arbitrage conditions",
+      "Vertical spread value \u2264 0 detected in any interpolated segment",
+      "Calendar spread value \u2264 0 detected in any interpolated segment",
+      "Butterfly spread value \u2264 0 detected in any interpolated segment"
+    ],
+    "parameters": {
+      "arbitrage_tolerance": 0.0,
+      "interpolation_max_distance": 0,
+      "surface_coverage_minimum": 1.0
+    },
+    "exit_conditions": [
+      "Do not trade; wait for complete observed surface data"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2 (implied pp.13-210)",
+    "raw_chunk_text": "Finally, we could parameterize the risk-neutral distributions as in\nRubinstein (1998) or parameterize the implied volatility surface directly\nas in Shimko (1993) or Gatheral (2004). Although these app",
+    "rule_text": "A trader should avoid interpolating and extrapolating implied volatility surfaces in ways that introduce arbitrage opportunities (negative vertical spreads, negative butterflies, negative calendar spreads), as these violate no-arbitrage constraints and lead to unreliable local volatility estimates.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Implied volatility surface is incomplete",
+      "Interpolation method enforces no-arbitrage via convex optimization",
+      "Vertical spread constraint: all values > 0 by at least 1 bp",
+      "Calendar spread constraint: all values > 0 by at least 1 bp",
+      "Butterfly spread constraint: all values > 0 by at least 0.5 bp"
+    ],
+    "parameters": {
+      "arbitrage_tolerance": 0.0001,
+      "interpolation_max_distance": 2,
+      "surface_coverage_minimum": 0.7,
+      "spread_minimum_threshold": 0.0001
+    },
+    "exit_conditions": [
+      "Observed market data contradicts interpolation by >2 bp",
+      "Any spread becomes negative in live market"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2 (implied pp.13-210)",
+    "raw_chunk_text": "Finally, we could parameterize the risk-neutral distributions as in\nRubinstein (1998) or parameterize the implied volatility surface directly\nas in Shimko (1993) or Gatheral (2004). Although these app",
+    "rule_text": "A trader should avoid interpolating and extrapolating implied volatility surfaces in ways that introduce arbitrage opportunities (negative vertical spreads, negative butterflies, negative calendar spreads), as these violate no-arbitrage constraints and lead to unreliable local volatility estimates.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Implied volatility surface is incomplete",
+      "Direct parameterization (Shimko/Gatheral method) applied to sparse data",
+      "Vertical spread violations < 2 bp or detected violations neutralized via hedging",
+      "Calendar spread violations < 2 bp in extrapolated regions only",
+      "Butterfly spread violations < 1 bp"
+    ],
+    "parameters": {
+      "arbitrage_tolerance": 0.0002,
+      "interpolation_max_distance": 5,
+      "surface_coverage_minimum": 0.5,
+      "spread_violation_limit": 0.0002,
+      "position_size_reduction_factor": 0.5
+    },
+    "exit_conditions": [
+      "Spread violation exceeds 2 bp",
+      "Surface parameterization error > 3 bp from observed quotes",
+      "Position marked-to-market loss > 1% of notional"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.3, pp.13-210 (Equation 3.5 and surrounding interpretation)",
+    "raw_chunk_text": "(cid:3) (cid:1) (cid:2)\n\u03c3 (K,T)2 =\u03c3(0)2 = 1 T E \u03c3 (cid:1)t 2S2 t (cid:2) BS (S t )|F 0(cid:2) dt (3.5)\nBS T E S2(cid:2) (S)|F\n0 t BS t 0\nEquation (3.5) expresses implied variance as the time-integral ",
+    "rule_text": "A delta hedger's profit in any time interval is directly proportional to gamma and the difference between expected instantaneous variance and realized instantaneous variance; therefore, position gamma should be sized relative to the forecast variance gap.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "\u03c3_implied(K,T)\u00b2 > \u03c3_realized_forecast\u00b2 \u00d7 1.5",
+      "Gamma > 0 (long gamma position available)",
+      "Time to expiration T > 14 days"
+    ],
+    "parameters": {
+      "variance_threshold_multiplier": 1.5,
+      "gamma_notional_pct_of_capital": 0.02,
+      "min_time_to_expiry_days": 14
+    },
+    "exit_conditions": [
+      "\u03c3_implied drops below \u03c3_realized_forecast \u00d7 1.3",
+      "Time decay reaches 7 days to expiration",
+      "Realized variance exceeds implied variance"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.3, pp.13-210 (Equation 3.5 and surrounding interpretation)",
+    "raw_chunk_text": "(cid:3) (cid:1) (cid:2)\n\u03c3 (K,T)2 =\u03c3(0)2 = 1 T E \u03c3 (cid:1)t 2S2 t (cid:2) BS (S t )|F 0(cid:2) dt (3.5)\nBS T E S2(cid:2) (S)|F\n0 t BS t 0\nEquation (3.5) expresses implied variance as the time-integral ",
+    "rule_text": "A delta hedger's profit in any time interval is directly proportional to gamma and the difference between expected instantaneous variance and realized instantaneous variance; therefore, position gamma should be sized relative to the forecast variance gap.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "\u03c3_implied(K,T)\u00b2 > \u03c3_realized_forecast\u00b2 \u00d7 1.25",
+      "Gamma > 0 (long gamma position available)",
+      "Time to expiration T > 7 days"
+    ],
+    "parameters": {
+      "variance_threshold_multiplier": 1.25,
+      "gamma_notional_pct_of_capital": 0.05,
+      "min_time_to_expiry_days": 7,
+      "gamma_sizing_ratio": "proportional to (implied\u00b2 - realized\u00b2) / realized\u00b2"
+    },
+    "exit_conditions": [
+      "\u03c3_implied drops below \u03c3_realized_forecast \u00d7 1.15",
+      "Time decay reaches 3 days to expiration",
+      "Profit target of +20% on position reached"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.3, pp.13-210 (Equation 3.5 and surrounding interpretation)",
+    "raw_chunk_text": "(cid:3) (cid:1) (cid:2)\n\u03c3 (K,T)2 =\u03c3(0)2 = 1 T E \u03c3 (cid:1)t 2S2 t (cid:2) BS (S t )|F 0(cid:2) dt (3.5)\nBS T E S2(cid:2) (S)|F\n0 t BS t 0\nEquation (3.5) expresses implied variance as the time-integral ",
+    "rule_text": "A delta hedger's profit in any time interval is directly proportional to gamma and the difference between expected instantaneous variance and realized instantaneous variance; therefore, position gamma should be sized relative to the forecast variance gap.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "\u03c3_implied(K,T)\u00b2 > \u03c3_realized_forecast\u00b2 \u00d7 1.10",
+      "Gamma > 0 (long gamma position available)",
+      "Time to expiration T > 2 days",
+      "Moneyness K/S between 0.95\u20131.05 (ATM focus)"
+    ],
+    "parameters": {
+      "variance_threshold_multiplier": 1.1,
+      "gamma_notional_pct_of_capital": 0.1,
+      "min_time_to_expiry_days": 2,
+      "gamma_sizing_ratio": "2\u00d7 proportional to (implied\u00b2 - realized\u00b2) / realized\u00b2"
+    },
+    "exit_conditions": [
+      "\u03c3_implied equals \u03c3_realized_forecast",
+      "Daily P&L drawdown exceeds \u221215%",
+      "1 day to expiration"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. 2 (pages 13-210)",
+    "raw_chunk_text": "surfacecomesfromTable5.1.There,weseethatthereisa5-centbidfora\n1,160 putwhichisover67points out-of-the-money expiringthefollowing\n\u2217\nmorning. Historically,about40%ofthevarianceofSPXisfromovernight\nmoves",
+    "rule_text": "A trader should be skeptical of deep out-of-the-money option prices that imply tail-move probabilities orders of magnitude beyond normal distribution expectations, as these represent mispricing opportunities or liquidity compensation rather than true risk.",
+    "signal_category": "VOL|RISK|SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Option is >10 standard deviations OTM based on current ATM vol and overnight variance contribution",
+      "Bid price exists (indicates liquidity)",
+      "Implied probability of required move exceeds theoretical probability by 10x or more"
+    ],
+    "parameters": {
+      "std_dev_threshold": 10.0,
+      "probability_multiple_threshold": 10.0,
+      "variance_lookback_days": 60,
+      "overnight_variance_weight": 0.4
+    },
+    "exit_conditions": [
+      "Price decays to fair value or volatility surface reprices",
+      "Time decay reaches defined threshold (e.g., 50% time remaining)"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. 2 (pages 13-210)",
+    "raw_chunk_text": "surfacecomesfromTable5.1.There,weseethatthereisa5-centbidfora\n1,160 putwhichisover67points out-of-the-money expiringthefollowing\n\u2217\nmorning. Historically,about40%ofthevarianceofSPXisfromovernight\nmoves",
+    "rule_text": "A trader should be skeptical of deep out-of-the-money option prices that imply tail-move probabilities orders of magnitude beyond normal distribution expectations, as these represent mispricing opportunities or liquidity compensation rather than true risk.",
+    "signal_category": "VOL|RISK|SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Option is >8 standard deviations OTM based on current ATM vol and overnight variance contribution",
+      "Bid-ask spread is tight enough to trade profitably",
+      "Implied probability of required move exceeds theoretical probability by 5-7x"
+    ],
+    "parameters": {
+      "std_dev_threshold": 8.0,
+      "probability_multiple_threshold": 6.0,
+      "variance_lookback_days": 60,
+      "overnight_variance_weight": 0.4
+    },
+    "exit_conditions": [
+      "Position reaches 50% max profit or time decay threshold",
+      "Volatility surface reprices upward significantly (>15% IV increase)"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. 2 (pages 13-210)",
+    "raw_chunk_text": "surfacecomesfromTable5.1.There,weseethatthereisa5-centbidfora\n1,160 putwhichisover67points out-of-the-money expiringthefollowing\n\u2217\nmorning. Historically,about40%ofthevarianceofSPXisfromovernight\nmoves",
+    "rule_text": "A trader should be skeptical of deep out-of-the-money option prices that imply tail-move probabilities orders of magnitude beyond normal distribution expectations, as these represent mispricing opportunities or liquidity compensation rather than true risk.",
+    "signal_category": "VOL|RISK|SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Option is >5 standard deviations OTM based on current ATM vol and overnight variance contribution",
+      "Bid exists regardless of spread width",
+      "Implied probability of required move exceeds theoretical probability by 3x or more"
+    ],
+    "parameters": {
+      "std_dev_threshold": 5.0,
+      "probability_multiple_threshold": 3.0,
+      "variance_lookback_days": 20,
+      "overnight_variance_weight": 0.4
+    },
+    "exit_conditions": [
+      "Position reaches 25% max profit",
+      "Time to expiration <2 days"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. 5, p. 13\u2013210",
+    "raw_chunk_text": "variable making that much smaller move is just over one in a million.\nDiffusions just can\u2019t generate the size of moves over very short timescales\nthatwouldbeabletogenerateanyvalueforsuchoptions.\nHigh ",
+    "rule_text": "A trader should bid for out-of-the-money options when large moves are economically possible, as a hedge against tail risk and existing portfolio exposure, because diffusion models systematically underprice extreme short-end moves.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Portfolio delta > +0.6 (heavily long exposure)",
+      "Observed IV smile at 0.25 delta > Heston model IV by +15% or more",
+      "Days to expiration \u2264 7 days",
+      "Option moneyness (K/S) between 0.90\u20130.95 (put side) or 1.05\u20131.10 (call side)"
+    ],
+    "parameters": {
+      "delta_portfolio_threshold": 0.6,
+      "smile_excess_over_model_pct": 15,
+      "dte_max": 7,
+      "otm_moneyness_range": "0.90-0.95 or 1.05-1.10",
+      "position_size_pct_of_exposure": 0.02
+    },
+    "exit_conditions": [
+      "Large move occurs (>3 sigma) and option is ITM, or expiration",
+      "Delta of portfolio returns below 0.3"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. 5, p. 13\u2013210",
+    "raw_chunk_text": "variable making that much smaller move is just over one in a million.\nDiffusions just can\u2019t generate the size of moves over very short timescales\nthatwouldbeabletogenerateanyvalueforsuchoptions.\nHigh ",
+    "rule_text": "A trader should bid for out-of-the-money options when large moves are economically possible, as a hedge against tail risk and existing portfolio exposure, because diffusion models systematically underprice extreme short-end moves.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Portfolio delta > +0.3 (moderately long exposure) OR elevated implied correlation",
+      "Observed IV smile at 0.25 delta > Heston model IV by +8\u201312%",
+      "Days to expiration \u2264 14 days",
+      "Option moneyness (K/S) between 0.92\u20130.98 (put side) or 1.02\u20131.08 (call side)"
+    ],
+    "parameters": {
+      "delta_portfolio_threshold": 0.3,
+      "smile_excess_over_model_pct": 10,
+      "dte_max": 14,
+      "otm_moneyness_range": "0.92-0.98 or 1.02-1.08",
+      "position_size_pct_of_exposure": 0.03
+    },
+    "exit_conditions": [
+      "Large move occurs or 50% of theta decay realized",
+      "Smile compression vs. model < 5%"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. 5, p. 13\u2013210",
+    "raw_chunk_text": "variable making that much smaller move is just over one in a million.\nDiffusions just can\u2019t generate the size of moves over very short timescales\nthatwouldbeabletogenerateanyvalueforsuchoptions.\nHigh ",
+    "rule_text": "A trader should bid for out-of-the-money options when large moves are economically possible, as a hedge against tail risk and existing portfolio exposure, because diffusion models systematically underprice extreme short-end moves.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Observed IV smile at 0.25 delta > Heston model IV by >5%",
+      "Days to expiration \u2264 21 days",
+      "Option moneyness (K/S) between 0.85\u20131.00 (put side) or 1.00\u20131.15 (call side)"
+    ],
+    "parameters": {
+      "delta_portfolio_threshold": 0.0,
+      "smile_excess_over_model_pct": 5,
+      "dte_max": 21,
+      "otm_moneyness_range": "0.85-1.00 or 1.00-1.15",
+      "position_size_pct_of_capital": 0.01
+    },
+    "exit_conditions": [
+      "Expiration or >70% theta decay",
+      "Smile compression to within 2% of model"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.5, pp.64",
+    "raw_chunk_text": "jumps, returns will be hard to distinguish from normal over a reasonable\ntimeinterval.Ontheotherhand,ifthereareinfrequentbigjumpsandtime\n\u2217\nto expiration is sufficiently short, below some characteristi",
+    "rule_text": "A trader should monitor the characteristic time T* (where jump effects become detectable in returns) relative to time to expiration; when time to expiration falls below T*, jump risk becomes identifiable and should influence position management.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Time to expiration > 2.0 \u00d7 T*",
+      "Jump diffusion parameters estimated (\u03bb, \u03b1, \u03b4 known or inferred)",
+      "ATM variance skew monitored"
+    ],
+    "parameters": {
+      "T_star_multiple": 1.5,
+      "jump_detection_threshold": "early warning"
+    },
+    "exit_conditions": [
+      "TTX < 1.5 \u00d7 T*: reduce position by 50%",
+      "TTX < 0.5 \u00d7 T*: exit completely"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.5, pp.64",
+    "raw_chunk_text": "jumps, returns will be hard to distinguish from normal over a reasonable\ntimeinterval.Ontheotherhand,ifthereareinfrequentbigjumpsandtime\n\u2217\nto expiration is sufficiently short, below some characteristi",
+    "rule_text": "A trader should monitor the characteristic time T* (where jump effects become detectable in returns) relative to time to expiration; when time to expiration falls below T*, jump risk becomes identifiable and should influence position management.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Time to expiration > 1.2 \u00d7 T*",
+      "T* computed from observed variance skew parameters",
+      "Position duration aligns with multiple of T*"
+    ],
+    "parameters": {
+      "T_star_multiple": 1.0,
+      "jump_detection_threshold": "standard"
+    },
+    "exit_conditions": [
+      "TTX < T*: adjust hedge ratio to 2\u00d7 standard",
+      "TTX < 0.7 \u00d7 T*: reduce exposure by 30%"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.5, pp.64",
+    "raw_chunk_text": "jumps, returns will be hard to distinguish from normal over a reasonable\ntimeinterval.Ontheotherhand,ifthereareinfrequentbigjumpsandtime\n\u2217\nto expiration is sufficiently short, below some characteristi",
+    "rule_text": "A trader should monitor the characteristic time T* (where jump effects become detectable in returns) relative to time to expiration; when time to expiration falls below T*, jump risk becomes identifiable and should influence position management.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Time to expiration > T*",
+      "Jump lambda (\u03bb) and jump size volatility (\u03b4) estimated",
+      "Prepared to manage jump tail risk"
+    ],
+    "parameters": {
+      "T_star_multiple": 0.5,
+      "jump_detection_threshold": "confirmed"
+    },
+    "exit_conditions": [
+      "TTX < 0.5 \u00d7 T*: exit if realized jumps occur",
+      "At expiration or TTX \u2192 0"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.65-66",
+    "raw_chunk_text": "Summarizing the results, we note that the jump compensator (or\nexpected move in the stock price due to jumps) drives the skew in the\nshort-expiration limit while the decay of ATM skew is driven by the",
+    "rule_text": "A trader should adjust skew exposure and time-decay hedging based on the relative contribution of jump risk versus stochastic volatility, as jumps drive short-dated skew decay while volatility regime drives longer-dated skew behavior.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "ATM skew decay rate > 2.5x normal baseline (indicating jump dominance)",
+      "Time to expiration < 7 days (short-dated skew zone)",
+      "Jump compensator estimate > 75th percentile of rolling 60-day distribution"
+    ],
+    "parameters": {
+      "jump_compensator_threshold_percentile": 75,
+      "skew_decay_acceleration_multiplier": 2.5,
+      "max_expiration_days": 7,
+      "lookback_window_days": 60
+    },
+    "exit_conditions": [
+      "Time to expiration > 14 days (skew reverts to volatility regime)",
+      "Jump compensator drops below 50th percentile"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.65-66",
+    "raw_chunk_text": "Summarizing the results, we note that the jump compensator (or\nexpected move in the stock price due to jumps) drives the skew in the\nshort-expiration limit while the decay of ATM skew is driven by the",
+    "rule_text": "A trader should adjust skew exposure and time-decay hedging based on the relative contribution of jump risk versus stochastic volatility, as jumps drive short-dated skew decay while volatility regime drives longer-dated skew behavior.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "ATM skew decay rate > 1.5x normal baseline",
+      "Time to expiration between 5 and 21 days (medium-dated skew zone)",
+      "Jump compensator estimate > 60th percentile of rolling 30-day distribution"
+    ],
+    "parameters": {
+      "jump_compensator_threshold_percentile": 60,
+      "skew_decay_acceleration_multiplier": 1.5,
+      "min_expiration_days": 5,
+      "max_expiration_days": 21,
+      "lookback_window_days": 30
+    },
+    "exit_conditions": [
+      "Time to expiration < 4 days or > 28 days",
+      "Jump compensator drops below 40th percentile"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.65-66",
+    "raw_chunk_text": "Summarizing the results, we note that the jump compensator (or\nexpected move in the stock price due to jumps) drives the skew in the\nshort-expiration limit while the decay of ATM skew is driven by the",
+    "rule_text": "A trader should adjust skew exposure and time-decay hedging based on the relative contribution of jump risk versus stochastic volatility, as jumps drive short-dated skew decay while volatility regime drives longer-dated skew behavior.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "ATM skew decay rate > 1.0x normal baseline (any acceleration signal)",
+      "Time to expiration between 3 and 60 days (full skew surface)",
+      "Jump compensator estimate > 50th percentile of rolling 14-day distribution"
+    ],
+    "parameters": {
+      "jump_compensator_threshold_percentile": 50,
+      "skew_decay_acceleration_multiplier": 1.0,
+      "min_expiration_days": 3,
+      "max_expiration_days": 60,
+      "lookback_window_days": 14
+    },
+    "exit_conditions": [
+      "Time to expiration < 2 days or > 90 days",
+      "Jump compensator drops below 30th percentile"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Chapter 2 (Adding Jumps), p.67",
+    "raw_chunk_text": "options,highlightingthesmalldifference.\nHowever in the SVJ model, after the stock price has jumped, the\nvolatilitywillstayunchangedbecausethejumpprocessisuncorrelatedwith\nthevolatilityprocess.Thisisin",
+    "rule_text": "After large price moves in the underlying asset, implied volatilities increase substantially (jump). A trader should expect and position for volatility expansion following significant underlying moves, as this is an empirically observed property of asset returns that static models fail to capture.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Underlying price move > 2.0 standard deviations in absolute value",
+      "Current implied volatility < 75th percentile of historical IV range",
+      "Time to expiration > 7 days"
+    ],
+    "parameters": {
+      "move_threshold_sigma": 2.0,
+      "iv_percentile_filter": 75,
+      "min_dte": 7
+    },
+    "exit_conditions": [
+      "Implied volatility reaches 90th percentile of IV range",
+      "Position duration exceeds 15 days",
+      "Underlying reverses by 1 standard deviation"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "EVENT"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Chapter 2 (Adding Jumps), p.67",
+    "raw_chunk_text": "options,highlightingthesmalldifference.\nHowever in the SVJ model, after the stock price has jumped, the\nvolatilitywillstayunchangedbecausethejumpprocessisuncorrelatedwith\nthevolatilityprocess.Thisisin",
+    "rule_text": "After large price moves in the underlying asset, implied volatilities increase substantially (jump). A trader should expect and position for volatility expansion following significant underlying moves, as this is an empirically observed property of asset returns that static models fail to capture.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Underlying price move > 1.5 standard deviations in absolute value",
+      "Current implied volatility < 70th percentile of historical IV range",
+      "Time to expiration > 5 days"
+    ],
+    "parameters": {
+      "move_threshold_sigma": 1.5,
+      "iv_percentile_filter": 70,
+      "min_dte": 5
+    },
+    "exit_conditions": [
+      "Implied volatility reaches 85th percentile of IV range",
+      "Position duration exceeds 10 days",
+      "Underlying reverses by 0.75 standard deviations"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "EVENT",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Chapter 2 (Adding Jumps), p.67",
+    "raw_chunk_text": "options,highlightingthesmalldifference.\nHowever in the SVJ model, after the stock price has jumped, the\nvolatilitywillstayunchangedbecausethejumpprocessisuncorrelatedwith\nthevolatilityprocess.Thisisin",
+    "rule_text": "After large price moves in the underlying asset, implied volatilities increase substantially (jump). A trader should expect and position for volatility expansion following significant underlying moves, as this is an empirically observed property of asset returns that static models fail to capture.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Underlying price move > 1.0 standard deviation in absolute value",
+      "Current implied volatility < 60th percentile of historical IV range",
+      "Time to expiration > 3 days"
+    ],
+    "parameters": {
+      "move_threshold_sigma": 1.0,
+      "iv_percentile_filter": 60,
+      "min_dte": 3
+    },
+    "exit_conditions": [
+      "Implied volatility reaches 80th percentile of IV range",
+      "Position duration exceeds 7 days",
+      "Underlying reverses by 0.5 standard deviations"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "EVENT",
+      "TRENDING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.6 (Implications for the Volatility Skew), pp.13-210",
+    "raw_chunk_text": "Implications for the Volatility Skew\nAllissuersofstockhavesomeprobabilityofdefaulting.Thereisaveryactive\ncredit derivative market that prices default-risk (see Default-Risk.com for\nbackground). Black-",
+    "rule_text": "A trader should adjust implied volatility expectations and option valuation models when pricing options on high-credit-spread issuers, because the risky discount rate creates a downside volatility skew that standard Black-Scholes underestimates, particularly in short-dated options.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Issuer credit spread > 300 basis points",
+      "Option time-to-expiry < 60 days",
+      "Observed implied volatility skew < model-predicted skew by >10%"
+    ],
+    "parameters": {
+      "credit_spread_threshold_bps": 300,
+      "max_dte": 60,
+      "skew_discrepancy_tolerance": 0.1,
+      "risky_rate_adjustment": "full_spread_deduction"
+    },
+    "exit_conditions": [
+      "Credit spread compresses below 250 bps",
+      "Option expires or approaches 30 days to expiration",
+      "Skew converges to model prediction within 5%"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.6 (Implications for the Volatility Skew), pp.13-210",
+    "raw_chunk_text": "Implications for the Volatility Skew\nAllissuersofstockhavesomeprobabilityofdefaulting.Thereisaveryactive\ncredit derivative market that prices default-risk (see Default-Risk.com for\nbackground). Black-",
+    "rule_text": "A trader should adjust implied volatility expectations and option valuation models when pricing options on high-credit-spread issuers, because the risky discount rate creates a downside volatility skew that standard Black-Scholes underestimates, particularly in short-dated options.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Issuer credit spread > 150 basis points",
+      "Option time-to-expiry < 90 days",
+      "Observed implied volatility skew < model-predicted skew by >7%"
+    ],
+    "parameters": {
+      "credit_spread_threshold_bps": 150,
+      "max_dte": 90,
+      "skew_discrepancy_tolerance": 0.07,
+      "risky_rate_adjustment": "spread_scaled_deduction"
+    },
+    "exit_conditions": [
+      "Credit spread compresses below 120 bps",
+      "Option approaches 45 days to expiration",
+      "Skew converges to model prediction within 7%"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.6 (Implications for the Volatility Skew), pp.13-210",
+    "raw_chunk_text": "Implications for the Volatility Skew\nAllissuersofstockhavesomeprobabilityofdefaulting.Thereisaveryactive\ncredit derivative market that prices default-risk (see Default-Risk.com for\nbackground). Black-",
+    "rule_text": "A trader should adjust implied volatility expectations and option valuation models when pricing options on high-credit-spread issuers, because the risky discount rate creates a downside volatility skew that standard Black-Scholes underestimates, particularly in short-dated options.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Issuer credit spread > 75 basis points",
+      "Option time-to-expiry < 120 days",
+      "Observed implied volatility skew < model-predicted skew by >5%"
+    ],
+    "parameters": {
+      "credit_spread_threshold_bps": 75,
+      "max_dte": 120,
+      "skew_discrepancy_tolerance": 0.05,
+      "risky_rate_adjustment": "marginal_spread_deduction"
+    },
+    "exit_conditions": [
+      "Credit spread compresses below 60 bps",
+      "Option approaches 60 days to expiration",
+      "Skew converges to model prediction within 10%"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Chapter on Modeling Default Risk, p.77",
+    "raw_chunk_text": "extreme.\nImplied Volatility\n0.4\n0.35\n0.3\n0.25\nLog(cid:1)strike\n(cid:1)0.3 (cid:1)0.2 (cid:1)0.1 0.1 0.2 0.3\nFIGURE6.1 Three-monthimpliedvolatilitiesfromtheMertonmodelassuminga\nstockvolatilityof20%andc",
+    "rule_text": "Exploit relative mispricing between equity options and credit derivatives by identifying when put options are cheaper than equivalent credit protection, then establishing a relative value arbitrage by buying the underpriced instrument and selling the overpriced one.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Calculate put option price from ATM implied vol",
+      "Calculate equivalent credit derivative price from bond yield spread",
+      "Put price is cheaper than credit derivative by threshold amount",
+      "Mispricing spread exceeds 2.0x historical standard deviation"
+    ],
+    "parameters": {
+      "mispricing_threshold_std_devs": 2.0,
+      "minimum_price_differential_bps": 50,
+      "holding_period_days": 30
+    },
+    "exit_conditions": [
+      "Mispricing closes to within 0.5 std devs",
+      "Holding period exceeded",
+      "Credit event occurs"
+    ],
+    "instrument": "OPTIONS_SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Chapter on Modeling Default Risk, p.77",
+    "raw_chunk_text": "extreme.\nImplied Volatility\n0.4\n0.35\n0.3\n0.25\nLog(cid:1)strike\n(cid:1)0.3 (cid:1)0.2 (cid:1)0.1 0.1 0.2 0.3\nFIGURE6.1 Three-monthimpliedvolatilitiesfromtheMertonmodelassuminga\nstockvolatilityof20%andc",
+    "rule_text": "Exploit relative mispricing between equity options and credit derivatives by identifying when put options are cheaper than equivalent credit protection, then establishing a relative value arbitrage by buying the underpriced instrument and selling the overpriced one.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Calculate put option price from ATM implied vol",
+      "Calculate equivalent credit derivative price from bond yield spread",
+      "Put price is cheaper than credit derivative by threshold amount",
+      "Mispricing spread exceeds 1.5x historical standard deviation"
+    ],
+    "parameters": {
+      "mispricing_threshold_std_devs": 1.5,
+      "minimum_price_differential_bps": 30,
+      "holding_period_days": 20
+    },
+    "exit_conditions": [
+      "Mispricing closes to within 0.75 std devs",
+      "Holding period exceeded",
+      "Credit event occurs"
+    ],
+    "instrument": "OPTIONS_SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Chapter on Modeling Default Risk, p.77",
+    "raw_chunk_text": "extreme.\nImplied Volatility\n0.4\n0.35\n0.3\n0.25\nLog(cid:1)strike\n(cid:1)0.3 (cid:1)0.2 (cid:1)0.1 0.1 0.2 0.3\nFIGURE6.1 Three-monthimpliedvolatilitiesfromtheMertonmodelassuminga\nstockvolatilityof20%andc",
+    "rule_text": "Exploit relative mispricing between equity options and credit derivatives by identifying when put options are cheaper than equivalent credit protection, then establishing a relative value arbitrage by buying the underpriced instrument and selling the overpriced one.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Calculate put option price from ATM implied vol",
+      "Calculate equivalent credit derivative price from bond yield spread",
+      "Put price is cheaper than credit derivative by threshold amount",
+      "Mispricing spread exceeds 1.0x historical standard deviation"
+    ],
+    "parameters": {
+      "mispricing_threshold_std_devs": 1.0,
+      "minimum_price_differential_bps": 15,
+      "holding_period_days": 10
+    },
+    "exit_conditions": [
+      "Mispricing closes to within 0.3 std devs",
+      "Holding period exceeded",
+      "Credit event occurs"
+    ],
+    "instrument": "OPTIONS_SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. x, pp. 13-210",
+    "raw_chunk_text": "Equityoptionmarketmakers(untilrecentlyatleast)madedowithheuristic\nrules to determine whether a skew looked reasonable or not; implied\nvolatility skews of the magnitude shown in Figure 6.1 seemed just ",
+    "rule_text": "A trader should exploit market maker heuristic-based mispricing by simultaneously buying relatively expensive options in one market while selling offsetting exposure in a related market when implied volatility skews deviate significantly from fundamentally justified levels.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Implied volatility skew percentile > 95th (measured over 252-day rolling window)",
+      "Skew has persisted steeper than 90th percentile for \u22655 trading days",
+      "Bid-ask spread differential between exchange option and CDS market <20bps"
+    ],
+    "parameters": {
+      "skew_threshold_percentile": 95,
+      "persistence_days": 5,
+      "max_spread_differential_bps": 20
+    },
+    "exit_conditions": [
+      "Skew mean-reverts to 50th percentile OR",
+      "Holding period exceeds 60 days OR",
+      "Mark-to-market loss exceeds 2% of notional"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. x, pp. 13-210",
+    "raw_chunk_text": "Equityoptionmarketmakers(untilrecentlyatleast)madedowithheuristic\nrules to determine whether a skew looked reasonable or not; implied\nvolatility skews of the magnitude shown in Figure 6.1 seemed just ",
+    "rule_text": "A trader should exploit market maker heuristic-based mispricing by simultaneously buying relatively expensive options in one market while selling offsetting exposure in a related market when implied volatility skews deviate significantly from fundamentally justified levels.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Implied volatility skew percentile > 85th (measured over 252-day rolling window)",
+      "Skew has persisted steeper than 80th percentile for \u22652 trading days",
+      "Bid-ask spread on exchange option >2x normal regime for that strike",
+      "IV quote rejection (market maker revises price downward after brief wide quote)"
+    ],
+    "parameters": {
+      "skew_threshold_percentile": 85,
+      "persistence_days": 2,
+      "spread_multiple_vs_normal": 2.0
+    },
+    "exit_conditions": [
+      "Skew mean-reverts to 60th percentile OR",
+      "Holding period exceeds 30 days OR",
+      "Mark-to-market loss exceeds 3% of notional"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. x, pp. 13-210",
+    "raw_chunk_text": "Equityoptionmarketmakers(untilrecentlyatleast)madedowithheuristic\nrules to determine whether a skew looked reasonable or not; implied\nvolatility skews of the magnitude shown in Figure 6.1 seemed just ",
+    "rule_text": "A trader should exploit market maker heuristic-based mispricing by simultaneously buying relatively expensive options in one market while selling offsetting exposure in a related market when implied volatility skews deviate significantly from fundamentally justified levels.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Implied volatility skew percentile > 70th (measured over 252-day rolling window)",
+      "Skew increased by \u226510% vs. previous day's skew steepness",
+      "Exchange option IV > CDS-implied put strike IV by >50bps"
+    ],
+    "parameters": {
+      "skew_threshold_percentile": 70,
+      "daily_skew_increase_pct": 10,
+      "iv_differential_bps": 50
+    },
+    "exit_conditions": [
+      "Skew mean-reverts to 75th percentile OR",
+      "Holding period exceeds 10 days OR",
+      "Mark-to-market loss exceeds 5% of notional"
+    ],
+    "instrument": "SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.6 (Modeling Default Risk), p.79",
+    "raw_chunk_text": "Ultimately, skews became so steep that the hedge funds made money\nrisk-free the other way round\u2014through put spreads. A popular trade for\na hedge fund was to buy one at-the-money put and sell two puts ",
+    "rule_text": "Execute put spread arbitrage when skew creates a pricing opportunity where a multi-leg put spread can be traded at zero cost or for a net credit, locking in risk-free profit from the volatility surface mispricing.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Implied volatility skew steepness: slope > 0.15 (vega-weighted change per strike octile)",
+      "Put spread net premium received: > +5% of ATM strike value",
+      "Credit default swap spread component: < 100 bps",
+      "Minimum payoff floor verified: lowest node in payoff diagram > 0"
+    ],
+    "parameters": {
+      "skew_threshold_bps": 15,
+      "credit_minimum_percent": 5,
+      "max_cds_spread_bps": 100,
+      "strike_ratio_otm_to_atm": 0.5
+    },
+    "exit_conditions": [
+      "Spread widens to flat or debit: exit immediately",
+      "Skew flattens below 10 bps: close position",
+      "Time decay threshold: close if extrinsic value < 1% of credit received"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.6 (Modeling Default Risk), p.79",
+    "raw_chunk_text": "Ultimately, skews became so steep that the hedge funds made money\nrisk-free the other way round\u2014through put spreads. A popular trade for\na hedge fund was to buy one at-the-money put and sell two puts ",
+    "rule_text": "Execute put spread arbitrage when skew creates a pricing opportunity where a multi-leg put spread can be traded at zero cost or for a net credit, locking in risk-free profit from the volatility surface mispricing.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Implied volatility skew steepness: slope > 0.10",
+      "Put spread net premium received: >= 0% (at-zero or credit)",
+      "Credit default swap spread component: < 200 bps",
+      "Payoff floor verified: lowest payoff >= 0 at 90% confidence"
+    ],
+    "parameters": {
+      "skew_threshold_bps": 10,
+      "credit_minimum_percent": 0,
+      "max_cds_spread_bps": 200,
+      "strike_ratio_otm_to_atm": 0.5
+    },
+    "exit_conditions": [
+      "Spread trades at debit: close position",
+      "Skew flattens to < 7 bps: monitor and exit if trend continues",
+      "Time decay: close if 50% of premium eroded without directional move"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.6 (Modeling Default Risk), p.79",
+    "raw_chunk_text": "Ultimately, skews became so steep that the hedge funds made money\nrisk-free the other way round\u2014through put spreads. A popular trade for\na hedge fund was to buy one at-the-money put and sell two puts ",
+    "rule_text": "Execute put spread arbitrage when skew creates a pricing opportunity where a multi-leg put spread can be traded at zero cost or for a net credit, locking in risk-free profit from the volatility surface mispricing.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Implied volatility skew steepness: slope > 0.06",
+      "Put spread net premium: >= -2% of ATM strike (modest debit acceptable)",
+      "Credit default swap spread component: < 300 bps",
+      "Payoff floor verified: lowest payoff >= 0 at 75% confidence"
+    ],
+    "parameters": {
+      "skew_threshold_bps": 6,
+      "credit_minimum_percent": -2,
+      "max_cds_spread_bps": 300,
+      "strike_ratio_otm_to_atm": 0.5
+    },
+    "exit_conditions": [
+      "Spread widens to 3% debit: close position",
+      "Skew flattens below 4 bps: monitor, exit on further compression",
+      "Realized volatility spike: close if daily moves exceed 2 SD"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210 (Digital Options section)",
+    "raw_chunk_text": "BS\nTogetanideaoftheimpactoftheskewinpractice,considerourusual\nidealizedmarketwithzerointerestrateanddividendsandaone-yeardigital\noption struckat-the-money. Suppose further thatat-the-money volatility ",
+    "rule_text": "A trader must adjust option valuations by incorporating the volatility skew effect, as ignoring it can cause pricing errors of 10%+ on derivatives sensitive to strike-dependent volatility changes.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Measured volatility skew magnitude > 1.5% per 10% strike distance",
+      "Position involves strike-sensitive payoff (digital, barrier, or deep OTM)",
+      "Notional exposure > 5M USD equivalent"
+    ],
+    "parameters": {
+      "skew_threshold_percent_per_10pct_strike": 1.5,
+      "vega_skew_adjustment_multiplier": 0.25,
+      "minimum_notional_threshold_usd": 5000000
+    },
+    "exit_conditions": [
+      "Skew returns to baseline levels",
+      "Position closed or hedged"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210 (Digital Options section)",
+    "raw_chunk_text": "BS\nTogetanideaoftheimpactoftheskewinpractice,considerourusual\nidealizedmarketwithzerointerestrateanddividendsandaone-yeardigital\noption struckat-the-money. Suppose further thatat-the-money volatility ",
+    "rule_text": "A trader must adjust option valuations by incorporating the volatility skew effect, as ignoring it can cause pricing errors of 10%+ on derivatives sensitive to strike-dependent volatility changes.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Measured volatility skew magnitude > 2.5% per 10% strike distance",
+      "Position involves any derivative with vega exposure",
+      "Notional exposure > 1M USD equivalent"
+    ],
+    "parameters": {
+      "skew_threshold_percent_per_10pct_strike": 2.5,
+      "vega_skew_adjustment_multiplier": 0.3,
+      "minimum_notional_threshold_usd": 1000000
+    },
+    "exit_conditions": [
+      "Skew moves >20% from entry level",
+      "Position closed"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210 (Digital Options section)",
+    "raw_chunk_text": "BS\nTogetanideaoftheimpactoftheskewinpractice,considerourusual\nidealizedmarketwithzerointerestrateanddividendsandaone-yeardigital\noption struckat-the-money. Suppose further thatat-the-money volatility ",
+    "rule_text": "A trader must adjust option valuations by incorporating the volatility skew effect, as ignoring it can cause pricing errors of 10%+ on derivatives sensitive to strike-dependent volatility changes.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Measured volatility skew magnitude > 0.5% per 10% strike distance",
+      "Any vega-bearing position",
+      "Notional exposure > 100K USD equivalent"
+    ],
+    "parameters": {
+      "skew_threshold_percent_per_10pct_strike": 0.5,
+      "vega_skew_adjustment_multiplier": 0.4,
+      "minimum_notional_threshold_usd": 100000
+    },
+    "exit_conditions": [
+      "Skew flattens below 0.3%",
+      "Position closed"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "risk-averseretailinvestor\u2014heorshetypicallygetsanabove-marketcoupon\nif the underlying stock index is up for the period (usually a year) and a\nbelow-market coupon (usually zero)ifthe underlying stockind",
+    "rule_text": "A trader should exploit pricing discrepancies between counterparties who use different volatility models (local vs. stochastic) when valuing complex derivatives, because sellers using inadequate models systematically underprice and will capture market share despite fundamental mispricing.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Detect that dealer is using local volatility model for digital cliquet valuation",
+      "Confirm dealer has accumulated significant digital cliquet inventory on book",
+      "Verify stochastic volatility model would price 15%+ higher"
+    ],
+    "parameters": {
+      "model_price_discrepancy_threshold": 0.15,
+      "inventory_accumulation_signal": "above_2_standard_deviations",
+      "position_sizing_pct_of_edge": 0.3
+    },
+    "exit_conditions": [
+      "Dealer reprices using corrected volatility model",
+      "Inventory normalized or hedged",
+      "Time decay reduces edge below 10%"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "risk-averseretailinvestor\u2014heorshetypicallygetsanabove-marketcoupon\nif the underlying stock index is up for the period (usually a year) and a\nbelow-market coupon (usually zero)ifthe underlying stockind",
+    "rule_text": "A trader should exploit pricing discrepancies between counterparties who use different volatility models (local vs. stochastic) when valuing complex derivatives, because sellers using inadequate models systematically underprice and will capture market share despite fundamental mispricing.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify discrepancy between local volatility and forward skew assumptions in dealer quotes",
+      "Obtain competing quotes showing 8-12% valuation spread attributable to model choice",
+      "Confirm dealer using inadequate model has market share/competitive pressure"
+    ],
+    "parameters": {
+      "model_price_discrepancy_threshold": 0.1,
+      "inventory_accumulation_signal": "above_1_standard_deviation",
+      "position_sizing_pct_of_edge": 0.5
+    },
+    "exit_conditions": [
+      "Valuation convergence to stochastic volatility model level",
+      "Dealer stops quoting or reprices",
+      "Edge decays below 6%"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "risk-averseretailinvestor\u2014heorshetypicallygetsanabove-marketcoupon\nif the underlying stock index is up for the period (usually a year) and a\nbelow-market coupon (usually zero)ifthe underlying stockind",
+    "rule_text": "A trader should exploit pricing discrepancies between counterparties who use different volatility models (local vs. stochastic) when valuing complex derivatives, because sellers using inadequate models systematically underprice and will capture market share despite fundamental mispricing.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Quote digital cliquet from two dealers; compare valuations",
+      "Model choice difference detectable in price (>5% spread)",
+      "Dealer using simpler model (local vol) prices lower"
+    ],
+    "parameters": {
+      "model_price_discrepancy_threshold": 0.05,
+      "inventory_accumulation_signal": "any_accumulation_detected",
+      "position_sizing_pct_of_edge": 0.75
+    },
+    "exit_conditions": [
+      "Valuation spread narrows below 3%",
+      "Dealer explicitly adopts different model",
+      "Calendar time decay of 30 days"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "then, those sellers using an inadequate model will almost certainly win\nthe deal and end up short a portfolio of misvalued forward-starting digi-\ntal options. Or even worse, a dealer could have an app",
+    "rule_text": "A trader should reject or significantly mark up exotic option valuations when the pricing error magnitude exceeds a multiple of typical deal margins, especially when competitors are pricing below a sound valuation model.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Exotic option (e.g., digital cliquet, forward-starting digital) pricing request received",
+      "Estimated pricing error magnitude calculated using sound valuation model",
+      "Competitor pricing observed below sound model valuation"
+    ],
+    "parameters": {
+      "error_to_margin_multiplier": 2.0,
+      "typical_margin_assumption_percent": 1.0,
+      "minimum_notional_error_threshold_percent": 2.0
+    },
+    "exit_conditions": [
+      "Exit: Decline deal entirely or demand compensation for model risk premium equal to 2x typical margin"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "then, those sellers using an inadequate model will almost certainly win\nthe deal and end up short a portfolio of misvalued forward-starting digi-\ntal options. Or even worse, a dealer could have an app",
+    "rule_text": "A trader should reject or significantly mark up exotic option valuations when the pricing error magnitude exceeds a multiple of typical deal margins, especially when competitors are pricing below a sound valuation model.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Exotic option pricing request with competitor bids observed",
+      "Pricing error magnitude estimated as percentage of notional",
+      "Internal valuation model confidence level assessed"
+    ],
+    "parameters": {
+      "error_to_margin_multiplier": 5.0,
+      "typical_margin_assumption_percent": 1.5,
+      "minimum_notional_error_threshold_percent": 5.76
+    },
+    "exit_conditions": [
+      "Exit: Accept deal with markup equal to (5x margin), or decline if competitor wins"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "then, those sellers using an inadequate model will almost certainly win\nthe deal and end up short a portfolio of misvalued forward-starting digi-\ntal options. Or even worse, a dealer could have an app",
+    "rule_text": "A trader should reject or significantly mark up exotic option valuations when the pricing error magnitude exceeds a multiple of typical deal margins, especially when competitors are pricing below a sound valuation model.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Exotic option bid request submitted by counterparty",
+      "Estimated pricing error as percentage of notional calculated",
+      "Competitive pressure from other dealers assessed"
+    ],
+    "parameters": {
+      "error_to_margin_multiplier": 10.0,
+      "typical_margin_assumption_percent": 0.5,
+      "minimum_notional_error_threshold_percent": 10.0
+    },
+    "exit_conditions": [
+      "Exit: Accept with standard margin if error < 10x; decline if error > 10x or loses deal to competitor"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. 2, pp. 13\u2013210 (Barrier Options section)",
+    "raw_chunk_text": "option knocks out and we are left long of the stock we bought to hedge.\nThis is exactly the portfolio we would have if the option buyer had left\nus a stop-loss order to sell stock if the price ever re",
+    "rule_text": "A trader should apply a gap risk premium adjustment to barrier option valuations when continuous trading cannot be guaranteed, because discrete execution allows prices to skip through barrier levels rather than execute exactly at them.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position involves short barrier options (seller perspective)",
+      "Underlying asset exhibits overnight gaps or low intraday liquidity near barrier",
+      "Time to barrier expiry is less than 30 days (higher gap probability)"
+    ],
+    "parameters": {
+      "gap_risk_premium_pct": 8.0,
+      "assumed_gap_size_bps": 200,
+      "liquidity_buffer_multiplier": 1.5,
+      "barrier_distance_threshold": 0.95
+    },
+    "exit_conditions": [
+      "Barrier is hit and option knocks out",
+      "Underlying gaps through barrier (execute at market, accept slippage)"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. 2, pp. 13\u2013210 (Barrier Options section)",
+    "raw_chunk_text": "option knocks out and we are left long of the stock we bought to hedge.\nThis is exactly the portfolio we would have if the option buyer had left\nus a stop-loss order to sell stock if the price ever re",
+    "rule_text": "A trader should apply a gap risk premium adjustment to barrier option valuations when continuous trading cannot be guaranteed, because discrete execution allows prices to skip through barrier levels rather than execute exactly at them.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position involves short barrier options",
+      "Underlying asset trades with normal daily volatility patterns",
+      "Barrier is 2-5% away from current spot price"
+    ],
+    "parameters": {
+      "gap_risk_premium_pct": 5.0,
+      "assumed_gap_size_bps": 125,
+      "liquidity_buffer_multiplier": 1.0,
+      "barrier_distance_threshold": 0.9
+    },
+    "exit_conditions": [
+      "Barrier is touched",
+      "Option expires"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch. 2, pp. 13\u2013210 (Barrier Options section)",
+    "raw_chunk_text": "option knocks out and we are left long of the stock we bought to hedge.\nThis is exactly the portfolio we would have if the option buyer had left\nus a stop-loss order to sell stock if the price ever re",
+    "rule_text": "A trader should apply a gap risk premium adjustment to barrier option valuations when continuous trading cannot be guaranteed, because discrete execution allows prices to skip through barrier levels rather than execute exactly at them.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position involves short barrier options on highly liquid underliers",
+      "Underlying has low historical gap frequency and tight bid-ask spreads",
+      "Barrier is relatively far from current price (>5% away)"
+    ],
+    "parameters": {
+      "gap_risk_premium_pct": 2.0,
+      "assumed_gap_size_bps": 50,
+      "liquidity_buffer_multiplier": 0.5,
+      "barrier_distance_threshold": 0.8
+    },
+    "exit_conditions": [
+      "Barrier level is breached at any price",
+      "Option knock-out occurs"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "European options struck at K. If the stock price never reaches K, both the\nlookbackandtheEuropeanoptionexpireworthless.Ifandwhenthestock\npricedoesreachKandincreasesbysomesmallincrement(cid:5)K,thevalu",
+    "rule_text": "Rebalance dynamic hedges by rolling option strikes upward when the underlying asset reaches prior strike levels, capturing the gamma profit differential between old and new strikes.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Stock price reaches prior strike K",
+      "Calculate gamma profit: 2(\u2202C/\u2202K) \u00d7 \u0394K",
+      "Gamma profit > 0 (positive convexity exists)"
+    ],
+    "parameters": {
+      "strike_increment_\u0394K": "0.5% of current stock price",
+      "rebalance_frequency": "Every time S reaches prior K (continuous monitoring)",
+      "position_size": "Maintain 2 call contracts per increment"
+    },
+    "exit_conditions": [
+      "Stock price reverses below K",
+      "Lookback option expires worthless (S never reaches subsequent strikes)"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "European options struck at K. If the stock price never reaches K, both the\nlookbackandtheEuropeanoptionexpireworthless.Ifandwhenthestock\npricedoesreachKandincreasesbysomesmallincrement(cid:5)K,thevalu",
+    "rule_text": "Rebalance dynamic hedges by rolling option strikes upward when the underlying asset reaches prior strike levels, capturing the gamma profit differential between old and new strikes.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Stock price reaches prior strike K",
+      "Calculate gamma profit: 2(\u2202C/\u2202K) \u00d7 \u0394K",
+      "Gamma profit > transaction costs"
+    ],
+    "parameters": {
+      "strike_increment_\u0394K": "1.5% of current stock price",
+      "rebalance_frequency": "When price crosses K by at least 0.75%",
+      "position_size": "Maintain 2 call contracts per increment"
+    },
+    "exit_conditions": [
+      "Stock price reverses below K",
+      "Cumulative gamma P&L reaches profit target",
+      "Option expires worthless"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "European options struck at K. If the stock price never reaches K, both the\nlookbackandtheEuropeanoptionexpireworthless.Ifandwhenthestock\npricedoesreachKandincreasesbysomesmallincrement(cid:5)K,thevalu",
+    "rule_text": "Rebalance dynamic hedges by rolling option strikes upward when the underlying asset reaches prior strike levels, capturing the gamma profit differential between old and new strikes.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Stock price reaches prior strike K and exceeds it by \u2265 2%",
+      "Calculate gamma profit: 2(\u2202C/\u2202K) \u00d7 \u0394K",
+      "Implied volatility > 20th percentile (sufficient time decay)"
+    ],
+    "parameters": {
+      "strike_increment_\u0394K": "3.0% of current stock price",
+      "rebalance_frequency": "When price crosses prior K by \u2265 2%",
+      "position_size": "Maintain 2 call contracts per increment; consider 1.5x leverage on strong momentum"
+    },
+    "exit_conditions": [
+      "Stock price reverses below K by > 1%",
+      "Single trade gamma P&L becomes negative",
+      "Option expires worthless"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp. 114-115",
+    "raw_chunk_text": "114 THEVOLATILITYSURFACE\nThe reason this static hedge works is that the value of the call we are\nlongalwaysexactlyoffsetsthevalueoftheputweareshortwhenthestock\npricereachesthebarrierB.\nAspecialcaseoft",
+    "rule_text": "Construct a portfolio hedge where long and short option positions offset each other's payoff across barrier levels, minimizing net exposure under varying market conditions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position is long an exotic option (e.g., down-and-out call)",
+      "Identify barrier level B where payoff offset occurs",
+      "Construct static hedge: long call at K, short put at K where B=K"
+    ],
+    "parameters": {
+      "barrier_distance_from_spot": 0.02,
+      "scenario_range_volatility_coverage": "\u00b13 standard deviations",
+      "payoff_reduction_target": 0.95,
+      "rehedge_frequency_days": 5
+    },
+    "exit_conditions": [
+      "Cumulative payoff under all scenarios exceeds 5% of notional",
+      "Barrier is breached",
+      "Maturity reached"
+    ],
+    "instrument": "OPTIONS_SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp. 114-115",
+    "raw_chunk_text": "114 THEVOLATILITYSURFACE\nThe reason this static hedge works is that the value of the call we are\nlongalwaysexactlyoffsetsthevalueoftheputweareshortwhenthestock\npricereachesthebarrierB.\nAspecialcaseoft",
+    "rule_text": "Construct a portfolio hedge where long and short option positions offset each other's payoff across barrier levels, minimizing net exposure under varying market conditions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position is long an exotic option",
+      "Identify barrier level B",
+      "Construct quasi-static hedge: long call at K, short put at K"
+    ],
+    "parameters": {
+      "barrier_distance_from_spot": 0.05,
+      "scenario_range_volatility_coverage": "\u00b12 standard deviations",
+      "payoff_reduction_target": 0.9,
+      "rehedge_frequency_days": 10
+    },
+    "exit_conditions": [
+      "Cumulative payoff under all scenarios exceeds 10% of notional",
+      "Barrier is breached",
+      "Maturity reached"
+    ],
+    "instrument": "OPTIONS_SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp. 114-115",
+    "raw_chunk_text": "114 THEVOLATILITYSURFACE\nThe reason this static hedge works is that the value of the call we are\nlongalwaysexactlyoffsetsthevalueoftheputweareshortwhenthestock\npricereachesthebarrierB.\nAspecialcaseoft",
+    "rule_text": "Construct a portfolio hedge where long and short option positions offset each other's payoff across barrier levels, minimizing net exposure under varying market conditions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position is long an exotic option with known intrinsic value at barrier",
+      "Identify barrier level B",
+      "Construct minimal static hedge: long call at K, short put at K where B \u2248 K"
+    ],
+    "parameters": {
+      "barrier_distance_from_spot": 0.1,
+      "scenario_range_volatility_coverage": "\u00b11.5 standard deviations",
+      "payoff_reduction_target": 0.85,
+      "rehedge_frequency_days": 20
+    },
+    "exit_conditions": [
+      "Cumulative payoff under all scenarios exceeds 15% of notional",
+      "Barrier is breached",
+      "Maturity reached"
+    ],
+    "instrument": "OPTIONS_SPREAD",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.10, p.210 (Figure 10.4 caption and surrounding discussion on reverse cliquets)",
+    "raw_chunk_text": "Basket index\n1.6\n1.4\n1.2\n1\n0.8\n0.6\n0.4\n0.2\n5(cid:1)00 11(cid:1)00 5(cid:1)01 11(cid:1)01 5(cid:1)02 11(cid:1)02 5(cid:1)03 11(cid:1)03 5(cid:1)04 11(cid:1)04 5(cid:1)05\nFIGURE10.4 Historicalperformanc",
+    "rule_text": "A trader should increase long volatility exposure (or reduce short volatility exposure) when forward skew becomes more negative, because negative skew increases the value of downside-protection structures.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Forward skew (90th percentile put IV / ATM IV) < -0.15",
+      "Skew has moved lower by at least -0.05 in the past 5 trading days",
+      "Current skew is in the bottom quartile of the last 60 days"
+    ],
+    "parameters": {
+      "skew_threshold": -0.15,
+      "skew_momentum_days": 5,
+      "skew_momentum_threshold": -0.05,
+      "lookback_percentile": 25
+    },
+    "exit_conditions": [
+      "Skew reverts above -0.10",
+      "Position mark-to-market loss exceeds -8%",
+      "Holding period exceeds 30 calendar days"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.10, p.210 (Figure 10.4 caption and surrounding discussion on reverse cliquets)",
+    "raw_chunk_text": "Basket index\n1.6\n1.4\n1.2\n1\n0.8\n0.6\n0.4\n0.2\n5(cid:1)00 11(cid:1)00 5(cid:1)01 11(cid:1)01 5(cid:1)02 11(cid:1)02 5(cid:1)03 11(cid:1)03 5(cid:1)04 11(cid:1)04 5(cid:1)05\nFIGURE10.4 Historicalperformanc",
+    "rule_text": "A trader should increase long volatility exposure (or reduce short volatility exposure) when forward skew becomes more negative, because negative skew increases the value of downside-protection structures.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Forward skew < 20-day moving average of skew by at least -0.08",
+      "Current skew level < -0.10",
+      "Skew slope (skew change over 5 days) is negative"
+    ],
+    "parameters": {
+      "skew_ma_period": 20,
+      "skew_ma_deviation": -0.08,
+      "skew_absolute_threshold": -0.1,
+      "skew_slope_lookback": 5
+    },
+    "exit_conditions": [
+      "Skew crosses back above 20-day moving average",
+      "Position mark-to-market loss exceeds -12%",
+      "Holding period exceeds 20 calendar days"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.10, p.210 (Figure 10.4 caption and surrounding discussion on reverse cliquets)",
+    "raw_chunk_text": "Basket index\n1.6\n1.4\n1.2\n1\n0.8\n0.6\n0.4\n0.2\n5(cid:1)00 11(cid:1)00 5(cid:1)01 11(cid:1)01 5(cid:1)02 11(cid:1)02 5(cid:1)03 11(cid:1)03 5(cid:1)04 11(cid:1)04 5(cid:1)05\nFIGURE10.4 Historicalperformanc",
+    "rule_text": "A trader should increase long volatility exposure (or reduce short volatility exposure) when forward skew becomes more negative, because negative skew increases the value of downside-protection structures.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Forward skew declines by -0.03 or more in a single day",
+      "Current skew < -0.05",
+      "No holding period restriction on existing positions"
+    ],
+    "parameters": {
+      "daily_skew_change_threshold": -0.03,
+      "skew_absolute_minimum": -0.05,
+      "entry_frequency": "unlimited"
+    },
+    "exit_conditions": [
+      "Skew improves (becomes less negative) by +0.04 in a single day",
+      "Position mark-to-market loss exceeds -15%",
+      "Holding period exceeds 10 calendar days"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Chapter 10 (Exotic Cliquets), p.129",
+    "raw_chunk_text": "The more negative the volatility skew, the greater the value of downside\nputs reflecting in turn the greater expected magnitude of downside moves\nand the lower the value of the structure. Our previous",
+    "rule_text": "A trader should reduce exposure to structured products with embedded downside puts when volatility skew becomes more negative, because negative skew increases put value and reduces overall structure value under stochastic volatility assumptions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position in capped-coupon exotic structure (e.g., Napoleon) already established",
+      "Volatility skew measure (e.g., 25-delta put IV minus ATM IV) becomes more negative than -0.5%"
+    ],
+    "parameters": {
+      "skew_threshold": -0.005,
+      "position_reduction_percent": 100,
+      "reentry_skew_level": 0.0
+    },
+    "exit_conditions": [
+      "Exit full position when skew falls below -0.5%",
+      "Re-enter only when skew returns to neutral or positive"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Chapter 10 (Exotic Cliquets), p.129",
+    "raw_chunk_text": "The more negative the volatility skew, the greater the value of downside\nputs reflecting in turn the greater expected magnitude of downside moves\nand the lower the value of the structure. Our previous",
+    "rule_text": "A trader should reduce exposure to structured products with embedded downside puts when volatility skew becomes more negative, because negative skew increases put value and reduces overall structure value under stochastic volatility assumptions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position in capped-coupon exotic structure already established",
+      "Volatility skew measure becomes more negative than -1.0%"
+    ],
+    "parameters": {
+      "skew_threshold": -0.01,
+      "position_reduction_percent": 50,
+      "escalation_skew_level": -0.015
+    },
+    "exit_conditions": [
+      "Reduce position by 50% when skew falls below -1.0%",
+      "Exit remaining 50% if skew deteriorates further to -1.5%"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Chapter 10 (Exotic Cliquets), p.129",
+    "raw_chunk_text": "The more negative the volatility skew, the greater the value of downside\nputs reflecting in turn the greater expected magnitude of downside moves\nand the lower the value of the structure. Our previous",
+    "rule_text": "A trader should reduce exposure to structured products with embedded downside puts when volatility skew becomes more negative, because negative skew increases put value and reduces overall structure value under stochastic volatility assumptions.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position in capped-coupon exotic structure already established",
+      "Volatility skew measure becomes more negative than -2.0%"
+    ],
+    "parameters": {
+      "skew_threshold": -0.02,
+      "position_reduction_percent": 75,
+      "extreme_skew_level": -0.03
+    },
+    "exit_conditions": [
+      "Reduce position by 75% only when skew reaches -2.0% or worse",
+      "Exit final 25% at -3.0% skew"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "underpricedinthelocalvolatilitymodelrelativetostochasticvolatilityand\nin this case, the underpricing of volatility convexity may be the dominant\neffect. The Napoleon structure also has the feature tha",
+    "rule_text": "Before trading an unfamiliar or poorly understood derivative structure, a trader should systematically analyze how pricing sensitivity varies across different modeling assumptions rather than relying on intuition alone.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Structure familiarity score \u2264 3 (on 1-10 scale)",
+      "Sensitivity analysis completed across \u2265 3 distinct models",
+      "Model pricing divergence \u2264 2% across all Greeks (delta, vega, gamma)",
+      "Cross-effects (e.g., vega decline under adverse spot moves) quantified and understood"
+    ],
+    "parameters": {
+      "familiarity_threshold": 3,
+      "minimum_models_required": 3,
+      "maximum_acceptable_divergence_percent": 2,
+      "greek_agreement_threshold": 0.98
+    },
+    "exit_conditions": [
+      "Model divergence exceeds threshold during position life",
+      "Structure behavior contradicts pre-trade sensitivity assumptions"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "underpricedinthelocalvolatilitymodelrelativetostochasticvolatilityand\nin this case, the underpricing of volatility convexity may be the dominant\neffect. The Napoleon structure also has the feature tha",
+    "rule_text": "Before trading an unfamiliar or poorly understood derivative structure, a trader should systematically analyze how pricing sensitivity varies across different modeling assumptions rather than relying on intuition alone.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Structure familiarity score \u2264 5 (on 1-10 scale)",
+      "Sensitivity analysis completed across \u2265 2 distinct models (local vol vs stochastic vol)",
+      "Model pricing divergence \u2264 5% in primary Greeks (vega exposure)",
+      "Direction of cross-effects (vol convexity, coupon floor impact) consistent across models"
+    ],
+    "parameters": {
+      "familiarity_threshold": 5,
+      "minimum_models_required": 2,
+      "maximum_acceptable_divergence_percent": 5,
+      "greek_agreement_threshold": 0.95
+    },
+    "exit_conditions": [
+      "Model divergence exceeds 5% during position life",
+      "Cross-effect behavior (e.g., vega collapse under stress) occurs unexpectedly"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "underpricedinthelocalvolatilitymodelrelativetostochasticvolatilityand\nin this case, the underpricing of volatility convexity may be the dominant\neffect. The Napoleon structure also has the feature tha",
+    "rule_text": "Before trading an unfamiliar or poorly understood derivative structure, a trader should systematically analyze how pricing sensitivity varies across different modeling assumptions rather than relying on intuition alone.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Structure familiarity score \u2265 6 (on 1-10 scale)",
+      "Primary sensitivity analysis in best-fit model completed",
+      "Intuition-based structural understanding confirmed by at least 1 alternative model check",
+      "Key cross-effects mapped even if secondary effects show >10% divergence"
+    ],
+    "parameters": {
+      "familiarity_threshold": 6,
+      "minimum_models_required": 1,
+      "maximum_acceptable_divergence_percent": 10,
+      "greek_agreement_threshold": 0.9
+    },
+    "exit_conditions": [
+      "Unexpected coupon floor hit or vega collapse",
+      "Dominant pricing mechanism shifts between model assumptions"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210 (Napoleon structure and independent increment technique discussion)",
+    "raw_chunk_text": "Napoleon structure was popular were smart enough to realize that local\nvolatility models were inappropriate because, as we keep noting, forward\nskewsaretooflat.However,themostcommonvaluationtechniquew",
+    "rule_text": "A trader should exploit mispricing in structured products when the valuation method used by the market systematically underprices volatility convexity due to deterministic volatility assumptions.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify market participant using independent increment valuation technique",
+      "Measure forward volatility convexity mispricing as percentage of 1-month ATM vol",
+      "Mispricing > 3.0% of current implied volatility level",
+      "Verify volatility term structure is upward sloping (supports convexity underpricing)"
+    ],
+    "parameters": {
+      "mispricing_threshold_pct": 3.0,
+      "min_vol_term_slope": 0.5,
+      "position_size_pct_of_capital": 2.0
+    },
+    "exit_conditions": [
+      "Mispricing shrinks below 1.5% of implied vol",
+      "Market switches from independent increment to stochastic volatility model",
+      "Time decay erodes more than 50% of position PnL gain"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210 (Napoleon structure and independent increment technique discussion)",
+    "raw_chunk_text": "Napoleon structure was popular were smart enough to realize that local\nvolatility models were inappropriate because, as we keep noting, forward\nskewsaretooflat.However,themostcommonvaluationtechniquew",
+    "rule_text": "A trader should exploit mispricing in structured products when the valuation method used by the market systematically underprices volatility convexity due to deterministic volatility assumptions.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Forward skew is flatter than historical/realized skew levels",
+      "Forward volatility shows minimal term structure volatility",
+      "Mispricing > 1.5% of current implied volatility level",
+      "Options market is quoting consistent levels (low bid-ask relative to vol)"
+    ],
+    "parameters": {
+      "mispricing_threshold_pct": 1.5,
+      "min_vol_term_slope": 0.2,
+      "position_size_pct_of_capital": 4.0,
+      "realization_period_months": 1
+    },
+    "exit_conditions": [
+      "Mispricing shrinks below 0.75% of implied vol",
+      "Time decay erodes more than 30% of position PnL gain",
+      "Realized convexity diverges >2 std devs from expected model output"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210 (Napoleon structure and independent increment technique discussion)",
+    "raw_chunk_text": "Napoleon structure was popular were smart enough to realize that local\nvolatility models were inappropriate because, as we keep noting, forward\nskewsaretooflat.However,themostcommonvaluationtechniquew",
+    "rule_text": "A trader should exploit mispricing in structured products when the valuation method used by the market systematically underprices volatility convexity due to deterministic volatility assumptions.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Forward volatility term structure has near-zero curvature (deterministic pattern detected)",
+      "Bid-ask spread < 1% of mid price (sufficient liquidity)",
+      "Any measurable mispricing > 0.5% of implied vol"
+    ],
+    "parameters": {
+      "mispricing_threshold_pct": 0.5,
+      "min_vol_term_slope": 0.0,
+      "position_size_pct_of_capital": 8.0,
+      "leverage_multiplier": 1.5,
+      "realization_period_months": 0.5
+    },
+    "exit_conditions": [
+      "Mispricing shrinks below 0.25% or turns negative",
+      "Stop loss at -15% of position notional",
+      "Time decay erodes more than 20% of position PnL gain",
+      "Hold maximum 2 weeks if no convexity realization occurs"
+    ],
+    "instrument": "OPTIONS_BUYING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, pp. 138",
+    "raw_chunk_text": "unprecedentedlevels.Hedgefundstookadvantageofthisbypayingvariance\nin swaps (selling the realized volatility at high implied levels). The key to\ntheirwillingnesstopayonavarianceswapratherthanselloption",
+    "rule_text": "A trader should sell variance swaps (or realized volatility) when implied volatility reaches elevated levels relative to expected realized volatility, because variance swaps eliminate path dependency and delta-hedging labor while capturing pure realized vol exposure.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Implied volatility percentile rank >= 75th percentile (90-day lookback)",
+      "Confirmed structural dealer short vega exposure (via dealer positioning data or VIX term structure backwardation)",
+      "Realized volatility expectation < Implied volatility by minimum 200bps"
+    ],
+    "parameters": {
+      "iv_percentile_threshold": 75,
+      "min_iv_rv_spread_bps": 200,
+      "lookback_window_days": 90
+    },
+    "exit_conditions": [
+      "IV percentile falls below 60th percentile",
+      "Realized vol realized exceeds implied vol by 50bps",
+      "Position duration reaches 30 days"
+    ],
+    "instrument": "VARIANCE_SWAP",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, pp. 138",
+    "raw_chunk_text": "unprecedentedlevels.Hedgefundstookadvantageofthisbypayingvariance\nin swaps (selling the realized volatility at high implied levels). The key to\ntheirwillingnesstopayonavarianceswapratherthanselloption",
+    "rule_text": "A trader should sell variance swaps (or realized volatility) when implied volatility reaches elevated levels relative to expected realized volatility, because variance swaps eliminate path dependency and delta-hedging labor while capturing pure realized vol exposure.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Implied volatility percentile rank between 60th and 70th percentile (60-day lookback)",
+      "Realized volatility expectation < Implied volatility by minimum 100bps",
+      "No requirement for explicit dealer positioning confirmation (use as confirmation only)"
+    ],
+    "parameters": {
+      "iv_percentile_threshold": 65,
+      "min_iv_rv_spread_bps": 100,
+      "lookback_window_days": 60
+    },
+    "exit_conditions": [
+      "IV percentile falls below 50th percentile",
+      "Realized vol exceeds implied vol",
+      "Position duration reaches 45 days"
+    ],
+    "instrument": "VARIANCE_SWAP",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, pp. 138",
+    "raw_chunk_text": "unprecedentedlevels.Hedgefundstookadvantageofthisbypayingvariance\nin swaps (selling the realized volatility at high implied levels). The key to\ntheirwillingnesstopayonavarianceswapratherthanselloption",
+    "rule_text": "A trader should sell variance swaps (or realized volatility) when implied volatility reaches elevated levels relative to expected realized volatility, because variance swaps eliminate path dependency and delta-hedging labor while capturing pure realized vol exposure.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Implied volatility percentile rank >= 50th percentile (30-day lookback)",
+      "Realized volatility expectation < Implied volatility by minimum 25bps",
+      "VIX term structure in backwardation (additional confirmation, not required)"
+    ],
+    "parameters": {
+      "iv_percentile_threshold": 50,
+      "min_iv_rv_spread_bps": 25,
+      "lookback_window_days": 30
+    },
+    "exit_conditions": [
+      "IV percentile falls below 40th percentile",
+      "Unrealized loss exceeds 50bps on notional",
+      "Position duration reaches 60 days"
+    ],
+    "instrument": "VARIANCE_SWAP",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_0",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "quadraticvariation;theoptionsarerehedgedeachtimequadraticvariation\nincreasesbyagivenamount.Unlikeconventionaldeltahedgingin(atomic)\nclock time, assuming no jumps, this hedging strategy guarantees prof",
+    "rule_text": "A trader should hedge short option positions by rebalancing when quadratic variation increases by a threshold amount, profiting when realized volatility is below implied volatility at inception.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Short option position established at implied volatility level IV_0",
+      "Cumulative quadratic variation increases by 0.5% of initial variance estimate"
+    ],
+    "parameters": {
+      "qv_increment_threshold": 0.005,
+      "vol_spread_minimum": 0.02,
+      "rehedge_frequency": "every 0.5% qv increase"
+    },
+    "exit_conditions": [
+      "Option expires or is closed",
+      "Realized volatility exceeds implied volatility + 2%"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_1",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "quadraticvariation;theoptionsarerehedgedeachtimequadraticvariation\nincreasesbyagivenamount.Unlikeconventionaldeltahedgingin(atomic)\nclock time, assuming no jumps, this hedging strategy guarantees prof",
+    "rule_text": "A trader should hedge short option positions by rebalancing when quadratic variation increases by a threshold amount, profiting when realized volatility is below implied volatility at inception.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Short option position established at implied volatility level IV_0",
+      "Cumulative quadratic variation increases by 1.0% of initial variance estimate"
+    ],
+    "parameters": {
+      "qv_increment_threshold": 0.01,
+      "vol_spread_minimum": 0.01,
+      "rehedge_frequency": "every 1.0% qv increase"
+    },
+    "exit_conditions": [
+      "Option expires or is closed",
+      "Realized volatility exceeds implied volatility + 1%"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "MODERATE",
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "GATHERAL_DRY_2_2",
+    "book_id": "GATHERAL",
+    "source_citation": "The Volatility Surface, Jim Gatheral, Ch.2, pp.13-210",
+    "raw_chunk_text": "quadraticvariation;theoptionsarerehedgedeachtimequadraticvariation\nincreasesbyagivenamount.Unlikeconventionaldeltahedgingin(atomic)\nclock time, assuming no jumps, this hedging strategy guarantees prof",
+    "rule_text": "A trader should hedge short option positions by rebalancing when quadratic variation increases by a threshold amount, profiting when realized volatility is below implied volatility at inception.",
+    "signal_category": "VOL",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Short option position established at implied volatility level IV_0",
+      "Cumulative quadratic variation increases by 2.0% of initial variance estimate"
+    ],
+    "parameters": {
+      "qv_increment_threshold": 0.02,
+      "vol_spread_minimum": 0.005,
+      "rehedge_frequency": "every 2.0% qv increase"
+    },
+    "exit_conditions": [
+      "Option expires or is closed",
+      "Realized volatility exceeds implied volatility + 0.5%"
+    ],
+    "instrument": "OPTIONS_SELLING",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": "AGGRESSIVE",
+    "chunk_type": "RULE"
+  }
+]

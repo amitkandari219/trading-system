@@ -1,0 +1,88 @@
+{
+  "signal_id": "HILPISCH_DRY_9_0",
+  "book_id": "HILPISCH",
+  "dsl_rule": {
+    "signal_id": "HILPISCH_DRY_9_0",
+    "entry_long": [
+      {
+        "left": "log_returns",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "log_returns",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "log_returns",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "log_returns",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses rolling mean of log returns across multiple lookback periods (15, 30, 60, 120 days). Entry conditions based on sign of rolling mean: positive log_returns indicates uptrend (long), negative indicates downtrend (short). Exit when sign flips. The rolling mean calculation is implicit in the log_returns indicator evaluation across the specified lookback windows. Position sizing is equal-weighted across all four momentum horizons as specified."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "log_returns",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "log_returns",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "log_returns",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "log_returns",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses rolling mean of log returns across multiple lookback periods (15, 30, 60, 120 days). Entry conditions based on sign of rolling mean: positive log_returns indicates uptrend (long), negative indicates downtrend (short). Exit when sign flips. The rolling mean calculation is implicit in the log_returns indicator evaluation across the specified lookback windows. Position sizing is equal-weighted across all four momentum horizons as specified."
+  },
+  "source_rule_text": "Generate trading signals by taking the sign of the rolling mean of returns over varying lookback periods, allowing simultaneous testing of multiple momentum horizons."
+}

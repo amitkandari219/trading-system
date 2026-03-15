@@ -1,0 +1,87 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "book_id": "HILPISCH",
+  "dsl_rule": {
+    "signal_id": "HILPISCH_DRY_5_0",
+    "entry_long": [
+      {
+        "left": "log_returns",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "log_returns",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "log_returns",
+        "operator": "<=",
+        "right": "0"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "log_returns",
+        "operator": ">=",
+        "right": "0"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses sign of latest log return as directional signal. Entry: go long if log_returns > 0, go short if log_returns < 0. Exit: reverse position when sign changes (log_returns crosses zero). No explicit threshold magnitude provided in source, so threshold is set to 0 (sign change). Hold period is 1 day as signal is evaluated on most recent return only."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "log_returns",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "log_returns",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "log_returns",
+        "op": "<=",
+        "value": 0.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "log_returns",
+        "op": ">=",
+        "value": 0.0
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses sign of latest log return as directional signal. Entry: go long if log_returns > 0, go short if log_returns < 0. Exit: reverse position when sign changes (log_returns crosses zero). No explicit threshold magnitude provided in source, so threshold is set to 0 (sign change). Hold period is 1 day as signal is evaluated on most recent return only."
+  },
+  "source_rule_text": "A trader should take a long position when the most recent return is positive and a short position when it is negative, using the sign of the latest log return as the directional signal."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) rejection candle with long top tail (candle pattern matching), (2) retracement identification during downtrend, (3) entry triggered by breaking the low of the rejection candle, (4) important market hour detection. These require pattern recognition and intraday time-of-day logic not available in the allowed indicator set. The 'upper_wick > body' is a proxy for long tail but does not capture the full rejection candle semantics (wick rejection with small body). Resistance level detection uses pivot as proxy but 'important market hour' cannot be expressed.",
+  "translation_notes": "Partial translation using available indicators: (1) Downtrend condition approximated as close < sma_20; (2) Long top tail approximated as upper_wick > body (but does not capture full rejection candle pattern); (3) Resistance approximated using pivot level; (4) Entry on break of candle low is not directly expressible\u2014would require prior candle low tracking; (5) Stop loss set conservatively at 2% above recent high; (6) Exit uses simple reversal logic (close > prev_high) as profit target was author silent."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom swing length analysis comparing current swing magnitude to historical average of preceding swings in same direction. This requires: (1) Swing detection logic (identifying swing highs/lows), (2) Historical swing length averaging over N prior swings, (3) Ratio comparisons of current swing to average swing. These require custom candle-by-candle analysis not available in the standard indicator set. Specific thresholds for swing multiples, minimum prior swings, and lookback periods are also marked [THRESHOLD_NEEDED] in original signal and cannot be inferred.",
+  "translation_notes": "This signal is fundamentally about swing exhaustion pattern recognition. It cannot be accurately translated using standard technical indicators alone. The core logic requires identifying swing structures (reversals from swing lows to highs or vice versa), measuring their lengths, comparing against historical averages, and detecting when current swings exceed those averages by specific multiples. ATR was used as a proxy for volatility/swing magnitude, but this does not capture the true intent of swing-length ratio analysis. Pivot points (s1, r1) were used as proxies for structural support/resistance. A proper implementation would require a custom swing detection module."
+}

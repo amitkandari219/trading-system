@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'impulse strength', 'normal mean-reversion distortion', and regime-state identification beyond available indicators. Specific thresholds for band_extreme_threshold_sigma, normal_strength_volatility_percentile, impulse_strength_limit_sigma, and pullback_confirmation_bars are marked [THRESHOLD_NEEDED] in source and cannot be determined without author specification. The distinction between 'normal' vs 'distorted' cycles requires machine learning or custom regime detection not expressible with basic technical indicators.",
+  "translation_notes": "Translated entry logic as: price touching band extreme + pullback toward middle + normal volatility (not spiked). Exit logic: reversal to opposite extreme OR volatility spike. Used hvol_20 as volatility proxy and Bollinger Bands for band extremes. Cannot express the regime-conditional logic ('distorted cycles short-circuit mean-reversion') without author-defined thresholds. CONTEXT_DEPENDENT direction preserved as signal applies different rules based on market regime state."
+}

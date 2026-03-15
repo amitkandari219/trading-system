@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_90",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is an OPTIONS STRATEGY (calendar spread with call expiration mechanics) that cannot be expressed using price-based technical indicators alone. It requires: (1) tracking of specific option contract states (near-term call expiration worthlessness), (2) multi-leg option position management (sell near-term call, buy long-term call, then sell intermediate-term call), and (3) option Greeks and time decay dynamics. The backtest engine appears to be equity price-based only and lacks option contract state tracking, greeks (delta, theta, vega), and multi-leg position management capabilities.",
+  "translation_notes": "MCMILLAN_DRY_90 is a tactical options strategy from Lawrence McMillan's work. Entry requires manual detection of: calendar spread establishment + near-term call expiration worthless + execution of second calendar spread. Exit is author-silent (untranslatable). This requires an OPTIONS-ENABLED backtest engine with contract-level position tracking and Greeks calculations, not a standard price indicator engine."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires measuring S&P price change relative to previous close within a specific 30-minute window at market open. The available indicators do not support intraday time-windowed measurements or multi-asset cross-monitoring (observing S&P while trading other instruments). The 'returns' indicator approximates daily return but cannot be constrained to first 30 minutes of session or differentiated by instrument.",
+  "translation_notes": "KAUFMAN_DRY_15 is a regime recognition signal that requires intraday time-segmented data (first 30 minutes) and cross-asset observation (S&P as leading indicator). Standard OHLCV backtesting frameworks typically lack native support for session-relative measurements and multi-instrument rule triggers without custom bar definitions. Recommend: (1) Create a custom 30-min aggregation rule, (2) Add S&P as external feed, or (3) Use returns > 0.01 as daily proxy with awareness of false alignment."
+}

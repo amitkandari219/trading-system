@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of pivot low/high sequences and pattern breaks (identification of 'series of higher pivot lows and higher pivot highs' followed by 'new pivot low below previous pivot low'). The allowed indicators set includes individual pivot levels (pivot, s1, s2, r1, r2) but lacks the ability to: (1) track historical pivot sequences, (2) identify pivot extrema comparisons (prev_pivot vs current_pivot), (3) count consecutive bar closes below a threshold. The confirmation requirement for '[THRESHOLD_NEEDED] consecutive bars' cannot be expressed without bar-indexing capability. This signal requires custom pivot tracking logic unavailable in the indicator set.",
+  "translation_notes": "Attempted approximation using pivot support/resistance levels and volume confirmation, but this loses the core pattern-recognition logic of the original signal. A proper implementation would require: (1) historical pivot comparison functions, (2) state tracking across multiple bars, (3) pivot sequence validation. Signal is fundamentally a pattern-detection rule, not a threshold-crossing rule."
+}

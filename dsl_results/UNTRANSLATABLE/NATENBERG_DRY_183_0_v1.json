@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_183_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires volatility clustering detection and temporal distribution analysis of volatility across an option's remaining life. The available indicators (hvol_20, atr_14, bb_bandwidth) measure aggregate volatility magnitude only, not volatility timing distribution or clustering patterns within specific time windows of remaining option life. Detecting 'early vs late volatility clustering' requires: (1) intra-option-life volatility segmentation capability not present in standard OHLC indicators, (2) comparison to uniform distribution assumptions across option duration (requires option-specific data), and (3) temporal decomposition of volatility that cannot be expressed with the allowed indicator set. This is an options-specific volatility modeling signal rather than a price-action based trading rule.",
+  "translation_notes": "The signal is fundamentally about adjusting option pricing models based on volatility timing within option expiry windows. While hvol_20 could proxy for current volatility clustering detection, it cannot measure: (a) volatility distribution asymmetry (early vs late in option life), (b) deviation from uniform distribution assumptions, or (c) the rehedging adjustments needed based on timing skew. The [THRESHOLD_NEEDED] parameters (early_vol_weight, late_vol_weight, vol_adjustment_to_model) require domain-specific calibration unavailable in price data alone."
+}

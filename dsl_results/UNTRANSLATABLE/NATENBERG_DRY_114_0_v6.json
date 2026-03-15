@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_114_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific indicators not in allowed list: (1) option moneyness/intrinsic value comparison, (2) option time value calculation, (3) dividend amount/ex-dividend date tracking, (4) American vs European style exercise logic. These require derivatives pricing data and corporate action calendars not available in equity price/technical indicators. Additionally, the signal is fundamentally an OPTIONS trading rule, not an equity/futures signal.",
+  "translation_notes": "This signal cannot be translated to the equity backtester as it requires: call option moneyness detection, time value quantification relative to dividend payment, ex-dividend date proximity tracking, and exercise decision logic. These are derivative-specific calculations requiring options pricing models (Black-Scholes components) and corporate action data. The rule is event-driven around dividend ex-dates and requires real-time dividend amount knowledge, which is outside the scope of the allowed indicators (price action, moving averages, RSI, ATR, etc.)."
+}

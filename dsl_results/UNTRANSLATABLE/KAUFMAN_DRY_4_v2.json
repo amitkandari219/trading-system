@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires linear regression slope calculation (a), channel band projections (atn+1 = a\u00d7X + b \u00b1 BU + a), and Bollinger band offset (BU). These are composite calculations not available as atomic indicators in the allowed list. The signal also references 'projected upper/lower channel bands' which appear to be custom Kaufman-derived bands requiring regression analysis unavailable in standard indicator set.",
+  "translation_notes": "KAUFMAN_DRY_4 uses a custom Kaufman channel methodology with linear regression slope and Bollinger band modifications. The entry/exit conditions depend on: (1) calculating trend slope 'a' from linear regression, (2) projecting bands one period ahead using that slope, and (3) comparing price to those projected bands. Without access to linear regression output (slope, intercept) and the ability to compute forward projections, this signal cannot be accurately translated. A simplified proxy using SMA crossovers has been provided but does NOT capture the intended logic of slope-based adaptive channel bands."
+}

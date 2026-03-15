@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detecting 'reversal' on specific days (Tuesday reverses vs. does not reverse), which requires comparing price direction or trend change between sessions. This cannot be expressed using the allowed indicators and operators without a dedicated 'reversal' or 'direction_change' indicator. Day-of-week filtering is not in the allowed indicators list. The conditional logic ('if Tuesday does not reverse, then Thursday reverses') requires state tracking across multiple days that the schema does not support.",
+  "translation_notes": "Signal attempts to encode a complex multi-day pattern dependency that requires: (1) day-of-week identification (not in allowed indicators), (2) reversal detection logic (no reversal indicator provided), and (3) conditional branching based on prior day behavior (not supported by the entry/exit condition structure). A more translatable formulation would specify exact price levels, moving average crossovers, or RSI thresholds for each day's entry/exit."
+}

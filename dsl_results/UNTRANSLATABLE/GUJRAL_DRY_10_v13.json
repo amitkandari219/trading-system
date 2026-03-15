@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) uptrend confirmation (no specific uptrend indicator provided), (2) support level identification (would need pivot/s1/s2 but exact support level is contextual and marked AUTHOR_SILENT), (3) rejection candle definition (marked AUTHOR_SILENT - typical definitions use wick-to-body ratios or specific candlestick patterns not in allowed indicators), (4) retracement verification (requires historical trend analysis). The core logic of 'price breaks rejection candle high after support bounce' is partially expressible but lacks sufficient context for robust implementation.",
+  "translation_notes": "Attempted to capture: rejection candle as a candle with large lower_wick relative to body (lower_wick > body), entry on breakout above previous high (close > prev_high), and exit below recent low (close < prev_low). However, the signal's dependency on identifying support levels, confirming uptrend regime, and the author-silent rejection candle definition makes this untranslatable to actionable rules without additional context. A complete implementation would require: (a) uptrend confirmation via sma/ema crossover, (b) support level input as parameter or pivot detection, (c) explicit wick ratio threshold for rejection candle."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Tick imbalance bars (TIBs) require specialized tick-level data structures not available in standard OHLCV indicators. The signal requires: (1) cumulative signed tick imbalance \u03b8_T tracking, (2) expected value E[\u03b8_T] estimation, and (3) dynamic threshold comparison logic that operates on individual tick sequence data rather than aggregated bar data. None of the ALLOWED INDICATORS (price, moving averages, RSI, ATR, etc.) directly measure or track tick-level imbalance metrics. This requires custom tick accumulation logic outside the indicator set.",
+  "translation_notes": "LOPEZ_DRY_0_0 describes a data-sampling rule based on tick imbalance mechanics from algorithmic trading. While the TARGET REGIMES (TRENDING, HIGH_VOL) and CATEGORY (EVENT) are clear, the core condition cannot be expressed with OHLCV-derived indicators. To implement this signal, the backtest engine would need: (a) tick-level data feed, (b) signed tick direction tracking, (c) rolling expected imbalance calculator, and (d) event-triggered bar sampling logic. Consider requesting a tick imbalance indicator or switching to volume imbalance bars (VIBs) if only bar-level data is available."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_178",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-leg options pricing mechanics (diagonal spread with LEAPS call + short-term written call, time decay modeling, and strike proximity at expiration). These cannot be expressed using only price/technical indicators. The core entry condition 'underlying near strike of written option at expiration' requires options chain data and Greeks (delta, theta) unavailable in the allowed indicator set.",
+  "translation_notes": "Attempted proxy: price_pos_20 (0.4-0.6 range approximates 'near strike' positioning). Exit uses bearish reversal signal. However, this is a poor substitute for true diagonal spread mechanics which require options-specific data structures and cannot be backtested with equity price/volume indicators alone."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires intra-day time context (35 minutes before market close) which cannot be expressed in the allowed operators and indicators. The signal also requires dynamic adjustment of buy/short signals to current day's high/open, which requires state-dependent signal modification not supported by the 3-field condition structure. Additionally, the original source text is incomplete ('if prices' cuts off mid-sentence), making the full rule untranslatable.",
+  "translation_notes": "This signal is fundamentally a time-based and state-dependent signal adjustment mechanism rather than a standard entry/exit rule. It requires: (1) intra-day time filtering not available in indicators, (2) dynamic level adjustment based on current bar's OHLC, and (3) knowledge of market close timing. The rule cannot be properly expressed within the constraint of static 3-field conditions."
+}

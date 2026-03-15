@@ -1,0 +1,106 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "prev_high"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses previous day's range (prev_high/prev_low). Entry conditions check if opening tick falls within previous day's range. For LONG: buy at prev_low (lower boundary) with exit when prev_low is broken. For SHORT: sell at prev_high (upper boundary) with exit when prev_high is broken. Direction is CONTEXT_DEPENDENT because the same entry condition triggers either LONG or SHORT based on which boundary is targeted. Hold duration is open-ended (continues until boundary breaks, potentially multiple days)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "prev_high"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses previous day's range (prev_high/prev_low). Entry conditions check if opening tick falls within previous day's range. For LONG: buy at prev_low (lower boundary) with exit when prev_low is broken. For SHORT: sell at prev_high (upper boundary) with exit when prev_high is broken. Direction is CONTEXT_DEPENDENT because the same entry condition triggers either LONG or SHORT based on which boundary is targeted. Hold duration is open-ended (continues until boundary breaks, potentially multiple days)."
+  },
+  "source_rule_text": "When opening ticks fall within the previous day's range, buy at the lower boundary with upper boundary as target, or sell at the upper boundary with lower boundary as target, continuing until either boundary is broken."
+}

@@ -1,0 +1,104 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_12",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "prev_volume"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "prev_volume"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 7,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal captures Falling Rising Volume (price up + volume down) as entry_long and Falling Falling Volume (price down + volume down) as entry_short. Both indicate weak moves prone to reversal. Exit conditions use reversal of price direction as the author provided no explicit exit guidance (AUTHOR_SILENT). Hold period set to 1 week (7 days) per timeframe_for_reversal parameter."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 7,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal captures Falling Rising Volume (price up + volume down) as entry_long and Falling Falling Volume (price down + volume down) as entry_short. Both indicate weak moves prone to reversal. Exit conditions use reversal of price direction as the author provided no explicit exit guidance (AUTHOR_SILENT). Hold period set to 1 week (7 days) per timeframe_for_reversal parameter."
+  },
+  "source_rule_text": "When price rallies or pulls back accompanied by declining volume, expect a reversal in direction because weak volume indicates lack of support for the price move."
+}

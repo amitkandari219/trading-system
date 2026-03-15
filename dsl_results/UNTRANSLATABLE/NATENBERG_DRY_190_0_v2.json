@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_190_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires implied volatility (IV) data for options at specific strikes (IV_call vs IV_put divergence), bid-ask spreads on specific legs, and conversion/reverse conversion arbitrage mechanics. None of these are available in the allowed indicator set, which contains only price-based technical indicators (RSI, MACD, Bollinger Bands, etc.) and historical volatility (hvol_20). Options Greeks, IV surfaces, and order book microstructure data are required but not provided.",
+  "translation_notes": "NATENBERG_DRY_190_0 is an options arbitrage signal focused on put-call IV parity violations. It requires: (1) real-time IV quotes for calls and puts at identical strikes, (2) conversion spread transaction costs, (3) bid-ask spread monitoring. This is fundamentally incompatible with a spot price/technical indicator backtest engine. Consider: implementing an options-specific backtest module with IV term structure data, or reformulating as a proxy using implied volatility indices (e.g., VIX skew) if available."
+}

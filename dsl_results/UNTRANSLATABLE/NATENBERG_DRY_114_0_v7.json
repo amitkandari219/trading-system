@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_114_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options-specific calculations (intrinsic value, European theoretical value, carrying cost adjustment) that cannot be expressed using only price-based technical indicators. The rule depends on: (1) American put intrinsic value = max(strike - spot, 0), (2) European put theoretical value with dividend/carrying cost adjustments, (3) comparison of intrinsic vs theoretical spread. These are derivatives pricing concepts, not candlestick/technical indicator patterns. Required indicators not in allowed list: option_intrinsic_value, option_european_value, carrying_cost_adjusted_value, days_to_expiration, exercise_decision_trigger.",
+  "translation_notes": "NATENBERG_DRY_114_0 is an early exercise decision rule for American puts based on arbitrage between intrinsic and theoretical values. This belongs in an options pricing engine with Greeks and volatility surface calculations, not a candlestick-based backtest engine. No equivalent technical indicator exists in the allowed set."
+}

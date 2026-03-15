@@ -1,0 +1,62 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped 125-day (6-month) highest/lowest price lookback to Donchian Channel indicators (dc_upper for highest high, dc_lower for lowest low over the same period). Entry triggers on price breaking above the 125-day high; exit triggers on price breaking below the 125-day low. Donchian Channel is the standard technical indicator for this type of breakout strategy."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Mapped 125-day (6-month) highest/lowest price lookback to Donchian Channel indicators (dc_upper for highest high, dc_lower for lowest low over the same period). Entry triggers on price breaking above the 125-day high; exit triggers on price breaking below the 125-day low. Donchian Channel is the standard technical indicator for this type of breakout strategy."
+  },
+  "source_rule_text": "Enter a new long position on a price high above the highest price of the past 6 months (125 days); exit on a new low below the lowest price of the past 6 months."
+}

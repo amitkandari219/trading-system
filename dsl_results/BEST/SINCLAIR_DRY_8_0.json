@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires external event/catalyst data (earnings dates, volatility events, implied volatility levels, and IV direction forecasting) that are not available in the standard price/technical indicator set. The core logic depends on: (1) Calendar-based catalyst identification, (2) IV crush/expansion directional thesis, (3) Days-to-expiration calculations, and (4) Options-specific Greeks (implied volatility, vega, theta). None of these can be expressed using only the allowed technical indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Returns). The signal also requires parameterization thresholds ([THRESHOLD_NEEDED]) that were not provided in the source material.",
+  "translation_notes": "SINCLAIR_DRY_8_0 is an event-driven options trading strategy focused on catalyst-driven IV moves. It requires: (1) External event calendar integration, (2) Options chain data (IV levels), (3) Days-to-event tracking, (4) Profit target as % of max theoretical profit (options-specific calculation). The backtest engine would need to support derivatives data sources and event calendars to implement this rule. Consider adding fields like 'catalyst_event', 'iv_level', 'days_to_event', 'options_greeks' to the allowed indicators if options strategies are to be supported."
+}

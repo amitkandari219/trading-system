@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_36",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires position-level state tracking (covered call position exists, moneyness relative to written strike, time value premium calculation on options contracts) and option-specific metrics (time value decay, intrinsic vs extrinsic value) that are not available in the stock price/technical indicator set. The signal also requires the ability to execute multi-leg option rolls (buy back call + sell longer-dated call), which is an order management operation rather than a price/indicator condition.",
+  "translation_notes": "MCMILLAN_DRY_36 is an options strategy signal from 'The Complete McMillan: Volume 2' requiring: (1) tracking of an active covered call position, (2) calculation of time value premium on the written call, (3) moneyness determination relative to the written strike (not just spot price), and (4) execution of a calendar roll. None of these can be expressed using only OHLCV and technical indicators. A backtest engine supporting this signal would need: option chain data, position tracking state, options Greeks calculation (theta/time value), and multi-leg order management."
+}

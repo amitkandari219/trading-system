@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of US 3-month interest rate vs Japanese 3-month interest rate. Interest rate data is not available in the allowed indicators list, which contains only price-action and technical indicators. This signal requires external macro data feeds (e.g., Federal Reserve 3M rate, Bank of Japan 3M rate) that are not supported by the backtesting engine.",
+  "translation_notes": "The core logic of this signal is interest rate parity arbitrage (carry trade). Entry condition depends on US rate > JPY rate comparison, which cannot be expressed using available technical indicators. A placeholder condition (close > 0) was added to maintain JSON validity, but this rule cannot be properly translated without interest rate data sources. Exit uses a reversal condition per AUTHOR_SILENT guidance."
+}

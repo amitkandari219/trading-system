@@ -1,0 +1,86 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "bb_upper",
+        "operator": ">",
+        "right": "close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "bb_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "bb_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_middle"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses band-based trading with Bollinger Bands (bb_upper, bb_middle, bb_lower). Entry conditions: close above upper band (long) or close below lower band (short). Exit conditions: close below/above middle band (band center/moving average). Band parameters marked AUTHOR_SILENT are not explicitly configurable in the JSON rule\u2014standard Bollinger Band settings (typically 20-period SMA with 2 standard deviations) are assumed. Risk is defined by band width (bb_bandwidth) which varies daily. Direction is CONTEXT_DEPENDENT because the signal automatically reverses between long and short based on price action relative to bands."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "bb_upper",
+        "op": ">",
+        "value": "close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "bb_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "bb_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_middle"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses band-based trading with Bollinger Bands (bb_upper, bb_middle, bb_lower). Entry conditions: close above upper band (long) or close below lower band (short). Exit conditions: close below/above middle band (band center/moving average). Band parameters marked AUTHOR_SILENT are not explicitly configurable in the JSON rule\u2014standard Bollinger Band settings (typically 20-period SMA with 2 standard deviations) are assumed. Risk is defined by band width (bb_bandwidth) which varies daily. Direction is CONTEXT_DEPENDENT because the signal automatically reverses between long and short based on price action relative to bands."
+  },
+  "source_rule_text": "Buy when prices close above the upper band; sell short when prices close below the lower band. Exit longs when prices close below the moving average (band center)."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_137_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit IV term structure analysis (short-term IV vs long-term IV across options expiries), vega-weighted position ratios, and mean-reversion regime detection across volatility surface. Available indicators lack term structure decomposition, options-specific IV curves, and vega weighting. hvol_20 and india_vix are equity index proxies only, not implied volatility term structure data for options positions.",
+  "translation_notes": "This signal is fundamentally a volatility derivatives strategy requiring options Greeks (vega exposure), term structure of IV, and cross-expiry comparisons. Attempted proxy using hvol_20 (historical volatility) vs india_vix (broad market volatility index), but this does not capture the required short-term vs long-term implied volatility curve positioning. Natenberg's strategy requires dedicated options analytics unavailable in the current indicator set. The 'CONTEXT_DEPENDENT' direction indicates this is a relative value trade requiring simultaneous long and short positions across strikes/expirations, not a directional trade."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'momentum at previous price peak' which requires historical peak detection and state management not available in allowed indicators. MACD used as momentum proxy, but the core logic of comparing current momentum to momentum at a previously identified peak cannot be expressed with allowed indicators and operators. Would need custom peak-tracking logic or a dedicated 'momentum_at_peak' indicator.",
+  "translation_notes": "Attempted approximation using MACD as momentum indicator. Entry condition: MACD (as momentum proxy) lower than previous value while price rising. Exit: MACD exceeds threshold. However, this does not capture the nuance of 'previous price peak' which requires identifying local maxima and storing their associated momentum values."
+}

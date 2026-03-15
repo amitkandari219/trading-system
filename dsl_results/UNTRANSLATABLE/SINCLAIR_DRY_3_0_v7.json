@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit earnings announcement detection (calendar event data) and implied volatility metrics (IV levels, IV rank, straddle pricing). The available indicators do not include: (1) earnings calendar/event flags, (2) implied volatility or IV percentile/rank, (3) options Greeks (delta, gamma, vega), (4) straddle-specific pricing or premium levels. Historical volatility (hvol_20) is a proxy but does not capture the pre-earnings IV expansion and post-earnings IV collapse dynamics that are central to this strategy. A proper implementation requires external earnings data and live options pricing.",
+  "translation_notes": "Attempted proxy using hvol_20 as a volatility regime indicator, but this fundamentally misses the signal's core mechanism: selling high implied volatility before earnings and benefiting from the post-earnings IV crush. Without earnings event detection and implied volatility data, this strategy cannot be accurately backtested using only price-action indicators."
+}

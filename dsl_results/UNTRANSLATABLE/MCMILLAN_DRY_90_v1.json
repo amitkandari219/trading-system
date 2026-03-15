@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_90",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes an options strategy (calendar spread with short-term and longer-term calls) that requires tracking derivative positions, expiration dates, and option-specific mechanics (expires worthless, time decay). The allowed indicators are designed for equity price/technical analysis only and cannot express: (1) option position establishment and management, (2) option expiration status, (3) time-decay dynamics between two different expiration dates, or (4) the relationship between underlying price movement and multi-leg derivative P&L. A proper translation would require derivative-specific indicators and position-tracking fields not available in this equity-focused indicator set.",
+  "translation_notes": "The signal is fundamentally about options strategy timing rather than price action. While we could approximate 'stock below strike at initiation' as close < pivot and 'rally above strike' as close > pivot, this loses the critical context: the profitability mechanics depend on the short call expiring worthless (time decay) and the longer call retaining value (time value preservation), which cannot be expressed with price-based indicators alone."
+}

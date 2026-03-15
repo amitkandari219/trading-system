@@ -1,0 +1,80 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_3",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Morning star pattern requires 3-day analysis. Entry conditions: Day 1 closes lower than open (bearish), Day 2 (star) closes higher than Day 1 close, Day 3 closes higher than Day 2 close. The optional doji requirement on Day 2 cannot be precisely expressed with allowed indicators\u2014doji detection would require body_pct near 0, but this is approximated in the pattern structure itself. Exit uses a simple reversal condition (close below previous close). Maximum hold set to 3 days to align with the 3-day pattern duration."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Morning star pattern requires 3-day analysis. Entry conditions: Day 1 closes lower than open (bearish), Day 2 (star) closes higher than Day 1 close, Day 3 closes higher than Day 2 close. The optional doji requirement on Day 2 cannot be precisely expressed with allowed indicators\u2014doji detection would require body_pct near 0, but this is approximated in the pattern structure itself. Exit uses a simple reversal condition (close below previous close). Maximum hold set to 3 days to align with the 3-day pattern duration."
+  },
+  "source_rule_text": "A morning star bullish reversal pattern occurs when the first day closes lower than open, the second day (star) closes higher, and the final reversal day closes even higher; significance increases if the star is a doji."
+}

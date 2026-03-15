@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_194",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Box spread pricing requires options-specific calculations (call spread debit, put spread debit, strike differential, carrying costs) that are not available in the provided price/technical indicators list. This signal requires an options pricing model and cannot be expressed using only OHLCV, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume ratios, or Bar Properties.",
+  "translation_notes": "Signal is fundamentally an options strategy requiring: (1) confirmation that call spread is a debit spread, (2) confirmation that put spread is a debit spread, (3) matching strike prices between spreads, and (4) pricing comparison of total box spread cost vs theoretical maximum profit (strike differential minus carrying costs). None of these conditions can be validated with standard OHLCV indicators. This requires an options-aware backtest engine with Greeks, implied volatility, and option pricing models."
+}

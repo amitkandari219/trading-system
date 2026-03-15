@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_93_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires monitoring delta drift, implied volatility assumptions, realized volatility tracking, and time decay dynamics. These are options-specific Greeks and volatility metrics not present in the allowed indicator set (which contains price, technical indicators, and historical volatility only, but no delta, gamma, theta, implied volatility, or realized volatility measures). The core thesis\u2014detecting when delta position diverges from intended bias due to time decay or volatility decline\u2014cannot be expressed with the available indicators.",
+  "translation_notes": "Attempted to use hvol_20 (historical volatility) as a proxy for volatility decline detection in exit conditions, but this is a significant simplification and does not capture the delta drift or implied volatility assumption logic central to the signal. A proper implementation would require delta tracking and IV/RV comparison tools unavailable in the allowed indicator list."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires identifying swing lows, locating the highest point since the last occurrence of that low level, and calculating Fibonacci retracement levels dynamically. These operations require: (1) historical bar lookback with conditional logic based on price matching past lows, (2) dynamic pivot identification across variable lookback periods, and (3) Fibonacci ratio calculations on derived price moves. The allowed indicators do not support conditional historical scanning (finding when low == current_low in past), dynamic swing point identification, or Fibonacci target calculation. Donchian channels provide fixed-period highs/lows but cannot identify 'last occurrence of current low' or measure from that reference point.",
+  "translation_notes": "Signal is a sophisticated pattern-recognition algorithm from DeMark's retracement methodology. It requires: (a) identifying the current market low as a reference point, (b) scanning historical price data to find when that exact low last occurred, (c) measuring the highest point between that past occurrence and now, (d) applying Fibonacci ratios (0.618 and 1.618) to that move to generate price targets. This is a multi-step derivation unsuitable for the condition-based rule engine. Recommend: implement as custom indicator returning support/resistance levels, or use external charting software for Fibonacci calculation and feed results to backtest engine as price levels."
+}

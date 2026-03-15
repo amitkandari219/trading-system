@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_159_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires intermarket spread analysis with volatility ratio calculations between two separate contracts (A and B). The allowed indicators do not include: (1) cross-contract volatility ratio computation, (2) historical standard deviation of a calculated ratio series, (3) multi-regime confirmation logic, or (4) ratio stability metrics. The signal fundamentally requires custom indicators for vol_ratio_contract_pair and ratio_std_dev that are not in the allowed list. Additionally, 'vol_ratio_20' is a single-contract volume ratio, not an intermarket spread volatility ratio.",
+  "translation_notes": "The core insight\u2014monitoring volatility ratio consistency rather than absolute volatility levels in intermarket spreads\u2014cannot be operationalized with the available indicators. A proper implementation would require: (1) vol_ratio_AB = hvol_20[ContractA] / hvol_20[ContractB], (2) ratio_mean and ratio_std_dev computed over lookback_days, (3) regime detection across multiple market conditions. This is a structural limitation of the indicator set, not a missing threshold parameter."
+}

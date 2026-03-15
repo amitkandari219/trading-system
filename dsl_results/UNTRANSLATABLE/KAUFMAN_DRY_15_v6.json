@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires calculation of projected price levels based on DeMark's conditional formula (three cases depending on close vs open relationship). The formulas involve computed values: (H+C+2\u00d7L)/2, (2\u00d7H+L+C)/2, and (H+L+2\u00d7C)/2, which must then be adjusted by subtracting H or L. These derived projection values cannot be expressed using only the allowed indicators (open, high, low, close, prev_close, prev_high, prev_low, prev_open). The signal is descriptive/analytical rather than a direct entry/exit rule, and lacks explicit price targets or reversal conditions that could be translated into indicator comparisons.",
+  "translation_notes": "KAUFMAN_DRY_15 is a price projection methodology rather than a tradeable signal. To implement this in a backtest engine, custom indicator functions would need to be added to calculate tomorrow's projected high/low based on the three conditional DeMark formulas. The signal could then be used to define entry/exit rules by comparing actual price action against these projections on the following day."
+}

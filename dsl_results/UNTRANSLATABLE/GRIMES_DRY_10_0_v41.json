@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'multiple consecutive bars close in trade direction' which requires multi-bar historical state (close[1], close[2], etc.). Current schema only supports single-bar prev_* indicators. Also requires thresholds for: confirmation_bars_required, close_position_threshold, volume_multiplier, and consolidation_bar_max which are marked as [THRESHOLD_NEEDED] in source.",
+  "translation_notes": "Interpreted 'decisive price action above/below resistance' as close beyond pivot point with strong body (body_pct > 0.6). Volume confirmation mapped to vol_ratio_20 >= 1.0. Exit on reversal through pivot. Cannot precisely model the multi-bar confirmation requirement or dynamically calibrated thresholds without parameter specification."
+}

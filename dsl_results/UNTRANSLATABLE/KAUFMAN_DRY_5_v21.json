@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic pivot point tracking and swing filter/penetration filter mechanics that cannot be expressed as static threshold comparisons. The 'penetration filter amount' parameter is marked AUTHOR_SILENT and requires algorithmic swing detection logic not available in indicator-based rules. Stop-loss placement beyond prior pivot by variable filter amount requires dynamic calculation beyond allowed operators.",
+  "translation_notes": "Attempted to approximate using pivot points (pivot, s1, r1) as proxy for trend confirmation and prior pivot levels. However, the core signal logic depends on: (1) identifying swing pivots dynamically, (2) tracking penetration filter thresholds, (3) conditional stop placement based on filter amount\u2014all of which require algorithmic state management rather than simple indicator comparisons. Recommend implementing as custom strategy class with Livermore swing chart logic."
+}

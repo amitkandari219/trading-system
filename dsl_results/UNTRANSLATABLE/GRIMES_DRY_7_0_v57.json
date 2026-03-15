@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires peer group relative strength ranking and multi-instrument comparison (top N% of peer group, minimum peer group size, comparative momentum across instruments). These cross-instrument ranking and relative strength metrics cannot be expressed using only single-instrument indicators. price_pos_20 used as proxy for relative positioning within 20-period range, but this does not capture peer group dynamics required by the original rule.",
+  "translation_notes": "Attempted proxied translation using price_pos_20 (0-1 scale) as a substitute for relative strength ranking within peer group. Entry requires price in upper (>0.80) or lower (<0.20) quintile plus price above/below SMA_20 for trend confirmation. This is a simplified approximation\u2014true implementation requires a peer group relative strength calculation engine not available in single-instrument indicator set. The core insight (trading market leaders by identifying positioning of large players) is lost without cross-instrument comparison capability."
+}

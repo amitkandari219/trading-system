@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_119",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific parameters (upper_strike, lower_strike, put spread construction) that cannot be expressed in equity price/indicator conditions. The entry/exit thresholds are marked [THRESHOLD_NEEDED] in source material and require domain-specific option pricing logic not available in this backtester. Strike selection, spread width, and profit/loss zones depend on volatility surface and Greeks, not price action alone.",
+  "translation_notes": "This is an options strategy (put spread) that fundamentally requires option chain data and strike price selection. The backtester appears designed for equity price/technical indicator rules. Attempted to capture the directional bias (bearish/SHORT via put spread) and regime context (RANGING), but the core mechanics cannot be translated to price-based conditions. Recommend: (1) Use an options-capable backtester, or (2) Reformulate this rule as an equity hedge trade using stock + protective puts if equity-only is required."
+}

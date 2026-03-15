@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calendar-specific logic (first five days of January vs. balance of month) and month-to-date P&L evaluation, which cannot be expressed using only price/technical indicators and comparison operators. The rule also requires tracking intra-month direction confirmation and conditional regime switching based on monthly profitability\u2014these require stateful logic and calendar awareness beyond the scope of indicator-based conditions.",
+  "translation_notes": "This is a calendar-dependent, multi-timeframe strategy requiring: (1) detection of dominant direction in Jan 1-5, (2) confirmation of continuation through Jan 31, (3) month-to-date P&L evaluation, and (4) conditional year-long direction bias. The 7:1 up-to-down bias and pattern confirmation logic are not expressible with standard technical indicators alone. A custom regime detector or separate pre-processing step would be required."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_69_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Calendar spread strategy requires multi-leg options chain data (strike selection, DTE management, theta tracking, IV rank measurement, and synthetic option pricing) which are not available in the candlestick-level indicator set. The signal depends on: (1) selecting and monitoring two different expiration dates at the same strike, (2) tracking differential theta decay between legs, (3) measuring IV rank (requires historical IV percentile), and (4) managing position exit based on DTE thresholds and max profit levels. These multi-dimensional derivatives analytics are beyond the scope of price/volume/oscillator indicators.",
+  "translation_notes": "Attempted partial translation using volatility regime (low hvol_20 environment) and price stability (close near sma_20) as proxies for the calendar spread setup conditions. Exit uses ATR expansion as a proxy for 'underlying moves beyond threshold.' However, this is fundamentally incomplete\u2014a proper backtest would require an options chain module with Greeks calculation, strike management, and DTE-based position routing."
+}

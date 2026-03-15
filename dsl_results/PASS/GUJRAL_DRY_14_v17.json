@@ -1,0 +1,72 @@
+{
+  "signal_id": "GUJRAL_DRY_14",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_14",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">=",
+        "right": "0.5"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Correction stopping at 50% retracement interpreted as price rebounding from the 50th percentile (price_pos_20 >= 0.5) within a 20-bar range after being below it. Original trend resumption detected by price crossing above SMA_50. Exit when correction resumes (price falls below SMA_50), indicating trend failure."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">=",
+        "value": 0.5
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Correction stopping at 50% retracement interpreted as price rebounding from the 50th percentile (price_pos_20 >= 0.5) within a 20-bar range after being below it. Original trend resumption detected by price crossing above SMA_50. Exit when correction resumes (price falls below SMA_50), indicating trend failure."
+  },
+  "source_rule_text": "When a correction in an uptrend stops at the 50% retracement level of the previous upsurge, enter a long trade as the original trend resumes."
+}

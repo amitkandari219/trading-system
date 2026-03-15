@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'first breakout attempt vs second/subsequent attempt following consolidation' which requires tracking historical breakout failure state and consolidation patterns. This requires sequential pattern memory not available in single-bar indicator set. The specific requirement to filter out 'prior failed breakout at this level within last [THRESHOLD_NEEDED] bars' cannot be expressed without a breakout_failure_count or similar custom indicator tracking breakout history.",
+  "translation_notes": "Translated core breakout conditions using pivot points (r1 as resistance) and volume confirmation (hvol_20 as above-average volume). Stop set below s1 (support level 1) as proxy for swing low. However, the critical differentiator of this signal\u2014rejecting repeated breakout attempts after consolidation\u2014cannot be implemented without custom state tracking across multiple bars. Recommend adding a custom indicator that counts consecutive failed breakouts at a given level."
+}

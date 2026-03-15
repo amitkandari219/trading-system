@@ -1,0 +1,18 @@
+{
+  "signal_id": "HARRIS_DRY_11_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires detection of market participant order flow patterns and behavioral consistency tracking across multiple orders from identified actors. The allowed indicator set contains only price-based technical indicators (moving averages, RSI, ATR, MACD, etc.) and does not include: (1) order book data or order flow analysis tools, (2) participant identification mechanisms, (3) order sequence tracking across time, (4) behavioral pattern detection for specific market actors, or (5) order obfuscation metrics. The core trading logic ('Jon buys after he buys, sells after he sells') requires real-time order flow surveillance and counterparty behavior modeling, which cannot be expressed using standard OHLCV technical indicators. This is a microstructure/behavioral alpha signal that falls outside the scope of a price-action-only backtest engine.",
+  "translation_notes": "Signal HARRIS_DRY_11_0 describes a behavioral spoofing/order flow front-running strategy based on participant-level patterns. To implement this properly would require: (1) order-level data with participant IDs, (2) time-series order sequence analysis, (3) behavioral clustering. Recommend: source order book data separately and build a custom order flow analyzer outside this technical indicator framework."
+}

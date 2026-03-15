@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking successive bounce highs and comparing current bounce high against previous bounce high heights. This requires: (1) dynamic identification of support bounce points across multiple lookback periods, (2) measurement of bounce amplitude (high - support level) for each bounce, and (3) comparison of current bounce amplitude vs. prior bounce amplitude to detect deterioration pattern. The allowed indicators do not include a bounce detection mechanism, bounce height measurement, or historical bounce tracking capability. Standard price/MA/oscillator indicators cannot reliably identify swing lows (support bounces) or measure progressive diminishment of bounce heights across consecutive cycles. This pattern requires custom swing-point analysis unavailable in the allowed indicator set.",
+  "translation_notes": "GRIMES_DRY_10_0 describes a weakening bounce pattern: successive bounces off support show lower highs, indicating deteriorating buying pressure. While the concept is clear (avoid long entries in deteriorating upswing), implementation requires bounce-point identification and amplitude tracking across multiple periods. The parameters (consecutive_lower_highs_required: 2, minimum_bounce_lookback_periods: 2, rejection_threshold_pct: 0.5) suggest a custom swing analysis module is needed. Consider implementing via: (1) swing point detector identifying local lows (support) and subsequent highs (bounce), (2) amplitude calculator (bounce_high - support_low), (3) comparison logic (current_amplitude < prior_amplitude * (1 - rejection_threshold)). Direction marked CONTEXT_DEPENDENT because signal says 'reduce confidence in long setups' but does not mandate shorts."
+}

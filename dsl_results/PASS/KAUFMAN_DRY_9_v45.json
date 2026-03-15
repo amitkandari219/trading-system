@@ -1,0 +1,108 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "macd_hist",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "macd_hist",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "macd_hist",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "macd_hist",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires detection of momentum deceleration in a trending market. Used MACD histogram as the primary momentum/rate-of-change indicator (crosses below zero for uptrend exit, above zero for downtrend exit). Entry conditions detect price movement with decelerating momentum. Exit conditions trigger when momentum histogram reverses direction, which precedes actual price reversal. MACD histogram is the closest available indicator to the 'second difference' and acceleration concept mentioned in the source material."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "macd_hist",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "macd_hist",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "macd_hist",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "macd_hist",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires detection of momentum deceleration in a trending market. Used MACD histogram as the primary momentum/rate-of-change indicator (crosses below zero for uptrend exit, above zero for downtrend exit). Entry conditions detect price movement with decelerating momentum. Exit conditions trigger when momentum histogram reverses direction, which precedes actual price reversal. MACD histogram is the closest available indicator to the 'second difference' and acceleration concept mentioned in the source material."
+  },
+  "source_rule_text": "Use momentum or rate of change indicators to identify when trend strength is decelerating, then liquidate open trend trades before prices reverse."
+}

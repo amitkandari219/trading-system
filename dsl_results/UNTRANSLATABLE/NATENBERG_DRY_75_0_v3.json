@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_75_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options-specific indicators not in the allowed set: IV percentile rank, ATM straddle IV rank, implied volatility, realized volatility, spread Greeks (vega, gamma), and time decay (theta). The signal is a meta-rule for selecting volatility spread structures based on IV forecasts and Greeks alignment rather than a price-based technical entry/exit rule. Standard OHLCV indicators cannot replicate IV rank, realized-vs-implied vol comparisons, or Greek exposures.",
+  "translation_notes": "NATENBERG_DRY_75_0 is a framework rule from volatility trading theory (Sheldon Natenberg) describing how to match spread selection to directional and volatility forecasts. It requires: (1) IV rank/percentile calculations, (2) realized volatility measurement, (3) options Greeks (vega/gamma signs), and (4) theta decay tracking. None of these are available in the standard price/volume/momentum indicator set. To implement this signal requires an options analytics layer with IV surface data and Greeks calculations."
+}

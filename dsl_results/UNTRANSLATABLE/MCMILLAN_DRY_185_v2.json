@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_185",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-chain indicators (call_option_moneyness, time_to_expiration, implied_volatility, strike_price relationships) that are not available in the allowed indicator set. The strategy involves options arbitrage with specific price levels (call purchase at 7.5, stock sale at 58, strike at 50) and exercise logic that cannot be expressed using equity price/volume/momentum indicators alone. Options Greeks, moneyness calculations, and expiration-based triggers are required but not supported.",
+  "translation_notes": "Signal MCMILLAN_DRY_185 is an options arbitrage strategy (call spread/conversion). The entry conditions reference call option depth-in-the-money (ITM) status and time decay\u2014both require options-specific data not present in equity technical indicators. The exit is triggered by options exercise, which is a derivatives-specific action. This signal is fundamentally incompatible with a backtest engine limited to equity price and momentum indicators."
+}

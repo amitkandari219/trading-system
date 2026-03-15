@@ -1,0 +1,88 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "N-day breakout system implemented using price highs/lows compared to previous bar. Entry on new highs (long) or new lows (short). Exit conditions reversed as opposites per standard breakout logic. Lookback period defaulted to 1-bar swing for minimal lag as per signal intent. Signal emphasizes no lag vs moving average systems, hence simple price-based breakouts used."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "N-day breakout system implemented using price highs/lows compared to previous bar. Entry on new highs (long) or new lows (short). Exit conditions reversed as opposites per standard breakout logic. Lookback period defaulted to 1-bar swing for minimal lag as per signal intent. Signal emphasizes no lag vs moving average systems, hence simple price-based breakouts used."
+  },
+  "source_rule_text": "N-day breakout and swing breakout systems generate trading signals when prices make new highs or lows, with no lag compared to moving average systems."
+}

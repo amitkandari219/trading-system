@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'gap-up after decline/consolidation' and 'opening gap-up' as specific patterns. These require multi-bar gap detection logic (open > prev_close + gap_threshold) and consolidation detection (low volatility period identification) which cannot be expressed as single 3-field conditions. Also requires explicit trend confirmation via 'decline or consolidation' state transitions not available in point-in-time indicators. The pivot_width parameter concept (narrow vs wide pivots affecting pullback behavior) is not quantifiable with provided indicators.",
+  "translation_notes": "Used ADX to distinguish trending (ADX>25) from ranging (ADX<25) markets. Used gap-up proxy: open > prev_close for entry signals. Used pivot as support/resistance for exits. However, the core logic of 'wait for decline/consolidation THEN gap-up' requires state machine tracking of prior bars' consolidation pattern, and differentiation between 'fake-out' vs genuine gap-ups requires volatility/follow-through metrics not in the allowed set."
+}

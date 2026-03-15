@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_71_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires event-calendar detection (announcement timing and outcome uncertainty), minimum days-to-event filtering, and implied volatility (IV) level comparisons. Available indicators do not include event calendar data, explicit IV tracking (india_vix is VIX proxy, not option IV), or announcement detection. Signal also requires comparison of IV change from 'pre-announcement level' which requires baseline snapshots not available in standard OHLCV indicators.",
+  "translation_notes": "Attempted partial translation using india_vix as volatility proxy and returns for underlying price movement, but core signal logic (event-driven IV expansion without directional move) cannot be properly captured with available indicators. Thresholds remain as placeholders: [IV_RISE_THRESHOLD], [MAX_UNDERLYING_MOVE], [IV_CONTRACTION_LEVEL] would need manual calibration with event-specific data."
+}

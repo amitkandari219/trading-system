@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires a custom multi-factor forecasting framework with optimized weights (w\u2081, w\u2082, w\u2083, w\u2084) that combines: (1) 1-day-ahead price forecasts (Pf), (2) volume forecasts (Vf), (3) open interest forecasts (Of), and (4) OBV forecasts (OBVF). The allowed indicator list does not include forward price forecasts, volume forecasts, open interest data, or OBV. Additionally, the signal requires a dynamic period-selection algorithm to identify the n-day lookback that minimizes standard deviation across all four components, and a backtesting optimization routine to determine optimal weight values. These are algorithmic/statistical constructs that cannot be expressed as simple threshold-based conditions using the available indicator set.",
+  "translation_notes": "KAUFMAN_DRY_12 is a sophisticated ensemble forecasting system, not a rule-based signal. It requires: (1) External forecasting models for price, volume, open interest, and OBV; (2) Optimization algorithm to find best forecast period n; (3) Weight optimization backtesting framework; (4) Constraint solver for weight sum. This falls outside the scope of a condition-based rule engine. To implement, create a separate forecasting module that feeds a composite index into the backtest engine as a custom indicator."
+}

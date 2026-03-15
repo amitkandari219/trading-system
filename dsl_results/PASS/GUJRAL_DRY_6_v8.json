@@ -1,0 +1,70 @@
+{
+  "signal_id": "GUJRAL_DRY_6",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_6",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal GUJRAL_DRY_6 translated using bar properties. Entry: upper_wick > body (long top tail) AND body < 0 (red candle) creates the primary bearish rejection setup. The signal mentions green candles or Doji with long top tail as alternatives, but these cannot be cleanly expressed without additional color/doji detection logic. Exit uses simple reversal: close crossing above previous high. Follow-through confirmation is omitted as it requires multi-bar analysis not expressible in single-condition format. Parameters for tail_length threshold set to AUTHOR_SILENT interpretation via relative wick-to-body ratio."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal GUJRAL_DRY_6 translated using bar properties. Entry: upper_wick > body (long top tail) AND body < 0 (red candle) creates the primary bearish rejection setup. The signal mentions green candles or Doji with long top tail as alternatives, but these cannot be cleanly expressed without additional color/doji detection logic. Exit uses simple reversal: close crossing above previous high. Follow-through confirmation is omitted as it requires multi-bar analysis not expressible in single-condition format. Parameters for tail_length threshold set to AUTHOR_SILENT interpretation via relative wick-to-body ratio."
+  },
+  "source_rule_text": "When a candle has a long top tail (shadow) with a red body, or even a green candle or Doji with a long top tail, treat it as a bearish signal, especially if followed by downside follow-through."
+}

@@ -1,0 +1,128 @@
+{
+  "signal_id": "GUJRAL_DRY_5",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_5",
+    "entry_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_200"
+      },
+      {
+        "left": "sma_50",
+        "operator": ">",
+        "right": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_20",
+        "operator": "<",
+        "right": "sma_200"
+      },
+      {
+        "left": "sma_50",
+        "operator": "<",
+        "right": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_20",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes MA alignment after consolidation breakout. Translated as: (1) Entry conditions detect when 20MA crosses above/below 50MA with proper directional alignment to 200MA, indicating parallel lineup and trend resumption. (2) Exit when 20MA crosses back through 50MA, signaling trend breakdown. The 'contraction phase' is identified by prior consolidation context rather than a specific indicator. Used sma_20, sma_50, sma_200 as specified in parameters."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "sma_50",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_20",
+        "op": "<",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "sma_50",
+        "op": "<",
+        "value": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_20",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal describes MA alignment after consolidation breakout. Translated as: (1) Entry conditions detect when 20MA crosses above/below 50MA with proper directional alignment to 200MA, indicating parallel lineup and trend resumption. (2) Exit when 20MA crosses back through 50MA, signaling trend breakdown. The 'contraction phase' is identified by prior consolidation context rather than a specific indicator. Used sma_20, sma_50, sma_200 as specified in parameters."
+  },
+  "source_rule_text": "When all moving average lines start lining up parallel to each other after a contraction phase, the trend is well in place and tradeable."
+}

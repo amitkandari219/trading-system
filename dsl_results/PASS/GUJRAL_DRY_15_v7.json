@@ -1,0 +1,84 @@
+{
+  "signal_id": "GUJRAL_DRY_15",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_15",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "r1"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires price consolidation and moving average proximity which are difficult to quantify precisely without volatility or range indicators. Translated core entry logic as: (1) price closes above weekly pivot, (2) price closes above previous day's close (consolidation breakout), (3) price closes above weekly R1 resistance. Exit condition set as reversal below pivot since author did not specify. The 20MA and 50MA proximity conditions are implied through the consolidation pattern rather than explicit crossovers. Hold period set conservatively to 5 days for pattern-based entry."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "r1"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal requires price consolidation and moving average proximity which are difficult to quantify precisely without volatility or range indicators. Translated core entry logic as: (1) price closes above weekly pivot, (2) price closes above previous day's close (consolidation breakout), (3) price closes above weekly R1 resistance. Exit condition set as reversal below pivot since author did not specify. The 20MA and 50MA proximity conditions are implied through the consolidation pattern rather than explicit crossovers. Hold period set conservatively to 5 days for pattern-based entry."
+  },
+  "source_rule_text": "Enter a long position when price consolidates above the pivot level, approaches moving averages (20MA and 50MA), closes above previous day's consolidation level, and breaks above weekly R1 resistance."
+}

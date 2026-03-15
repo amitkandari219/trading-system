@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) identification of 'first candle' as a reference point - no indicator available for candle indexing; (2) 'central pivot point' is not in allowed indicators (only 'pivot' with r1, s1, r2, s2 available); (3) price 'pulls back to and holds' pivot point requires multi-bar pattern recognition not expressible with single-bar operators; (4) stop loss placement 'below the first candle' cannot be calculated without explicit candle reference indexing. The target range 463-471 is hardcoded as absolute price level.",
+  "translation_notes": "Attempted partial translation using prev_high as proxy for 'first candle' and close > sma_20 AND close > sma_200 for moving average conditions. However, the core pattern logic (pullback to pivot, hold, then breakout) and relative stop loss placement cannot be accurately expressed within constraint of single-bar comparison operators."
+}

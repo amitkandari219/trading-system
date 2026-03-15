@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "CCI (Commodity Channel Index) is not in the ALLOWED INDICATORS list. The signal requires calculation of: (1) hl3 formula (H+L+C)/3, (2) moving average of hl3 over N days, (3) mean deviation calculation with 0.015 divisor, and (4) normalized CCI thresholds. These custom calculations cannot be expressed using only the provided indicators (sma, ema, rsi, atr, bollinger, macd, adx, stochastic, donchian, pivots, volume, returns, bar properties). The THRESHOLD_NEEDED parameter is also undefined in the source signal.",
+  "translation_notes": "This signal requires implementing the full CCI indicator from scratch with custom mean-deviation normalization. The original source shows the mathematical formula for CCI construction, but CCI itself is not available in the allowed indicator set. To make this signal translatable, either: (1) add 'cci_14' or similar to ALLOWED_INDICATORS, or (2) provide a mapping of THRESHOLD_NEEDED values (typically \u00b1100 for standard CCI), or (3) substitute with available mean-reversion indicators like RSI or Bollinger Bands."
+}

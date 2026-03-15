@@ -1,0 +1,135 @@
+[
+  {
+    "signal_id": "DOUGLAS_DRY_8",
+    "book_id": "DOUGLAS",
+    "source_citation": "Trading in the Zone, Mark Douglas, Ch.10, p.170-237",
+    "raw_chunk_text": "trend is your friend.\" It means that you have a higher probability of\nsuccess when you trade in the direction of the major trend, if there is\none. In fact, the lowest-risk trade, with the highest prob",
+    "rule_text": "Only take trades in the direction of the major trend to achieve the highest probability of success and lowest risk.",
+    "signal_category": "PSYCHOLOGY",
+    "direction": "TREND_ALIGNED",
+    "entry_conditions": [
+      "Trader identifies that a major trend exists in the market",
+      "Trader confirms trade direction aligns with the major trend direction",
+      "For uptrend: trader recognizes higher highs and higher lows pattern before initiating long trades",
+      "For downtrend: trader recognizes lower highs and lower lows pattern before initiating short trades"
+    ],
+    "parameters": {},
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "PSYCHOLOGY",
+    "haiku_testable": true,
+    "haiku_reason": "Entry conditions specify identifiable price patterns (higher highs/lows for uptrends, lower highs/lows for downtrends) that can be programmatically detected from OHLC data, though the initial trend identification requires some qualitative judgment."
+  },
+  {
+    "signal_id": "DOUGLAS_DRY_8",
+    "book_id": "DOUGLAS",
+    "source_citation": "Trading in the Zone, Mark Douglas, Ch.10, p.170-237",
+    "raw_chunk_text": "if the trade is going to work. Using a three-contract trade as an exam-\nple, here's how it works: If] get into a position and the market imme-\ndiately goes against me without giving me at least four t",
+    "rule_text": "Scale out of winning positions incrementally to lock in profits and reduce risk on remaining contracts; take partial profits at predetermined market movements in your favor.",
+    "signal_category": "RISK|SIZING",
+    "direction": "NEUTRAL",
+    "entry_conditions": [
+      "Trader enters a multi-contract position with predetermined exit plan",
+      "Market moves in trader's favor by at least the first profit target amount"
+    ],
+    "parameters": {
+      "position_structure": "Multiple contracts (author uses 3-contract example)",
+      "scaling_method": "Remove contracts at progressive profit targets",
+      "risk_reduction_objective": "Lock in gains and reduce risk exposure on remaining contracts"
+    },
+    "exit_conditions": [
+      "Take first contract off when market moves favorably by initial target amount",
+      "Take second contract off at next profit target",
+      "Allow final contract to run with reduced total account risk",
+      "Stop out remaining contracts per predetermined stop loss"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "PSYCHOLOGY",
+    "haiku_testable": true,
+    "haiku_reason": "The rule specifies actionable entry conditions (multi-contract position with predetermined exits and market movement by a measurable amount) and exit conditions (take profits at specific predetermined levels and stop loss) that can be programmatically detected from market data and position state."
+  },
+  {
+    "signal_id": "DOUGLAS_DRY_8",
+    "book_id": "DOUGLAS",
+    "source_citation": "Trading in the Zone, Mark Douglas, Ch.10, p.170-195",
+    "raw_chunk_text": "ket moves in my direction, I take the next third of the position off at\nsome predetermined profit objective. This is based on some longer\ntime frame support or resistance, or on the test of a previous",
+    "rule_text": "Once initial profit is achieved on a portion of a position, lock in that profit and move your stop-loss to break-even, creating a 'risk-free opportunity' where remaining capital cannot be lost.",
+    "signal_category": "RISK",
+    "direction": "NEUTRAL",
+    "entry_conditions": [
+      "Market has moved in trader's direction",
+      "First portion of position (one-third) reaches predetermined profit objective",
+      "Profit objective is based on longer timeframe support/resistance or test of previous significant high/low"
+    ],
+    "parameters": {
+      "position_partition": "thirds",
+      "profit_lock_trigger": "trader-defined support/resistance or significant high/low test"
+    },
+    "exit_conditions": [
+      "After taking second third profit and moving stop to entry point, continue managing final third position according to market conditions"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "trending"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "PSYCHOLOGY",
+    "haiku_testable": true,
+    "haiku_reason": "The rule contains specific, actionable entry conditions (market moved in trader's direction, first third reaches predetermined profit objective based on identifiable support/resistance levels) that can be detected programmatically and trigger defined actions (partial profit taking, stop-loss adjustment)."
+  },
+  {
+    "signal_id": "DOUGLAS_DRY_8",
+    "book_id": "DOUGLAS",
+    "source_citation": "Trading in the Zone, Mark Douglas, Ch.10, p.170-237",
+    "raw_chunk_text": "the years that trying to do that just isn't worth it.\nOne other factor you need to take into consideration is your\nrisk-to-reward ratio. The risk-to-reward ratio is the dollar value of\nhow much risk y",
+    "rule_text": "Structure your risk-to-reward ratio to be at least 3:1 (risking $1 for every $3 of profit potential) so that winning trades can be less than 50% of your total trades and you will still be profitable consistently.",
+    "signal_category": "RISK",
+    "direction": "NEUTRAL",
+    "entry_conditions": [
+      "Trader evaluates the risk-to-reward ratio of a potential trade before entry",
+      "Trader confirms the ratio meets or exceeds 3:1 before committing capital"
+    ],
+    "parameters": {
+      "minimum_risk_to_reward_ratio": "3:1",
+      "interpretation": "For every 1 unit of risk, require 3 units of profit potential"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "PSYCHOLOGY",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete, measurable actions (evaluating and confirming a 3:1 ratio threshold) that can be detected from trade parameters before execution."
+  }
+]

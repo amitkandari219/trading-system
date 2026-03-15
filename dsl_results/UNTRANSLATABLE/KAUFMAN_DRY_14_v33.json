@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of 'today's volatility' vs 'average volatility' with a 2x multiplier ratio, but the allowed indicators do not include a current-bar volatility measure or a volatility ratio operator. hvol_20 (20-period historical volatility) is available but does not capture intra-day volatility shock detection. The threshold value [THRESHOLD_NEEDED] was not specified in the source material. Direction is CONTEXT_DEPENDENT, requiring market context logic not expressible in standard entry/exit rules.",
+  "translation_notes": "Attempted to use hvol_20 as a proxy for volatility measurement and HIGH_VOL regime filter. However, the core logic of detecting when today's volatility exceeds 2x the average volatility in real-time cannot be precisely expressed without a dedicated volatility shock indicator or ratio operator. A proper implementation would require either: (1) a custom volatility_ratio indicator, or (2) separate true_range and sma-based calculations to derive the ratio. The 10-day holding period from source text was used as hold_days_max."
+}

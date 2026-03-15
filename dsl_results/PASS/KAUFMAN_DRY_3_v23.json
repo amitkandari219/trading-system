@@ -1,0 +1,108 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_3",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Breakaway gap modeled as close crossing previous high/low with above-average volume. Entry conditions detect gap occurrence; exit conditions use reversal of the gap direction. Retracement rates (1%-6%) are incorporated via stop_loss_pct at conservative 1.0% to capture low retracement expectation. Direction marked CONTEXT_DEPENDENT as signal applies to both upside and downside gaps. Target regimes set to TRENDING to reflect trend continuation expectation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Breakaway gap modeled as close crossing previous high/low with above-average volume. Entry conditions detect gap occurrence; exit conditions use reversal of the gap direction. Retracement rates (1%-6%) are incorporated via stop_loss_pct at conservative 1.0% to capture low retracement expectation. Direction marked CONTEXT_DEPENDENT as signal applies to both upside and downside gaps. Target regimes set to TRENDING to reflect trend continuation expectation."
+  },
+  "source_rule_text": "A breakaway gap, which occurs when prices move out of a sideways range, marks the beginning of a new trend and should be traded with expectation of trend continuation based on low retracement rates (1% and 6%)."
+}

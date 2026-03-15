@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_213",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options pricing model calculations (intrinsic value of near-term calls, estimated value of longer-term calls using a pricing model, calendar spread differential, and profit computation). These are derivative pricing constructs not available in the allowed technical indicators list. The signal also requires tracking of initial spread cost and commissions, which are portfolio/trade-level parameters, not price-action or volatility indicators. Standard OHLCV technical analysis cannot replicate options Greeks, time decay, or pricing model estimates.",
+  "translation_notes": "Signal MCMILLAN_DRY_213 is fundamentally an options strategy requiring access to: (1) options chain data with strike prices and expirations, (2) a volatility/pricing model (Black-Scholes or similar), (3) time-to-expiration tracking, and (4) trade accounting (initial cost, commissions). A backtest engine using only technical price/volume indicators cannot execute this rule. Implementation would require a dedicated options backtester with pricing model integration."
+}

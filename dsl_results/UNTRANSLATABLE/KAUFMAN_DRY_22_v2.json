@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_22",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires stateful counters (down_counter reaching 4, up_counter reaching 5) that track consecutive bars across multiple candles. The allowed operators and indicators do not support cumulative state tracking. The conditions reference 'down counter' and 'up counter' which are internal state variables, not computable from single-bar price comparisons. A backtest engine supporting this pattern would need to implement custom counter logic outside the JSON rule schema.",
+  "translation_notes": "Entry requires: 4 consecutive closes below prior close (down_counter = 4), then buy next open. Exit requires: 5 consecutive closes above prior close (up_counter = 5) OR 8 days in position. The core logic cannot be fully expressed in the 3-field condition format without stateful counters. Provided entry/exit conditions show simplified price direction but miss the counter accumulation mechanics."
+}

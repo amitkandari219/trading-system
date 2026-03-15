@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of theoretical vs actual futures price differential (basis points spread between two related instruments) and yield matching across instrument pairs (Eurodollar futures vs notes/bonds). The allowed indicator set does not include: (1) synthetic theoretical price calculation, (2) cross-instrument spread measurement, (3) yield-to-price conversion, or (4) maturity-matched instrument alignment. These are specialized financial calculations requiring custom data feeds and multi-leg instrument logic not available in the standard indicator library.",
+  "translation_notes": "This is a statistical arbitrage signal requiring real-time price feeds from multiple related instruments (Eurodollar futures, Treasury notes, Treasury bonds of matching maturities) and calculation of implied pricing relationships. It cannot be expressed using price action indicators alone. A custom module would be needed to: (1) fetch theoretical futures price from spot yield curve, (2) calculate spread in basis points, (3) validate maturity alignment, (4) execute paired trades with appropriate leg ratios."
+}

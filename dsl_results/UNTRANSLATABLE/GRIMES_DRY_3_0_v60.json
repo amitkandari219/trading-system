@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit trend line slope calculation and acceleration measurement over periods, which requires custom linear regression or slope indicators not available in the allowed indicator set. The concept of 'steepening trend lines' and measuring slope changes cannot be directly expressed using only the provided indicators (price, MAs, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Position, Previous Bar, Returns, Bar Properties). ADX_14 and SMA crossovers used as reasonable proxies for trend acceleration detection, but this does not capture the specific parabolic acceleration pattern described.",
+  "translation_notes": "GRIMES_DRY_3_0 describes a parabolic acceleration detection signal based on trend line steepness and breakage. Without direct slope/linear regression indicators, this is approximated using ADX (trend strength) combined with price relative to moving averages (trend direction changes). The signal warns of imminent collapse after dramatic acceleration, which is captured by exit conditions on trend line breaks (modeled as MA crosses). All threshold parameters marked [THRESHOLD_NEEDED] in original require calibration. Direction marked CONTEXT_DEPENDENT because signal applies to both long (parabolic up then crash) and short (parabolic down then bounce) scenarios."
+}

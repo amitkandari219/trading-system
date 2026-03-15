@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Augmented Dickey-Fuller (ADF) stationarity testing, fractional differencing (FFD) transformation with configurable d parameter, autocorrelation decay analysis, and forecast accuracy validation\u2014none of which are available as pre-computed indicators in the allowed list. These are statistical preprocessing and validation steps that must be performed externally before backtest entry, not real-time trading rule operators.",
+  "translation_notes": "LOPEZ_DRY_1_0 is a feature engineering framework for achieving stationarity, not a direct trading signal. The rule describes how to preprocess time series data (via FFD with ADF testing) to prepare features for modeling. Substituted log_returns as a proxy for stationarity-checked features, but this loses the core intent: testing raw features for non-stationarity, applying fractional differencing with parameter d to preserve memory while achieving stationarity, and validating via ADF. Parameters [THRESHOLD_NEEDED] cannot be populated without domain specification. Recommend implementing FFD preprocessing in data pipeline before backtest engine receives data."
+}

@@ -1,0 +1,60 @@
+{
+  "signal_id": "MCMILLAN_DRY_350",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_350",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "90"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "80"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.43,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Bullish put spread strategy: Buy July 80 put @ 2, Sell July 90 put @ 5. Net debit: 7 points. Maximum loss: 17 points (10-point spread + 7-point net debit). Entry triggered when price approaches or exceeds the short strike (90), signaling bullish sentiment. Exit triggered when price falls below the long strike (80), approaching maximum loss threshold. Stop loss set at 2.43% to capture the realized loss reduction mechanism mentioned in the source. Strategy profits if underlying stays above 83 (90 - 7) at expiration."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": 90.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 80.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.024300000000000002,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Bullish put spread strategy: Buy July 80 put @ 2, Sell July 90 put @ 5. Net debit: 7 points. Maximum loss: 17 points (10-point spread + 7-point net debit). Entry triggered when price approaches or exceeds the short strike (90), signaling bullish sentiment. Exit triggered when price falls below the long strike (80), approaching maximum loss threshold. Stop loss set at 2.43% to capture the realized loss reduction mechanism mentioned in the source. Strategy profits if underlying stays above 83 (90 - 7) at expiration."
+  },
+  "source_rule_text": "Construct a bullish put spread by buying a lower-strike put and selling a higher-strike put with the same expiration to reduce net cost while limiting upside potential."
+}

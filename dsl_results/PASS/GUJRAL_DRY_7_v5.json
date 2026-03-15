@@ -1,0 +1,72 @@
+{
+  "signal_id": "GUJRAL_DRY_7",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_7",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal detects rejection candle (long upper wick relative to body) followed by red candle closing below rejection candle's low. Entry conditions: (1) upper_wick significantly larger than body indicates rejection, (2) close < prev_low confirms red candle breaks rejection low. Exit long condition triggers when price breaks below rejection candle's low. Trend confirmation (uptrend + sizeable move) assumed to be validated externally or via regime filter TRENDING_UP. The 'prev_' prefix correctly references the rejection candle's properties from the previous bar."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal detects rejection candle (long upper wick relative to body) followed by red candle closing below rejection candle's low. Entry conditions: (1) upper_wick significantly larger than body indicates rejection, (2) close < prev_low confirms red candle breaks rejection low. Exit long condition triggers when price breaks below rejection candle's low. Trend confirmation (uptrend + sizeable move) assumed to be validated externally or via regime filter TRENDING_UP. The 'prev_' prefix correctly references the rejection candle's properties from the previous bar."
+  },
+  "source_rule_text": "When current uptrend shows a rejection candle with long upper tail followed by a red candle that takes down the rejection candle's low, exit long positions and consider going short."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_115",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific data (put option price vs intrinsic value, strike price, underlying stock price) which is not available in the provided indicator set. The core arbitrage logic depends on real-time option pricing, intrinsic value calculation, and exercise mechanics that cannot be expressed using standard OHLCV price action and technical indicators alone. A proper implementation requires an options data feed with explicit bid/ask prices, implied volatility, and Greeks.",
+  "translation_notes": "MCMILLAN_DRY_115 describes a put option arbitrage strategy (synthetic conversion/reverse conversion). Entry requires: (1) detecting when a put trades below intrinsic value = max(strike - underlying_price, 0), (2) executing a multi-leg trade (buy put + buy stock + exercise). Exit is mechanical (exercise the put). None of these conditions can be reliably detected from OHLCV bars alone. This is a derivative pricing/options strategy, not a price action signal."
+}

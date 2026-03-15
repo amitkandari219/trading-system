@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires day-of-week filtering (Thursday entry) and multi-day directional comparison (Monday vs Tuesday/Wednesday same direction). The allowed indicator set does not include 'day_of_week' or a mechanism to compare directional consistency across multiple prior bars. The condition 'Tuesday and Wednesday moved in the same direction as Monday' requires custom bar-indexing logic unavailable in the standard indicator list. Additionally, 'reversal trade' direction is context-dependent and cannot be statically defined as LONG or SHORT without runtime evaluation of prior direction.",
+  "translation_notes": "This signal fundamentally requires (1) day-of-week awareness, (2) multi-bar directional pattern matching (comparing close[Monday] vs close[Tuesday] vs close[Wednesday]), and (3) dynamic reversal logic. The allowed indicators support single-bar analysis but not historical multi-bar direction patterns. A custom preprocessor or external rule engine would be needed to evaluate the Monday-Tuesday-Wednesday directional alignment before entry on Thursday."
+}

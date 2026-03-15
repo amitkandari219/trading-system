@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_147",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is an options calendar spread strategy requiring multi-leg options pricing, implied volatility decay modeling, and strike selection logic. The signal requires tracking: (1) short-term vs long-term option premiums and Greeks, (2) implied volatility term structure, (3) days-to-expiration for two different expirations, and (4) options pricing models. None of these are available in the equity price/technical indicator set provided. The strategy is fundamentally an options strategy that cannot be expressed using only price action and technical indicators on the underlying stock.",
+  "translation_notes": "MCMILLAN_DRY_147 is a calendar spread (diagonal spread variant) used in options trading. Entry requires: selling Jan calls/puts at 70/60 strike, buying Apr calls/puts at same strikes, timing setup 3 months before Jan expiration. Exit is author-silent and would typically be when near-term options expire or at max loss. This requires options chain data, volatility surface analysis, and time decay calculations that are outside the scope of a price-based backtester."
+}

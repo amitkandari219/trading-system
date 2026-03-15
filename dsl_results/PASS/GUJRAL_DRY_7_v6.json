@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_7",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_7",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes a two-candle reversal pattern: (1) rejection candle with long upper wick in uptrend, followed by (2) red candle breaking the rejection candle's low. Translated as: upper_wick > body (rejection with long tail), close < prev_close (red/bearish candle), and low < prev_low (breaks rejection low). Exit long trades when the low break occurs. Entry short requires all three conditions (AND logic). Upper wick approximates the rejection tail; actual 'rejection candle' concept requires visual confirmation but is captured through wick/body ratio and close action."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal describes a two-candle reversal pattern: (1) rejection candle with long upper wick in uptrend, followed by (2) red candle breaking the rejection candle's low. Translated as: upper_wick > body (rejection with long tail), close < prev_close (red/bearish candle), and low < prev_low (breaks rejection low). Exit long trades when the low break occurs. Entry short requires all three conditions (AND logic). Upper wick approximates the rejection tail; actual 'rejection candle' concept requires visual confirmation but is captured through wick/body ratio and close action."
+  },
+  "source_rule_text": "Exit long trades and consider going short when a rejection candle with a long upper tail in an uptrend is followed by a red candle that takes down the low of the rejection candle."
+}

@@ -1,0 +1,86 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_5",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "N-day breakout strategy translated using Donchian Channel indicators (dc_upper, dc_lower) which represent the highest high and lowest low over a lookback period. Entry long when price breaks above the N-day high (dc_upper), entry short when price breaks below the N-day low (dc_lower). Exit conditions are reversed: exit long on breakout of N-day low, exit short on breakout of N-day high. The specific value of N is not provided by the author (AUTHOR_SILENT), so Donchian channels at their default periods are used as the closest available approximation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "N-day breakout strategy translated using Donchian Channel indicators (dc_upper, dc_lower) which represent the highest high and lowest low over a lookback period. Entry long when price breaks above the N-day high (dc_upper), entry short when price breaks below the N-day low (dc_lower). Exit conditions are reversed: exit long on breakout of N-day low, exit short on breakout of N-day high. The specific value of N is not provided by the author (AUTHOR_SILENT), so Donchian channels at their default periods are used as the closest available approximation."
+  },
+  "source_rule_text": "Buy when today's high moves above the high of the past N days; sell when today's low moves below the low of the past N days."
+}

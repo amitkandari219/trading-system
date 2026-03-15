@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_30_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of realized volatility from daily/weekly price changes and comparison to implied volatility assumption used in pricing models. The allowed indicators include hvol_20 (historical volatility proxy) and india_vix (implied volatility proxy), but the signal fundamentally requires: (1) custom realized vol calculation from returns over a lookback period, (2) explicit implied vol input from pricing model, (3) a quantitative alignment threshold between them. These cannot be expressed using only the allowed indicators without access to model assumptions and custom volatility calculations. Thresholds for 'lookback_period_days' and 'vol_alignment_threshold_pct' are marked [THRESHOLD_NEEDED] in original signal.",
+  "translation_notes": "This is a meta-rule about validating pricing model inputs rather than a directional trade signal. It cannot be mechanically translated into entry/exit conditions without: (1) knowing the specific pricing model's implied vol assumption, (2) defining the lookback period for realized vol, and (3) defining the alignment tolerance threshold. The signal is more suitable as a risk management validation framework than a backtestable rule."
+}

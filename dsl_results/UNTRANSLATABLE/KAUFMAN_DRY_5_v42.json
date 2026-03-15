@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting new highs/lows within a lookback period N days, which requires Donchian Channel or N-period high/low comparison. The allowed indicators lack explicit N-period highest-high and lowest-low functions. Donchian channels (dc_upper, dc_lower) could approximate this but the signal's event-driven nature with variable N parameter cannot be fully captured. Additionally, AUTHOR_SILENT on N means the exact calculation period is undefined, making precise implementation impossible.",
+  "translation_notes": "Attempted simplified interpretation using single-bar comparisons (prev_high/prev_low) but this does NOT capture the true N-period new extreme logic specified in the original signal. The signal is fundamentally about breaking out of recent ranges over N days, not just one-bar reversals. For proper implementation, a Donchian-based approach with configurable lookback period would be required, but even that would need explicit N parameter specification from the author."
+}

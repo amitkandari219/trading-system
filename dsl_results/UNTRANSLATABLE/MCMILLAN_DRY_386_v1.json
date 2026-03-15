@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_386",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'volatility skew' and confirmation of 'put backspread position type', which are advanced options-specific metrics not available in the standard indicator set. Available indicators (india_vix, hvol_20) measure overall volatility levels but cannot measure skew (difference between put and call implied volatility curves) or validate specific option position structures. The entry condition 'Overall level of implied volatility is in a low percentile' can be approximated with india_vix < 30, but the exit condition 'Volatility skew disappears' cannot be translated without skew-specific indicators.",
+  "translation_notes": "Approximated 'low percentile implied volatility' using india_vix < 30 (below historical 30th percentile level). Approximated 'skew disappears' with india_vix > 50 as a proxy exit signal. This is a volatility mean-reversion trade best suited for options markets with skew data. The position type validation (put backspread) cannot be enforced with available indicators."
+}

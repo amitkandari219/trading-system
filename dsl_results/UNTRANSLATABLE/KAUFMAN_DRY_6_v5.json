@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ARIMA forecast model for expected highs/lows and ARIMA trend direction filtering. ARIMA is not available in the allowed indicators list. Confidence bands based on closing prices are not explicitly available (Bollinger Bands are available but source specifies custom confidence bands). The core logic of intraday penetration of forecast levels cannot be fully translated without access to ARIMA forecasted price levels.",
+  "translation_notes": "Attempted partial translation using intraday penetration of previous bar highs/lows as a proxy for expected levels, but this does not capture the ARIMA-based expected highs/lows or the ARIMA trend filter requirement. Signal requires custom ARIMA model implementation which is outside the scope of allowed indicators."
+}

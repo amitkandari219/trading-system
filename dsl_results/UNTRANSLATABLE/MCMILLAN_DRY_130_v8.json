@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_130",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires real-time option pricing data (straddle price, in-the-money/out-of-the-money status, buyback price tracking) which are not available in the standard price/technical indicator set. The core logic depends on monitoring: (1) initial straddle value at entry, (2) current ITM option price vs. that reference value, (3) option moneyness status. These require options chain data not representable by ALLOWED_INDICATORS.",
+  "translation_notes": "Signal is an options-specific strategy that cannot be translated to price-action rules alone. Entry condition 'straddle has been sold' and buyback trigger 'ITM option reaches initial straddle price' require options-specific position tracking and pricing unavailable in this backtester. Recommend implementing as a custom options module or providing greeks/option_price indicators."
+}

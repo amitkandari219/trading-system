@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_90_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct detection of: (1) delta-neutral short straddle position state (not an available indicator), (2) gamma exposure monitoring (requires options Greeks not in allowed indicators), (3) explicit mean-reversion regime detection (MEAN_REVERTING not in ALLOWED_REGIMES), (4) dynamic rebalancing frequency parameters based on directional bias (requires algorithmic position management logic beyond indicator comparison). The core position construct (short straddle with gamma management) and regime detection logic cannot be expressed with available price/technical indicators alone.",
+  "translation_notes": "This is a portfolio/position-management strategy requiring options Greeks (delta, gamma) and dynamic rebalancing logic. The signal describes a tactical adjustment framework for existing short straddle positions rather than a pure entry/exit signal. Entry approximated with range-bound conditions (bb_pct_b near middle, moderate trend strength). Exit uses profit target. However, the fundamental signal logic\u2014managing gamma exposure and choosing rebalance frequency based on market directional bias\u2014requires position-level state tracking and options analytics not available in price-action indicators."
+}

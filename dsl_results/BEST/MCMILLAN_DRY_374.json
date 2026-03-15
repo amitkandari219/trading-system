@@ -1,0 +1,62 @@
+{
+  "signal_id": "MCMILLAN_DRY_374",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_374",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "india_vix",
+        "operator": ">=",
+        "right": "95"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "india_vix",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires implied volatility percentile tracking. Used india_vix as proxy for volatility extreme (>=95 approximates 100th percentile extreme). Entry triggers on volatility spike. Exit condition implemented as reversal: when current volatility drops below previous close value, indicating directional reversal. This interpretation aligns with the author's intent for options sellers to avoid entering during volatility spikes and to exit when volatility reverses downward."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "india_vix",
+        "op": ">=",
+        "value": 95.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "india_vix",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "HIGH_VOL"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal requires implied volatility percentile tracking. Used india_vix as proxy for volatility extreme (>=95 approximates 100th percentile extreme). Entry triggers on volatility spike. Exit condition implemented as reversal: when current volatility drops below previous close value, indicating directional reversal. This interpretation aligns with the author's intent for options sellers to avoid entering during volatility spikes and to exit when volatility reverses downward."
+  },
+  "source_rule_text": "Watch implied volatility when it reaches an extreme level (100th percentile) until it reverses direction, which is especially useful for options sellers to avoid entering during massive option moves."
+}

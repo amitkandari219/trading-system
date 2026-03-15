@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic ATR-based thresholds (k * atr factor) and comparison logic that cannot be expressed with allowed operators. Specifically: (1) 'high[1] - highest(high,n)[2] > k*atr' requires ATR scaling by parameter k which is not supported; (2) the 'k' parameter itself is undefined and marked as [THRESHOLD_NEEDED]; (3) lookback period 'n' is also undefined; (4) the two spike conditions require simultaneous multi-bar lookback with parametric scaling. Used Donchian channels as approximate substitute for 'highest high' but cannot replicate the k*ATR magnitude filter or parameter calibration.",
+  "translation_notes": "The signal describes a sophisticated spike detection pattern with parametric ATR scaling. prev_high approximates high[1] (yesterday), dc_upper approximates highest(high,n)[2] (n-day high from 2 days ago), and the drop condition (high < prev_high) captures today's pullback. However, the core ATR-magnitude filtering (k * atr threshold) and undefined parameters (n, k values) make precise translation impossible with the available operators and indicator set."
+}

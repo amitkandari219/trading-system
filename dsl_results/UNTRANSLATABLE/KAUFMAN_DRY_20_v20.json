@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires FuzzyRange, FuzzySmall, and fuzzy membership calculations (FuzzyDarkCloud return value = 1 - Sbody). These are custom fuzzy logic indicators not available in the standard indicator set. The signal also references WindowUp() and small body membership functions that cannot be expressed with basic price/indicator comparisons. Partial translation provided for core pattern recognition (dark candle, white previous candle, gap-up open above previous high), but the fuzzy weighting mechanism and exact entry confidence calculation cannot be replicated.",
+  "translation_notes": "Translated the core Dark Cloud Cover pattern elements: (1) current candle is red/bearish (close < open), (2) previous candle is white/bullish (prev_close > prev_open), (3) current open gaps above previous high (open > prev_high). FuzzyRange < 0 condition cannot be directly expressed without the custom fuzzy range formula. Exit condition set to simple reversal (bullish candle closes above open) as AUTHOR_SILENT. The FuzzyDarkCloud return value weighting mechanism is untranslatable."
+}

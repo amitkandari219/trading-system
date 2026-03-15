@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_70_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific inputs (realized vs implied volatility percentiles, option time decay, ATM option availability, days to expiration, spread construction) which cannot be expressed using equity price/volume indicators. Backtest engine lacks options chain data, time value decay models, and spread leg management logic. Provided approximation uses hvol_20 as proxy for realized volatility and india_vix as proxy for implied volatility rank, but this is a significant simplification that loses the signal's intent.",
+  "translation_notes": "Original signal is specifically for options spreads (long/short time spreads on ATM options). Since the backtest engine operates on standard equity indicators without options data, this translation is approximate. Used hvol_20 (20-day historical volatility in decimal form) to approximate realized volatility low/high regimes, and india_vix as IV rank proxy. Entry thresholds (0.15, 0.20, 0.25) are illustrative and should be calibrated to actual market data. The signal's context-dependent nature (LONG on low vol, SHORT on high vol) is preserved in the entry/exit logic split."
+}

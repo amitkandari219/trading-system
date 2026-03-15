@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking the specific price that dropped off from a moving average calculation n-days ago and placing a stop order one tick above it. This requires historical price memory (close[40] - the price 40 bars ago) and dynamic stop order placement logic that cannot be expressed with allowed indicators and operators. The ALLOWED INDICATORS list does not include indexed price history (e.g., close[40]), only prev_close for the immediately previous bar.",
+  "translation_notes": "The signal's core logic\u2014that a rising moving average indicates today's price > price from n-days ago\u2014can be approximated as close > sma_40. However, the precise entry mechanism (buy stop at oldest_price + 0.01 tick) and the specific exit conditions cannot be translated without access to historical price array indexing or custom stop order logic beyond the backtest engine's standard operators."
+}

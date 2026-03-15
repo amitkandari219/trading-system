@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'visually obvious support/resistance levels' with 'non-random price behavior validation' and 'statistical significance testing'. These require: (1) level identification/clustering algorithm not in allowed indicators, (2) historical test-count validation (needs lookback logic), (3) multi-timeframe analysis not expressible in single-timeframe condition format, (4) statistical randomness testing (e.g., chi-square goodness-of-fit) not available. The core requirement for quantifying 'non-random clustering' across multiple participants cannot be expressed with price/volume/volatility indicators alone.",
+  "translation_notes": "Attempted proxy using price_pos_20 (proximity to 20-bar range extremes), vol_ratio_20 (volume clustering indicator), and ATR persistence as weak substitutes for support/resistance validation. However, this fundamentally misses the signal's intent: statistical validation of level significance. Author's book excerpt emphasizes rejecting 'subjective evaluation' in favor of 'non-random' behavior\u2014a requirement that demands statistical hypothesis testing unavailable in this indicator set. Recommend: add custom indicators for support/resistance clustering detection or implement Bayesian level confirmation before backtesting this signal."
+}

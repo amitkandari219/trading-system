@@ -1,0 +1,72 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0"
+      },
+      {
+        "left": "macd_hist",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "macd_hist",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires detecting slope of prices (positive) and slope of momentum (negative) to identify bearish divergence. Used returns (positive = rising prices) and macd_hist (negative = falling momentum) as proxies for the required slope conditions. MACD histogram is the standard indicator for momentum divergence detection. Exit when divergence reverses (macd_hist crosses back above zero). Confidence increases with larger lookback period per original source."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.0
+      },
+      {
+        "indicator": "macd_hist",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "macd_hist",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal requires detecting slope of prices (positive) and slope of momentum (negative) to identify bearish divergence. Used returns (positive = rising prices) and macd_hist (negative = falling momentum) as proxies for the required slope conditions. MACD histogram is the standard indicator for momentum divergence detection. Exit when divergence reverses (macd_hist crosses back above zero). Confidence increases with larger lookback period per original source."
+  },
+  "source_rule_text": "When prices are rising and momentum is falling (bearish divergence), generate a sell signal."
+}

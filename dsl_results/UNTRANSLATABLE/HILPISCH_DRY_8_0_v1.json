@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom rolling mean momentum calculation over resampled tick data with dynamic window sizing. The exact momentum computation (rolling mean of log returns over [THRESHOLD_NEEDED]-bar window) is not available as a pre-calculated indicator in the allowed list. Additionally, [THRESHOLD_NEEDED] placeholders indicate missing parameter specifications that cannot be resolved. The signal also requires explicit tracking of momentum sign transitions and zero-crossings, which requires state management beyond simple indicator comparisons.",
+  "translation_notes": "Attempted approximation using log_returns sign as proxy for momentum direction, but this loses the rolling mean smoothing and window-based logic central to the signal. The resample_interval and momentum_lookback_bars parameters must be specified numerically before this signal can be properly implemented. Consider implementing custom momentum indicator in backtest engine or providing concrete parameter values."
+}

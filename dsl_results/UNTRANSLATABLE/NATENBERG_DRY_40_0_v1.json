@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_40_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking implied volatility (IV) change from entry level and option leg profit percentage (15% gain). These are derivatives/relative metrics not available in the allowed indicator set. hvol_20 (historical volatility) is used as a proxy for volatility environment, but cannot measure: (1) IV specifically vs historical vol, (2) entry-level IV baseline for comparison, (3) option leg P&L as percentage of initial premium. The signal also requires simultaneous exit of two correlated legs (futures + options) which requires position tracking beyond price-based indicators.",
+  "translation_notes": "This is a volatility-based exit rule for an existing hedge position. The core logic\u2014exit when volatility has risen sufficiently to lock profits\u2014maps conceptually to hvol_20 > threshold, but the original signal's dependency on implied volatility (not historical), entry-point baseline tracking, and option premium accounting makes precise translation impossible without custom position state variables."
+}

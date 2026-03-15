@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_134_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of implied volatility to historical volatility by standard deviations and trend confirmation in both IV and HV. The allowed indicator set lacks: (1) explicit implied volatility metric separate from india_vix, (2) standard deviation calculation capability, (3) volatility trend indicators. Cannot express 'upward trend confirmed in both historical and implied volatility' using only provided indicators. Calendar spread structure (long near-term/short far-term) is also a position construction strategy not representable as entry/exit conditions.",
+  "translation_notes": "Approximated using india_vix as IV proxy and hvol_20 as HV proxy. Entry attempts to capture IV > HV condition. True signal requires option Greeks and volatility surface data unavailable in price-action indicators. Manual implementation of calendar spread leg sizing needed outside this rule engine."
+}

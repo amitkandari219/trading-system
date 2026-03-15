@@ -1,0 +1,82 @@
+{
+  "signal_id": "GRIMES_DRY_6_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_6_0",
+    "entry_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "s1"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s1"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Spring pattern detected by: (1) intrabar dip below support (s1 pivot level) via low < s1, (2) recovery back above support by close via close > s1, (3) volume confirmation via vol_ratio_20 > 1.0. Exit at prior resistance using pivot as reference level. Stop loss placed below spring bar low at 2% as standard risk. Base establishment is regime filter (RANGING). Position size threshold left parameterizable as requested."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "s1"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s1"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Spring pattern detected by: (1) intrabar dip below support (s1 pivot level) via low < s1, (2) recovery back above support by close via close > s1, (3) volume confirmation via vol_ratio_20 > 1.0. Exit at prior resistance using pivot as reference level. Stop loss placed below spring bar low at 2% as standard risk. Base establishment is regime filter (RANGING). Position size threshold left parameterizable as requested."
+  },
+  "source_rule_text": "Enter long positions on the close of bars that show springs (sharp dips below support that immediately recover back above support level) within an established range/base, capitalizing on the recovery momentum while obtaining favorable entry prices near support."
+}

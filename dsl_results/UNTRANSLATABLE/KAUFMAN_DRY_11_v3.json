@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires explicit detrending via subtraction (close - sma_20) or calculation of 20-day price differences (p_i - p_i-20) to create a synthetic detrended oscillator, then peak/valley detection on this derived series. The allowed operators do not support arithmetic operations (subtraction) or custom indicator construction. The backtest engine would need to support derived/synthetic indicators or arithmetic expressions to fully implement this cycle detection method.",
+  "translation_notes": "Approximated using price crossovers above/below sma_20 as a proxy for cycle identification in ranging markets, but this does not capture the intended detrending methodology or peak/valley detection logic described in the signal. A proper implementation requires the ability to construct (close - sma_20) as a detrended price series and identify extrema within it."
+}

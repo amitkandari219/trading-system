@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_107_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multi-leg options arbitrage logic (box spread fair value calculation) which cannot be expressed using single-instrument technical indicators. The rule depends on: (1) deterministic box value calculations from strike/rate/expiration relationships, (2) relative pricing of two separate vertical spreads, (3) implied fair value inference from bid-ask spreads on multiple legs. None of these can be translated using the allowed indicators (price, volume, RSI, ATR, moving averages, etc.), which operate on single instrument time-series data. This is a structural arbitrage rule requiring order book and multi-leg options pricing data.",
+  "translation_notes": "NATENBERG_DRY_107 describes a box spread arbitrage strategy where fair value is inferred from the relationship: Bull Call Spread + Bear Put Spread = Box Value. The signal requires comparing observed market prices of two separate spreads against a deterministically calculated box value. Thresholds for divergence_threshold_pct and min_time_to_expiration_days are marked as [THRESHOLD_NEEDED] and cannot be inferred from source text. This requires options-specific data structures and pricing models unavailable in a price-action backtest engine."
+}

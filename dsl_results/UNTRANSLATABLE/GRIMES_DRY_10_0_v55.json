@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires asset-class-specific statistical tendency thresholds (mean-reversion percentile by asset class) and large_day_threshold parameterization that cannot be expressed with the allowed indicators. The core logic depends on external statistical classification of assets rather than price/volume technicals. Parameters 'large_day_threshold_stddev', 'asset_class_reversion_percentile', and 'pullback_requirement' lack concrete values and require preprocessing external to the indicator set.",
+  "translation_notes": "Attempted structural translation using breakout (price above prior day high), large up day (body > ATR), and pullback (body_pct < 50%) proxies, but the signal's decision logic is regime-adaptive per asset class and cannot be fully encoded without asset classification metadata. Recommend implementing as a multi-asset regime classifier upstream of entry rules."
+}

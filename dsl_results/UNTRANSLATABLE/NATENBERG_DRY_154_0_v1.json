@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_154_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit Implied Volatility (IV) and Historical Volatility (HV) indicators with precise IV-to-HV spread measurement and multi-day persistence tracking. Available indicators (india_vix, hvol_20) are proxies but do not capture: (1) true IV-HV spread threshold calibration, (2) consecutive day persistence logic (requires state tracking across bars), (3) IV percentile calculation against 1-year range. Original source text is corrupted/unreadable, preventing validation against Natenberg's original methodology.",
+  "translation_notes": "Mapped india_vix as IV proxy and hvol_20 as HV proxy. Entry requires IV > HV with absolute IV above typical floor. Exit on spread compression. However, this is a degraded translation\u2014the signal's core logic (persistent multi-day IV-HV spread, percentile ranking) cannot be fully expressed in the allowed indicator set without custom volatility indicators and state persistence."
+}

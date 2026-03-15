@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_104_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires real-time assignment probability calculation on short call and dynamic exercise decision logic based on probabilistic thresholds. Assignment probability is a derivatives-specific metric not available in standard OHLCV indicators. Additionally, the rule requires conditional logic (IF probability < threshold THEN exercise put ELSE let expire) that cannot be expressed in the allowed 3-field condition format. The strike price (100) and position structure (conversion: short call + long put + long underlying) are contract-level metadata, not price-based indicators.",
+  "translation_notes": "This is an event-driven position management rule at expiration requiring real-time assignment probability data and conditional exercise decisions. It belongs in a derivatives trading engine with access to options Greeks and assignment probability models, not a price-action backtest engine. The signal can only be approximated by checking if price is at strike at expiration (close == 100), but this misses the core logic: probability-based assignment risk assessment and dynamic hedging decisions."
+}

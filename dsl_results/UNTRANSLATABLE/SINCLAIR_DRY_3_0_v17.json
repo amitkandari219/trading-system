@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires advanced options pricing framework unavailable in OHLCV indicators. Specifically: (1) Theoretical volatility spread calculation requires physical distribution moments (skewness, kurtosis) and risk-aversion coefficient gamma - not computable from price/volume alone; (2) Equation 4.18 referenced requires volatility spread decomposition model not expressible with allowed indicators; (3) Implied volatility spread comparison requires options data (not price/volume data); (4) Physical moments estimation requires historical distribution analysis beyond standard technical indicators; (5) Multiple [THRESHOLD_NEEDED] parameters are undefined and critical to rule logic.",
+  "translation_notes": "Signal describes an options volatility arbitrage strategy based on mispricing between implied and theoretical volatility adjusted for risk aversion. This requires options market data (implied volatility surface), advanced distributional analysis (skewness/kurtosis calculation), and risk metrics not available from OHLCV data alone. Recommend implementing this signal in a dedicated options pricing engine with access to: (1) options chain data for IV extraction, (2) returns distribution moments, (3) defined gamma and deviation thresholds."
+}

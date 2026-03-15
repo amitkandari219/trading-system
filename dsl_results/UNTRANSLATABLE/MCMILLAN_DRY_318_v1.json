@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_318",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of near-term vs longer-term options implied volatility (IV skew/term structure analysis). The allowed indicator set does not include options-specific metrics (implied volatility, option Greeks, term structure slopes, or IV percentile). Calendar spread pricing logic depends on vega, theta, and IV differentials between contract expirations, which cannot be expressed with price action and historical volatility indicators alone.",
+  "translation_notes": "This is a volatility arbitrage signal that requires direct access to options market data (implied volatility term structure). The signal logic involves relative valuation of two different option expirations on the same underlying futures contract. Without options-specific indicators like implied_vol_near, implied_vol_long, iv_term_structure, or similar, the core entry condition cannot be accurately translated. The placeholder entry condition is non-functional and should not be used for backtesting."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a custom calculation: V_t > (sum of V from t-5 to t-9 divided by 5) \u00d7 multiplier_V. The allowed indicators do not include a 5-day lagged volume average or a configurable volume multiplier parameter. vol_ratio_20 is the closest available volume indicator but represents a 20-day ratio, not the specified 5-day lagged average with custom multiplier. The exact multiplier value is also marked as AUTHOR_SILENT (not provided).",
+  "translation_notes": "Signal is volume-spike detection based on lagged average with custom multiplier. Substituted vol_ratio_20 as closest approximation, but this does not accurately represent the 5-day lagged lookback and custom multiplier specified. Hold period set to 3 days per spike_development_window parameter. Direction is NEUTRAL as per signal specification."
+}

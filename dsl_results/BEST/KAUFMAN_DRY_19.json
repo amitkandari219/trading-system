@@ -1,0 +1,104 @@
+{
+  "signal_id": "KAUFMAN_DRY_19",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_19",
+    "entry_long": [
+      {
+        "left": "sma_50",
+        "operator": ">",
+        "right": "sma_200"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "30"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_50",
+        "operator": "<",
+        "right": "sma_200"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "70"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "70"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "30"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses longer-term MA (sma_50/sma_200 for trend identification) combined with shorter-period RSI (rsi_14) for entry timing. Direction is context-dependent based on trend direction. Exit conditions inferred as RSI reaching overbought/oversold extremes since author provided no explicit exit rules. Used rsi_14 as the shorter-period RSI option available; stochastic not used as RSI provides clearer signal. Trend confirmation via moving average crossover serves as trend line proxy."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_50",
+        "op": ">",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 30.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_50",
+        "op": "<",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 70.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 70.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 30.0
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses longer-term MA (sma_50/sma_200 for trend identification) combined with shorter-period RSI (rsi_14) for entry timing. Direction is context-dependent based on trend direction. Exit conditions inferred as RSI reaching overbought/oversold extremes since author provided no explicit exit rules. Used rsi_14 as the shorter-period RSI option available; stochastic not used as RSI provides clearer signal. Trend confirmation via moving average crossover serves as trend line proxy."
+  },
+  "source_rule_text": "Combine a longer-term moving average to identify trend with a shorter-period RSI or stochastic for improved entry timing, tuning both indicators to work together."
+}

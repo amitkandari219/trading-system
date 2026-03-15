@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of historical support/resistance levels and multi-test validation, which cannot be expressed using only current-bar indicators. Specific thresholds for rejection_wick_to_body_ratio, minimum_historical_tests, entry_delay_candles, and entry_distance_from_level_pips are marked [THRESHOLD_NEEDED] in source and require domain expertise to calibrate. The core rejection candle pattern is translatable using wick/body ratios, but the level identification and historical test counting require external level-detection logic or lookback windows beyond the allowed indicator set.",
+  "translation_notes": "Translated rejection candle mechanics: long entry requires lower wick significantly larger than body (strong rejection at support), short entry requires upper wick significantly larger than body (strong rejection at resistance). Exit conditions use rejection candle extremes as defined. Direction set to CONTEXT_DEPENDENT since signal applies both long and short depending on which level (support vs resistance) is being traded. Parameters for wick ratio threshold, minimum historical tests, and entry delay require calibration outside the engine. Consider implementing a separate support/resistance detection module to feed identified levels into this rule."
+}

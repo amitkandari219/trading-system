@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires ranking stocks within a basket and tracking relative position changes (at least 2-position movement). This requires cross-sectional comparison logic and basket membership state that cannot be expressed using single-instrument indicators and simple operators. The signal needs: (1) ranking mechanism across multiple stocks, (2) basket membership tracking, (3) position delta calculation relative to peers. These capabilities are beyond the scope of single-instrument technical indicators.",
+  "translation_notes": "KAUFMAN_DRY_13 is a portfolio/basket rebalancing rule rather than a single-instrument trading signal. It requires: tracking a stock's rank within a performance basket, detecting when it moves out by \u22652 positions, and swapping it with the entering stock. This requires portfolio-level logic, not signal-level indicator conditions. Recommend implementing as custom portfolio rebalancing logic in backtest engine rather than signal rules."
+}

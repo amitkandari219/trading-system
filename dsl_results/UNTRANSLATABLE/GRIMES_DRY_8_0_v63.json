@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic volatility multiple thresholding (daily price change exceeds [THRESHOLD_NEEDED] \u00d7 ATR). The threshold multiplier is not specified and cannot be expressed as a fixed numeric comparison. Additionally, the rule 'volume confirms the move or volume is not contradictory' is qualitative and cannot be precisely encoded without a defined volume confirmation threshold. The exit condition 'Market reverses more than [THRESHOLD_NEEDED] of the move' also requires a parameterized threshold that is undefined.",
+  "translation_notes": "Attempted translation uses returns normalized against atr_20 as a proxy for standardized price change, and vol_ratio_20 for volume confirmation. However, the core mechanism\u2014dynamic threshold multiples and reversal percentage\u2014cannot be faithfully represented without parameter specification. This signal would require custom code or parameterized threshold inputs to function correctly in a backtest engine."
+}

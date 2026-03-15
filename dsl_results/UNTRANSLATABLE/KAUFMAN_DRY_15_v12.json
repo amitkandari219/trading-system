@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires filtering for 'largest 20% moves' (1.28 standard deviations) as a qualifying condition before entry signals trigger. No backtest engine indicator exists to identify and filter only the top 20th percentile of 1-day moves. This contextual filter cannot be expressed using the allowed indicators and operators. The raw entry conditions (1.96% decline / 2.24% rise) are translatable but incomplete without the percentile-based move qualification.",
+  "translation_notes": "Entry conditions use returns (decimal scale: -0.0196 for -1.96%, +0.0224 for +2.24%). Exit conditions reversed as reversion signals. Hold period set to 2 days. Direction marked CONTEXT_DEPENDENT as signal alternates between long and short based on price direction. Critical missing element: pre-qualification filter for largest 20% daily moves."
+}

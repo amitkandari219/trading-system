@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_385",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility percentile data (volatility_percentile_threshold_high, volatility_percentile_threshold_low, percentile_reference_period) which is not available in the allowed indicators list. The closest available indicator is india_vix, but it does not provide percentile rankings and the exact percentile thresholds are marked as AUTHOR_SILENT. Additionally, the signal requires distinguishing between ratio spread and backspread strategy selection, which are derivative strategy choices rather than entry/exit conditions that can be expressed with price/technical indicators alone.",
+  "translation_notes": "This signal is a volatility regime-based strategy selector that determines which options strategy to deploy (ratio spread vs backspread) based on implied volatility percentile. It requires: (1) Historical IV percentile calculations not present in allowed indicators, (2) Strategy selection logic rather than entry/exit price conditions, (3) Unknown parameter thresholds (marked AUTHOR_SILENT). To make this translatable, the signal would need either the IV percentile as a pre-calculated indicator, or specific percentile threshold values to map to available volatility proxies like india_vix."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom dynamic channel calculation: U(t+1) = M(t) + (M(t) - M(t-1)) + f \u00d7 R and L(t+1) = M(t) + (M(t) - M(t-1)) - f \u00d7 R, where f (scaling multiple) and R (range component calculation method) are not specified by author. The 4% offset, midpoint momentum projection, and range-based scaling cannot be constructed from allowed indicators. Donchian channels used as proxy for breakout bands, but this does not capture the intended momentum-adjusted channel logic.",
+  "translation_notes": "Mapped long entry (price > upper band) to close > dc_upper and short entry (price < lower band) to close > dc_lower. Exit conditions use channel midpoint (dc_middle) as reversal threshold. However, this is a significant simplification: the original signal uses a custom momentum-adjusted channel (midpoint projection + scaled range), while Donchian channels are based purely on highest/lowest prices over a period. Parameters f and R are author-silent and cannot be resolved."
+}

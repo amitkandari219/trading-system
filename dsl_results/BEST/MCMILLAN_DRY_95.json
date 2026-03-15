@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_95",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is an options spread adjustment strategy that requires multi-leg options position tracking, strike price monitoring, and premium/debit calculations. The backtest engine indicators only support price and technical indicators on a single underlying asset. Required data: tracking open positions (July 50/60/70 calls), buyback execution at specific strikes, net debit accounting, and break-even calculation at expiration. These require an options-specific execution engine, not price-based technical rules.",
+  "translation_notes": "Signal describes a calendar/volatility adjustment strategy (McMillan Dry strategy). Entry requires closing a bear spread position and establishing a bull spread with specific strike relationships. Exit conditions marked AUTHOR_SILENT require inference. The underlying stock price decline from 60 to 45 is documented but position entry/exit logic depends on options Greeks, implied volatility, and time decay\u2014none of which are available in the allowed indicator set. This is fundamentally an options portfolio management rule, not a price-action trading rule."
+}

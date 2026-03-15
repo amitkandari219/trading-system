@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_196",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires event-driven triggering (acquisition proposal announcement, approval, or cancellation) and multi-leg position management (simultaneous long target + short acquirer with dynamic hedge ratios). These are fundamentals/events not available in the allowed technical indicators list. The signal also requires tracking of two separate securities with a calculated exchange ratio, which exceeds the scope of single-instrument rule conditions. A proper implementation requires an event data source and portfolio-level position management outside the backtest engine's indicator-based rule framework.",
+  "translation_notes": "MCMILLAN_DRY_196 is a merger arbitrage strategy requiring external event data (M&A announcements, shareholder votes, deal approvals/rejections) and multi-asset coordination. The allowed indicators are purely technical/price-based and cannot capture the event-driven nature of this trade. Recommend implementing this strategy with: (1) an event ingestion layer for M&A catalysts, (2) portfolio-level rules for ratio spreads, and (3) deal-tracking data feeds rather than candlestick technicals."
+}

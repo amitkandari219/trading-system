@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a bar construction methodology (dollar-value sampling) rather than entry/exit trading conditions. Dollar value exchanged is not available as an indicator in the allowed list. The signal requires tracking cumulative notional value (price \u00d7 volume) across bars, which is a data preprocessing step, not a tradeable condition. Translating this would require: (1) a dollar_volume or notional_value indicator, and (2) custom bar aggregation logic outside standard indicator evaluation.",
+  "translation_notes": "LOPEZ_DRY_0_0 is a regime-detection and bar-construction rule, not a traditional entry/exit signal. It specifies using dollar-value sampling (close \u00d7 volume aggregation) to normalize bar structure during high-volatility periods. This belongs in the data pipeline/bar construction layer, not in the condition evaluation engine. To implement: aggregate bars by cumulative (close \u00d7 volume) >= threshold rather than by tick count or volume count."
+}

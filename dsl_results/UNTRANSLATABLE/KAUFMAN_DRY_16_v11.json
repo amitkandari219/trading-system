@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires intraday time-of-day logic ('around midday' vs 'after midday') and volume decline detection that cannot be expressed with static bar-by-bar conditions. Donchian channels approximate range testing, but the temporal sequencing (range tests midday, then breakout trades post-midday) and volume confirmation ('volume drops toward midday') require time-aware execution logic not available in this rule engine.",
+  "translation_notes": "Attempted approximation using Donchian channels (dc_upper/dc_lower) to represent daily trading range boundaries. Entry conditions model range tests and breakouts. Hold duration set to 1 day (balance of day). However, this is a lossy translation\u2014the signal's core logic depends on intraday timing and volume behavior that cannot be captured by end-of-bar conditions alone. A production implementation would need intraday bar iteration and clock-time filtering."
+}

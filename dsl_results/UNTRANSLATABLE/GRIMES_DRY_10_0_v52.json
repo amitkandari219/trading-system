@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires confirmation on 'bar C or C+1' (multi-bar sequential logic) and 'new extreme relative to prior price action' (requires dynamic lookback comparison). The schema only supports single-bar conditions without temporal sequencing or dynamic historical comparisons. Additionally, 'sliding along the bands' (price oscillating near upper Bollinger Band) cannot be expressed with available operators; would need range/proximity logic not in allowed operators.",
+  "translation_notes": "Translated core breakout logic: price crossing MA with volume surge + MACD confirmation. Exit conditions use MA crossback and MACD divergence as proxies. Stop loss set conservatively at 2%. Parameters ma_period, volume_multiplier, macd_lookback_bars, confirmation_bars_required, and initial_position_size_percent marked as [THRESHOLD_NEEDED] in original and cannot be auto-filled without domain specification."
+}

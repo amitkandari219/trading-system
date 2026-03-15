@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_303",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires tracking derived price series (Net change call, Net change put, Net change futures) across multiple option strike levels and their underlying futures contract. The allowed indicators only include single-instrument price data (open, high, low, close, volume, moving averages, oscillators). The rule requires comparison of net changes across three distinct financial instruments (call option, put option, futures contract) at the same strike, which cannot be expressed using the available single-instrument technical indicators. Additionally, McMillan's rule is a market microstructure validation check (identifying stale quotes) rather than a tradeable directional signal.",
+  "translation_notes": "Signal ID: MCMILLAN_DRY_303 is an event-based validation rule from 'Options as a Strategic Investment' used to detect non-representative last sales quotes. It requires access to real-time options chain data with call/put net changes and corresponding futures net change\u2014data structures not supported by the backtest engine's technical indicator framework. This is a data quality check rather than a trading entry/exit signal."
+}

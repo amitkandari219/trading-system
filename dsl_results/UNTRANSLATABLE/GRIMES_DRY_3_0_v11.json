@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a FILTER/AVOIDANCE rule rather than an entry rule. It specifies conditions to AVOID trading (do not enter immediately after climax), not conditions to enter. The core requirement\u2014detecting a 'climactic price move' as a spike in range/volatility relative to recent history\u2014requires comparison of current bar range against a rolling historical distribution, which cannot be expressed using only the allowed point-in-time indicators (atr_7, atr_14, atr_20, true_range, hvol_20, bb_bandwidth). Climax detection requires either: (1) a percentile-ranked volatility indicator, (2) standard deviation of range over N bars, or (3) dynamic threshold calculation. Additionally, 'trend_maturity_minimum_bars' requires counting consecutive bars in the same direction\u2014a stateful property not available in the indicator set. The 'bars_to_wait_after_climax' parameter requires a time-gated entry lock, which is a backtest engine feature, not a condition rule.",
+  "translation_notes": "Signal GRIMES_DRY_3_0 is best implemented as a (1) pre-filter that flags climax bars using custom volatility spike detection, then (2) a hold/wait timer on entry orders for N bars post-climax. This cannot be captured as entry/exit conditions alone. Recommend: implement climax detection in preprocessing layer, tag bars with climax_detected flag, then add entry_lock_bars=N parameter to engine."
+}

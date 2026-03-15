@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references 'stochastic for commercials' which is a specialized COT (Commitment of Traders) indicator not available in the allowed indicator list. The standard stochastic indicators (stoch_k, stoch_d, stoch_k_5, stoch_d_5) are price-based, not position-based. Additionally, the '4 weeks ago' lookback cannot be precisely expressed as a fixed bar offset without knowing the exact number of trading days in 4 weeks. The second condition 'S&P closes lower than it did 4 weeks ago' would need a dynamic 20-bar lookback reference that exceeds standard relative price referencing.",
+  "translation_notes": "Attempted partial translation: Entry condition 1 uses stoch_k crosses_above 80 as proxy for 'stochastic crosses above 80', but 'stochastic for commercials' is a COT-derived metric requiring external data source. Entry condition 2 cannot be properly expressed without a 4-week (approximately 20 trading days) historical reference capability."
+}

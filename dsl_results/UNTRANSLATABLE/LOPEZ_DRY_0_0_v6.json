@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a custom cumulative deviation metric S_t that compares actual returns to expected value (E[y_t]) with a zero-floor filter (S_t = 0 when y_t < E[y_t|y_t-1]). This is not available in the standard indicator set. The threshold h value is not specified in the source material ([THRESHOLD_NEEDED] placeholder). The symmetric detection of run-ups and run-downs with prior-high/low relative thresholding cannot be expressed with standard indicators.",
+  "translation_notes": "Signal requires a custom cumulative return deviation statistic with zero-floor logic that is not representable using allowed indicators. The 'returns' indicator is the closest match for detecting divergence from expected value, but cannot implement the zero-floor filter or the sophisticated high/low-relative threshold calculation described in the original rule. Requires custom indicator implementation or parametric definition of threshold h before this can be backtested."
+}

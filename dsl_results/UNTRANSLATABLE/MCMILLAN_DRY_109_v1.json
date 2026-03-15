@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_109",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes an options strategy (diagonal bull spread with specific strike prices and expirations) that cannot be expressed using price action indicators alone. The strategy requires direct access to options contracts, strike prices, implied volatility, and time decay dynamics, which are not available in the indicator set. The core mechanics\u2014buying longer-dated calls at lower strikes and selling near-term calls at higher strikes\u2014depend on options-specific parameters not representable through price/volume/momentum indicators.",
+  "translation_notes": "MCMILLAN_DRY_109 is an options-specific diagonal spread strategy. While a proxy bullish entry condition (price above SMA_50) and exit condition (price below SMA_50) were suggested, this does not capture the essence of the strategy: managing multiple call positions across different strikes and expirations, handling gamma/theta decay, and the systematic reestablishment when calls expire worthless. A proper backtest would require an options pricing module, not just OHLCV indicators."
+}

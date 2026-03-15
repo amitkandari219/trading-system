@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a custom Qstick indicator (average of body/candle range) and a second-level moving average of that Qstick value. The allowed indicator list does not include Qstick or custom-derived indicators. The closest approximation using 'body' (Close - Open) with sma_8 is provided, but this does not accurately represent the intended Qstick(8) and AvgQstick(8) calculation.",
+  "translation_notes": "Signal uses Qstick moving average (custom indicator not in allowed list). Attempted substitution: 'body' as proxy for Qstick numerator, with sma_8 as the averaging mechanism. However, true Qstick typically normalizes body by true range or range, which is not available in this mapping. SMA periods are limited to predefined values (5, 10, 20, 40, 50, 80, 100, 200); closest match to 8-day period is sma_10, but sma_8 is not available. Recommend implementing custom Qstick indicator in backtest engine or clarifying if standard body-based logic is acceptable."
+}

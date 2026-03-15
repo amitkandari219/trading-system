@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires mean-reversion volatility model with long-term mean levels, event detection logic, and half-life decay calculations. These are composite statistical models not available as atomic indicators in the allowed set. Specifically missing: (1) long-term volatility mean calculation, (2) standard deviation bands around that mean, (3) event classification/detection mechanism, (4) mean-reversion speed parameter estimation, (5) Ornstein-Uhlenbeck or similar reversion half-life modeling. The thresholds [THRESHOLD_NEEDED] cannot be resolved without domain-specific volatility model implementation.",
+  "translation_notes": "This signal represents a sophisticated volatility regime model that cannot be faithfully translated into basic technical indicators. It requires custom volatility forecasting logic beyond standard price/volume/momentum indicators. A backtest engine would need extended support for: (a) realized volatility calculations with configurable lookback windows, (b) event detection/classification, (c) mean-reversion halflife estimation, and (d) volatility forecasting models. The intent (trade mean-reversions in volatility after singular events) could be approximated using hvol_20 vs baseline, but would lose the core mean-reversion model sophistication."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_130",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a complex multi-leg options strategy (covered straddle write: long stock + short call + short put) that cannot be expressed using only price-based technical indicators. The entry conditions require validation of portfolio holdings (stock ownership) and simultaneous execution of specific options positions, which are beyond the scope of price/volume/momentum indicators. Exit conditions are AUTHOR_SILENT and require options-specific pricing logic (straddle profitability/ITM/OTM status) not available in the indicator set.",
+  "translation_notes": "MCMILLAN_DRY_130 is a structured options strategy requiring position verification and multi-leg execution logic. A backtest engine would need to: (1) verify underlying stock position exists, (2) execute synchronized call and put writes at entry, (3) track straddle premium decay and assignment risk, (4) manage uncovered put leg exposure. Standard technical indicators cannot capture these operational requirements. Consider implementing this as a separate strategy module with explicit position state tracking."
+}

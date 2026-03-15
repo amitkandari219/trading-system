@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_95_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal describes options vertical spread construction logic (strike selection and directional mapping) which is a position structuring rule, not a price/technical indicator-based trading signal. The rule requires tracking of directional bias state, strike relationships, and options Greeks (implied volatility, time decay) \u2014 none of which are available in the allowed indicators list. Thresholds for strike_width, time_to_expiration_minimum_days, and profit_target_pct are marked [THRESHOLD_NEEDED] with no values provided. No price-based entry/exit conditions are specified in the source material.",
+  "translation_notes": "This signal is from Natenberg's options trading framework and focuses on options strategy construction rather than directional entry/exit signals. A proxy using trend confirmation (ADX + SMA crossover) has been provided, but this does not capture the core options spread mechanics described in the rule. Implementation requires an options-specific backtester with Greeks calculation and directional bias state management."
+}

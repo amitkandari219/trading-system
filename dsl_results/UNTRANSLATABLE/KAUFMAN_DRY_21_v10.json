@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_21",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a Kaufman Adaptive Moving Average (KAMA) with step-weighting, which is not in the ALLOWED INDICATORS list. The step-weighted custom moving average with integer increments (1, 2, 3... for successive days) cannot be constructed from the available standard MAs (sma_*, ema_*). A custom 'kaufman_ma' indicator would need to be added to the engine.",
+  "translation_notes": "Signal structure is clear: buy on upward crossover, sell on downward crossover, always in market (no exit without reversal). However, the specific weighting methodology (step-weighting with integer factors) requires a custom indicator not available in the standard set. The conditions for locked-limit day exclusion (high != low) is represented but the core moving average cannot be properly calculated with allowed indicators."
+}

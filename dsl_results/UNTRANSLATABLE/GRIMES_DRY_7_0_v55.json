@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe analysis (HTF structure bias, range continuation confirmation across timeframe pairs, noise filtering across multiple LTF bars) which cannot be fully expressed with single-timeframe indicators. Requires: (1) HTF range direction detection and bias persistence, (2) LTF breakout confirmation with multi-bar pressure validation, (3) cross-timeframe synchronization logic. These demand comparative logic between timeframes (HTF vs LTF) and historical state tracking not available in allowed indicator set.",
+  "translation_notes": "Approximated using Donchian Channel breakouts (dc_upper/dc_lower) as proxy for range breakout detection and SMA_20 as directional bias filter. However, this loses the critical multi-timeframe hierarchy logic that distinguishes GRIMES_DRY_7_0. True implementation requires: (a) parallel HTF/LTF calculations, (b) bias persistence counter across range samples, (c) multi-bar pressure accumulation logic, (d) HTF structure reversal detection as dynamic stop condition."
+}

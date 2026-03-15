@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references 'implied volatility' and 'IV percentile' which require IV percentile calculation not available in allowed indicators. 'india_vix' is a volatility index proxy but cannot replicate IV percentile thresholds, standard deviation bands, or confirmation bar counts without explicit parameterization. Original thresholds [THRESHOLD_NEEDED] placeholders cannot be filled from source text.",
+  "translation_notes": "Attempted translation uses india_vix as volatility proxy with mean-reversion logic (extreme levels crossing back to moving average). However, this is a simplification. The signal requires: (1) IV percentile calculation (95th+ or 5th-), (2) IV z-score vs moving average, (3) specific confirmation period. These cannot be precisely expressed with available indicators. Recommend obtaining explicit parameter values from Sinclair source before backtesting."
+}

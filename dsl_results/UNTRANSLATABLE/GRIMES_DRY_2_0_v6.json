@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_2_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'multi-candle accumulation zone' (multiple tests without close near level) and identification of shadow-only touches. These require lookback pattern recognition and zone-definition logic not expressible via single-bar indicator comparisons. Specifically: (1) accumulation_zone_width_percent, (2) minimum_accumulation_tests count, (3) shadow_touch_threshold_percent detection across historical candles, and (4) zone boundary definition are all untranslatable to single-condition rules. Approximated entry with lower_wick magnitude and volume confirmation as a proxy, but true accumulation zone validation is beyond the rule engine's scope.",
+  "translation_notes": "Approximated the spring/reversal pattern within accumulation context using lower_wick as proxy for 'spring bar tests below support', close > 75th percentile of range (body_pct) as proxy for 'upper portion close', and vol_ratio_20 for volume confirmation. However, the core requirement\u2014identifying and confirming a multi-candle accumulation zone with shadow-only touches\u2014requires multi-bar pattern detection and zone-building logic not available in single-bar comparisons. Recommend implementing as custom zone-detection module upstream of rule engine."
+}

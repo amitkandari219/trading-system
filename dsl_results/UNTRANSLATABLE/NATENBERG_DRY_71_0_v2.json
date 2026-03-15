@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_71_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility (IV rank, IV regime assessment) and time spread-specific mechanics (theta decay, calendar spread widening/narrowing) which are not available in the allowed indicator set. The core logic of 'entering when IV is low and expected underlying movement is minimal' cannot be precisely translated without IV-specific indicators. ATR and bb_bandwidth used as proxies for market movement/volatility consolidation, but this is a weak approximation of the original intent.",
+  "translation_notes": "Attempted proxy translation: hvol_20 < 0.15 represents low volatility regime; atr_14 < sma_20 represents consolidation/minimal expected movement; bb_bandwidth < 0.05 represents tight range. Exit on volatility expansion (atr_14 > sma_20). This signal is fundamentally about options Greeks (theta, IV) and time spreads, which require domain-specific indicators not in the standard OHLCV set. A proper implementation would need explicit IV rank, IV percentile, and days-to-expiration inputs."
+}

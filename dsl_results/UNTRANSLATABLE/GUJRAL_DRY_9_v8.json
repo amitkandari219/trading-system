@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal relies on subjective qualitative concepts that cannot be precisely operationalized with allowed indicators: (1) 'sustains S1 only once or twice' requires counting occurrences across an undefined lookback period; (2) 'criss-crosses pivots repeatedly' and 'pivot crossing frequency threshold' require detecting oscillation patterns and frequency thresholds that exceed available operators; (3) 'market transitions to sideways behavior' requires explicit regime detection (RANGING is available but transition detection is not). The core logic (price holds support during correction = uptrend intact; frequent pivot crosses = loss of trend) is sound but the specific conditions cannot be expressed with available indicators and operators without arbitrary parameter choices.",
+  "translation_notes": "Signal GUJRAL_DRY_9 contains valid trend-following logic but the implementation requires either: (a) custom indicators for counting support touches and measuring pivot-crossing frequency, or (b) regime classification engine to detect RANGING state transitions. A practical approximation would combine close >= s1 for entry with regime detection (is RANGING) or ADX decay for exit, but this materially changes the original intent."
+}

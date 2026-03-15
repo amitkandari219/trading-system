@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_60_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-leg spread analysis between two futures contracts (front month vs back month), calculation of theoretical spread based on storage/insurance/financing costs, and deviation measurement from equilibrium. The allowed indicators are single-instrument technical indicators and cannot model inter-contract spread relationships, cost basis calculations, or theoretical fair value computations. This requires a custom spread calculator outside the scope of single-bar technical analysis.",
+  "translation_notes": "Calendar spread strategies require dedicated spread pricing models and dual-contract data feeds. The signal references specific parameters (storage_cost, insurance_cost, financing_cost, theoretical_spread_range) that cannot be derived from standard price/volume indicators. A true implementation would need: (1) dual-contract data handler, (2) cost-of-carry calculator, (3) spread deviation quantifier, (4) mean-reversion detector. The provided placeholder uses price mean reversion as a weak proxy, but this does not capture the actual calendar spread logic described in the source material."
+}

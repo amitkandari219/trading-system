@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires comparing the oscillator (close - sma_10 - sma_50) to its previous bar value (osc > osc[1]), which requires custom oscillator calculation and bar-by-bar comparison. The ALLOWED_INDICATORS list does not include a pre-calculated oscillator or support for custom composite indicators. The signal's 'buy to cover next open' condition is also semantically ambiguous in a standard long/short framework.",
+  "translation_notes": "Attempted approximation using close vs sma_50 as a proxy for oscillator direction, but this loses the nuanced fast/slow MA differential logic. The original oscillator (10-period MA minus 50-period MA) should be implemented as a custom indicator in the backtest engine before this rule can be properly applied."
+}

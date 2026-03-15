@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires regime-adaptive exit logic (different stop-loss behavior in TRENDING vs MEAN_REVERTING regimes with thesis strength deterioration monitoring). The backtest engine cannot dynamically switch exit thresholds based on detected regime shifts mid-trade, nor can it quantify 'thesis deteriorates below threshold' without a specific thesis strength indicator. Autocorrelation testing and mean-reversion detection are not available in the allowed indicator set. Parameters contain multiple [THRESHOLD_NEEDED] placeholders that lack calibrated values.",
+  "translation_notes": "Attempted basic regime detection using ADX (trend strength) and ATR volatility structure, with a conservative 3% stop-loss as placeholder. This translates only the entry regime detection portion. The core signal intent\u2014conditional stop-loss discipline tied to live regime assessment and thesis quality\u2014cannot be fully expressed within the constraint that indicators must be fixed at backtest start, not adaptive to market regime changes during position holding."
+}

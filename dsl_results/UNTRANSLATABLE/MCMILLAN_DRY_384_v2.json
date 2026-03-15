@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_384",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of implied volatility skew between OTM and ITM puts (volatility term structure), which is not available in the allowed indicators. India_vix and hvol_20 measure absolute volatility levels but cannot capture the specific IV skew distortion required for this spread strategy. Strike selection logic and IV skew detection require options-specific data not in the indicator set.",
+  "translation_notes": "This is a volatility skew arbitrage signal requiring options IV data. Entry uses HIGH_VOL regime proxy. The core condition\u2014'OTM puts have higher IV than ITM puts'\u2014cannot be expressed with available price-based indicators. Exit at expiration cannot be translated to a price/indicator condition and uses placeholder ANY. Manual position management or options-specific data feed required."
+}

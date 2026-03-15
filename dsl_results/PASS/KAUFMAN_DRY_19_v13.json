@@ -1,0 +1,62 @@
+{
+  "signal_id": "KAUFMAN_DRY_19",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_19",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "high",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "The 'Daily HiLo Activator' is a moving average of the highs. Since the exact period is marked AUTHOR_SILENT, sma_20 is used as a reasonable default for a daily trend-following moving average. Entry triggers when price (high) crosses above this MA (activator turning up). Exit triggers on reversal when price crosses below the MA (activator turning down). This implements the logic: enter on uptrend initiation after a downtrend, exit on trend reversal."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "high",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "The 'Daily HiLo Activator' is a moving average of the highs. Since the exact period is marked AUTHOR_SILENT, sma_20 is used as a reasonable default for a daily trend-following moving average. Entry triggers when price (high) crosses above this MA (activator turning up). Exit triggers on reversal when price crosses below the MA (activator turning down). This implements the logic: enter on uptrend initiation after a downtrend, exit on trend reversal."
+  },
+  "source_rule_text": "The trend changes to up only when the Daily HiLo Activator (moving average of the highs) turns up again after turning down."
+}

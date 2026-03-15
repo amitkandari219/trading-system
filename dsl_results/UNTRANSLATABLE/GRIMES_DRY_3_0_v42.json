@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of consecutive pivot sequences (multiple HH-HL pairs forming unbroken structure) and validation of structural integrity across multiple bars. The allowed indicator set provides only single-bar pivot levels (pivot, r1, s1, r2, s2) without sequence-tracking or multi-bar structure validation logic. Detecting '[THRESHOLD_NEEDED] consecutive higher pivot highs' with 'no lower low between any HH-HL pair' requires state machine or lookback array logic not expressible in simple 3-field condition rules.",
+  "translation_notes": "Attempted partial translation using available pivot indicators for single-bar comparisons, but core rule (multi-bar pivot sequence validation with structural integrity checks) cannot be reliably encoded. Recommend implementing custom pivot sequence detector or using bar-by-bar structure validation outside this rule engine."
+}

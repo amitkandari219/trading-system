@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires undefined parameters: (1) 'definition_of_new_high' marked AUTHOR_SILENT \u2014 cannot determine exact price level or lookback period for new high detection; (2) 'definition_of_long_quiet_period' marked AUTHOR_SILENT \u2014 cannot quantify duration or volatility threshold; (3) 'momentum_calculation_method' marked AUTHOR_SILENT \u2014 no specific momentum indicator specified (could be RSI, MACD, rate-of-change, or custom). Constructed best-guess conditions using Donchian breakout (new high proxy) + low ATR (quiet period proxy), but these are interpretive substitutes.",
+  "translation_notes": "Used close > dc_upper to approximate 'new high' (breakout above recent range). Used atr_14 < atr_20 to approximate 'long quiet period' (recent volatility lower than medium-term average). Exit condition uses close < sma_20 as a fast reversal signal matching 'exit fast' requirement. Hold_days_max set to 5 to reflect 'fast entry, fast exit' philosophy. Target regime set to TRENDING_UP per signal category TREND and direction LONG."
+}

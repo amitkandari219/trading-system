@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires state management and multi-day swing classification logic that cannot be expressed as a single-bar condition set. The rule requires tracking established swing direction, handling inside/outside days, and conditional ignoring of price extremes based on prior bar relationships and directional memory. Standard backtest engines operate on per-bar conditions without swing-state tracking.",
+  "translation_notes": "KAUFMAN's swing classification is a sequential pattern-recognition system requiring: (1) memory of established direction, (2) conditional logic that ignores specific price extremes based on swing type, (3) special handling for inside/outside days. While the entry conditions can be partially expressed (higher high + higher low = upswing start; lower low without higher high = downswing start), the full logic\u2014especially continuation rules and inside-day skipping\u2014requires a custom indicator or state machine. Recommend implementing as a custom swing_direction indicator (returning +1 for upswing, -1 for downswing) rather than as primitive conditions."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'bearish MACD divergence' and 'second momentum peak has crested' \u2014 these are pattern-recognition concepts that require multi-bar lookback and peak/trough identification logic not expressible with the allowed indicators and operators. The condition 'prices have not already reached the correction level or profit target' also requires user-defined price levels not available in the indicator set. MACD crossover is translatable, but the divergence pattern detection cannot be mechanically expressed within constraints.",
+  "translation_notes": "Translated the concrete MACD crossover entry signal (MACD line crosses signal line moving lower) as macd crosses_below macd_signal. Exit on MACD == 0 is literal from source. Bearish divergence recognition, second peak detection, and price target avoidance conditions are untranslatable without custom pattern-detection logic or user-defined parameters."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires exact mean/equilibrium calculation and standard deviation measurement from a baseline. The allowed indicators lack explicit mean-reverting regime detection and sigma deviation quantification. price_pos_20 (Donchian position) is a proxy for relative position within range but does not directly measure deviation in standard deviations. The signal also requires dynamic position-sizing logic ('add to losing positions') and cycle-based addition limits which are portfolio-level rules, not entry/exit conditions. Parameters 'position_increment_percent' and 'max_additions_per_cycle' cannot be expressed in the condition schema.",
+  "translation_notes": "Attempted proxy: Used price_pos_20 (20-bar Donchian position) as approximation where <0.33 and >0.67 represent extremes. However, this does not capture true sigma deviation from mean or the mean-reversion regime validation required. Entry requires regime confirmation and deviation threshold that cannot be precisely expressed with available indicators. Exit conditions interpreted as mean reversion (return to 0.5 midpoint) or thesis invalidation (extremes exceeded). Direction is CONTEXT_DEPENDENT per signal specification."
+}

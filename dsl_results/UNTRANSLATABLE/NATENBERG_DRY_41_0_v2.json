@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_41_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit implied volatility (IV) tracking and comparison to a dynamically calculated target IV level (18.3%). The allowed indicators list contains only hvol_20 (historical volatility) and india_vix (market volatility index), neither of which directly measure option implied volatility or allow setting a custom forecast target. The signal also references 'consecutive periods' confirmation logic and 'profit realization percentage' which cannot be expressed with the allowed operators and indicators. A proper implementation requires: (1) an IV indicator, (2) logic to track position profit/loss, and (3) period-counting logic.",
+  "translation_notes": "Attempted partial translation using hvol_20 as proxy for realized volatility entry condition (below 14.6%) and india_vix as proxy for implied volatility exit (at/above 18.3%), but this is a significant simplification that does not capture the signal's core intent: early exit when IV reaches a specific forecast target to realize profits faster. The original signal is fundamentally about option IV dynamics, which are not adequately represented in the allowed indicator set."
+}

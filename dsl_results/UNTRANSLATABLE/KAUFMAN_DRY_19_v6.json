@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_19",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'trendline turns up/down' and 'first oversold condition following upturn', which require multi-bar pattern recognition and state tracking not expressible as single-bar indicator comparisons. The allowed indicator set contains no trendline indicator, and the sequencing logic (oversold AFTER upturn) cannot be expressed with simple operators on current-bar indicators.",
+  "translation_notes": "Attempted to map 3-day raw stochastic (stoch_k_5 is closest available 5-period stochastic proxy) to oversold threshold ~20, but the core logic depends on: (1) detecting trendline direction changes, (2) sequencing the oversold condition after the upturn occurs, and (3) exiting on trendline reversal. These require state machines or multi-bar lookback logic outside the allowed operator set."
+}

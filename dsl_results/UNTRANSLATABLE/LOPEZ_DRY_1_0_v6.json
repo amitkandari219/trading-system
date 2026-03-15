@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fractional differentiation (ADF test stationarity detection) and out-of-sample performance degradation monitoring. These are statistical preprocessing and model validation techniques that cannot be expressed as simple indicator comparisons. The signal operates at the data transformation level rather than the trading signal level. Required: (1) Fractional differentiation algorithm with ADF test p-value threshold, (2) Rolling window out-of-sample performance tracking. Neither can be implemented via allowed indicators and operators.",
+  "translation_notes": "LOPEZ_DRY_1_0 is a meta-rule about feature engineering (fractional differentiation d-value optimization) rather than a tradeable entry/exit signal. It should be implemented as a preprocessing step in the backtest engine's data pipeline, not as a rule condition. The signal is direction-agnostic (CONTEXT_DEPENDENT) and applies to any regime. Implementation requires: custom ADF test function, optimization loop over d\u2208[0.0,1.0], and performance degradation monitoring on rolling validation sets."
+}

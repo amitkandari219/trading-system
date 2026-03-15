@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'open interest' indicator which is not available in the allowed indicator set. Open interest is a futures-specific metric not present in standard OHLCV data. Volume trend approximated using vol_ratio_20 < 1.0 as a proxy for declining volume.",
+  "translation_notes": "Translated 'rising prices' to close > prev_close (bidirectional for context-dependent). 'Volume declining' approximated using vol_ratio_20 < 1.0 (volume ratio below 1 indicates below-average volume). Open interest trend cannot be directly translated. Signal interpreted as pending reversal with entry on directional moves + declining volume, exit on reversal of price direction."
+}

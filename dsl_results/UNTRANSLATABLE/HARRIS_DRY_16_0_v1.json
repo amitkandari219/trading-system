@@ -1,0 +1,18 @@
+{
+  "signal_id": "HARRIS_DRY_16_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) 'estimated fundamental value' \u2014 not available as a standard indicator; (2) 'dealer inventory accumulation signal' \u2014 requires order flow or dealer position data not in allowed indicators; (3) 'sustained bid/ask imbalance' \u2014 requires market microstructure data (bid/ask spreads) not provided. Translated using price-to-MA discount and volume spike as proxies, but core dealer inventory mechanics cannot be fully captured.",
+  "translation_notes": "Approximated 'price discount to fundamental value' using close < sma_50 (medium-term fair value proxy). Approximated 'dealer inventory accumulation + volume spike' using vol_ratio_20 > 1.5 (volume confirmation). Exit when price mean-reverts back above SMA_50. Stop loss set to 2% as conservative default for mean reversion trades. Original signal requires microstructure data (bid/ask imbalance, dealer positions) unavailable in standard OHLCV indicators."
+}

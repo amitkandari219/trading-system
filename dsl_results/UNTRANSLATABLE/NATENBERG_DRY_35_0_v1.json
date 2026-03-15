@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_35_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) detection of agricultural commodity type (corn/soybeans/wheat) \u2014 not available in price/technical indicators; (2) calendar-based seasonal period detection (Jun-Aug) \u2014 no date/calendar indicator in allowed set; (3) comparison to 'historical seasonal average' \u2014 requires multi-year seasonal normalization not expressible with available indicators; (4) explicit 'implied volatility' of options contracts \u2014 not available (only historical volatility hvol_20 exists). This is a fundamentally option-pricing and calendar-aware rule that cannot be expressed using only OHLCV technical indicators.",
+  "translation_notes": "Attempted proxy mapping: hvol_20 for 'implied volatility' (imperfect), sma_20 for trend context. However, the core logic\u2014seasonal calendar detection and commodity identification\u2014lies outside the indicator universe. Recommend: add calendar_month, commodity_type, and implied_vol indicators to backtest engine, or handle this rule in a separate pre-processing layer."
+}

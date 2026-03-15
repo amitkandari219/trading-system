@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking 'consecutive bars each closed at or within [THRESHOLD_NEEDED] of their respective bar highs' \u2014 this requires multi-bar sequence validation logic not expressible with single-bar indicators and allowed operators. The [THRESHOLD_NEEDED] parameters are also undefined placeholders requiring calibration. body_pct and upper_wick/lower_wick provide close approximations for individual bar conviction, but the consecutive-bar requirement and specific threshold values cannot be translated without array indexing or sequence operators.",
+  "translation_notes": "Approximated using body_pct (close position within bar range on 0-1 scale): values \u22650.8 indicate closes near highs (buyer control), \u22640.2 indicate closes near lows (seller control). Volume confirmation added. Exit conditions use upper_wick and lower_wick to detect reversal signals. Consecutive bar requirement and exact threshold calibration require manual parameter tuning and sequence logic outside this schema."
+}

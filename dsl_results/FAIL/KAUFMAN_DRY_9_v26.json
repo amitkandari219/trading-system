@@ -1,0 +1,32 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [
+    {
+      "left": "prev_close",
+      "operator": ">",
+      "right": "close"
+    },
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "prev_close"
+    }
+  ],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "LONG",
+  "target_regime": [
+    "TRENDING_UP"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Signal describes an exit condition for long positions: Exit when previous close was up (prev_close > close at t-2) AND current close turns down (close < prev_close). Entry conditions marked as AUTHOR_SILENT so entry_long left empty. Exit logic set to AND because both conditions must occur to confirm the reversal pattern.",
+  "validation_issues": [
+    "no entry conditions defined"
+  ]
+}

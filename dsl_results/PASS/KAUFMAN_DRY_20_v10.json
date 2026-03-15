@@ -1,0 +1,106 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_20",
+    "entry_long": [
+      {
+        "left": "sma_40",
+        "operator": "crosses_above",
+        "right": "close"
+      },
+      {
+        "left": "hvol_20",
+        "operator": "<",
+        "right": "0.25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_40",
+        "operator": "crosses_below",
+        "right": "close"
+      },
+      {
+        "left": "hvol_20",
+        "operator": "<",
+        "right": "0.25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "hvol_20",
+        "operator": ">=",
+        "right": "1.60"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "hvol_20",
+        "operator": ">=",
+        "right": "1.60"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "LOW_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "CONTEXT_DEPENDENT direction mapped to both long and short entries with identical volatility filters. 40-day moving average signal interpreted as price crossing sma_40. Low volatility filter (0.25) applied as entry condition; high volatility filter (1.60) triggers exit. hvol_20 used as volatility metric (20-period historical volatility in decimal scale). Exit condition inverted from entry: exit when volatility rises above threshold, consistent with 'avoid entry when high volatility is present' logic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_40",
+        "op": "crosses_above",
+        "value": "close"
+      },
+      {
+        "indicator": "hvol_20",
+        "op": "<",
+        "value": 0.25
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_40",
+        "op": "crosses_below",
+        "value": "close"
+      },
+      {
+        "indicator": "hvol_20",
+        "op": "<",
+        "value": 0.25
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "hvol_20",
+        "op": ">=",
+        "value": 1.6
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "hvol_20",
+        "op": ">=",
+        "value": 1.6
+      }
+    ],
+    "regime_filter": [
+      "LOW_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "CONTEXT_DEPENDENT direction mapped to both long and short entries with identical volatility filters. 40-day moving average signal interpreted as price crossing sma_40. Low volatility filter (0.25) applied as entry condition; high volatility filter (1.60) triggers exit. hvol_20 used as volatility metric (20-period historical volatility in decimal scale). Exit condition inverted from entry: exit when volatility rises above threshold, consistent with 'avoid entry when high volatility is present' logic."
+  },
+  "source_rule_text": "Enter trades on a 40-day moving average signal when volatility is low (filter of 0.25) rather than high (filter of 1.60)."
+}

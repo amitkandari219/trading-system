@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking: (1) consolidation duration below support level (bar count threshold), (2) number of closes below support (occurrence threshold), and (3) distinguishing between 'temporary tactical drops' vs 'structural breakdowns' \u2014 these require stateful pattern recognition and multi-bar memory not expressible with single-bar indicators. Parameters [THRESHOLD_NEEDED] are undefined. The logic 'consolidates for N bars below support AND closes below support M times' requires sequential bar analysis and support level dynamic tracking that cannot be captured in a static 3-field condition format.",
+  "translation_notes": "Entry conditions translated as breakout above recent range high (using Donchian upper as proxy for range resistance). Exit translated as close below pivot (proxy for support). However, the core signal logic\u2014distinguishing temporary vs structural breakdowns through consolidation pattern analysis\u2014cannot be adequately represented without custom pattern detection logic. Recommend implementing as custom pattern detector or multi-timeframe state machine outside standard rule engine."
+}

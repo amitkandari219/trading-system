@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_331",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility projection calculation, which is not available in allowed indicators. The signal specifically needs to compare a derived 'implied volatility projection' (20-day MA smoothed) against 'actual volatility' (20-day MA smoothed). hvol_20 represents historical volatility but does not capture the IV projection component described in the signal. A proper implementation requires custom calculation of IV projection vs. realized volatility difference line.",
+  "translation_notes": "Attempted proxy: Used hvol_20 (historical volatility 20-day) as a substitute for actual volatility smoothing, but this lacks the critical implied volatility projection component. The signal is fundamentally untranslatable without access to an IV projection indicator or the ability to calculate IV forecasts. The CONTEXT_DEPENDENT direction indicates long entry when IV is high relative to realized vol (overpriced options) and short entry when realized vol exceeds IV (underpriced options)."
+}

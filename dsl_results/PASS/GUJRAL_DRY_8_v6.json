@@ -1,0 +1,62 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires price to open above daily pivot level on intraday charts. Entry condition uses open > pivot. Exit condition uses reasonable reversal logic (close < pivot) since AUTHOR_SILENT. Hold_days_max set to 1 since this is an intraday signal. Stop loss set to conservative 2% as no explicit stop was provided."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal requires price to open above daily pivot level on intraday charts. Entry condition uses open > pivot. Exit condition uses reasonable reversal logic (close < pivot) since AUTHOR_SILENT. Hold_days_max set to 1 since this is an intraday signal. Stop loss set to conservative 2% as no explicit stop was provided."
+  },
+  "source_rule_text": "When price opens above a pivot on an intraday chart, it signals a bullish day ahead."
+}

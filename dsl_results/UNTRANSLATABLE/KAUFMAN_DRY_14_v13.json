@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires external data not in allowed indicators: (1) Commercial hedger position weighting data - not available in price/technical indicators; (2) Small speculator position data - not available in price/technical indicators; (3) Position directionality comparison between two external data sources. The signal is fundamentally based on Commitment of Traders (COT) report positioning data, which is not a price-based or volume-based technical indicator. Cannot be translated using only OHLCV and derived technical indicators.",
+  "translation_notes": "KAUFMAN_DRY_14 is a macro/sentiment-based signal requiring COT (Commitment of Traders) positioning data. This requires: (a) access to institutional/commercial hedger long/short ratios, (b) small speculator positioning data, and (c) correlation logic between these external sources. No allowed indicators can proxy these fundamental position metrics. Consider: (1) Adding COT indicators to the allowed list, or (2) Using a surrogate like unusual volume spikes (vol_ratio_20) combined with price reversals, though this would not capture the original signal logic."
+}

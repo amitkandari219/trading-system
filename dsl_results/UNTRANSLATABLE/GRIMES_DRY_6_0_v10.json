@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparing 'momentum strength of setup leg vs. average of prior trend legs in same direction' and detecting 'momentum divergence' \u2014 neither can be precisely expressed without multi-bar lookback arithmetic or custom composite indicators. Specifically: (1) no allowed indicator computes 'average momentum across prior N legs', (2) divergence detection requires comparing price highs with momentum indicator highs across multiple bars, which exceeds single-condition syntax. Used MACD histogram and RSI as momentum proxies, but this does not capture the precise 'no divergence' rule or comparative leg strength logic.",
+  "translation_notes": "Interpreted as: ADX \u226525 for established trend, MACD histogram for momentum direction, RSI for momentum strength confirmation, and pullback exit when price closes below entry. The core comparative momentum logic ('setup leg \u2265 average prior legs') and strict divergence detection cannot be fully encoded in this rule format."
+}

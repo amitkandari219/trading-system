@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires time-based conditions (calendar days: Jan 1-10, convention period days 83-161, election period days 195-253, and election year detection) and 2-year lookback price comparison. Available indicators do not include: (1) calendar/election year detection, (2) 2-year historical high price reference, (3) business day-of-year tracking. The '8% of 2-year high' requires a dc_upper or similar over 252-day period, which is not in the allowed indicator list. Time-gated entry windows require external date logic outside the indicator framework.",
+  "translation_notes": "This signal is fundamentally a time and calendar-based strategy that cannot be fully expressed using only price and technical indicators. It requires: (1) election year identification, (2) 2-year high reference (not available as dc_upper_252), (3) precise business day-of-year windows. The partial JSON above shows a placeholder entry condition but is incomplete and should be flagged for manual implementation or custom indicator development."
+}

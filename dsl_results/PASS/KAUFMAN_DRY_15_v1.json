@@ -1,0 +1,84 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_15",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal KAUFMAN_DRY_15 is a same-day continuation strategy. Entry conditions compare the close of the first bar (represented as current close) against the previous close to determine direction. Exit is a reversal of the entry condition (opposite directional cross). Hold period is 1 day (intraday through end of day). Signal is context-dependent: if first bar closes higher, go long; if lower, go short."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal KAUFMAN_DRY_15 is a same-day continuation strategy. Entry conditions compare the close of the first bar (represented as current close) against the previous close to determine direction. Exit is a reversal of the entry condition (opposite directional cross). Hold period is 1 day (intraday through end of day). Signal is context-dependent: if first bar closes higher, go long; if lower, go short."
+  },
+  "source_rule_text": "If the first bar closes higher than the previous close, expect prices to continue higher throughout the day; if the first bar closes lower than the previous close, expect prices to continue lower throughout the day."
+}

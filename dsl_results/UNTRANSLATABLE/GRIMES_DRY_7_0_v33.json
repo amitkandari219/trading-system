@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal specifies multiple thresholds ([THRESHOLD_NEEDED]): bb_std_dev, bb_period, macd_fast, macd_slow, macd_signal periods, and sensitivity parameter. Bollinger Band and MACD parameters are pre-calculated in allowed indicators but specific period/sensitivity values are not provided. Additionally, 'No opposing momentum present' cannot be operationalized without explicit definition of what constitutes opposing momentum. Stop loss threshold is undefined.",
+  "translation_notes": "Translated directional logic: LONG entry when price penetrates below lower BB and MACD fast line (macd) turns downward and is below zero; SHORT entry uses inverse logic. Exit conditions use MACD reversal and BB middle band crossover as proxies. Used standard MACD (macd vs macd_signal) rather than undefined fast/slow/signal periods. Signal requires parameter specification before backtesting."
+}

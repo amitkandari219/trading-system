@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) sustained price at band boundary for N consecutive bars, (2) pullback depth measurement relative to prior move amplitude, (3) absence of midline crossing within lookback period. These multi-bar sequential conditions and relative pullback amplitude comparisons cannot be expressed with single-bar indicator comparisons using only allowed operators. Would require custom logic for bar-series analysis and amplitude calculations not supported by allowed indicator set.",
+  "translation_notes": "Attempted partial translation using Bollinger Bands (price touching/crossing bands indicates extreme conditions). However, core signal logic\u2014'remains at extreme band with no pullback' and 'pullback depth < threshold of prior move'\u2014requires sequential bar analysis and relative amplitude measurement. The signal is fundamentally about exhaustion from sustained extremes, which is more of a multi-bar pattern than a single-bar indicator threshold. Recommend implementing as custom pattern detector in backtest engine rather than indicator-based rule."
+}

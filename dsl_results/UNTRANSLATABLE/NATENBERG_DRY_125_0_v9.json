@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_125_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific logic (vertical call spreads, strike selection based on moneyness, delta/vega comparison, theoretical edge calculation) that cannot be expressed using equity price/technical indicators alone. The core hedging mechanics (selling ATM/ITM calls, buying OTM/ATM calls, comparing volatility sensitivity between legs) require options pricing models and greeks not available in the indicator set. IV level thresholds (HIGH vs LOW) can be approximated with india_vix, but the actual spread construction and edge verification logic is untranslatable.",
+  "translation_notes": "This is an options strategy signal that requires derivatives pricing and risk management logic. Only a proxy entry based on IV regime (india_vix) has been provided. The actual signal logic\u2014selecting strikes based on ATM/ITM/OTM relative to current price, constructing spreads with specific delta/vega profiles, and validating theoretical edge\u2014cannot be implemented in a price-action backtest engine. Recommend: (1) use dedicated options backtester, or (2) define explicit IV thresholds and price level rules to translate into this framework."
+}

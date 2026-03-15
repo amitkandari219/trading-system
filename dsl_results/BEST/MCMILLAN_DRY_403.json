@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_403",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility (IV) and historical volatility comparison, neither of which are available in the allowed indicators. Only 'hvol_20' (historical volatility) is available, but 'implied volatility' and the comparison 'below historical norms' cannot be expressed with allowed indicators. Additionally, vega risk is an options-specific greeks measure not available in the indicator set.",
+  "translation_notes": "This is an options strategy rule (naked puts) that requires real-time implied volatility data and options-specific risk metrics (vega). The signal fundamentally cannot be translated to price/technical action indicators. A trader would need to implement this rule outside the backtest engine using live IV data feeds."
+}

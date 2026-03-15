@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Bollinger Band width percentile comparison (not available\u2014only bb_bandwidth in decimal scale provided), (2) 'sustain_bars_minimum' consecutive bars directional check (no multi-bar lookback operators available), (3) impulse move magnitude in standard deviations of 'recent price range' (no rolling stddev of range available\u2014only ATR and hvol exist), (4) volume confirmation as current_vol > Nx MA(vol,M) (vol_ratio_20 exists but parametrization differs). Used ADX as equilibrium proxy and returns for impulse detection, but original signal specificity cannot be fully captured.",
+  "translation_notes": "Interpreted equilibrium exit as ADX < 20 (trending threshold). Impulse entry approximated as price returns exceeding \u00b12% (0.02 decimal) with volume > vol_ratio_20. Regime targeting set to TRENDING states. Original signal's precise threshold parametrization ([THRESHOLD_NEEDED] placeholders) and Bollinger Band width percentile logic could not be expressed with available indicators."
+}

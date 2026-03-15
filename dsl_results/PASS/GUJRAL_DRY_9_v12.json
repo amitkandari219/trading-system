@@ -1,0 +1,88 @@
+{
+  "signal_id": "GUJRAL_DRY_9",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_9",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 7,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses weekly pivot levels checked on daily/intraday charts. 'pivot' indicator represents the weekly pivot level. Entry conditions trigger on price opening above/below pivot (bullish/bearish respectively). Exit conditions use reversal logic: long exits when price closes below pivot, short exits when price closes above pivot. Check frequency constraint (once per week) should be enforced at backtest engine level. Signal is inherently context-dependent as it generates both LONG and SHORT signals based on price position relative to weekly pivot."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 7,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses weekly pivot levels checked on daily/intraday charts. 'pivot' indicator represents the weekly pivot level. Entry conditions trigger on price opening above/below pivot (bullish/bearish respectively). Exit conditions use reversal logic: long exits when price closes below pivot, short exits when price closes above pivot. Check frequency constraint (once per week) should be enforced at backtest engine level. Signal is inherently context-dependent as it generates both LONG and SHORT signals based on price position relative to weekly pivot."
+  },
+  "source_rule_text": "When price opens below weekly pivot levels on intraday charts, expect a significant downtrend; conversely, when price rises above weekly pivot levels, expect an uptrend."
+}

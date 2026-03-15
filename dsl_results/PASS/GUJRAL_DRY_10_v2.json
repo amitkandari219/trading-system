@@ -1,0 +1,72 @@
+{
+  "signal_id": "GUJRAL_DRY_10",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_10",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.02"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Upward breakout from range translated as close crossing above Donchian upper band. Contraction phase represented by low Bollinger Bandwidth (volatility compression). Exit uses reversal below 20-period SMA as AUTHOR_SILENT condition. Intraday confirmation requirement noted but operationalized through multi-timeframe indicator synthesis (Donchian + Bollinger Band setup works across timeframes)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.02
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Upward breakout from range translated as close crossing above Donchian upper band. Contraction phase represented by low Bollinger Bandwidth (volatility compression). Exit uses reversal below 20-period SMA as AUTHOR_SILENT condition. Intraday confirmation requirement noted but operationalized through multi-timeframe indicator synthesis (Donchian + Bollinger Band setup works across timeframes)."
+  },
+  "source_rule_text": "When a stock's higher time frame charts show an upward breakout from a range following a contraction, enter a long position, and confirm on the intraday chart."
+}

@@ -1,0 +1,72 @@
+{
+  "signal_id": "MCMILLAN_DRY_50",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_50",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "50"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "60"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "60"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Call spread entry requires price >= lower strike (50) and < higher strike (60) at entry to maximize profit potential. Exit condition triggers when price reaches or exceeds higher strike (60), realizing the maximum 10-point profit. Stop loss set at 2% to manage downside risk if underlying moves below lower strike. Hold period set to 30 days to approximate October expiration window. The 'expectation of relatively unchanged price' is implicit in the RANGING regime filter and the entry/exit price boundaries."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": 50.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 60.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": 60.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Call spread entry requires price >= lower strike (50) and < higher strike (60) at entry to maximize profit potential. Exit condition triggers when price reaches or exceeds higher strike (60), realizing the maximum 10-point profit. Stop loss set at 2% to manage downside risk if underlying moves below lower strike. Hold period set to 30 days to approximate October expiration window. The 'expectation of relatively unchanged price' is implicit in the RANGING regime filter and the entry/exit price boundaries."
+  },
+  "source_rule_text": "Execute a call spread strategy when the underlying stock is expected to remain relatively unchanged, above the lower strike but not much above the higher strike by expiration."
+}

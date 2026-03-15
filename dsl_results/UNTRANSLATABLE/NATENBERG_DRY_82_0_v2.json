@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_82_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires volatility spread comparison logic and margin-of-error calculations that cannot be expressed using point-in-time indicator values alone. Specifically: (1) 'implied volatility of spread > estimated volatility + margin threshold' requires multi-leg option pricing model not available in indicator set; (2) 'rank spreads by margin size' requires comparative ranking across multiple positions; (3) 'margin of error erodes' and 'time-decay inflection point' require derivative analysis of volatility term structure and theta dynamics. The signal is fundamentally a portfolio-level volatility arbitrage strategy requiring option-specific analytics beyond the provided indicators.",
+  "translation_notes": "Attempted partial translation using hvol_20 as proxy for volatility level and india_vix as proxy for volatility regime, but core signal logic is untranslatable without options pricing and multi-leg spread analytics."
+}

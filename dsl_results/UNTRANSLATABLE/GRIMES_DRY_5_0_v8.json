@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires measurement of actual slippage at fill vs intended entry price, and conditional exit logic based on slippage amount (exit if price reverses below breakout + N \u00d7 slippage). Slippage is a fill execution metric not available in OHLCV indicator set. Additionally, the signal logic is context-dependent and philosophical (treating slippage as signal of genuine movement) rather than a mechanistic rule. Key thresholds marked [THRESHOLD_NEEDED] in original were not provided with concrete values.",
+  "translation_notes": "Attempted approximation using price crossing pivot (resistance proxy) with volume surge confirmation. However, this loses the core insight about slippage tolerance and the dynamic exit based on actual fill prices vs breakout magnitude. A proper implementation would require access to order execution data and fill prices."
+}

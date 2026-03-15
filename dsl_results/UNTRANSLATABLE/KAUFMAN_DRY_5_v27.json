@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Point-and-figure charting requires tracking column extremes and measuring box reversals from the most extreme box of the previous column. This requires maintaining state across multiple bars (previous column extremum, current column direction, cumulative price movement in boxes) and custom box-size logic that cannot be expressed using standard OHLCV indicators and the allowed operators. The signal requires custom point-and-figure chart construction logic not available in the standard indicator set.",
+  "translation_notes": "KAUFMAN_DRY_5 is a pure point-and-figure pattern recognition signal. It depends on: (1) tracking the extreme price of the previous column, (2) detecting when price reverses by 3+ boxes (4 including blank extreme), (3) determining direction preference (test new high if trend was up, new low if trend was down). None of these can be computed from standard price/volume/technical indicators without custom state management and box-size configuration. This signal requires a specialized point-and-figure module or custom backtester logic."
+}

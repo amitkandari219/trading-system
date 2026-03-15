@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_187_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Days-to-expiration calculation (not available in allowed indicators), (2) Black-Scholes model value comparison (not available), (3) At-the-money delta detection (requires options-specific Greeks), (4) Delta-neutral hedging logic (requires position management not expressible in indicator conditions), (5) Specific mispricing percentage threshold (signal placeholder only). This is an options volatility arbitrage strategy requiring options Greeks (delta, theta, vega), model pricing, and advanced portfolio mechanics beyond standard OHLCV backtest engine capabilities.",
+  "translation_notes": "Attempted partial translation using hvol_20 as proxy for volatility regime detection near expiration, but the core logic\u2014comparing market prices to Black-Scholes valuations, monitoring delta drift, and rebalancing hedge ratios\u2014cannot be expressed with allowed price/technical indicators. Requires dedicated options backtesting framework with Greeks, Greeks time decay modeling, and options-specific entry/exit logic."
+}

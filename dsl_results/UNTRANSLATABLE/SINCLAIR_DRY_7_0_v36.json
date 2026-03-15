@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires index IV vs component IV comparison, realized vs implied correlation tracking, and IV spread metrics. These specific volatility surface and correlation-based measures are not available in the allowed indicator set. The signal requires access to: (1) index implied volatility levels, (2) individual component implied volatilities, (3) realized correlation calculation, (4) implied correlation levels. Only generic volatility proxies (india_vix, hvol_20) are available. Cannot accurately translate the core dispersion trading mechanics without component-level IV data and correlation statistics.",
+  "translation_notes": "Attempted proxy: Used india_vix as index volatility proxy and hvol_20 as realized volatility proxy. Suggested SHORT direction based on 'selling index volatility' intent. However, this is a poor approximation\u2014the signal's core logic around correlation premium and IV spread cannot be properly expressed with available indicators. Backtesting this rule without proper IV surface and correlation data will not capture the intended strategy."
+}

@@ -1,0 +1,2398 @@
+[
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.2, pp.8-24",
+    "raw_chunk_text": "As an example of the impact of transaction costs on a strategy,\nconsider this simple mean-reverting strategy on ES. It is based on\nBollingerbands:thatis,everytimethepriceexceedsplusorminus\n2movingstan",
+    "rule_text": "A mean-reverting strategy on ES that enters on Bollinger Band extremes (\u00b12 standard deviations) and exits when price reverts toward the moving average (\u00b11 standard deviation).",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price exceeds +2 moving standard deviations above the moving average (short entry)",
+      "Price falls below -2 moving standard deviations below the moving average (long entry)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "\u00b12 standard deviations for entry, \u00b11 standard deviation for exit",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "3.0 without transaction costs; -3.0 with 1 basis point transaction costs",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Exit the position when price reverts back to within 1 moving standard deviation of the moving average"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "INTRADAY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (Artificially Inflate a Strategy's Performance), p. 8-204",
+    "raw_chunk_text": "ArtificiallyInflateaStrategy\u2019sPerformance\nHereisatoy\u201cbuylow-pricestocks\u201dstrategy(Warning: Thistoystrategyis\nhazardoustoyourfinancialhealth!).Let\u2019ssayfromauniverseofthe1,000\nlargest stocks (based on ma",
+    "rule_text": "Buy the 10 lowest-priced stocks from the 1,000 largest stocks by market cap at year-start and hold them equally-weighted for one year.",
+    "signal_category": "REVERSION",
+    "direction": "LONG",
+    "entry_conditions": [
+      "Select universe of 1,000 largest stocks by market capitalization",
+      "Identify the 10 stocks with the lowest closing prices at the beginning of the year",
+      "Equal initial capital allocation across all 10 selected stocks",
+      "Enter positions at the start of the year"
+    ],
+    "parameters": {
+      "lookback_period": "Beginning of year (1/2/2001 in example)",
+      "threshold": "10 lowest closing prices",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "1/2/2001 to 1/2/2002"
+    },
+    "exit_conditions": [
+      "Exit all positions after holding for one year (1/2/2002 in example)"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "LOW",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Chapter 3, p. 47",
+    "raw_chunk_text": "cls=cls(sortIndex);\n% daily returns\ndailyret=(cls(2:end)-cls(1:end-1))./cls(1:end-1);\n% excess daily returns assuming risk-free rate of 4%\n% per annum and 252 trading days in a year\nexcessRet=dailyret",
+    "rule_text": "Long-short market-neutral strategy that simultaneously buys one stock (IGE) and shorts an equal dollar amount of the broad market index (SPY) to hedge systematic risk.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Buy equal dollar amount of IGE",
+      "Simultaneously short equal dollar amount of SPY as hedge"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "0.7893",
+      "backtest_period": "Unspecified entry date through November 2007"
+    },
+    "exit_conditions": [
+      "Close both IGE long and SPY short positions simultaneously in November 2007"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.3, pp.56",
+    "raw_chunk_text": "Thisexamplewillillustratehowtoseparatethedataintoatrainingsetanda\ntestset.Wewillbacktestapair-tradingstrategyandoptimizeitsparameters\nonthetrainingsetandlookattheeffectonthetestset.\nGLD versus GDX is ",
+    "rule_text": "Pair trading strategy that exploits mean reversion in the spread between GLD (gold spot price ETF) and GDX (gold mining stocks ETF) based on cointegration relationship.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "GLD and GDX spread deviates from its mean (cointegration relationship broken)",
+      "Spread reaches statistical threshold indicating mean reversion opportunity"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Spread reverts to mean (cointegration relationship restored)",
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ETF",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, pp.8-204",
+    "raw_chunk_text": "Chapter 7 the cointegration analysis on the training set, which demon-\nstrates that the spread formed by long GLD and short GDX is mean re-\nverting. Instead, we will perform a regression analysis on t",
+    "rule_text": "Pair trading strategy on GLD and GDX using regression-derived hedge ratio, entering when spread deviates beyond optimized thresholds and exiting when spread mean reverts back.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Spread (long GLD, short GDX) deviates beyond upper entry threshold determined by regression analysis on training set",
+      "Spread (long GLD, short GDX) deviates beyond lower entry threshold determined by regression analysis on training set"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Spread reverts to mean (AUTHOR_SILENT on exact reversion level)"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "Mean-reverting spreads between GLD and GDX"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. Backtesting, pp. 8-204",
+    "raw_chunk_text": "tday2=...\ndatestr(datenum(tday2, \u2018mm/dd/yyyy\u2019), \u2018yyyymmdd\u2019);\n% convert the date strings first into cell arrays and\n% then into numeric format.\ntday2=str2double(cellstr(tday2));\nP1:JYS\nc03 JWBK321-Chan",
+    "rule_text": "A pairs trading strategy that identifies a hedge ratio between two correlated assets (GLD and GDX) using linear regression on historical data, then constructs a mean-reverting spread.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Calculate hedge ratio using ordinary least squares (OLS) regression of adjusted close prices over a 252-day training period",
+      "Construct spread as: Spread = GLD price - (hedge ratio \u00d7 GDX price)",
+      "Monitor spread for mean reversion signals on the test set (after day 252)"
+    ],
+    "parameters": {
+      "lookback_period": "252 days (training set)",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.03, pp.58",
+    "raw_chunk_text": "spread=cl1-hedgeRatio*cl2;\nplot(spread(trainset));\nfigure;\nplot(spread(testset));\nfigure;\n% mean of spread on trainset\nspreadMean=mean(spread(trainset));\n% standard deviation of spread on trainset\nspr",
+    "rule_text": "A mean-reversion pairs trading strategy that goes long the spread when it drops below -2 standard deviations and goes short when it rises above +2 standard deviations, exiting when it mean-reverts within \u00b11 standard deviation.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Z-score of spread is less than or equal to -2 standard deviations (long entry)",
+      "Z-score of spread is greater than or equal to +2 standard deviations (short entry)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "2 standard deviations for entry; 1 standard deviation for exit",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Absolute z-score of spread is less than or equal to 1 standard deviation (mean reversion threshold)"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "Mean-reverting regimes"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. [Chapter number not specified], pp. 8-204",
+    "raw_chunk_text": "% short entries\npositions(longs, :)=repmat([1 -1],\n[length(find(longs)) 1]);\n% exit positions\npositions(exits, :)=zeros(length(find(exits)), 2);\n% ensure existing positions are carried forward\nunless ",
+    "rule_text": "A pairs trading strategy that goes long one instrument while simultaneously shorting another based on identified signals, then exits both positions when an exit signal is triggered.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "When long signal is generated: enter long position in first instrument and short position in second instrument",
+      "Short entry signals trigger simultaneous long-short pair positions"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "Training set Sharpe ratio approximately 2.3; Test set Sharpe ratio approximately 1.5",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Exit both positions (set to zero) when exit signal is generated",
+      "Positions are carried forward unchanged on all other days until an exit signal occurs"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.3, p.59",
+    "raw_chunk_text": "if (isnumeric(x))\n% populate the first entry with NaN\ny=[NaN(1,size(x,2));x(1:end-1, :)];elseif (ischar(x))\n% populate the first entry with \"\ny=[repmat(\",[1 size(x,2)]);x(1:end-1, :)];else\nerror(\u2018Can ",
+    "rule_text": "Pair trading strategy that enters when the spread between two instruments deviates by 1 standard deviation and exits when the spread reverts to 0.5 standard deviations.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Spread between pair deviates by 1 standard deviation from mean"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "1 standard deviation entry, 0.5 standard deviation exit",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "Training set Sharpe ratio: 2.9, Test set Sharpe ratio: 2.1",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Spread reverts to 0.5 standard deviations from mean"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, pp.8-204",
+    "raw_chunk_text": "increasesto2.1.So,clearly,thissetofthresholdsisbetter.\nOften,however,optimizingtheparametersonthetrainingsetmayde-\ncreasetheperformanceonthetestset.Inthissituation,youshouldchoose\na set of parameters ",
+    "rule_text": "Buy when a mean-reverting spread is low and sell when it is high, exploiting mean reversion behavior.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Spread reaches a low threshold (buy signal)",
+      "Spread reaches a high threshold (sell signal)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "increased to 2.1 (after optimization)",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "Mean-reverting markets (stationary, cointegrated pairs)"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. [unstated], pp. 8-204",
+    "raw_chunk_text": "dani and Andrew Lo at MIT (available at web.mit.edu/alo/www/Papers/\naugust07.pdf). This strategy is very simple: Buy the stocks with the worst\nprevious one-day returns, and short the ones with the bes",
+    "rule_text": "A mean reversion strategy that buys stocks with the worst previous one-day returns and shorts stocks with the best previous one-day returns.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Buy stocks ranked in the bottom percentile by one-day prior returns",
+      "Short stocks ranked in the top percentile by one-day prior returns"
+    ],
+    "parameters": {
+      "lookback_period": "1 day",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "4.47 (2006, before transaction costs)",
+      "backtest_period": "1995-2006"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (unnamed), pp. 8-204",
+    "raw_chunk_text": "op(idxtB, s)=myop(idxA(idxtA));\nhi(idxtB, s)=myhi(idxA(idxtA));\nlo(idxtB, s)=mylo(idxA(idxtA));\ncl(idxtB, s)=mycl(idxA(idxtA));\nvol(idxtB, s)=myvol(idxA(idxtA));\nend\nsave(outputFile, \u2018tday\u2019, \u2018stocks\u2019,",
+    "rule_text": "Equal-weighted mean reversion strategy that shorts stocks outperforming the market index and longs stocks underperforming it, with position sizes proportional to the negative distance from the market return.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Calculate daily returns for each stock",
+      "Calculate equal-weighted market index daily return across all stocks",
+      "For each stock, compute the deviation of its daily return from the market daily return",
+      "Assign position weight proportional to the negative of this deviation (stocks lagging the market receive positive weights for long positions; stocks outperforming receive negative weights for short positions)",
+      "Normalize weights by the count of stocks with valid price data"
+    ],
+    "parameters": {
+      "lookback_period": "1 day (daily returns)",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "2006-01-01 to 2006-12-31"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Chapter 3 (Example 3.8), pp. 8-204",
+    "raw_chunk_text": "biaslooms.\nExample3.8:ASmallVariationonanExistingStrategy\nLet\u2019s refine the mean-reverting strategy described above in Example 3.7.\nRecallthatstrategyhasamediocreSharperatioof0.25andaveryunprof-\nitable",
+    "rule_text": "A mean-reverting strategy that enters positions at market open instead of market close to improve profitability and reduce transaction cost drag.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Enter positions at market open (instead of close)",
+      "Position sizing and direction based on mean-reversion signals from Example 3.7 (specific conditions not detailed in this excerpt)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "Before costs: 4.43; After costs: 0.78 (2006); Previous version (close-based): Before costs: 0.25; After costs: -3.19 (2006)",
+      "backtest_period": "2006"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "INTRADAY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. [chapter number], p. 8-204",
+    "raw_chunk_text": "unexecutedordersbypressingabutton.Finally,ifIwanttoexitall\nthe existing positions, I simply press another button in the basket\ntradertogeneratetheappropriateexitorders.\nI use REDIPlus\u2019s spread trader ",
+    "rule_text": "Pair-trading strategy that enters positions based on spread prices calculated pre-market and manages exits through spread trader interface.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Spread price reaches pre-calculated limit price threshold determined by MATLAB pair-trading algorithm run before market open",
+      "Limit orders are placed on the spread (not individual stocks) and can be entered at any time during the trading day"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Exit all positions by pressing a button in the basket trader to generate appropriate exit orders",
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "STOCKS",
+    "timeframe": "INTRADAY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.0, p.8",
+    "raw_chunk_text": "gies,andanotheronecanimplementtheactualstrategy,whichwillreadininput\nparameters.Sointhiscase,thefirstprogrammerdoesnotknowyourstrategy,\nand the second programmer does not have the infrastructure to ex",
+    "rule_text": "Avoid trading stocks priced below $5 to minimize commission costs and transaction expenses.",
+    "signal_category": "EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Stock price is greater than or equal to $5"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "$5.00 minimum stock price",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. untitled section, pp. 8-204",
+    "raw_chunk_text": "companiesvariesoverseveralordersofmagnitude,fromtensofmil-\nlions to hundreds of billions. A linear scale (i.e., scaling the capital\nof a stock to be linearly proportional to its market capitalization)",
+    "rule_text": "Scale portfolio capital allocation to stocks using the fourth root of market capitalization to maintain meaningful diversification across market-cap spectrum while respecting liquidity constraints.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Allocate capital weight proportional to the fourth root of each stock's market capitalization",
+      "Ensure capital weight ratio between largest and smallest positions does not exceed approximately 10:1",
+      "Verify liquidity (volume) constraints are satisfied for each position"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "10 (maximum capital weight ratio between largest large-cap and smallest small-cap position)",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (Pages 8-204), p. ~195-196",
+    "raw_chunk_text": "Compounded Rate of Return,\u201d which you can find at epchan.blogspot.com/2006/\n10/maximizing-compounded-rate-of-return.html.\nOften, because of uncertainties in parameter estimations, and\nalso because ret",
+    "rule_text": "Adjust individual strategy position sizes by a common leverage reduction factor to comply with retail account maximum leverage constraints while maintaining proportional risk allocation across strategies.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Portfolio total unrestricted leverage (sum of absolute values of all individual strategy leverages) exceeds retail account maximum leverage limit of 2 (overnight) or 4 (intraday)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "Maximum overall leverage l = 2 (overnight positions) or 4 (intraday positions)",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "CODE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Chapter 6, pp. 103-104",
+    "raw_chunk_text": "RISK MANAGEMENT\nWe saw in the previous section that the Kelly formula is not only\nusefulfortheoptimalallocationofcapitalandforthedetermination\nof the optimal leverage, but also for risk management. In",
+    "rule_text": "Reduce position size whenever the portfolio experiences a trading loss, and increase position size when the strategy is profitable, based on Kelly formula optimal leverage principles.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy generates a profitable trade or cumulative positive returns"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Portfolio experiences a trading loss, triggering position size reduction",
+      "Kelly formula recalculation indicates reduced optimal leverage due to losses"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "Post-loss periods requiring risk management",
+      "Post-profit periods allowing increased leverage"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. Money and Risk Management, p. 105",
+    "raw_chunk_text": "MoneyandRiskManagement 105\nsell-off in the mortgage-backed securities market suddenly became\nasell-offinthestockmarket\u2014anicedemonstrationofthemeaning\nofcontagion.\nGiven the necessity of realizing loss",
+    "rule_text": "Use half-Kelly leverage for portfolio position sizing to reduce rebalancing costs and losses from forced selling, rather than full Kelly formula leverage.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Apply half-Kelly formula to position sizing instead of full Kelly formula",
+      "Reduce portfolio leverage to account for continuous rebalancing requirements and transaction costs"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "0.5 (half-Kelly multiplier vs full Kelly)",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "CODE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (pages 8-204), p.8",
+    "raw_chunk_text": "To handle extreme events that fall outside the Gaussian distri-\nbution, we can use our simple backtest technique to roughly esti-\nmate what the maximum one-period loss was historically. (The pe-\nriod ",
+    "rule_text": "Size leverage using the smaller of half-Kelly leverage or maximum leverage derived from historical worst-case drawdown analysis",
+    "signal_category": "EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position sizing is determined by comparing two leverage limits",
+      "Calculate half-Kelly leverage based on strategy win rate and risk/reward",
+      "Calculate maximum tolerable leverage by dividing maximum acceptable one-period drawdown on equity by the maximum historical one-period loss"
+    ],
+    "parameters": {
+      "lookback_period": "entire historical backtest period",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Rebalance portfolio at end of every period (one week, one day, or one hour) according to Kelly formula",
+      "Exit if drawdown exceeds maximum tolerable one-period drawdown on equity"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "Extreme events and tail risk management"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. [PAGES 8-204], p.8",
+    "raw_chunk_text": "lossandnotavoidingit.Forstoplosstobebeneficial,wemustbelievethatwe\nareinamomentum,ortrending,regime.Inotherwords,wemustbelievethat\nthepriceswillgetworsewithintheexpectedlifetimeofourtrade.Otherwise,if",
+    "rule_text": "Use stop losses when in a momentum/trending regime (driven by news or fundamental deterioration), but avoid them in mean-reverting regimes where prices recover naturally.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price movement is caused by news or fundamental reasons (e.g., company revenue deterioration)",
+      "Market is identified to be in a momentum regime rather than mean-reverting regime"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Apply stop loss when in momentum regime to avoid larger losses (prices expected to worsen)",
+      "Avoid stop loss or use wider stops in mean-reverting regime to allow position recovery"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "MOMENTUM (apply tight stop loss)",
+      "MEAN_REVERSION (avoid or relax stop loss)"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.6, p.108",
+    "raw_chunk_text": "Thereisnotmuchyoucandotoalleviatethesesourcesofmodel\nrisk,excepttograduallylowertheleverageofthemodelasitracks\nuplosses,uptothepointwheretheleverageiszero.Thiscanbeac-\ncomplished in a systematic way i",
+    "rule_text": "Dynamically adjust leverage using the Kelly formula based on trailing mean return and standard deviation, reducing leverage to zero as strategy performance deteriorates.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Strategy generates trading signals (entry mechanism not specified in excerpt)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "kelly_formula": "Applied to trailing mean return and standard deviation",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Reduce leverage progressively as trailing mean return decreases toward zero",
+      "Leverage approaches zero as strategy performance deteriorates",
+      "Do NOT abruptly shut down the model on large drawdowns; instead reduce leverage systematically"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "Declining performance regimes",
+      "Drawdown periods"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. 0, p. 8-204",
+    "raw_chunk_text": "managing your capital allocation and leverage by the Kelly for-\nmula, you would lower the capital allocation for the losing model\ngradually.\nGreed is the more usual emotion when the model is having a\n",
+    "rule_text": "Dynamically adjust leverage and capital allocation based on model performance using the Kelly formula, reducing exposure during losing periods and avoiding rapid increases during winning periods to prevent overleveraging.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Model is generating trading signals (entry conditions vary by underlying strategy)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "Kelly formula dictates maximum leverage; maintain leverage below Kelly recommendation",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Reduce capital allocation gradually when model enters losing period",
+      "Avoid rapid leverage increases during profitable runs to prevent overleveraging",
+      "Account for fat-tail event risk by maintaining conservative leverage margins below Kelly formula limits"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "PROFIT_PERIOD",
+      "LOSS_PERIOD"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "PSYCHOLOGY"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, p.115-116",
+    "raw_chunk_text": "cuss are seasonal trading and high-frequency strategies. All trading\nstrategiesrequireawaytoexittheirpositions;Iwilldescribethedif-\nferentlogical ways to do this. Finally, I ponderthe question ofhow\nt",
+    "rule_text": "Buy securities that are mean-reverting when their prices are currently low relative to a reference price, planning to sell higher when prices revert to the mean.",
+    "signal_category": "REVERSION",
+    "direction": "LONG",
+    "entry_conditions": [
+      "Price is mean-reverting (not random-walking or trending)",
+      "Current price is low relative to a reference price"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Sell when price reverts higher to reference level"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "Mean-reverting market regime"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. [Chapter number not specified], p.8-204",
+    "raw_chunk_text": "you believe the prices are trending and that they are currently low,\nyou should (short) sell now and plan to buy at an even lower price\nlater.Theoppositeistrueifyoubelievepricesarehigh.\nAcademic resea",
+    "rule_text": "Identify whether prices exhibit mean reversion or trending behavior under specific conditions and time horizons, then trade in the direction opposite to the expected price movement relative to a reference price.",
+    "signal_category": "TREND|REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Prices are identified as trending downward and currently at low levels relative to reference price \u2192 SHORT",
+      "Prices are identified as trending upward and currently at high levels relative to reference price \u2192 LONG",
+      "Prices exhibit mean reversion tendency \u2192 trade toward mean",
+      "Special market conditions exist that enable mean reversion or trending behavior (conditions vary by time horizon)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "Trending regimes",
+      "Mean reverting regimes"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, p.118",
+    "raw_chunk_text": "people decide to buy or sell a stock, thereby driving the price in\nthe same direction. I suggested earlier that stock prices may ex-\nhibit momentum when the expected earnings have changed. This\ncan ha",
+    "rule_text": "Post-Earnings Announcement Drift (PEAD): Exploit momentum in stock prices following quarterly earnings announcements as investors gradually react to changes in expected earnings.",
+    "signal_category": "EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "A company announces quarterly earnings",
+      "Expected earnings have changed materially from prior expectations",
+      "Investors are gradually becoming aware of the announcement or incrementally executing large orders in response"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "Post-earnings announcement period"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (Earnings-related strategies section), p. 8-204",
+    "raw_chunk_text": "post-earning-announcment.html.) Essentially, this strategy recom-\nmendsthatyoubuyastockwhenitsearningsexceedexpectations,\nandshortastockwhenitfallsshort.Moregenerally,manynewsan-\nnouncementshavethepot",
+    "rule_text": "Buy stocks when earnings exceed expectations and short stocks when earnings fall short of expectations, exploiting the slow diffusion of information and momentum following earnings announcements.",
+    "signal_category": "EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Stock earnings announcement occurs and actual earnings exceed analyst expectations \u2192 LONG",
+      "Stock earnings announcement occurs and actual earnings fall short of analyst expectations \u2192 SHORT"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "Post-earnings announcement periods"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7 (Turning Points Model), pp.8-204",
+    "raw_chunk_text": "Turningpointsmodelstakeadataminingapproach(Chai,2007):\nEnter all possible variables that might predict a turning point or\nregime switch. Variables such as current volatility; last-period re-\nturn;orch",
+    "rule_text": "Detect market turning points and regime switches using a data-mining model trained on multiple predictive variables (volatility, recent returns, macroeconomic indicators, media sentiment) to predict future returns across multiple holding periods.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Data-mining model identifies a turning point or regime switch based on input variables",
+      "Input variables may include: current volatility, last-period return, changes in consumer confidence, oil price changes, bond price changes, and media sentiment/chatter intensity",
+      "Model predicts a significant return across a specified holding period"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "CONTEXT_DEPENDENT",
+    "target_regimes": [
+      "Turning points",
+      "Regime switches",
+      "Boom/bust transitions"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.0, p.8-204",
+    "raw_chunk_text": "nomicorcompanynewsdataintoitsdatabase,soIwillusealargepercent\nchange in GS as proxyfor such news releases. Furthermore, I believe that\nwhenever GS reaches an N-day high or low just before this large d",
+    "rule_text": "Enter a trade when a stock reaches an N-day high or low coinciding with a large percentage price change, signaling an imminent regime switch.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price reaches an N-day high or N-day low",
+      "A large percent change in price occurs (magnitude threshold to be optimized)",
+      "These two conditions occur in close temporal proximity, suggesting regime transition"
+    ],
+    "parameters": {
+      "lookback_period": "N-day lookback (AUTHOR_SILENT - optimal value to be determined via backtesting)",
+      "threshold": "Large percent change threshold (AUTHOR_SILENT - optimal magnitude to be determined via backtesting)",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Holding period determined by duration of new regime (AUTHOR_SILENT - optimal holding period to be determined via backtesting)"
+    ],
+    "instrument": "EQUITY",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "Regime transitions following extremes"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, pp.123",
+    "raw_chunk_text": "multiplereturnhorizonsforthedependentvariables.Let\u2019sseeifAlphacet\nDiscoverycanhelpusautomatethisprocess.\nThe independent variables of the model are just the one-day returns\nofGS.Thedependentvariablesa",
+    "rule_text": "Mean reversion strategy that enters long or short positions when one-day returns of GS cross predefined percent-change thresholds, with exit after a specified holding period.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "One-day return of GS crosses -1% threshold (short signal)",
+      "One-day return of GS crosses -3% threshold (short signal)",
+      "One-day return of GS crosses +1% threshold (long signal)",
+      "One-day return of GS crosses +3% threshold (long signal)"
+    ],
+    "parameters": {
+      "lookback_period": "1 day",
+      "threshold": "-3%, -1%, +1%, +3%",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Exit after 1-day holding period",
+      "Exit after 5-day holding period",
+      "Exit after 10-day holding period",
+      "Exit after 20-day holding period",
+      "Exit after 40-day holding period",
+      "Exit after 60-day holding period"
+    ],
+    "instrument": "EQUITY",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, p.124",
+    "raw_chunk_text": "FIGURE 7.1 StrategyEditorShowingDataandRulesRepresentedbyBoxes\nNow I can create the entry rules by using the drop-down menus and\ntypingintothetextboxesinsideanewRulebox\u2019seditor.Figure7.2shows\nwhat\u2019s i",
+    "rule_text": "Buy when 12-day percent change exceeds +1% and price is above the 10-day moving low; sell when 12-day percent change falls below -1% and price is below the 10-day moving high.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "12-day percent change >= +1% AND current price >= 10-day moving low (BUY signal)",
+      "12-day percent change <= -1% AND current price <= 10-day moving high (SELL signal)"
+    ],
+    "parameters": {
+      "lookback_period": "12 days for percent change; 10 days for moving low/high",
+      "threshold": "\u00b11 percent",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Subsequent entry signals override previous positions by default"
+    ],
+    "instrument": "AUTHOR_SILENT",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, p.8-204 (Figure 7.2)",
+    "raw_chunk_text": "FIGURE 7.2 InsideaRuleBox\nWe can specify the holding periods using the prepackaged program\ncalled \u201cHolding Period\u201d with different parameters. (In fact, you can easily\ncreatesuchprogramsyourselfifyoukn",
+    "rule_text": "Use a perceptron neural network to combine multiple holding-period rules (including \u00b12% rules) with optimized weights trained on a moving window of historical data to generate buy-and-sell signals.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Perceptron trained on moving window of historical data outputs a buy signal",
+      "Buy signal is generated based on optimized weights across multiple rule variants with different holding periods"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Perceptron trained on moving window of historical data outputs a sell signal",
+      "Exit triggered by holding period rules with different parameters (\u00b12% rules and variants)"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, p.125",
+    "raw_chunk_text": "theseoptimizedweights,theperceptronwilltriggerabuy-and-selldecision\nattheendofeachperiod.(Examplesofotheralgorithmsthatyoucanselect\naregeneticalgorithmandaK-nearest-neighborclusteringtechnique.)\nInter",
+    "rule_text": "A perceptron machine learning model combines multiple trading rules with optimized linear weights to generate daily buy, sell, or do-nothing signals based on a moving window of recent data.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Perceptron model outputs a buy signal based on linearly weighted combination of multiple component trading rules",
+      "Signal is generated at the end of each period using latest parameter optimization on current moving window data",
+      "Sell signal generated when perceptron outputs a sell decision"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Perceptron model outputs a sell signal at end of period",
+      "Daily re-optimization allows position to be exited at any point, not forced to hold for fixed duration"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, p.8-204",
+    "raw_chunk_text": "Now we are ready to look at the performance results of this strategy.\nWe can bring up Discovery\u2019s charting application for this. In Figure 7.3, I\nhaveshownthreeofthebestequitycurvesthatcomefromtheperc",
+    "rule_text": "A machine learning perceptron model optimized over a 50-day moving window generates trading signals on GS, achieving superior returns through systematic optimization of holding periods.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Perceptron model trained on 50-day moving window generates buy/sell signal"
+    ],
+    "parameters": {
+      "lookback_period": "50 days",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "6 months"
+    },
+    "exit_conditions": [
+      "Exit after holding period determined by optimization routine (10 days mentioned as one tested variant)"
+    ],
+    "instrument": "ANY",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7 (Special Topics), p.127",
+    "raw_chunk_text": "Atimeseriesis\u201cstationary\u201difitneverdriftsfartherandfartheraway\nfrom its initial value. In technical terms, stationary time series are\n\u201cintegrated of order zero,\u201d or I(0). (See Alexander, 2001.) It is o",
+    "rule_text": "Construct a pairs trading strategy by longing one stock and shorting another such that the combined market value of the pair exhibits mean-reverting (stationary) behavior.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify a pair of stocks where the linear combination (typically long one, short the other) produces a stationary time series",
+      "The spread or market value of the pair deviates from its mean"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "Stationary market conditions"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (Pages 8-204), Pair Trading Strategy Section",
+    "raw_chunk_text": "market value of the pair is stationary. If this is the case, then the\ntwo individual time series are said to be cointegrated. They are so\ndescribedbecausealinear combinationofthemis integratedofor-\nde",
+    "rule_text": "Buy a cointegrated pair portfolio when the spread is low, and sell/short when the spread is high, exploiting mean reversion in the stationary spread.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "The spread between cointegrated pair prices reaches a low level (buy signal)",
+      "The spread between cointegrated pair prices reaches a high level (short/sell signal)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "Mean-reverting regimes",
+      "Stationary spread environments"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. 7, pp. 128, Figure 7.4, Example 7.2",
+    "raw_chunk_text": "and short 1.6766 share of GDX, the prices of the portfolio form a\nstationary time series (see Figure 7.4). The exact number of shares\nof GLD and GDX can be determined by a regression fit of the two\nco",
+    "rule_text": "Form a mean-reverting pairs trade by longing one security and shorting a cointegrated partner in the same industry group at a ratio determined by regression fit to create a stationary spread.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify two securities in the same industry group that are cointegrated",
+      "Perform regression fit of the two time series to determine the hedge ratio",
+      "Long 1 share of the first security (e.g., GLD)",
+      "Short the hedge ratio number of shares of the second security (e.g., 1.6766 shares of GDX)",
+      "The resulting spread between the two positions forms a stationary time series"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "2006-05-23 to 2007-12-21 (Figure 7.4)"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "Mean-reverting regime"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.0, pp.8-204",
+    "raw_chunk_text": "another one in the same industry group and in the right proportion,\nsometimes the combination (or \u201cspread\u201d) becomes a stationary series.\nA stationary series is an excellent candidate for a mean-revert",
+    "rule_text": "Trade the spread between two cointegrated securities in the same industry group as a mean-reverting strategy when the spread deviates from its mean.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Two price series are confirmed to be cointegrated using the cointegrating augmented Dickey-Fuller (cadf) test",
+      "Optimal hedge ratio is calculated to determine the proportion of shares of the second security versus one share of the first security",
+      "The resulting spread (combination of the two securities weighted by the hedge ratio) becomes a stationary series",
+      "The spread deviates significantly from its mean (exact deviation threshold not specified in excerpt)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, pp.8-204",
+    "raw_chunk_text": "% augmented Dickey-Fuller test\nres=cadf(adjcls(:, 1), adjcls(:, 2), 0, 1);\nprt(res, vnames);\n% Output from cadf function:\n% Augmented DF test for co-integration variables:\nGLD,GDX\n% CADF t-statistic #",
+    "rule_text": "Trade a pairs strategy between two cointegrated assets (GLD and GDX) by identifying their stationary spread and establishing a hedge ratio to construct a mean-reverting portfolio.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Augmented Dickey-Fuller (ADF) test confirms cointegration at 95% confidence level (CADF t-statistic between 5% and 1% critical values)",
+      "Hedge ratio is calculated via OLS regression (1.6766 for GLD vs GDX)",
+      "Spread (residual z) deviates from its mean equilibrium"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "CADF t-statistic must be between -3.819 (1% critical) and -3.343 (5% critical)",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Spread reverts to mean",
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, pp.8-204; Figure 7.5 demonstrates KO-PEP example",
+    "raw_chunk_text": "% interpreted as the\n% spread GLD-1.6766*GDX and should be stationary.\n% This should produce a chart similar to Figure 7.4.\nplot(z);\nIncaseyouthinkthatanytwostocksinthesameindustrygroup\nwould be coint",
+    "rule_text": "A pairs trading strategy that longs one security and shorts a cointegrated partner when their spread deviates from the stationary mean, exploiting mean reversion.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Two securities must be cointegrated (probability > 90% from cointegration test)",
+      "The spread between the two securities deviates significantly from its stationary mean (z-score threshold not explicitly stated in excerpt)",
+      "Long the first security and short a scaled quantity of the cointegrated partner based on linear regression coefficient"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "1977-01-03 to 2000-09-27 (for KO-PEP counterexample showing non-cointegration)"
+    },
+    "exit_conditions": [
+      "Spread reverts to its stationary mean (AUTHOR_SILENT on exact exit level)"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "Mean-reverting cointegrated pairs"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, p.131",
+    "raw_chunk_text": "P1:JYS\nc07 JWBK321-Chan September24,2008 14:4 Printer:Yettocome\nSpecialTopicsinQuantitativeTrading 131\nIfapriceseries(ofastock,apairofstocks,or,ingeneral,aport-\nfolioofstocks)isstationary,thenamean-re",
+    "rule_text": "Trade mean reversion in stationary price series or portfolios, exploiting short-term reversal opportunities even in nonstationary series.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price series exhibits stationarity (or for practical traders, demonstrates short-term mean reversion characteristics)",
+      "Price deviates from mean or equilibrium level"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "STATIONARY_REGIME"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. [unnamed], pp. 8-204",
+    "raw_chunk_text": "also be found in certain currency rates. For example, the Cana-\ndiandollar/Australiandollar(CAD/AUD)cross-currencyrateisquite\nstationary, both being commodities currencies. Numerous pairs of\nfutures a",
+    "rule_text": "Identify and trade cointegrating pairs (such as commodity currency crosses, futures calendar spreads, or bonds with different maturities from the same issuer) that exhibit stationary behavior.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Two instruments are cointegrating (stationary spread)",
+      "Spread deviates from equilibrium (exact threshold not specified in excerpt)",
+      "Long the underperforming leg and short the outperforming leg when spread widens"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Spread converges back to equilibrium (exact exit rule not specified)",
+      "Cointegration relationship breaks down"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "Cointegrating pairs",
+      "Stationary spreads"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, p.136",
+    "raw_chunk_text": "P1:JYS\nc07 JWBK321-Chan September24,2008 14:4 Printer:Yettocome\n136 QUANTITATIVETRADING\nfactor exposure that captures mean reversion, such as the negative\nof the previous period return. If stock retur",
+    "rule_text": "Trade stocks exhibiting mean reversion by taking long positions when previous period returns are negative, betting on price recovery.",
+    "signal_category": "REVERSION",
+    "direction": "LONG",
+    "entry_conditions": [
+      "Previous period return is negative (stock has declined)",
+      "Stock returns exhibit mean-reverting behavior"
+    ],
+    "parameters": {
+      "lookback_period": "1 period (previous period return)",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "Mean-reverting market regimes"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, pp.137-138; example7_4.m",
+    "raw_chunk_text": "isthesameasthenumberofstocks\u2014typically,wecanjustpicktheeigen-\nvectorswiththetopfeweigenvaluestoformthematrixX.Thenumberof\neigenvectors to pick is a parameter that you can adjust to optimize your\ntradi",
+    "rule_text": "Apply PCA to identify factor returns with momentum, then construct a long-short portfolio by buying stocks with highest expected factor-based returns and shorting those with lowest expected returns.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Apply PCA to S&P 600 small-cap stocks to extract principal components",
+      "Select top few eigenvectors (ranked by eigenvalues) to form factor matrix X",
+      "Assume factor returns exhibit momentum and remain constant from current to next period",
+      "Calculate expected returns for each stock based on factor exposures",
+      "Long: stocks with highest expected returns",
+      "Short: stocks with lowest expected returns"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT",
+      "number_of_eigenvectors": "adjustable parameter - author recommends optimizing"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "EQUITIES",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "LOW",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (Factor-based trading), p. 8-204",
+    "raw_chunk_text": "findthattheaveragereturnofthisstrategyisnegative,indicatingthatthis\nassumptionmaybequiteinaccurate,orthatspecificreturnsaretoolarge\nforthisstrategytowork.\nclear;\n% use lookback days as estimation (tra",
+    "rule_text": "Long the top N stocks with the highest expected 1-day returns based on factor exposures estimated over a lookback period.",
+    "signal_category": "PATTERN",
+    "direction": "LONG",
+    "entry_conditions": [
+      "Calculate daily returns for all stocks in the lookback period (252 trading days)",
+      "Estimate factor exposures using the 5 factors and historical returns over the lookback period",
+      "Rank all stocks by expected 1-day forward returns based on factor model",
+      "Enter long positions in the top 50 stocks with highest expected 1-day returns"
+    ],
+    "parameters": {
+      "lookback_period": "252 days",
+      "threshold": "top 50 stocks (topN=50)",
+      "num_factors": "5",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "2008 (IJR smallcap universe from 20080114 onwards)"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "EQUITIES",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "LOW",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, p.138",
+    "raw_chunk_text": "R=dailyret(t-lookback+1:t,:)\u2019;\n% avoid any stocks with missing returns\nhasData=find(all(isfinite(R), 2));\nR=R(hasData,:);\navgR=smartmean(R, 2);\n% subtract mean from returns\nR=R-repmat(avgR, [1 size(R,",
+    "rule_text": "A factor model strategy that identifies undervalued stocks by computing expected returns using principal component analysis on mean-centered historical returns, then ranks stocks by expected return to construct a portfolio.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Calculate mean-centered returns over a lookback period for all stocks with complete data",
+      "Compute covariance matrix of returns and extract eigenvectors as factor exposures (X matrix)",
+      "Retain only the top eigenvectors corresponding to the numFactors largest eigenvalues",
+      "Perform ordinary least squares regression to estimate current factor returns (b) using most recent returns",
+      "Calculate expected returns for next period as: mean return + (factor exposures \u00d7 estimated factor returns)",
+      "Rank stocks by expected returns in ascending order to identify candidates for long (highest expected) and short (lowest expected) positions"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "num_factors": "AUTHOR_SILENT",
+      "half_life": "N/A",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (unnumbered), p. 8-204",
+    "raw_chunk_text": "[foo idxSort]=sort(Rexp, \u2019ascend\u2019);\n% short topN stocks with lowest expected returns\npositionsTable(t, hasData(idxSort(1:topN)))=-1;\n% buy topN stocks with highest expected returns\npositionsTable(t, .",
+    "rule_text": "Rank stocks by expected returns and simultaneously short the bottom N performers while buying the top N performers in a market-neutral pairs strategy.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Sort all stocks by expected returns in ascending order",
+      "Short the topN stocks with the lowest expected returns",
+      "Buy the topN stocks with the highest expected returns",
+      "Only enter positions on days where data is available for the stock"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "topN (exact value not specified in excerpt)",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "STOCKS",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "LOW",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (pages 8-204), discussing fixed holding period exit strategies for momentum models",
+    "raw_chunk_text": "Astopprice\nA fixed holding period is the default exit strategy for any trad-\ning strategy, whether it is a momentum model, a reversal model, or\nsomekindofseasonaltradingstrategy,whichcanbeeithermomen-",
+    "rule_text": "Exit momentum trades after a fixed holding period determined by the average lifetime of the information diffusion process, with the caveat that optimal holding periods decrease over time as information diffuses faster and more traders exploit the opportunity.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Exit position after a fixed holding period",
+      "Optimal holding period equals the average lifetime of the information diffusion process (to be determined via backtest)",
+      "Reduce holding period over time as market conditions change and information diffuses faster"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, p.141",
+    "raw_chunk_text": "equationcalledtheOrnstein-Uhlenbeckformula(Unlenbeck,1930).\nLet\u2019s say we denote the mean-reverting spread (long market value\nP1:JYS\nc07 JWBK321-Chan September24,2008 14:4 Printer:Yettocome\nSpecialTopi",
+    "rule_text": "Trade mean-reverting spreads in stock pairs by identifying when the spread deviates from its long-term mean and expecting exponential decay back to equilibrium within a calculable half-life period.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Spread z(t) deviates from mean \u00b5 (long stock 1 minus short stock 2)",
+      "Spread exhibits mean-reverting behavior following Ornstein-Uhlenbeck process",
+      "Half-life of mean reversion is calculable and economically tradeable"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "ln(2)/\u03b8, where \u03b8 is estimated via linear regression of daily spread changes against spread value",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Spread converges back to mean \u00b5 (expected within half-life period)",
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "Mean-reverting market regimes"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7 (Example 7.5), pp.8-204",
+    "raw_chunk_text": "nentialdecayisequaltoln(2)/\u03b8,whichistheexpectedtimeittakes\nfor the spread to revert to half its initial deviation from the mean.\nThis half-life can be used to determine the optimal holding period\nfor ",
+    "rule_text": "Trade mean-reverting spreads by using the half-life of mean reversion to determine optimal holding periods for positions.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Spread deviates significantly from its mean (triggering condition AUTHOR_SILENT)",
+      "Mean reversion is confirmed via time-series analysis using exponential decay parameter \u03b8"
+    ],
+    "parameters": {
+      "lookback_period": "entire time series",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "calculated as ln(2)/\u03b8, representing the expected time for spread to revert to half its initial deviation",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Hold position for duration approximately equal to the calculated half-life",
+      "Exit when spread reverts toward mean (AUTHOR_SILENT on exact reversion target)"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "Mean-reverting market regimes"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Chapter 7.2, pp. 142",
+    "raw_chunk_text": "7.2 to illustrate the calculation of the half-life of its mean reversion. The\nMATLAB code is available at epchan.com/book/example7 5.m. (The first\npartoftheprogramisthesameasexample7 2.m.)\n% === Inser",
+    "rule_text": "Identify mean-reverting spread pairs (GLD-GDX) and hold the position for approximately the calculated half-life duration before expecting profitability.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Security or spread exhibits mean-reverting behavior (confirmed via Ornstein-Uhlenbeck model fit)",
+      "Calculate half-life of mean reversion using the formula: half-life = -ln(2) / theta, where theta is the mean reversion coefficient from OLS regression of price changes against lagged deviations from mean"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "approximately 10 days (for GLD-GDX spread)",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Exit after approximately the half-life period has elapsed (around 10 days for the GLD-GDX example)",
+      "AUTHOR_SILENT on stop-loss or profit-target rules"
+    ],
+    "instrument": "ANY",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "Mean-reverting market regimes"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (pages 8-204), p.8",
+    "raw_chunk_text": "Ifyoubelievethatyoursecurityismeanreverting,thenyoualso\nhave a ready-made target price\u2014the mean value of the historical\npricesofthesecurity,or\u00b5intheOrnstein-Uhlenbeckformula.This\ntarget price can be u",
+    "rule_text": "Exit a mean-reverting position when price reaches the historical mean (\u00b5) or when the half-life threshold is reached, whichever occurs first.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "AUTHOR_SILENT - entry conditions not specified in excerpt"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "Used as exit signal threshold; exact value AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Price reverts to the historical mean (\u00b5) of the security",
+      "Time-based exit when half-life period expires",
+      "Exit triggered by whichever criterion is met first"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "Mean-reverting securities"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (Quantitative Trading overview), p. 8-204",
+    "raw_chunk_text": "Suppose you are running a trading model, and you entered into\na position based on its signal. Some time later, you run this model\nagain.Ifyoufindthatthesignofthislatestsignalisoppositetoyour\noriginal ",
+    "rule_text": "Exit an existing position when the trading model generates a signal in the opposite direction, either by closing the position flat or by reversing into the opposite position.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trading model generates an entry signal"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Latest model signal is opposite in direction to the existing position (e.g., buy signal when holding a short position)",
+      "Exit can be executed by closing to flat, or closing existing position and entering opposite position"
+    ],
+    "instrument": "ANY",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, p.143",
+    "raw_chunk_text": "an entry model also tells us whether a stop-loss strategy is recom-\nmended. In a momentum model, when a more recent entry signal\nis opposite to an existing position, it means that the direction of\nmom",
+    "rule_text": "Exit a momentum position when a new entry signal in the opposite direction occurs, treating the reversal signal as a dynamic stop-loss mechanism.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Initial momentum signal established in one direction (long or short)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Most recent entry signal reverses to opposite direction",
+      "Exit is triggered automatically by momentum reversal without imposing arbitrary stop-loss price"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "Trending/Momentum regimes"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (Seasonal Trading Strategies), p. 8-204",
+    "raw_chunk_text": "Consider a parallel situation when we are running a reversal\nmodel. If an existing position has incurred a loss, running the re-\nversalmodel again will simply generatea newsignalwith the same\nsign.Thu",
+    "rule_text": "In mean-reversion models, exit positions based on holding period or profit target rather than stop-loss, as mean-reversion signals should not be exited on losses.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Mean-reversion entry signal is generated (price reverts toward mean)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Position held for a predetermined holding period has elapsed",
+      "Profit target or profit cap is reached",
+      "Exit only on stop-loss if sudden regime shift to momentum is confirmed by recent news"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "Mean-reversion regime"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. Seasonal Trading Strategies, p. 8-204",
+    "raw_chunk_text": "SEASONAL TRADING STRATEGIES\nThis type of trading strategy is also called the calendar effect. Gen-\nerally,thesestrategiesrecommendthatyoubuyorsellcertainsecu-\nritiesatafixeddateofeveryyear,andclosethe",
+    "rule_text": "Buy small-cap stocks that had the worst returns in the prior year at a fixed calendar date, and close the position at another fixed calendar date.",
+    "signal_category": "PATTERN",
+    "direction": "LONG",
+    "entry_conditions": [
+      "Security is a small-cap stock",
+      "Security had the worst returns in the prior calendar year",
+      "Entry occurs on a fixed date each year (specific date not stated in excerpt)"
+    ],
+    "parameters": {
+      "lookback_period": "1 year (prior year performance)",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Position is closed on a fixed date each year (specific date not stated in excerpt)"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "LOW",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. 7, pp. 143-144",
+    "raw_chunk_text": "sion states that small-cap stocks that had the worst returns in the\nprevious calendar year will have higher returns in January than\nsmall-cap stocks that had the best returns (Singal, 2006). The ra-\nt",
+    "rule_text": "Small-cap stocks with the worst prior-year returns outperform those with the best prior-year returns in January due to tax-loss-selling reversal.",
+    "signal_category": "REVERSION",
+    "direction": "LONG",
+    "entry_conditions": [
+      "Select small-cap stocks ranked in the lowest decile of returns over the previous calendar year",
+      "Enter positions at or near the start of January"
+    ],
+    "parameters": {
+      "lookback_period": "1 calendar year (prior year performance ranking)",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "Historical through 2006-2007 (strategy underperformed); January 2008 (worked well)"
+    },
+    "exit_conditions": [
+      "Exit at or near end of January (implied seasonal window)",
+      "AUTHOR_SILENT for stop-loss or profit-taking levels"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "January calendar anomaly",
+      "Tax-loss-selling reversal months"
+    ],
+    "author_confidence": "LOW",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, Example 7.6, p.8-204",
+    "raw_chunk_text": "indirectly may have caused the Federal Reserve to have an emer-\ngency75-basis-pointratecutbeforethemarketopened.Theturmoil\nslaughtered many momentum strategies, but mean-reverting strate-\ngiesbenefite",
+    "rule_text": "Trade the January effect by taking positions in S&P 600 small-cap stocks based on seasonal patterns observed in January, with mean-reversion properties that benefit from market downturns and subsequent recoveries.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Calendar month is January",
+      "Security is in S&P 600 small-cap index"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "Includes period around August 2007 (Federal Reserve emergency 75-basis-point rate cut)"
+    },
+    "exit_conditions": [
+      "Calendar month transitions out of January"
+    ],
+    "instrument": "EQUITY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. Special Topics in Quantitative Trading, p. 145",
+    "raw_chunk_text": "months=..\nmonth(cellstr(datestr(datenum(cellstr(..\nnum2str(tday)), \u2019yyyymmdd\u2019))));\nnextdayyear=fwdshift(1, years);\nnextdaymonth=fwdshift(1, months);\nlastdayofDec=find(months==12 & nextdaymonth==1);\nla",
+    "rule_text": "Calculate annual returns by comparing closing prices at year-end dates, establishing a framework for measuring year-over-year performance.",
+    "signal_category": "EVENT",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify the last day of December (when month equals 12 and next day month equals 1)",
+      "Identify the last day of January (when month equals 1 and next day month equals 2)",
+      "Ensure each last day of January occurs after the corresponding last day of December",
+      "Identify end-of-year indices where the year changes to the next year",
+      "Verify end-of-year dates align with last days of December"
+    ],
+    "parameters": {
+      "lookback_period": "Annual (12-month periods)",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "2004 onwards"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (pages 8-204), January effect strategy",
+    "raw_chunk_text": "(cl(eoy(2:end),:)-cl(eoy(1:end-1),:))./..\ncl(eoy(1:end-1),:); % annual returns\njanret=..\n(cl(lastdayofJan(2:end),:)-\ncl(lastdayofDec(2:end),:))./cl(lastdayofDec(2:end),:);\n% January returns\nfor y=1:si",
+    "rule_text": "A contrarian strategy that longs stocks with the lowest prior-year returns and shorts stocks with the highest prior-year returns, holding for one month (January) and rebalancing annually.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify stocks in the lowest decile (bottom 10%) based on prior calendar year's total returns",
+      "Identify stocks in the highest decile (top 10%) based on prior calendar year's total returns",
+      "Enter long positions in lowest-decile stocks on the first trading day of January",
+      "Enter short positions in highest-decile stocks on the first trading day of January"
+    ],
+    "parameters": {
+      "lookback_period": "1 calendar year (prior year returns)",
+      "threshold": "10th percentile (decile) for longs; 90th percentile (decile) for shorts",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Exit all positions on the last trading day of January",
+      "Rebalance portfolio annually at the start of each January based on prior-year returns"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Example 7.7, pp. 8-204; citing Heston and Sadka (2007)",
+    "raw_chunk_text": "y=[x(day+1:end,:,:); ..\nNaN*ones(day,size(x,2), size(x, 3))];\nAnother seasonal strategy in equities was proposed more\nrecently (Heston and Sadka, 2007; available at lcb1.uoregon.\nedu/rcg/seminars/seas",
+    "rule_text": "Each month, buy the stocks that had the best performance in the same calendar month one year earlier, and simultaneously short the stocks that had the worst performance in that same month one year earlier.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify the N stocks with the highest returns in month M of the prior year",
+      "Identify the N stocks with the lowest returns in month M of the prior year",
+      "At the start of month M in the current year, enter long positions in the top performers",
+      "At the start of month M in the current year, enter short positions in the worst performers"
+    ],
+    "parameters": {
+      "lookback_period": "12 months (year-on-year)",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "pre-2002 (average annual return >13% before transaction costs); effect has disappeared since 2002"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "LOW",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "CODE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. Special Topics in Quantitative Trading, p. 147",
+    "raw_chunk_text": "SeasonalTrendingStrategy\nHere is the MATLAB code for the year-on-year seasonal trending strategy\nI quoted earlier. (The source code can be downloaded from epchan.com/\nbook/example7 7.m. The data is al",
+    "rule_text": "A seasonal trending strategy that ranks stocks by their month-over-month returns and trades based on year-on-year seasonal patterns in the S&P 500 constituents.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Identify the last trading day of each month",
+      "Calculate monthly returns for each stock as (current month-end close - prior month-end close) / prior month-end close",
+      "Sort stocks by monthly returns in ascending order to identify relative performance rankings",
+      "Enter positions based on seasonal patterns identified from historical year-on-year return rankings"
+    ],
+    "parameters": {
+      "lookback_period": "One month (month-over-month returns)",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "Based on S&P 500 constituents as of November 23, 2007"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. [Chapter not specified], pp. 8-204",
+    "raw_chunk_text": "[monthlyRetSorted sortIndex]=sort(monthlyRet, 2);\n% these are the sorted monthly returns of the\nprevious year\nprevYearMonthlyRetSorted=backshift(12,\nmonthlyRetSorted);% the sort index of the\nprevious ",
+    "rule_text": "Monthly momentum strategy that goes long the top decile of stocks by previous year returns and short the bottom decile, rebalancing monthly.",
+    "signal_category": "TREND",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Rank all stocks by their monthly returns over the previous 12 months",
+      "Identify the top 10% of stocks by past 12-month performance and take long positions",
+      "Identify the bottom 10% of stocks by past 12-month performance and take short positions",
+      "Rebalance positions at the start of each month based on prior year ranking",
+      "Only include stocks with valid return data in the prior year and valid closing price at month end"
+    ],
+    "parameters": {
+      "lookback_period": "12 months (252 trading days equivalent)",
+      "threshold": "10th percentile (top decile) and 90th percentile (bottom decile)",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "Monthly rebalancing: close all positions and rerank stocks based on new 12-month return period"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "FORMULA"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, p.149",
+    "raw_chunk_text": "One of the most intuitive commodity seasonal trades is the\ngasoline future trade: Simply buy the gasoline future contract that\nexpires in May near the middle of April, and sell it by the end\nof April.",
+    "rule_text": "Buy May gasoline futures contract in mid-April and sell by end of April to capture seasonal summer driving season price appreciation",
+    "signal_category": "PATTERN",
+    "direction": "LONG",
+    "entry_conditions": [
+      "Calendar month is April",
+      "Time period is middle of April (approximately mid-month)",
+      "Instrument is gasoline futures contract expiring in May"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "11 years prior to April 2008 (approximately 1997-2008)"
+    },
+    "exit_conditions": [
+      "Exit by end of April (approximately 2 weeks after entry)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "Seasonal uptrend in spring driving season"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (Strategies and Backtesting), pp. 8-204",
+    "raw_chunk_text": "is:whichmonthcontracttobuy,andtoholdforwhatperiod?Afterscanningthe\nliterature,thebesttradeIhavefoundsofarisonewherewebuy1contractof\nRB(theunleadedgasolinefuturestradingontheNewYorkMercantileExchange\n[",
+    "rule_text": "Buy one contract of RB (unleaded gasoline futures) at the close of April 13 and sell at the close of April 25 each year.",
+    "signal_category": "PATTERN",
+    "direction": "LONG",
+    "entry_conditions": [
+      "Calendar date is April 13 (or next trading day if holiday)",
+      "Buy 1 contract of RB (unleaded gasoline futures, NYMEX) at market close"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "1995-2008"
+    },
+    "exit_conditions": [
+      "Calendar date is April 25 (or previous trading day if holiday)",
+      "Sell 1 contract of RB at market close"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "SWING",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch.7, pp.150",
+    "raw_chunk_text": "2008* 4,741 0\n*Actualtradingresultexpressedas2\u00d7QU.\nForthosewhodesirelessrisk,youcanbuytheminigasolinefuturesQUat\nNYMEXwhichtradeathalfthesizeofRB,thoughitisilliquid.\n(Thisresearchhasbeeninspiredbythem",
+    "rule_text": "Buy natural gas futures contracts expiring in June near the end of February to exploit seasonal demand increase from power generators providing air conditioning electricity as summer approaches.",
+    "signal_category": "PATTERN",
+    "direction": "LONG",
+    "entry_conditions": [
+      "Purchase natural gas futures contract with June expiration",
+      "Entry timing: near the end of February"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "13 consecutive years profitable as of 2008"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "SEASONAL_SUMMER_DEMAND"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (Seasonal Trade in Natural Gas Futures), p. 8-204",
+    "raw_chunk_text": "future contract that expires in June near the end of February, and\nsellitbythemiddleofApril.(Again,seesidebarfordetails.)\nA SEASONAL TRADE IN\nNATURAL GAS FUTURES*\nSummerseasonisalsowhennaturalgasdeman",
+    "rule_text": "Long NYMEX natural gas June futures contract at the close of February 25, exploiting seasonal summer demand increase from air conditioning.",
+    "signal_category": "SEASONAL|EVENT",
+    "direction": "LONG",
+    "entry_conditions": [
+      "Buy June contract NYMEX natural gas futures (Symbol: NG) at close of February 25 (or next trading day if holiday)"
+    ],
+    "parameters": {
+      "lookback_period": "ANNUAL_SEASONAL",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "1995-2000"
+    },
+    "exit_conditions": [
+      "Exit position on April 15 (or previous trading day if holiday)"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "SEASONAL_SUMMER_DEMAND"
+    ],
+    "author_confidence": "HIGH",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (pages 8-204), Risk Parity concept discussion citing Dr. Edward Qian, PanAgora Asset Management",
+    "raw_chunk_text": "return. So if the two hypothetical portfolios have the same average\nreturn, then we would prefer the one that has the smaller risk or\nstandard deviation. Empirical studies have found that a portfolio\n",
+    "rule_text": "Construct a leveraged low-beta portfolio to achieve higher Sharpe ratio by reallocating from traditional high-risk asset allocation to a risk-parity allocation with leverage.",
+    "signal_category": "REGIME",
+    "direction": "LONG",
+    "entry_conditions": [
+      "Identify assets with low beta (systematic risk below market average)",
+      "Allocate 23% to stocks and 77% to bonds instead of traditional 60-40 split",
+      "Apply 1.8x leverage to the entire rebalanced portfolio to match risk level of original 60-40 allocation"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch. (pages 8-204), p. 8",
+    "raw_chunk_text": "Somehow, the market is chronically underpricing high-beta\nstocks. Hence, given a choice between a portfolio of high-beta\nstocksandaportfoliooflow-betastocks,weshouldpreferthelow-\nbeta one, which we ca",
+    "rule_text": "Prefer low-beta stocks over high-beta stocks and leverage the low-beta portfolio to achieve maximum compounded growth rate, exploiting chronic market underpricing of high-beta equities.",
+    "signal_category": "REGIME",
+    "direction": "LONG",
+    "entry_conditions": [
+      "Identify stocks with low beta relative to market",
+      "Construct portfolio of low-beta stocks",
+      "Apply leverage to low-beta portfolio"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "POSITIONAL",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  },
+  {
+    "signal_id": "CHAN_QT_DRY_0",
+    "book_id": "CHAN_QT",
+    "source_citation": "Quantitative Trading, Chan, Ch., p.8-204 (index reference: mean-reverting strategy with and without transaction costs, 61-65)",
+    "raw_chunk_text": "conditional Januaryeffect,143\u2013146\nheteroskedasticity backtesting,144\u2013146\n(GARCH)model,120 Java,80,85\nP1:JYS\nind JWBK321-Chan October2,2008 14:7 Printer:Yettocome\n178 INDEX\nK MATLAB(cid:1)R,21,32\u201334,\nK",
+    "rule_text": "Mean-reverting strategy that enters positions when price deviates from equilibrium and exits when mean reversion occurs, with performance measured both with and without transaction costs.",
+    "signal_category": "REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price deviates from mean (exact deviation threshold not specified in excerpt)",
+      "Mean reversion signal triggered (specific signal definition provided in backtested implementation)"
+    ],
+    "parameters": {
+      "lookback_period": "AUTHOR_SILENT",
+      "threshold": "AUTHOR_SILENT",
+      "half_life": "AUTHOR_SILENT",
+      "backtest_sharpe": "AUTHOR_SILENT",
+      "backtest_period": "AUTHOR_SILENT"
+    },
+    "exit_conditions": [
+      "AUTHOR_SILENT"
+    ],
+    "instrument": "ANY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "UNKNOWN",
+    "hallucination_issues": [],
+    "variant_id": null,
+    "chunk_type": "RULE"
+  }
+]

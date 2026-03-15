@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_373",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit implied volatility (IV) and multiple historical volatility calculations (10-day, 20-day, 50-day, 100-day HV) with precise IV-to-HV ratio comparisons. Available indicators include only hvol_20 (20-day historical volatility). Cannot construct conditions for: (1) direct IV measurement vs HV across 4 different periods, (2) IV percentile calculation, (3) precise 80% threshold application per individual period. The signal is context-dependent directionally and requires IV data not available in the allowed indicator set.",
+  "translation_notes": "Signal requires implied volatility data and comparisons across multiple historical volatility periods (10, 20, 50, 100 days). Only hvol_20 is available in allowed indicators. IV percentile determination and multi-period IV-to-HV comparisons cannot be accurately expressed with available tools. Exit conditions marked AUTHOR_SILENT were interpreted as a mean-reversion exit (IV percentile rising above threshold)."
+}

@@ -1,0 +1,60 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_16",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry: Short sale day opens lower than previous close, enter immediately on open. Exit: If the same day closes higher than the open, exit the position (reject entry). The logic uses a same-bar exit condition to prevent position entry if close > open on the signal bar."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry: Short sale day opens lower than previous close, enter immediately on open. Exit: If the same day closes higher than the open, exit the position (reject entry). The logic uses a same-bar exit condition to prevent position entry if close > open on the signal bar."
+  },
+  "source_rule_text": "Enter a short position immediately on the open of a short sale day if it opens lower; if the short sale day opens lower and closes higher, take no position."
+}

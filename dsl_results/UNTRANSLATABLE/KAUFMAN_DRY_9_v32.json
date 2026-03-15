@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit band_width parameter (AUTHOR_SILENT) and specific trendline offset calculations. The exact mechanism for placing a 'small safety band around trendlines' is not defined numerically. ATR-based bands (atr_14) could approximate this, but without the author-specified band width, precise translation is impossible. Standard moving average crossovers used as proxy.",
+  "translation_notes": "Used two moving averages (sma_20 for trend, sma_10 for reversal) as the signal specifies 'two moving averages' as trendline_type. Price crossing above MA20 triggers buy, crossing below MA10 reverses to sell. The safety band concept is approximated through dual MA levels rather than literal bands, since band_width is AUTHOR_SILENT. Direction marked CONTEXT_DEPENDENT to reflect both long and short entry logic."
+}

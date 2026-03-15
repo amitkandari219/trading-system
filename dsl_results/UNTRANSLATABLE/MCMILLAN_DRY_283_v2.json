@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_283",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires custom calculation of embedded call value (Stock price + Present Worth of Dividends - PERCS price) and option pricing model assessment (moneyness vs volatility comparison). These require: (1) external data inputs (PERCS price, dividend present worth) not available in OHLCV price/volume data, (2) custom option pricing model computation not expressible via allowed indicators, and (3) comparative valuation logic across multiple synthetic dimensions. The signal is fundamentally a multi-asset derivative valuation strategy requiring inputs and computations outside the scope of technical indicator-based backtesting.",
+  "translation_notes": "Signal MCMILLAN_DRY_283 is based on fixed-income/PERCS arbitrage theory involving embedded option valuation. It cannot be translated to price-action or volatility-based rules using standard technical indicators. Would require custom Python/C++ module for option pricing and external data feeds for PERCS prices."
+}

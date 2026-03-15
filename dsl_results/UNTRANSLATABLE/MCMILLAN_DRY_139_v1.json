@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_139",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes an options spread strategy (short put + long call synthetic) with strike-based entry/exit logic. The backtest engine appears to be equity/price-based only. Strike prices, option premiums, net credits, and expiration-based exits cannot be translated to price/technical indicator conditions without losing the core mechanics of the strategy. Recommend implementing as a dedicated options backtester module.",
+  "translation_notes": "Signal requires options contract mechanics (defined strikes, premiums, net credits, expiration handling) which are not representable in this price-action/indicator framework. The bullish bias was approximated with RSI < 50 and price above SMA_20, but this loses the precise risk/reward structure of the original collar strategy."
+}

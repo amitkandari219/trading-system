@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_188",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a multi-leg options reversal strategy (short stock + short put + long call) with position management tied to option expiration and strike assignment logic. The backtest engine appears to be equity price-based and lacks: (1) options contract indicators for premium/credit tracking, (2) position-level synthetic spread tracking, (3) assignment/exercise mechanics, (4) expiration-aware exit logic. The 'total credit > striking price' entry condition and dual assignment paths at expiration cannot be expressed using only price and technical indicators.",
+  "translation_notes": "Signal requires options trading infrastructure including: credit calculations from multiple legs, strike price assignment logic, and expiration mechanics. Recommend implementing as a custom strategy module rather than a rule-based condition set."
+}

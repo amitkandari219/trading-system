@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a ratio calculation (S&P 500 price / DJIA price) which is not available as a pre-computed indicator. The allowed indicators do not include cross-instrument ratios or synthetic calculations. Approximation shown assumes 'close' represents the ratio value, but this cannot be properly computed from the allowed indicator set without custom ratio data feed.",
+  "translation_notes": "This signal fundamentally requires computing a ratio between two different indices (S&P 500 / DJIA). The backtest engine would need either: (1) a pre-calculated ratio data feed, or (2) custom indicator support for cross-instrument calculations. The conditions above show the logic structure (deviation from 0.107 midpoint with boundaries at 0.104-0.110) but cannot be properly implemented with the current allowed indicators. Context-dependent direction reflects mean reversion logic: long when ratio is low (below midpoint), short when ratio is high (above midpoint)."
+}

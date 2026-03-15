@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_107",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking of options-specific parameters (implied volatility, option Greeks, calendar spread pricing dynamics, and time decay) which are not available in the provided indicator set. The strategy fundamentally depends on implied volatility changes and relative option premiums that cannot be accurately modeled with price-based technical indicators alone. Entry conditions require detecting a net credit from the spread establishment, and exit conditions require monitoring both underlying price collapse AND IV changes simultaneously\u2014neither of which can be precisely translated without options-specific data.",
+  "translation_notes": "Attempted partial translation using hvol_20 as proxy for implied volatility regime and close price as proxy for underlying collapse, but this significantly degrades signal fidelity. A proper implementation requires options pricing module with IV surface, time decay modeling, and spread P&L tracking."
+}

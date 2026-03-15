@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_187_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'Days to expiration' (DTE) and 'Model reliability index' \u2014 neither are available in the allowed indicator list. DTE is a temporal market structure variable, not a price/technical indicator. Model reliability index is a custom meta-indicator not derivable from standard OHLCV data. The signal's core logic (reducing model weight, increasing experience-weight) is a portfolio weighting mechanism that cannot be expressed as entry/exit conditions on price action alone.",
+  "translation_notes": "This is a regime/weighting adjustment rule rather than a directional trading signal. It describes how to reweight decision inputs as expiration approaches (DTE \u2264 5 days) when model confidence drops (reliability < 0.85). The rule is context-dependent and applies to ANY regime. Without access to DTE and model reliability metrics, the rule cannot be operationalized as testable entry/exit conditions on standard technical indicators. A backtest would require custom data feeds for calendar days-to-expiration and a model confidence/reliability score."
+}

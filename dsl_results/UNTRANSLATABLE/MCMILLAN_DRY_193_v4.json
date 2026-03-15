@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_193",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific parameters and calculations that are not supported by the equity price/technical indicator system: (1) Call option strike price relative to short sale price must be specified as [THRESHOLD_NEEDED]; (2) Call option premium/time value must be tracked and compared; (3) Interest rate earned on short sale proceeds ([THRESHOLD_NEEDED] per month) must be calculated; (4) Option expiration date and time value decay must be modeled; (5) Exercise decision logic (if stock > strike at expiration) requires option contract state tracking. The backtest engine lacks derivatives pricing, option Greeks, and premium tracking capabilities.",
+  "translation_notes": "MCMILLAN_DRY_193 describes a synthetic covered call arbitrage strategy (short stock + long call) designed to capture interest earned on short proceeds minus option premium paid. This is a derivatives strategy requiring option contract management beyond the scope of equity price-based technical signals. All critical thresholds are marked [THRESHOLD_NEEDED] in the original specification, indicating incomplete parameterization. Recommend implementing in an options-aware backtest framework."
+}

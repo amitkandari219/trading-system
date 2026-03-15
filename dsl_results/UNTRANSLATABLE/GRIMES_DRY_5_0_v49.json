@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires precise swing magnitude comparison and first-occurrence detection logic that cannot be expressed with available indicators. Specifically: (1) 'Downswing magnitude \u2265 [THRESHOLD]% of preceding upswing' requires bar-by-bar swing tracking and comparison across multiple bars, (2) 'First occurrence of reversal swing exceeding prior swing' requires historical state tracking unavailable in condition syntax, (3) 'Lower timeframe confirmation' requires multi-timeframe analysis not supported in single-frame rule engine. Provided JSON uses regime detection (ADX trend strength) and volatility/volume confirmation as practical proxies, but does not capture the core swing magnitude reversal logic.",
+  "translation_notes": "This signal is fundamentally about detecting swing reversals that exceed prior swing magnitudes\u2014a pattern recognition task requiring swing tracking across bars. The backtest engine's condition-based syntax cannot express: (a) dynamic magnitude thresholds tied to previous bars, (b) swing high/low tracking, or (c) first-occurrence memory. Recommend implementing as custom indicator or multi-bar lookback function. Current JSON approximates using trend strength (ADX > 25 for established trend), increased volatility (true_range > atr_14), and volume confirmation as proxies for regime shift detection."
+}

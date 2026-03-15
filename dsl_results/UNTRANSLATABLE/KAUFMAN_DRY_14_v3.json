@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires COT (Commitment of Traders) data with net long positions (NL) by reporting trader groups (small speculators, large speculators, commercials). This external, non-price data source is not available in the allowed indicators list. The stochastic oscillator formula can be applied to price data (stoch_k, stoch_d available), but cannot be applied to COT positioning data. COT Index requires specialized market structure data unavailable in standard OHLCV/technical indicator sets.",
+  "translation_notes": "KAUFMAN_DRY_14 is a regime identification tool based on COT positioning cycles rather than price action. It plots stochastic oscillators of three trader group positions using 1-year lookback with 1.5-4 year observation windows. Without COT data access, this signal cannot be operationalized in a price-only backtest engine. To implement: (1) integrate COT report data feeds, (2) calculate stochastic on NL series per group, (3) interpret convergence/divergence patterns as regime signals."
+}

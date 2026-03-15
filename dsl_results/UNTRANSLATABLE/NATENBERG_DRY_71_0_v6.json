@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_71_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility (IV) rank thresholds, IV absolute decline measurements, pre-event timing filters (days_before_event), and time-spread-specific vega calculations. These are options-chain metrics not available in the standard price/technical indicator set. The india_vix proxy and hvol_20 are approximate substitutes for volatility regime detection, but cannot capture: (1) IV rank percentile calculations, (2) time spread IV premium differential (long-short legs), (3) vega exposure quantification, (4) scheduled event calendar integration, (5) underlying stability filters beyond ATR. A proper implementation requires direct access to implied volatility surface data and options Greeks.",
+  "translation_notes": "Approximated using india_vix (volatility proxy) for elevated IV entry condition and hvol_20 (historical volatility) for both entry stability and exit contraction signals. ATR condition is placeholder for 'minimal movement' requirement. The core logic (pre-event vol expansion \u2192 post-event vol contraction) is partially captured but lacks true IV rank and spread-specific mechanics."
+}

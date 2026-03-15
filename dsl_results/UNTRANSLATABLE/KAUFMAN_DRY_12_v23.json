@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cross-basket volatility matching (long basket volatility == short basket volatility) which cannot be expressed with single-instrument indicators. Volatility matching is a portfolio-level constraint that requires comparing atr_14 or hvol_20 across multiple instruments simultaneously. The allowed operators and indicator set do not support inter-basket comparison logic. Additionally, basket composition is marked AUTHOR_SILENT, making the rule incomplete.",
+  "translation_notes": "Translated 52-week new highs/lows using Donchian Channel (dc_upper for 52-week equivalent highs, dc_lower for lows). However, the critical volatility-matching constraint cannot be operationalized in this single-instrument framework. A proper implementation would require portfolio-level logic comparing volatility metrics across the long and short baskets before entry."
+}

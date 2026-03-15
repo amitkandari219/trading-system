@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) IV percentile and IV rank \u2014 no IV-specific indicators available in allowed list (india_vix is VIX proxy only); (2) specific delta strike selection for strangles \u2014 requires options Greeks not in allowed indicators; (3) precise profit targets and time-decay thresholds as percentages of max loss/premium \u2014 requires options pricing mechanics not expressible with price/technical indicators; (4) delta hedging and periodic rebalancing logic \u2014 portfolio rebalancing rules beyond condition-based entry/exit.",
+  "translation_notes": "This is a sophisticated options volatility arbitrage strategy that cannot be fully translated to price-action rules. The core logic (short vol when IV elevated, rebalance regularly) is approximated using hvol_20 as a volatility proxy and a 3% weekly return target (derived from Coval & Shumway 3% weekly return cited). However, the strategy's actual edges (IV rank thresholds, delta selection, Greeks-based hedging) require dedicated options analytics unavailable here. Recommend using a purpose-built options backtester or defining explicit IV percentile/rank inputs as external parameters."
+}

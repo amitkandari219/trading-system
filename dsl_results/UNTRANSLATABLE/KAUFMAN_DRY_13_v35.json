@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic calculation of arbitrage bounds using external market parameters (spot price S_t, interest rate R_t, storage costs k, transaction costs c_t, time to delivery T). These require real-time external data inputs and formula-based computation: upper_bound = S_t \u00d7 (1 + R_t)^T + k and lower_bound = (S_t - c_t) \u00d7 (1 + R_t)^T. The allowed indicator list does not include synthetic spot price, interest rate, or storage cost indicators, nor does it support parametric expressions or exogenous variable inputs.",
+  "translation_notes": "This is a fundamental arbitrage signal requiring cash-and-carry/reverse carry pricing logic. It cannot be expressed using standard technical indicators alone. Implementation would require: (1) real-time spot and futures price data, (2) current interest rate and storage cost parameters, (3) custom calculation of arbitrage bounds, and (4) conditional entry/exit based on price breaches of these computed bounds. Recommend implementing as a custom module outside the standard backtester with access to market microstructure data."
+}

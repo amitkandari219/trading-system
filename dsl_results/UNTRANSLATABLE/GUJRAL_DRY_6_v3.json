@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'Lilliput candle' (small body AND small tail), 'regular sized tails', and specific candle morphology patterns. While bar properties (body, upper_wick, lower_wick) are available, the allowed operators do not support the compound candle pattern matching needed (e.g., defining 'small body' as body < X% AND 'small tail' as upper_wick < Y AND lower_wick < Z simultaneously). The signal also lacks quantified thresholds for what constitutes 'small', 'regular sized', or 'Lilliput' classification. AUTHOR_SILENT exit condition cannot be operationalized into a testable condition.",
+  "translation_notes": "This is a regime/pattern recognition signal requiring candle morphology analysis. To make it translatable, the source would need: (1) explicit numeric thresholds (e.g., 'body < 0.3 ATR', 'upper_wick < 0.2 ATR', 'lower_wick < 0.2 ATR'), (2) a clear definition or indicator for 'Lilliput candle', and (3) a concrete exit trigger instead of AUTHOR_SILENT. The NEUTRAL direction also makes entry_long/short semantically empty in a directional backtesting framework."
+}

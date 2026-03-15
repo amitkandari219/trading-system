@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_31_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom volatility estimation logic: counting frequency of price moves exceeding N standard deviations within a rolling window and comparing observed frequency to theoretical expected frequency. This requires: (1) real-time standard deviation calculation across observation window, (2) counting occurrences of moves > sigma_threshold, (3) comparing to expected frequency based on normal distribution theory, (4) triggering volatility adjustment when observed > expected. No single allowed indicator directly measures this statistical comparison. hvol_20 measures historical volatility but does not track frequency of threshold-breaching moves or compare to theoretical expectations. Would need a custom 'volatility_surprise' or 'move_frequency_ratio' indicator.",
+  "translation_notes": "This is a meta-signal about volatility estimation methodology rather than a price-action trading rule. The core logic is: if you observe more large moves than your volatility model predicts, increase your volatility estimate. This requires comparing observed statistics to theoretical statistics\u2014functionality not available in standard technical indicators. The source text excerpt shows an example calculation but the allowed indicators do not support the statistical framework needed to implement this rule systematically in a backtest engine."
+}

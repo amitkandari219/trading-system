@@ -1,0 +1,80 @@
+{
+  "signal_id": "GUJRAL_DRY_9",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_9",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "pivot"
+      },
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "s1"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses daily pivot levels (pivot and s1 available). Entry: stock opens below pivot AND stays above S1 (low > s1) AND shows upward attempt (close > open for intraday retracement recovery). Exit: when price breaks below first support S1, indicating failed reversal attempt. Stop loss set conservatively at 2% to protect against gap downs below S1."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "pivot"
+      },
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "s1"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal uses daily pivot levels (pivot and s1 available). Entry: stock opens below pivot AND stays above S1 (low > s1) AND shows upward attempt (close > open for intraday retracement recovery). Exit: when price breaks below first support S1, indicating failed reversal attempt. Stop loss set conservatively at 2% to protect against gap downs below S1."
+  },
+  "source_rule_text": "Do not reject a stock that opens below the daily pivot or CPR if it stays above first support S1; consider it for a buy when it attempts to move higher on intraday retracements."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal is primarily a regime/timing rule stating 'do NOT short at the open' under gap-down conditions. This is a negation/avoidance rule rather than a positive entry signal. The rule lacks explicit exit conditions (AUTHOR_SILENT) and pullback-to-support definition for long entries is vague without specific support level indicators. The 'do not short' instruction is better expressed as a filter rule than as actionable entry/exit conditions in a standard backtest engine.",
+  "translation_notes": "Attempted to structure as a contrarian long entry during severe gap-downs (5-7% breakdown + 4% gap down next morning) with pullback exit. However, the original signal explicitly forbids shorting at open during these conditions rather than prescribing a specific long entry. The gap-down percentages are approximated using returns (0.05 = 5%, 0.04 = 4%) and prev_close comparison. A proper implementation would require explicit support level definition and clearer entry timing guidance."
+}

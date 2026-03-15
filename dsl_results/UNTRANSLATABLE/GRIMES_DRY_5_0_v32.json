@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe analysis (higher timeframe trend bias + lower timeframe range termination). The schema does not support explicit timeframe hierarchy or dual-timeframe conditions. Parameters for 'higher_timeframe' and 'lower_timeframe' selection are marked [THRESHOLD_NEEDED] and cannot be operationalized. Momentum confirmation 'beyond previous extreme' is approximated using prev_high/prev_low, but true multi-timeframe structure requires external preprocessing.",
+  "translation_notes": "Approximated range termination using Donchian channels (dc_upper/dc_lower) as range boundaries on lower timeframe. Used ema_50 as proxy for higher timeframe trend direction. Momentum confirmation represented by close crossing previous extreme (prev_high/prev_low). This is a partial translation; full implementation requires multi-timeframe capability not present in single-timeframe rule engine."
+}

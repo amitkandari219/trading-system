@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-instrument comparison (cash vs futures prices and fair value calculation). The allowed indicators are single-instrument price/technical indicators. Cannot express: (1) cash market price separately from futures price, (2) fair value formula incorporating spot price + interest rate \u00d7 time fraction - dividend, (3) concentrated selling detection in cash market specifically, (4) spread magnitude between two instruments. These require dual-leg instrument data and custom fair value computation not available in single-asset indicator set.",
+  "translation_notes": "This is a cash-futures arbitrage signal that fundamentally requires tracking two correlated instruments (cash equity and futures contract) and computing theoretical fair value. The backtest engine's allowed indicators are designed for single-instrument technical analysis. A proper implementation would need: (a) separate cash_price and futures_price streams, (b) a fair_value indicator computed as: spot + (spot \u00d7 rate \u00d7 time) - dividend, (c) volume profile or order flow analysis on the cash leg. Approximation attempted using pivot (fair value proxy) and volume (selling pressure), but this loses the core arbitrage logic."
+}

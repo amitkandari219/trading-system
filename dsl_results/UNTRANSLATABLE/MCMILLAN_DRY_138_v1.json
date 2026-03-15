@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_138",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes an options strategy (synthetic short = sell call + buy put at same strike/expiration). Price and technical indicators alone cannot express multi-leg options positions, strike selection logic, or simultaneous execution of different option types. The backtest engine appears to be equity-price-based and lacks options contract, strike price, and expiration date parameters.",
+  "translation_notes": "MCMILLAN_DRY_138 is a synthetic short sale strategy requiring: (1) simultaneous execution of two different option contracts, (2) strike price selection relative to current price, (3) matching expiration dates, and (4) premium capture logic. None of these are expressible with price/technical indicators. Recommend implementing as a dedicated options strategy module or manual trade rule outside this engine."
+}

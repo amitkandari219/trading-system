@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identifying and measuring a horizontal consolidation pattern with explicit support/resistance levels and calculating a dynamic profit target based on consolidation height. This requires pattern recognition logic (support_level, resistance_level, consolidation_height) that cannot be expressed using only the allowed point-in-time indicators. While dc_upper/dc_lower can approximate breakout detection, the precise measurement of consolidation area height and the dynamic profit target calculation (resistance_level + (resistance_level - support_level)) requires custom pattern detection unavailable in the allowed indicator set.",
+  "translation_notes": "Attempted approximation: dc_upper could represent resistance in a ranging market, and close crossing above it could signal breakout. However, this loses the core requirement of measuring the consolidation pattern's height and setting profit target at resistance + consolidation_height. A proper implementation would require custom pattern detection inputs or pre-calculated support/resistance levels as external parameters."
+}

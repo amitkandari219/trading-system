@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_140_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit IV (implied volatility) and RV (realized volatility) indicators with measurable spread thresholds and persistence duration tracking. Available indicators include hvol_20 (historical volatility proxy) and india_vix (volatility index), but the signal's core requirement\u2014comparing forward-looking IV against backward-looking RV with specific threshold parameters and time-persistence logic\u2014cannot be fully expressed with the available indicator set. The signal also requires conviction adjustment based on mispricing magnitude, which is not representable in the condition-based rule structure.",
+  "translation_notes": "Attempted proxy: Used hvol_20 < india_vix as a heuristic for IV > RV (sell premium condition), with india_vix threshold > 0.02 to filter HIGH_VOL regime. Exit when spread narrows (hvol_20 >= india_vix). However, this does not capture the precise IV-RV differential, persistence requirement (% of option life), or conviction scaling. A proper implementation requires custom IV/RV calculation functions and state tracking not available in the standard indicator library."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-asset comparison (IV-RV spread across underlyings, peer underperformance comparison, volatility cone percentile ranking) which cannot be expressed with single-asset indicators. Required inputs: implied volatility, realized volatility by asset, volatility cone construction, cross-asset relative performance metrics, and market regime classification beyond provided indicators. The signal is fundamentally a portfolio/relative value strategy requiring data not available in the single-asset indicator set.",
+  "translation_notes": "Attempted partial translation using hvol_20 as proxy for realized volatility, but the core logic comparing IV-RV spreads across multiple assets, ranking by attractiveness relative to volatility cones, and comparing peer performance cannot be mechanically constructed from the allowed indicator set. This signal requires custom multi-asset aggregation logic outside the scope of single-instrument rules."
+}

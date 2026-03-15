@@ -1,0 +1,108 @@
+{
+  "signal_id": "GUJRAL_DRY_10",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_10",
+    "entry_long": [
+      {
+        "left": "sma_200",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_200",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_200",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_200",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is context-dependent (LONG in uptrends, SHORT in downtrends). Entry conditions check for MA alignment (200MA below 20MA for uptrends, above for downtrends) and price approaching the 200MA as support/resistance. Exit conditions use MA crossover as reversal signals. Timeframe specification (5m, 15m, 60m) cannot be enforced in this rule format but should be applied at backtest configuration level. Used sma_200 and sma_20 as allowed equivalents for 200MA and 20MA."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_200",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_200",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_200",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_200",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is context-dependent (LONG in uptrends, SHORT in downtrends). Entry conditions check for MA alignment (200MA below 20MA for uptrends, above for downtrends) and price approaching the 200MA as support/resistance. Exit conditions use MA crossover as reversal signals. Timeframe specification (5m, 15m, 60m) cannot be enforced in this rule format but should be applied at backtest configuration level. Used sma_200 and sma_20 as allowed equivalents for 200MA and 20MA."
+  },
+  "source_rule_text": "In uptrends, trade when 200MA is below 20MA; in downtrends, trade when 200MA is above 20MA. Use 200MA as resistance in uptrends and support in downtrends on 5-minute, 15-minute, and 60-minute charts."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires weekday-specific entry conditions (Tuesday/Thursday reversals) which cannot be expressed using allowed indicators and operators. Backtest engine lacks day-of-week filtering capability. Additionally, exact probability thresholds marked as [THRESHOLD_NEEDED] are not specified in source material.",
+  "translation_notes": "Translated the 200-day trend filter component using sma_200 as the primary trend context. Reversal pattern logic on specific weekdays (Tue/Thu) cannot be implemented with current allowed indicators. The source data shows pattern frequencies (39-70%) but lacks actionable entry/exit probability thresholds. Recommend: (1) specify exact win-rate thresholds for pattern activation, (2) add day-of-week filtering to backtester, or (3) use external pre-filter for weekday selection before applying this rule."
+}

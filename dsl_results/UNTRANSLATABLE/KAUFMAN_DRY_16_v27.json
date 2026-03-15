@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal references a '3-day momentum indicator' which is not in the ALLOWED INDICATORS list. RSI_14 was used as a proxy for momentum/oscillator but this is an approximation. Additionally, 'opening range breakout setup' cannot be precisely translated without access to intraday opening range data or a specific opening range breakout indicator. The overnight carry and next-day open exit logic are partially expressed using returns and open comparison, but the precise 'profitable at day end' condition requires day-end P&L calculation which may not be directly available.",
+  "translation_notes": "Substituted 3-day momentum < 30 with rsi_14 < 30 as closest momentum proxy. Exit conditions interpret 'profitable at end of day' as positive returns, and 'next open moves in profitable direction' as open > prev_close. The 30-minute timeframe and specific opening range breakout context were noted but cannot be fully encoded in the structural format."
+}

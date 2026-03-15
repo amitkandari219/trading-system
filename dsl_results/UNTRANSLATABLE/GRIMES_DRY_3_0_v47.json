@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of SMA slope (rate of change) and dynamic undefined zone bands around the SMA. The allowed indicator set does not include slope/momentum derivatives of moving averages, nor support for dynamic offset bands. Parameters [THRESHOLD_NEEDED] and [UNDEFINED_ZONE_WIDTH] cannot be specified without additional guidance. The undefined zone concept requires conditional band logic not expressible in the 3-field rule structure.",
+  "translation_notes": "The core concept uses sma_50 as the trend indicator. Entry requires: (1) SMA slope magnitude exceeding threshold, (2) price outside undefined zone. Exit requires: (1) slope reversal/flattening, (2) price re-entering zone. Implementation would need custom slope calculation function and dynamic band offsets. Suggest parameterizing slope_threshold as ATR-based or percentage deviation from SMA to operationalize."
+}

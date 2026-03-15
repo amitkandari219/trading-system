@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires activity-subordinated bar construction (dynamic bar formation based on cumulative volume thresholds) and Jarque-Bera statistical test for return normality. Neither dynamic bar resampling logic nor parametric normality testing (Jarque-Bera p-value) are available in the allowed indicator set. The core mechanism of replacing fixed time intervals with volume-based bar formation cannot be expressed using point-in-time indicator comparisons alone.",
+  "translation_notes": "Attempted proxy: Used cumulative volume threshold (volume >= threshold) for entry and hvol_20 heteroscedasticity detection for exit rebalancing. However, this does not capture the essential mechanism of the signal: dynamic bar construction subordinated to market activity rather than fixed time intervals. Jarque-Bera normality testing would require access to distributional statistics not available in the indicator library. The signal fundamentally requires a different backtesting engine architecture than condition-based rule matching."
+}

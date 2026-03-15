@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of: (1) full-span centered moving average with dynamic period not in allowed list, (2) measurement of greatest distance D between actual prices and projected trendline, (3) projection of trendline crossing point X, (4) calculation of price objective as distance D below centered trendline. These require custom cycle analysis calculations not available in the allowed indicator set. The signal logic involves dynamic distance measurement and trendline projection that cannot be expressed with standard moving averages (sma_*, ema_*) or allowed operators.",
+  "translation_notes": "KAUFMAN's cycle analysis signal requires proprietary cycle calculations. Approximated SHORT entry as price crossing above SMA50 (representing trendline), but this loses the critical distance-measurement and cycle-projection logic. A proper implementation would need: (a) custom 'cycle_trendline' indicator, (b) 'distance_to_trendline' operator, and (c) forward-projection capability. The exit condition should trigger when price reaches distance D below the trendline, but this cannot be hardcoded without knowing D dynamically. Recommend implementing as custom indicator rather than standard rule."
+}

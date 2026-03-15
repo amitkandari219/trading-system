@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_12",
+    "entry_long": [
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "9614"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_200"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_200"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 0.5,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Interpreted 'higher low' as low > prev_low. Entry price of 9,614 used as approximate entry level with close >= 9614. Stop loss at 9,600 implies ~0.15% below entry (14 pips / 9,614). Multiple MA support focused on sma_200 (200MA line explicitly mentioned). Exit when price closes below 200MA, indicating loss of support. Target regime set to RANGING as specified."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": 9614.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_200"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.005,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Interpreted 'higher low' as low > prev_low. Entry price of 9,614 used as approximate entry level with close >= 9614. Stop loss at 9,600 implies ~0.15% below entry (14 pips / 9,614). Multiple MA support focused on sma_200 (200MA line explicitly mentioned). Exit when price closes below 200MA, indicating loss of support. Target regime set to RANGING as specified."
+  },
+  "source_rule_text": "Enter a long trade around a higher low level with stop loss placed below the recent swing low, when multiple moving average lines provide support."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_145_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fair value calculation (index + carry costs) and asymmetric thresholds (buy_threshold_points vs sell_threshold_points with asymmetry_ratio). Fair value is not an allowed indicator and cannot be derived from the allowed indicator set. Execution cost asymmetry requires external parameters not available in standard OHLCV data.",
+  "translation_notes": "This is a fundamental arbitrage signal (cash-and-carry) that depends on calculating fair value from index components and cost-of-carry. The threshold of 50 points mentioned in source text represents a minimum deviation required to cover execution costs. Without fair_value, index data, and carry cost inputs, the rule cannot be operationalized in the backtest engine. A partial implementation would require: (1) fair value as an external data feed, (2) parameterizable buy/sell thresholds, and (3) cost-of-carry calculation logic."
+}

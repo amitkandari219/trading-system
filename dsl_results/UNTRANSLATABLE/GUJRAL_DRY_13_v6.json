@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of external news events (merger announcements, buyback news) and sector correlation analysis between related companies. These are fundamental market events and cross-asset relationships that cannot be expressed using price-based technical indicators alone. The core logic depends on: (1) news sentiment/event detection (not available in price data), (2) sector correlation metrics (requires multi-stock comparison), and (3) gap magnitude thresholds (gap_size parameter marked AUTHOR_SILENT). Recommend implementing as a news-triggered rule in a separate news event handler rather than a pure technical backtest rule.",
+  "translation_notes": "Translated entry conditions to focus on breakouts above previous highs with price above all major moving averages (sma_20, sma_50, sma_100), which captures the 'breaks above previous high and range after sideways movement' and 'stays above all MA lines' conditions. Exit uses MA crossover (reversal from entry condition). However, this misses the critical news event trigger and cross-sector correlation logic that define this signal's actual value. A production implementation would require: external news data feed, sector mapping database, and correlation coefficient thresholds for related companies."
+}

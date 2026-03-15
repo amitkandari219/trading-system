@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_11_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal references a machine learning model output ('signal' variable with polarity changes) that is not defined in the allowed indicators list. The rule requires external ML signal generation that cannot be expressed using only price-based technical indicators. Additionally, signal confirmation threshold and stop-loss threshold are marked as [THRESHOLD_NEEDED] without concrete values. Position reversal logic with state-dependent order sizing (units=(1 - self.position) * self.units) requires dynamic position tracking not expressible in static condition rules.",
+  "translation_notes": "Attempted proxy translation using price/SMA crossovers as a crude substitute for ML signal polarity, but this does not accurately capture the original rule's dependency on an external machine learning classifier. Original code shows position-based order sizing which is a portfolio management feature, not a condition-based entry/exit rule. The confirmation bar requirement and stop-loss percentage must be specified numerically to proceed with accurate translation."
+}

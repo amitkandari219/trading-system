@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a calendar-based date filter (first three days of the month, specifically day 1) which is not expressible using the allowed indicators. The allowed indicators list contains only price, technical, and volatility metrics\u2014no calendar or day-of-month functions. The operator 'is' is reserved for regime comparisons, not date logic. A backtest engine would need to implement day-of-month logic externally or add a date/time indicator to the allowed list.",
+  "translation_notes": "KAUFMAN_DRY_15 is a calendar-based seasonal pattern (month-of-year effect) observed in S&P 500 futures from 1982-2000. The entry condition requires filtering by calendar date (days 1-3 of month, emphasized on day 1), which falls outside the scope of technical indicator-based conditions. The exit is marked as AUTHOR_SILENT; a reasonable exit would be at day 10 or later in the month based on the observation window mentioned in the source text."
+}

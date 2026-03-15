@@ -1,0 +1,128 @@
+{
+  "signal_id": "GUJRAL_DRY_10",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_10",
+    "entry_long": [
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_50",
+        "operator": ">",
+        "right": "sma_200"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_20",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_50",
+        "operator": "<",
+        "right": "sma_200"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Converted MA alignment requirement into explicit ordering conditions: uptrend has 20MA > 50MA > 200MA with price above 20MA; downtrend has 20MA < 50MA < 200MA with price below 20MA. Exit conditions use price crossing through the 20MA as the primary exit trigger per the signal description. The signal's complexity regarding support/resistance behavior during partial retracements is captured by monitoring the 20MA as the primary exit level; stronger pullbacks to 50MA or 200MA would require additional exit conditions in practice but are approximated here."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_50",
+        "op": ">",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_20",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_50",
+        "op": "<",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Converted MA alignment requirement into explicit ordering conditions: uptrend has 20MA > 50MA > 200MA with price above 20MA; downtrend has 20MA < 50MA < 200MA with price below 20MA. Exit conditions use price crossing through the 20MA as the primary exit trigger per the signal description. The signal's complexity regarding support/resistance behavior during partial retracements is captured by monitoring the 20MA as the primary exit level; stronger pullbacks to 50MA or 200MA would require additional exit conditions in practice but are approximated here."
+  },
+  "source_rule_text": "Enter trades in the direction of strong trends when all three moving averages (20MA, 50MA, 200MA) are lined up in favor of the move, and use these MAs as support/resistance levels for trend continuation or reversal points."
+}

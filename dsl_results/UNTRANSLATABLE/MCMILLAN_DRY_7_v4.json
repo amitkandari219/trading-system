@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes an OCC automatic exercise rule at option expiration, not a tradeable price-action condition. It requires: (1) option contract moneyness tracking (not in allowed indicators), (2) strike price reference (not available), (3) exact expiration date matching (cannot be expressed with available bar/technical indicators), and (4) brokerage policy logic. The signal is a settlement rule, not an entry/exit trading signal. The threshold parameter '[THRESHOLD_NEEDED]-point' is undefined in the source text and cannot be quantified.",
+  "translation_notes": "MCMILLAN_DRY_7 describes automatic exercise mechanics for call options at expiration, not a discretionary trading signal. This belongs in position management/settlement rules, not a backtest entry/exit engine. To make this actionable, you would need: option-specific indicators (moneyness, time_to_expiration, intrinsic_value), the specific threshold value, and contract-level data not available in standard OHLCV bars."
+}

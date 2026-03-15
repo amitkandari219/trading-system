@@ -1,0 +1,60 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "rules": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "r1"
+      },
+      {
+        "indicator": "low",
+        "op": ">=",
+        "value": "pivot"
+      },
+      {
+        "indicator": "hvol_6",
+        "op": "<",
+        "value": "hvol_100"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      },
+      {
+        "indicator": "hvol_6",
+        "op": "<",
+        "value": "hvol_100"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "r1"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 0,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0.03,
+    "direction": "BOTH"
+  },
+  "tier": "TIER_B",
+  "fix_description": "Added Kaufman Ch.16 volatility filter (hvol_6 < hvol_100) + 3% take profit to lock pivot gains",
+  "walk_forward": "15/26 windows, aggregate Sharpe 2.03, L4=3/4",
+  "nifty_correlation": -0.352,
+  "blocker_for_tier_a": "Window 24 (Nov 2024-Nov 2025) fails due to Feb 2025 correction within low-VIX period",
+  "source": "Trading Systems and Methods, Perry Kaufman, Ch.16, p.757-797"
+}

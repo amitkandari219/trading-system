@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The original signal requires a computed momentum indicator (sign of rolling mean of log returns over a custom window), which is not in the ALLOWED_INDICATORS list. The source code shows custom momentum calculation ('dr[momentum']') that cannot be directly mapped to available indicators. The exact rolling_window_mom parameter value is also marked as [THRESHOLD_NEEDED] in the original specification.",
+  "translation_notes": "Attempted to capture the core logic: enter long when rolling mean of log returns is positive (approximated as log_returns > 0) and short when negative (log_returns < 0). Exit conditions reverse the entry signal. However, this is a simplified approximation\u2014the original signal uses a rolling mean over a specified window length with explicit momentum state tracking (==1.0 for long, ==-1.0 for short), which requires custom indicator computation not available in the allowed set. The min_data_length and rolling_window_mom thresholds were not specified in source material."
+}

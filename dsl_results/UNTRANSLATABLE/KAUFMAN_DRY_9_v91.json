@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of Divergence Index (DI) as the difference between 10-day and 40-day moving averages, followed by dynamic band calculation using standard deviation of the DI over a 40-day period. The allowed indicator list does not include a pre-computed DI indicator or the ability to calculate standard deviation of a derived metric. The [THRESHOLD_NEEDED] parameter is also undefined in the source material. Translatable approximation provided using simple MA crossover as proxy for divergence direction, but this does not capture the band-based reversion logic.",
+  "translation_notes": "Signal cannot be fully translated due to missing Divergence Index and dynamic band indicators. The approximation uses sma_10 crossing sma_40 as a proxy for when the fast average diverges from slow average, but does not implement the \u00b1[THRESHOLD_NEEDED] \u00d7 StDev(DI, 40) band logic or reversion entry conditions. Exit conditions defaulted to reversal of entry (crossover in opposite direction) since AUTHOR_SILENT. Manual implementation of DI and band calculation required for accurate backtesting."
+}

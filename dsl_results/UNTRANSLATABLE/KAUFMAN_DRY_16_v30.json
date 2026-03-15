@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculating a dynamic band as 'opening price + (20% \u00d7 previous day's trading range)'. This requires a computed synthetic indicator not available in the allowed indicator list. The allowed indicators do not include a way to express 'previous day's range \u00d7 0.20 + today's open' as a single comparable value. Would need a custom indicator or formula engine.",
+  "translation_notes": "The core logic of price penetrating an upper band requires: (1) calculating prev_range = prev_high - prev_low, (2) calculating band = open + (prev_range \u00d7 0.20), (3) comparing high or close against this band. None of the allowed indicators provide this computed band. The entry conditions provided are a simplified approximation based on price movement above opening, but do not faithfully represent the Kaufman rule."
+}

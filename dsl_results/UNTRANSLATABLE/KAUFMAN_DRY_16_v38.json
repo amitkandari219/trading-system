@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) distinguishing 'bar is the open of the day' vs 'intraday bars' \u2014 no bar-time indicator available; (2) comparing current bar's true_range to 'average of the previous bar' \u2014 cannot compute single-bar average; (3) comparing 'current volatility to 2x average volatility of that bar' \u2014 no intrabar volatility measure available in indicator set; (4) calculating 'close position within bar range' requires high/low from same bar but price_pos_20 uses 20-bar Donchian range.",
+  "translation_notes": "This signal requires intraday time-of-day detection, single-bar volatility metrics, and intrabar range calculations that are not supported by the allowed indicator set. The rule mixes daily open logic with intraday volatility logic that cannot be cleanly separated. Attempted partial translation using true_range multiplier and price_pos_20 as proxies, but this does not capture the original signal's intent."
+}

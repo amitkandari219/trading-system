@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_147",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options-specific data (near-term vs longer-dated option expiration values, spread debit/credit comparisons, and implied volatility decay) which are not available in the standard price/technical indicator set. Conditions like 'near-term options expire worthless', 'longer-dated options retain value exceeding initial debit', and 'selling longer-dated options value > initial spread debit' cannot be expressed using only OHLCV and technical indicators. A dedicated options backtester with Greeks and time-decay modeling is required.",
+  "translation_notes": "Signal describes an advanced calendar spread/diagonal spread exit strategy specific to options trading. The entry condition was mapped to RANGING regime as specified. The exit was approximated as a trend reversal signal, but this is a poor substitute for actual options expiration and value tracking. This rule requires options chain data and should not be used with equity price data alone."
+}

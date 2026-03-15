@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires tracking 'last momentum peak' and comparing 'current momentum' against it, which requires historical state management and peak detection logic not expressible with allowed indicators and operators. MACD crossing can serve as divergence confirmation and exit trigger, but the precise condition 'current momentum moves above last momentum peak' cannot be directly translated without custom peak-tracking logic.",
+  "translation_notes": "Translated divergence entry as MACD crossing signal line (standard divergence formation). Translated exit to MACD crossing back above signal line (momentum reversal). The core exit logic about 'momentum above last peak' would require custom peak-tracking that exceeds the scope of simple indicator comparisons. Alternative: could use macd_hist crossing zero as momentum reversal proxy, but this is an approximation."
+}

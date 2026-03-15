@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The Swing Index formula itself (SI_t = 50 \u00d7 [(C_t - C_t-1) + 0.5(C_t - O_t) + 0.25(C_t-1 - Z)] / (TR \u00d7 M/K)) cannot be directly translated into the allowed indicator list. The signal requires a composite calculated indicator (Swing Index) that is not available in the allowed indicators. The entry/exit conditions have been expressed using the underlying price components that feed into the Swing Index, but the actual SI scaling mechanism (-1 to +1) and threshold logic cannot be implemented.",
+  "translation_notes": "Converted the five Kaufman Swing Index factors into direct price comparison conditions for both uptrend (entry_long) and downtrend (downtrend_short) scenarios. Exit conditions set as simple reversals of entry conditions since AUTHOR_SILENT was specified. Note: This translation loses the weighted scaling and true-range normalization inherent in the original SI formula."
+}

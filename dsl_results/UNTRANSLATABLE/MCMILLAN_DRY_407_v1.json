@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_407",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires volatility spread structure with specific vega exposure ($250 per 1% vol decrease), gamma neutrality, and delta neutrality constraints. These are options portfolio construction parameters that cannot be expressed as price/technical indicator conditions. The allowed indicator set lacks explicit volatility derivatives pricing metrics (vega, gamma, delta), implied volatility levels, or options spread composition rules. Only the directional volatility assumption (declining volatility in HIGH_VOL regime) could be approximated via hvol_20 comparison.",
+  "translation_notes": "This is an advanced volatility options strategy (likely a short vega spread or calendar spread structure) documented in McMillan. Entry approximated as hvol_20 below 35% (current IV level). Exit as reversal when hvol_20 exceeds entry level. The actual strategy requires options pricing engine and Greeks monitoring, not price-based backtest rules. Manual position construction recommended."
+}

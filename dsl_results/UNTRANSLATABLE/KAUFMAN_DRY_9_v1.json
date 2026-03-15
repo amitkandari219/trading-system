@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic band calculation using formula: B_t = MA_t \u00b1 (s \u00d7 stdev_t-1 \u00d7 MA_t) where s is a user-defined scaling factor. The backtest engine does not support custom formula evaluation or parametric standard deviation scaling. Standard deviation calculation, dynamic scaling factor s, and parametric band width adjustment are not available in the allowed indicators list. Recommend using bb_upper/bb_lower (fixed Bollinger Bands) as a proxy, but this does not replicate the dynamic scaling behavior described.",
+  "translation_notes": "KAUFMAN_DRY_9 describes a parametric band system with user-controlled scaling. The signal logic is context-dependent (long on upper band crosses, short on lower band crosses). Translated entry/exit as reversals on MA_20 crossovers as a simplified proxy, but this loses the essential scaling factor s control and standard deviation scaling mechanism. Requires custom indicator implementation to fully support."
+}

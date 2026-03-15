@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a custom rolling window average of past returns with configurable window periods [THRESHOLD_NEEDED]. The allowed indicators include 'returns' but do not include a pre-computed rolling mean indicator. The thresholds for rolling_window_periods and signal_threshold are not specified in the source material. A proper implementation would require: (1) a rolling_mean(returns, window) function or (2) pre-calculated rolling average indicators like sma_5, sma_10, etc. applied to the returns series itself, which is not available in the allowed indicator set.",
+  "translation_notes": "Signal describes momentum positioning based on rolling average of returns. Attempted translation uses raw returns crosses as proxy, but this does not capture the 'longer averaging windows produce more robust positioning' requirement. Parameters [THRESHOLD_NEEDED] appear throughout but lack concrete values. Original source text does not provide sufficient numerical thresholds or window specifications for accurate rule definition."
+}

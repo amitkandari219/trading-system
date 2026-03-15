@@ -1,0 +1,92 @@
+{
+  "signal_id": "MCMILLAN_DRY_128",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_128",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "45"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "50"
+      },
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "0.02"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "54"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "41"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 10.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Strangle strategy: Entry requires underlying between strike prices (45-50 OTM range) with elevated volatility. Exit triggers at profitable breakout levels (>54 or <41) or total loss if expiration occurs between strikes. Strike prices (call=50, put=45) hardcoded into conditions. Max hold set to 31 days (January expiration). Stop loss set to 100% reflecting max loss on strangle premium. hvol_20 used as proxy for volatility regime confirmation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": 45.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 50.0
+      },
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 0.02
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": 54.0
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": 41.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "HIGH_VOL"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.1,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Strangle strategy: Entry requires underlying between strike prices (45-50 OTM range) with elevated volatility. Exit triggers at profitable breakout levels (>54 or <41) or total loss if expiration occurs between strikes. Strike prices (call=50, put=45) hardcoded into conditions. Max hold set to 31 days (January expiration). Stop loss set to 100% reflecting max loss on strangle premium. hvol_20 used as proxy for volatility regime confirmation."
+  },
+  "source_rule_text": "Buy a strangle (out-of-the-money put and call) when expecting significant price movement in either direction, and profit if the underlying moves beyond the strike prices minus the premium paid."
+}

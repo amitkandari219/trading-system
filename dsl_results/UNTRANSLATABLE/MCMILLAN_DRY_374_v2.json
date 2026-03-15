@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_374",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of volatility at 1st or 100th percentile with directional reversal confirmation. The allowed indicators (hvol_20) provide volatility magnitude but lack percentile-based thresholds and explicit reversal detection logic. Percentile calculations and reversal direction determination are not expressible with the available indicator set and operators.",
+  "translation_notes": "Attempted approximation using hvol_20 as extreme volatility proxy: low values (<0.01) approximate 1st percentile, high values (>0.03) approximate 100th percentile. Reversal approximated by comparison to previous bar. However, this does not capture the true percentile-based detection or the signal's specific reversal confirmation requirement. Author-silent exit conditions interpreted as volatility mean-reversion exit."
+}

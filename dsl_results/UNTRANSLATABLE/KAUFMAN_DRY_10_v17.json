@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Calendar/trading-day-based conditions (last day of month, second-to-last day of month, fourth trading day of new month) are not supported by the available indicator set. These require calendar arithmetic and trading day counting logic outside the indicator library. Implementation requires custom calendar helper functions in the backtest engine.",
+  "translation_notes": "Signal describes a pure calendar-based/event-driven strategy with no technical indicators. Entry depends on month-end calendar dates and exit depends on counting trading days into the new month. The allowed operators and indicators cannot express these temporal/ordinal conditions. A custom backtester extension with calendar utilities would be needed to implement this rule."
+}

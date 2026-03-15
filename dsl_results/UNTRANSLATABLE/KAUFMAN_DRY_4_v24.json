@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires multi-day lookback comparison (price within 2% of lows over unspecified period, then 2%+ move over 3+ days). The allowed indicators do not include a rolling minimum/maximum function or multi-bar comparison logic needed to detect 'within 2% of lows' or measure a 2%+ move over exactly 3+ days. Donchian channels approximate lowest low but don't capture the 'within 2%' proximity condition or the sequential timing requirement.",
+  "translation_notes": "Attempted approximation: dc_lower captures recent lows (20-period by default), close > prev_low captures reversal, and returns >= 0.02 captures 2%+ move. However, this does NOT properly encode the original rule which requires: (1) price within 2% of the lows (proximity threshold), (2) reversal confirmation, (3) minimum 2%+ move over minimum 3-day period. The signal's temporal logic (at least N days) cannot be expressed with the available indicators. A custom indicator tracking rolling minimum over arbitrary periods or multi-bar sequential conditions would be required."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires explicit calculation of realized volatility (30-day rolling close-to-close) and a de-biased forecast spread comparison. While hvol_20 (historical volatility) and india_vix (implied volatility proxy) are available, the exact 30-day realized volatility and the historical mean spread adjustment logic cannot be fully expressed in the allowed operators and indicators. The signal fundamentally requires custom calculation of rolling realized vol and spread mean reversion tracking which exceeds the indicator library scope.",
+  "translation_notes": "Attempted proxy: Used hvol_20 (historical volatility) as realized volatility and india_vix as implied volatility. The threshold of 3.09 represents the historical mean spread. However, this is a simplified approximation\u2014true implementation requires: (1) explicit 30-day rolling realized volatility calculation, (2) tracking historical mean of IV-RV spread, (3) de-biasing current forecasts by subtracting this mean. The CONTEXT_DEPENDENT direction indicates long entries when IV > RV + mean_spread and short entries when RV > IV + mean_spread."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Open interest is not available in the allowed indicator list. The signal requires tracking open interest trends (rising/falling) which cannot be computed from the provided indicators. Additionally, the caution signal (prices rising with falling volume and falling open interest) and the complete bearish signal interpretation are incomplete in the source text, making full rule specification impossible.",
+  "translation_notes": "Translated price and volume components of the signal using close price comparisons and volume analysis with vol_ratio_20 as a proxy for volume trend strength. The open interest component is untranslatable. The rule assumes CONTEXT_DEPENDENT direction with separate long and short entry/exit conditions based on the four market scenarios described. Excluded periods (first day of week, day before holiday, summer months) would need to be implemented at the backtest engine level, not in this rule structure."
+}

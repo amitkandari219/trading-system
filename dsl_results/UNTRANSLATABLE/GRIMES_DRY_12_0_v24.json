@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_12_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tick-level microstructure data (offer-hit vs bid-hit ratios and consecutive trade sequences) which is not available in the allowed indicators. The signal depends on analyzing individual trade direction and momentum within a bar, not OHLCV candle data. No allowed indicator can directly measure buyer vs seller-motivated trade conviction or sustained directional trade flow.",
+  "translation_notes": "Attempted proxy using vol_ratio_20 (volume conviction) and adx_14 (trend strength) to approximate sustained directional momentum, but this does NOT capture the core signal requirement of analyzing bid/offer hitting patterns and trade-level conviction metrics. A proper implementation would require tick-by-tick or order flow data."
+}

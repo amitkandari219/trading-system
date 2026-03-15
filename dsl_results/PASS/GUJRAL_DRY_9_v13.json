@@ -1,0 +1,108 @@
+{
+  "signal_id": "GUJRAL_DRY_9",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_9",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s1"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "r1"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "s1"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "r1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is context-dependent on trend direction. Used ADX_14 > 25 as a proxy for confirming established trend conditions. Entry conditions check if price remains above S1 (uptrend) or below R1 (downtrend). Exit conditions trigger when price breaks below S1 (long exit) or above R1 (short exit), indicating trend reversal. The 'multiple days together' requirement is implicitly handled by the backtest engine's bar-by-bar evaluation logic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s1"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "r1"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "s1"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "r1"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is context-dependent on trend direction. Used ADX_14 > 25 as a proxy for confirming established trend conditions. Entry conditions check if price remains above S1 (uptrend) or below R1 (downtrend). Exit conditions trigger when price breaks below S1 (long exit) or above R1 (short exit), indicating trend reversal. The 'multiple days together' requirement is implicitly handled by the backtest engine's bar-by-bar evaluation logic."
+  },
+  "source_rule_text": "During an uptrend, price action should remain above S1 on each given day and multiple days together; during a downtrend, price action should remain below R1."
+}

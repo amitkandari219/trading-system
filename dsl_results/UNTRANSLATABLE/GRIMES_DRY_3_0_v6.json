@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'sharp counter-trend momentum breaking established trend pattern' which requires multi-bar pattern recognition and trend invalidation logic not expressible with single-bar indicator comparisons. Specifically: (1) 'established trend pattern' requires historical sequencing (higher highs/lows or lower lows/highs), (2) 'sharp counter-trend momentum' is qualitative and requires threshold calibration not provided in source, (3) interaction between pullback direction and primary trend direction requires conditional logic beyond allowed operators. Provided best-effort approximation using MACD histogram reversal as counter-trend signal proxy.",
+  "translation_notes": "Signal is CONTEXT_DEPENDENT but implementation requires either LONG or SHORT. Provided both entry/exit pairs with complementary logic. Exit conditions use MACD histogram sign change as proxy for 'sharp counter-trend momentum'. Momentum threshold (zscore) and pullback_duration_bars parameters from original signal could not be translated\u2014recommend manual calibration. ADX > 25 confirms trend presence before entry. Stop loss set conservatively at 2.5% and hold duration at 5 bars due to signal's rapid exit requirement."
+}

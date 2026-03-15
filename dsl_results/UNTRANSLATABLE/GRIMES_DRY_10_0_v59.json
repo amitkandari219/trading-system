@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of consolidation pattern (range-bound price action for N bars) and support penetration depth measurement, which cannot be expressed as single-bar indicator conditions. The pattern recognition of 'consolidation duration', 'support penetration threshold percentage', and 'bars to confirm reversal' require multi-bar lookback logic not available in the allowed operators and indicators. Approximated as: price crosses above S1 (support pivot) on volume confirmation, but this loses the consolidation detection and precise failure-test entry nuance.",
+  "translation_notes": "Used pivot level s1 as proxy for support; used hvol_20 as volume confirmation multiplier; actual signal requires tracking consolidation range bounds and support penetration depth over multiple bars. Consider implementing custom multi-bar pattern detection outside this JSON rule engine."
+}

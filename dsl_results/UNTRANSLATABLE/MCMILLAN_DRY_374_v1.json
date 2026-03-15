@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_374",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct access to implied volatility percentile ranking and volatility regime detection. The allowed indicators include 'india_vix' (volatility proxy) but lack: (1) a dedicated implied volatility indicator with percentile/historical ranking capability, (2) explicit volatility trend reversal detection. The condition 'volatility at 1st percentile of past readings' requires historical percentile calculation not available in the allowed indicator set. A proper implementation would require custom volatility percentile and reversal indicators.",
+  "translation_notes": "Attempted proxy using india_vix as volatility indicator with crosses_above logic to approximate reversal detection, but this is insufficient for the precise 'percentile threshold + reversal confirmation' requirement specified in the original signal. The signal's core logic cannot be accurately translated without implied volatility percentile ranking and explicit trend reversal indicators."
+}

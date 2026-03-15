@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit gamma position tracking (long/short gamma), implied volatility vs realized volatility comparison, and volatility bias adjustment logic that are not available in the indicator set. The signal is fundamentally about options gamma hedging strategy and requires derivatives pricing inputs (gamma exposure, implied vol, realized vol convergence) that cannot be expressed with price/technical indicators alone.",
+  "translation_notes": "Attempted proxy using ADX_14 for regime detection (trending vs ranging) and hvol_20 vs india_vix for volatility comparison, but this does not capture the core gamma position and volatility bias logic. A proper implementation would require custom gamma calculation and vol surface tracking."
+}

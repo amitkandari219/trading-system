@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is an EVENT-driven signal requiring external data (takeover announcement, announced takeover price) that cannot be derived from price/technical indicators alone. The signal depends on: (1) detection of a takeover announcement event, (2) the announced takeover price as an external input, and (3) trader confidence assessment. These require event feeds and fundamental data sources outside the standard technical indicator library. The 30% premium calculation requires comparing announced takeover price to prev_close, but the takeover price itself must be sourced from corporate action data, not chart data.",
+  "translation_notes": "Signal structure attempted but flagged as untranslatable due to external event dependency. A practical implementation would require: (a) an event detection module for M&A announcements, (b) a data feed for announced deal prices, and (c) deal probability scoring. Entry would trigger on (close < deal_price) AND (deal_price > prev_close * 1.30). Exit on (close >= deal_price) or deal termination."
+}

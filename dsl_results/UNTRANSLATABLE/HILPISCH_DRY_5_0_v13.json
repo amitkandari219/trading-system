@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'distance' metric (price distance from SMA) and specific threshold parameters that are not in the allowed indicators list. The 'distance * lagged_distance < 0' crossing detection and precise threshold levels cannot be expressed without custom distance calculation. Transaction costs and specific threshold values marked as [THRESHOLD_NEEDED] are not provided.",
+  "translation_notes": "Approximated the signal using close price crossings with SMA_20 as the baseline SMA. The original signal uses a distance metric (close - SMA) with negative/positive thresholds that would require custom indicator calculation. Entry conditions have been simplified to directional crossings: long entry when price crosses below SMA, short entry when price crosses above SMA, with exits on crossing back through SMA."
+}

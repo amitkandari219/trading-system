@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires VIX futures curve structure analysis (contango/backwardation detection), calendar spread mechanics, dollar-neutrality monitoring, and gamma positioning\u2014none of which are expressible with the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, and historical volatility). The signal fundamentally requires term-structure derivatives data and portfolio Greeks that are outside the scope of single-instrument price-action indicators. Approximated entry/exit using india_vix vs hvol_20 as a rough proxy for IV premium, but this does NOT capture the true signal logic.",
+  "translation_notes": "This signal describes an advanced volatility arbitrage strategy involving VIX futures calendar spreads with precise curve positioning and hedging. The allowed indicator set is insufficient for proper translation. The entry/exit conditions provided above use india_vix > hvol_20 as a crude approximation of 'implied volatility premium exceeds realized volatility,' but this ignores: (1) futures curve contango structure detection, (2) calendar spread construction and rebalancing, (3) dollar-neutrality constraints, (4) gamma decay positioning, and (5) basis-point level contango thresholds. A proper backtest of this signal would require custom VIX term-structure indicators, volatility surface data, and Greeks calculation."
+}

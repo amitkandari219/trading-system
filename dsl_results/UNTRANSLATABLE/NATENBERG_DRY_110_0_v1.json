@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_110_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires relative mispricing analysis between two related spreads (options spreads with theoretical value calculation, bid-ask spread comparison, and dynamic hedge ratio evaluation). The allowed indicators are single-asset technical indicators only and cannot model: (1) multi-leg options spread pricing, (2) theoretical vs. market value comparison across different strike/expiration combinations, (3) bid-ask midpoint parity detection between two distinct spreads, (4) intrinsic value differential calculations, or (5) interest rate/dividend assumption stability monitoring. This requires a dedicated options pricing engine and spread comparison framework outside the scope of standard technical indicator backtesting.",
+  "translation_notes": "NATENBERG_DRY_110_0 is an advanced relative value options strategy (vertical spreads arbitrage). It requires custom code to: (a) price both spreads theoretically using Black-Scholes/binomial with stable rate/dividend inputs, (b) fetch and compare live bid-ask quotes for both spread legs, (c) detect when midpoint prices converge while theoretical values diverge, and (d) execute paired trades. Standard OHLCV technical indicators cannot capture this arbitrage opportunity detection mechanism."
+}

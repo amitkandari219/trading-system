@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe analysis (HTF structural levels vs LTF retests), pivot identification with minimum touch counts, and dynamic ATR-based trailing stops with unspecified thresholds. The backtest engine lacks multi-timeframe comparison operators and structural level detection logic. Critical parameters (htf_to_ltf_ratio, ltf_retest_bars_back, ltf_confirmation_candles, minimum_structure_touches_on_htf, and ATR trailing stop distance) are marked [THRESHOLD_NEEDED] and cannot be inferred from available indicators alone.",
+  "translation_notes": "This rule fundamentally requires multi-timeframe logic not supported by single-timeframe indicator conditions. Recommend: (1) Implement explicit support/resistance detection on HTF via local extrema, (2) Add multi-timeframe comparison operators (HTF_crosses_above_LTF, etc.), (3) Define structural level touch counting logic, (4) Specify all [THRESHOLD_NEEDED] parameters with concrete values. Placeholder conditions use pivot levels as proxy for structural levels, but this does not capture the full multi-timeframe confirmation logic required."
+}

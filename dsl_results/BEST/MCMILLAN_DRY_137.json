@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_137",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific indicators (call premium, put premium, strike prices, option Greeks, implied volatility) that are not in the allowed indicator list. The strategy involves buying an at-the-money call and selling an uncovered at-the-money put\u2014both options strategies that cannot be expressed using only stock price and technical indicators. Options pricing, volatility surfaces, and option-specific entry/exit logic are required but not supported.",
+  "translation_notes": "MCMILLAN_DRY_137 is an options spread strategy (synthetic long stock via call+short put). The backtest engine appears to be equity/stock-price based only. To properly implement this signal, the engine would need: (1) options chain data, (2) option premium calculations or real-time option prices, (3) assignment risk logic for the short put, (4) Greeks-based exit triggers (delta, theta decay). The entry condition 'Investor is bullish' is a sentiment/directional bias that cannot be operationalized without additional macro or sentiment indicators. Recommend: either enhance engine to support options data, or reframe this as a stock directional signal (simple bullish entry on price action)."
+}

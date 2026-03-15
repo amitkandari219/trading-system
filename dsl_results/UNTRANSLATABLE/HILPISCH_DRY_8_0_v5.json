@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_8_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal references a resampled momentum indicator ('signal value equals 1.0 or -1.0') that is not in the ALLOWED INDICATORS list. The exact resampling methodology and momentum calculation method are not specified in the source material. Additionally, NaN comparison using '!=' operator is not in ALLOWED OPERATORS list. The minimum_bars_before_signal threshold parameter [THRESHOLD_NEEDED] is not numerically defined and cannot be converted to a concrete condition.",
+  "translation_notes": "This is a meta-rule about data accumulation timing rather than a traditional price-action signal. It requires: (1) a custom resampled momentum signal generator, (2) bar-counting logic to enforce minimum data accumulation, and (3) NaN-handling that exceeds standard OHLCV indicators. Recommend implementing as a pre-filter/gating mechanism in the backtest engine rather than as a standard rule condition."
+}

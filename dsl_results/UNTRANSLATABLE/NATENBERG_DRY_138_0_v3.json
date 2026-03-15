@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_138_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires realized volatility and implied volatility metrics which are not available in the allowed indicators list. The signal explicitly depends on comparing 'Realized volatility > Implied volatility + [THRESHOLD_NEEDED]' and monitoring 'Time to expiration', neither of which can be expressed using only price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, or bar properties. Additionally, the signal requires option-specific Greeks (delta-neutral positioning) and option time decay calculations that are not supported by the available indicators. This is a volatility surface/options-specific strategy that cannot be translated to a price-action-only backtest engine.",
+  "translation_notes": "This signal originates from Natenberg's options volatility theory and requires access to: (1) realized volatility calculations on the underlying, (2) implied volatility from option chains, (3) option position delta tracking, (4) time-to-expiration data. The backtest engine provided only supports technicals on price/volume. A proper implementation would need an options pricing module with volatility surface inputs."
+}

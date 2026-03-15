@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking multi-bar swing highs/lows and identifying regime changes (upswing vs downswing). This requires state machine logic and lookback across variable bar counts to identify 'highest day of prior upswing', which cannot be expressed with single-bar comparisons using only allowed indicators and operators. The swing detection framework requires dynamic pivot tracking not available in the allowed indicator set.",
+  "translation_notes": "Attempted to approximate with prev_high/prev_low comparisons, but true implementation requires: (1) maintaining state of current swing direction, (2) tracking the highest/lowest points of prior swing regime, (3) comparing current bar against those tracked extremes rather than just previous bar. This is a swing point reversal system that demands multi-bar pattern recognition beyond single-condition evaluation."
+}

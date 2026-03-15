@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking dynamic swing high/low levels across multiple bars and conditional filtering based on swing range (swing_high - current_low < 0.75). The backtest engine lacks support for: (1) persistent swing high/low state variables that update conditionally, (2) dynamic swing filter logic that ignores price data when range is below threshold. These are swing tracking mechanics, not simple indicator comparisons.",
+  "translation_notes": "The core logic\u2014'extend swing high when new bar high exceeds current swing high'\u2014maps to high > prev_high, but the signal's sophistication lies in the conditional ignore mechanism ('ignore price data if swing high minus current low is less than 75\u00a2') which requires stateful swing management. A full implementation would need a custom swing tracker module or state persistence layer not present in standard indicator sets. The stop_loss_pct of 0.75 represents the 75\u00a2 swing filter converted to decimal notation, though this is a parameter rather than a true stop loss."
+}

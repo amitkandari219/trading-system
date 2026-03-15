@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_127",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes an options strangle strategy (simultaneous long call and long put at different strikes) with specific premium costs and expiration months. The backtest engine uses price-based indicators only. Options-specific parameters (strike prices, premiums, expiration dates, intrinsic value at expiration) cannot be translated into price/technical indicator conditions without a dedicated options pricing model. The signal requires: (1) options contract selection logic, (2) premium payment tracking, (3) intrinsic value calculation at expiration, (4) multi-leg position management \u2014 none of which are supported by the allowed indicators list.",
+  "translation_notes": "Signal MCMILLAN_DRY_127 is an options strategy, not a price-action or technical indicator-based trade. A proper implementation would require: options chain data, strike selection rules, implied volatility inputs, and profit/loss calculation at expiration based on underlying price relative to two strikes (50 call, 60 put). The 10-point spread (60-50) represents maximum profit, achieved only if price closes outside both strikes at October expiration. This cannot be meaningfully backested using only OHLCV price indicators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_187",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a complex options strategy (covered call + protective put arbitrage) requiring multi-leg position tracking, option Greeks, strike price monitoring, and assignment logic. Standard price-based indicators cannot model: (1) simultaneous long stock + short call + long put positions, (2) option expiration mechanics and assignment rules, (3) guaranteed profit calculation based on option premiums and intrinsic values, (4) strike price equality constraints with dynamic monitoring. A backtest engine would need dedicated options chain data, assignment simulation, and position composition tracking.",
+  "translation_notes": "Signal requires options pricing model and assignment mechanics not available in price/technical indicator framework. The arbitrage depends on call premium received and put premium paid, which are not expressible using only OHLCV and standard technical indicators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_113_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires option-specific calculations and data (in-the-money status, time value, interest on settlement credit, days to expiration, risk-free rate) that are not available in the standard equity/futures indicator set. The rule requires comparing interest earned on a credited balance against remaining option time value\u2014calculations that depend on derivatives pricing models and account-specific data, not price action indicators.",
+  "translation_notes": "NATENBERG_DRY_113_0 is an options exercise decision rule from volatility/derivatives theory. It requires: (1) option moneyness detection, (2) time value extraction from option prices, (3) interest accrual on settlement credits, (4) days-to-expiration tracking, and (5) risk-free rate input. None of these are expressible using the allowed indicators (price, moving averages, RSI, ATR, etc.). This rule belongs in an options-specific backtest engine with option chain data and Greeks calculations, not a standard price-action backtester."
+}

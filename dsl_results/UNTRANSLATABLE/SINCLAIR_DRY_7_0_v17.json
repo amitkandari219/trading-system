@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Event detection (earnings calendar integration not available in indicator set), (2) Implied Volatility (IV) data not in allowed indicators, (3) Straddle price calculation (requires option chain data), (4) Dynamic IV-to-historical ratio threshold comparison (requires implied vol, not available). The core logic depends on real-time IV vs. historical volatility magnitude comparison for options strategies, which cannot be expressed using only price-based and historical volatility indicators.",
+  "translation_notes": "Attempted partial translation using hvol_20 as proxy for historical volatility magnitude, but this misses the critical IV component and event detection requirement. The signal is fundamentally an options volatility arbitrage strategy requiring option market data (implied vol, option prices, Greeks) that are not in the allowed indicator set. A proper implementation would need: event_calendar indicator, implied_volatility indicator, and option_chain data sources."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_2_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a regime filter (AVOID/SKIP trading) rather than entry/exit rules. It requires: (1) MA slope calculation over 10 bars which requires multi-bar historical comparison not supported by allowed operators, (2) support/resistance band detection which requires dynamic level identification not in the allowed indicator set, (3) price crossing MA on both sides within 5 bars which requires multi-bar pattern matching. The position_size_multiplier of 0.0 indicates this should reduce or skip trades entirely during RANGING regime, but the backtest engine schema requires explicit entry/exit conditions rather than position sizing modifiers.",
+  "translation_notes": "Signal GRIMES_DRY_2_0 is fundamentally a regime-based trade avoidance rule. To implement: (1) detect RANGING regime using adx_14 < 20 or bb_bandwidth < threshold, (2) apply position_size_multiplier = 0.0 as a portfolio-level rule rather than individual trade entry/exit, (3) alternatively, use entry_long/entry_short with regime check 'is RANGING' combined with entry rejection logic if supported by backtest engine."
+}

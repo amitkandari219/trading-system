@@ -1,0 +1,108 @@
+{
+  "signal_id": "GUJRAL_DRY_5",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_5",
+    "entry_long": [
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_20",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_20",
+        "operator": "<",
+        "right": "close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses 'moving average line slopes upward/downward' which is interpreted as MA trending above/below recent price action. Used sma_20 as a reasonable intermediate MA period since specific period was AUTHOR_SILENT. Entry logic: bullish when MA slopes up (MA > prev close AND price rising); bearish when MA slopes down (MA < prev close AND price falling). Exit on slope reversal. The 'appropriate times' qualifier is captured by requiring price momentum confirmation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_20",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_20",
+        "op": "<",
+        "value": "close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses 'moving average line slopes upward/downward' which is interpreted as MA trending above/below recent price action. Used sma_20 as a reasonable intermediate MA period since specific period was AUTHOR_SILENT. Entry logic: bullish when MA slopes up (MA > prev close AND price rising); bearish when MA slopes down (MA < prev close AND price falling). Exit on slope reversal. The 'appropriate times' qualifier is captured by requiring price momentum confirmation."
+  },
+  "source_rule_text": "When the moving average line slopes upward, maintain a bullish bias and enter long positions at appropriate times; when the moving average line slopes downward, maintain a negative bias and enter short positions at appropriate times."
+}

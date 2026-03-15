@@ -1,0 +1,72 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "s1",
+        "operator": "<",
+        "right": "close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s1"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "s1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses daily pivot support level (s1) role reversal pattern. Entry: previous close above s1 (support broken on downside), then price retraces upward. Exit: when price crosses back above the now-reversed resistance level (s1). The pattern expects limited upside retracements capped by the former support-turned-resistance."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "s1",
+        "op": "<",
+        "value": "close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s1"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "s1"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal uses daily pivot support level (s1) role reversal pattern. Entry: previous close above s1 (support broken on downside), then price retraces upward. Exit: when price crosses back above the now-reversed resistance level (s1). The pattern expects limited upside retracements capped by the former support-turned-resistance."
+  },
+  "source_rule_text": "Once a daily pivot support level is broken on the downside, it reverses its role and becomes resistance; subsequent upward retracements may get capped by this reversed resistance level."
+}

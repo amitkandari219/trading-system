@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_305",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires real-time monitoring of three separate instruments (futures lock limit status, call option prices, put option prices) and synthetic position construction across derivatives. The allowed indicator set contains only spot/futures price action and technical indicators\u2014it lacks: (1) option chain data (call/put prices, implied volatility), (2) circuit breaker/limit-up/limit-down status flags, (3) liquidity/trading halted flags, and (4) cross-instrument synthetic arbitrage logic. The signal's core mechanism (using call-put parity to infer a theoretical futures price during a trading halt) cannot be expressed with price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, or Bar Properties alone.",
+  "translation_notes": "Signal MCMILLAN_DRY_305 is an event-driven options strategy requiring access to derivatives data, exchange status, and volatility surfaces. It is fundamentally incompatible with a futures-only technical indicator backtest engine. Would require a dedicated options/event processing module with access to option chain feeds and circuit breaker data."
+}

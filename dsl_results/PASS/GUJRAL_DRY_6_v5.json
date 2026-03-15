@@ -1,0 +1,70 @@
+{
+  "signal_id": "GUJRAL_DRY_6",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_6",
+    "entry_long": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "low"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Long bottom shadow detected by comparing lower_wick to body size. Close significantly higher than low indicates support found and price arrested. Exit when price closes below previous close (reversal signal). Parameters shadow_length, pullback_magnitude, body_color, and body_size marked AUTHOR_SILENT were not numerically specified, so conservative defaults applied. Used lower_wick (bar property) to identify the long tail at the bottom of the candle."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "low"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Long bottom shadow detected by comparing lower_wick to body size. Close significantly higher than low indicates support found and price arrested. Exit when price closes below previous close (reversal signal). Parameters shadow_length, pullback_magnitude, body_color, and body_size marked AUTHOR_SILENT were not numerically specified, so conservative defaults applied. Used lower_wick (bar property) to identify the long tail at the bottom of the candle."
+  },
+  "source_rule_text": "A long bottom shadow candle signals an expected move to higher levels, indicating that buyers arrested a falling price and support was found."
+}

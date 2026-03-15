@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_199",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires detection of a corporate event (tender offer announcement) with specific price levels and acceptance rates. These are event-driven conditions that cannot be expressed using technical price/volume indicators alone. The strategy depends on: (1) real-time tender offer data not available in price feeds, (2) probabilistic acceptance rate modeling (50%+), and (3) multi-leg execution across tender and secondary market. Technical indicators cannot capture tender offer existence or expiration timing.",
+  "translation_notes": "Signal ID MCMILLAN_DRY_199 is fundamentally an event arbitrage strategy, not a technical signal. It requires external data feeds for M&A events and tender offer details. The entry condition (buy at market when tender exists above current price) and exit condition (sell remainder at lower reopening price post-expiration) are temporal event-driven, not price-pattern driven. Backtesting would require a custom event database layer, not standard OHLCV indicators."
+}

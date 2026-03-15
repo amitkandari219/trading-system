@@ -1,0 +1,72 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s1"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s2"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry condition 1: Stock opens below pivot (open < pivot). Entry condition 2: Price pulls back to S1 (close crosses above S1 after opening below pivot). Exit when price reaches S2 target level. The 'stock story and market trend' qualitative factors cannot be coded and must be applied manually. Using s2 as primary exit target per signal specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s1"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s2"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry condition 1: Stock opens below pivot (open < pivot). Entry condition 2: Price pulls back to S1 (close crosses above S1 after opening below pivot). Exit when price reaches S2 target level. The 'stock story and market trend' qualitative factors cannot be coded and must be applied manually. Using s2 as primary exit target per signal specification."
+  },
+  "source_rule_text": "If stock opens below pivot or S1, wait for pullback to pivot or S1 to sell, expecting price to reach S2, S3 or lower levels."
+}

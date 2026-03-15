@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_78_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit vega spread type identification (backspread vs calendar) and portfolio risk thresholds (position_size_pct, loss_max_pct) which are not available as direct indicators. The core volatility comparison logic (IV vs own_vol_estimate) was approximated using hvol_20 vs india_vix as proxy for realized vs implied volatility, but theta benefit and portfolio risk constraints cannot be operationalized with allowed indicators alone.",
+  "translation_notes": "Attempted proxy: hvol_20 (historical volatility) \u2248 own_vol_estimate, india_vix \u2248 implied volatility. Entry conditions map to comparing these two series. However, the signal's key requirements\u2014spread type selection, theta decay monitoring, and portfolio risk caps\u2014require external position management rules outside the backtest engine's indicator scope. THRESHOLDS_NEEDED in original rule could not be resolved."
+}

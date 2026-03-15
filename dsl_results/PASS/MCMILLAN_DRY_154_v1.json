@@ -1,0 +1,72 @@
+{
+  "signal_id": "MCMILLAN_DRY_154",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_154",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "40"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "50"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Put ratio spread (1 long put at 50 strike, 2 short puts at 45 strike). Entry when price enters profitable range (40-50). Exit triggered if price moves above upper strike (50). Maximum profit occurs at short strike (45). Stop loss would be triggered if price falls below long strike (40), but not explicitly modeled here as ratio spreads have defined max loss. Signal uses options pricing logic not directly expressible via technical indicators alone, but price-level conditions capture the key risk/reward zones."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": 40.0
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": 50.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": 50.0
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Put ratio spread (1 long put at 50 strike, 2 short puts at 45 strike). Entry when price enters profitable range (40-50). Exit triggered if price moves above upper strike (50). Maximum profit occurs at short strike (45). Stop loss would be triggered if price falls below long strike (40), but not explicitly modeled here as ratio spreads have defined max loss. Signal uses options pricing logic not directly expressible via technical indicators alone, but price-level conditions capture the key risk/reward zones."
+  },
+  "source_rule_text": "A put ratio spread (1 long put, 2 short puts) is profitable if the underlying stock price is within the range between the short strike and long strike at expiration; maximum profit occurs at the short strike price."
+}

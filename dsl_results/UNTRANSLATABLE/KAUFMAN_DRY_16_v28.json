@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires tracking 'opening range high (ORH)' and 'opening range low (ORL)' calculated dynamically over a 20-minute period, plus a confirmation duration of 10 minutes. These derived values (ORH, ORL) are not in the ALLOWED INDICATORS list. The engine would need custom indicators or a preprocessing step to compute the opening range extremes and validate price persistence above ORH for exactly half the opening range duration. Standard OHLC and technical indicators cannot express this time-dependent range-breakout logic.",
+  "translation_notes": "This is a time-based opening range breakout strategy that requires: (1) identifying the high/low of the first N minutes (opening range), (2) detecting a break above that high, and (3) confirming price stays above that level for at least N/2 minutes. Without ORH/ORL indicators or a time-series condition operator, this cannot be fully expressed. A workaround would be to use Donchian channels (dc_upper, dc_lower) as a proxy for intraday range, but that would not accurately capture the specific 20-minute opening range logic the author intended."
+}

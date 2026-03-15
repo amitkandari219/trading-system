@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of multiple support level tests (3+) and comparison of bounce highs across a multi-bar lookback window. This requires: (1) dynamic support level identification, (2) counting the number of times price tests that level within a rolling window, and (3) tracking and comparing previous bounce highs. These operations require historical array access, local variable state, or custom support/resistance detection logic that cannot be expressed using only the allowed indicators and simple 3-field condition syntax. The allowed indicator set does not include support/resistance detection, count operators, or multi-bar comparative logic.",
+  "translation_notes": "The signal is a REJECTION rule (avoid buying) rather than an ENTRY rule. It describes a pattern to recognize and avoid: multiple tests of support with lower highs indicating weakening demand. While individual components like 'price near support' (e.g., close near sma_50 or dc_lower) or 'lower highs' (prev_high > high) can be expressed, the core requirement\u2014counting distinct tests of a support level across a rolling window\u2014cannot be translated into the allowed schema without custom pattern recognition logic."
+}

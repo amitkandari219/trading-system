@@ -1,0 +1,130 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_7_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_upper"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "70"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "bb_lower"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "30"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "HIGH_VOL",
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires fade (mean reversion) trades when price extends beyond Bollinger Bands with momentum and volume confirmation. Entry conditions check for band breach (close beyond bb_upper/bb_lower), RSI extremes (>70 or <30 indicating extension), and volume confirmation (vol_ratio_20 > 1.0). Exit conditions trigger when price returns to mean (sma_20). Standard stop loss set to 2% as typical for mean reversion. Max hold period set to 10 bars as reasonable default for reversion trades. Context-dependent direction allows both long fades (short extension) and short fades (long extension)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_upper"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 70.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "bb_lower"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 30.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "HIGH_VOL",
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires fade (mean reversion) trades when price extends beyond Bollinger Bands with momentum and volume confirmation. Entry conditions check for band breach (close beyond bb_upper/bb_lower), RSI extremes (>70 or <30 indicating extension), and volume confirmation (vol_ratio_20 > 1.0). Exit conditions trigger when price returns to mean (sma_20). Standard stop loss set to 2% as typical for mean reversion. Max hold period set to 10 bars as reasonable default for reversion trades. Context-dependent direction allows both long fades (short extension) and short fades (long extension)."
+  },
+  "source_rule_text": "A trader should only initiate fade (mean reversion) trades when price has moved beyond the volatility bands, indicating true market extension rather than equilibrium, combined with strict risk management."
+}

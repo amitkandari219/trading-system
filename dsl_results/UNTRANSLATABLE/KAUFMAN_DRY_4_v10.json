@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires: (1) calculation of 10-day net price change and comparison to historical average net change (2\u00d7threshold) \u2014 no allowed indicator directly computes net change over rolling 10-day periods; (2) a 10-day wait period after large move detection \u2014 temporal state management not supported; (3) 'congestion level' definition \u2014 not defined in source text and no corresponding indicator available; (4) false breakout confirmation requiring sustained violation over 2 days \u2014 requires multi-bar pattern logic beyond simple condition evaluation. These require custom preprocessing, state tracking, and pattern detection unavailable in the backtest engine.",
+  "translation_notes": "Attempted to use Donchian channels as a proxy for congestion levels and breakout detection, but the core logic of large-move detection, wait-period enforcement, and false-breakout confirmation cannot be reliably expressed without indicator support for rolling net-change calculations and temporal sequencing rules."
+}

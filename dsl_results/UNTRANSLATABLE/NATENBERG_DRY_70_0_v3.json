@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_70_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-leg options analysis (calendar spreads, time decay, moneyness-relative positioning, spread value tracking in points) which cannot be expressed using equity price/technical indicators alone. Requires: (1) explicit short-term DTE threshold (not provided), (2) spread value in points (not available from price data), (3) relative moneyness deviation in standard deviations (requires volatility surface modeling), (4) option-specific decay curves. Approximated with volatility regime as proxy, but core mechanics are untranslatable to equity backtester.",
+  "translation_notes": "This is an options volatility spread strategy (long calendar spread). The signal describes selling short-dated premium decay while holding longer-dated protection. Key untranslatable elements: (1) Entry condition 'short-term option is ATM or slightly OTM' requires options Greeks/moneyness data not in scope; (2) All three numeric thresholds marked [THRESHOLD_NEEDED] in original signal lack concrete values; (3) 'Spread value in points' is an options-specific metric; (4) Figure 8-13 reference needed but not provided. Used hvol_20 as low-volatility regime proxy for entry and high-volatility regime flip for exit as reasonable approximation, but this materially misrepresents the intended strategy mechanics."
+}

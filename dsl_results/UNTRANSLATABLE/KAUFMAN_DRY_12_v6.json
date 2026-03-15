@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a custom High-Low Ratio indicator defined as (sum of new 52-week highs over n days) / (sum of new 52-week highs + new 52-week lows over n days), smoothed over 10 days. This specific ratio calculation is not available in the allowed indicator list. The closest available indicator (price_pos_20) measures price position within a 20-day Donchian range, but does not capture the new highs/new lows ratio as specified. Additionally, the exact lookback period 'n' and sell threshold are marked AUTHOR_SILENT and cannot be determined.",
+  "translation_notes": "Signal requires a custom High-Low Ratio (new highs / (new highs + new lows)) over lookback period n, smoothed 10 days. Parameters 'lookback_period_n' and 'sell_threshold' are undefined (AUTHOR_SILENT). The dual threshold (0.80 or 0.90) is ambiguous without clarification on which applies to entry vs exit. Attempted proxy with price_pos_20 is inadequate as it does not measure new extreme count ratios."
+}

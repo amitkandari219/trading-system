@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_128_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit volatility percentile calculations (10th/90th percentile of historical range) and mean-reversion confirmation logic that cannot be expressed using only the allowed indicators. hvol_20 is the closest available volatility measure but does not provide percentile rankings or confirmation bar counting required by the original rule. Entry thresholds, lookback_period_days, and confirmation_bars are marked as [THRESHOLD_NEEDED] in source and cannot be inferred.",
+  "translation_notes": "Attempted approximation using hvol_20 as volatility proxy: extreme lows (<10) for long entry, extreme highs (>90) for short entry, with reversion target at median (50). However, this lacks the percentile-based logic, confirmation period enforcement, and historical range normalization specified in the original Natenberg rule. Manual parameter tuning required to map percentile thresholds to hvol_20 scale."
+}

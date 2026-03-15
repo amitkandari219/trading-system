@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_134_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific metrics (implied volatility term structure comparison, near/long-term IV spread differential, options Greeks, and time decay tracking) which are not available in the standard price/technical indicator set. The strategy fundamentally depends on: (1) measuring implied volatility across two different expirations (6-week vs 19-week), (2) comparing near-term IV > long-term IV spread by a specific margin, (3) tracking time decay (theta) on calendar spreads, and (4) managing defined-risk option positions. These require an options pricing and Greeks engine, not price-based technical indicators. The entry condition 'Near-term implied volatility > long-term implied volatility by a meaningful margin' cannot be approximated by available indicators.",
+  "translation_notes": "Attempted to map 'elevated historical volatility' to hvol_20 threshold and 'HIGH_VOL regime' proxy using india_vix, but this misses the core signal logic which is inherently options-structure dependent. This signal requires a dedicated options backtester with IV term structure analysis, not a price-action rule engine. Parameters near_term_expiry_days=42 (6 weeks), long_term_expiry_days=133 (19 weeks) are derived from source text but cannot be operationalized without options data."
+}

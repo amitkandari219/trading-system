@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires tracking 'high of current upswing vs. high of previous upswing' and 'low of current downswing vs. low of previous downswing', which requires swing detection and historical swing extrema. The allowed indicators only support single prior-bar comparison (prev_high, prev_low), not multi-bar swing identification. A proper implementation requires a swing detection algorithm unavailable in the indicator set.",
+  "translation_notes": "This is a swing trading strategy (Kaufman's breakout method) that requires identifying swing pivots and comparing current swing extrema to prior swing extrema. The signal cannot be accurately expressed using only single-bar lookback indicators. To implement correctly, the backtest engine would need: (1) swing detection logic to identify upswing/downswing phases, (2) storage of prior swing high/low values, or (3) Donchian-like lookback over a variable swing period. The attempted translation above uses prev_high/prev_low as a simplified 1-bar proxy, but this does not capture the intended multi-bar swing behavior."
+}

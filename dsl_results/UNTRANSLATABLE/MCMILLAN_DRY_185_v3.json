@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_185",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options pricing data (put option discount from parity, strike price, expiration date) and simultaneous multi-leg options/stock execution. Standard backtesting engines with only price/volume indicators cannot compute put parity values or execute synthetic arbitrage positions. Additionally, the exit condition 'AUTHOR_SILENT' provides no explicit trigger; attempted reversal at strike price as placeholder only.",
+  "translation_notes": "This is a put arbitrage strategy requiring: (1) real-time options pricing and parity calculations unavailable in standard price/volume data, (2) ability to execute combined options+stock positions simultaneously, (3) dynamic discount monitoring against theoretical put value. The example parameters (put_price=11.75, stock=58, strike=70) are provided but cannot be generalized without options pricing models. Entry approximated as close < put_price; exit approximated as close crossing strike. Recommend implementing in a dedicated options backtester with Greeks and parity calculation capability."
+}

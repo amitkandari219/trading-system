@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_23",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires regime detection (TRENDING vs RANGING) based on ADX crossovers and multi-day ADX rise patterns (3 of 4 days), and exit logic based on 5-day ADX differences. These multi-day pattern matching and regime classification operations are not directly expressible using the allowed operators (crosses_above, crosses_below, >, <, >=, <=, ==, is). The signal is fundamentally a regime classifier rather than a simple entry/exit rule, and requires conditional logic over rolling windows that exceeds the scope of the three-field condition structure.",
+  "translation_notes": "This signal (from Kaufman/Ruggiero) is designed to classify market regimes (trending vs consolidating) rather than generate directional trades. Entry condition 4 ('ADX rises above 10 on 3 of 4 days') and exit condition ('5-day difference in ADX less than 0') require lookback and aggregation logic not supported by the allowed operators. A full implementation would require custom regime detection logic outside the standard backtest rule engine. Consider translating this into separate TRENDING_UP/TRENDING_DOWN regime detectors with explicit state machines."
+}

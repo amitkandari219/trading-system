@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) parabolic acceleration rate comparison to prior bar range with unspecified threshold, (2) 'free bar' identification (gap or wide range with minimal overlap), and (3) reversal bar confirmation. These require either custom composite indicators (acceleration_rate, overlap_pct) or multi-bar lookback logic beyond single-bar OHLC comparisons. The acceleration threshold and reversal_confirmation_bars parameters are marked [THRESHOLD_NEEDED] and cannot be operationalized without domain specification.",
+  "translation_notes": "Attempted to capture reversal exit (close < open of reversal bar) and wide range component (range > ATR), but parabolic acceleration detection and 'free bar' gap/overlap mechanics are not expressible with allowed indicators. Signal is position management for existing longs in uptrend\u2014entry conditions are intentionally empty as they describe position status, not trade initiation."
+}

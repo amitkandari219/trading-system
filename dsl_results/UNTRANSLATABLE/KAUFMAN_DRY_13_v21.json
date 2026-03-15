@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multi-contract spread analysis (May vs July vs later months), inter-month price relationships, and carry cost calculations that cannot be expressed using single-instrument OHLCV indicators. The rule depends on: (1) relative mispricing across three delivery months simultaneously, (2) cost-of-carry calculations (storage, financing, insurance), and (3) redeliver profit estimation. These require external data (multiple contract prices, financing rates, carry costs) and comparison logic beyond single-bar technical indicators.",
+  "translation_notes": "KAUFMAN_DRY_13 is a fundamental arbitrage strategy requiring multi-leg spread analysis. It detects when July futures trade out of normal carry relationship with May and later months, allowing profitable take-delivery/redeliver cycles. This cannot be coded as a single-instrument backtest rule without access to: (1) prices of May, July, and Sep/Nov/Dec contracts simultaneously, (2) term structure data, (3) cost-of-carry components. Recommend implementing as a custom multi-contract strategy module that monitors spread ratios and calculates profitability net of carry costs."
+}

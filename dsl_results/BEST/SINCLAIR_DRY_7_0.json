@@ -1,0 +1,64 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "book_id": "SINCLAIR",
+  "dsl_rule": {
+    "signal_id": "SINCLAIR_DRY_7_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "india_vix",
+        "operator": "<",
+        "right": "ema_20"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "india_vix",
+        "operator": "crosses_above",
+        "right": "ema_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal applies to SHORT options selling positions only (direction=SHORT). VIX mapped to india_vix (closest available volatility indicator). EWMA(60, 0.95) approximated using ema_20 as the closest available exponential moving average; note that the specified decay factor and period cannot be exactly matched with available indicators, but ema_20 provides similar regime filtering behavior. Entry condition: sell options when VIX below its moving average. Exit condition: cover when VIX crosses above moving average. Target regimes indicate preference for low-volatility environments where short options strategies perform better."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "india_vix",
+        "op": "<",
+        "value": "ema_20"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "india_vix",
+        "op": "crosses_above",
+        "value": "ema_20"
+      }
+    ],
+    "regime_filter": [
+      "RANGING",
+      "LOW_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal applies to SHORT options selling positions only (direction=SHORT). VIX mapped to india_vix (closest available volatility indicator). EWMA(60, 0.95) approximated using ema_20 as the closest available exponential moving average; note that the specified decay factor and period cannot be exactly matched with available indicators, but ema_20 provides similar regime filtering behavior. Entry condition: sell options when VIX below its moving average. Exit condition: cover when VIX crosses above moving average. Target regimes indicate preference for low-volatility environments where short options strategies perform better."
+  },
+  "source_rule_text": "A trader should only sell options when the VIX is below its moving average, as this regime filter improves performance by avoiding high-volatility environments unfavorable to short option positions."
+}

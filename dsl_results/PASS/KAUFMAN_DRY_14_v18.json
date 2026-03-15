@@ -1,0 +1,70 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_14",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "bb_pct_b",
+        "operator": ">",
+        "right": "0.65"
+      },
+      {
+        "left": "macd",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "macd",
+        "operator": "crosses_above",
+        "right": "macd_signal"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Interpreted 'smoothed ratio moves over 65%' as bb_pct_b > 0.65 (Bollinger Band position indicator on 0-1 scale). 'Ratio turns down' mapped to MACD turning down as momentum smoothing indicator. 'Momentum indicator reverses and makes new highs' interpreted as MACD crossing above its signal line, indicating reversal. Entry requires both conditions (AND logic). Exit triggers on momentum reversal (OR logic). Momentum lookback parameter left at default MACD settings due to AUTHOR_SILENT specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "bb_pct_b",
+        "op": ">",
+        "value": 0.65
+      },
+      {
+        "indicator": "macd",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "macd",
+        "op": "crosses_above",
+        "value": "macd_signal"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Interpreted 'smoothed ratio moves over 65%' as bb_pct_b > 0.65 (Bollinger Band position indicator on 0-1 scale). 'Ratio turns down' mapped to MACD turning down as momentum smoothing indicator. 'Momentum indicator reverses and makes new highs' interpreted as MACD crossing above its signal line, indicating reversal. Entry requires both conditions (AND logic). Exit triggers on momentum reversal (OR logic). Momentum lookback parameter left at default MACD settings due to AUTHOR_SILENT specification."
+  },
+  "source_rule_text": "When a smoothed ratio moves over 65% and turns down, sell; if the momentum indicator reverses and makes new highs after selling, exit or reverse short positions."
+}

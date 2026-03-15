@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking of swing extremes, multiple penetration counts, and conditional re-entry logic based on failed penetrations. These require stateful rule evaluation (counting penetrations, tracking previous swing levels, conditional distance-based re-entry). The allowed indicators do not include explicit swing high/low tracking or multi-bar pattern memory. Pivot levels are used as proxy for swing extremes, but the logic of 'first penetration liquidates, second penetration confirms, third failure triggers re-entry at filter distance' cannot be expressed with simple 3-field conditions.",
+  "translation_notes": "KAUFMAN's rule is fundamentally a multi-state machine requiring memory of: (1) current swing extreme price, (2) count of penetrations, (3) the price level of the failed penetration for re-entry calculation. Using close crosses_above/below pivot is a severe simplification and does not capture the intended logic. Recommend implementing as a custom rule with explicit swing tracking logic rather than condition-based evaluation."
+}

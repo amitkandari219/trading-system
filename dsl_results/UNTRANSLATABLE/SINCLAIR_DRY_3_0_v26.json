@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires specific event-driven data (earnings announcement dates, days-to-earnings countdown, IV percentile ranking vs 1-year history, IV level comparisons) which are NOT available in the allowed indicators list. The signal is fundamentally event-based and requires external event calendar data and IV term structure analysis that cannot be constructed from price/technical indicators alone. Used india_vix as a proxy for volatility regime, but this cannot capture the nuanced pre/post-earnings IV dynamics described in the original signal.",
+  "translation_notes": "SINCLAIR_DRY_3_0 is an earnings-driven volatility arbitrage strategy (short straddle before earnings, exit post-announcement). Core requirements: (1) Earnings event confirmation, (2) Days-to-earnings threshold, (3) IV percentile ranking, (4) IV spike detection. None of these can be reliably replicated with standard OHLCV indicators. Substituted india_vix as volatility proxy, but this loses the earnings event specificity and IV percentile context that are essential to the strategy."
+}

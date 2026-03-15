@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calibration of band containment to 85-90% of trading activity range across lookback period. This requires dynamic calculation of the percentage of price bars contained within bands over a lookback window \u2014 a meta-indicator not available in the allowed indicator set. The entry condition also requires confirmation that 'bands contain 85-90% of all trading activity' which cannot be expressed with standard price/indicator comparisons. Additionally, exit requires '[THRESHOLD_NEEDED] consecutive bars' which is a state-tracking condition requiring bar counting logic not supported by the 3-field operator structure. The source text is incomplete and does not specify the exact band type (Keltner, Bollinger, Donchian) or parameterization.",
+  "translation_notes": "Attempted mapping to Bollinger Bands as closest proxy to 'bands' concept. However, the core signal requires: (1) dynamic band calibration based on containment percentage, (2) verification that bands statistically contain 85-90% of activity, and (3) consecutive bar counter logic. These are not expressible within the constraint of simple left-operator-right comparisons. A full implementation would require custom metric calculation outside standard indicator library."
+}

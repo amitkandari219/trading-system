@@ -1,0 +1,59 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "rules": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 7,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0.03,
+    "direction": "BOTH"
+  },
+  "tier": "TIER_A",
+  "fix_description": "Added 3% take profit to lock gains from volume-exhaustion reversals",
+  "walk_forward": "19/26 windows, aggregate Sharpe 1.58, L4=3/4",
+  "nifty_correlation": -0.18,
+  "source": "Trading Systems and Methods, Perry Kaufman, Ch.12, p.539",
+  "alternative_variant": {
+    "description": "ADX < 25 filter",
+    "walk_forward": "20/26, Sharpe 1.81, L4=3/4, trades=374",
+    "tradeoff": "Higher Sharpe but halves trade frequency"
+  }
+}

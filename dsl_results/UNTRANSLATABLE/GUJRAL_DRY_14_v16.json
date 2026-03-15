@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking multi-candle patterns across 3 consecutive bars with specific sequencing (red candle followed by two consecutive green candles with progressively higher closes). The available indicators cannot express: (1) the requirement that Candle 1 is red and large, Candle 2 is green with lower low but higher close than Candle 1, and Candle 3 is green with higher close than Candle 2, (2) the temporal ordering constraint that entry occurs specifically at Candle 3, and (3) the uptrend context verification. Bar indexing like close[0], close[-1], close[-2] is not supported; only prev_close (1 bar back) is available. A proper implementation requires multi-bar lookback logic not expressible in this framework.",
+  "translation_notes": "This pattern is a three-candle reversal setup that requires tracking color, size, and relative closes across 3 bars. The framework's limitation to single prev_* indicators prevents accurate encoding of the multi-candle sequence logic needed for this signal."
+}

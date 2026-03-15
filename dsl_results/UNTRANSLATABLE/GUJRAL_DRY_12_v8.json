@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detection of (1) 'horizontal' moving averages, (2) 'first 30 minutes of market opening' timing constraint, (3) 'swing lows and highs match across two days', and (4) 'first vs second attempt to rise' sequencing logic. The allowed indicators and operators do not support: time-of-day filtering, intrabar timing windows, multi-day swing pattern matching, or attempt counting. These would require custom timing logic and pattern recognition beyond the standard indicator set.",
+  "translation_notes": "Attempted partial translation of core reversion logic: consolidation (flat MAs) + lower open + upward close from previous close. However, this captures only ~40% of the signal's intent. The critical entry timing (first 30min, first vs second attempt) and consolidation confirmation (swing matching) cannot be expressed with available indicators. A practical backtest would require custom code for intraday timing and multi-bar pattern detection."
+}

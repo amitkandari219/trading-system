@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_133_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Historical volatility above its mean - no HV_mean baseline indicator available; (2) HV declining and IV declining - no momentum/trend detection for volatility indicators; (3) Volatility cone analysis - no volatility cone or percentile rank indicators in allowed list. The allowed indicators hvol_20 and india_vix cannot express mean comparisons, directional changes, or cone-based thresholds as specified in the original rule.",
+  "translation_notes": "Attempted partial translation using hvol_20 (20-period historical volatility) for HV and india_vix (implied volatility proxy) for IV. However, core conditions cannot be properly expressed: comparing volatility to its own mean requires a separate baseline indicator, detecting declining volatility requires multi-period comparison operators not in the allowed set, and volatility cone instability thresholds require cone percentile indicators absent from the allowed indicator list."
+}

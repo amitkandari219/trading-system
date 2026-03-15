@@ -1,0 +1,84 @@
+{
+  "signal_id": "KAUFMAN_DRY_18",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_18",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "bb_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "bb_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_middle"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes Bollinger Band penetration as either directional confirmation (trend-following) or mean reversion setup. Implemented as context-dependent with long entry on upper band penetration and short entry on lower band penetration. Exit conditions use middle band (SMA) as mean reversion target per standard Bollinger Band interpretation. The signal supports both directional and mean-reversion interpretations; this JSON implements the mean-reversion approach with optional directional bias based on entry choice. Parameters: 2 standard deviations (95% coverage) are implicit in bb_upper/bb_lower calculation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "bb_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "bb_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_middle"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal describes Bollinger Band penetration as either directional confirmation (trend-following) or mean reversion setup. Implemented as context-dependent with long entry on upper band penetration and short entry on lower band penetration. Exit conditions use middle band (SMA) as mean reversion target per standard Bollinger Band interpretation. The signal supports both directional and mean-reversion interpretations; this JSON implements the mean-reversion approach with optional directional bias based on entry choice. Parameters: 2 standard deviations (95% coverage) are implicit in bb_upper/bb_lower calculation."
+  },
+  "source_rule_text": "A penetration of either the upper or lower Bollinger Band represents strength or weakness; some traders use this penetration to confirm a directional trade, while others use it to set up a mean reversion trade."
+}

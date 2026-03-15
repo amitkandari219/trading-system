@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "TRIX (Triple Exponential Moving Average) is not available in the allowed indicators list. The signal specifies a three-step EMA calculation with period-over-period differences and 10,000x scaling, which cannot be accurately replicated using only the provided indicators (sma, ema, rsi, atr, bb, macd, adx, stochastic, etc.). Substituted macd as a trend-following momentum alternative, but this does not preserve the original TRIX logic. Additionally, the consecutive-period rise/fall conditions ([THRESHOLD_NEEDED]) are incomplete in the source signal and cannot be properly specified.",
+  "translation_notes": "Original signal uses TRIX indicator which is not available. MACD was substituted as the closest available trend-following momentum indicator for crossover logic. The alternative entry/exit conditions based on consecutive periods of rise/fall could not be translated due to: (1) missing threshold values in source, (2) lack of momentum-streak detection operators in allowed operators list. Signal is CONTEXT_DEPENDENT as it can generate both long and short signals depending on TRIX direction."
+}

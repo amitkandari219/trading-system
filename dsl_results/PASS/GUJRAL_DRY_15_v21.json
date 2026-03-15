@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_15",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_15",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s2"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s2"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Multi-month low support approximated using s2 pivot support level. Entry requires: price below s2 (multi-month low proxy), price below 20MA (bearish confirmation), and price below pivot (failed monthly pivot crosses). Exit on reversal above s2. AUTHOR_SILENT exit conditions addressed with reasonable reversal stop. Stop-loss set to 3% to account for volatility in pharma sector context."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s2"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s2"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Multi-month low support approximated using s2 pivot support level. Entry requires: price below s2 (multi-month low proxy), price below 20MA (bearish confirmation), and price below pivot (failed monthly pivot crosses). Exit on reversal above s2. AUTHOR_SILENT exit conditions addressed with reasonable reversal stop. Stop-loss set to 3% to account for volatility in pharma sector context."
+  },
+  "source_rule_text": "If price breaks below the multi-month low support level, signal a SHORT trade expecting further weakness towards S2 and S3 support levels."
+}

@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_7",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_7",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "prev_high"
+      },
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "prev_low",
+        "operator": ">",
+        "right": "s1"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry condition 1: Next bullish candle crosses above high of bearish candle using crosses_above with prev_high. Entry condition 2: Previous candle was comparatively large bearish by checking body size > ATR_14. Entry condition 3: Bearish candle retracement check\u2014prev_low stays above support level s1, ensuring less than 50% retracement of uptrend. Exit uses reversal below the bearish candle low. Stop loss and hold period set conservatively for this mean-reversion setup."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "prev_low",
+        "op": ">",
+        "value": "s1"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Entry condition 1: Next bullish candle crosses above high of bearish candle using crosses_above with prev_high. Entry condition 2: Previous candle was comparatively large bearish by checking body size > ATR_14. Entry condition 3: Bearish candle retracement check\u2014prev_low stays above support level s1, ensuring less than 50% retracement of uptrend. Exit uses reversal below the bearish candle low. Stop loss and hold period set conservatively for this mean-reversion setup."
+  },
+  "source_rule_text": "When a large bearish candle appears in an uptrend but the immediate next candle is bullish and crosses above the high of the bearish candle, enter long for a sharp price upturn, provided the bearish candle has not erased more than 50% of the previous up move."
+}

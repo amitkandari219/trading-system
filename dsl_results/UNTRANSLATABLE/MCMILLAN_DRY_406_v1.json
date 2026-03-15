@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_406",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option Greeks (gamma, vega) and multi-leg option spread construction (ratio calculation between two strikes). These derivatives require option chain data and volatility surface analysis not available in the standard price/technical indicator set. The gamma-neutral ratio determination and specific call spread legs (April 50 calls vs April 60 calls) cannot be expressed using only price/volume/technical indicators.",
+  "translation_notes": "Attempted partial translation: Entry condition based on 'historical volatility much lower than expected' mapped to hvol_20 < 0.15 (low volatility regime). Exit reversal condition when volatility rises significantly (hvol_20 > 0.25). However, the core logic of constructing a gamma-neutral spread with specific strike ratios and vega targeting requires option-specific Greeks unavailable in this indicator set. A proper implementation would need an options module with gamma, vega, and theta calculations."
+}

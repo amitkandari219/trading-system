@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'broken resistance/support level' and 'price retraces back to former level' which need dynamic level tracking across multiple bars. The allowed indicator set (pivots r1, s1, s2, r2) provides static daily pivots but not dynamic support/resistance detection with multi-bar memory. Retest proximity thresholds and zone definitions are marked [THRESHOLD_NEEDED] in source signal and lack specific values.",
+  "translation_notes": "Attempted translation using pivot levels (r1/s1) as proxy for resistance/support, with volume confirmation. However, true implementation requires: (1) dynamic S/R detection algorithm, (2) breakout confirmation with momentum, (3) retest zone definition (retest_proximity_pct or retest_proximity_atr), (4) close-within-zone validation. The signal is pattern-based and structural rather than indicator-based, making it unsuitable for point-condition rules without custom level-detection logic."
+}

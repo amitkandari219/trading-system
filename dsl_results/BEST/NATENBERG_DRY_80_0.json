@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_80_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options-specific metrics (implied volatility, realized volatility, vega, gamma, spread selection logic, theta decay optimization) that are not available in the allowed indicator set. The signal also depends on multi-leg derivative strategies (negative vega spreads) which cannot be expressed through standard price-based technical indicators. The backtest engine appears to be designed for spot/futures trading, not options.",
+  "translation_notes": "Attempted proxy: Used india_vix (implied volatility proxy) > hvol_20 (realized volatility proxy) as a substitute for IV > RV condition, and restricted to HIGH_VOL regime. However, this is a poor approximation\u2014the original signal requires precise IV/RV spread comparison, gamma/vega prioritization across multiple strikes, and options spread construction logic that cannot be captured by this JSON structure. Parameters iv_to_rv_threshold, gamma_priority_weight, vega_priority_weight, and strike_distance_from_atm cannot be operationalized without options data."
+}

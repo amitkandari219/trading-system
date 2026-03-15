@@ -1,0 +1,86 @@
+{
+  "signal_id": "KAUFMAN_DRY_22",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_22",
+    "entry_long": [
+      {
+        "left": "bb_lower",
+        "operator": "crosses_above",
+        "right": "close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "bb_upper",
+        "operator": "crosses_below",
+        "right": "close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "bb_middle"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Interpreted 'innermost horizontal lines' as Bollinger Band upper/lower bands (slightly overbought/oversold thresholds). Center horizontal line mapped to bb_middle (mean). Entry conditions use band crossovers; exit conditions trigger when price returns to the mean line. Context-dependent direction supports both long (oversold buys) and short (overbought sells) entries based on which band is crossed."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "bb_lower",
+        "op": "crosses_above",
+        "value": "close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "bb_upper",
+        "op": "crosses_below",
+        "value": "close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_middle"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "bb_middle"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Interpreted 'innermost horizontal lines' as Bollinger Band upper/lower bands (slightly overbought/oversold thresholds). Center horizontal line mapped to bb_middle (mean). Entry conditions use band crossovers; exit conditions trigger when price returns to the mean line. Context-dependent direction supports both long (oversold buys) and short (overbought sells) entries based on which band is crossed."
+  },
+  "source_rule_text": "Buy when prices cross the innermost horizontal lines on the slightly oversold side, and sell when prices cross the innermost horizontal lines on the slightly overbought side; take profits when prices return to the mean (center horizontal line)."
+}

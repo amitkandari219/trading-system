@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe analysis (weekly/daily/4H hierarchy) and pullback retracement threshold measurement. The allowed indicator set does not support explicit timeframe switching or pullback magnitude detection. Parameters marked [THRESHOLD_NEEDED] are not quantified. Implemented as trend-following proxy using ADX for trend confirmation and SMA for direction alignment, but this does not capture the true pullback-within-trend logic.",
+  "translation_notes": "Used ADX_14 > 25 to detect established higher timeframe trend. Used SMA_50 crossover as proxy for trend direction reversal (exit condition). Entry logic enforces trend confirmation before pullback trades. Stop loss set conservatively at 2% due to pullback-specific risk profile. Direction set to CONTEXT_DEPENDENT to reflect the dual long/short capability based on higher timeframe trend direction."
+}

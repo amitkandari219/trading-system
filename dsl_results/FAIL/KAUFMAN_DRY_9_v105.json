@@ -1,0 +1,57 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [
+    {
+      "left": "high",
+      "operator": ">",
+      "right": "prev_high"
+    },
+    {
+      "left": "macd",
+      "operator": "<",
+      "right": "prev_macd"
+    }
+  ],
+  "entry_short": [
+    {
+      "left": "low",
+      "operator": "<",
+      "right": "prev_low"
+    },
+    {
+      "left": "macd",
+      "operator": ">",
+      "right": "prev_macd"
+    }
+  ],
+  "exit_long": [
+    {
+      "left": "macd",
+      "operator": "crosses_above",
+      "right": "macd_signal"
+    }
+  ],
+  "exit_short": [
+    {
+      "left": "macd",
+      "operator": "crosses_below",
+      "right": "macd_signal"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 20,
+  "direction": "BOTH",
+  "target_regime": [
+    "TRENDING_UP",
+    "TRENDING_DOWN"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Momentum divergence pattern detected when price makes new highs/lows while MACD peaks diverge (lower highs or higher lows). Entry triggered on divergence confirmation. Exit uses MACD crossover of signal line as reversal confirmation, following the 'returns to neutral' concept from source text. Direction is context-dependent: bullish divergence (price higher high + MACD lower high) signals potential reversal UP; bearish divergence (price lower low + MACD higher low) signals potential reversal DOWN. Note: Perfect peak-to-peak divergence comparison requires visual chart analysis; this translation uses available indicators to approximate the momentum divergence concept.",
+  "validation_issues": [
+    "entry_long: unknown right value 'prev_macd'",
+    "entry_short: unknown right value 'prev_macd'"
+  ]
+}

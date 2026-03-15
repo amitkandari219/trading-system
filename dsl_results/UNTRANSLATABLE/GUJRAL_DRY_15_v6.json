@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of price consolidation (sideways movement with range bounds) and consolidation breakout above a specific resistance level. These require pattern recognition logic not expressible with simple indicator comparisons. Specifically: (1) 'consolidates sideways' requires identifying low volatility/narrow range over multiple bars; (2) 'consolidation resistance level' requires tracking the high of a consolidation range which is dynamic and not a standard indicator; (3) 'breaks above consolidation resistance' requires comparing current price to a dynamically identified level. The signal also references 'previous day consolidation' which requires multi-bar context.",
+  "translation_notes": "Translated core directional intent: price above pivot, above 20MA and 50MA (alignment), and above previous day's high (breakout proxy). Used prev_high as proxy for 'consolidation resistance' from previous day. Exit condition set as price closing below pivot as reversal signal. However, the true consolidation pattern detection and dynamic resistance level tracking cannot be expressed in this rule format."
+}

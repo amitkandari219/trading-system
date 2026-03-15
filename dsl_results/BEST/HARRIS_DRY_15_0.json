@@ -1,0 +1,18 @@
+{
+  "signal_id": "HARRIS_DRY_15_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a qualitative market microstructure behavior (latent demand discovery, counterparty search, order management costs, and negotiation initiation) that cannot be expressed using standard price/volume technical indicators. The core actionable conditions require: (1) direct measurement of unposted/latent liquidity (not available), (2) order management cost estimation (not available), (3) counterparty pool identification (non-technical), and (4) negotiation state tracking (non-technical). Volume-based proxies are insufficient substitutes for the underlying behavioral mechanics described.",
+  "translation_notes": "Attempted proxy: low visible volume (volume < sma_20) + low volatility (hvol_20 < threshold) as weak indicators of minimal order book depth and potential for latent demand search. However, this fundamentally misrepresents the signal, which is about active counterparty search behavior rather than passive order book observation. This rule requires alternative data sources (trade request flow, dealer inventories, communication logs) or a fundamentally different backtesting framework designed for OTC/block trading scenarios."
+}

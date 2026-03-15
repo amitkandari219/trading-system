@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting 'range bound with clear upper and lower ends' which requires Donchian channels or explicit range definition not provided. Signal also uses 'flat MA line' as a confirmation condition, but 'is flat' is not a standard operator in the allowed set. The concept of 'gap down at bottom of range' and 'rejection of up move at upper end' requires zone-based logic and historical range tracking not directly expressible with allowed operators.",
+  "translation_notes": "Attempted to approximate using gap down logic (close < prev_close for long entry) and rejection logic (close > prev_high for short entry), combined with sma_20 flatness check. However, this is a significant simplification that does not capture the true range-bound detection mechanism. Recommend using Donchian channels (dc_upper, dc_lower) if available, or providing explicit support/resistance levels for proper implementation."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires straddle options strategy (long call + long put) with implied volatility expansion monitoring and calendar-based earnings announcement triggers. Allowed indicators are equity price/technical only; no options Greeks (IV, vega), earnings date detection, or derivatives strategies are available. Bid/ask spread threshold and stop loss threshold are not quantified in source material. Position sizing by normalized underlying price cannot be expressed with available indicators.",
+  "translation_notes": "This is a volatility-expansion options strategy keyed to earnings events. The core logic (buy before earnings, sell before announcement) requires: (1) earnings date detection [NOT AVAILABLE], (2) implied volatility measurement [NOT AVAILABLE], (3) options pricing [NOT AVAILABLE]. Attempted partial translation using volume ratio as proxy for volatility regime, but this misrepresents the actual signal intent. Recommend implementing this signal in an options-aware backtest engine with earnings calendar and IV surface data."
+}

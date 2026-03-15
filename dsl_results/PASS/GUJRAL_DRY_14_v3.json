@@ -1,0 +1,72 @@
+{
+  "signal_id": "GUJRAL_DRY_14",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_14",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal identifies failed upside breakout in range-bound market. Entry conditions: (1) Close breaks above Donchian upper (upside breakout attempt), (2) Price corrects/loiters below prior high (failed follow-through). Exit: Price reaches opposite boundary (lower Donchian). Stop loss set conservatively at 2% given range-bound nature. Hold period limited to 5 days as trapped players typically capitulate quickly."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal identifies failed upside breakout in range-bound market. Entry conditions: (1) Close breaks above Donchian upper (upside breakout attempt), (2) Price corrects/loiters below prior high (failed follow-through). Exit: Price reaches opposite boundary (lower Donchian). Stop loss set conservatively at 2% given range-bound nature. Hold period limited to 5 days as trapped players typically capitulate quickly."
+  },
+  "source_rule_text": "When an upside breakout fails to see follow-through and price corrects back to the range, trapped long players will dump holdings causing price to fall and potentially reach the opposite boundary of the range."
+}

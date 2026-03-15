@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_71_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires IV term structure slope, consecutive period comparisons, and realized volatility regime detection \u2014 none of which are available in the allowed indicator set. IV term structure slope requires multi-timeframe IV data not provided. 'Consecutive periods' logic requires historical state tracking beyond single-bar indicators. The signal is conceptually sound but cannot be fully translated with available indicators.",
+  "translation_notes": "Attempted proxy translation: Used hvol_20 (historical volatility) as proxy for realized volatility regime, india_vix for implied volatility direction, and bb_pct_b for range-bound detection. However, this loses the critical nuance of IV term structure slope inversion and the precise threshold requirement for 'consecutive periods' of declining IV. The CONTEXT_DEPENDENT direction was preserved but entry_long and entry_short conditions are approximations only."
+}

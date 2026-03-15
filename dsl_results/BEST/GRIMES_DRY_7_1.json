@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal specifies Keltner Channel indicator which is not in the allowed indicator list. Keltner Channel (using ATR-based bands) is not directly available. Substituted Bollinger Bands as closest functional equivalent for mean-reversion channel trading, but this changes the signal mechanics. Original signal requires 'keltner_channel_atr_multiplier: 2.0' and ATR-based band calculation which cannot be precisely implemented with allowed indicators.",
+  "translation_notes": "GRIMES_DRY_7_1 is a fade/reversal strategy on channel breakouts. The signal calls for shorting upper band breaks and buying lower band breaks, expecting price to revert to the midline. Since Keltner Channels are not available, Bollinger Bands (bb_upper, bb_lower, bb_middle) have been used as a functional substitute, though they use standard deviation rather than ATR. Stop loss set to 2.0% based on the ATR multiplier context. Entry occurs on closes beyond bands; exits at midline as specified."
+}

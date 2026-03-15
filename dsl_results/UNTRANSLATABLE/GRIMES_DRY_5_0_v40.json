@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of multi-timeframe pattern completion (double top/bottom, trendline rejection on HTF), parabolic exhaustion identification, and rejection candle recognition on LTF. These require pattern recognition and multi-timeframe context logic not expressible with single-bar indicator comparisons. Specific thresholds for timeframe_ratio, parabolic_lookback_bars, rejection_proximity_atr_multiple, and risk_per_trade_pct are marked [THRESHOLD_NEEDED] in source and cannot be determined. No indicators exist for pattern detection or cross-timeframe alignment validation.",
+  "translation_notes": "Attempted proxy: low volatility regime (atr < hvol_20) as entry guard. Exit conditions use swing rejection logic (close beyond prior bar extremes). Direction set to CONTEXT_DEPENDENT per source. Full implementation requires custom pattern detection functions outside allowed indicator set. Recommend implementing as multi-timeframe rules engine with pattern scanner rather than single-frame indicator rules."
+}

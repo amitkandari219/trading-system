@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires VIX futures term structure analysis (contango detection, front month vs second month comparison, term structure slope measurement) and VIX-specific volatility metrics. The allowed indicator set contains only india_vix (spot level) but lacks: (1) VIX futures data, (2) term structure curve indicators, (3) futures contango/backwardation detection, (4) VIX premium measurements. Cannot reliably translate 'VIX futures in contango', 'front month < second month', 'contango_slope_minimum', or 'VIX futures premium' using available price/technical indicators on standard asset charts.",
+  "translation_notes": "Attempted proxy using hvol_20 (low historical volatility as proxy for low VIX regime), but this fundamentally misses the core signal logic which requires futures term structure analysis unavailable in the indicator set. The signal is specifically about exploiting VIX futures contango premium and requires dedicated VIX futures indicators or term structure data."
+}

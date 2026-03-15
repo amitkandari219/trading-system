@@ -1,0 +1,84 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [
+      {
+        "left": "s1",
+        "operator": "crosses_below",
+        "right": "close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "r1",
+        "operator": "crosses_above",
+        "right": "close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "s1"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "r1"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses pivot support (s1) and resistance (r1) role reversals. Entry conditions detect breaks: long when support s1 is broken downward (crosses_below), short when resistance r1 is broken upward (crosses_above). Exit conditions use the reversal principle: exit long when price crosses back below the broken support (now acting as resistance), exit short when price crosses back above the broken resistance (now acting as support). Direction marked CONTEXT_DEPENDENT as rule applies bidirectionally based on which pivot is broken. No explicit stop loss or hold period specified by author."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "s1",
+        "op": "crosses_below",
+        "value": "close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "r1",
+        "op": "crosses_above",
+        "value": "close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "s1"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "r1"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses pivot support (s1) and resistance (r1) role reversals. Entry conditions detect breaks: long when support s1 is broken downward (crosses_below), short when resistance r1 is broken upward (crosses_above). Exit conditions use the reversal principle: exit long when price crosses back below the broken support (now acting as resistance), exit short when price crosses back above the broken resistance (now acting as support). Direction marked CONTEXT_DEPENDENT as rule applies bidirectionally based on which pivot is broken. No explicit stop loss or hold period specified by author."
+  },
+  "source_rule_text": "When a pivot support is broken downward, it reverses into a resistance that can cap subsequent upward retracements; when a pivot resistance is broken upward, it reverses into a support."
+}

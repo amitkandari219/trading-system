@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_0_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a quality-control statistical filter detecting regime shifts (S_t statistic and cumulative deviations from expected value E[y_t]) which are not available in the allowed indicator set. The entry conditions reference abstract thresholds [THRESHOLD_NEEDED] and a custom S_t statistic that must be defined externally. Without specification of how S_t is calculated or the exact threshold multiplier and confirmation period values, this cannot be translated to concrete tradeable rules using only standard technical indicators.",
+  "translation_notes": "This is a meta-rule for event detection based on statistical anomalies. The signal describes a framework (quality control filter, regime detection) rather than concrete technical conditions. To implement: (1) define the S_t statistic calculation, (2) specify threshold_h_multiplier, confirmation_periods, and lookback_periods values, (3) clarify what 'expected value E[y_t]' means in context (e.g., SMA of returns). A placeholder interpretation using returns direction was provided but does not capture the intended statistical shift detection logic."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by regression line slope and selecting strongest/weakest across a universe. This is a cross-sectional portfolio signal requiring external ranking logic not available in single-instrument indicator set. Regression slope itself is not in the ALLOWED INDICATORS list. Implementation requires custom ranking module outside standard technical indicator framework.",
+  "translation_notes": "This is a relative strength signal requiring multi-stock ranking by linear regression slope. The backtest engine would need to: (1) calculate regression slope for each stock over a lookback period, (2) rank all stocks by slope value, (3) identify top N (strongest) and bottom N (weakest), then (4) execute long on strongest and short on weakest simultaneously. Standard single-stock indicators cannot express this ranking requirement."
+}

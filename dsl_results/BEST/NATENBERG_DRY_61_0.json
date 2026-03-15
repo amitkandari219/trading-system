@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_61_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires real-time calculation of price ratios between two related contracts (e.g., gold:silver 80:1) and comparison to historical equilibrium ratios. The allowed indicator set does not include cross-instrument ratio calculations, inter-contract price tracking, or custom ratio deviation metrics. To implement this signal, the backtest engine would need: (1) dual-contract price feed capability, (2) dynamic ratio calculation between contract pairs, (3) historical equilibrium ratio lookup/calibration, and (4) deviation threshold parametrization. These are outside the scope of single-contract technical indicators.",
+  "translation_notes": "The NATENBERG_DRY_61_0 signal is a pairs/spread trading strategy requiring multi-contract analysis. The entry conditions depend on calculating: (current_price_contract_A / current_price_contract_B) vs historical_equilibrium_ratio, then determining if |deviation| >= threshold. Without a 'price_ratio' or 'contract_pair_deviation' indicator, this cannot be expressed using only the allowed single-contract indicators (close, sma, rsi, atr, etc.). The signal is fundamentally untranslatable within the given constraint set."
+}

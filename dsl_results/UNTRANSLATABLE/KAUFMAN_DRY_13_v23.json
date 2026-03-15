@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires yield curve steepening/flattening detection and multi-leg spread trading (long one maturity, short another). These require: (1) real-time yield curve calculations across multiple instruments (10-year vs 5-year spread differential), (2) cross-instrument pair trading logic not supported by single-instrument indicators in the allowed list. The steepening_definition and flattening_definition are marked AUTHOR_SILENT, preventing precise rule translation. Position sizing based on volatility equalization between maturities also requires cross-instrument volatility comparison.",
+  "translation_notes": "This signal describes a yield curve spread trading strategy (calendar/maturity spreads) that cannot be fully expressed using single-instrument price-based indicators. It fundamentally requires: (1) yield curve term structure analysis across maturities, (2) spread dynamics detection (difference of differences), (3) multi-leg order management. A practical implementation would need access to yield data or inter-commodity spreads (e.g., ZN/ZF contracts in futures markets) and explicit steepening/flattening thresholds not provided by the author."
+}

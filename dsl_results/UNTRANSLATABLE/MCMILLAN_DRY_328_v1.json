@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_328",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires computation of 'composite daily implied volatility' and exponential moving average of implied volatility readings. Neither implied volatility (IV) nor composite IV calculations are available in the allowed indicators list. The closest proxy (india_vix) is a volatility index but not the same as implied volatility from option chains, and does not support the 20/30-day EMA computation needed for position trading decisions. This signal requires custom IV data not in the standard OHLCV indicator set.",
+  "translation_notes": "MCMILLAN_DRY_328 is a volatility regime estimation signal for position traders. It requires access to implied volatility term structure data (typically from options markets) which is outside the scope of price/technical indicator-only backtesting. The signal intent is to smooth IV readings to detect volatility regimes, but cannot be implemented with available indicators."
+}

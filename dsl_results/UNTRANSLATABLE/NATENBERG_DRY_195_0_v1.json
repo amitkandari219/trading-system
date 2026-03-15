@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_195_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires directional probability forecasting and volatility skew adjustment mechanics that cannot be expressed with the allowed indicators. Specifically: (1) 'Probability of large move' is not measurable from the allowed indicator set\u2014this requires options market data or statistical forecast models not available; (2) 'volatility skew' and 'wing adjustment' are options surface constructs requiring implied volatility term structure and moneyness-dependent IV data; (3) 'Position gamma exposure' requires derivatives Greeks calculation. The signal is a volatility surface management strategy rather than a price/technical rule.",
+  "translation_notes": "NATENBERG_DRY_195_0 describes a volatility skew adjustment tactic from options trading theory. It requires: (a) forward-looking probability estimation of tail moves, (b) ability to measure and adjust the convexity of the implied volatility surface across strikes, and (c) real-time gamma/vega exposure tracking. None of these are constructible from price, volume, or standard technical indicators. To implement this signal, you would need: live options market data (IV surface by strike/expiry), options Greeks calculations, and a probability model for directional tail risk. This belongs in an options portfolio management system, not a price-based backtest engine."
+}

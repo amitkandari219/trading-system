@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit 52-week price extremes (high/low over 252 bars) and implied volatility levels which are not available in the allowed indicator set. The signal also requires t-statistic significance testing which cannot be expressed in the rule syntax. price_pos_20 (20-day positioning) used as proxy for extremes, but true 52-week anchoring effect detection is not possible. IV compression/expansion inferred from hvol_20 behavior but lacks the precision of true implied volatility data.",
+  "translation_notes": "CONTEXT_DEPENDENT direction mapped to separate LONG and SHORT entry conditions. Entry conditions approximate 52-week extremes using price_pos_20 (0.1 = near low, 0.9 = near high) combined with hvol_20 compression (0.009 \u2248 0.9 vol points compressed). Exit uses hvol_20 spike (0.0112 \u2248 1.12 vol points expansion) as volatility mean reversion signal. Signal is fundamentally dependent on implied volatility regime which cannot be directly measured from allowed indicators."
+}

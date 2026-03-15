@@ -1,0 +1,70 @@
+{
+  "signal_id": "KAUFMAN_DRY_15",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_15",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.009"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 1,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gap opening detected when open > prev_close. Drop of 90 basis points (0.90%) approximated as returns < -0.009 (measured from prior close). Exit on next day reversal (close > open) or by max 1-day hold. Signal is specific to bonds and forex pairs; backtest should filter instruments accordingly. Original sample size noted as ~10 cases per instrument indicates limited statistical robustness."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.009
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 1,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Gap opening detected when open > prev_close. Drop of 90 basis points (0.90%) approximated as returns < -0.009 (measured from prior close). Exit on next day reversal (close > open) or by max 1-day hold. Signal is specific to bonds and forex pairs; backtest should filter instruments accordingly. Original sample size noted as ~10 cases per instrument indicates limited statistical robustness."
+  },
+  "source_rule_text": "When a gap opening shows a drop of at least 90 basis points, expect a reversal on the next open."
+}

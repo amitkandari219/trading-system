@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_17",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "KAMA (Kaufman's Adaptive Moving Average) is not available in the allowed indicators list. The signal specifically requires KAMA calculations with a filter based on '0.1 standard deviations of trendline changes', which cannot be accurately replicated using only the provided indicators (SMA, EMA, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots). Substituted with EMA_10 as a trend-following proxy, but this does not capture KAMA's adaptive smoothing or the specific filter mechanism described.",
+  "translation_notes": "KAMA is a proprietary adaptive moving average indicator not in the allowed set. The approximation uses EMA_10 as a trend-following substitute for entry/exit logic, but the critical 0.1 standard deviation filter and KAMA's adaptive calculation period (8-10 days, max 14) cannot be implemented without the actual KAMA indicator. This translation captures the directional intent but loses the signal's precision and false-signal filtering mechanism."
+}

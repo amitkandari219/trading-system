@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_192",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires real-time option pricing data (call moneyness, intrinsic value, parity premium, interest rates on short sale, dividend forecasting) which are not available in the standard price/technical indicator set. The strategy is a complex options arbitrage that cannot be expressed using only OHLCV and technical indicators.",
+  "translation_notes": "MCMILLAN_DRY_192 describes an 'Interest Play' \u2014 a synthetic arbitrage combining a short stock position with a long in-the-money call, where profits depend on the call trading slightly over parity and the premium being justified by short-sale interest and dividends. This requires: (1) option chain data with strike prices and premiums, (2) real-time dividend calendar, (3) short rebate rates. A backtest engine using only price/volume/technical indicators cannot model option pricing dynamics or the cost-of-carry arbitrage relationships required for this strategy. This signal is untranslatable to a pure technical rule set."
+}

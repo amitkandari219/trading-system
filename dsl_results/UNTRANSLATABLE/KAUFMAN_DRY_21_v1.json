@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_21",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a CONTRACT ROLL rule, not a directional trading signal. It specifies when to roll futures contracts (fixed calendar date or volume/open interest switch), which is a position management/structural operation, not a price-based entry/exit condition. The allowed indicators and operators are designed for price/technical analysis, not contract metadata (delivery month, contract expiration, open interest switches). Implementation requires: (1) calendar logic to identify last day of month before delivery month, (2) contract-level open interest/volume data comparison across contract months, and (3) roll execution logic\u2014none of which fit the entry/exit condition schema.",
+  "translation_notes": "Signal KAUFMAN_DRY_21 describes a roll methodology with two options: (a) fixed date based on delivery month calendar, (b) dynamic trigger based on open interest/volume migration. Both require access to futures contract specifications and inter-contract volume/OI data. This is a structural/operational rule best implemented as a separate roll module in the backtest engine, not as price-based entry/exit conditions. Recommend handling as a dedicated contract_roll_rule object outside the standard condition-based signal framework."
+}

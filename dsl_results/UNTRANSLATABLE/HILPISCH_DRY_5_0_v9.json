@@ -1,0 +1,18 @@
+{
+  "signal_id": "HILPISCH_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of distance (close - sma) with comparison against dynamic threshold multiplier. The operator '-' (subtraction) is not in ALLOWED_OPERATORS. The threshold_multiplier and sma_period parameters are specified as '[THRESHOLD_NEEDED]' placeholders without concrete values. Mean-reversion completion detection requires price-to-SMA distance to change sign, which needs absolute distance calculation not directly supported by allowed operators. Recommend: define concrete sma_period (suggest sma_20), define threshold_multiplier as ATR multiple (e.g., atr_14 * multiplier), and use log_returns or close deviation indicators for mean-reversion crossing logic.",
+  "translation_notes": "This is a mean-reversion strategy based on price deviation from SMA with threshold-based entries and zero-crossing exits. Core logic cannot be fully translated without: (1) subtraction operator for distance calculation, (2) concrete parameter values for threshold_multiplier and sma_period, (3) support for absolute value function. The signal describes a sophisticated position-reversal mechanism on threshold breach that exceeds basic entry/exit framework."
+}

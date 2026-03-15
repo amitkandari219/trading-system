@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'multiple consecutive bars meeting criteria' and comparison of bar range to SMA of bar range (not available). Volume multiplier 4-5x cannot be precisely calibrated without knowing vol_ratio_20 calculation baseline. Price distance from MA in standard deviations requires volatility-adjusted threshold not directly expressible.",
+  "translation_notes": "Approximated climactic conditions using: (1) expanded bar range via range > atr_14, (2) volume spike via vol_ratio_20 as proxy for 4-5x average, (3) close at extreme via close >= high (buying climax) or close <= low (selling climax). Exit on volume normalization. CONTEXT_DEPENDENT direction preserves the reversal nature (long on selling climax, short on buying climax). Actual implementation should validate vol_ratio_20 meets 4-5x threshold and use multi-bar confirmation logic."
+}

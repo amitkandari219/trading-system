@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires a machine learning classifier trained on historical microstructure features (VPIN, Kyle's lambda, cancellation rates) to predict profitability and make dynamic liquidity provision decisions. The backtest engine does not support: (1) classifier training/retraining on custom labeled datasets, (2) confidence scoring from ML models, (3) dynamic regime-switching based on classifier output, (4) market microstructure indicators like VPIN or Kyle's lambda (not in allowed indicator list). The rule is fundamentally algorithmic and adaptive rather than rule-based, requiring real-time model inference and continuous retraining logic that cannot be expressed as static conditional statements.",
+  "translation_notes": "Signal LOPEZ_DRY_3_0 describes an adaptive market-making algorithm that requires supervised learning on historical outcomes and real-time classification scoring. This is outside the scope of rule-based backtesting. To implement: (1) Integrate VPIN and order flow toxicity indicators, (2) Build external classifier pipeline with confidence thresholds, (3) Use classifier output as a dynamic input signal rather than hard rules, (4) Implement rolling retraining logic separate from the backtest engine."
+}

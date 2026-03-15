@@ -1,0 +1,87 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_7_0",
+    "entry_long": [
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.80"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal prevents entries when price is in extended territory. For long entries, price_pos_20 < 0.80 ensures price is not in top 20% of 20-period range (avoiding overbought extension). For short entries, price_pos_20 > 0.20 ensures price is not in bottom 20% of 20-period range (avoiding oversold extension). Exit conditions use standard reversal at SMA_20 as a reasonable default per rule 8. The [THRESHOLD_NEEDED] parameters default to 20th/80th percentile positioning, which is a common extension threshold."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.8
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.2
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal prevents entries when price is in extended territory. For long entries, price_pos_20 < 0.80 ensures price is not in top 20% of 20-period range (avoiding overbought extension). For short entries, price_pos_20 > 0.20 ensures price is not in bottom 20% of 20-period range (avoiding oversold extension). Exit conditions use standard reversal at SMA_20 as a reasonable default per rule 8. The [THRESHOLD_NEEDED] parameters default to 20th/80th percentile positioning, which is a common extension threshold."
+  },
+  "source_rule_text": "Avoid entry signals when an indicator is in extended territory (overbought on long entries, oversold on short entries), as extension often signals real market strength rather than reversal opportunity."
+}

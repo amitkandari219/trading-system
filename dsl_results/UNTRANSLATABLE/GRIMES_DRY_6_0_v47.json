@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_6_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) consolidation range establishment with specific threshold parameters [base_confirmation_bars, entry_position_in_range, range_tightness_requirement]; (2) explicit 'no momentum divergence signals' check; (3) precise stop loss and take profit multipliers of base range. These require either multi-bar pattern recognition logic or custom range-detection functions not available in the allowed indicator set. price_pos_20 approximates bottom-of-range positioning but does not confirm active consolidation phase.",
+  "translation_notes": "Attempted to capture: (1) price near bottom of range using price_pos_20 < 0.3; (2) low volume during consolidation using vol_ratio_20 < 1.0; (3) absence of momentum divergence approximated by rsi_14 < 70 (not overbought). Exit condition uses pivot support (s1) as proxy for breakout failure. Direction set to LONG as consolidation-before-breakout typically precedes upside moves. Original signal is CONTEXT_DEPENDENT but treated as LONG given typical breakout pattern. Thresholds for stop_loss_pct (2.0) and hold_days_max (20) are reasonable defaults but author did not specify."
+}

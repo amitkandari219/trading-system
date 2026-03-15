@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_140_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit IV-RV spread calculation with configurable thresholds (iv_rv_spread_threshold, min_days_to_expiration, lookback_periods), multi-period historical confirmation, and time-to-expiration decay rules. These are options-specific volatility metrics not available in the standard indicator set. Approximated with india_vix > hvol_20 as crude IV > RV proxy, but this lacks the precision, confirmation periods, and expiration-based exit logic required by the original signal.",
+  "translation_notes": "The signal is fundamentally untranslatable because it requires: (1) Implied Volatility (not in allowed indicators\u2014india_vix is an index proxy only), (2) Realized Volatility (hvol_20 is the closest match), (3) multi-period confirmation of the spread, (4) days-to-expiration tracking, and (5) options notional premium tracking. Used india_vix > hvol_20 as a heuristic IV-RV spread indicator with a SHORT direction for premium selling, but this is a poor substitute for proper options-based volatility comparison and lacks the lookback confirmation and expiration logic essential to the original strategy."
+}

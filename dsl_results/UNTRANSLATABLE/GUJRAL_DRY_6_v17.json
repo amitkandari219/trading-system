@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires measuring retracement as percentage of prior trending move (swing low to swing high). This requires tracking historical swing points and calculating the ratio of current retracement to prior move amplitude. The available indicators cannot directly compute 'counter-trend retracement exceeds 50% of the trending move' without custom bar-by-bar swing detection logic not present in the allowed indicator set.",
+  "translation_notes": "This signal is conceptually about trend quality deterioration when retracements become too deep. A simplified proxy entry uses price relative to a moving average (sma_20) to confirm trend direction, and exit when price breaches a pivot level (suggesting retracement reversal). However, the exact 50% retracement threshold against the prior swing move cannot be expressed with allowed indicators. A custom swing-detection module would be required for proper implementation."
+}

@@ -1,0 +1,74 @@
+{
+  "signal_id": "GUJRAL_DRY_15",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_15",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "TRENDING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry conditions: (1) Price closes below weekly S1 pivot level (multi-day support reference), AND (2) Price breaks below previous day's low (multi-day low break). Exit when price crosses back above S1 (reversal/support reclaim). 'Early in day' timing is assumed to be enforced at backtest execution level via bar filtering. Signal appears to target intraday reversals with potential multi-day follow-through on trend weakness below S1."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s1"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN",
+      "TRENDING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry conditions: (1) Price closes below weekly S1 pivot level (multi-day support reference), AND (2) Price breaks below previous day's low (multi-day low break). Exit when price crosses back above S1 (reversal/support reclaim). 'Early in day' timing is assumed to be enforced at backtest execution level via bar filtering. Signal appears to target intraday reversals with potential multi-day follow-through on trend weakness below S1."
+  },
+  "source_rule_text": "When a multi-day low is broken early in the day, treat it as a bearish signal for the remainder of the day and potentially for many more days to come."
+}

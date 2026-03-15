@@ -1,0 +1,90 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_3",
+    "entry_long": [
+      {
+        "left": "prev_close",
+        "operator": "<",
+        "right": "prev_open"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_open"
+      },
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Piercing Line pattern: (1) Previous candle black = prev_close < prev_open; (2) Current candle white = close > open; (3) Current open below previous low = open < prev_low; (4) Current close above midpoint of previous body approximated as close > pivot (midpoint proxy). Exit on close below previous close (reversal confirmation)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "prev_close",
+        "op": "<",
+        "value": "prev_open"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_open"
+      },
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Piercing Line pattern: (1) Previous candle black = prev_close < prev_open; (2) Current candle white = close > open; (3) Current open below previous low = open < prev_low; (4) Current close above midpoint of previous body approximated as close > pivot (midpoint proxy). Exit on close below previous close (reversal confirmation)."
+  },
+  "source_rule_text": "Buy when a Piercing Line pattern forms (black candle followed by white candle with open below previous low and close above previous body midpoint), indicating a bullish reversal."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_18",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'excess kurtosis' and 'kurtosis trend' indicators which are not in the allowed indicator list. Kurtosis is a statistical measure of tail risk that is not directly available. Volatility thresholds are approximated using hvol_20 and india_vix as proxies, but the core exit condition (kurtosis crosses zero / kurtosis trend unfavorable) cannot be accurately translated without explicit kurtosis calculations.",
+  "translation_notes": "KAUFMAN's signal relies on kurtosis-based exits which require custom calculation. Approximated volatility maximum using hvol_20 > 0.03 (3% threshold) and india_vix > 20 as HIGH_VOL indicators. Entry restricted to low volatility regimes. Exit triggered on volatility spike. The kurtosis-specific logic (excess kurtosis = 0, trend direction) cannot be implemented with available indicators and would require a kurtosis oscillator or custom calculation module."
+}

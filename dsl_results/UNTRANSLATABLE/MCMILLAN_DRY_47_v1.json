@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_47",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options pricing logic (call option valuation, Greeks, projected option price changes at expiration based on stock volatility), comparative analysis across multiple underlyings with different volatilities, and position selection based on projected percentage gains in option premiums. These require derivatives pricing models and multi-asset comparison logic that are not supported by the backtesting engine's available indicators and operators. The signal cannot be translated into a single-instrument technical rule set.",
+  "translation_notes": "Signal MCMILLAN_DRY_47 is fundamentally an options comparison strategy that requires: (1) calculation of expected stock price moves based on realized/implied volatility to a future date, (2) Black-Scholes or similar option valuation at that projected price, (3) comparison of multiple call options across different underlying stocks, and (4) selection based on projected option percentage gain. This exceeds the scope of single-stock technical analysis rules. A hvol_20 trigger was included as a proxy for volatility regime recognition only, but does not capture the core comparative options logic."
+}

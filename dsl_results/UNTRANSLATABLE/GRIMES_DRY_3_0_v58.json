@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) short-term trend line breakout and pullback within N bars \u2014 trend line is not available as an indicator; (2) price closure back 'inside' trend line \u2014 requires trend line calculation; (3) no new extreme beyond breakout point \u2014 requires multi-bar lookback logic not expressible in 3-field condition format. Volume spike multiple and ATR multipliers are parameterized but thresholds ([THRESHOLD_NEEDED]) were not specified in source material.",
+  "translation_notes": "Attempted proxy using sma_20 as trend line substitute, vol_ratio_20 for volume spike detection, and wick analysis for exhaustion signals. However, the core pattern logic (breakout-and-pullback trap within a specific bar count, confirmed by extremes) cannot be faithfully translated without explicit trend line support. Recommend: (a) implement trend line detection in backtest engine, or (b) use linear regression channel (if available) as trend line proxy, or (c) define threshold parameters before encoding."
+}

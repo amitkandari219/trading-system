@@ -1,0 +1,532 @@
+[
+  {
+    "signal_id": "GRIMES_DRY_2_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Ch. P1:OTA, pp. 47-62",
+    "raw_chunk_text": "tions,orevenlargeindividualtraders)buywithoutalertingthepublictotheirintentions.\nThis is actually very difficult to do, as buying pressure will naturally support and even\nraise prices. These players m",
+    "rule_text": "A trader should avoid trading or reduce position sizing during market equilibrium conditions characterized by sideways price action, flat intermediate-term moving averages, and support/resistance ranges, as these conditions indicate accumulation by larger players rather than genuine directional moves.",
+    "signal_category": "REGIME",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Intermediate MA (20-period SMA) slope < 0.5% over last 10 bars",
+      "Price oscillating within defined support/resistance band (range < 2% of price)",
+      "Price crossing intermediate MA on both sides within last 5 bars",
+      "ATR < 20th percentile (low volatility confirmation)"
+    ],
+    "parameters": {
+      "ma_period": 20,
+      "ma_slope_threshold_pct": 0.5,
+      "range_width_pct": 2.0,
+      "atr_lookback_percentile": 20,
+      "position_size_multiplier": 0.0
+    },
+    "exit_conditions": [
+      "Do not enter; skip trade entirely"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Specific numeric thresholds (0.5%, 2%, 20th percentile) are not mentioned in source text",
+      "20-period SMA specification not provided in original excerpt",
+      "FUTURES instrument type not mentioned or implied in source text",
+      "ATR condition added without source support"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All four entry conditions are specific, quantifiable metrics (MA slope percentage, price range percentage, bar counts, ATR percentile) that can be programmatically detected from OHLC data, and the exit condition (skip trade) is an actionable directive when conditions are met.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "GRIMES_DRY_4_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Ch. P1:OTA, pp. 113\u2013136",
+    "raw_chunk_text": "OnTradingRanges 107\nestablishing very large positions with stops just on the other side of the level. When\nthese levels are violated, the triggering of these stops can lead to extreme slippage be-\nyon",
+    "rule_text": "When trading against clean technical levels, account for actual risk as a multiple of intended risk due to slippage and stop-triggering volatility, and size positions accordingly to avoid catastrophic losses.",
+    "signal_category": "SIZING|RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price approaches or tests a clean technical level (support/resistance)",
+      "Stop order is placed just beyond the level",
+      "Position size is calculated assuming normal slippage"
+    ],
+    "parameters": {
+      "actual_risk_multiplier": 10,
+      "position_size_reduction_factor": 0.1,
+      "stop_placement": "2x normal distance beyond level"
+    },
+    "exit_conditions": [
+      "Exit at breakout beyond level if level holds",
+      "Exit on reversal signal if level holds"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Exit conditions not mentioned in source text - text warns against trading against levels, doesn't provide exit strategies",
+      "Instrument specification as 'FUTURES' not supported by source text",
+      "Specific parameter values (10x multiplier, 0.1 reduction factor) are reasonable inferences but not explicitly stated",
+      "Stop placement parameter not directly specified in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "Entry conditions specify testable market events (price tests technical levels, stop placement beyond level, position sizing based on calculated multiples) that can be detected programmatically from price data and trader rules, though the definition of 'clean technical level' would require clarification.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "GRIMES_DRY_6_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Ch. P1:OTA, pp. 163-204",
+    "raw_chunk_text": "One pattern to avoid is buying against multiple (three or more) tests of support in\na pullback, as this pattern is often more indicative of an impending failure. The opera-\ntiveconcepthereisusuallylow",
+    "rule_text": "Avoid buying pullbacks that test support three or more times, as multiple tests with lower highs indicate weakening buyer interest and higher probability of failure.",
+    "signal_category": "PATTERN",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price is in an uptrend",
+      "Price has pulled back to support",
+      "Support level has been tested 2 or more times in the last 5-10 bars",
+      "High of the current bounce is lower than the previous bounce high"
+    ],
+    "parameters": {
+      "min_tests_to_reject": 2,
+      "lookback_bars_for_tests": 5,
+      "require_lower_highs": true
+    },
+    "exit_conditions": [
+      "Do not enter; wait for alternative setup"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Text says 'three or more' tests but parameters use 'min_tests_to_reject: 2'",
+      "Specific values like 'lookback_bars_for_tests: 5' are not mentioned in source",
+      "Instrument specified as 'FUTURES' but source text is generic to all markets",
+      "Entry conditions add specific technical details not explicitly stated in source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "All four entry conditions are specific and programmable: uptrend detection, pullback-to-support identification, support test counting within a bar window, and lower-high comparison are all quantifiable from OHLC data.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "GRIMES_DRY_6_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Ch. P1:OTA, pp. 163-204",
+    "raw_chunk_text": "Stop The general rule of stops in countertrend trades applies here: these stops must\nbe respected without exception. There are two reasonable stops for this pattern. One\nchoiceistosimplyputthestopbeyo",
+    "rule_text": "A trader should place stops at defined price levels that reflect either a decisive trend reversal failure (conservative) or an intermediate pullback threshold (aggressive), and must execute these stops without exception in countertrend trades.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Countertrend trade setup identified",
+      "Prior trend extreme (swing high in downtrend or swing low in uptrend) established"
+    ],
+    "parameters": {
+      "stop_placement": "beyond_trend_extreme",
+      "buffer_pips_above_extreme": 0,
+      "position_size_adjustment": "standard_or_smaller"
+    },
+    "exit_conditions": [
+      "Stop triggered if price closes beyond the prior trend extreme",
+      "Trend reversal has decisively failed when extreme is violated"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Instrument specified as 'FUTURES' but source text makes no mention of specific instruments",
+      "Entry conditions are reasonably inferred but not explicitly stated in the excerpt",
+      "Parameter values like 'buffer_pips_above_extreme: 0' are not specified in source",
+      "Position size adjustment details are inferred from general mention of 'larger position sizes'"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, programmable entry conditions (countertrend setup identification and prior trend extreme detection) and a clear exit rule (price closes beyond prior extreme), which can be implemented as code logic against historical price data.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "GRIMES_DRY_7_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Ch. 7 (P1:OTA), pp. 205\u2013246",
+    "raw_chunk_text": "Higher time frame pullbacks can also be a filter to skip trades that set up against\nthosepullbacks.Figure7.27isanimportantexamplethatshowswhatmighthavebeen\nseenasagoodsetup forabreakout onthedailychar",
+    "rule_text": "A trader should reject or skip trades that align with a smaller timeframe pattern when a higher timeframe chart shows a conflicting bias or incomplete consolidation pattern.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Lower timeframe shows consolidation breakout signal (e.g., daily chart break above resistance)",
+      "Higher timeframe (weekly or monthly) shows unresolved or ambiguous consolidation pattern",
+      "Higher timeframe bias is opposite to lower timeframe directional signal"
+    ],
+    "parameters": {
+      "higher_timeframe_lookback_bars": 52,
+      "consolidation_range_threshold_percent": 3.0,
+      "minimum_higher_timeframe_bars_above_resistance": 8,
+      "action": "SKIP_TRADE"
+    },
+    "exit_conditions": [
+      "Do not enter; wait for higher timeframe consolidation to resolve with matching bias"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Parameters contain specific numeric values (52 bars, 3.0%, 8 bars) not mentioned in source text",
+      "Instrument specified as 'FUTURES' but source text doesn't specify any particular instrument type",
+      "Exit conditions infer waiting for resolution but source doesn't explicitly state this strategy"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal specifies concrete entry conditions (consolidation breakout on lower timeframe, unresolved consolidation on higher timeframe, opposite bias detection) that can be operationalized through price level analysis and pattern recognition on multi-timeframe data.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "GRIMES_DRY_8_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Ch. P1:OTA (Optimal Trade Analysis), p. 247-278",
+    "raw_chunk_text": "thetraderinFigure8.4madetheworstpossibledecisions,andtookoffone-thirdofhis\nposition at the exact low points. The market eventually went higher, and both traders\nshould have profited, but notice that p",
+    "rule_text": "Avoid taking partial exits at a loss, as locking in losses anchors P&L in the loss space and makes recovery difficult; instead, exit the entire position at a small loss rather than deleveraging through partial loss exits.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position is established with defined entry price",
+      "Trade moves into loss territory (current price < entry price)"
+    ],
+    "parameters": {
+      "loss_threshold_to_exit_full_position": "0.5%",
+      "allow_partial_exits_in_loss": false,
+      "max_loss_tolerance": "0.5%"
+    },
+    "exit_conditions": [
+      "Exit entire position when unrealized loss reaches 0.5%",
+      "Do not take any partial profits or partial exits while in loss state"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Specific 0.5% loss threshold not mentioned in original text",
+      "Instrument type 'FUTURES' not specified in source",
+      "Exact exit conditions with numerical thresholds are added without source support"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, measurable entry conditions (position established, unrealized loss exists) and quantifiable exit triggers (0.5% loss threshold) that a programmer could implement with market data and portfolio state monitoring.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "GRIMES_DRY_8_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Ch. P1:OTA, pp. 247-278",
+    "raw_chunk_text": "gets into a trade, takes half of it off at a 1X profit (where X is the initial dollar amount\nriskedonthetrade)andthenfindsthetradebackattheentryprice.Thistradercanadd\nthehalfshealreadyexitedbacktothet",
+    "rule_text": "Build a profit cushion by scaling out of winning positions at predefined profit targets and re-entering at lower prices within range-bound markets, reducing ultimate loss exposure if the trade fails.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Position established in identified accumulation/range",
+      "Price reaches 1.0X initial risk in profit"
+    ],
+    "parameters": {
+      "scale_out_profit_multiple": 1.0,
+      "position_fraction_to_exit": 0.5,
+      "max_re_entry_attempts": 1,
+      "re_entry_zone_width": "entry_price \u00b1 0.5 ATR"
+    },
+    "exit_conditions": [
+      "Exit 50% at 1.0X profit",
+      "Stop loss on remaining 50% at original stop level",
+      "One re-entry allowed if price returns to entry zone"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "ATR parameter (0.5 ATR for re-entry zone) not mentioned in source text",
+      "FUTURES instrument specification not supported by source text - appears generic",
+      "max_re_entry_attempts set to 1 but source suggests 'perhaps several times'"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, actionable conditions that can be coded: detecting accumulation/range zones, triggering exits at 1.0X profit threshold, managing stop losses at original levels, and re-entry logic when price returns to entry zone.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "GRIMES_DRY_8_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Ch. P1:OTA, pp. 247\u2013278",
+    "raw_chunk_text": "Trade Reaches a Risk Multiple Target For many technical traders, once the\ntrade has made a significant move into the profit zone, it rarely makes sense to take a\nfull-sized loss on the trade. Traders ",
+    "rule_text": "Once a trade has moved a distance equal to the initial risk amount in the profitable direction, tighten the stop loss to reduce risk exposure, as the pattern is validating as expected.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trade entered with defined stop loss at initial_risk distance",
+      "Market price moves exactly 1.0x initial_risk in profitable direction"
+    ],
+    "parameters": {
+      "risk_multiple_target": 1.0,
+      "new_stop_placement": "entry_price + 1_pip_buffer"
+    },
+    "exit_conditions": [
+      "If stop is hit at entry level (or entry + buffer), exit trade",
+      "Preserve remaining profit equal to 1.0x initial risk"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Instrument specified as 'FUTURES' but excerpt mentions '$50.00 market' without specifying instrument type",
+      "Target regimes 'TRENDING' and 'ANY' are not mentioned in the source text",
+      "New stop placement specified as 'entry_price + 1_pip_buffer' but source says 'just under your entry point or even higher' - more vague than specified",
+      "Exit conditions are inferred logically but not explicitly stated in the source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (stop loss at initial_risk distance and price movement of 1.0x initial_risk) that can be programmatically detected from market data and portfolio state.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "GRIMES_DRY_8_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Chapter 8 (P1:OTA), pp. 247\u2013248",
+    "raw_chunk_text": "breakeven trade, as the loss on the open portion will be offset by the already locked-\nin gains on the closed portion. Be clear: this solution may not be the right fit for every\ntradingstyle,butshort-",
+    "rule_text": "In parabolic, runaway uptrends, use tight stops placed under the previous day's low to protect gains while staying in the accelerating trend.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trend already extended",
+      "Parabolic acceleration detected (rate of price increase accelerates)",
+      "Sharp upward momentum confirmed"
+    ],
+    "parameters": {
+      "stop_placement": "exactly_at_previous_day_low",
+      "stop_buffer_pips": 0,
+      "confirmation_bars": 2
+    },
+    "exit_conditions": [
+      "Close below previous day's low",
+      "Stop hit"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Stop placement specified as 'exactly_at_previous_day_low' when text says 'under the previous day's low'",
+      "Parameters like 'stop_buffer_pips: 0' and 'confirmation_bars: 2' are not mentioned in the source text",
+      "Entry conditions are reasonable inferences but not explicitly stated in the excerpt"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains specific, codable entry conditions (parabolic acceleration detection, momentum confirmation) and clear exit rules (close below previous day's low) that a programmer could implement using price data and technical indicators.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "GRIMES_DRY_8_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Ch. P1:OTA, pp. 247-278",
+    "raw_chunk_text": "toaccomplish,itmaymakesensetoleavestopsclosetotheinitialriskpointwhilethe\nmarket is ranging. Once momentum and a new trend develop in the trade\u2019s favor, the\nstopcanbesignificantlytightenedinthenewtren",
+    "rule_text": "Never widen stops in the direction of increasing risk; maintain the initial stop loss calculated at trade entry based on fixed risk parameters, and only tighten stops after momentum confirms trend development in the trade's favor.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Trade initiated with fixed stop loss",
+      "Position size calculated based on initial stop distance",
+      "Stop loss level documented at entry"
+    ],
+    "parameters": {
+      "stop_adjustment_rule": "NEVER_ADJUST",
+      "initial_stop_distance_pct": "2.0"
+    },
+    "exit_conditions": [
+      "Stop loss hit at original level",
+      "Profit target hit"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Parameter 'initial_stop_distance_pct': 2.0% is not mentioned in the source text",
+      "Instrument 'FUTURES' is not specified in the excerpt",
+      "Exit conditions are reasonable inferences but not explicitly stated",
+      "Entry conditions are logical inferences but not directly stated"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete, detectable states (fixed stop loss documented, position size based on initial stop distance) that a programmer could verify from trade records and market data, and the exit conditions are objectively measurable price levels.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "GRIMES_DRY_8_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Ch. P1:OTA, pp. 247\u2013278",
+    "raw_chunk_text": "patternsbeingtraded.Sometimesonesideofthebookisreducedbystopordersat\ntheworstpoint,andtheaccountsufferswhenthemarketturns.Planfortheworst.\n(cid:2)\nRisknomorethan1.5Xto2Xinhighlycorrelatedgroups(precio",
+    "rule_text": "Limit aggregate risk exposure across correlated asset groups to prevent portfolio-wide losses when positions move in unison during adverse events.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "New position entry is contemplated in an asset group (precious metals, petroleum, grains, currencies with regional ties, etc.)",
+      "Existing positions in same or correlated group are already held",
+      "Aggregate notional risk across correlated group calculated"
+    ],
+    "parameters": {
+      "max_correlated_group_risk_multiple": 1.5,
+      "correlation_threshold_for_grouping": 0.7,
+      "worst_case_loss_scenario_percentile": 0.99
+    },
+    "exit_conditions": [
+      "Exit or reduce position when aggregate correlated group risk exceeds 1.5X single position risk limit"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "HIGH_VOL",
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Parameter 'correlation_threshold_for_grouping': 0.7 not mentioned in source text",
+      "Parameter 'worst_case_loss_scenario_percentile': 0.99 not mentioned in source text",
+      "Max risk multiple should be range 1.5X-2X, not fixed at 1.5X",
+      "Target regimes HIGH_VOL and ANY not specified in source text",
+      "Entry/exit conditions are reasonable inferences but not explicitly stated"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal has specific, actionable entry conditions (new position in correlated asset group + existing positions in same group + aggregate risk calculation) and a quantifiable exit trigger (aggregate risk exceeding 1.5X limit) that can be detected from portfolio state and notional exposure data.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "GRIMES_DRY_9_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Ch. P1:OTA, pp. 279-306",
+    "raw_chunk_text": "in this test that ran the starting capital of $100,000 up to over $2,000,000 (not visible in\nthesummarytable),atthesametimethathalftheotheraccountsweregoingbankrupt.\nItisalwayspossibletofindoneexcepti",
+    "rule_text": "Position size should be scaled as a fixed percentage of current account equity rather than a fixed dollar amount, so that risk exposure remains proportional to account growth or decline.",
+    "signal_category": "SIZING",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Valid trade signal generated by system",
+      "Account equity is measurable and current"
+    ],
+    "parameters": {
+      "risk_percentage_per_trade": 1.0,
+      "position_size_formula": "Account_Equity \u00d7 0.01 / Stop_Loss_Distance"
+    },
+    "exit_conditions": [
+      "Stop loss triggered at designated level",
+      "Profit target reached"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Parameters specify 1% risk when excerpt mentions 2% risk",
+      "Exit conditions not mentioned in source text",
+      "Instrument specified as FUTURES but source doesn't mention specific instrument type",
+      "Entry conditions are reasonable inferences but not explicitly stated"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "SUMMARY",
+    "haiku_testable": true,
+    "haiku_reason": "The rule has specific, actionable entry conditions (valid trade signal + measurable current equity) that a programmer could detect and implement as code to automatically scale position sizes as a percentage of account equity.",
+    "hallucination_recommendation": "REVISE"
+  },
+  {
+    "signal_id": "GRIMES_DRY_10_0",
+    "book_id": "GRIMES",
+    "source_citation": "The Art and Science of Technical Analysis, Adam Grimes, Ch.10 (P1:OTA), pp.307-360",
+    "raw_chunk_text": "Awordonterminology:stocktraderstendtousebreakoutforupsidebreakoutsthrough\nresistanceandbreakdownforentriesthroughsupport;futurestradersaremorelikelyto\ncall both trades breakouts. Since all trade entri",
+    "rule_text": "A trader should avoid or reduce confidence in long setups when successive bounces off support terminate at progressively lower price levels, as diminishing upswing heights indicate weakening buying pressure.",
+    "signal_category": "TREND|REVERSION",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Price bounces off support level",
+      "Compare height of current bounce to previous bounce",
+      "Current bounce high < previous bounce high"
+    ],
+    "parameters": {
+      "consecutive_lower_highs_required": 2,
+      "minimum_bounce_lookback_periods": 2,
+      "rejection_threshold_pct": 0.5
+    },
+    "exit_conditions": [
+      "Do not enter; skip setup entirely if deterioration pattern exists"
+    ],
+    "instrument": "FUTURES",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "RANGING",
+      "TRENDING"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Specific numerical parameters (consecutive_lower_highs_required: 2, minimum_bounce_lookback_periods: 2, rejection_threshold_pct: 0.5) are not mentioned in the source text",
+      "Instrument is specified as 'FUTURES' but the example discusses JPM (a stock), and the text mentions both stock and futures traders use similar terminology",
+      "Signal category 'TREND|REVERSION' is not explicitly stated in the source"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The signal contains three specific, actionable entry conditions that a programmer can operationalize: identifying support level bounces, measuring bounce heights numerically, and comparing successive bounce highs using quantifiable price data.",
+    "hallucination_recommendation": "REVISE"
+  }
+]

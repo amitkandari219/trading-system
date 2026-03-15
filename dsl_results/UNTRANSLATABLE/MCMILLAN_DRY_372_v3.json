@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_372",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility percentile levels (10th vs 50th percentile) and comparison of IV expansion vs time decay, neither of which are available in the allowed indicator set. hvol_20 (historical volatility) is a proxy but does not capture implied volatility percentiles or theta decay calculations required by the original rule. This signal requires options-specific data (IV term structure, option Greeks) not present in the allowed indicators.",
+  "translation_notes": "Attempted partial translation using hvol_20 as a volatility proxy. Entry condition approximates 'low volatility regime' (below 10th percentile proxy ~0.10), exit approximates 'volatility mean reversion' toward 50th percentile (~0.15). However, the core logic comparing IV percentile changes to theta decay cannot be expressed with available indicators. Recommend adding implied_volatility_percentile, theta_decay_1m, or similar options-specific indicators to properly translate this signal."
+}

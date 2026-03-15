@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_71_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires realized volatility vs implied volatility trend correlation over N consecutive days and divergence detection over N consecutive days. Available indicators (hvol_20, india_vix) do not provide granular trend-following and multi-day correlation/divergence logic. The rule also requires dynamic spread selection (backspread vs ratio vertical) which is a position construction decision, not a price-based entry/exit signal. Parameters like 'trend_confirmation_days' and 'correlation_lookback' cannot be operationalized with allowed operators.",
+  "translation_notes": "Approximated using hvol_20 (realized volatility proxy) and india_vix (implied volatility proxy) at percentile thresholds. Entry triggers when both are elevated and ADX confirms trend; exit triggers divergence. However, this is a lossy approximation\u2014the original signal's core logic around sustained correlation between realized and implied volatility trends cannot be fully captured with available indicators and operators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_21",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal specifies multiple moving average periods (3, 5, or 10 days), multiple average types (simple, modified, or weighted), and three distinct confirmation delay strategies with conditional exits. The allowed indicator list contains only sma_5, sma_10, sma_20+ (no sma_3), and no modified or weighted MA variants. More critically, the confirmation delay logic (0-day, 1-day, or 2-day persistence) cannot be expressed in the single-bar condition schema without multi-bar lookback support or state variables. The conditional exit logic (liquidate without delay for 2-day entry only, AUTHOR_SILENT for others) requires meta-rule routing that exceeds the rule structure.",
+  "translation_notes": "This signal represents a parameterized framework rather than a single executable rule. To implement, create three separate rule variants: (1) immediate entry/exit on sma_5 cross, (2) entry requiring 1-bar confirmation persistence on sma_5, (3) entry requiring 2-bar confirmation with immediate exit. Use sma_5 as proxy for '3, 5, or 10 day' range and SMA as default for 'simple, modified, or weighted' since modified/weighted MAs are not in allowed indicators."
+}

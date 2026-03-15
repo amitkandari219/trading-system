@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_119_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires corporate event data (tender offer announcements, acceptance rates, strike prices, time value calculations) that are NOT available in the standard technical indicator set. Conditions reference: (1) Corporate tender offer announcement (external event data, not price-based), (2) Tender price vs strike + time value comparison (requires options Greeks and corporate action feeds), (3) Share acceptance rate threshold (corporate action data), (4) Days to expiration (requires options chain data). These are fundamental/corporate event indicators, not technical price/volume indicators.",
+  "translation_notes": "NATENBERG_DRY_119_0 is an options early exercise rule triggered by corporate events. While the signal involves price comparisons (S > K), the core logic depends on: tender offer announcements (not in price data), options time value (requires Greeks not in allowed indicators), tender acceptance percentages (requires corporate event feeds), and remaining expiration days (requires options data). The backtest engine would need to be extended with corporate event calendar and options chain data sources to translate this rule. Current allowed indicators cannot express this signal."
+}

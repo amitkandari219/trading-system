@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal references 'noise measurement' which is not a standard allowed indicator. ATR_14 used as proxy for volatility/noise measurement, but the exact 'noise_measurement_basis' parameter from source is marked AUTHOR_SILENT. Thresholds 0.204 and 0.266 inferred from source text but lack explicit definition for trend-following vs mean-reverting strategy selection logic.",
+  "translation_notes": "KAUFMAN's Efficiency Ratio concept requires a specific noise metric not in the allowed indicator set. Used ATR_14 as volatility/noise proxy. Low noise threshold set to 0.204 (lowest in source), high noise to 0.266 (greatest in source) based on inverse interpretation from original text. Direction marked CONTEXT_DEPENDENT as signal specifies conditional strategy selection (trend-following for low noise, mean-reverting for high noise). Exit conditions reversed regime entry to create regime-switching logic."
+}

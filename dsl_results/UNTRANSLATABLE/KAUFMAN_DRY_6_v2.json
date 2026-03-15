@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires tracking two separate assets (substitute products) and their relative price divergence net of transaction costs (carrying charges, shipping, inspection, commissions). The backtest engine appears single-asset focused with no multi-leg arbitrage support, no cross-asset price comparison operators, and no way to model dynamic transaction cost components. Standard single-asset indicators cannot capture the spread between two physical products or measure composite transaction costs dynamically.",
+  "translation_notes": "KAUFMAN_DRY_6 is a pairs/arbitrage strategy requiring: (1) dual-asset tracking, (2) spread calculation between substitute products, (3) transaction cost modeling (carrying, shipping, inspection, commissions), (4) synchronized entry/exit across long/short legs. None of these capabilities exist in the allowed indicator set. Implementation requires custom multi-leg arbitrage logic outside this single-asset rule framework."
+}

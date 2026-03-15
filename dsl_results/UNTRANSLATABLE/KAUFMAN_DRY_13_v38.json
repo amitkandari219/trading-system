@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of spread GPM (Gross Processing Margin) across three correlated commodity contracts (3\u00d7 crude oil long vs 2\u00d7 gasoline + 1\u00d7 heating oil short) with transaction cost deduction. This multi-leg spread arbitrage condition cannot be expressed using single-instrument price/technical indicators. Requires custom spread pricing logic, inter-commodity correlation analysis, and carrying cost models not available in the standard indicator set. The 'minimum_gpm' threshold is marked as [THRESHOLD_NEEDED] in source parameters, indicating it was not numerically defined.",
+  "translation_notes": "KAUFMAN_DRY_13 is a sophisticated crack-spread trade (crude-to-refined-products arbitrage). Entry requires: (1) Computing weighted spread: 3\u00d7crude_price - 2\u00d7gasoline_price - 1\u00d7heating_oil_price; (2) Deducting execution slippage, commissions, and storage/carrying costs; (3) Comparing net result to minimum profitable GPM threshold. Exit condition 'AUTHOR_SILENT' suggests holding until reversal or market-driven exit. A backtest engine would need custom spread calculation modules and multi-contract position management not supported by standard single-price indicators. Historical ratio validation from CRB Commodity Yearbook should inform position sizing and threshold calibration."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_64_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific metrics (delta neutral confirmation, implied volatility percentile, strike price convergence, time to expiration in days, ratio spread structure) that are not available in the equity price/technical indicator universe. These are derivatives pricing and Greeks-based conditions that cannot be expressed using only OHLCV and standard technical indicators.",
+  "translation_notes": "This signal is fundamentally an options strategy rule based on the Greeks (delta), implied volatility surface, and strike selection. The backtest engine provided is designed for equities/futures with price-based technical indicators. A proper implementation would require: (1) options chain data, (2) delta calculations, (3) IV percentile rankings, (4) days-to-expiration tracking, and (5) multi-leg position management. The provided partial translation uses RANGING regime detection as a proxy for the 'underlying near short strike' expectation, but cannot capture the core logic of delta neutrality, IV regime, or convergence tolerance without options data structures."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires t-values from microstructural regression estimates (order flow imbalance t-value, liquidity premium t-value) which are not available in the allowed indicator set. These are advanced econometric outputs requiring custom regression analysis, not standard technical indicators. Additionally, 'signed volume directional bias' requires custom volatility/imbalance decomposition not present in allowed indicators. Critical thresholds for t-value triggers are also unspecified ([THRESHOLD_NEEDED] placeholders).",
+  "translation_notes": "This signal is fundamentally incompatible with standard technical analysis indicators. It requires: (1) Custom microstructural regression model outputs with t-statistics, (2) Order flow decomposition analysis, (3) Liquidity premium estimation with statistical significance testing. The signal cannot be translated to standard OHLCV-based technical indicators. To implement, a custom indicator module computing these microstructural metrics would be required upstream of the backtest engine."
+}

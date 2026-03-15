@@ -1,0 +1,127 @@
+{
+  "signal_id": "GRIMES_DRY_6_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_6_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s1"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "r1"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "r1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal detects failed breakouts at support/resistance with reversal on same bar. Entry conditions use pivot points (s1/r1) as proxies for support/resistance levels. Entry occurs when price probes beyond level (prev_high/prev_low) but closes back inside (close conditions). Volume confirmation added. Exit reverses back through support/resistance on close. Stop loss set to 1.5x typical bar range (atr_14 unavailable for direct use, so percentage used). Direction is CONTEXT_DEPENDENT: LONG when probing above resistance that fails, SHORT when probing below support that fails. bars_allowed_for_close_back parameter (0) enforced by using same-bar reversal logic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s1"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "r1"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "r1"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal detects failed breakouts at support/resistance with reversal on same bar. Entry conditions use pivot points (s1/r1) as proxies for support/resistance levels. Entry occurs when price probes beyond level (prev_high/prev_low) but closes back inside (close conditions). Volume confirmation added. Exit reverses back through support/resistance on close. Stop loss set to 1.5x typical bar range (atr_14 unavailable for direct use, so percentage used). Direction is CONTEXT_DEPENDENT: LONG when probing above resistance that fails, SHORT when probing below support that fails. bars_allowed_for_close_back parameter (0) enforced by using same-bar reversal logic."
+  },
+  "source_rule_text": "Enter a trade on the close of a bar that fails to hold beyond a support or resistance level after probing it, signaling weak conviction in the breakout direction."
+}

@@ -1,0 +1,46 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [
+    {
+      "left": "close",
+      "operator": "crosses_above",
+      "right": "prev_close"
+    }
+  ],
+  "entry_short": [
+    {
+      "left": "close",
+      "operator": "crosses_below",
+      "right": "prev_close"
+    }
+  ],
+  "exit_long": [
+    {
+      "left": "open",
+      "operator": ">",
+      "right": "0"
+    }
+  ],
+  "exit_short": [
+    {
+      "left": "open",
+      "operator": ">",
+      "right": "0"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 1,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Entry: 'Penetration of the close' interpreted as close crossing previous close (direction-dependent). Exit: 'Exit on the next open' means exit at the opening price of the next bar after entry. Using 15-30 minute intraday timeframe as specified. hold_days_max set to 1 to enforce same-bar entry/next-bar exit logic. Entry option (3) and exit option (2) noted from source but not further specified in allowed parameters.",
+  "validation_issues": [
+    "exit_long: phantom condition 'open > 0' is always true",
+    "exit_short: phantom condition 'open > 0' is always true"
+  ]
+}

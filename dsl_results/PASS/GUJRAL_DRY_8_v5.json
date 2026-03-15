@@ -1,0 +1,84 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "r1"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses pivot point levels (central pivot + higher/lower levels). Mapped to standard pivot indicators: pivot=central pivot point, r1=resistance level above pivot, s1=support level below pivot. Entry long when price pierces above r1 (higher levels), entry short when price penetrates below s1 (lower levels). Exit conditions set as reversal back to central pivot (AUTHOR_SILENT interpreted as mean reversion to pivot). Uses context-dependent direction since signal specifies both long and short entries based on market context."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "r1"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses pivot point levels (central pivot + higher/lower levels). Mapped to standard pivot indicators: pivot=central pivot point, r1=resistance level above pivot, s1=support level below pivot. Entry long when price pierces above r1 (higher levels), entry short when price penetrates below s1 (lower levels). Exit conditions set as reversal back to central pivot (AUTHOR_SILENT interpreted as mean reversion to pivot). Uses context-dependent direction since signal specifies both long and short entries based on market context."
+  },
+  "source_rule_text": "When price pierces levels above the central pivot point, enter long trades as it indicates active buyer participation and potential for higher prices; conversely, when price penetrates levels below the central pivot, enter short trades as it indicates active sellers perceive lower fair value."
+}

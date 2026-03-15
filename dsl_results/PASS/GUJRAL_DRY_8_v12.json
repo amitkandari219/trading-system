@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_8",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_8",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      },
+      {
+        "left": "low",
+        "operator": ">=",
+        "right": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "r2"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Condition 1: Market opens above pivot or R1 (using open > pivot as primary; R1 variant would require OR logic). Condition 2: Pullback modeled as close below open on same bar. Condition 3: Support found at pivot or R1 modeled as low >= pivot. Exit targets R2, R3, or higher with close >= r2 as the primary exit condition. Intraday signal with max hold of 1 day. Note: The 'or above R1' variant in opening condition and 'or at R1' in support condition are approximated by using pivot as the threshold; a more precise implementation might require separate rule variants for R1-specific conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      },
+      {
+        "indicator": "low",
+        "op": ">=",
+        "value": "pivot"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "r2"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Condition 1: Market opens above pivot or R1 (using open > pivot as primary; R1 variant would require OR logic). Condition 2: Pullback modeled as close below open on same bar. Condition 3: Support found at pivot or R1 modeled as low >= pivot. Exit targets R2, R3, or higher with close >= r2 as the primary exit condition. Intraday signal with max hold of 1 day. Note: The 'or above R1' variant in opening condition and 'or at R1' in support condition are approximated by using pivot as the threshold; a more precise implementation might require separate rule variants for R1-specific conditions."
+  },
+  "source_rule_text": "Once market opens above the pivot point or R1, look for a pullback towards the central pivot; if price finds support there or at R1, expect an uptrend day with closing levels at R2, R3, or higher."
+}

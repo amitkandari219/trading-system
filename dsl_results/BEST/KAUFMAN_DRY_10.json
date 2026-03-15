@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 5-year range percentile calculation and specific calendar date triggers (last day of April, end of July) which cannot be expressed using only the allowed indicators. The 'price_pos_20' indicator measures position within a 20-bar range, not a 5-year range. Calendar-based entry/exit logic is not supported by the allowed operators.",
+  "translation_notes": "The signal is inherently seasonal and calendar-dependent (entry on last day of April, exit at end of July) and requires a custom 5-year high-low range calculation. This goes beyond point-in-time indicator comparisons. price_pos_20 was considered as a substitute for range position but operates on a 20-bar lookback, not 5 years. The 'is' operator does not support calendar date values like 'END_OF_JULY'."
+}

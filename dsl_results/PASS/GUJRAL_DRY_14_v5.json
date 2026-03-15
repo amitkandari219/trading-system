@@ -1,0 +1,106 @@
+{
+  "signal_id": "GUJRAL_DRY_14",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_14",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_lower"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 1,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal captures failed range breakouts/breakdowns using Donchian channels (dc_upper/dc_lower) as range boundaries. Entry triggers when price breaks a boundary then immediately reverses (detected by comparing current close to previous close). Exit uses immediate reversal logic as author provided no explicit exit conditions. Extremely short hold_days_max (1) reflects the 'extremely short term' time horizon mentioned. Stop loss kept tight at 1.5% given the trap reversal nature where trapped traders' covering moves are sharp but can quickly reverse if the trap fails."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal captures failed range breakouts/breakdowns using Donchian channels (dc_upper/dc_lower) as range boundaries. Entry triggers when price breaks a boundary then immediately reverses (detected by comparing current close to previous close). Exit uses immediate reversal logic as author provided no explicit exit conditions. Extremely short hold_days_max (1) reflects the 'extremely short term' time horizon mentioned. Stop loss kept tight at 1.5% given the trap reversal nature where trapped traders' covering moves are sharp but can quickly reverse if the trap fails."
+  },
+  "source_rule_text": "Trade failed range breakouts and breakdowns by entering in the direction of the trap reversal, as trapped traders covering positions create sharp price moves."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires constructing a custom oscillator with time-frame-dependent periods (10-period on 1-hour bars OR 3-period on daily bars) and detecting oversold signals within rolling 2-day windows. This dynamic multi-timeframe oscillator construction and the specific 2-day lookback window for signal frequency counting are not expressible using the allowed indicator set, which does not include custom oscillator builders or rolling window signal counters. The oscillator_type is also marked AUTHOR_SILENT, preventing definitive implementation.",
+  "translation_notes": "Signal describes a proprietary oscillator mechanism not available in the standard indicator library. As a fallback proxy, RSI_14 oversold (<30) is used to approximate mean-reversion entry timing, but this does not capture the intended 10/3-period oscillator construction or the 2-day signal frequency requirement. Manual implementation of the custom oscillator would be required for accurate backtesting of this signal."
+}

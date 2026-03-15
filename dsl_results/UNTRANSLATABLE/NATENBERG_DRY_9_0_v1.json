@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_9_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific parameters (ATM strike identification, premium calculation, expected move at expiration) that cannot be expressed with equity price/technical indicators alone. Straddle pricing logic, breakeven thresholds based on strike \u00b1 premium, and implied volatility comparisons to realized volatility are not available in the allowed indicator set. This is an options strategy that requires derivatives pricing framework, not equity bar data.",
+  "translation_notes": "NATENBERG_DRY_9_0 is a volatility-based options straddle strategy. While HIGH_VOL regime can be approximated using hvol_20, the core logic\u2014comparing expected move (implied vol derived) to premium paid (option Greeks), identifying ATM strikes, and calculating strike-relative breakevens\u2014requires an options-specific backtesting engine with access to implied volatility surfaces, option pricing models, and Greeks. The fundamental rule structure cannot be translated to equity price action indicators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_17",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "KAMA (Kaufman Adaptive Moving Average) is not available in the allowed indicators list. The signal requires calculation of Efficiency Ratio and adaptive smoothing constants with specific formulas that cannot be expressed using only the provided indicators (sma_*, ema_*, rsi_*, atr_*, etc.). Multiple [THRESHOLD_NEEDED] placeholders remain undefined in the source signal, making it impossible to construct valid entry/exit conditions. KAMA requires custom indicator implementation not available in this backtest engine.",
+  "translation_notes": "Signal ID KAUFMAN_DRY_17 references KAMA with efficiency ratio over 10 periods and variable smoothing constants. The formula involves recursive KAMA calculation and efficiency ratio computation that cannot be replicated using only the allowed indicator set. Source text fragment does not provide threshold values needed for entry conditions. Recommend: (1) implement KAMA as a custom indicator, (2) provide concrete threshold values for smoothing constants, or (3) approximate using ema_10 or ema_20 as an alternative adaptive trend signal."
+}

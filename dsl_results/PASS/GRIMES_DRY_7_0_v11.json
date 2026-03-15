@@ -1,0 +1,148 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_7_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_upper"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "bb_upper"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_middle"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "bb_lower"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_lower"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "bb_middle"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "bb_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "bb_upper"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses Bollinger Bands as volatility bands. Entry conditions capture: (1) price touching/penetrating bands (close crosses bb_upper/bb_lower), (2) price retracing toward midline (close moving back toward bb_middle), (3) volume confirmation on pullback (vol_ratio_20). Exit conditions set stops beyond the touched band and targets at band midline. Direction is CONTEXT_DEPENDENT because the signal trades in the direction opposite to the band touch (fade/reversion). Long entries when price pulls back from upper band toward middle; short entries when price pulls back from lower band toward middle."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_upper"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "bb_upper"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_middle"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "bb_lower"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_lower"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "bb_middle"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "bb_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "bb_upper"
+      }
+    ],
+    "regime_filter": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses Bollinger Bands as volatility bands. Entry conditions capture: (1) price touching/penetrating bands (close crosses bb_upper/bb_lower), (2) price retracing toward midline (close moving back toward bb_middle), (3) volume confirmation on pullback (vol_ratio_20). Exit conditions set stops beyond the touched band and targets at band midline. Direction is CONTEXT_DEPENDENT because the signal trades in the direction opposite to the band touch (fade/reversion). Long entries when price pulls back from upper band toward middle; short entries when price pulls back from lower band toward middle."
+  },
+  "source_rule_text": "Enter a reversion trade when price has extended beyond a volatility band; execute the trade as price pulls back toward the band's center, trading in the direction of the original band touch."
+}

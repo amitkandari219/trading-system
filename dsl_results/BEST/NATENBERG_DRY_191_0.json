@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_191_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires implied volatility (IV) surface analysis across multiple strike prices and expirations. The required indicators are: (1) implied_volatility_by_strike, (2) iv_spread_across_strikes, (3) historical_iv_spread_percentile, and (4) time_to_expiration_days. None of these are available in the allowed indicator list, which contains only spot price, technical indicators (RSI, MACD, Bollinger, etc.), and basic volatility measures (hvol_20, india_vix). Calculating IV spreads and detecting volatility smile/skew requires options pricing data and Greeks, which are not accessible in this backtest engine.",
+  "translation_notes": "NATENBERG_DRY_191_0 is a volatility arbitrage signal that depends on options market microstructure (IV term structure and skew analysis). This requires: (a) implied volatility quotes at different strikes for the same underlying/expiration, (b) historical distribution of IV spreads to define anomalies, and (c) time-to-expiration tracking. The signal is designed for options traders using volatility surface models, not for spot/futures price-based technical analysis. To implement this signal, the backtest engine would need to be extended with options-specific data feeds and volatility surface analytics."
+}

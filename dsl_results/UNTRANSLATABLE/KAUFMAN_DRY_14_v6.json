@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires tracking historical price levels from a specific day (34th day) within a prior 47-day bull move. This requires multi-bar lookback and dynamic reference level calculation based on elapsed time within a trend cycle, which cannot be expressed using standard point-in-time indicators. The signal's core logic depends on: (1) detecting when a 47-day bull move completes, (2) storing the price from day 34 of that move, and (3) comparing current price to that stored historical level. This requires state management and custom cycle tracking not available in the allowed indicator set.",
+  "translation_notes": "Attempted approximation using sma_34 as a proxy for the 34th-day price level, but this fundamentally misrepresents the signal intent. The original signal is based on Fibonacci series numbers (47 and 34 are consecutive Fibonacci numbers) and requires tracking specific price levels from completed trend cycles, not moving averages. The signal cannot be reliably translated without custom bar-counting logic and historical level storage."
+}

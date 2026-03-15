@@ -1,0 +1,148 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "book_id": "GRIMES",
+  "dsl_rule": {
+    "signal_id": "GRIMES_DRY_3_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "bb_upper"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "bb_lower"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "bb_upper"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "bb_lower"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Parallel trend channels approximated using Bollinger Bands (bb_upper/bb_lower as channel boundaries) and SMA_20 (trend direction confirmation). Entry conditions require price within channel and trend confirmation via ADX. Exit conditions trigger on boundary breach (upper/lower band) or trend structure break (crossing SMA in opposite direction). Logic applies to both uptrend (long) and downtrend (short) contexts as specified. Position sizing/defensive approach implicit in exit-at-boundary rules."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "bb_upper"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "bb_lower"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "bb_upper"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "bb_lower"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Parallel trend channels approximated using Bollinger Bands (bb_upper/bb_lower as channel boundaries) and SMA_20 (trend direction confirmation). Entry conditions require price within channel and trend confirmation via ADX. Exit conditions trigger on boundary breach (upper/lower band) or trend structure break (crossing SMA in opposite direction). Logic applies to both uptrend (long) and downtrend (short) contexts as specified. Position sizing/defensive approach implicit in exit-at-boundary rules."
+  },
+  "source_rule_text": "Use parallel trend channels to identify zones of heightened reversal risk and volatility; reduce long exposure or take profits when price approaches the upper channel boundary in uptrends, and apply inverse logic to downtrends."
+}

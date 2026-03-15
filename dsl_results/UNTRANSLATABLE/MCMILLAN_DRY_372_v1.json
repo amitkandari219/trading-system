@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_372",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'implied volatility percentile' readings which is not available in the allowed indicator list. The closest proxy available is india_vix (volatility index), but this is a volatility level, not a percentile ranking. The signal specifically requires percentile-ranked IV data (10th, 50th, 90th percentile thresholds) which cannot be accurately replicated using standard price/volume indicators. A proper implementation would require an IV_percentile or similar indicator.",
+  "translation_notes": "Attempted substitution using india_vix as volatility proxy, but this is a conceptual workaround only. The original signal logic (cheap/expensive IV percentile) cannot be faithfully translated without an explicit implied volatility percentile indicator. Entry conditions map to volatility extremes, exit conditions map to mean reversion toward the median."
+}

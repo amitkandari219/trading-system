@@ -1,0 +1,72 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_3",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires manual channel identification which cannot be fully automated. Used Donchian Channel (dc_upper/dc_lower) as proxy for trending channel upper/lower zones. ADX_14 > 25 confirms downtrend presence. Entry occurs when price approaches upper resistance (dc_upper), exit at lower support (dc_lower). This is a simplified mechanical interpretation of the manual channel trading concept."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal requires manual channel identification which cannot be fully automated. Used Donchian Channel (dc_upper/dc_lower) as proxy for trending channel upper/lower zones. ADX_14 > 25 confirms downtrend presence. Entry occurs when price approaches upper resistance (dc_upper), exit at lower support (dc_lower). This is a simplified mechanical interpretation of the manual channel trading concept."
+  },
+  "source_rule_text": "In a downward trending channel, sell short in the upper zone and cover the short in the lower zone; buying in the lower zone is not recommended as trades are safest when entered in the direction of the trend."
+}

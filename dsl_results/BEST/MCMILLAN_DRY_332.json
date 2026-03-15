@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_332",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires measurement of implied volatility (IV) at historical lows and comparison of realized volatility to implied volatility, neither of which are available in the allowed indicators list. The core logic requires: (1) IV percentile/rank relative to historical levels, (2) realized volatility exceeding implied volatility, and (3) neutral directional bias assessment. These require option-specific metrics not present in the equity price/technical indicator set provided.",
+  "translation_notes": "This is an options volatility arbitrage signal from McMillan's book. While hvol_20 (historical volatility) is available, it cannot substitute for implied volatility measurement. The key profit driver\u2014exploiting the gap between realized and implied volatility\u2014cannot be expressed with price-based indicators alone. The 'neutral outlook' requirement also cannot be quantified without directional bias indicators."
+}

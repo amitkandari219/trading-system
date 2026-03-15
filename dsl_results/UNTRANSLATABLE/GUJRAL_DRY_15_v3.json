@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detecting confluence between multiple timeframes (intraday pivots vs weekly/monthly pivots) and multiple indicator types (moving averages vs pivots). The allowed indicators list does not include multi-timeframe pivot levels (weekly_pivot, monthly_pivot, r1_weekly, s1_monthly, etc.). Additionally, the rule requires calculating 'tight zones' where two levels from different tools/timeframes are 'close enough' \u2014 this zone comparison logic cannot be expressed with the allowed operators (>, <, >=, <=, ==, crosses_above, crosses_below, is). News event catalysts also cannot be quantified in the current indicator set.",
+  "translation_notes": "To properly implement this signal, the backtest engine would need: (1) Multi-timeframe pivot indicators (weekly_pivot, monthly_pivot, r1_weekly, s1_monthly, etc.); (2) A zone-proximity operator or function to detect when two levels are within a configurable tolerance; (3) News event data integration. The current translation uses single-timeframe pivots as a partial substitute, but this loses the core confluence logic of the original signal."
+}

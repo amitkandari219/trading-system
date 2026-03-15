@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) divergence on primary timeframe - no divergence detection indicator available; (2) lower timeframe price action confirmation - backtester operates on single timeframe; (3) emerging market structure/trend exhaustion - no structural analysis indicator available; (4) trend_leg_count > 3 - no swing/leg counting indicator available. Approximated using MACD divergence crossover, ADX trend strength, and ATR volatility as proxies, but this does not capture the multi-timeframe, multi-leg, and structural exhaustion logic of the original rule.",
+  "translation_notes": "Attempted approximation using available indicators: MACD histogram crossover for divergence proxy, ADX > 25 for trend confirmation, ATR relative to 20-period historical volatility for extreme volatility detection. However, the core signal logic (multiple timeframe analysis, swing leg counting, emerging market structure) cannot be replicated with single-timeframe candle-based indicators. Direction set to CONTEXT_DEPENDENT to reflect counter-trend nature. Pivot levels (r1, s1) used for trend resumption exits. This translation should be considered incomplete without custom divergence and swing-counting functions."
+}

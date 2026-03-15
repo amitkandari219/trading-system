@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a custom swing chart with configurable swing filter and penetration filter thresholds. The allowed indicator set includes 'pivot' which represents standard pivot points, but this signal specifically requires: (1) a swing chart construction algorithm with a 'larger swing filter' parameter, (2) a penetration filter set to one-half the swing filter size, and (3) identification of pivot points as tops/bottoms of swings. These custom parameters and the swing chart algorithm itself are not available in the allowed indicator list. The swing_filter threshold value is also undefined ('[THRESHOLD_NEEDED]'). Standard pivot points do not incorporate configurable swing filters or penetration buffers as described.",
+  "translation_notes": "Attempted approximation uses standard pivot point crossovers as a proxy for swing-based pivot penetration, but this does not capture the core logic of the signal which requires custom swing detection with dual configurable filters. A proper implementation would require adding swing_chart_filter and penetration_filter as custom indicators or parameters to the backtest engine."
+}

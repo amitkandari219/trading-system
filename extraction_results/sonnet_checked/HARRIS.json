@@ -1,0 +1,43 @@
+[
+  {
+    "signal_id": "HARRIS_DRY_25_0",
+    "book_id": "HARRIS",
+    "source_citation": "Trading and Exchanges, Larry Harris, Ch.?, pp.96-98",
+    "raw_chunk_text": "the limit buy order for his own account.\nThe dealer also may place a limit order into the NYSE specialist\u2019s limit order book at the same\nprice. If the NYSE order fills, he will fill his agency limit o",
+    "rule_text": "A trader should benchmark their execution quality against a reference market (e.g., primary exchange) by placing a parallel order at the reference price, to ensure their actual execution does not exceed the reference execution cost.",
+    "signal_category": "RISK",
+    "direction": "CONTEXT_DEPENDENT",
+    "entry_conditions": [
+      "Receive a marketable order for execution",
+      "Dealer offers to execute order",
+      "Primary exchange (e.g., NYSE) has established limit order book"
+    ],
+    "parameters": {
+      "reference_price_offset": 0,
+      "cancellation_lag_ms": 0,
+      "comparison_threshold_basis_points": 0
+    },
+    "exit_conditions": [
+      "Client order fills \u2192 immediately cancel reference order",
+      "Reference order fills \u2192 immediately cancel client order",
+      "Both orders fill \u2192 reconcile and report discrepancy"
+    ],
+    "instrument": "EQUITY",
+    "timeframe": "ANY",
+    "target_regimes": [
+      "ANY"
+    ],
+    "author_confidence": "MEDIUM",
+    "hallucination_verdict": "WARN",
+    "hallucination_issues": [
+      "Exit condition 'Both orders fill \u2192 reconcile and report discrepancy' is not mentioned in the source text",
+      "Parameters are all set to 0 without source justification",
+      "Target regimes 'ANY' is overly broad without source support"
+    ],
+    "variant_id": "CONSERVATIVE",
+    "chunk_type": "RULE",
+    "haiku_testable": true,
+    "haiku_reason": "The entry conditions specify concrete, detectable states (receipt of a marketable order, dealer execution offer, and existence of a reference limit order book) that can be monitored programmatically, and the exit conditions define clear fill scenarios that trigger specific actions.",
+    "hallucination_recommendation": "REVISE"
+  }
+]

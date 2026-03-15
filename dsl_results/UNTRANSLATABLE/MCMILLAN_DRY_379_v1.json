@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_379",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) options pricing analysis (straddle cost/probability calculator) - not available in price-based indicators, (2) historical price range comparison over specific expiration period - requires custom lookback logic for ATR or range calculations that cannot be expressed with single indicator conditions, (3) explicit straddle cost vs current price ratio calculation - not a standard technical indicator. The core logic (verify historical volatility supports required move) can be approximated with hvol_20, but the full straddle-specific validation framework is beyond standard OHLCV indicators.",
+  "translation_notes": "Attempted translation uses hvol_20 as a proxy for historical volatility that could support large moves (>28% threshold from example), with exit when volatility drops below half the required move threshold. However, this is a significant simplification and loses the essential straddle pricing and probability calculator components of the original signal. A proper implementation requires options analytics not available in standard technical indicators."
+}

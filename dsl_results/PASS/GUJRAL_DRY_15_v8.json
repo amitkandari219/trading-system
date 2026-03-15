@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_15",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_15",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "1400"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "1460"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "1460"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.86,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry: Price breaks below 1,400 support level AND closes below 20MA AND has not crossed above 1,460 monthly pivot. Exit: Reversal above 1,460 pivot (AUTHOR_SILENT condition replaced with reasonable reversal). Stop loss set at 2.86% (40 points distance to S3 at 1,366 / 1,400 entry). Target regime changed from TRENDING to TRENDING_DOWN for SHORT direction clarity."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 1400.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 1460.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": 1460.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.0286,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry: Price breaks below 1,400 support level AND closes below 20MA AND has not crossed above 1,460 monthly pivot. Exit: Reversal above 1,460 pivot (AUTHOR_SILENT condition replaced with reasonable reversal). Stop loss set at 2.86% (40 points distance to S3 at 1,366 / 1,400 entry). Target regime changed from TRENDING to TRENDING_DOWN for SHORT direction clarity."
+  },
+  "source_rule_text": "Short when price breaks below the multi-month support level, signaling further weakness with potential cascading support breaks."
+}

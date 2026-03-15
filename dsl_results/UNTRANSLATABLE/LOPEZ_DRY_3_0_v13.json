@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires SADF (Supremum Augmented Dickey-Fuller) and C_ADF (critical ADF values) indicators which are not available in the allowed indicator set. These are specialized econometric tail-behavior diagnostics not derivable from standard price/volume/oscillator indicators (open, high, low, close, volume, sma_*, ema_*, rsi_*, atr_*, bb_*, macd, adx, stoch, donchian, pivots, vol_ratio_20, hvol_20, india_vix, price_pos_20, returns, log_returns, body properties). The normalized ratio (SADF \u2212 C_ADF)/C_ADF and the confirmation threshold values are also not specified in the source signal.",
+  "translation_notes": "This signal is based on advanced time-series econometrics (explosive root detection via supremum ADF testing) that cannot be approximated using standard technical indicators. To implement this signal, SADF and C_ADF would need to be added as custom indicators to the backtesting engine. The signal is directionally agnostic (context-dependent) and targets trending and high-volatility regimes, but without the underlying tail-divergence calculation, translation is not feasible."
+}

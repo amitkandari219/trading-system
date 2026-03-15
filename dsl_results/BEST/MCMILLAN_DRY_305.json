@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_305",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires detection of futures trading halts (limit up/down), options market activity status, and options-to-futures price derivation. None of these can be expressed using only the allowed price/technical indicators (OHLCV, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, and bar properties). The signal requires: (1) Market state detection (halt status) not available in price data, (2) Relative options-to-futures trading activity comparison, and (3) Implied pricing calculations from option Greeks/bid-ask spreads. This is a market microstructure and derivative pricing strategy that cannot be operationalized with technical indicators alone.",
+  "translation_notes": "MCMILLAN_DRY_305 is an event-driven arbitrage signal exploiting temporary price discovery disconnects between halted futures and still-trading options. It requires real-time order book/exchange status data and options pricing models (implied volatility, option Greeks, put-call parity) rather than historical OHLCV indicators. Applicable to Chicago Merc currency options, Municipal Bond Index, Nikkei stock index, and silver futures."
+}

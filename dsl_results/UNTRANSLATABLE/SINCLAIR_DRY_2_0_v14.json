@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_2_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) 'Volatility projection signal' \u2014 no dedicated volatility projection indicator in allowed list; (2) 'Daily volume at [THRESHOLD_NEEDED] level of trailing volume distribution' \u2014 specific percentile threshold not provided; (3) 'Correlation of volume-to-range in lookback period' \u2014 correlation computation across multiple bars not supported by allowed indicators. Substituted hvol_20 (20-day historical volatility) and vol_ratio_20 (volume ratio) as closest proxies, with minimum_correlation_vol_range (0.68) used as vol_ratio threshold, but this is an approximation.",
+  "translation_notes": "CONTEXT_DEPENDENT direction split into LONG and SHORT entry/exit conditions using identical logic. Volatility projection approximated using hvol_20. Volume filter approximated using vol_ratio_20 >= 0.65 (derived from stated 0.68 correlation threshold). Volume drop exit mapped to vol_ratio_20 < 0.50. Lookback_days set to 20 (matching hvol_20 window). Author did not specify profit target or hard stop loss; defaults applied (2% stop, 20-day max hold). Source text incomplete/corrupted; insufficient detail on exact thresholds."
+}

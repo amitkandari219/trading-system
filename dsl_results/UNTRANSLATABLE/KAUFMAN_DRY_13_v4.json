@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires calculation of theoretical futures fair value using the formula: SPX \u00d7 [1 + r \u00d7 (e/360)] \u2212 d, where r is risk-free rate, e is days to expiration, and d is dividend rate. None of these inputs (risk-free rate, days to expiration, dividend rate) are available in the allowed indicators list. The signal also requires comparison of this calculated fair value to actual futures prices, which requires access to futures pricing data not represented in the allowed indicators. This is a fundamental pricing/arbitrage model that cannot be expressed using technical indicators alone.",
+  "translation_notes": "This is a cost-of-carry arbitrage model for S&P 500 futures requiring fundamental inputs (interest rates, dividends, time value) and futures contract pricing. It cannot be translated into a technical indicator-based rule system. Implementation would require a separate pricing engine with access to yield curve data, dividend schedules, and futures quotes."
+}

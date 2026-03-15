@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_70_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options-specific metrics (IV percentile, volatility term structure contango, vega ratio, calendar spread pricing) that are not available in the provided equity indicators. The core logic\u2014long calendar spreads on volatility expansion with vega bias\u2014cannot be properly expressed using only price-based technical indicators (hvol_20, india_vix as proxies). Proper implementation requires IV term structure data, implied volatility levels, and vega Greeks.",
+  "translation_notes": "Attempted proxy mapping: hvol_20 used as volatility baseline (replaces IV percentile), india_vix compared to hvol_20 to approximate term structure contango logic. However, this is a poor substitute for actual IV percentile ranks and option Greeks. The signal fundamentally requires derivatives market data unavailable in this indicator set."
+}

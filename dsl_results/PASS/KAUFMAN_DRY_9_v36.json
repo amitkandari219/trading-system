@@ -1,0 +1,86 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped 40-day high/low lookback to Donchian Channel upper/lower bounds (dc_upper, dc_lower). Exit conditions use 20-day Donchian, which is a common alternative \u2014 note that the allowed indicator list does not include parameterized Donchian channels (e.g., dc_upper_20), so this uses the standard dc_upper and dc_lower. For precise 20-day exit logic, consider adding dc_upper_20 and dc_lower_20 to the allowed indicators list. Entry is bidirectional: LONG on high breakout, SHORT on low breakdown. Exit reverses the position."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mapped 40-day high/low lookback to Donchian Channel upper/lower bounds (dc_upper, dc_lower). Exit conditions use 20-day Donchian, which is a common alternative \u2014 note that the allowed indicator list does not include parameterized Donchian channels (e.g., dc_upper_20), so this uses the standard dc_upper and dc_lower. For precise 20-day exit logic, consider adding dc_upper_20 and dc_lower_20 to the allowed indicators list. Entry is bidirectional: LONG on high breakout, SHORT on low breakdown. Exit reverses the position."
+  },
+  "source_rule_text": "Buy when today's high exceeds the high of the past 40 days; sell short when today's low falls below the low of the past 40 days; exit longs when today's low falls below the low of the past 20 days; exit shorts when today's high exceeds the high of the past 20 days."
+}

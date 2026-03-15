@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparative analysis of a bar as the highest high across multiple preceding and following bars (lookback/lookahead window spanning 2+ days before and after). The allowed indicators do not include historical bar array indexing or forward-looking price arrays needed to identify swing high pivots across dynamic comparison windows. Required: ability to compare current high against high[i-2...i-n] AND high[i+2...i+n], plus volatility context (atr_14 or similar) to differentiate spike strength. Current operator set and indicator scope cannot express this multi-bar comparative pattern.",
+  "translation_notes": "This is a swing high identification pattern that requires comparing a specific bar's high against multiple bars in both directions simultaneously. While ATR is available for volatility context, the core pattern detection (finding local extrema across variable-length windows) exceeds the structural capabilities of the rule engine without array indexing or custom pivot detection functions. Consider adding a 'pivot_high' or 'local_extrema' indicator to support this class of patterns."
+}

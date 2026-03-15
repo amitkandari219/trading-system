@@ -1,0 +1,92 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_12",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "r1"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "0"
+      },
+      {
+        "left": "open",
+        "operator": ">=",
+        "right": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 0.5,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry conditions: (1) close near r1 (upper end of range), (2) open at similar level to previous high, (3) red candle (negative body), (4) confluence at r1 level. Stop-loss set at 50 pips (~0.05%) from entry range 9,630-9,640. Exit targets previous low (s1). The 20MA/50MA confluence is implicit in the pivot levels used. Regime is RANGING per signal specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "r1"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": 0.0
+      },
+      {
+        "indicator": "open",
+        "op": ">=",
+        "value": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.005,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry conditions: (1) close near r1 (upper end of range), (2) open at similar level to previous high, (3) red candle (negative body), (4) confluence at r1 level. Stop-loss set at 50 pips (~0.05%) from entry range 9,630-9,640. Exit targets previous low (s1). The 20MA/50MA confluence is implicit in the pivot levels used. Regime is RANGING per signal specification."
+  },
+  "source_rule_text": "Sell from the top end of a range when price closes near the upper end after a failed breakout attempt and opens at similar levels with weakness, targeting the previous low."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calendar-based condition (first five trading days of January) and multi-day sequential validation that cannot be expressed with allowed indicators and operators. The rule needs temporal/calendar logic (detect January, count trading days within month, verify each of 5 consecutive days closed up) which is not supported by the indicator set. Additionally, holding for 'entire year' requires year-boundary logic not expressible through indicator conditions.",
+  "translation_notes": "This signal requires rule engine support for: (1) calendar/date-based filtering (January detection), (2) intra-month day counting, (3) sequential multi-bar validation (5 consecutive up closes), and (4) year-boundary holding periods. The core pattern cannot be translated into indicator-based conditions without custom temporal operators."
+}

@@ -1,0 +1,60 @@
+{
+  "signal_id": "MCMILLAN_DRY_193",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_193",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "60"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "60"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is an options expiration strategy. Entry condition checks if underlying is above 60 at expiration. Exit triggers when close is above 60 (at expiration), liquidating the call bull spread for maximum 10-point profit. The 10-point maximum profit is the strike difference and represents the upper bound of the spread's P&L, not a stop-loss level. Hold is set to 1 day to represent expiration evaluation. Actual position sizing and strike parameters would be managed separately in the options contract specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": 60.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": 60.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal is an options expiration strategy. Entry condition checks if underlying is above 60 at expiration. Exit triggers when close is above 60 (at expiration), liquidating the call bull spread for maximum 10-point profit. The 10-point maximum profit is the strike difference and represents the upper bound of the spread's P&L, not a stop-loss level. Hold is set to 1 day to represent expiration evaluation. Actual position sizing and strike parameters would be managed separately in the options contract specification."
+  },
+  "source_rule_text": "Liquidate a call bull spread position for maximum profit of 10 points (the difference between striking prices) if the underlying asset is above the higher strike price at expiration."
+}

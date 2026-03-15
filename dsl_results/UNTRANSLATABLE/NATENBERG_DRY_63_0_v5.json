@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_63_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes an options hedging strategy based on theoretical option pricing (implied volatility vs. realized volatility mispricings, delta-neutral rebalancing, and volatility arbitrage). The allowed indicators are all technical price/volume-based metrics. The signal requires: (1) option pricing model inputs (theoretical value, implied volatility, option Greeks like delta), (2) multi-leg option position construction logic, and (3) dynamic delta rebalancing rules. None of these can be expressed using only OHLCV technical indicators and the allowed operators. Option Greeks, mispricing detection relative to theoretical models, and volatility surface analysis are not available in the allowed indicator set.",
+  "translation_notes": "NATENBERG_DRY_63_0 is a volatility spread/hedging framework from options theory (likely Sheldon Natenberg's work). It is fundamentally incompatible with a pure technical indicator backtest engine. Implementation would require: an options pricing library, real-time Greeks calculation, implied/realized volatility tracking, and position-level Greeks aggregation. This belongs in an options-specific trading system, not a technical signal backtest engine."
+}

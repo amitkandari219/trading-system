@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'conservatism bias' (market participants clinging to outdated beliefs) and 'market repricing delays', which are behavioral/sentiment constructs not measurable via standard technical indicators. Key thresholds for IV adjustment, repricing convergence, and conviction bars are undefined [THRESHOLD_NEEDED]. Proxy approach using implied vs realized volatility mismatch is incomplete without specific vol adjustment thresholds.",
+  "translation_notes": "Attempted proxy: Used hvol_20 < india_vix as a heuristic for implied volatility showing elevated adjustment vs realized volatility, with price position relative to SMA_20 as context-dependent directional bias. However, this does not capture the core behavioral signal of delayed repricing after information arrival. Entry/exit conditions require explicit threshold definitions and information event detection (not available in standard indicators). Recommend: (1) Define vol_adjustment_threshold_percent as specific numeric value, (2) Define lookback_periods_required for repricing lag detection, (3) Add external information event flags/markers to rule engine."
+}

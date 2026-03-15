@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_5_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-bar pattern recognition: (1) consolidation range identification over N bars, (2) tracking two separate upthrust attempts with specific failure conditions, (3) comparing closes against consolidation high/low boundaries. The backtest engine lacks indicators to identify consolidation zones, track failed breakout attempts across multiple bars, or detect the specific 'close back into range' pattern required for two sequential upthrusts. Condition like 'Price consolidates for N bars' and 'second upthrust fails' require historical range tracking not available in the allowed indicator set.",
+  "translation_notes": "Attempted simplified proxy using price action (close < prev_high as failed upthrust indicator) and SMA_20 as consolidation boundary, but this does not capture the core two-upthrust-failure pattern with range boundaries that defines this signal. The pattern requires state tracking across 6+ bars with specific consolidation range memory."
+}

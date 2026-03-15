@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) support level identification during corrective down move within uptrend context, (2) rejection candle pattern recognition, (3) confirmation that next candle is green AND takes out previous candle high. The allowed indicators lack: dynamic support detection, multi-candle pattern sequencing, and explicit rejection candle metrics. While lower_wick and body can approximate the 'long tail' pattern, the precise support level detection and the requirement that the NEXT candle confirms the pattern cannot be reliably encoded without candle history indexing or support/resistance detection logic.",
+  "translation_notes": "Attempted partial translation: lower_wick > body detects long bottom tail, close > sma_200 suggests uptrend context, close > prev_high suggests next candle breaking prior high. However, the core pattern\u2014rejection at dynamic support during a specific corrective phase\u2014requires lookahead logic and multi-candle sequencing unavailable in the allowed indicator set. Recommend adding: support_level indicator, candle_pattern recognition, or prev_high/prev_low comparison operators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Realized volatility percentile ranking against historical rolling window \u2014 no percentile ranking indicator available; (2) IV percentile for index \u2014 no implied volatility percentile indicator in allowed list; (3) Straddle/strangle construction and management \u2014 derivatives strategy not expressible in price-based indicator rules; (4) Profit target and stop loss as % of max profit (dynamic Greeks-based) \u2014 requires options pricing model not available in backtester. Translated entry conditions using hvol_20 (realized vol proxy) and india_vix (vol regime) as approximations, but full signal intent is untranslatable.",
+  "translation_notes": "This is an options income strategy requiring implied volatility surfaces, Greeks calculations, and straddle P&L mechanics. Only the vol regime entry conditions could be approximated using hvol_20 and india_vix. Exit conditions assume mean reversion in volatility. The signal fundamentally requires an options pricing module and IV term structure data not available in the standard indicator set."
+}

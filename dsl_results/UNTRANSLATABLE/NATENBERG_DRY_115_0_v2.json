@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_115_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options-specific metrics (American put moneyness, ex-dividend dates, interest rate costs, dividend yield, early exercise value, put parity) that are not available in the provided equity price/technical indicator set. The rule depends on: (1) option contract properties (ITM/NTM status, time to expiration); (2) dividend calendar events (ex-dividend dates); (3) interest rate spreads relative to dividend yield; (4) put intrinsic/extrinsic value decomposition. None of these can be computed from OHLCV and standard technical indicators alone. This is an options strategy rule, not an equity price-action rule.",
+  "translation_notes": "NATENBERG_DRY_115_0 is a classical options arbitrage signal from 'The Volatility Smile' (Natenberg) concerning early exercise of American puts. It requires real-time tracking of: dividend dates, risk-free rates, put Greeks, and moneyness. The backtest engine would need to: (a) include options pricing library (Black-Scholes, binomial); (b) integrate dividend calendar data; (c) model financing costs; (d) compute carry/storage metrics. Recommend routing to a dedicated derivatives backtester (e.g., QuantLib, py_vollib) rather than equity signal engine."
+}

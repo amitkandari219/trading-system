@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_31_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a volatility recalibration framework rather than a directional trading rule. It requires: (1) calculation of theoretical 1-std daily move using an exogenous volatility assumption not in the allowed indicators, (2) comparison of actual vs. theoretical price moves to detect 'material divergence', and (3) dynamic volatility adjustment logic. The allowed indicators do not include volatility assumptions (implied_vol, historical_vol as parameters), theoretical move calculations, or volatility regime detection. The signal is a meta-rule about adjusting model inputs rather than a tradeable entry/exit condition.",
+  "translation_notes": "NATENBERG_DRY_31_0 describes a risk management principle: recalibrate volatility assumptions when observed price action diverges materially from theoretical predictions based on current volatility. While hvol_20 and india_vix are available, they measure realized/implied volatility, not the trader's assumed volatility parameter or the theoretical move threshold. A proper implementation would require: (1) a parameter for assumed volatility, (2) ability to calculate (vol/16)*price, and (3) a configurable deviation_threshold_percent to trigger recalibration. Recommend implementing as a separate volatility diagnostic tool outside the backtest engine, or add custom indicators for theoretical move and volatility assumption tracking."
+}

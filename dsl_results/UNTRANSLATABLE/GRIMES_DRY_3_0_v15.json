@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires measuring 'pullback depth as percentage of prior advance' and 'pullback structure complexity' (simple vs multi-leg). These require custom bar-sequence analysis and advance/decline measurement not available in the allowed indicator set. Price position (price_pos_20) and body percentage are imperfect proxies. The core concept of detecting buyer commitment through pullback structure requires indicators beyond those provided.",
+  "translation_notes": "Used price_pos_20 > 0.3 to approximate shallow pullbacks within 20-period range (above 30th percentile = shallow retrace). Used body_pct < 0.5 to approximate 'simple structure' (small bodies suggest less complex legs). Exit when price_pos_20 < 0.2 approximates deeper pullback threshold. Close below prior low detects structural breakdown. Signal is CONTEXT_DEPENDENT because entry is only valid during uptrends, requiring external regime confirmation."
+}

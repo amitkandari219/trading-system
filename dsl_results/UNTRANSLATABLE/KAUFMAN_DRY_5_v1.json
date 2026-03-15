@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a swing-filtering methodology that calculates Minimum Swing Value (MSV) as a percentage of price to adaptively filter price swings. The core requirement is to implement a custom swing-detection algorithm that identifies local highs/lows based on a percentage threshold (p \u00d7 price). This functionality requires: (1) custom swing-point detection logic not available in standard indicators, (2) the swing_filter_percentage parameter marked as AUTHOR_SILENT (undefined), and (3) state tracking across multiple bars to identify swing extremes. The allowed indicator set does not include swing-point detection, custom volatility-adjusted filters, or the ability to compute and store swing values. ATR could approximate volatility, but cannot replicate the specific swing-filtering mechanism described.",
+  "translation_notes": "KAUFMAN_DRY_5 is a preprocessing/filtering rule for swing charts, not a tradeable signal with entry/exit conditions. It requires: (a) definition of swing_filter_percentage from author, (b) implementation of swing-point detection algorithm, (c) tracking of swing highs/lows relative to MSV threshold. To operationalize this signal, provide the swing_filter_percentage value and either expand the indicator library to include swing-detection functions or reformulate the rule as volatility-adjusted price levels using atr_14 or atr_20."
+}

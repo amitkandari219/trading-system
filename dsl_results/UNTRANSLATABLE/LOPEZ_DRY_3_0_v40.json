@@ -1,0 +1,18 @@
+{
+  "signal_id": "LOPEZ_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires order imbalance (buy volume - sell volume) calculation and intraday time-of-day filtering (GMT hour windows), plus minute-level microstructure analysis. The allowed indicators set does not include: (1) order book imbalance metrics (bid/ask volume separation), (2) intraday time filtering by GMT hour, (3) minute-level granularity aggregation, or (4) ML-derived low-frequency trader detection. Volume clustering and microstructure inefficiencies cannot be expressed with standard OHLCV indicators alone.",
+  "translation_notes": "This signal is fundamentally a microstructure-based trading rule requiring real-time order book data and minute-level time-of-day context. The core ML feature (order imbalance) is not available in the standard indicator set. Placeholders were inserted but the rule cannot be validly translated without access to bid/ask volume data and intraday scheduling logic."
+}

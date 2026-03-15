@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires month-of-year filtering (January entry, February-December hold) and inter-market relationships (Dow Industrials as proxy for broader market). The allowed indicators cannot natively express calendar-based conditions or multi-asset regime logic. The 'Dow Industrials' is not available in the allowed indicator list; only generic price/technical indicators are permitted.",
+  "translation_notes": "This is a calendar anomaly / seasonal pattern rule (January Barometer) that fundamentally requires: (1) calendar date filtering not supported by the indicator set, (2) a specific market index (Dow) as entry trigger, and (3) conditional holding through a specific sub-period. A partial translation using generic 'returns > 0' for entry is provided, but does not capture the original signal's logic. Recommend adding calendar_month and multi-asset support to the engine to properly implement this rule."
+}

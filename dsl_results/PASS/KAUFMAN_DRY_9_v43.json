@@ -1,0 +1,106 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_50",
+        "operator": ">",
+        "right": "sma_100"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "sma_20",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_50",
+        "operator": "<",
+        "right": "sma_100"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "sma_20",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes extending calculation periods to confirm trend consistency across multiple MA periods. Implemented as multi-period moving average alignment check: short-term (sma_20) > intermediate (sma_50) > long-term (sma_100) for uptrends, and reversal for downtrends. This captures the essence of scanning trend directions across extended calculation ranges as described in the source material. Entry requires consistent progression across all three periods; exit triggers on first break of short-term MA alignment."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_50",
+        "op": ">",
+        "value": "sma_100"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "sma_20",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_50",
+        "op": "<",
+        "value": "sma_100"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "sma_20",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal describes extending calculation periods to confirm trend consistency across multiple MA periods. Implemented as multi-period moving average alignment check: short-term (sma_20) > intermediate (sma_50) > long-term (sma_100) for uptrends, and reversal for downtrends. This captures the essence of scanning trend directions across extended calculation ranges as described in the source material. Entry requires consistent progression across all three periods; exit triggers on first break of short-term MA alignment."
+  },
+  "source_rule_text": "When selecting calculation periods for trend analysis, extend the range slightly past the target period to gain confirmation of trend direction at the cost of small lag."
+}

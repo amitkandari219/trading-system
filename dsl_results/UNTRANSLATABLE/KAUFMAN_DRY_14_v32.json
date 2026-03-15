@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a 1-day raw stochastic calculated as (close-low)/(high-low), which is a custom indicator not in the allowed list. The allowed stochastic indicators (stoch_k, stoch_d, stoch_k_5, stoch_d_5) are standard multi-period oscillators. Additionally, the signal requires entry/exit logic tied to 'the next open following an economic report day' (Producer Price Index, retail sales, unemployment), which requires external economic calendar data not available in the allowed indicators.",
+  "translation_notes": "Attempted mapping: stoch_k to approximate the raw stochastic threshold of 0.50 (scaled to 50 on 0-100 scale). However, stoch_k is a standard 14-period stochastic, not a 1-day raw stochastic. The critical missing elements are: (1) custom formula support for (close-low)/(high-low), and (2) economic report day detection and next-open timing logic."
+}

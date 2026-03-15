@@ -1,0 +1,108 @@
+{
+  "signal_id": "KAUFMAN_DRY_19",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_19",
+    "entry_long": [
+      {
+        "left": "stoch_k_5",
+        "operator": ">",
+        "right": "80"
+      },
+      {
+        "left": "stoch_k_5",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "stoch_k_5",
+        "operator": ">",
+        "right": "80"
+      },
+      {
+        "left": "stoch_k_5",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "stoch_k_5",
+        "operator": "<",
+        "right": "50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "stoch_k_5",
+        "operator": ">",
+        "right": "50"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Interpreted 'timing oscillator with period shorter than 5 days' as Stochastic with 5-day period (stoch_k_5). Overbought/oversold thresholds set at >80 and <20 respectively. Entry window of 3-5 days represented by hold_days_max of 5. Exit conditions based on reversal from extreme levels (approaching midpoint of 50). Direction marked CONTEXT_DEPENDENT as signal applies to both long and short entries based on oscillator extremes. Target regimes set to TRENDING as specified."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "stoch_k_5",
+        "op": ">",
+        "value": 80.0
+      },
+      {
+        "indicator": "stoch_k_5",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "stoch_k_5",
+        "op": ">",
+        "value": 80.0
+      },
+      {
+        "indicator": "stoch_k_5",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "stoch_k_5",
+        "op": "<",
+        "value": 50.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "stoch_k_5",
+        "op": ">",
+        "value": 50.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Interpreted 'timing oscillator with period shorter than 5 days' as Stochastic with 5-day period (stoch_k_5). Overbought/oversold thresholds set at >80 and <20 respectively. Entry window of 3-5 days represented by hold_days_max of 5. Exit conditions based on reversal from extreme levels (approaching midpoint of 50). Direction marked CONTEXT_DEPENDENT as signal applies to both long and short entries based on oscillator extremes. Target regimes set to TRENDING as specified."
+  },
+  "source_rule_text": "Use a timing oscillator with a period shorter than the trend system's holding period to generate better entry points within the first 10%-20% of the trend trade, with the oscillator reaching overbought/oversold levels approximately every 5 days."
+}

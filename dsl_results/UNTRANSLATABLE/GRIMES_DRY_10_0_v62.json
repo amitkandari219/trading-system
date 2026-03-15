@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_10_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe analysis (higher_timeframe context detection), consolidation/resistance level identification across timeframes, and pullback retracement percentage calculation relative to initial breakdown move. These require: (1) explicit higher timeframe data not available in single-timeframe indicator set, (2) dynamic level detection logic not expressible with allowed operators, (3) measurement of move magnitude relative to prior swing which requires swing detection logic. Parameters THRESHOLD_NEEDED are undefined. The direction is CONTEXT_DEPENDENT (long in uptrends, short in downtrends) which cannot be encoded as a single rule without conditional branching logic.",
+  "translation_notes": "Attempted to capture core pullback entry logic (price breaks lower, pullback closes back higher, makes lower low) and exit at resistance/pivot levels, but the full multi-timeframe structure validation and threshold-dependent logic cannot be faithfully represented. Recommend implementing this as a custom rule in backtest engine with explicit higher-timeframe support and swing detection."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires a custom ratio calculation (true_range / ATR[60]) over N days where N is undefined (AUTHOR_SILENT). The allowed indicator set does not include a pre-computed N-day true range sum or ratio metric. Additionally, the ATR period should be 60 but only atr_7, atr_14, atr_20 are available. The lag parameter and ndays parameter are not specified (AUTHOR_SILENT), making the exact lookback window indeterminable. This requires custom formula support not available in standard indicator library.",
+  "translation_notes": "Attempted partial translation using available ATR (atr_14 as proxy for atr_60) and true_range, but the core ratio calculation and N-day aggregation logic cannot be accurately represented with allowed indicators and operators. Signal is context-dependent with no clear directional bias. Exit condition was AUTHOR_SILENT, so a reversal condition (ratio declining below ATR) was inferred."
+}

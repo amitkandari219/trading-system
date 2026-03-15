@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_64_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) Implied volatility percentile comparison (not available in allowed indicators\u2014would need iv_rank or iv_percentile), (2) Net credit vs premium paid calculation (requires option pricing data not in indicator set), (3) Expected move vs strike width ratio (requires forward-looking volatility forecast and strike selection logic), (4) Specific trend confirmation indicator not specified. Translated using available volatility (hvol_20) and trend strength (adx_14) as proxies, but core backspread logic (short wider strike, long narrower strike, credit structure) cannot be fully expressed without options chain data.",
+  "translation_notes": "Backspread is a directional volatility strategy requiring options data. Used hvol_20 > 80th percentile as proxy for high IV environment and adx_14 > 25 for trend confirmation. Entry is CONTEXT_DEPENDENT (long when expecting upside, short when expecting downside). Exit when trend weakens (adx_14 < 20) or at 20 DTE. Stop loss set at 3% pending actual max-loss calculation from strikes. Original conditions on credit structure, strike width ratios, and IV percentile cannot be translated without options pricing indicators."
+}

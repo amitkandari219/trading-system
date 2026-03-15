@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of ADX to its value 2 bars ago (ADX[2]), but array indexing is not allowed. Only prev_close, prev_high, prev_low, prev_open, prev_volume are available for previous bar references. Additionally, 'nontrending' is not an allowed indicator in the provided list. The condition 'nontrending is false or undefined' cannot be expressed with available indicators.",
+  "translation_notes": "This signal is a regime confirmation filter (95% probability trending) that requires: (1) historical ADX comparison across 2-bar period, and (2) reference to an undefined 'nontrending' state variable. Both are untranslatable with the current indicator set. To make this translatable, either: add prev_adx_14 for bar offset support, or replace 'nontrending' with an allowed indicator like ADX level thresholds."
+}

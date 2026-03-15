@@ -1,0 +1,84 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_12",
+    "entry_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "low"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires detection of intrabar reversal (price breaking below morning low and previous close, then recovering). Modeled as: (1) low crosses below previous low, (2) low crosses below previous close, (3) close recovers above intraday low. Exit condition uses reversal logic (close below previous close) as author provided no explicit exit guidance (AUTHOR_SILENT). Optimal entry timing and trend confirmation should be implemented at portfolio/position-sizing level. Expected move of 60-80 points should be used for position sizing, not hard stop-loss."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "low"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal requires detection of intrabar reversal (price breaking below morning low and previous close, then recovering). Modeled as: (1) low crosses below previous low, (2) low crosses below previous close, (3) close recovers above intraday low. Exit condition uses reversal logic (close below previous close) as author provided no explicit exit guidance (AUTHOR_SILENT). Optimal entry timing and trend confirmation should be implemented at portfolio/position-sizing level. Expected move of 60-80 points should be used for position sizing, not hard stop-loss."
+  },
+  "source_rule_text": "Enter a long trade when price temporarily breaks below the morning low and previous close but recovers, as short covering by trapped shorts will drive price higher in the direction of the trend."
+}

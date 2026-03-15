@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires RSI momentum calculation (RSI_t - RSI_t-1 > THRESHOLD) but the allowed operators do not support rate-of-change or delta calculations between current and previous RSI values. The ALLOWED_OPERATORS list does not include subtraction, delta, or momentum operators. Additionally, [THRESHOLD_NEEDED] and [THRESHOLD_NEEDED] days are parameterized placeholders without concrete values, making precise translation impossible.",
+  "translation_notes": "This signal fundamentally requires momentum/delta calculations (RSI change rate) which are not expressible with the allowed operator set (>, <, >=, <=, ==, crosses_above, crosses_below, is). A proper implementation would need a custom 'rsi_momentum' indicator or subtraction operator support."
+}

@@ -1,0 +1,62 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_9",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "rsi_7",
+        "operator": "crosses_above",
+        "right": "90"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "is",
+        "right": "close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "SHORT",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal specifies 2-day RSI; rsi_7 is the closest available indicator. Entry uses 'crosses_above' operator to capture penetration moving higher through 90 threshold. Exit condition set to 1-day hold (hold_days_max=1) with close on next bar. Entry on next close after signal is handled by backtest engine bar sequencing logic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "rsi_7",
+        "op": "crosses_above",
+        "value": 90.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "is",
+        "value": "close"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal specifies 2-day RSI; rsi_7 is the closest available indicator. Entry uses 'crosses_above' operator to capture penetration moving higher through 90 threshold. Exit condition set to 1-day hold (hold_days_max=1) with close on next bar. Entry on next close after signal is handled by backtest engine bar sequencing logic."
+  },
+  "source_rule_text": "Sell short on the next close when the 2-day RSI penetrates above the threshold of 90, and exit one day later on the close."
+}

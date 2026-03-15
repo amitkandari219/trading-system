@@ -1,0 +1,70 @@
+{
+  "signal_id": "MCMILLAN_DRY_140",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_140",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "60"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "50"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Put bear spread (debit spread) strategy. Entry: initiate spread when price is between the two strikes (50-60). Exit: maximum profit realized when price closes below lower strike (50) at expiration. Strike prices (60 long, 50 short) and January expiration are position parameters rather than dynamic indicator conditions. This is a vertical spread strategy with defined risk/reward and expiration-based exit."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 60.0
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": 50.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": 50.0
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Put bear spread (debit spread) strategy. Entry: initiate spread when price is between the two strikes (50-60). Exit: maximum profit realized when price closes below lower strike (50) at expiration. Strike prices (60 long, 50 short) and January expiration are position parameters rather than dynamic indicator conditions. This is a vertical spread strategy with defined risk/reward and expiration-based exit."
+  },
+  "source_rule_text": "Establish a put bear spread by buying a put at a higher striking price and selling a put at a lower striking price to achieve limited maximum profit if the stock closes below the lower striking price at expiration."
+}

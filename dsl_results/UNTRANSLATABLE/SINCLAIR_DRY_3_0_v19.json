@@ -1,0 +1,18 @@
+{
+  "signal_id": "SINCLAIR_DRY_3_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires VIX and volatility premium spread metrics. Available proxy: india_vix for VIX-like behavior and hvol_20 for volatility estimation. However, the specific 'volatility premium' (options IV spread concept) and exact thresholds are not translatable with standard price/technical indicators. The signal is context-dependent and requires options market data (bid-ask spreads on volatility derivatives) not available in the allowed indicator set.",
+  "translation_notes": "Attempted translation uses india_vix as VIX proxy and hvol_20 as volatility measure. Entry assumes low VIX regime (<20) with present volatility premium (hvol_20 > 1.5%). Exit triggers on VIX spike above 25 or volatility compression below 1%. Original signal requires mean reversion positioning logic and theta decay tracking which cannot be expressed with available indicators. Thresholds are estimates and should be validated against actual options data."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_232",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires monitoring the put-call ratio, which is not available in the allowed indicator set. The allowed indicators are limited to price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume ratios (vol_ratio_20, hvol_20, india_vix), and bar properties. Put-call ratio is a market breadth/sentiment indicator external to price and volume data. Without this specific indicator, the rule cannot be operationalized.",
+  "translation_notes": "MCMILLAN_DRY_232 is a sentiment-based mean reversion signal that depends on put-call ratio turning points. The signal has two contexts: (1) Buy when put-call ratio bottoms and turns down, (2) Sell when put-call ratio rolls over and turns up. The explicit instruction 'do not anticipate these moves' means entry should only occur after confirmation of the turn, not before. This requires direct access to put-call ratio data which is not in the allowed indicator list."
+}

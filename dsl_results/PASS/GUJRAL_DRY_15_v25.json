@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_15",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_15",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "pivot"
+      },
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "r3"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry conditions: (1) Price above weekly pivot point, (2) 20MA showing uptrend (current > previous), (3) Price above 20MA support. Exit condition: Price breaks above R3 resistance. R2 level is used as implicit intermediate target but not as hard exit. Weekly pivot data mapped to pivot/r1/r2/r3 indicators available in engine. AUTHOR_SILENT exit condition converted to reversal signal (break above R3 confirms strong uptrend continuation)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "pivot"
+      },
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "r3"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Entry conditions: (1) Price above weekly pivot point, (2) 20MA showing uptrend (current > previous), (3) Price above 20MA support. Exit condition: Price breaks above R3 resistance. R2 level is used as implicit intermediate target but not as hard exit. Weekly pivot data mapped to pivot/r1/r2/r3 indicators available in engine. AUTHOR_SILENT exit condition converted to reversal signal (break above R3 confirms strong uptrend continuation)."
+  },
+  "source_rule_text": "Enter a long position when price rises above a weekly pivot point with the 20MA line showing an uptrend, targeting resistance levels R2, R3, and above."
+}

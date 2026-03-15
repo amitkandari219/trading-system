@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_100_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options pricing data (call_price, put_price, synthetic position valuation, cost_of_carry calculation, and mispricing magnitude in basis points). None of these are available in the allowed indicator set, which contains only spot price, technical indicators, and volatility measures. This is a pure derivatives arbitrage signal that cannot be expressed using only spot price technical indicators.",
+  "translation_notes": "NATENBERG_DRY_100_0 is a conversion/reversal arbitrage strategy requiring real-time options chain data and cost-of-carry modeling. The signal logic depends on: (1) synthetic price = call - put, (2) comparing underlying price vs synthetic price, (3) calculating locked-in profit margins accounting for financing costs and transaction costs. The source text references a .25 profit differential that is 'locked in' before execution\u2014this requires options pricing mechanics unavailable in a spot-only technical indicator framework. To implement this signal, the backtest engine would need: call_bid, call_ask, put_bid, put_ask, risk_free_rate, dividend_yield, and days_to_expiration indicators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a multi-leg spread calculation (GPM = 0.022 \u00d7 Soybean meal + 11 \u00d7 Soybean oil \u2212 Soybeans) across three separate commodity contracts with different units ($/ton, $/pound, $/bushel). The allowed indicator set does not include spread-based composite indicators or multi-leg synthetic pricing. No single price series (close) can represent the GPM formula. Additionally, the exact GPM threshold for entry is marked 'AUTHOR_SILENT' and cannot be determined. This requires external data normalization and cross-contract correlation not supported by the standard indicator set.",
+  "translation_notes": "Signal describes a reverse crush spread (short soybeans, long meal and oil) executed when GPM falls below crush costs. The GPM formula is a synthetic indicator combining three different commodity prices with specific weightings. Without explicit threshold values and the ability to construct multi-leg spreads, this signal cannot be accurately represented in the backtest engine. Recommend: (1) pre-calculate GPM as an external data feed, (2) supply explicit threshold value, (3) or implement a custom spread indicator handler."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_12_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of MACD histogram making lower peaks (contraction relative to prior peak value) and histogram crossing below its prior peak \u2014 these require multi-bar lookback comparisons and peak detection logic not expressible with simple 3-field conditions. The 'histogram_lookback_bars' and 'min_histogram_decline_percent' parameters are undefined. Additionally, the momentum weakening condition (diminishing distance between fast/slow MA despite higher highs) requires relative comparison logic not supported by allowed operators.",
+  "translation_notes": "Attempted translation uses basic MACD histogram crossing and MA positioning, but core signal logic\u2014detecting histogram contraction and peak deterioration\u2014cannot be faithfully represented. Recommend implementing custom peak-detection logic or divergence-specific indicator in backtest engine."
+}

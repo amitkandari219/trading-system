@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_35",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific metrics (call time premium decay, intrinsic value/parity tracking, call vs stock price relationship) that are not available in the equity price/technical indicator set. Specifically: (1) Call option premium and theta decay cannot be measured with provided indicators; (2) Option intrinsic value and parity definition requires call strike and underlying price differential; (3) Time-to-expiration tracking is not supported. The signal is fundamentally an options strategy requiring derivatives pricing data.",
+  "translation_notes": "Attempted proxy: used returns > 5% for 'underlying stock rises substantially' and close > sma_20 for uptrend confirmation. Exit approximated with returns < 1% as signal to close. However, the core logic involving written call premium decay, parity levels, and option-specific mechanics cannot be properly expressed without option chain data (call price, strike, time value, Greeks)."
+}

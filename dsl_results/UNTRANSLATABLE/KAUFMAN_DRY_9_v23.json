@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires arithmetic operations (addition/subtraction with multiplied ATR values) which cannot be expressed using the allowed 3-field condition format. The rule 'close rises by more than k \u00d7 ATR from previous close' translates to 'close > prev_close + (k \u00d7 ATR)' which requires inline calculation operators not supported by the schema. Additionally, the parameter 'n' (lookback period for ATR) is marked as AUTHOR_SILENT with no default specified.",
+  "translation_notes": "Signal is context-dependent (generates both long and short signals). Used atr_14 as a reasonable default ATR indicator since parameter n is not specified. The core logic cannot be properly translated into the 3-field condition structure without mathematical expression support."
+}

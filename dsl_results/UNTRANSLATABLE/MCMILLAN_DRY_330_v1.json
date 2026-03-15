@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_330",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility (IV) percentile and historical IV range calculation, which are not available in the allowed indicators list. The signal is a meta-rule about how to interpret IV levels (comparing current IV percentile against historical range width) rather than a tradeable entry/exit condition. This requires: (1) current_iv_percentile indicator, (2) iv_range_width or iv_min/iv_max indicators, and (3) logic to determine if range is 'wide' vs 'tight' \u2014 none of which are in ALLOWED INDICATORS. hvol_20 (historical volatility) is available but does not capture implied volatility percentile or IV range metrics needed for this rule.",
+  "translation_notes": "This is a contextual framework signal rather than a mechanical trading rule. It advises traders to weight extreme IV percentiles more heavily when historical IV range is wide. To implement: (1) Calculate IV percentile: (current_iv - iv_min) / (iv_max - iv_min) * 100; (2) Calculate IV range width: iv_max - iv_min; (3) Define thresholds for 'wide' vs 'tight' range (e.g., wide if range > 30 percentage points); (4) Apply percentile threshold only when range is wide. Entry/exit conditions are marked AUTHOR_SILENT and cannot be mechanically determined without IV data."
+}

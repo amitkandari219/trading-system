@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires comparison of today's close to the close 7 days ago (close[7]), which cannot be expressed using only the allowed indicators. The allowed set provides prev_close (1 bar back) but no multi-period lookback for close prices. Additionally, '%R Index' is a Williams %R indicator not in the allowed list; stoch_k was used as the closest equivalent (10-period raw stochastic), but this is an approximation. The opening range breakout component cannot be translated without additional context on how to define the range.",
+  "translation_notes": "Attempted mapping: %R Index \u2192 stoch_k (both are 0-100 scale oscillators). However, the 7-day close comparison and opening range breakout requirement cannot be properly expressed with available indicators. Exit condition (AUTHOR_SILENT) was replaced with a standard reversal signal (stoch_k >= 80 for overbought exit)."
+}

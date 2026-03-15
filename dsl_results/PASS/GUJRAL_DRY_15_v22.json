@@ -1,0 +1,82 @@
+{
+  "signal_id": "GUJRAL_DRY_15",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_15",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": "crosses_above",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_200"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_200"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gap up modeled as open crossing above prev_close. The 60-day high approximated using Donchian Channel upper (dc_upper) which represents the highest high over a lookback period. For a 60-day lookback, dc_upper serves as the 60-day high equivalent. Exit condition uses reversal below 200MA as a reasonable opposite of the entry condition per AUTHOR_SILENT guidance."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": "crosses_above",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_200"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Gap up modeled as open crossing above prev_close. The 60-day high approximated using Donchian Channel upper (dc_upper) which represents the highest high over a lookback period. For a 60-day lookback, dc_upper serves as the 60-day high equivalent. Exit condition uses reversal below 200MA as a reasonable opposite of the entry condition per AUTHOR_SILENT guidance."
+  },
+  "source_rule_text": "Enter a long position when a stock gaps up, crosses above the [THRESHOLD_NEEDED]-day high, and crosses above the 200MA on the daily timeframe, as these confluent signals indicate a solid setup for a sharp price surge."
+}

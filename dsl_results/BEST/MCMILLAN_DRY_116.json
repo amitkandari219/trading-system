@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_116",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct put option moneyness detection (in-the-money vs out-of-the-money status), implied volatility comparison between puts and calls, and time value decay rate modeling. These are options-specific derivatives metrics not available in the provided indicator set which contains only equity price action, momentum, and volatility indicators. The signal logic is inherently options-contract-specific and cannot be accurately expressed using equity technical indicators.",
+  "translation_notes": "Attempted partial mapping: used hvol_20 (historical volatility) as proxy for volatility environment where put time decay dynamics differ, but this does NOT capture the core logic of comparing put vs call time value decay rates or detecting option moneyness status. A proper implementation requires options Greeks (theta, vega), option-specific volatility surface data, and moneyness indicators unavailable in this indicator library."
+}

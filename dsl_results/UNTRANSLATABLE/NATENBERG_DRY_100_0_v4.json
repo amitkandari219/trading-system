@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_100_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires synthetic pricing calculations (call - put + strike) and multi-leg relative valuation logic that cannot be expressed using single-indicator comparisons. The allowed indicators list contains only technical price/volume metrics; it lacks synthetic instrument pricing, bid-ask spread data, liquidity filters, and options Greeks required for put-call parity arbitrage detection. The signal fundamentally depends on calculating synthetic vs real prices and comparing commission costs\u2014operations outside the scope of the provided indicator framework.",
+  "translation_notes": "NATENBERG_DRY_100_0 is a volatility/options arbitrage strategy (put-call parity) requiring: (1) options pricing data (calls, puts, strikes), (2) bid-ask spreads and liquidity metrics not in allowed indicators, (3) relative valuation across two legs, (4) commission modeling. The backtest engine as specified cannot accommodate spread convergence trades on synthetic instruments. To translate this signal, the engine would need indicators like: call_price, put_price, strike_price, bid_ask_spread, option_liquidity, and arithmetic operations across multiple assets."
+}

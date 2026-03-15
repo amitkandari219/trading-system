@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_4_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires detection of support/resistance levels and measurement of 'clean' vs 'sloppy' tests (price penetration patterns at levels). The allowed indicators do not include: (1) dynamic support/resistance level detection, (2) historical tracking of how many times a specific price level has been tested, (3) measurement of penetration depth relative to a level, or (4) classification of test quality (clean vs sloppy). While Donchian channels (dc_upper, dc_lower) provide fixed price extremes, they cannot track the specific behavioral history of individual level violations needed for this signal. The signal's core mechanic\u2014'adjust expectations based on historical pattern of sloppy tests at that level'\u2014requires level-specific historical state that cannot be expressed with the available point-in-time indicators.",
+  "translation_notes": "GRIMES_DRY_4_0 is a regime-awareness rule about adapting trading behavior based on historical support/resistance quality. It requires: (a) identification of actual S/R levels from price data, (b) counting valid tests of those levels, (c) measuring penetration depth to classify 'clean' vs 'sloppy', and (d) memory of that classification. None of these can be constructed from the allowed indicators. A practical implementation would require custom level-detection logic external to this rule engine. The 'sloppy_test_tolerance: Do not trade' parameter suggests this is a signal to SKIP trading rather than to enter/exit\u2014a meta-rule rather than a tradeable condition."
+}

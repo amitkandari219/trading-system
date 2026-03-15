@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_34_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility (IV) comparison against trader's volatility forecast. Neither implied volatility nor volatility forecast are available in the allowed indicators list. Allowed volume indicators (hvol_20, india_vix, vol_ratio_20) do not provide option-specific IV data or IV divergence measurement capability. The core logic requires: (1) option IV measurement, (2) trader volatility forecast input, (3) IV divergence calculation in percentage terms. These cannot be expressed using only price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, and bar properties.",
+  "translation_notes": "This is a volatility-basis valuation rule from Natenberg focusing on relative mispricing via IV discrepancy rather than absolute price. The signal is context-dependent because it triggers long positions when IV > forecast and short positions when IV < forecast. The rule cannot be translated to the available indicator set as it requires option-level implied volatility data and explicit volatility forecasts that are outside the scope of standard price-action technical indicators."
+}

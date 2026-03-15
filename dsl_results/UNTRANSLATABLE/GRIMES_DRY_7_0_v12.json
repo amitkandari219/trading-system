@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires Keltner Channel bands which are not in the ALLOWED INDICATORS list. Keltner Channel is a composite indicator (SMA + ATR-based bands) but no specific kc_upper, kc_lower, or equivalent names are provided. The signal also requires tracking previous band breaches and distinguishing between 'fade' vs 'pullback' entry modes, which requires state management beyond simple condition evaluation. Additionally, specific ATR multiplier and lookback period thresholds are marked [THRESHOLD_NEEDED] and cannot be determined from source text.",
+  "translation_notes": "Attempted approximation using close vs sma_20 to represent mean-reversion concept, but this loses the critical Keltner Channel volatility band structure that defines the signal. A proper implementation would require: (1) kc_upper and kc_lower indicators, (2) logic to detect band breach on previous bar, (3) conditional entry logic branching on fade vs pullback mode, (4) parameterization of atr_multiplier and lookback_period. Recommend implementing custom Keltner Channel indicator or using bb_upper/bb_lower as proxy (though these use different methodology)."
+}

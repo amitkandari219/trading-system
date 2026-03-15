@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of: (1) %K-slow penetrating an 'extreme level' (undefined by author), (2) pullback behavior to the %D-slow line with failure to cross, and (3) directional context determination. The available Stochastic indicators (stoch_k, stoch_d, stoch_k_5, stoch_d_5) do not map to '%K-slow' and '%D-slow' (slow versions). Additionally, 'extreme level' is not quantified, and the multi-step pullback-and-failure pattern cannot be reliably expressed with single-bar crossing operators without historical state tracking.",
+  "translation_notes": "The signal describes a complex pullback rejection pattern in Stochastic Oscillator space. Key issues: (1) No 'slow' period variants of stochastic indicators available in the allowed list; (2) Extreme level threshold not specified by author; (3) Pattern requires multi-bar sequence logic (penetrate \u2192 pullback \u2192 fail to cross again) which requires state or multi-bar lookback beyond prev_* operators; (4) Direction is context-dependent but no regime or price action condition provided to determine LONG vs SHORT entry. A properly translatable version would need: explicit extreme level thresholds (e.g., >80 or <20), clear definition of %K-slow/%D-slow calculation periods, and entry direction criteria."
+}

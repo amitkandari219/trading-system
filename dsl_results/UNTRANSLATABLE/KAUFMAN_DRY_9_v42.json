@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-period trend analysis across 5-50 day range with trend direction scanning and averaging logic. This requires custom backtester functionality to: (1) compute trend signals for each period in range, (2) average final trend values across periods, (3) compare to previous average, or (4) scan for consistent progression across periods. Standard indicator-based conditions cannot capture this multi-timeframe aggregation and comparison logic. The 'trend_definition' parameter is also marked AUTHOR_SILENT, preventing precise rule formulation.",
+  "translation_notes": "Signal describes a sophisticated multi-period trend confirmation system that compares trend signals across 10 different calculation periods (5, 10, 15, 20, 25, 30, 35, 40, 45, 50 days). Entry uses ADX_14 as a proxy for trend strength/consistency, but the actual logic of averaging trend values across periods and scanning for consistent progression cannot be expressed with single-bar indicator conditions. Recommend implementing as custom backtest rule rather than standard indicator comparison."
+}

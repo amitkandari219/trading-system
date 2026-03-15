@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_75_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires IV percentile thresholds, vega calculation, and spread-type identification (straddles, backspreads, butterflies, etc.). These are advanced options metrics not available in the allowed indicator set. The signal also requires 'volatility trend confirmation' over a variable number of days and position sizing as % of account, which cannot be expressed with the allowed operators and indicators. Substituted with proxy volatility indicators (india_vix, hvol_20) but this is a significant simplification of the original intent.",
+  "translation_notes": "Natenberg's signal is fundamentally about options vega positioning and IV regime changes. Without access to IV percentile, implied vs. realized vol spreads, and vega calculation, this translation uses market volatility proxies (VIX-like and historical volatility). The context-dependent direction reflects long vega (positive vega spreads) when expecting vol rise vs. short vega (negative vega spreads) when expecting vol decline. Thresholds are estimated approximations and should be calibrated empirically. The signal requires manual spread selection logic external to this rule engine."
+}

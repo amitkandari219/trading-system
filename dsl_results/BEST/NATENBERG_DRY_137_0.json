@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_137_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires historical volatility mean and standard deviation calculations with configurable thresholds (deviation_threshold_sigma, minimum_dte, lookback_period_days) that cannot be expressed with allowed indicators. hvol_20 is available but the signal requires dynamic mean reversion bands relative to a rolling mean and volatility of volatility, which are not in the allowed indicator set. Additionally, the signal explicitly requires longer-dated options (DTE-based position sizing/weighting) which cannot be implemented in the entry/exit rule structure.",
+  "translation_notes": "Attempted partial translation using hvol_20 (20-day historical volatility) as a proxy, but the core logic requires: (1) rolling mean of HV over lookback_period_days, (2) rolling std_dev of HV, (3) threshold-based deviation bands around that mean, (4) expiration-date weighting logic. The signal is fundamentally a multi-parameter volatility mean reversion strategy that requires custom volatility metrics not present in the allowed indicator list."
+}

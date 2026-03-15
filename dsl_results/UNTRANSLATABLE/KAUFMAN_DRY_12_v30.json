@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires intraday bar-level volume comparison (opening bar vs. same bar previous day, or vs. average of past n days). The allowed indicators list does not include intraday bar indexing, previous day same-bar volume (prev_volume only gives prior close bar), or a mechanism to compare specific intraday intervals (e.g., 15-minute bars). The signal is inherently time-series intraday pattern matching that cannot be expressed with daily/OHLCV data and the given indicator set.",
+  "translation_notes": "KAUFMAN's rule requires tracking volume for specific intraday time intervals (e.g., 15-min bars) and comparing them to the same interval on the previous day or to a rolling average of that specific interval. This requires (1) intraday data granularity, (2) cross-day bar indexing, and (3) dynamic lookback windowing per bar interval. The current indicator set supports only daily close-to-close comparisons via prev_volume and rolling averages via vol_ratio_20. A proper implementation would need custom intraday volume indexing not available in this schema."
+}

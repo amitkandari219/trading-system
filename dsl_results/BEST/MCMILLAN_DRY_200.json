@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_200",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires event-driven logic (tender offer detection, options chain monitoring, and multi-leg position construction) that cannot be expressed using standard price/technical indicators. The strategy depends on: (1) detecting a tender offer announcement for a specific stock, (2) monitoring and executing options purchases at specific strike levels relative to tender price, (3) tracking synthetic position Greeks and arbitrage spreads. None of these can be translated into OHLCV or technical indicator conditions.",
+  "translation_notes": "MCMILLAN_DRY_200 is a merger/arbitrage strategy requiring external event data and options-specific logic. The entry conditions reference tender offer prices and put option strikes that are not available in standard market data feeds. This strategy is fundamentally incompatible with a rules engine based on historical price bars and technical indicators. Recommend: implement as a separate event-driven module with access to corporate action announcements and real-time options data."
+}

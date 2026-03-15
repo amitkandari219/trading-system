@@ -1,0 +1,18 @@
+{
+  "signal_id": "HARRIS_DRY_1_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-market liquidity concentration ratio analysis (dominant_market_volume / sum_all_related_markets) and cross-market correlation measurements. These require: (1) real-time data from multiple related instruments/markets simultaneously, (2) custom liquidity aggregation logic across markets, (3) inter-market correlation calculations not available in single-instrument indicator set. The allowed indicators operate only on single-market OHLCV data and cannot compute cross-market order flow externality or liquidity concentration ratios. This signal is structural/regime-detection logic rather than a technical pattern.",
+  "translation_notes": "HARRIS_DRY_1_0 is a market microstructure principle about order flow externality and liquidity concentration across competing markets. It cannot be operationalized using single-market technical indicators. Implementation would require: (1) multi-leg data feed, (2) custom liquidity aggregation module, (3) inter-market correlation engine, (4) dominance_threshold, observation_period_bars, and market_similarity_correlation_min parameters to be externally defined and fed into a multi-market orchestration layer before any backtest engine rules can be applied."
+}

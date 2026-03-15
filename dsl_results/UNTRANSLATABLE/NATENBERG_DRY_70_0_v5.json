@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_70_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires implied volatility term structure analysis, vega ratio calculation, and multi-leg options spread mechanics (long calendar spreads). These require options-specific inputs (IV curves, vega sensitivity by expiration, option prices) not available in equity price/technical indicator set. Additionally, thresholds for 'IV expected to rise by [THRESHOLD_NEEDED] percentage points' are unspecified parametrically. Substituted hvol_20 and india_vix as proxies for volatility regime detection, but cannot properly encode the core vega-weighted spread logic.",
+  "translation_notes": "This signal is fundamentally about options volatility strategies (long calendar spreads with vega exposure) that cannot be accurately represented using only spot price and technical indicators. The backtest engine appears to be equity/price-based rather than options-aware. To implement properly, would need: (1) IV term structure data, (2) vega calculation for multi-leg spreads, (3) option greeks integration, (4) specific numeric thresholds from trader/risk model. Current proxy uses hvol_20 (historical volatility) and india_vix as volatility regime filters only."
+}

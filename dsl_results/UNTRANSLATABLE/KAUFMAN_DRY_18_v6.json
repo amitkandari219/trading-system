@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_18",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires identifying 'an existing trading range' and calculating its size as a profit target. This requires dynamic range detection (high/low over a lookback period) and using that calculated range size as the exit target. The allowed indicators do not include a dynamic range-size calculator or a mechanism to set profit_target as a derived value from previous range metrics. Donchian channels approximate range boundaries, but the profit target specification ('equal to the size of the previous trading range') cannot be expressed with the available operators and indicators.",
+  "translation_notes": "Attempted partial translation using Donchian channels (dc_upper, dc_lower) to detect breakout levels and pivot points (r1, s1) as approximate profit targets. However, the core logic of measuring the prior range size and using it as a dynamic profit target is not expressible within the constraint set."
+}

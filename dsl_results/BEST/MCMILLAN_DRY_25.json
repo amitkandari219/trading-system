@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_25",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific strike selection logic (out-of-the-money vs in-the-money covered calls) which cannot be expressed with price/technical indicators alone. The backtest engine lacks option moneyness evaluation capability. Translated market direction detection only (rising=price above SMA_50, falling/static=price below SMA_50).",
+  "translation_notes": "MCMILLAN_DRY_25 is an options strategy signal. Converted market regime detection using price vs SMA_50 crossover as proxy for trending vs falling/static conditions. However, the core signal (strike selection based on moneyness) requires option Greeks and strike pricing data not available in the allowed indicator set. This translation captures directional bias only, not the actual covered call writing rules."
+}

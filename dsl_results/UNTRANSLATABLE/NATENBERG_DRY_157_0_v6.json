@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_157_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multi-asset implied volatility analysis, cross-correlation computation, and IV spread measurement between two related underlyings. The backtest engine's allowed indicators list contains only single-asset technical indicators (RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, and price metrics). There are no indicators for: (1) implied volatility (IV) calculation or retrieval, (2) cross-asset IV differentials, (3) rolling correlation between two underlyings, or (4) options-specific metrics. The signal fundamentally requires an options pricing module and multi-asset data pipeline not present in the allowed indicators.",
+  "translation_notes": "NATENBERG_DRY_157_0 is a volatility arbitrage/relative value strategy that requires: IV differential thresholds (min_iv_spread_pct), correlation measurement (min_correlation), profit/loss targets as percentage of spread width, and directional neutrality checks. While the signal specifies entry/exit conditions clearly, their operationalization depends entirely on IV and correlation data sources unavailable in this single-asset technical indicator framework. The source text diagram appears to show relative movement rates between two correlated instruments (ABC vs XYZ), which aligns with the correlation-dependent nature of the strategy, but cannot be implemented with the current indicator set."
+}

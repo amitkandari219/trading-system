@@ -1,0 +1,72 @@
+{
+  "signal_id": "MCMILLAN_DRY_14",
+  "book_id": "MCMILLAN",
+  "dsl_rule": {
+    "signal_id": "MCMILLAN_DRY_14",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "50"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "45"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes a covered call strategy where entry occurs when stock is at or just below the 50 strike price. Entry conditions check that close is at or below strike (50) and reasonably close to it (>45 assumes typical strike proximity). Exit occurs when stock remains at/below strike at expiration, allowing premium retention. The 30-day hold approximates typical monthly expiration cycle. Strike price of 50 is hardcoded as specified in parameters. Position management (long stock + short call) is strategy-level context not directly translatable to price conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": 50.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": 45.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": 50.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal describes a covered call strategy where entry occurs when stock is at or just below the 50 strike price. Entry conditions check that close is at or below strike (50) and reasonably close to it (>45 assumes typical strike proximity). Exit occurs when stock remains at/below strike at expiration, allowing premium retention. The 30-day hold approximates typical monthly expiration cycle. Strike price of 50 is hardcoded as specified in parameters. Position management (long stock + short call) is strategy-level context not directly translatable to price conditions."
+  },
+  "source_rule_text": "When underlying stock is at or just below the strike price at expiration, the covered call writer keeps the option premium while potentially maintaining stock ownership and capturing small stock gains."
+}

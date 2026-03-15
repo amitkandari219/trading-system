@@ -1,0 +1,18 @@
+{
+  "signal_id": "GUJRAL_DRY_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires: (1) detection of 'candles of rest' (3-4 consecutive candles with minimal movement) \u2014 no allowed indicator directly measures candle inactivity or rest periods; (2) identification of 'previous low' or 'round figure support' as dynamic support zones \u2014 while pivot points (s1, s2) approximate support, the signal specifically requires historical previous lows and psychologically-rounded figures which require bar lookback or custom level detection not available in the allowed indicator set",
+  "translation_notes": "Attempted partial mapping: entry uses pivot support (s1) and middle pivot as a rough ranged zone approximation. Exit targets r1 (first resistance) as proxy for 'top of range'. However, the core logic of detecting 3-4 candles of rest at a previous low requires either (a) explicit 'candles_of_rest' indicator or (b) bar indexing (close[1], close[2], close[3], close[4]) which is prohibited. The 'previous low' and 'round figure' detection also requires custom level identification outside the allowed indicators."
+}

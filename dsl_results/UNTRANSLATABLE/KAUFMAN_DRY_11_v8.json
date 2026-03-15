@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires detection of '16-bar high' and '32-bar low' as custom bar lookback conditions, plus a complex alternative condition comparing current vs 2-bars-ago lowest values. The allowed indicator set does not include generic lookback functions like highest(close, 16) or lowest(close, 32), nor does it support conditional logic like 'lowest_of_past_32 OR lowest_2_bars_ago_of_past_32'. The Donchian channels (dc_upper, dc_lower) could approximate these but require specific period matches (16 and 32 bars) which are not provided. This pattern requires custom bar property functions beyond the allowed indicator names.",
+  "translation_notes": "Signal structure suggests a volatility breakout on 16-bar highs with confirmatory lowest values, but cannot be fully encoded without custom highest/lowest lookback functions. A partial implementation using Donchian channels with appropriate periods would require dc_upper for 16-bar and dc_lower for 32-bar detection, which are not in the standard allowed list with those specific periods."
+}

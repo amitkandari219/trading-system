@@ -1,0 +1,70 @@
+{
+  "signal_id": "GUJRAL_DRY_13",
+  "book_id": "GUJRAL",
+  "dsl_rule": {
+    "signal_id": "GUJRAL_DRY_13",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "463"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry condition interpreted as price closing above the previous candle's high (first candle reference). Exit conditions: stop loss triggered when price closes below previous candle's low, or target reached at absolute price level 463. The signal references support/resistance levels (R1, R2) from source text but uses generic 'first candle' terminology in the rule definition, so prev_high/prev_low used as proxy. Target value of 463 appears to be an absolute price level rather than a percentage-based target."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": 463.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Entry condition interpreted as price closing above the previous candle's high (first candle reference). Exit conditions: stop loss triggered when price closes below previous candle's low, or target reached at absolute price level 463. The signal references support/resistance levels (R1, R2) from source text but uses generic 'first candle' terminology in the rule definition, so prev_high/prev_low used as proxy. Target value of 463 appears to be an absolute price level rather than a percentage-based target."
+  },
+  "source_rule_text": "Enter a long trade when price moves above the first candle with stop loss placed below the candle and a target at a specified level."
+}

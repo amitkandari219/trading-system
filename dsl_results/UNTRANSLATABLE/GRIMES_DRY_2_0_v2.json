@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_2_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'institutional accumulation' (large trades without price movement) and 'distribution phase' (price strength with declining volume). These require order flow analysis and trade-size distribution data not available in the allowed indicator set. Bollinger Bandwidth (low volatility proxy) and volume ratio are weak substitutes. Consolidation bar count threshold and volume surge multiplier percentages were not specified in the source material.",
+  "translation_notes": "Attempted partial translation using available indicators: (1) bb_bandwidth < threshold approximates 'low volatility' during consolidation; (2) vol_ratio_20 < 1.2 approximates absence of volume surge during accumulation; (3) close crosses_above bb_upper approximates 'breakout with volume'. Exit uses bb_lower cross as 'close below accumulation range' proxy. True institutional order flow detection is not possible with the allowed indicator set. Parameter thresholds (consolidation_minimum_bars, volume_surge_multiplier) remain unspecified from source."
+}

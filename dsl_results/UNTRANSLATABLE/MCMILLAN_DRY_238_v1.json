@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_238",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires calculating fair value premium (Index Value \u00d7 [1 + Time in Years \u00d7 (Risk-free Rate - Dividend Yield)]) and comparing futures price to this dynamically computed value. This requires real-time calculation of fair value using external inputs (risk-free rate, dividend yield, time to expiration, index level) that are not available as standard indicators in the allowed indicator list. The premium threshold itself (3.50-4.00 points) is static, but the fair value benchmark is formula-driven and cannot be expressed using only the provided indicators.",
+  "translation_notes": "Signal is an arbitrage strategy requiring fair value calculation. Used close price as proxy with static threshold of 3.75 points (midpoint of 3.50-4.00 range) as a placeholder, but this does not capture the intended fair value comparison logic. A proper implementation would require custom indicator for fair value premium calculation or external data feeds for risk-free rate and dividend yield inputs."
+}

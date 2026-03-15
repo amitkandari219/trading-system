@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_151",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options-specific analysis that cannot be expressed with equity price/technical indicators: (1) detection of stock position relative to two striking prices, (2) calculation of option prices and their ratio, (3) time-to-expiration logic for options chains, (4) multi-leg spread construction. The allowed indicators contain no option pricing, Greeks, or chain structure data.",
+  "translation_notes": "MCMILLAN_DRY_151 is a calendar combination spread strategy requiring options market data (strike prices, option premiums, implied volatility, expiration dates). While hvol_20 could approximate 'relatively volatile' condition, the core logic\u2014comparing stock price to strike levels, evaluating option price ratios, and timing relative to option expiration\u2014cannot be translated to candle-based technical indicators. This signal is best implemented in an options-aware backtester with access to option chain data."
+}

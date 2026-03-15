@@ -1,0 +1,18 @@
+{
+  "signal_id": "GRIMES_DRY_7_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-timeframe analysis (weekly vs daily) with explicit consolidation pattern detection and MACD divergence comparison across timeframes. Current engine does not support: (1) separate weekly/daily indicator calculations, (2) bar-counting consolidation detection, (3) MACD divergence measurement (comparing MACD peaks across bars), (4) Bollinger Band extension threshold quantification. The entry condition 'MACD shows negative divergence on BOTH weekly AND daily (lower highs in MACD despite higher price highs)' cannot be expressed without divergence detection logic. Parameters marked [THRESHOLD_NEEDED] cannot be populated without source specification.",
+  "translation_notes": "Attempted partial translation using available indicators: macd_hist as proxy for MACD divergence direction, close crossing below prior consolidation high as proxy for daily consolidation breakout, and bb_upper for Bollinger Band extension. However, the core logic (multi-timeframe divergence confirmation with consolidation pattern validation) is not expressible in the current rule schema. Recommend: (1) add multi-timeframe support, (2) add divergence_macd indicator, (3) add consolidation_bars counter, or (4) clarify specific threshold values for consolidation minimum bars and Bollinger extension distance."
+}

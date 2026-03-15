@@ -1,0 +1,106 @@
+{
+  "signal_id": "KAUFMAN_DRY_3",
+  "book_id": "KAUFMAN",
+  "dsl_rule": {
+    "signal_id": "KAUFMAN_DRY_3",
+    "entry_long": [
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Wide-ranging day approximated as range > atr_14 (volatility multiple). Close near high/low captured as close >= high (long) or close <= low (short). Exit conditions inferred as reversal (close crossing prev_close) since original source was incomplete ('if the close is n'). Direction is context-dependent: long when close near high, short when close near low."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "HIGH_VOL"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Wide-ranging day approximated as range > atr_14 (volatility multiple). Close near high/low captured as close >= high (long) or close <= low (short). Exit conditions inferred as reversal (close crossing prev_close) since original source was incomplete ('if the close is n'). Direction is context-dependent: long when close near high, short when close near low."
+  },
+  "source_rule_text": "When a wide-ranging day occurs with the close near the high or low, trade in the direction of the close as a strong indication of continued direction."
+}

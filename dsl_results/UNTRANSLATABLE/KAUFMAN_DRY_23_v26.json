@@ -1,0 +1,18 @@
+{
+  "signal_id": "KAUFMAN_DRY_23",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "PDI (Plus Directional Indicator) and MDI (Minus Directional Indicator) are not in the allowed indicator list. These are components of the Directional Movement System (DMS) and are distinct from ADX_14. Additionally, the signal requires entry via stop orders at specific price levels (today's high/low on next day), which requires order type and price level management not supported by the condition-based rule structure.",
+  "translation_notes": "Signal uses PDI/MDI crossovers which require custom Directional Movement indicators not available in the allowed set. The stop order entry mechanism (buy stop at prev_high, sell stop at prev_low) cannot be fully expressed with the available operators and must be implemented at the backtest engine level. Reversal exits have been inferred from the crossover logic."
+}

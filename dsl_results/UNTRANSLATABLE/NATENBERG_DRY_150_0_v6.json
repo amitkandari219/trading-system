@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_150_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires options pricing model inputs (call price, put price, strike price, risk-free rate, time to expiration, synthetic parity calculation) and derivatives arbitrage logic that cannot be expressed using only the allowed equity market indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Returns, Bar Properties). The core logic depends on: (1) calculating theoretical call price via put-call parity formula C = P + S - K*e^(-rT), (2) measuring call-put spread deviation vs theoretical relationship, (3) comparing actual mispricing to transaction cost thresholds. None of these calculations can be replicated from equity price/volume data alone without explicit options chain data.",
+  "translation_notes": "Signal ID NATENBERG_DRY_150_0 is a derivatives arbitrage strategy (synthetic replication) from Natenberg's work. It requires options market data (call/put prices, strike prices) and financial mathematics (put-call parity, continuous compounding discounting) that exist outside the scope of standard technical indicators. A proper implementation would need a separate options pricing module with inputs: underlying price, option prices, strike, risk-free rate, time to expiration, and volatility. Cannot be backtested with equity indicators alone."
+}

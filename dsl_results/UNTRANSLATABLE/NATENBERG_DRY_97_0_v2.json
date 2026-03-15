@@ -1,0 +1,18 @@
+{
+  "signal_id": "NATENBERG_DRY_97_0",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct access to implied volatility (IV) levels and ATM option pricing mechanics. Available indicators include india_vix as a volatility proxy, but the signal's core logic depends on: (1) computing fair value IV estimates, (2) identifying ATM strikes relative to current price, (3) constructing vertical spreads with specific strike relationships (long ATM, short OTM), and (4) measuring option mispricing in absolute points. These require options chain data and volatility modeling not available in the equity price/technical indicator set. The india_vix substitution is approximate only.",
+  "translation_notes": "Attempted proxy using india_vix as volatility regime marker: entry_long when IV is low (india_vix < 20 suggests underpriced volatility), entry_short when IV is high (india_vix > 50 suggests overpriced volatility). However, this loses the signal's precise intent: matching vertical spread construction (long ATM calls when IV low, short ATM calls when IV high) to volatility mispricing measured in option price points. The original signal is an options-specific vol trading strategy that cannot be faithfully expressed using equity price technicals alone."
+}

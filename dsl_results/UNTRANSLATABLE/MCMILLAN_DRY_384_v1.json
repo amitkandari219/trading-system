@@ -1,0 +1,18 @@
+{
+  "signal_id": "MCMILLAN_DRY_384",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-specific indicators (implied volatility levels, strike selection, contract ratios) and multi-leg spread execution logic that are not available in the equity price/technical indicator set. The signal specifies selling higher IV options while buying lower IV options across three specific spread structures (bear spreads, ratio put writes, call backspreads), which requires options chain data, IV term structure analysis, and position sizing across multiple strikes/expirations. These cannot be expressed using only price action and technical indicators.",
+  "translation_notes": "Attempted proxy: Used india_vix as a general high volatility regime entry signal (entry when IV elevated, exit when IV contracts), but this does NOT capture the core signal logic of IV mean reversion trading and relative IV arbitrage across specific spread structures. A proper implementation requires options Greeks data and multi-leg position management capabilities."
+}
