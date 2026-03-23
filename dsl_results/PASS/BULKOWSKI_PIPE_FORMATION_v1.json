@@ -1,0 +1,93 @@
+{
+  "signal_id": "BULKOWSKI_PIPE_FORMATION",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Pipe formation",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_PIPE_FORMATION",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 21,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 21,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "DSL translation of BULKOWSKI_PIPE_FORMATION"
+  },
+  "source_rule_text": "Pipe formation: A pattern identified on weekly charts where inside weeks (trading range contained within prior week's range) perform better than outside weeks (higher high and lower low than prior week)"
+}

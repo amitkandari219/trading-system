@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires multi-year historical pattern analysis (2 of last 3 years with 8+ occurrences/year at 70% consistency) which cannot be expressed as single-bar indicator conditions. The rule is fundamentally a regime selection filter based on backtested market characteristics, not a real-time trading rule. Historical characteristic matching and frequency thresholds require external data aggregation and cannot be operationalized with standard OHLCV indicators.",
+  "translation_notes": "Attempted partial translation using hvol_20 (volatility proxy) and adx_14 (trend strength) to approximate the spirit of selecting high-volatility and trending markets. However, the core logic\u2014comparing historical pattern frequency across rolling 3-year windows\u2014requires custom pre-processing logic outside standard indicator calculations. Recommend implementing as a market-selection filter in pre-trade analysis rather than an entry/exit rule."
 }

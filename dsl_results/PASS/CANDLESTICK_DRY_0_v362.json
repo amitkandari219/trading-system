@@ -1,0 +1,83 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">=",
+        "right": "high"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "prev_high"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Dragonfly doji pattern identified by: (1) open at or near high using open >= high approximation, (2) long lower shadow using lower_wick > body ratio, (3) price decline context using negative returns. Entry conditions detect the candlestick formation during a downtrend. Exit uses a bullish reversal signal when price crosses above the previous day's high. Success rates (50-51%) and poor overall rank (98/103) noted but backtest will validate. No specific volume_trend data available from source."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">=",
+        "value": "high"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "prev_high"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Dragonfly doji pattern identified by: (1) open at or near high using open >= high approximation, (2) long lower shadow using lower_wick > body ratio, (3) price decline context using negative returns. Entry conditions detect the candlestick formation during a downtrend. Exit uses a bullish reversal signal when price crosses above the previous day's high. Success rates (50-51%) and poor overall rank (98/103) noted but backtest will validate. No specific volume_trend data available from source."
+  },
+  "source_rule_text": "Doji, Dragonfly: A candle pattern where price opens at or near the high for the day and then dives, forming a long lower shadow. Theoretical behavior is indecision to bullish reversal during a decline."
+}

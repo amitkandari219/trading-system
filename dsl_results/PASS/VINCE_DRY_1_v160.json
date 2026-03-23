@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_1",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "EGM_coefficient",
+      "threshold": null,
+      "direction": "maximize",
+      "formula": "EGM = (AHPR\u00b2 - V)^(1/2)"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Derive optimal_f by maximizing Expected Geometric Mean coefficient EGM = (AHPR\u00b2 - V)^(1/2), balancing win rate and win/loss ratio. Higher win frequency with moderate payoff ratio preferred over low frequency with extreme ratios. Optimal f varies by system; calculate from historical HPR distribution.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Maximize geometric growth by optimizing the coefficient function EGM = (AHPR\u00b2 - V)^(1/2), balancing win rate and win/loss ratio rather than pursuing extreme ratios with low probability"
+}

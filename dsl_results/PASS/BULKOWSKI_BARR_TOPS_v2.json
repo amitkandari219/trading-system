@@ -1,0 +1,85 @@
+{
+  "signal_id": "BULKOWSKI_BARR_TOPS",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "BARR tops",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_BARR_TOPS",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.8"
+      },
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "s1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.8
+      },
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "s1"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_BARR_TOPS"
+  },
+  "source_rule_text": "BARR tops: A short pattern involving an up-sloping trend line after a price run-up, with breakout occurring near the yearly high"
+}

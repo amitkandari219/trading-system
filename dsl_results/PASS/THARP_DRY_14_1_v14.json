@@ -72,7 +72,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal requires trend-following entry with MA crossover and ADX confirmation. The '3 prior closes higher' condition for uptrend was simplified to close > prev_close as a directional confirmation filter. ADX_14 used as specified indicator name. Direction set to CONTEXT_DEPENDENT to allow both long and short entries based on trend direction."
+    "translation_notes": "Signal implements bidirectional trend-following logic. Entry requires price crossing 20-period MA, ADX confirmation (>18), and directional confirmation via prior close comparison as proxy for '3 prior closes' requirement (exact multi-bar comparison not supported). Exit uses MA crossover reversal and ADX weakening (<15). ADX_14 used as the only available ADX indicator. Direction set to CONTEXT_DEPENDENT to enable both long and short entries based on trend direction."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -142,7 +142,7 @@
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal requires trend-following entry with MA crossover and ADX confirmation. The '3 prior closes higher' condition for uptrend was simplified to close > prev_close as a directional confirmation filter. ADX_14 used as specified indicator name. Direction set to CONTEXT_DEPENDENT to allow both long and short entries based on trend direction."
+    "reason": "Signal implements bidirectional trend-following logic. Entry requires price crossing 20-period MA, ADX confirmation (>18), and directional confirmation via prior close comparison as proxy for '3 prior closes' requirement (exact multi-bar comparison not supported). Exit uses MA crossover reversal and ADX weakening (<15). ADX_14 used as the only available ADX indicator. Direction set to CONTEXT_DEPENDENT to enable both long and short entries based on trend direction."
   },
   "source_rule_text": "A trader should enter positions aligned with trend direction because trend-following systems never miss major market moves, and price distributions exhibit long tails in the direction of sustained trends rather than random walk behavior."
 }

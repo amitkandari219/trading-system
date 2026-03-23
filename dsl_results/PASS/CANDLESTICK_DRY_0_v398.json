@@ -1,0 +1,124 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "open"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "open"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gapping-up doji pattern: (1) open > prev_close detects gap up, (2) close >= open ensures closing near/at opening (doji characteristic), (3) body_pct < 0.05 enforces the small body requirement. Direction is context-dependent per signal specification. Exit conditions use reversal logic (close crossing open) since author did not specify. Pattern effectiveness depends on preceding candle context which should be analyzed separately."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "open"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "open"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Gapping-up doji pattern: (1) open > prev_close detects gap up, (2) close >= open ensures closing near/at opening (doji characteristic), (3) body_pct < 0.05 enforces the small body requirement. Direction is context-dependent per signal specification. Exit conditions use reversal logic (close crossing open) since author did not specify. Pattern effectiveness depends on preceding candle context which should be analyzed separately."
+  },
+  "source_rule_text": "Gapping-up doji: A candle pattern where the stock opens with a gap up, and despite price movement during the session (rise, tumble, or no movement), the closing price ends very near or at the opening price, representing a struggle between bulls and bears ending in stalemate"
+}

@@ -1,0 +1,101 @@
+{
+  "signal_id": "BULKOWSKI_BUSTED_PATTERN",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Busted pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_BUSTED_PATTERN",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "dc_lower"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 50.0
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_BUSTED_PATTERN"
+  },
+  "source_rule_text": "Busted pattern: Stock moves up less than 5% above the right rim then starts heading lower; short the decline"
+}

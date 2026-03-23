@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of realized variance (month t-1) and dynamic scaling of portfolio returns by 1/variance(t-1). This is a portfolio-level volatility-adjusted sizing rule, not a price-action entry/exit condition. Realized variance is not in the ALLOWED INDICATORS list (hvol_20 measures historical volatility but not realized variance of portfolio returns). The rule requires: (1) computing realized variance from monthly returns, (2) applying inverse variance weighting to position sizing\u2014both of which are portfolio construction operations rather than discrete entry/exit signals that can be expressed via price indicators and comparison operators.",
+  "translation_notes": "This signal describes a volatility-scaling overlay (inverse variance portfolio weighting) commonly used in risk-parity and volatility-targeting strategies. It requires custom portfolio-level computation and cannot be reduced to binary entry/exit conditions on allowed price/technical indicators. Implementation requires: tracking monthly portfolio variance, updating scaling factor monthly, and rebalancing positions accordingly. Recommend implementing as a custom position-sizing module rather than a rules-based entry/exit system."
+}

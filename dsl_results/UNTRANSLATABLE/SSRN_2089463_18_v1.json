@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2089463_18",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 12-month lagged past returns and 12-month forward returns, which cannot be computed from the allowed OHLCV and technical indicators. The allowed 'returns' and 'log_returns' indicators typically measure single-bar or short-term returns, not 12-month lookback/forward periods. A proper implementation requires custom rolling return calculation over 252-trading-day windows.",
+  "translation_notes": "The signal is a pure momentum rule based on 12-month historical returns determining entry direction, with a 12-month holding period as exit. While we can represent the directional logic (buy on positive returns, sell on negative), the specific 12-month lagged calculation and the forward-looking 12-month holding period are outside the standard technical indicator set. This rule would require a custom feature engineering step in the backtest engine to compute rolling 12-month returns before conditions can be evaluated."
+}

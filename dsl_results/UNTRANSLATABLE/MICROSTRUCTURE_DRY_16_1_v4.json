@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Order flow dominance (>58% on one side) and bid-ask spread widening metrics cannot be directly mapped to allowed indicators. vol_ratio_20 is a proxy but does not capture true order flow directionality or spread dynamics. bb_bandwidth and price_pos_20 are approximations for price deviation and spread widening respectively, but lack precision for the microstructure signal intent.",
+  "translation_notes": "Used vol_ratio_20 as proxy for order flow dominance imbalance (>0.58 indicates one-sided volume). Used price_pos_20 (normalized price position on 20-period basis) as proxy for price deviation in standard deviations from 20-period MA. Used bb_bandwidth expansion (>0.25) as proxy for spread widening. Direction set to CONTEXT_DEPENDENT to reflect that entry is contingent on which side dominates (long if buy-side dominance, short if sell-side dominance). Hold max set to 6 bars per exit conditions."
 }

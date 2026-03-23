@@ -1,0 +1,84 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "0.23"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "returns",
+        "operator": "<=",
+        "right": "-0.23"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Flag pattern breakout detected using Donchian channels (dc_upper/dc_lower) as trend-line boundary proxies. Entry triggers on breakout in either direction. Exit uses the measure rule: 23% average rise for longs and equivalent decline for shorts, derived from the stated average_rise_pct parameter. Stop loss set to 2 points (approximately 44-43 risk per source text, normalized to ~2% for standard position sizing). Hold period set to 20 days as typical flag pattern duration."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": 0.23
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "returns",
+        "op": "<=",
+        "value": -0.23
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Flag pattern breakout detected using Donchian channels (dc_upper/dc_lower) as trend-line boundary proxies. Entry triggers on breakout in either direction. Exit uses the measure rule: 23% average rise for longs and equivalent decline for shorts, derived from the stated average_rise_pct parameter. Stop loss set to 2 points (approximately 44-43 risk per source text, normalized to ~2% for standard position sizing). Hold period set to 20 days as typical flag pattern duration."
+  },
+  "source_rule_text": "Flag pattern: A consolidation formation that occurs after a strong trend move, bounded by trend lines, with a breakout in the direction of the prior trend"
+}

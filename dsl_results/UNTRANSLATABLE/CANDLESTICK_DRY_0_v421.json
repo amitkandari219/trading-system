@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of 'yearly high/low' which is not available in indicator set. 'price_pos_20' is a proxy using 20-day position but does not capture yearly extremes. Also, 'candle height' ranking (tall vs short candles) and 'breakout detection' require indicators not in the allowed list. Original parameters like success_rate_bull, average_rise_pct, and volume_trend are marked AUTHOR_SILENT and cannot be translated.",
+  "translation_notes": "Approximated yearly high/low positioning using price_pos_20 (0.67+ for upper third, <0.33 for lower third). Used 'range' indicator to represent candle height (tall candles = larger range). Exit conditions inferred as trend reversal (close crossing SMA_20). Direction set to CONTEXT_DEPENDENT to reflect bull/bear market dependency."
 }

@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 6.7,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Doji identified by small body_pct (<5%). Gap up condition expressed as close > prev_high. Heavy volume requirement uses hvol_20 (20-day historical volatility average as proxy for above-average volume). Exit uses mean reversion to sma_20 as reasonable reversal condition given AUTHOR_SILENT specification. Stop loss set to average_decline_pct of 6.70%. Gap type discrimination (breakaway vs exhaustion) cannot be precisely encoded without multi-bar pattern recognition; assumed breakaway dominates given continuation signal intent."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.067,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Doji identified by small body_pct (<5%). Gap up condition expressed as close > prev_high. Heavy volume requirement uses hvol_20 (20-day historical volatility average as proxy for above-average volume). Exit uses mean reversion to sma_20 as reasonable reversal condition given AUTHOR_SILENT specification. Stop loss set to average_decline_pct of 6.70%. Gap type discrimination (breakaway vs exhaustion) cannot be precisely encoded without multi-bar pattern recognition; assumed breakaway dominates given continuation signal intent."
+  },
+  "source_rule_text": "Pattern name: Gapping Up Doji. Entry occurs when a doji candle gaps up from congestion area. Direction depends on gap type: breakaway gaps (higher volume, new highs) signal continuation; exhaustion gaps appear near end of upward trend."
+}

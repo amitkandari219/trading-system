@@ -1,0 +1,128 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Long-Legged Doji identified by: (1) upper_wick and lower_wick both greater than ATR_14 indicating long wicks relative to volatility, (2) body_pct < 0.05 indicating minimal real body (close near open). Direction is CONTEXT_DEPENDENT per source signal. Exit conditions use reversal logic (close beyond previous candle extremes) since author provided no specific exit guidance. Based on 51% bull market continuation rate and contextual nature of pattern, both long and short entries are valid depending on market context. Hold period set conservatively to 5 days given indecision nature of pattern."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Long-Legged Doji identified by: (1) upper_wick and lower_wick both greater than ATR_14 indicating long wicks relative to volatility, (2) body_pct < 0.05 indicating minimal real body (close near open). Direction is CONTEXT_DEPENDENT per source signal. Exit conditions use reversal logic (close beyond previous candle extremes) since author provided no specific exit guidance. Based on 51% bull market continuation rate and contextual nature of pattern, both long and short entries are valid depending on market context. Hold period set conservatively to 5 days given indecision nature of pattern."
+  },
+  "source_rule_text": "Long-Legged Doji: A candlestick pattern representing indecision between bulls and bears, with long upper and lower wicks and little to no real body"
+}

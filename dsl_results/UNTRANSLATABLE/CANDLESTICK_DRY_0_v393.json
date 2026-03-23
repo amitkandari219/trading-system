@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Support zone detection and doji pattern detection require candlestick pattern recognition (small body + long upper/lower wicks) and dynamic support level identification not directly expressible with allowed indicators. 'BULL_MARKET' is not in ALLOWED_REGIMES list (only TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY are allowed).",
+  "translation_notes": "Approximated doji as small body (body_pct < 0.05) with gap down (close < prev_close). Used pivot support level (s1) as proxy for support zone. Exit condition uses resistance level (r1) as reversal target. Original pattern requires explicit doji detection and support zone identification which are not available in the allowed indicator set."
 }

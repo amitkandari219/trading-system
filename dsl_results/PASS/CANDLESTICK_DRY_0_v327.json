@@ -1,0 +1,92 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Dark Cloud Cover pattern translated as: (1) Price in uptrend (close > sma_20), (2) Previous candle white/bullish (close > prev_close), (3) Current candle black/bearish (close < prev_close), (4) Black candle opens above white candle's close (open > prev_close). Exit when price closes above open (reversal). AUTHOR_SILENT exit conditions replaced with standard reversal logic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Dark Cloud Cover pattern translated as: (1) Price in uptrend (close > sma_20), (2) Previous candle white/bullish (close > prev_close), (3) Current candle black/bearish (close < prev_close), (4) Black candle opens above white candle's close (open > prev_close). Exit when price closes above open (reversal). AUTHOR_SILENT exit conditions replaced with standard reversal logic."
+  },
+  "source_rule_text": "Dark Cloud Cover: A two-line candlestick pattern where a tall white candle is followed by a black candle, acting as a reversal of an uptrend"
+}

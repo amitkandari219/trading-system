@@ -1,0 +1,128 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "upper_wick",
+        "operator": "<",
+        "right": "lower_wick"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "upper_wick",
+        "operator": "<",
+        "right": "lower_wick"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gapping-Down Doji pattern translated using bar properties: body_pct near zero indicates doji (small body), upper_wick < lower_wick indicates doji shape, low < prev_low detects downward gap. Direction is context-dependent per signal spec. Exit conditions inferred as reversal above/below the doji formation since author provided no explicit exit rules."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": "<",
+        "value": "lower_wick"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": "<",
+        "value": "lower_wick"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Gapping-Down Doji pattern translated using bar properties: body_pct near zero indicates doji (small body), upper_wick < lower_wick indicates doji shape, low < prev_low detects downward gap. Direction is context-dependent per signal spec. Exit conditions inferred as reversal above/below the doji formation since author provided no explicit exit rules."
+  },
+  "source_rule_text": "Pattern name: Gapping-Down Doji. Entry occurs when a doji candlestick forms with a price gap below the previous day's lower shadow, leaving a price gap on the chart."
+}

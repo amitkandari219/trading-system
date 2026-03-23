@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires put-call ratio calculated from option market data (open-buy put volume / total put volume). This is an external market microstructure metric derived from options data, not a price-action or technical indicator available in the allowed indicator set. The allowed indicators are limited to price, volume, and technical analysis metrics derived from equity price/volume data only. Put-call ratios require real-time options order flow data that cannot be constructed from standard OHLCV bars.",
+  "translation_notes": "SSRN_622869_12 is a predictive regression study using option market microstructure (put-call ratios from TAQ option data during 1993-2001) to forecast next-day risk-adjusted returns. While the holding period (1 day) and direction (BOTH = long and short signals based on ratio extremes) are clear, the core predictive variable itself is not translatable to a backtest engine limited to equity technical indicators. To implement this signal, the backtest engine would need: (1) integrated options tick data, (2) ability to compute intraday open-buy put volumes, (3) calculation of put-call ratios, and (4) regression model coefficients from the original study to map ratios to directional predictions."
+}

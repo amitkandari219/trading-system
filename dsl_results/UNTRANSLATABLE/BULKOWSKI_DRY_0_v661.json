@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Double Top pattern detection requires identification of two distinct peaks at similar price levels with a valley between them (10-20% deep). This is a complex multi-bar pattern recognition task that cannot be expressed using only point-in-time indicator conditions. The pattern requires: (1) Historical peak detection across multiple bars, (2) Peak comparison logic, (3) Valley depth measurement between peaks, (4) Separation validation between peaks. These require either pattern-matching functions or lookback array indexing, neither of which are available in the allowed operators and indicators.",
+  "translation_notes": "The Double Top is a visual/structural pattern that requires analyzing multiple historical bars to identify two tops near the same price with a valley between them. The allowed indicator set and operators (which prohibit array indexing like close[1], close[2], etc.) cannot express this pattern logic. A backtest engine would need either: (a) a dedicated pattern recognition library with peak/trough detection, or (b) custom indicator functions that return 1/0 for pattern presence."
 }

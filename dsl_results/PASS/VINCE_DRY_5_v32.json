@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_5",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "geometric_mean_across_exit_date_scenarios",
+      "threshold": 1.0,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Buy number of contracts from optimal_f corresponding to highest geometric mean among all mandated exit date scenarios. Optimal f recalculates daily as data updates. Only trade if geometric mean > 1.0. This is Ralph Vince's optimal f method applied to multi-scenario exit date analysis.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Buy the number of contracts indicated by the optimal f corresponding to the mandated exit date that produces the highest geometric mean, provided that geometric mean is greater than 1.0"
+}

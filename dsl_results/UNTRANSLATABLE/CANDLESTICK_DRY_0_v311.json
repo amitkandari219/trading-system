@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires calculation of dynamic price targets based on candle height (81% upward multiplier, 78% downward multiplier) and breakout price relationships. These computational targets cannot be expressed as static indicator comparisons. Volume regime differentiation (heavy vs light breakout volume) also requires custom volume breakout detection not available in standard indicators. Author performance metrics are silent on success rates.",
+  "translation_notes": "White candle identified by close > open and positive body. Market context (bull/bear) must be determined by target_regime. Exit conditions are expressed as reversal signals (close crossing open). Exact measure rule calculations (target = height \u00d7 81% + breakout price) require post-entry computation and cannot be pre-defined as entry conditions. Recommend implementing as custom backtest module with dynamic target calculation."
 }

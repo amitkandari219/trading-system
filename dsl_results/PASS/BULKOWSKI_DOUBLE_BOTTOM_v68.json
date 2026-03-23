@@ -1,0 +1,114 @@
+{
+  "signal_id": "BULKOWSKI_DOUBLE_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Double Bottom (Eve & Eve)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DOUBLE_BOTTOM",
+    "entry_long": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "0.015"
+      },
+      {
+        "left": "body_pct",
+        "operator": ">",
+        "right": "0.01"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.04"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "40"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": 0.015
+      },
+      {
+        "indicator": "body_pct",
+        "op": ">",
+        "value": 0.01
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.04
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 40.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_DOUBLE_BOTTOM"
+  },
+  "source_rule_text": "Double Bottom (Eve & Eve): A pattern with two rounded bottoms at similar price levels with a rise of at least 10% between them"
+}

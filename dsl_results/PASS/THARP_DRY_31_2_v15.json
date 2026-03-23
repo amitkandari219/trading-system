@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_31_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "capital_type",
+      "threshold": null,
+      "direction": "conditional"
+    },
+    "max_risk_pct": 0.03,
+    "min_risk_pct": 0.01,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Conditional fixed-fractional sizing: 1.0% risk for third-party capital, 3.0% for personal capital. Uses standard position sizing formula: Account_Equity * Risk_Percentage / (Entry_Price - Stop_Loss). Requires explicit acknowledgment of risk profile.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should calibrate position sizing risk percentage based on whether capital is their own or entrusted, with external capital requiring stricter risk limits than personal capital."
+}

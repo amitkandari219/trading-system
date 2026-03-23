@@ -1,0 +1,60 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 7,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Area gap (upward breakout) is identified when current low > prior high, creating a price gap with no overlap. Exit condition defaults to close below prior close as reversal signal since source material does not specify exit rules (AUTHOR_SILENT). Hold period set to 7 days ('within a week') based on source text. Stop loss set to 2% as conservative default for gap continuation pattern."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 7,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Area gap (upward breakout) is identified when current low > prior high, creating a price gap with no overlap. Exit condition defaults to close below prior close as reversal signal since source material does not specify exit rules (AUTHOR_SILENT). Hold period set to 7 days ('within a week') based on source text. Stop loss set to 2% as conservative default for gap continuation pattern."
+  },
+  "source_rule_text": "Pattern name: Upward Breakouts (Area Gap). A price gap appears when the current low is higher than the prior high."
+}

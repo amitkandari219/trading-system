@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_37",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires calculation of bond-level beta coefficients and cross-sectional ranking/sorting across a bond universe. The Betting Against Beta (BAB) factor strategy requires: (1) computing rolling betas for each bond instrument, (2) partitioning bonds into low-beta and high-beta groups via ranked beta sorting, (3) beta-weighted portfolio construction within each group, (4) rescaling portfolios to target beta of 1.0, and (5) executing a zero-cost long-short spread. None of these operations (beta estimation, cross-sectional ranking, portfolio-level beta targeting, zero-cost arbitrage construction) can be expressed using only the allowed price-action indicators (RSI, MACD, moving averages, Bollinger Bands, ATR, etc.). This is a multi-asset factor strategy requiring portfolio-level analytics, not a single-instrument price-based signal.",
+  "translation_notes": "BAB is a systematic factor investing strategy that operates at the portfolio construction level with custom risk metrics (beta). It requires access to: (1) historical return time-series for beta regression, (2) cross-sectional asset ranking, (3) portfolio optimization and rescaling. The allowed indicator set is limited to single-instrument technical indicators and cannot support factor-based multi-asset allocation rules. Recommend implementing this as a custom portfolio rebalancer module outside the price-action signal engine."
+}

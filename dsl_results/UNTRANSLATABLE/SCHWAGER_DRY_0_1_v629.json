@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires calendar spread volatility structure (long back-month vol, short front-month vol) which cannot be expressed in single-instrument price/technical indicators. Requires multi-leg options pricing model and term structure analysis. Also, theta decay measurement (60% of max expected value) and intra-day swing detection (2%+ consecutive days) require bar-by-bar historical lookback that exceeds standard indicator scope.",
+  "translation_notes": "Attempted to capture volatility regime entry conditions using ATR expansion and ADX trend filter, but the core signal\u2014asymmetric calendar spreads with specific vol ratios across expiration months\u2014is fundamentally a multi-leg options strategy unsuitable for single-asset directional backtesting. Author's original source text is also incomplete/truncated, limiting full context."
 }

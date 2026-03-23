@@ -1,0 +1,91 @@
+{
+  "signal_id": "BULKOWSKI_GENERIC_PATTERN",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Pattern name",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_GENERIC_PATTERN",
+    "entry_long": [
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      },
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_GENERIC_PATTERN"
+  },
+  "source_rule_text": "Pattern name: Complex Head-and-Shoulders Bottom (CHSB). A bottom pattern where price drops into the pattern and rises out of it, acting as a reversal. Sometimes forms as the corrective phase of a measured move up chart pattern with prices pausing during an upward price trend."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2089463_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "TSMOM requires calculation of 12-month historical returns with volatility normalization (r_{t-12,t}/\u03c3_t) and cross-asset aggregation. The allowed indicators set does not include: (1) a 12-month lookback return calculation, (2) volatility normalization across a time series, or (3) cross-asset portfolio aggregation logic. The strategy requires custom calculation of sign(returns) weighted by normalized returns summed across S assets, which cannot be expressed using only the available indicators and basic operators.",
+  "translation_notes": "This is a sophisticated multi-asset momentum strategy that requires computing portfolio-level signals from individual asset returns. While 'returns' is available for single-asset signals, the core logic\u2014normalizing 12-month returns by volatility and aggregating across assets with equal weighting\u2014requires custom calculation not supported by the standard indicator set."
+}

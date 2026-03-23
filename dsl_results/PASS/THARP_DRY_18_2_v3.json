@@ -1,0 +1,108 @@
+{
+  "signal_id": "THARP_DRY_18_2",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_lower"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 0.5,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mapped 20-day new extremes to Donchian Channels (20-period standard). Entry triggers contrarian reversals: LONG when price makes new 20-day low (close < dc_lower) but closes above entry within bars (close > prev_close, indicating failure to hold low). SHORT when price makes new 20-day high (close > dc_upper) but closes below entry (close < prev_close). Exit at breakout extreme by reversing the entry condition. Stop loss set conservatively at 0.5% given the tight 2-5 bar detection window. Signal focuses on 'Turtle Soup' failed breakout exploitation in ranging/high volatility regimes."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "RANGING",
+      "HIGH_VOL"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.005,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mapped 20-day new extremes to Donchian Channels (20-period standard). Entry triggers contrarian reversals: LONG when price makes new 20-day low (close < dc_lower) but closes above entry within bars (close > prev_close, indicating failure to hold low). SHORT when price makes new 20-day high (close > dc_upper) but closes below entry (close < prev_close). Exit at breakout extreme by reversing the entry condition. Stop loss set conservatively at 0.5% given the tight 2-5 bar detection window. Signal focuses on 'Turtle Soup' failed breakout exploitation in ranging/high volatility regimes."
+  },
+  "source_rule_text": "A trader should enter breakout positions in the direction of new price extremes, but should be aware that obvious breakout setups become crowded and are subject to fakeouts; therefore, improve entry odds by either trading the breakout itself or contrarian entries that exploit the predictable failure of obvious breakouts."
+}

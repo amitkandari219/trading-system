@@ -1,0 +1,95 @@
+{
+  "signal_id": "BULKOWSKI_PARTIAL_RISE_OR_DECLINE",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Partial rise or decline pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_PARTIAL_RISE_OR_DECLINE",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_middle"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.5"
+      },
+      {
+        "left": "bb_pct_b",
+        "operator": ">",
+        "right": "0.38"
+      },
+      {
+        "left": "bb_pct_b",
+        "operator": "<",
+        "right": "0.62"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING",
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_middle"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.5
+      },
+      {
+        "indicator": "bb_pct_b",
+        "op": ">",
+        "value": 0.38
+      },
+      {
+        "indicator": "bb_pct_b",
+        "op": "<",
+        "value": 0.62
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING",
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_PARTIAL_RISE_OR_DECLINE"
+  },
+  "source_rule_text": "Partial rise or decline pattern: Wait for a pause in trend, then buy when prices close beyond the halfway point between the minor low/high and the trend line"
+}

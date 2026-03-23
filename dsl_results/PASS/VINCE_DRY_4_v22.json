@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_4",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "probability_mass_below_zero",
+      "threshold": 0.5,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": 0.0,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Reduce optimal f toward zero as lower bound of return distribution extends further negative. Primary trigger: when P(return < 0) > 50% or mathematical expectation < 0. optimal_f approaches zero under these conditions to manage tail risk.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Reduce optimal f toward zero as the distribution's lower bound extends further negative, particularly when more than 50% of the probability distribution area falls below zero (negative mathematical expectation)."
+}

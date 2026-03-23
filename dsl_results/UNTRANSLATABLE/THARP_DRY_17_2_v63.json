@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal specifies regime-dependent position sizing (1.5x for trending, 1.0x for ranging) and dual regime assessment with 15-period lookback, RSI band entries for ranging markets, profit targets tied to ATR multiples vs band touches, and time-based exits (10 bars range / 20 bars trend). The backtest engine schema does not support dynamic position sizing rules, regime-specific exit targets, or time-based conditional logic. Additionally, 'RSI near band edges' requires Bollinger Band integration not fully expressible in the 3-field condition format.",
+  "translation_notes": "Converted trend entry condition (ADX > 15 or price above/below 10-period MA) into directional long/short rules. Trend exhaustion exit (ADX < 12) is translatable. Range-based entries via RSI overbought/oversold and time-based exits cannot be fully captured in the structured format. Position sizing parameters and regime-specific profit targets require engine enhancements."
 }

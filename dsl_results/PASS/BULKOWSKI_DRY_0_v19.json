@@ -1,0 +1,94 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_lower"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "30"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.5,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 30.0
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.035,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_DRY_0"
+  },
+  "source_rule_text": "After a downward breakout completes and prices reach the ultimate low, enter a LONG position to capture the subsequent rise when the downtrend ends"
+}

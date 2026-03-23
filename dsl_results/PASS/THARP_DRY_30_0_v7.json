@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_30_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.01,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "equity_peak_gain_pct",
+      "threshold": 2.0,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Risk 1% of current account balance per trade. Scale up when equity exceeds previous peak by \u22652%; scale down during losing periods (drawdown implied). Uses fixed fractional method tied to current account equity.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should adjust position size proportionally to account equity, scaling up during winning periods and down during losing periods, to align risk exposure with capital available."
+}

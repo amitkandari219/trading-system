@@ -1,0 +1,91 @@
+{
+  "signal_id": "BULKOWSKI_BARR_BOTTOM_PATTERN",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "BARR bottom pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_BARR_BOTTOM_PATTERN",
+    "entry_long": [
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.5"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "r1"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.5
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "r1"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_BARR_BOTTOM_PATTERN"
+  },
+  "source_rule_text": "BARR bottom pattern: A descending triangle pattern that forms after a price decline, characterized by a recovery phase where prices move higher from the low"
+}

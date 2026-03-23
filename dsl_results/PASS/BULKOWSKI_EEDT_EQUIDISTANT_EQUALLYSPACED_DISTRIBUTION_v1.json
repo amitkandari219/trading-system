@@ -1,0 +1,91 @@
+{
+  "signal_id": "BULKOWSKI_EEDT_EQUIDISTANT_EQUALLYSPACED_DISTRIBUTION",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "EEDT (Equidistant Equally-spaced Distribution Top)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_EEDT_EQUIDISTANT_EQUALLYSPACED_DISTRIBUTION",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.7"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.7
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_EEDT_EQUIDISTANT_EQUALLYSPACED_DISTRIBUTION"
+  },
+  "source_rule_text": "EEDT (Equidistant Equally-spaced Distribution Top): A twin-peak reversal pattern where price must close below the confirmation line to validate the pattern"
+}

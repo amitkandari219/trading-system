@@ -1,0 +1,94 @@
+{
+  "signal_id": "BULKOWSKI_BROADENING_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Broadening Formation",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_BROADENING_TOP",
+    "entry_long": [
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": ">",
+        "right": "0.06"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": ">",
+        "value": 0.06
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_BROADENING_TOP"
+  },
+  "source_rule_text": "Broadening Formation: Buy at the low of the bottom trend line after the stock turns"
+}

@@ -1,0 +1,419 @@
+{
+  "SSRN_JANUARY_EFFECT": {
+    "source": "SSRN-1150080",
+    "type": "CALENDAR",
+    "rule": "Buy Nifty in January, sell end of month",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": -0.99
+        }
+      ],
+      "exit_long": [],
+      "direction": "LONG",
+      "hold_days": 22,
+      "stop_loss_pct": 0.03
+    },
+    "month_filter": [
+      1
+    ]
+  },
+  "SSRN_EXPIRY_VOL": {
+    "source": "SSRN-1590784",
+    "type": "CALENDAR",
+    "rule": "Expiry week: higher volatility, sell straddles or reduce position size",
+    "overlay": true
+  },
+  "SSRN_MONTHLY_HIGH": {
+    "source": "SSRN-5367997",
+    "type": "CALENDAR",
+    "rule": "Buy when price makes new monthly high in last 5 trading days of month",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "close",
+          "op": ">",
+          "value": "dc_upper"
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "close",
+          "op": "<",
+          "value": "sma_20"
+        }
+      ],
+      "direction": "LONG",
+      "hold_days": 10,
+      "stop_loss_pct": 0.02
+    }
+  },
+  "SSRN_ROLLOVER_STRATEGY": {
+    "source": "SSRN-3000963",
+    "type": "CALENDAR",
+    "rule": "Nifty futures rollover: position in direction of roll cost (contango=short, backwardation=long)",
+    "overlay": true
+  },
+  "SSRN_TSMOM_12M": {
+    "source": "SSRN-2089463",
+    "type": "TSMOM",
+    "rule": "Go long if 12-month return > 0, short if < 0 (Moskowitz TSMOM)",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "close",
+          "op": ">",
+          "value": "sma_200"
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "close",
+          "op": "<",
+          "value": "sma_200"
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "close",
+          "op": "<",
+          "value": "sma_200"
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "close",
+          "op": ">",
+          "value": "sma_200"
+        }
+      ],
+      "direction": "BOTH",
+      "hold_days": 0,
+      "stop_loss_pct": 0.05
+    }
+  },
+  "SSRN_WEEKLY_MOM": {
+    "source": "SSRN-3065621",
+    "type": "TSMOM",
+    "rule": "Weekly momentum: buy if last week return > 0 AND close > sma_5",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "close",
+          "op": ">",
+          "value": "sma_5"
+        },
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "close",
+          "op": "<",
+          "value": "sma_5"
+        }
+      ],
+      "direction": "LONG",
+      "hold_days": 5,
+      "stop_loss_pct": 0.02
+    }
+  },
+  "SSRN_INDIA_MOM": {
+    "source": "SSRN-5116091",
+    "type": "TSMOM",
+    "rule": "Indian equity momentum: buy when 3-month return positive AND ADX > 20",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "close",
+          "op": ">",
+          "value": "sma_50"
+        },
+        {
+          "indicator": "adx_14",
+          "op": ">",
+          "value": 20
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "close",
+          "op": "<",
+          "value": "sma_50"
+        }
+      ],
+      "direction": "LONG",
+      "hold_days": 20,
+      "stop_loss_pct": 0.03
+    }
+  },
+  "SSRN_VOL_MANAGED": {
+    "source": "SSRN-2659431",
+    "type": "VOLATILITY",
+    "rule": "Scale position inversely to realized vol: size = target_vol / realized_vol",
+    "overlay": true
+  },
+  "SSRN_LOW_VOL": {
+    "source": "SSRN-980865",
+    "type": "VOLATILITY",
+    "rule": "Buy when hvol_20 is in bottom quartile (low vol = higher risk-adjusted returns)",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "hvol_20",
+          "op": "<",
+          "value": 0.12
+        },
+        {
+          "indicator": "close",
+          "op": ">",
+          "value": "sma_50"
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "hvol_20",
+          "op": ">",
+          "value": 0.2
+        }
+      ],
+      "direction": "LONG",
+      "hold_days": 20,
+      "stop_loss_pct": 0.03
+    }
+  },
+  "SSRN_VOL_EFFECT_BLITZ": {
+    "source": "SSRN-3442749",
+    "type": "VOLATILITY",
+    "rule": "Low volatility anomaly: buy when ATR/close ratio is low, sell when high",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "bb_bandwidth",
+          "op": "<",
+          "value": 0.03
+        },
+        {
+          "indicator": "adx_14",
+          "op": "<",
+          "value": 20
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "bb_bandwidth",
+          "op": ">",
+          "value": 0.06
+        }
+      ],
+      "direction": "LONG",
+      "hold_days": 15,
+      "stop_loss_pct": 0.02
+    }
+  },
+  "SSRN_CCI_OPTIONS": {
+    "source": "SSRN-3323746",
+    "type": "OPTIONS_FLOW",
+    "rule": "Buy when CCI crosses above -100 (oversold recovery)",
+    "note": "CCI not in our indicator set - approximate with RSI",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "rsi_14",
+          "op": "crosses_above",
+          "value": 30
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "rsi_14",
+          "op": ">",
+          "value": 70
+        }
+      ],
+      "direction": "LONG",
+      "hold_days": 10,
+      "stop_loss_pct": 0.02
+    }
+  },
+  "SSRN_OPTION_VOLUME": {
+    "source": "SSRN-368980",
+    "type": "OPTIONS_FLOW",
+    "rule": "Buy when option volume spikes (vol_ratio > 2x) with positive price action",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "vol_ratio_20",
+          "op": ">",
+          "value": 2.0
+        },
+        {
+          "indicator": "close",
+          "op": ">",
+          "value": "prev_close"
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "vol_ratio_20",
+          "op": "<",
+          "value": 1.0
+        }
+      ],
+      "direction": "LONG",
+      "hold_days": 5,
+      "stop_loss_pct": 0.02
+    }
+  },
+  "SSRN_OPT_SELLING_ML": {
+    "source": "SSRN-4766370",
+    "type": "OPTIONS_FLOW",
+    "rule": "Sell options when VIX > realized vol (IV premium exists)",
+    "overlay": true
+  },
+  "SSRN_CONTRARIAN": {
+    "source": "SSRN-227016",
+    "type": "REVERSAL",
+    "rule": "Buy after 3+ consecutive down days with RSI < 30 (mean reversion)",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "rsi_14",
+          "op": "<",
+          "value": 30
+        },
+        {
+          "indicator": "close",
+          "op": "<",
+          "value": "bb_lower"
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "rsi_14",
+          "op": ">",
+          "value": 50
+        }
+      ],
+      "direction": "LONG",
+      "hold_days": 10,
+      "stop_loss_pct": 0.03
+    }
+  },
+  "SSRN_CONTRARIAN_INDIA": {
+    "source": "SSRN-2785541",
+    "type": "REVERSAL",
+    "rule": "Contrarian buy on Indian market: buy after 5-day decline > 3%",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "price_pos_20",
+          "op": "<",
+          "value": 0.1
+        },
+        {
+          "indicator": "rsi_14",
+          "op": "<",
+          "value": 35
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "price_pos_20",
+          "op": ">",
+          "value": 0.5
+        }
+      ],
+      "direction": "LONG",
+      "hold_days": 10,
+      "stop_loss_pct": 0.03
+    }
+  },
+  "SSRN_JEGADEESH_REV": {
+    "source": "SSRN-299107",
+    "type": "REVERSAL",
+    "rule": "Short-term reversal: buy losers (1-week), short winners (contrarian)",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "close",
+          "op": "<",
+          "value": "sma_5"
+        },
+        {
+          "indicator": "rsi_7",
+          "op": "<",
+          "value": 25
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "close",
+          "op": ">",
+          "value": "sma_5"
+        },
+        {
+          "indicator": "rsi_7",
+          "op": ">",
+          "value": 75
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "close",
+          "op": ">",
+          "value": "sma_5"
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "close",
+          "op": "<",
+          "value": "sma_5"
+        }
+      ],
+      "direction": "BOTH",
+      "hold_days": 5,
+      "stop_loss_pct": 0.02
+    }
+  },
+  "SSRN_LOW_VOL_BAKER": {
+    "source": "SSRN-2284643",
+    "type": "FACTOR",
+    "rule": "Buy when realized vol is low AND price trending up (low-vol anomaly)",
+    "dsl": {
+      "entry_long": [
+        {
+          "indicator": "hvol_20",
+          "op": "<",
+          "value": 0.15
+        },
+        {
+          "indicator": "close",
+          "op": ">",
+          "value": "sma_50"
+        },
+        {
+          "indicator": "adx_14",
+          "op": "<",
+          "value": 20
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "hvol_20",
+          "op": ">",
+          "value": 0.25
+        }
+      ],
+      "direction": "LONG",
+      "hold_days": 20,
+      "stop_loss_pct": 0.03
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.53,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes a breakout above resistance (prev_high) with closing price confirmation (close > prev_high). Entry uses the closing price confirmation rule. Exit condition inferred as reversal below SMA_20 since AUTHOR_SILENT. Average rise of 5.49% and average decline of 5.53% used to estimate stop_loss_pct. Pattern is 'Up Breakout' in ANY regime."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.0553,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal describes a breakout above resistance (prev_high) with closing price confirmation (close > prev_high). Entry uses the closing price confirmation rule. Exit condition inferred as reversal below SMA_20 since AUTHOR_SILENT. Average rise of 5.49% and average decline of 5.53% used to estimate stop_loss_pct. Pattern is 'Up Breakout' in ANY regime."
+  },
+  "source_rule_text": "Up breakout with closing price confirmation"
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_4766370_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Core entry condition requires ML model prediction of strangle expected return vs threshold (Th). This is a proprietary ML output not available in the allowed indicators list. Greeks (Delta, Gamma, etc.) and ML model outputs are not in the allowed indicators set. The signal cannot be fully translated without access to: (1) pre-trained ML model predictions, (2) options Greeks calculations, (3) specific threshold value (Th). Used volatility proxy (india_vix) as fallback, but this does not capture the actual ML-based signal logic.",
+  "translation_notes": "Signal is fundamentally untranslatable without ML model integration. Entry requires: ML prediction of strangle expected return > Th, both options OTM, valid strangle exists. These are not expressible with technical indicators alone. Substituted india_vix as a volatility-based proxy for strangle trading environment, but this is NOT equivalent to the original ML-based entry logic. Exit condition 'hold until expiry' cannot be expressed in backtest engine rules\u2014used volatility mean reversion as proxy. Parameters: strangle on NIFTY with unspecified strikes (S1, S2) and undefined threshold (Th)."
+}

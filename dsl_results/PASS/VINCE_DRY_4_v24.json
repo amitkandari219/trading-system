@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_4",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "sigma_distance_from_mean",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Optimal f inversely proportional to sigma distance from mean (optimal_f \u221d 1/\u03c3). Position size decreases as distribution parameters extend into tail risk zones (3\u03c3 through 10+\u03c3). Use fitted distribution model rather than raw data to reduce spurious inflection points.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size should be reduced (optimal f approaches 0) as distribution parameters move further from the mean, with position sizing inversely related to the sigma distance from expected value to account for tail risk."
+}

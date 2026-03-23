@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_5116091_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cross-sectional ranking of all stocks by cumulative past returns and quintile selection (top 20% performers). This is a portfolio-level ranking operation, not a single-instrument technical condition. The allowed indicators list contains only single-bar technical metrics (RSI, MACD, moving averages, etc.) with no cross-sectional ranking or percentile functions. Backtest engine would need custom ranking logic not expressible in the provided indicator/operator framework.",
+  "translation_notes": "MOMENTUM strategy requiring relative stock performance ranking across universe. Cannot be translated to entry/exit rules on individual bar properties. Requires: (1) Calculate cumulative returns for all stocks over formation period, (2) Rank by this metric, (3) Filter top quintile, (4) Build portfolio. This needs custom aggregation logic outside the standard technical indicator vocabulary."
+}

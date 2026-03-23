@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_30_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "ANTI_MARTINGALE",
+    "base_risk_pct": 3.0,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": 1.5,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "equity_above_high_water_mark",
+      "threshold": 3.0,
+      "direction": "above"
+    },
+    "max_risk_pct": 3.0,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Scale position size up by 1.5x contracts per unit capital when account equity exceeds previous peak by \u22653%; scale down during losing periods (drawdown). Risk 3% of current account balance per trade.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should adjust position size proportionally to account equity, scaling up during winning periods and down during losing periods, to align risk exposure with capital available."
+}

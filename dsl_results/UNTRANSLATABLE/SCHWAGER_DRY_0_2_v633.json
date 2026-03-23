@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires options-specific metrics not available in allowed indicators: (1) 'intrinsic value >= 60% of total option value' - requires option pricing model with intrinsic/time value decomposition; (2) 'Implied volatility percentile' - requires historical IV percentile ranking across lookback period; (3) 'Time value premium recovery to >= 50%' - requires option Greeks and time value calculation. The allowed indicators list lacks option chain data, IV curves, and Greeks (delta, vega, theta). Partial proxy attempted using hvol_20 vs india_vix, but this does not capture the nuanced options position management logic described in the original signal.",
+  "translation_notes": "SCHWAGER_DRY_0_2 is an options-specific holding rule based on volatility surface arbitrage (realized vol > implied vol with profitable intrinsic position). The source text fragment does not provide actionable directional bias. Attempted mapping: realized_vol_proxy=hvol_20, iv_proxy=india_vix, iv_percentile_proxy=raw_level_comparison. However, core conditions ('intrinsic value percentage', 'time value threshold', 'IV percentile rank') cannot be reliably translated without options pricing indicators. Signal is fundamentally untranslatable to price-action-only engine."
 }

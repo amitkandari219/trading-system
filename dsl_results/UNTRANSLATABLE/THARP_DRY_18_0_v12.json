@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires (1) 2+ standard deviations from 20-period MA \u2014 price_pos_20 provides normalized price position but not explicit standard deviation calculation; (2) ATR vs 90th percentile of last 60 bars \u2014 cannot compute historical percentile rank without custom lookback aggregation; (3) reversal candlepattern detection (pin bar, engulfing) \u2014 no pattern recognition indicators available; (4) profit target at 50% of prior move amplitude \u2014 requires historical swing tracking not available in indicator set.",
+  "translation_notes": "Approximated using price_pos_20 (price deviation from SMA) as proxy for extreme levels. Used hvol_20 as volatility benchmark instead of 90th percentile calculation. Mapped volume spike via vol_ratio_20. Reversal candlepattern condition cannot be translated. Exit conditions use pivot levels (S1/R1) as directional reversal proxies instead of prior move amplitude targets. Context-dependent direction allows both LONG and SHORT entries based on market extremes."
 }

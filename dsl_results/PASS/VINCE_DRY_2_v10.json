@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_2",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": 2.0,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "equity_threshold_geometric_mean",
+      "threshold": null,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Step up from 1 to 2 contracts when equity reaches threshold T calculated via geometric mean formula derived from optimal f. Optimal f value and exact threshold formula not specified in excerpt. This implements discrete contract increment logic rather than continuous fractional sizing.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Increase position size from one contract to two contracts when equity reaches a threshold calculated using the geometric mean formula, rather than using optimal f directly which assumes infinitely divisible contracts."
+}

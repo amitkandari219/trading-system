@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_368980_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'put/call volume ratio calculated from buyer-initiated new position volume' which is not available in the allowed indicators list. The vol_ratio_20 indicator is a generic volume ratio proxy, but does not specifically measure put/call option volume or distinguish buyer-initiated opening positions. The exact decile thresholds (lowest and highest deciles) cannot be determined without access to the original data distribution.",
+  "translation_notes": "Attempted translation uses vol_ratio_20 as a generic volume ratio proxy, with arbitrary thresholds (0.5 for long entry, 2.0 for short entry) representing low vs high ratios. However, this fundamentally misses the signal's core requirement: put/call option volume analysis. The signal is based on MIT research analyzing option market microstructure and requires options data not present in standard price/volume indicators. Daily rebalancing (1-day holding period) is preserved."
+}

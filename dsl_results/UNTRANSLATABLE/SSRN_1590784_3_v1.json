@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1590784_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calendar-based entry (futures expiration week) and GARCH conditional variance measurement. The allowed indicator set lacks: (1) calendar/event detection for contract expiration dates, (2) GARCH model output. hvol_20 is a proxy for volatility elevation but cannot capture the specific conditional variance modeling or expiration-week timing requirement. A backtest engine would need external event data and GARCH computation to properly implement this signal.",
+  "translation_notes": "Attempted proxy: hvol_20 compared to zscore_20 to detect elevated volatility regimes. However, this misses the core requirement of timing entries to futures contract expiration weeks specifically. The original signal is fundamentally calendar-event-driven, not price-pattern-driven."
+}

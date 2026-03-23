@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2284643_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit beta calculation and percentile ranking across universe, which are not available in the allowed indicator set. The rule depends on relative ranking (lower percentiles of volatility, beta below market average) rather than absolute threshold values. hvol_20 is used as a proxy for volatility component, but beta measurement and cross-sectional percentile ranking cannot be expressed with available indicators.",
+  "translation_notes": "Used hvol_20 (20-period historical volatility) as a proxy for the volatility component of the signal. The original signal requires (1) beta calculation vs. market index and (2) percentile ranking of both metrics relative to market universe. These require multi-asset comparative analysis not supported by single-stock indicators. The entry condition attempts to capture 'low volatility' using hvol below reasonable threshold; exit attempts to capture regime shift to higher volatility. A proper implementation would require portfolio-level cross-sectional ranking and beta computation."
+}

@@ -1,0 +1,72 @@
+{
+  "signal_id": "SSRN_5116091_4",
+  "book_id": "SSRN_5116091",
+  "dsl_rule": {
+    "signal_id": "SSRN_5116091_4",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Interpreted 'positive price momentum' as price above sma_50 and positive returns. 'Bull run condition' mapped to TRENDING_UP regime. Exit triggers when momentum reverses (price crosses below sma_50). Strategy explicitly avoids short selling per source text. Stop loss and hold period set conservatively for momentum strategy."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Interpreted 'positive price momentum' as price above sma_50 and positive returns. 'Bull run condition' mapped to TRENDING_UP regime. Exit triggers when momentum reverses (price crosses below sma_50). Strategy explicitly avoids short selling per source text. Stop loss and hold period set conservatively for momentum strategy."
+  },
+  "source_rule_text": "During bull markets, go long winner stocks via momentum strategy; avoid short selling loser stocks"
+}

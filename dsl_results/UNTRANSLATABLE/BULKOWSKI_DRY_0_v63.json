@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "The Measure Rule signal requires calculation of 'formation height' (difference between highest high and trend-line price) and application of that calculated value to derive target prices. This requires: (1) identification of pattern formation boundaries (not available as indicators), (2) trend-line price calculation (not available as a standard indicator), and (3) dynamic arithmetic on formation geometry. The backtest engine's indicator set does not include trend-line price, formation height tracking, or the ability to store and reference calculated pattern measurements across bars. This signal is fundamentally a manual chart pattern analysis technique that cannot be fully operationalized with the available technical indicators.",
-  "translation_notes": "BULKOWSKI_DRY_0 describes a conservative measure rule for chart patterns requiring manual identification of trend lines and formation geometry\u2014not suitable for automated rule-based backtesting without custom pattern recognition indicators."
+  "untranslatable_reason": "Measure Rule requires explicit calculation of formation height and trend-line price, which are chart pattern geometric properties that cannot be derived from the available OHLC indicators. The pattern needs manual identification of: (1) highest high within formation, (2) trend-line price level, and (3) formation height = highest_high - trend_line_price. Exit targets are then calculated as trend_line_price \u00b1 (formation_height / 2). This geometric measurement is beyond the scope of technical indicators and requires specialized pattern recognition logic outside the indicator-based framework.",
+  "translation_notes": null
 }

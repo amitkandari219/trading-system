@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "sample_size_confidence",
+      "threshold": null,
+      "direction": "above",
+      "description": "N trials required where Z*((P*(1-P))/(N-1))^0.5 = X, solving for minimum N to achieve confidence level that win rate P exceeds threshold with acceptable deviation X"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Statistical validation rule: determines minimum sample size (N) needed before trusting a win rate estimate. Uses Z-score confidence levels (e.g., 3\u03c3 = 99.865%), win probability P, and acceptable deviation X. This is a pre-trading validation filter that determines when sufficient edge evidence exists, not a per-trade position sizing formula. Must be paired with a concrete sizing method (e.g., FIXED_FRACTIONAL 1-2% per trade) for execution.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Determine minimum number of trials needed to achieve a specified confidence level that win rate exceeds a threshold, using standard deviation analysis."
+}

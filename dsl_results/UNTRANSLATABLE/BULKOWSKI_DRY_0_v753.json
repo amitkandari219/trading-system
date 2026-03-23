@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Exhaustion Gap pattern requires gap detection (price gap between prev_close and open) and multi-bar sequencing logic (2-day price pause, gap closure tracking) which cannot be expressed with single-bar indicators and basic operators. Pattern detection requires: (1) identifying gap occurrence, (2) tracking gap size relative to historical continuation gaps, (3) monitoring 2-bar pause before new highs, (4) tracking gap closure over multiple bars. These require either custom gap detection indicators or complex multi-bar state tracking unavailable in current indicator set.",
+  "translation_notes": "Attempted to capture core characteristics (high volume, wide range/gap proxy via ATR, reversal at support/resistance) but true exhaustion gap pattern requires specialized gap and multi-bar continuation logic. Author provided no exit conditions (AUTHOR_SILENT) so used pivot-based reversal. Success rates and specific thresholds marked AUTHOR_SILENT in source."
 }

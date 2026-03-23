@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3065621_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by 13-week log returns and selecting top/bottom performers by percentile rank. This requires relative cross-sectional ranking (long top decile, short bottom decile) which cannot be expressed as a single-instrument technical condition. The backtest engine would need a ranking/sorting module or portfolio construction layer not available in the condition-based rule format.",
+  "translation_notes": "Attempted partial translation using log_returns direction as proxy, but true momentum ranking strategy requires: (1) calculation of 13-week cumulative log returns per stock, (2) ranking across universe, (3) portfolio construction with long/short legs. Hold period set to 91 days (~13 weeks). Weekly rebalance frequency noted but not expressible in this schema. AUTHOR_SILENT on specific entry thresholds; ranking percentiles unknown."
+}

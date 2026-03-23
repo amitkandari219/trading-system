@@ -1,0 +1,86 @@
+{
+  "signal_id": "THARP_DRY_18_1",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "true_range",
+        "operator": ">",
+        "right": "atr_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 0.75,
+    "hold_days_max": 7,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING",
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses 20-day breakout highs which map to Donchian Channel upper band (dc_upper). Entry on pullback interpreted as price crossing above after consolidation. Stop loss calculated as 0.75 ATR above entry (stop_loss_pct field). Take profit based on retracement distance to lower band (dc_lower used as exit target). Hold period max of 7 bars as specified. Donchian Channel is standard 20-period equivalent to 20-day high/low range. Price position pullback to 0.3 percentile aligns with dc_lower crossover logic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "true_range",
+        "op": ">",
+        "value": "atr_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING",
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 7,
+    "stop_loss_pct": 0.0075,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses 20-day breakout highs which map to Donchian Channel upper band (dc_upper). Entry on pullback interpreted as price crossing above after consolidation. Stop loss calculated as 0.75 ATR above entry (stop_loss_pct field). Take profit based on retracement distance to lower band (dc_lower used as exit target). Hold period max of 7 bars as specified. Donchian Channel is standard 20-period equivalent to 20-day high/low range. Price position pullback to 0.3 percentile aligns with dc_lower crossover logic."
+  },
+  "source_rule_text": "A trader should use short-term setups based on recent price breakouts to identify lower-risk entry conditions by compressing the timeframe of analysis."
+}

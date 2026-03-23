@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires put-call ratio (P_it / (P_it + C_it)) derived from options market data. This is not available in the ALLOWED INDICATORS list, which contains only price, volume, and technical analysis indicators. The signal depends on non-market maker option flow data that cannot be replicated from standard OHLCV bars.",
+  "translation_notes": "SSRN_622869_5 is a fundamental options market microstructure signal based on informed trading activity in the options market. It requires: (1) segregation of non-market maker option trades, (2) put and call contract volume separately, and (3) calculation of put-call ratio. None of these data sources are available in a standard backtest engine with only price/volume/technical indicators. To implement this signal, the backtest engine would need to be extended with options-level data feeds and order flow analysis capabilities."
+}

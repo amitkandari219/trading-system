@@ -67,6 +67,7 @@ SCALE NOTES (use correct scale — do NOT confuse percentage vs decimal):
   0-100 scale: rsi_7, rsi_9, rsi_14, rsi_21, stoch_k, stoch_d, stoch_k_5, stoch_d_5, adx_14
   0-1 scale (NOT percentage): bb_pct_b, price_pos_20, body_pct
   Decimal (0.02 = 2%): returns, log_returns, hvol_6, hvol_20, hvol_100, bb_bandwidth, stop_loss_pct
+  Z-score (centered ~0, typically -3 to +3): zscore_20, zscore_50 (positive = above mean, negative = below)
 
 WORKED EXAMPLE:
   Signal: "Buy when RSI is oversold and price is above the 50-day moving average"
@@ -125,7 +126,8 @@ def _format_indicators_list() -> str:
         'Moving Averages': [i for i in ALLOWED_INDICATORS if i.startswith(('sma_', 'ema_'))],
         'RSI': [i for i in ALLOWED_INDICATORS if i.startswith('rsi_')],
         'ATR': [i for i in ALLOWED_INDICATORS if i.startswith('atr_')] + ['true_range'],
-        'Bollinger': [i for i in ALLOWED_INDICATORS if i.startswith('bb_')],
+        'Bollinger (20p)': [i for i in ALLOWED_INDICATORS if i.startswith('bb_') and '_30' not in i],
+        'Bollinger (30p)': [i for i in ALLOWED_INDICATORS if i.startswith('bb_') and '_30' in i],
         'MACD': ['macd', 'macd_signal', 'macd_hist'],
         'ADX': ['adx_14'],
         'Stochastic': [i for i in ALLOWED_INDICATORS if i.startswith('stoch_')],
@@ -133,6 +135,7 @@ def _format_indicators_list() -> str:
         'Pivots': ['pivot', 'r1', 's1', 'r2', 's2'],
         'Volume/Vol': ['vol_ratio_20', 'hvol_20', 'india_vix'],
         'Position': ['price_pos_20'],
+        'Z-score': ['zscore_20', 'zscore_50'],
         'Previous Bar': ['prev_close', 'prev_high', 'prev_low', 'prev_open', 'prev_volume'],
         'Returns': ['returns', 'log_returns'],
         'Bar Props': ['body', 'body_pct', 'upper_wick', 'lower_wick', 'range'],
@@ -154,6 +157,12 @@ class DSLTranslator:
 
     def _is_tradeable(self, signal: dict) -> bool:
         """Pre-check: is this signal category tradeable?"""
+        book_id = signal.get('book_id', '')
+
+        # THARP and VINCE sizing rules are always "tradeable" (for sizing DSL)
+        if book_id in ('THARP', 'VINCE'):
+            return True
+
         cat = signal.get('signal_category', '')
         primary = cat.split('|')[0].strip()
         if primary in NON_TRADEABLE_CATEGORIES:
@@ -165,15 +174,10 @@ class DSLTranslator:
     def translate(self, signal: dict, source_chunk: str = '') -> DSLSignalRule:
         """
         Translate a signal candidate dict into a DSLSignalRule.
-
-        Args:
-            signal: dict with signal_id, rule_text, entry_conditions, etc.
-            source_chunk: original book text (for context)
-
-        Returns:
-            DSLSignalRule (may have untranslatable=True)
+        Uses pattern-specific prompt for BULKOWSKI/CANDLESTICK books.
         """
         signal_id = signal.get('signal_id', 'unknown')
+        book_id = signal.get('book_id', '')
 
         if not self._is_tradeable(signal):
             return DSLSignalRule(
@@ -182,20 +186,36 @@ class DSLTranslator:
                 untranslatable_reason=f"Category {signal.get('signal_category')} is not tradeable",
             )
 
-        prompt = TRANSLATE_PROMPT.format(
-            signal_id=signal_id,
-            rule_text=signal.get('rule_text', '')[:500],
-            signal_category=signal.get('signal_category', ''),
-            direction=signal.get('direction', ''),
-            entry_conditions=json.dumps(signal.get('entry_conditions', []))[:800],
-            exit_conditions=json.dumps(signal.get('exit_conditions', []))[:400],
-            parameters=json.dumps(signal.get('parameters', {}))[:400],
-            target_regimes=json.dumps(signal.get('target_regimes', [])),
-            source_chunk=(source_chunk or signal.get('raw_chunk_text', ''))[:1500],
-            indicators_list=INDICATORS_LIST_STR,
-        )
+        # Use book-specific prompts
+        if book_id in ('BULKOWSKI', 'CANDLESTICK'):
+            prompt = self._build_pattern_prompt(signal)
+        elif book_id in ('THARP', 'VINCE'):
+            prompt = self._build_sizing_prompt(signal)
+        else:
+            prompt = TRANSLATE_PROMPT.format(
+                signal_id=signal_id,
+                rule_text=signal.get('rule_text', '')[:500],
+                signal_category=signal.get('signal_category', ''),
+                direction=signal.get('direction', ''),
+                entry_conditions=json.dumps(signal.get('entry_conditions', []))[:800],
+                exit_conditions=json.dumps(signal.get('exit_conditions', []))[:400],
+                parameters=json.dumps(signal.get('parameters', {}))[:400],
+                target_regimes=json.dumps(signal.get('target_regimes', [])),
+                source_chunk=(source_chunk or signal.get('raw_chunk_text', ''))[:1500],
+                indicators_list=INDICATORS_LIST_STR,
+            )
 
         return self._call_and_parse(signal_id, prompt)
+
+    def _build_pattern_prompt(self, signal: dict) -> str:
+        """Build pattern-specific DSL prompt for Bulkowski/Candlestick signals."""
+        from extraction.prompts.pattern_dsl_prompt import format_pattern_prompt
+        return format_pattern_prompt(signal)
+
+    def _build_sizing_prompt(self, signal: dict) -> str:
+        """Build sizing-specific DSL prompt for Tharp/Vince signals."""
+        from extraction.prompts.sizing_prompt import format_sizing_prompt
+        return format_sizing_prompt(signal)
 
     def retranslate_fixable(self, signal_id: str, source_chunk: str,
                             broken_rule: dict, issues: list) -> DSLSignalRule:
@@ -249,7 +269,17 @@ class DSLTranslator:
                 translation_notes=result.get('translation_notes'),
             )
 
-        # Parse conditions
+        # Handle POSITION_SIZING responses (different schema)
+        if result.get('signal_type') == 'POSITION_SIZING':
+            # Store sizing rule as a DSLSignalRule with translation_notes
+            return DSLSignalRule(
+                signal_id=signal_id,
+                translation_notes=json.dumps(result),
+                # Mark as "translatable" so it gets saved to PASS
+                # The sizing data is in translation_notes as JSON
+            )
+
+        # Parse conditions (standard entry/exit DSL)
         try:
             entry_long = [DSLCondition.from_dict(c) for c in result.get('entry_long', [])]
             entry_short = [DSLCondition.from_dict(c) for c in result.get('entry_short', [])]

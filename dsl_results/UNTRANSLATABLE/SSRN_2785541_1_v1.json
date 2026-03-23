@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2785541_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks across a universe by 3-5 year historical returns and selecting top/bottom 35 stocks (portfolio-level relative ranking). This requires cross-sectional comparative analysis not supported by single-asset technical indicators. The 'returns' indicator represents single-asset returns only. A backtest engine would need explicit portfolio construction logic with universe ranking, not condition-based rules.",
+  "translation_notes": "This is a mean-reversion factor strategy (reversal effect) that requires: (1) Computing cumulative returns over 3-5 year lookback across a stock universe, (2) Ranking and selecting worst 35 (long) vs best 35 (short), (3) Holding for 3 years. The core logic cannot be expressed as simple indicator conditions on individual securities. Implementation requires a portfolio rebalancing framework with cross-sectional ranking, not a rules-based condition engine. Hold period is ~756 days (3 years)."
+}

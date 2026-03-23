@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'open-buy option volume' and 'buyer-initiated volume signal' which are not standard OHLCV indicators in the allowed list. These are specialized option market microstructure metrics that cannot be derived from the provided indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume Ratios, Z-scores, Returns, Bar Properties). The signal also references a cross-sectional pool filter (top 242 stocks) which requires external ranking logic not expressible in indicator conditions.",
+  "translation_notes": "This signal is fundamentally based on option market data (open-buy contracts, buyer-initiated volume from options trading) rather than equity price/volume data. To properly implement this signal, you would need: (1) option volume data sources, (2) buyer/seller initiation classification, (3) cross-sectional ranking mechanism. A proxy attempt using raw volume >= 50 is provided but does not capture the core signal."
+}

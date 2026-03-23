@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Gravestone Doji pattern requires specific candlestick morphology (small body at top, long lower wick, minimal upper wick) that cannot be fully expressed with available indicators. The signal also requires detecting price trend direction into the pattern and reversal/continuation context, which requires multi-bar trend analysis beyond the allowed indicator set. Author silent on success rates, breakout timing precision (2-4 days), and volume patterns prevents accurate rule calibration.",
+  "translation_notes": "Attempted to capture doji-like properties (long lower_wick > upper_wick with small body) and directional reversal logic (close > open for bullish reversal, close < open for bearish continuation). However, true gravestone doji detection requires: (1) small body near high, (2) specific wick ratio thresholds, (3) preceding downtrend confirmation, (4) breakout timing within 2-4 days. Exit conditions assume median 6-7 day hold as specified. Direction marked CONTEXT_DEPENDENT per signal specification but backtest engine may require explicit LONG/SHORT segregation."
 }

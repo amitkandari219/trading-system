@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "equity_ratio",
+      "threshold": null,
+      "direction": "dynamic",
+      "formula": "f_dynamic = current_equity / inactive_portion"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Dynamic optimal f strategy where position sizing adjusts continuously based on the ratio of current total account equity to the inactive (reserved/protected) portion. This is Ralph Vince's fractional f approach applied dynamically rather than at a fixed static level. Portfolio insurance is embedded via the split-equity mechanism.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Use dynamic fractional f strategy where the fraction of f moves based on the ratio of current equity to inactive portion, rather than a static optimal f level."
+}

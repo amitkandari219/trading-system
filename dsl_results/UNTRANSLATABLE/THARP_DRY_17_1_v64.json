@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Kaufman Efficiency Ratio (KER) is not in the allowed indicators list. ATR percentile thresholds require dynamic calculation not supported by indicator syntax. Signal requires regime detection (RANGING vs TRENDING) which cannot be directly expressed with allowed operators.",
+  "translation_notes": "This signal is regime-based and focuses on avoiding RANGING conditions. The core logic (ADX > 18 for trending, ADX < 15 for exit) was translated. However, KER > 0.50 threshold cannot be implemented without the Efficiency Ratio indicator. The ATR percentile conditions would require external calculation or a custom indicator. Consider implementing Kaufman Efficiency Ratio as a custom metric or using additional ADX confirmation. The 'cash_allocation_in_sideways' parameter suggests position sizing adjustments rather than binary entry/exit, which is outside the scope of this rule structure."
 }

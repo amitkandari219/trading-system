@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_30_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "ANTI_MARTINGALE",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": 1.5,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "consecutive_wins",
+      "threshold": 4,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.5,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Increase position size up to 1.5x multiplier (or max 50% above base) after 4+ consecutive wins, when unrealized equity gain \u226515% and drawdown from peak \u226430%. Primary trigger is winning streak; secondary conditions provide safety limits.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Increase position size during winning streaks and after profitable trades, but within defined limits, to capitalize on momentum while managing drawdown recovery risk."
+}

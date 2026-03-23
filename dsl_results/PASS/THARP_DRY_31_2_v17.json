@@ -1,0 +1,40 @@
+{
+  "signal_id": "THARP_DRY_31_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 3.0,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "expectancy_composite",
+      "threshold": null,
+      "direction": "above",
+      "conditions": [
+        {
+          "metric": "win_rate",
+          "threshold": 0.55,
+          "direction": "above"
+        },
+        {
+          "metric": "reward_to_risk_ratio",
+          "threshold": 4.0,
+          "direction": "above"
+        }
+      ]
+    },
+    "max_risk_pct": 8.0,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Risk 3% per trade (up to 8% portfolio max) when system shows high expectancy (win rate \u226555% AND reward-to-risk \u22654:1). Reduce risk percentage when expectancy conditions not met. Based on Van Tharp expectancy framework.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should risk a higher percentage of portfolio per trade when system expectancy is high (win rate >50% AND reward-to-risk ratio \u22653:1), and a lower percentage when expectancy is lower."
+}

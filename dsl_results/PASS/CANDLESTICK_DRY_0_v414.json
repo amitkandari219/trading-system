@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "lower_wick"
+      },
+      {
+        "left": "close",
+        "operator": "is",
+        "right": "TRENDING_UP"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gravestone Doji identified via small body_pct (indecision), upper wick significantly larger than lower wick (rejection at highs), occurring during uptrend. Exit on mean reversion cross above 20-SMA. Success rate ~51% in both bull and bear markets suggests moderate edge. Hold period set conservatively to 5 days given pattern-based nature."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "lower_wick"
+      },
+      {
+        "indicator": "close",
+        "op": "is",
+        "value": "TRENDING_UP"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Gravestone Doji identified via small body_pct (indecision), upper wick significantly larger than lower wick (rejection at highs), occurring during uptrend. Exit on mean reversion cross above 20-SMA. Success rate ~51% in both bull and bear markets suggests moderate edge. Hold period set conservatively to 5 days given pattern-based nature."
+  },
+  "source_rule_text": "Gravestone Doji: A doji candle occurring in an uptrend, theoretically indicating indecision leading to bearish reversal"
+}

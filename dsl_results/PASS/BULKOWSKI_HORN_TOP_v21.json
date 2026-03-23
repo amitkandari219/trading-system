@@ -1,0 +1,114 @@
+{
+  "signal_id": "BULKOWSKI_HORN_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Horn Top pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_HORN_TOP",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "0.02"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "65"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.75"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": 0.02
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 65.0
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.75
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 50.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_HORN_TOP"
+  },
+  "source_rule_text": "Horn Top pattern: Identify uptrends spanning many months that show horns near the end of the trend. Avoid horns appearing near the end of long downtrends. Watch for horns appearing after downward trends when price starts moving higher."
+}

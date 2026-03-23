@@ -1,0 +1,129 @@
+{
+  "signal_id": "BULKOWSKI_PIPES_BOTTOM_PATTERNS",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Pipes (bottom patterns)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_PIPES_BOTTOM_PATTERNS",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.67"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.67
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "DSL translation of BULKOWSKI_PIPES_BOTTOM_PATTERNS"
+  },
+  "source_rule_text": "Pipes (bottom patterns): Breakout position relative to yearly range determines performance in bull vs bear markets"
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires ATR percentile ranking (25th-60th percentile), bid-ask spread measurement (< 2 ticks), and dynamic profit targets (3\u00d7 risk) \u2014 none of which are available in the allowed indicator set. ATR percentile requires historical distribution analysis not provided by atr_14 alone. Bid-ask spread is not in allowed indicators. Profit target calculation requires position-relative logic not supported by simple comparisons.",
+  "translation_notes": "This signal is fundamentally about market selection filters (regime confirmation) rather than a mechanical entry setup. The core logic\u2014avoiding nervous re-entries by selecting appropriate market conditions first\u2014requires pre-trade filtering that cannot be expressed as standard OHLCV conditions. Attempted translation uses volume and RSI as proxies for momentum alignment, but the ATR percentile ranking and spread filters are non-translatable without custom preprocessing."
 }

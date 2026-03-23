@@ -1,0 +1,95 @@
+{
+  "signal_id": "BULKOWSKI_PIPE_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Pipe bottom",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_PIPE_BOTTOM",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.5,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.035,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_PIPE_BOTTOM"
+  },
+  "source_rule_text": "Pipe bottom: Price pattern that should close above the highest high after completion, with volume confirmation showing brisk activity at pipe bottoms"
+}

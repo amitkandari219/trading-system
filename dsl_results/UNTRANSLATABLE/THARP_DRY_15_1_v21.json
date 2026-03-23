@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires spread analysis between contract months (nearby vs forward), inventory/supply data, and intercontract spread inversion metrics. These are not available in the allowed indicators list which contains only single-contract price/technical indicators. Spread construction (price differential between two contracts), supply shortage indicators (inventory levels, production data), and spread inversion detection require multi-contract or fundamental data sources not present in ALLOWED INDICATORS.",
+  "translation_notes": "This is an intercontract spread strategy that cannot be fully translated using single-contract technical indicators. The signal fundamentally requires: (1) two contract month prices to compute spreads, (2) fundamental supply data (inventories, production cuts), and (3) spread inversion logic. A directional proxy was attempted using price vs SMA, but this loses the core spread and supply condition logic. Recommend implementing with custom multi-contract spread indicators and fundamental data feeds."
 }

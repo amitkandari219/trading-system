@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_19",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires PIN (Probability of Informed Trading) calculation and put-call ratio from option volumes (open-buy put volume / open-buy call volume). PIN is a proprietary microstructure metric requiring intraday trade classification not available in standard OHLCV indicators. Put-call ratio requires separate options market data. vol_ratio_20 used as imperfect proxy but does not capture the true put-call option volume logic or PIN computation specified in the source material.",
+  "translation_notes": "This signal fundamentally depends on options market microstructure data (put/call volumes) and a complex informed trading probability metric (PIN) that cannot be derived from standard price/volume indicators. The 43bps predictability edge and -61% correlation with size are empirical findings specific to PIN, which is not computable from OHLCV alone. Substituting vol_ratio_20 is a crude approximation only. Backtest engine would need PIN pre-calculated and options data integrated to properly implement this signal."
+}

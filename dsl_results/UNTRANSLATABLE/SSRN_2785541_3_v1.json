@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2785541_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Strategy requires ranking stocks by past 6-month returns and selecting top/bottom deciles (winners/losers). This requires cross-sectional portfolio construction logic unavailable in single-instrument indicator rules. The 'returns' conditions above represent the observed winner-loser spread (0.04946 or 4.946%) as a proxy, but true implementation requires a universe ranking mechanism not expressible in this single-bar rule schema.",
+  "translation_notes": "Formation period (F) = 6 months sourced from F=6 row in source table. Holding period (H) = 3 months. Winner-loser spread coefficient = 0.04946 (4.946% monthly return differential). t-statistic = 2.626 indicates statistical significance. Long positions enter on winners; short positions enter on losers. Exit after 63 trading days (~3 calendar months). The strategy is inherently relative-value / pair-trade based and cannot be fully translated to absolute indicator conditions."
+}

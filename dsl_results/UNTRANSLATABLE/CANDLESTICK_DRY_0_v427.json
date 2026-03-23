@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Doji detection requires precise open==close equality check which is difficult to express reliably due to floating-point precision. The 'body' indicator approximates this but cannot perfectly capture the 'within a few pennies' criterion. Additionally, confirmation methods referenced in Table 26.6 are not available in source text, and bear success rate data is missing (AUTHOR_SILENT).",
+  "translation_notes": "Used 'body == 0' as proxy for doji (open \u2248 close). Entry conditions contextually split: long when doji appears near resistance/top of uptrend (close below SMA_20), short when near support (close above SMA_20). Exit uses reversal of pattern (price breaks above/below prior candle range). The 59% bull success rate is noted but cannot be directly encoded. Confirmation methods and full parameter set unavailable."
 }

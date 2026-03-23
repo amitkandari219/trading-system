@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_5",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "max_loss_per_trade",
+      "threshold": 1.0,
+      "direction": "below",
+      "description": "max_loss_per_trade must be below current_equity"
+    },
+    "max_risk_pct": 100.0,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size adjusted so worst-case loss per trade cannot exceed current account equity. Prevents ruin on single trade but does not protect against prolonged drawdowns reducing equity below viable trading level.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size must be limited such that the maximum loss on any single trade cannot exceed the equity line, preventing ruin on a single trade, though prolonged losing streaks could still force cessation of trading if equity drops sufficiently."
+}

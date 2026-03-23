@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "Signal requires detection of 'acceleration reaching 70th percentile' (momentum of momentum / second wave acceleration), which is not available in the indicator set. MACD_HIST used as best approximation for acceleration reversal, but true 70th percentile acceleration threshold cannot be computed from allowed indicators.",
-  "translation_notes": "Entry: MACD histogram positive (acceleration phase) + volume ratio elevated (buying pressure). Exit: MACD histogram crosses negative (acceleration exhaustion) OR profit target +4.0%. Hold maximum 8 bars. 'Uninformed buyer exhaustion' concept translated to momentum reversal signal via MACD, though the specific percentile-based acceleration metric is not directly available."
+  "untranslatable_reason": "Signal requires detection of 'acceleration reaching 70th percentile' and 'momentum of momentum' which require lookback statistics or second-derivative price analysis not available in the allowed indicator set. The 70th percentile threshold for acceleration would need a rolling percentile calculation across bars, and 'early winners showing increased position size (wealth effect)' requires proprietary position tracking data not in the allowed indicators.",
+  "translation_notes": "Approximated using MACD histogram (momentum indicator) and volume ratio as proxies for momentum acceleration and order flow imbalance. The exit condition uses MACD histogram crossing below zero as a reversal signal, with maximum 8-bar hold duration and 4% profit target as specified. Direction is LONG (momentum-following). Actual 70th percentile acceleration threshold cannot be precisely translated without custom statistical indicators."
 }

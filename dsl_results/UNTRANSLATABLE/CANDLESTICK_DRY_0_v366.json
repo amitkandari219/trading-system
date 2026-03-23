@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Dragonfly doji pattern requires precise candlestick geometry detection (long lower wick, small body, minimal upper wick) and market regime classification (BULL_MARKET/BEAR_MARKET) which are not available as atomic indicators in the allowed list. The provided rule also references specific historical performance statistics (instances and percentages by market regime and breakout direction) that cannot be encoded as entry/exit conditions. Approximation above uses lower_wick > body as proxy for doji shape, but true dragonfly doji pattern detection would require additional indicators or custom pattern recognition.",
+  "translation_notes": "Signal is context-dependent with performance varying significantly by market regime (bull vs bear) and breakout direction. Historical data shows 10,656 instances in bull markets with upward breakout (3.93% continuation) vs 8,388 in bear markets with upward breakout. Exact exit conditions marked AUTHOR_SILENT; reversal logic substituted. Market regime detection (BULL_MARKET vs BEAR_MARKET) cannot be directly encoded with allowed indicators."
 }

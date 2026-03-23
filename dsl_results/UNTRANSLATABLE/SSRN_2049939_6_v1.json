@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires calculation of time-series beta (a multi-security statistical measure), shrinkage estimation, cross-sectional ranking, and market-neutral portfolio construction. These operations require access to a full securities universe, historical beta calculations, and portfolio-level logic that cannot be expressed as simple price/indicator comparisons on a single security. The allowed indicators are limited to single-security technical analysis and do not include beta estimation, cross-sectional statistics, or portfolio construction operators.",
+  "translation_notes": "SSRN_2049939_6 is a factor-based, universe-relative signal that requires: (1) computing time-series beta for each security with K=5 lags; (2) shrinking beta estimates toward the cross-sectional mean with w=0.5; (3) ranking all securities by adjusted beta; (4) constructing a market-neutral long/short portfolio. This is fundamentally a portfolio construction rule, not a single-security entry/exit rule. Implementation requires a multi-asset framework with beta calculation and portfolio optimizer, not a single-security backtest engine."
+}

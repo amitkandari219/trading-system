@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires custom beta calculation with Vasicek Bayesian shrinkage and asset-class-specific market portfolio ranking. Beta estimation, cross-sectional variance calculations, and relative ranking across multiple securities within an asset class are not supported by the allowed indicators (which are limited to single-security technical indicators like RSI, MACD, moving averages, etc.). The signal fundamentally requires: (1) Beta estimation using rolling windows, (2) Vasicek shrinkage factor computation (w = 1 - [\u03c3\u00b2\u1d62,TS / (2\u03c3\u00b2XS)]), (3) Decile/quintile ranking across multiple securities, (4) Long/short positioning based on cross-sectional beta ranking. This is a factor-based, cross-sectional strategy that cannot be expressed with single-security technical indicators.",
+  "translation_notes": "BAB (Betting Against Beta) is a factor-based, multi-security strategy requiring: (1) Beta computation per security relative to asset-class market portfolio, (2) Bayesian shrinkage with parameters (\u03c3\u00b2\u1d62,TS variance, \u03c3\u00b2XS cross-sectional variance), (3) Ranking all securities in the asset class by shrunk beta, (4) Long bottom decile/quintile, short top decile/quintile, (5) Periodic rebalancing. The allowed indicator set contains only single-security technical indicators and cannot compute betas, cross-sectional statistics, or relative rankings. This strategy requires a custom research environment with portfolio construction capabilities, not a rules-based backtester with price/volume indicators."
+}

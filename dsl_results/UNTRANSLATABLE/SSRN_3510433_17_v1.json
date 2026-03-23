@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_17",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires a RANKING-BASED CROSS-SECTIONAL strategy (rank NIFTY100 stocks by momentum score and long top decile vs short bottom decile). The backtest engine schema supports only SINGLE-STOCK TIME-SERIES conditions (indicator comparisons on individual bars). Momentum ranking, portfolio construction, and cross-sectional rebalancing require universe-level aggregation and portfolio-level logic that cannot be expressed as bar-by-bar indicator conditions. Implementation requires: (1) Monthly momentum score calculation across all NIFTY100 constituents, (2) Decile ranking at universe level, (3) Portfolio-level entry/exit rather than per-stock conditions.",
+  "translation_notes": "Signal is a FACTOR MODEL (Fama-French WML/momentum factor) applied at portfolio level with monthly rebalancing. Requires custom portfolio ranking logic, not supported by single-stock condition syntax. The lookback (12-skip-1 months) and hold period (1 month) are structural parameters for the strategy engine, not translatable to individual indicator thresholds. To implement: use a separate ranking module that scores all NIFTY100 constituents monthly by 12-month momentum (excluding most recent month), then route top/bottom deciles to long/short portfolios with monthly rebalancing."
+}

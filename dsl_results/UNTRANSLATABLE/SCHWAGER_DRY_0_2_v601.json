@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "This signal requires detection of scheduled economic calendar events and pre-planned execution on data release. No technical indicators in the allowed list can detect: (1) scheduled economic event occurrence, (2) data release timing, (3) pre-queued trade orders, or (4) 0-2 second execution windows. This is a market microstructure/news event signal that requires external event data and order management system integration, not price/volume technical indicators.",
+  "translation_notes": "Signal SCHWAGER_DRY_0_2 is a news/event-driven trading rule focused on front-running economic releases with pre-planned responses. The entry logic depends on calendar event detection and immediate execution timing, which cannot be expressed through OHLCV technical indicators alone. Exit conditions (10-15 tick profit, 5 tick stop loss, trailing) can be implemented in backtest engine separately as fixed pip-based take-profit/stop-loss mechanics. Recommend: (1) implement as separate event-driven module with calendar integration, or (2) provide 'is_event_released' indicator if event detection should be included."
 }

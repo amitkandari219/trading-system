@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_24",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit calculation of realized variance (RV) and dynamic inverse scaling of factor exposure (f_\u03c3 = c * f / RV_{t-1}). This is a portfolio-level factor weighting scheme rather than a price-based trading rule. Realized variance is not available in the allowed indicators list, and the scaling methodology requires custom computation of factor returns and their historical variance, which cannot be expressed using only the provided technical indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, z-scores, and returns). The signal is untranslatable to a condition-based entry/exit framework.",
+  "translation_notes": "This signal describes a volatility-based position sizing technique from factor asset pricing research. It scales factor beta inversely by preceding-month realized variance to achieve dynamic leverage adjustment. This requires: (1) a defined factor (not specified in signal), (2) calculation of factor returns, (3) realized variance computation, and (4) real-time position scaling. None of these operations can be performed with the allowed indicator set, which contains only standard technical indicators for single-asset price action, not multi-asset factor engineering."
+}

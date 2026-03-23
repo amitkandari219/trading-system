@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_33",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic portfolio weight scaling inversely proportional to realized variance with rebalancing logic. This is a portfolio-level sizing rule, not a binary entry/exit signal. The 'realized variance' metric is not available in the allowed indicators list\u2014only hvol_20 (historical volatility) is available as a proxy. True implementation requires: (1) explicit realized variance calculation from recent returns, (2) dynamic position sizing/leverage adjustment based on variance ratios, (3) rebalancing frequency tied to variance forecast updates. These portfolio construction mechanics cannot be expressed as simple entry/exit conditions.",
+  "translation_notes": "Attempted proxy: hvol_20 could approximate realized variance behavior for volatility-based position scaling, but the signal fundamentally requires a portfolio rebalancing framework rather than trade entry/exit rules. The source text discusses volatility timing applied to credit and term premium (multi-asset allocation) rather than single-instrument directional trading."
+}

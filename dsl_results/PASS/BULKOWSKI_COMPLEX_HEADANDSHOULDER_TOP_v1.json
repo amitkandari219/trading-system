@@ -1,0 +1,105 @@
+{
+  "signal_id": "BULKOWSKI_COMPLEX_HEADANDSHOULDER_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Complex Head-and-Shoulder Top",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_COMPLEX_HEADANDSHOULDER_TOP",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.7"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.3"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.7
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.3
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 50.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_COMPLEX_HEADANDSHOULDER_TOP"
+  },
+  "source_rule_text": "Complex Head-and-Shoulder Top: A pattern formed after an extended bull run that retraces, creating a left shoulder, a head higher than the shoulders, and a right shoulder, with variations in formation structure"
+}

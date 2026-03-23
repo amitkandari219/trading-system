@@ -1,0 +1,82 @@
+{
+  "signal_id": "BULKOWSKI_PENNANT",
+  "entry_long": [
+    {
+      "left": "low",
+      "operator": "<",
+      "right": "prev_low"
+    },
+    {
+      "left": "bb_bandwidth",
+      "operator": "<",
+      "right": "0.03"
+    },
+    {
+      "left": "atr_14",
+      "operator": "<",
+      "right": "atr_14"
+    },
+    {
+      "left": "close",
+      "operator": "crosses_above",
+      "right": "dc_upper"
+    },
+    {
+      "left": "vol_ratio_20",
+      "operator": ">",
+      "right": "1.2"
+    }
+  ],
+  "entry_short": [
+    {
+      "left": "high",
+      "operator": ">",
+      "right": "prev_high"
+    },
+    {
+      "left": "bb_bandwidth",
+      "operator": "<",
+      "right": "0.03"
+    },
+    {
+      "left": "close",
+      "operator": "crosses_below",
+      "right": "dc_lower"
+    },
+    {
+      "left": "vol_ratio_20",
+      "operator": ">",
+      "right": "1.2"
+    }
+  ],
+  "exit_long": [
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "sma_20"
+    }
+  ],
+  "exit_short": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "sma_20"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 3.0,
+  "hold_days_max": 30,
+  "direction": "BOTH",
+  "target_regime": [
+    "TRENDING_UP",
+    "TRENDING_DOWN"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": null,
+  "validation_issues": [
+    "entry_long: self-comparison 'atr_14 < atr_14'",
+    "entry_long: impossible condition 'atr_14 < atr_14' is always false"
+  ]
+}

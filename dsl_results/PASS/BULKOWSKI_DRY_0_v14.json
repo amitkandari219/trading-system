@@ -14,27 +14,33 @@
         "left": "close",
         "operator": "<",
         "right": "prev_close"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
       }
     ],
     "exit_long": [],
     "exit_short": [
       {
         "left": "close",
-        "operator": ">",
-        "right": "dc_upper"
+        "operator": "crosses_above",
+        "right": "sma_20"
       }
     ],
     "entry_logic": "AND",
-    "exit_logic": "OR",
-    "stop_loss_pct": 2.0,
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
     "hold_days_max": 20,
     "direction": "SHORT",
     "target_regime": [
-      "ANY"
+      "TRENDING_DOWN",
+      "RANGING"
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Dead-cat bounce pattern entry: SHORT when price closes below the Donchian lower band (formation low) AND closes lower than previous close, confirming the downward breakout. Used Donchian channels (dc_upper/dc_lower) to represent the formation boundaries. Exit when price closes above the Donchian upper band (reversal). The source text indicates a 3-week prior upward price movement (dead-cat bounce context) and horizontal consolidation, which would be reflected in the formation structure rather than as separate conditions. Success rates and volume data marked AUTHOR_SILENT per original signal."
+    "translation_notes": null
   },
   "backtest_rule": {
     "backtestable": true,
@@ -49,22 +55,30 @@
         "indicator": "close",
         "op": "<",
         "value": "prev_close"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
       }
     ],
     "exit_long": [],
     "exit_short": [
       {
         "indicator": "close",
-        "op": ">",
-        "value": "dc_upper"
+        "op": "crosses_above",
+        "value": "sma_20"
       }
     ],
-    "regime_filter": [],
+    "regime_filter": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
     "hold_days": 20,
-    "stop_loss_pct": 0.02,
+    "stop_loss_pct": 0.027999999999999997,
     "take_profit_pct": 0,
     "direction": "SHORT",
-    "reason": "Dead-cat bounce pattern entry: SHORT when price closes below the Donchian lower band (formation low) AND closes lower than previous close, confirming the downward breakout. Used Donchian channels (dc_upper/dc_lower) to represent the formation boundaries. Exit when price closes above the Donchian upper band (reversal). The source text indicates a 3-week prior upward price movement (dead-cat bounce context) and horizontal consolidation, which would be reflected in the formation structure rather than as separate conditions. Success rates and volume data marked AUTHOR_SILENT per original signal."
+    "reason": "DSL translation of BULKOWSKI_DRY_0"
   },
   "source_rule_text": "Dead-Cat Bounce: A breakout occurs when price closes beyond the formation high or low. A downward breakout is confirmed when price drops below the formation low and closes even lower."
 }

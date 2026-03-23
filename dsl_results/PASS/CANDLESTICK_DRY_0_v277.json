@@ -1,0 +1,94 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      },
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "atr_14"
+      },
+      {
+        "left": "upper_wick",
+        "operator": "<",
+        "right": "body"
+      },
+      {
+        "left": "lower_wick",
+        "operator": "<",
+        "right": "body"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Short Black Candlestick pattern defined by: (1) close < open (black/bearish candle), (2) small body relative to ATR, (3) upper wick smaller than body, (4) lower wick smaller than body. Exit on reversal when close > open. Direction set to SHORT based on breakout_direction parameter. Success rates from source (52% bull reversal, 53% bear continuation) noted but not directly encoded as conditions. Hold period set conservatively to 5 days."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      },
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": "<",
+        "value": "body"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": "<",
+        "value": "body"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Short Black Candlestick pattern defined by: (1) close < open (black/bearish candle), (2) small body relative to ATR, (3) upper wick smaller than body, (4) lower wick smaller than body. Exit on reversal when close > open. Direction set to SHORT based on breakout_direction parameter. Success rates from source (52% bull reversal, 53% bear continuation) noted but not directly encoded as conditions. Hold period set conservatively to 5 days."
+  },
+  "source_rule_text": "Short Black Candlestick: A candlestick that opens at one level, moves up and down a small amount, and closes lower, with small change from high to low and shadows smaller than the body height"
+}

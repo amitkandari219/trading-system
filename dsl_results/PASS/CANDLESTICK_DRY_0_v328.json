@@ -1,0 +1,94 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "prev_close",
+        "operator": ">",
+        "right": "prev_open"
+      },
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Dark Cloud Cover pattern: Entry conditions check for uptrend continuation (close > sma_50), tall white candle (prev_close > prev_open), black candle opening above prior high (open > prev_high), and closing below the midpoint of prior day's body (close < pivot, which approximates the midpoint). Exit when price closes above the prior high, signaling pattern failure. Pattern typically holds 3-5 days."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "prev_close",
+        "op": ">",
+        "value": "prev_open"
+      },
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Dark Cloud Cover pattern: Entry conditions check for uptrend continuation (close > sma_50), tall white candle (prev_close > prev_open), black candle opening above prior high (open > prev_high), and closing below the midpoint of prior day's body (close < pivot, which approximates the midpoint). Exit when price closes above the prior high, signaling pattern failure. Pattern typically holds 3-5 days."
+  },
+  "source_rule_text": "Dark Cloud Cover: A reversal pattern occurring after an upward price trend, consisting of a tall white candle followed by a black candle that opens above the prior high and closes below the midpoint of the prior day's body."
+}

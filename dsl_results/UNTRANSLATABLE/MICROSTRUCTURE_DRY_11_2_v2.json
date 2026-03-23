@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "Signal requires detection of 'uninformed trader behavior patterns' and 'sentiment-driven moves' which cannot be directly expressed with allowed technical indicators. The 'extreme sentiment reading (>80th percentile retail positioning)' metric is not available in the allowed indicator set. RSI extreme values used as a proxy for extreme sentiment, but this is an approximation that may not capture the intended microstructure signal.",
-  "translation_notes": "Converted directional bias to CONTEXT_DEPENDENT with separate long/short entries. Used vol_ratio_20 for volume spike (>1.1x multiplier). Used RSI extremes (>80 or <20) as proxy for sentiment extremes since retail positioning data unavailable. Returns used for price movement detection. Trailing stop concept mapped to 5% hard stop loss. 5-period max holding aligns with signal parameters."
+  "untranslatable_reason": "Signal requires 'extreme sentiment reading (>80th percentile retail positioning)' which is not available in the allowed indicators list. No direct retail sentiment or positioning indicator is provided. Used RSI as a proxy for extreme conditions but this is not equivalent to retail positioning data.",
+  "translation_notes": "Translated uninformed trader behavior patterns as RSI extremes (>80 for bullish, <20 for bearish). Volume spike translated using vol_ratio_20 > 1.1. Price movement direction captured via returns indicator. Sentiment-driven reversal approximated via RSI mean reversion (exit when RSI crosses 50). Original signal lacks explicit entry direction, so both long and short conditions provided with CONTEXT_DEPENDENT flag. 5% loss stop and 5-period hold converted from parameters."
 }

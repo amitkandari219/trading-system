@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_6",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "odd_lot_markup_cost",
+      "threshold": null,
+      "direction": "avoid"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Round calculated position size DOWN to nearest round lot (e.g., 300 shares instead of 319-320) to avoid odd-lot markup costs that exceed precision benefits. This is a rounding rule applied post-calculation, not a primary sizing method.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Avoid purchasing odd lots (fractional round lots) due to markup costs that reduce expected return; instead buy only round lots even if it means holding slightly different position sizes."
+}

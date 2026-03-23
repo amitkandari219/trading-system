@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_5",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "geometric_mean_hpr_across_price_scenarios",
+      "threshold": null,
+      "direction": "maximize"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Optimal f determined by testing f values against geometric mean HPR across \u00b13SD price scenarios weighted by probability P(T,U). Select f that maximizes G(f,T). Applicable to options with mandated exit dates. Specific f value must be calculated per trade based on security-specific parameters.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size should be determined by testing different f values against the geometric mean HPR across a range of price movements (\u00b13 standard deviations) with associated probabilities, selecting the f that maximizes geometric growth."
+}

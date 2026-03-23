@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_21",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "BAB (Bet Against Beta) strategy requires explicit beta calculation and cross-sectional portfolio construction across multiple assets sorted by their estimated beta coefficients. This requires: (1) calculation of rolling beta for each asset over 1-5 year lookback window, (2) ranking/sorting assets by beta value, (3) partitioning into low-beta and high-beta portfolio groups, and (4) simultaneous long/short positioning across portfolios. The allowed indicator set contains only single-asset technical indicators (price, moving averages, RSI, ATR, etc.) and does not include beta estimation, cross-sectional ranking, portfolio construction, or comparative metrics across asset universes. This is a factor-based statistical arbitrage strategy that cannot be expressed as entry/exit conditions on individual asset technical indicators.",
+  "translation_notes": "BAB is a multi-asset factor strategy requiring statistical computation (beta estimation via regression) and cross-sectional portfolio mechanics that fall outside the scope of single-asset technical indicator rules. Implementation requires: custom beta calculator, portfolio manager, and systematic rebalancing engine at portfolio level rather than individual entry/exit rules. Recommend implementing as a separate portfolio construction module rather than a backtest signal rule."
+}

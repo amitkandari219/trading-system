@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires identification of doji candlestick formation (specific body/wick ratio threshold not provided by author), yearly high/low regime detection, and position within yearly range quartile. These require custom pattern detection logic not expressible via allowed indicators and operators. Breakout timing constraint (within ~3 days) requires inter-candle time tracking. Author provided no stop-loss or target specifications.",
+  "translation_notes": "Approximated dragonfly doji as lower_wick > body. Entry conditions model breakout above (long) or below (short) the doji range within 3-day hold period. Exit triggered by reversal through opposite extreme. Actual implementation requires: (1) doji formation detection with body < 10% of range, (2) lower wick at least 2x body length, (3) market regime detection relative to yearly high/low, (4) breakout occurrence validation within candle_end_to_breakout_days timeframe."
 }

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a 'put-call ratio' indicator (open-buy put volume / (open-buy put volume + call volume)), which is not in the ALLOWED INDICATORS list. This is an options market microstructure metric that requires real-time options volume data not available in standard OHLCV feeds.",
+  "translation_notes": "Signal logic is clear: short stocks in the top decile of put-call ratios with a 1-day holding period and exit on next-day close. However, the put-call ratio cannot be constructed from the allowed indicators. The exit condition uses a reversal logic (close > prev_close suggests mean reversion exit for a short position). The sample period (1993-2001) and four-factor risk adjustment are backtest parameters, not rule conditions."
+}

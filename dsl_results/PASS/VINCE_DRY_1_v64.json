@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_1",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "DRAWDOWN_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "hpr",
+      "threshold": 0,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": 0.0,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Position size must be reduced whenever HPR approaches or equals zero to preserve positive equity. This is a protective constraint ensuring HPR always remains > 0, effectively triggering position reduction when system drawdown would cause HPR collapse.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Avoid position sizing that results in an HPR (Holding Period Return) of zero, as this completely wipes out the account; position sizing must maintain positive equity preservation relative to system dispersion."
+}

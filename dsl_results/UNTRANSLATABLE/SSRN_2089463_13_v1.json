@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2089463_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires computing 12-month historical returns and portfolio-weighted position sizing based on return magnitude. The backtest engine indicators do not include 12-month return lookback or dynamic position sizing based on return weighting (w_{TS,i} = r_{t-12,t} / N). The 'returns' indicator typically provides single-period returns, not 12-month lookback returns. Portfolio construction with return-weighted proportional sizing cannot be expressed as simple entry/exit conditions.",
+  "translation_notes": "This is a time series momentum strategy that requires custom calculation of 12-month lookback returns and proportional weighting by those returns. The entry conditions signal directional bias (long on positive returns, short on negative returns) but the core portfolio weighting mechanism\u2014allocating capital proportionally to 12-month momentum\u2014requires implementation outside the rule-based condition system. Recommend implementing as a custom algorithm rather than rule-based backtest."
+}

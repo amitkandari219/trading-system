@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2089463_26",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 12-month time series momentum calculation across multiple asset classes with custom lookback periods. The allowed indicator set does not include a multi-period returns aggregator or cross-asset momentum composite indicator. Native 12-month momentum requires either a custom 252-bar return calculation or an external momentum indicator not in the allowed list.",
+  "translation_notes": "Approximated using log_returns sign as proxy for momentum direction, but this reflects recent returns only, not 12-month lookback. True implementation requires: (1) ability to calculate 12-month rolling returns per instrument, (2) cross-asset class aggregation logic, (3) monthly rebalance timer. Recommend implementing as custom indicator in backtest engine or using external momentum calculation before feeding to rule engine."
+}

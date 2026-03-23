@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by historical volatility and selecting a decile portfolio (bottom 10%). This requires cross-sectional ranking logic across a universe of stocks, which cannot be expressed as a single-security technical indicator condition. The 'hvol_20' indicator measures volatility for an individual stock, but the strategy fundamentally requires: (1) comparative ranking across multiple stocks, (2) decile bucketing logic, and (3) portfolio construction rules. The backtest engine requires indicator-based conditions on individual bars/securities, not relative ranking or portfolio selection logic.",
+  "translation_notes": "This is a factor/style strategy (low volatility equity portfolio) requiring portfolio construction rules, not a technical entry/exit signal. It should be implemented as a custom ranking/weighting function in the backtest framework rather than as indicator conditions."
+}

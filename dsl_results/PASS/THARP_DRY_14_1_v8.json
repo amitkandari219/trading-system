@@ -72,7 +72,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal requires trend confirmation via EMA(20) and ADX(14). Entry conditions split into LONG and SHORT contexts. The 'minimum_consecutive_bars_beyond_ma' of 1 bar is implicitly satisfied by the crosses_above/crosses_below operators. Exit occurs on MA crossover OR ADX drop below threshold (OR logic). Direction is context-dependent: use entry_long for bullish setups, entry_short for bearish setups."
+    "translation_notes": "Signal requires trend confirmation via EMA crossover and ADX threshold. Entry requires price above/below 20-period EMA with at least 1 bar confirmation (represented via crosses_above/crosses_below operators) AND ADX > 25. Exit triggers when price crosses back through EMA OR ADX falls below 25. CONTEXT_DEPENDENT direction allows both long and short entries based on market condition."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -142,7 +142,7 @@
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal requires trend confirmation via EMA(20) and ADX(14). Entry conditions split into LONG and SHORT contexts. The 'minimum_consecutive_bars_beyond_ma' of 1 bar is implicitly satisfied by the crosses_above/crosses_below operators. Exit occurs on MA crossover OR ADX drop below threshold (OR logic). Direction is context-dependent: use entry_long for bullish setups, entry_short for bearish setups."
+    "reason": "Signal requires trend confirmation via EMA crossover and ADX threshold. Entry requires price above/below 20-period EMA with at least 1 bar confirmation (represented via crosses_above/crosses_below operators) AND ADX > 25. Exit triggers when price crosses back through EMA OR ADX falls below 25. CONTEXT_DEPENDENT direction allows both long and short entries based on market condition."
   },
   "source_rule_text": "A trader must only enter positions when a trend exists in the direction of the intended trade, because without a trend following entry, the position cannot be exited profitably."
 }

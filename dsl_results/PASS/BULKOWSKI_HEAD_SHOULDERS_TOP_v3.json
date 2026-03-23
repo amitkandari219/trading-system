@@ -1,0 +1,105 @@
+{
+  "signal_id": "BULKOWSKI_HEAD_SHOULDERS_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Head and Shoulders Top (HTF)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_HEAD_SHOULDERS_TOP",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.8"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.8
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_HEAD_SHOULDERS_TOP"
+  },
+  "source_rule_text": "Head and Shoulders Top (HTF): Short the stock when price reaches the ultimate high after breakout, anticipating a 35% decline as the trend ends"
+}

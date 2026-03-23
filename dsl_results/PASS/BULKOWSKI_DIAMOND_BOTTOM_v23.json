@@ -1,0 +1,95 @@
+{
+  "signal_id": "BULKOWSKI_DIAMOND_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "EEDB (Expanding Equilateral Diamond Bottom) with r",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DIAMOND_BOTTOM",
+    "entry_long": [
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.3"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING",
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.3
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING",
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_DIAMOND_BOTTOM"
+  },
+  "source_rule_text": "EEDB (Expanding Equilateral Diamond Bottom) with rising volume trend"
+}

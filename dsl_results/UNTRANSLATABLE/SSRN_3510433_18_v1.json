@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_18",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom ranking metric 'momentum_score' which is not in the ALLOWED INDICATORS list. The strategy uses cross-sectional ranking and portfolio assignment logic that cannot be expressed as simple price/indicator comparisons. This is a factor-based selection strategy (ranking NIFTY100 constituents by momentum and assigning to Winner/Loser portfolios) rather than a time-series technical indicator strategy. Backtest engine would need native support for: (1) custom ranking metrics across a universe, (2) portfolio construction from ranked lists, and (3) monthly rebalancing logic.",
+  "translation_notes": "This is a cross-sectional momentum ranking strategy, not a traditional entry/exit signal. It requires: ranking all NIFTY100 stocks by momentum each month, selecting top performers for Winner portfolio, and rebalancing monthly. The 'momentum_score' metric is not defined in the allowed indicator set and would need to be calculated externally (e.g., price momentum over N months) or defined as a custom factor."
+}

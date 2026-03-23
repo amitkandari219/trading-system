@@ -72,7 +72,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal uses trend-following logic with ADX confirmation. Direction is context-dependent, so both LONG and SHORT entry/exit rules provided. Entry requires price crossing above/below 10-period MA, ADX > 12, and confirmation from prior close direction. Exit triggers on MA crossover or ADX falling below 10 (trend ending). Used prev_close for prior bar comparison per rule 6."
+    "translation_notes": "Signal uses 10-period MA (mapped to sma_10) and ADX thresholds. Direction is context-dependent: entry_long triggers on uptrend confirmation, entry_short on downtrend confirmation. Exit conditions use OR logic to capture either MA crossover or ADX trend weakness. The 'confirmation_bars: 1' parameter is implicit in the close > prev_close / close < prev_close conditions."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -142,7 +142,7 @@
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal uses trend-following logic with ADX confirmation. Direction is context-dependent, so both LONG and SHORT entry/exit rules provided. Entry requires price crossing above/below 10-period MA, ADX > 12, and confirmation from prior close direction. Exit triggers on MA crossover or ADX falling below 10 (trend ending). Used prev_close for prior bar comparison per rule 6."
+    "reason": "Signal uses 10-period MA (mapped to sma_10) and ADX thresholds. Direction is context-dependent: entry_long triggers on uptrend confirmation, entry_short on downtrend confirmation. Exit conditions use OR logic to capture either MA crossover or ADX trend weakness. The 'confirmation_bars: 1' parameter is implicit in the close > prev_close / close < prev_close conditions."
   },
   "source_rule_text": "A trader should enter positions aligned with trend direction because trend-following systems never miss major market moves, and price distributions exhibit long tails in the direction of sustained trends rather than random walk behavior."
 }

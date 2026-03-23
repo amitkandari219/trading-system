@@ -1,0 +1,115 @@
+{
+  "signal_id": "BULKOWSKI_ROUNDING_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Rounding Bottom",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_ROUNDING_BOTTOM",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.5"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.04"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "75"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.5
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.04
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 75.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_ROUNDING_BOTTOM"
+  },
+  "source_rule_text": "Rounding Bottom: A bowl or saucer-shaped price pattern where prices trend upward, retrace gently, form a rounded low, then resume climbing through prior highs with a handle formation before final breakout."
+}

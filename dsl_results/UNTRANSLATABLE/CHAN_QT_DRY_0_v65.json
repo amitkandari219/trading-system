@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "Calendar-based entry/exit rules cannot be expressed using the allowed indicator-based condition schema. The signal requires triggering on specific calendar dates (April 13 and April 25 each year, with holiday adjustments), which is a temporal/scheduling rule, not a technical indicator condition. The operator 'is' is designed for regime comparisons, not date matching.",
-  "translation_notes": "This is a pure calendar spread/seasonal trade with no technical indicators. Implementation requires calendar-based scheduling logic outside the standard indicator evaluation framework. The trade should be implemented as a separate rule type (CALENDAR_ENTRY_EXIT or SEASONAL) rather than through the indicator-condition engine."
+  "untranslatable_reason": "Calendar-based entry/exit conditions (specific dates April 13 and April 25) cannot be expressed using technical indicators and standard operators. The operator 'is' is designed for regime comparisons, not calendar date matching. A calendar/date filter must be implemented at the backtest engine level, not within the indicator-based rule system.",
+  "translation_notes": "Signal is a pure calendar spread trade with no technical conditions. Entry: 1 contract RB at close on April 13 (or next trading day if holiday). Exit: 1 contract RB at close on April 25 (or previous trading day if holiday). Hold period: ~12 calendar days. Backtest period: 1995-2008. This requires explicit date-based filtering outside the standard indicator rule framework."
 }

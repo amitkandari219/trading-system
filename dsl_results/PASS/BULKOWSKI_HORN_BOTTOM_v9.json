@@ -1,0 +1,105 @@
+{
+  "signal_id": "BULKOWSKI_HORN_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Horn Bottom",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_HORN_BOTTOM",
+    "entry_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING",
+      "REVERSAL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING",
+      "REVERSAL"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_HORN_BOTTOM"
+  },
+  "source_rule_text": "Horn Bottom: A pattern with two low points separated by a peak, forming a V-shaped or double-bottom structure with remarkably even bottoms"
+}

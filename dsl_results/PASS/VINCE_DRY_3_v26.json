@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_3",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "shrink_factor_applied",
+      "threshold": null,
+      "direction": "scaling"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Apply optimal f to shrunk average trade: Position Size = optimal_f(average_trade \u00d7 shrink_factor), where shrink_factor = actual_metric / standard_parametric_value. Requires: (1) arithmetic mean of trades, (2) population std dev, (3) shrink factor calculation, (4) parametric distribution probability mapping. Optimal f value itself not specified by author.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Adjust position size using a shrink factor that scales the average trade to account for the gap between standard parametric values and actual trading results, then apply optimal f technique to the shrunk average trade."
+}

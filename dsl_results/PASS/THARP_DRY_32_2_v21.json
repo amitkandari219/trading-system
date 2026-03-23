@@ -1,0 +1,34 @@
+{
+  "signal_id": "THARP_DRY_32_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "portfolio_size",
+      "threshold": null,
+      "direction": "tiered"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Max concurrent positions scaled by account size: \u2264$5k\u21922 positions, $5k-$20k\u21924 positions, $20k-$160k\u21925 positions, >$160k\u21927 positions. Portfolio constraint rule, not per-trade sizing.",
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "max_positions_by_portfolio_size": {
+      "under_5k": 2,
+      "5k_to_20k": 4,
+      "20k_to_160k": 5,
+      "above_160k": 7
+    }
+  },
+  "source_rule_text": "A trader should limit the number of concurrent positions based on total portfolio size, with smaller accounts holding fewer stocks and larger accounts holding more, to maintain manageable portfolio risk and oversight."
+}

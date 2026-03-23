@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "Signal requires ranking stocks by one-day prior returns (percentile-based selection across a universe). The available indicators cannot express cross-sectional ranking/percentile logic. The 'returns' indicator represents individual stock returns but cannot encode 'bottom percentile' vs 'top percentile' comparisons across a basket. A proper translation would require a custom ranking function or percentile operator not in the allowed set.",
-  "translation_notes": "Attempted to approximate with returns < 0 (buy worst performers) and returns > 0 (short best performers), but this is a simplification that loses the critical percentile/ranking semantics of the original strategy. The strategy is fundamentally a cross-sectional mean reversion play requiring relative ranking within a stock universe, which cannot be properly expressed in single-stock condition logic."
+  "untranslatable_reason": "Signal requires ranking stocks by one-day prior returns percentiles (bottom and top) across a universe. The engine uses single-stock conditions, not cross-sectional ranking. Exact percentile thresholds are AUTHOR_SILENT. Conditions above use approximate return thresholds as a proxy.",
+  "translation_notes": "This is a cross-sectional mean-reversion strategy that requires universe-level ranking. Translated to use returns indicator as proxy: long when returns are negative (worst performers), short when returns are positive (best performers). True implementation requires portfolio construction logic beyond single-stock rule conditions. Exit conditions are reversal-based (opposite signal) since AUTHOR_SILENT."
 }

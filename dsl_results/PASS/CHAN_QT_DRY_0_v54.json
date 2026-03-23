@@ -42,7 +42,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal implements momentum-based reversal exit mechanism. MACD crossovers serve as the momentum entry/exit signal: long entry when MACD crosses above signal line, exit when MACD crosses below signal line (reversal). Short entry when MACD crosses below signal line, exit when MACD crosses above signal line. This dynamic reversal mechanism replaces arbitrary stop-loss prices as specified in the original rule. The 'CONTEXT_DEPENDENT' direction means the actual direction depends on which momentum signal fires first."
+    "translation_notes": "Signal uses momentum reversal as dynamic exit mechanism. MACD crossovers proxy for momentum direction reversals. Entry conditions are directional (LONG or SHORT based on MACD crossing above/below signal line). Exit conditions automatically trigger on opposite crossover, implementing the 'reversal signal as dynamic stop-loss' mechanic without arbitrary price-based stops. No explicit stop_loss_pct or lookback parameters provided by author, so momentum crossover timing is used as natural exit trigger. Suitable for trending regimes where momentum reversals are reliable."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -82,7 +82,7 @@
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal implements momentum-based reversal exit mechanism. MACD crossovers serve as the momentum entry/exit signal: long entry when MACD crosses above signal line, exit when MACD crosses below signal line (reversal). Short entry when MACD crosses below signal line, exit when MACD crosses above signal line. This dynamic reversal mechanism replaces arbitrary stop-loss prices as specified in the original rule. The 'CONTEXT_DEPENDENT' direction means the actual direction depends on which momentum signal fires first."
+    "reason": "Signal uses momentum reversal as dynamic exit mechanism. MACD crossovers proxy for momentum direction reversals. Entry conditions are directional (LONG or SHORT based on MACD crossing above/below signal line). Exit conditions automatically trigger on opposite crossover, implementing the 'reversal signal as dynamic stop-loss' mechanic without arbitrary price-based stops. No explicit stop_loss_pct or lookback parameters provided by author, so momentum crossover timing is used as natural exit trigger. Suitable for trending regimes where momentum reversals are reliable."
   },
   "source_rule_text": "Exit a momentum position when a new entry signal in the opposite direction occurs, treating the reversal signal as a dynamic stop-loss mechanism."
 }

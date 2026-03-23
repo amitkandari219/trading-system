@@ -1,0 +1,128 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "regime",
+        "operator": "is",
+        "right": "TRENDING_DOWN"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "regime",
+        "operator": "is",
+        "right": "TRENDING_UP"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires identification of candle color (black/white) and short candle patterns, which are not available as direct indicators. Approximated using close vs prev_close to determine bearish/bullish candles. Entry occurs on the day following the signal candle. Position relative to sma_50 (50-trading-day MA) acts as breakout confirmation. Exit uses MA crossover as reversal signal per AUTHOR_SILENT guidance."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "regime",
+        "op": "is",
+        "value": "TRENDING_DOWN"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "regime",
+        "op": "is",
+        "value": "TRENDING_UP"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires identification of candle color (black/white) and short candle patterns, which are not available as direct indicators. Approximated using close vs prev_close to determine bearish/bullish candles. Entry occurs on the day following the signal candle. Position relative to sma_50 (50-trading-day MA) acts as breakout confirmation. Exit uses MA crossover as reversal signal per AUTHOR_SILENT guidance."
+  },
+  "source_rule_text": "Short candle reversal pattern: In uptrend, wait for black candle to signal reversal the next day; in downtrend, trade after white candle appears the next day. Position candle relative to moving average and intraday range affects performance."
+}

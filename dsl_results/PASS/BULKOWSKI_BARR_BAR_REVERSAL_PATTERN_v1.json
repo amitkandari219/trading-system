@@ -1,0 +1,101 @@
+{
+  "signal_id": "BULKOWSKI_BARR_BAR_REVERSAL_PATTERN",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "BARR (Bar Reversal) pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_BARR_BAR_REVERSAL_PATTERN",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.6"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.2"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.6"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.2"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.6
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.2
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.6
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.2
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "DSL translation of BULKOWSKI_BARR_BAR_REVERSAL_PATTERN"
+  },
+  "source_rule_text": "BARR (Bar Reversal) pattern: breakouts positioned far from the yearly high (in the low or middle range) perform best"
+}

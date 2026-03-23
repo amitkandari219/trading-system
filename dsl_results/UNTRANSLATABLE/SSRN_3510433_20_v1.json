@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal relies on a custom 'momentum_score' ranking metric that is not in the ALLOWED INDICATORS list. The strategy requires monthly cross-sectional ranking of NIFTY100 constituents by momentum score and selection of the top decile, which is a portfolio construction and rebalancing rule rather than a price-based technical indicator condition. This cannot be expressed using only the allowed price-based, volatility, and technical indicators (RSI, MACD, Bollinger Bands, etc.). The ranking metric must be externally computed or defined in the backtest engine's data preparation layer.",
+  "translation_notes": "This is a cross-sectional momentum strategy using decile ranking/portfolio construction, not a single-security technical analysis rule. The entry condition is 'be in the top momentum decile' and exit is 'monthly rebalance'. To implement this, the backtest engine must: (1) calculate momentum_score for each NIFTY100 constituent each month, (2) rank constituents by this score, (3) assign positions to the top 10% (decile 1), and (4) rebalance monthly. This requires custom factor computation outside the standard technical indicator framework."
+}

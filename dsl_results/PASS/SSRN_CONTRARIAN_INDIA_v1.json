@@ -1,0 +1,35 @@
+{
+  "signal_id": "SSRN_CONTRARIAN_INDIA",
+  "book_id": "SSRN-2785541",
+  "signal_type": "ENTRY_EXIT",
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.1
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 35
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.5
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "LONG"
+  },
+  "source_rule_text": "Contrarian buy on Indian market: buy after 5-day decline > 3%"
+}

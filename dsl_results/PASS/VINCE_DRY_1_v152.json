@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_1",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.25,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "leverage_ratio",
+      "threshold": 2.0,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Start with optimal f calculation. If leverage ratio exceeds 2.0, iteratively reduce position size by dividing optimal f dollar amount by 3 or 4 (scale_down_multiplier \u2248 0.25\u20130.33) until leverage \u2264 2.0. Include non-interest-bearing cash allocation in final portfolio. Vince's risk management via fractional optimal f.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Divide optimal f in dollars by 3 or 4 until achieving an optimal portfolio that includes a percentage allocation to non-interest-bearing cash, avoiding leverage ratios higher than 2."
+}

@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": 1.5,
+    "scale_down_multiplier": 0.5,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "volatility_ratio_to_portfolio_average",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Scale position size inversely to volatility: multiply by 1.5x for low-vol instruments (ratio \u22640.67) and 0.5x for high-vol instruments (ratio \u22651.5). Rebalance every 5 days based on 20-day historical volatility.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should adjust position size based on the relative risk and volatility characteristics of each instrument, rather than treating all investment units identically regardless of their inherent risk profile."
+}

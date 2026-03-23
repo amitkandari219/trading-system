@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "The signal relies on pattern shape analysis (height measured by 'samples', width measured by 'median length between highest highs') which cannot be directly expressed using standard OHLCV indicators and operators. Pattern detection requires multi-bar structural analysis not available in the allowed indicator set. The 'tall vs narrow' classification requires custom pattern recognition logic beyond basic technical indicators.",
+  "translation_notes": "BULKOWSKI_DRY_0 is a pattern-based signal requiring detection of Even-Even Double Top formations with specific morphological characteristics (tall=<30 samples, narrow width). This requires custom pattern scanner logic. Attempted approximation uses ATR-based volatility measures as proxy for pattern dimensions, but this is NOT equivalent to the original pattern-shape rules. Success rate in bear markets: 72%. Recommended: implement dedicated double-top pattern detector with sample-count and width-ratio thresholds before using standard indicator conditions."
 }

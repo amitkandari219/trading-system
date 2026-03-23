@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "portfolio_volatility_variance",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Dynamic fractional f sizing: Position size = (Variance^0.5) \u00d7 ACTV \u00d7 (YEARDAYS^0.5). Allocates fractional f_i (0\u20131) per market system weighted by W_i across N systems. Scales with active equity (ACTV) portion. Implements portfolio floor via dynamic fractional f. Multi-system portfolio insurance approach.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Use dynamic fractional f position sizing based on portfolio volatility, variance, and active equity allocation to perform portfolio insurance with a defined floor."
+}

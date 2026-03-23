@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of: (1) congestion pattern with elevated-but-not-extreme volume threshold (no congestion detector available), (2) doji candle identification (requires specific body-to-wick ratio thresholds not standardized in available indicators), (3) gapping-up event confirmation with prior resistance levels. The pattern logic combines multi-candle sequencing and volume regime detection that cannot be fully expressed with single-bar OHLC indicators alone.",
+  "translation_notes": "Attempted translation uses small body detection (body < atr_14), tall shadows (upper_wick > body AND lower_wick > body), and gap-up confirmation (close > prev_high). However, true doji pattern recognition and congestion phase detection require multi-candle pattern matching unavailable in the indicator set. Author was silent on stop placement and profit targets; default stop set at 2.5% based on volatility, hold period at 20 days for breakout pattern."
 }

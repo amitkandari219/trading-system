@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'positive variance shock' (one standard deviation increase in realized variance) and measurement of 'expected returns rise less than proportionally to variance increase' and 'risk-return trade-off deteriorates'. These require forward-looking expected returns estimation and variance regime analysis not available in the allowed indicator set. The signal also references CAPE ratio and log realized variance which are not in the allowed indicators. A true translation would need: (1) expected return forecasts, (2) variance shock detection mechanics, (3) proportionality testing between return and variance changes, and (4) risk-premium deterioration metrics.",
+  "translation_notes": "This is a macro-regime volatility signal requiring forward-looking regime detection and expected return estimation. The closest approximation using allowed indicators would be to reduce exposure (SHORT signal) when hvol_20 spikes above its mean, with exit when returns normalize. However, this loses the core logic: detecting when variance increases but expected returns do NOT increase proportionally (signaling deteriorating risk-return trade-off). The 12-month holding period was converted to 252 trading days. Without access to expected returns, regime probability models, or variance shock indicators, this translation is incomplete and untranslatable in the strict sense."
+}

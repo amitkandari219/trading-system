@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "binomial_confidence_bound",
+      "threshold": null,
+      "direction": "above",
+      "formula": "L = P - Z*sqrt((P*Q)/(N-1))"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position sizing is conditional on statistical validation of win rate using binomial distribution lower confidence bound. Only size positions after achieving statistically significant sample size (N) at chosen Z standard deviations. Do not size until L (lower bound) reaches acceptable threshold.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Determine minimum win rate confidence level using the Binomial Distribution with Z standard deviations to establish statistical certainty before sizing positions."
+}

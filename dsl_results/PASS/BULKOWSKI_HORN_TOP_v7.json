@@ -1,0 +1,81 @@
+{
+  "signal_id": "BULKOWSKI_HORN_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Horn Top",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_HORN_TOP",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.75"
+      },
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "body"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 21,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.75
+      },
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "body"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 21,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_HORN_TOP"
+  },
+  "source_rule_text": "Horn Top: A 3-week reversal pattern with two price spikes of similar height followed by confirmation when price closes below the lowest low of the pattern"
+}

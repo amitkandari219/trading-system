@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": 1.0,
+    "trigger_condition": {
+      "metric": "drawdown_std_dev",
+      "threshold": 0.12,
+      "direction": "below"
+    },
+    "max_risk_pct": 0.12,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Scale position size based on standard deviation of historical drawdowns relative to account equity. Use 1.0x base unit when std dev \u2264 12%. Max leverage 1.5x allowed.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should size positions based on the standard deviation of historical drawdowns relative to expected returns, using volatility analysis to determine acceptable risk exposure per trade."
+}

@@ -1,0 +1,105 @@
+{
+  "signal_id": "BULKOWSKI_BUSTED_PATTERN",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Busted Pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_BUSTED_PATTERN",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "atr_14",
+        "operator": "<",
+        "right": "0.05"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      },
+      {
+        "left": "atr_14",
+        "operator": "<",
+        "right": "0.05"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "atr_14",
+        "op": "<",
+        "value": 0.05
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "atr_14",
+        "op": "<",
+        "value": 0.05
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.2
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.2
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "DSL translation of BULKOWSKI_BUSTED_PATTERN"
+  },
+  "source_rule_text": "Busted Pattern: A chart pattern where the breakout move is less than 5%, representing a failure of the pattern to achieve a significant directional move"
+}

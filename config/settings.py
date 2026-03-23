@@ -27,7 +27,7 @@ MAX_SAME_DIRECTION = 2
 # LOSS LIMITS (as fractions of TOTAL_CAPITAL)
 # ================================================================
 DAILY_LOSS_FRACTION = 0.05       # 5% of capital
-WEEKLY_LOSS_FRACTION = 0.12      # 12% of capital
+WEEKLY_LOSS_FRACTION = 0.08      # 8% of capital (reduced from 12% — expert recommendation)
 MONTHLY_DD_CRITICAL_FRACTION = 0.15   # 15% of capital
 MONTHLY_DD_HALT_FRACTION = 0.25       # 25% of capital
 
@@ -66,6 +66,7 @@ REDIS_DB = 0
 # NIFTY LOT SIZE (NSE defined — post 2024)
 # ================================================================
 NIFTY_LOT_SIZE = 25
+BANKNIFTY_LOT_SIZE = 15
 
 # ================================================================
 # WALK-FORWARD ENGINE

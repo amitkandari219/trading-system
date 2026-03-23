@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_30_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.05,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "notional_leverage_ratio",
+      "threshold": 20,
+      "direction": "below"
+    },
+    "max_risk_pct": 0.05,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Scale position units by account equity: Units = Account_Equity / (30000 * 2.0). Enforce max notional leverage constraint of 20x. Risk_Multiple of 2.0 implies ~5% base risk per trade. Rebalance bi-weekly to maintain proportional sizing.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should scale position size according to account equity rather than taking fixed units, to prevent over-leverage and ensure risk remains proportional to capital regardless of account size."
+}

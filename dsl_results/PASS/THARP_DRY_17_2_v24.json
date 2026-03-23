@@ -1,0 +1,24 @@
+{
+  "signal_id": "THARP_DRY_17_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.03,
+    "r_multiple_stop": 1.0,
+    "scale_factor": 1.5,
+    "trigger_condition": {
+      "metric": "win_loss_ratio",
+      "threshold": 1.0,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.045,
+    "min_risk_pct": 0.03,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size = (account_equity \u00d7 3% risk \u00d7 1.5 equity_multiplier) / average_loss. Requires minimum 1:1 win/loss ratio over 50+ trades. Formula combines fixed fractional (3% base) with equity multiplier (1.5x leverage factor) scaled by historical loss magnitude.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a put-call ratio indicator (open-buy put volume / (open-buy put volume + open-buy call volume)), which is not available in the allowed indicators list. This is an options market microstructure metric that cannot be calculated from standard OHLCV price/volume data alone. The vol_ratio_20 substitution is approximate only.",
+  "translation_notes": "Original signal uses put-call ratio as the primary entry condition with a documented effect size of -34.6 bps per unit ratio (t-stat: -22.2). The exit is a next-day hold (1 day). Since put-call ratio is unavailable, used vol_ratio_20 as a rough proxy for options activity intensity, but this is NOT equivalent to the original put-call ratio metric. Exit condition uses returns crossing above zero as a mean-reversion sell signal. A proper backtest would require custom data sourcing for options volumes."
+}

@@ -44,7 +44,7 @@
     "entry_logic": "AND",
     "exit_logic": "OR",
     "stop_loss_pct": 2.0,
-    "hold_days_max": 1,
+    "hold_days_max": 10,
     "direction": "BOTH",
     "target_regime": [
       "TRENDING_UP",
@@ -52,7 +52,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Used SMA 20/50 crossover as primary trend-following indicator per signal specification of 20-period timeframe. ATR > 1.0 approximates abnormal price movement (>1 std dev). Regime shift detection implemented via moving average crossover. Exit conditions trigger on trend reversal signal (opposite crossover). Direction set to CONTEXT_DEPENDENT to handle both long and short signals from same rule logic."
+    "translation_notes": "Signal emphasizes longer-term trend-following (20-period specified) to capture abnormally large moves during regime shifts. Implemented as SMA crossover (20/50) as a standard trend-following mechanism. ATR scaled to >1.0 (in decimal form, representing volatility expansion consistent with 'abnormal price moves'). Entry requires both trend signal AND volatility expansion. Exit on trend reversal. Direction is CONTEXT_DEPENDENT as the signal generates both long and short entries depending on regime direction."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -98,11 +98,11 @@
       "TRENDING_UP",
       "TRENDING_DOWN"
     ],
-    "hold_days": 1,
+    "hold_days": 10,
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Used SMA 20/50 crossover as primary trend-following indicator per signal specification of 20-period timeframe. ATR > 1.0 approximates abnormal price movement (>1 std dev). Regime shift detection implemented via moving average crossover. Exit conditions trigger on trend reversal signal (opposite crossover). Direction set to CONTEXT_DEPENDENT to handle both long and short signals from same rule logic."
+    "reason": "Signal emphasizes longer-term trend-following (20-period specified) to capture abnormally large moves during regime shifts. Implemented as SMA crossover (20/50) as a standard trend-following mechanism. ATR scaled to >1.0 (in decimal form, representing volatility expansion consistent with 'abnormal price moves'). Entry requires both trend signal AND volatility expansion. Exit on trend reversal. Direction is CONTEXT_DEPENDENT as the signal generates both long and short entries depending on regime direction."
   },
   "source_rule_text": "A trader should use longer-term trend-following indicators to reduce transaction costs and capture abnormally large price moves that occur during major market shifts, rather than relying on shorter-term indicators that generate more frequent signals."
 }

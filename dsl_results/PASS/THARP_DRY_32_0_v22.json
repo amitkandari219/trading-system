@@ -1,0 +1,37 @@
+{
+  "signal_id": "THARP_DRY_32_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "account_equity",
+      "threshold": [
+        2000,
+        7500,
+        15000
+      ],
+      "direction": "above",
+      "unit_scaling": {
+        "at_2000": 2,
+        "at_7500": 3,
+        "at_15000": 4
+      }
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Scale unit count with account equity thresholds: 2 units at $2k, 3 units at $7.5k, 4 units at $15k. Each unit = Account equity / unit_count. Minimum unit size = $1,500.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Scale the number of equal-sized position units proportionally with account size, increasing unit count at defined capital thresholds to manage risk and optimize capital deployment."
+}

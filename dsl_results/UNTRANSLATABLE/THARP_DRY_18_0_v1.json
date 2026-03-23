@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires identifying 'previous significant swing high or low' within a 50-bar lookback period and detecting price tests within tolerance thresholds (0.5%), followed by failed breakout detection (1% reversal). This requires multi-bar pattern recognition and swing point detection logic not expressible with simple 3-field conditions and allowed indicators. The core logic needs: (1) swing point identification algorithm, (2) distance-based tolerance matching on historical prices, (3) directional reversal confirmation. These capabilities exceed the scope of single-indicator comparisons.",
+  "translation_notes": "A complete translation would require: custom swing detection (not available), historical price pattern matching within tolerance bands (not available), and multi-bar reversal confirmation logic. The simplified entry conditions above use previous bar high/low as a proxy, but do not capture the required 50-bar lookback, significance filtering, or tolerance-based testing logic. Consider implementing a custom indicator or pre-processing step to identify swing points before applying this rule."
 }

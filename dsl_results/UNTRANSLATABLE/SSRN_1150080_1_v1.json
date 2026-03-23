@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1150080_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires statistical comparison of January returns vs. Feb-Dec average (dummy variable regression with OLS, p < 0.05). This is a cross-sectional statistical test not expressible using point-in-time technical indicators. The 'returns' indicator captures monthly returns but cannot encode the statistical hypothesis test (p-value comparison across month groups) or the regression methodology. The operator 'is' cannot map to a live regression calculation.",
+  "translation_notes": "The signal fundamentally requires out-of-sample statistical analysis of historical monthly returns across all years in the dataset to establish significance. This is a pre-backtest hypothesis validation step, not a live trading rule. To implement: (1) Pre-compute January vs. other months t-test or regression p-value on historical data; (2) If p < 0.05, activate a simple rule: IF month==1 THEN buy NSE index, hold 31 days. The technical indicator framework cannot perform this test dynamically."
+}

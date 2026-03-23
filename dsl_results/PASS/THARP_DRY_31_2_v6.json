@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_31_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.03,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "total_notional_leverage_multiple",
+      "threshold": 8.0,
+      "direction": "below"
+    },
+    "max_risk_pct": 0.03,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Risk max 3% per unit; maintain total notional exposure below 8x account equity; track leverage weekly or after major position changes. Core rule: position size = (portfolio risk tolerance) / (risk per unit).",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should calculate and actively monitor total leverage and position size by dividing allowable risk per unit into total portfolio risk tolerance, then track the total product value controlled to maintain discipline within a predetermined leverage framework."
+}

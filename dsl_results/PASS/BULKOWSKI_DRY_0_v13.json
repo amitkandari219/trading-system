@@ -6,8 +6,13 @@
     "entry_long": [
       {
         "left": "close",
-        "operator": ">",
+        "operator": "crosses_above",
         "right": "dc_upper"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
       }
     ],
     "entry_short": [],
@@ -15,13 +20,13 @@
       {
         "left": "close",
         "operator": "<",
-        "right": "dc_middle"
+        "right": "sma_20"
       }
     ],
     "exit_short": [],
     "entry_logic": "AND",
-    "exit_logic": "OR",
-    "stop_loss_pct": 5.0,
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
     "hold_days_max": 30,
     "direction": "LONG",
     "target_regime": [
@@ -30,15 +35,20 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Broadening Bottom breakout entry: price closes above the highest high in formation (approximated using Donchian upper band for the highest high over recent bars). Exit uses mean reversion to Donchian middle as a reasonable exit when momentum fades. Entry filter to avoid dead-cat bounce would require pattern detection not available in indicator set. Success rates (62% bull, 34% bear) and average rise (27%) noted but not encoded as they are statistical outcomes. Default stop loss set to 5% and max hold to 30 days based on pattern characteristics."
+    "translation_notes": null
   },
   "backtest_rule": {
     "backtestable": true,
     "entry_long": [
       {
         "indicator": "close",
-        "op": ">",
+        "op": "crosses_above",
         "value": "dc_upper"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
       }
     ],
     "entry_short": [],
@@ -46,7 +56,7 @@
       {
         "indicator": "close",
         "op": "<",
-        "value": "dc_middle"
+        "value": "sma_20"
       }
     ],
     "exit_short": [],
@@ -55,10 +65,10 @@
       "RANGING"
     ],
     "hold_days": 30,
-    "stop_loss_pct": 0.05,
+    "stop_loss_pct": 0.027999999999999997,
     "take_profit_pct": 0,
     "direction": "LONG",
-    "reason": "Broadening Bottom breakout entry: price closes above the highest high in formation (approximated using Donchian upper band for the highest high over recent bars). Exit uses mean reversion to Donchian middle as a reasonable exit when momentum fades. Entry filter to avoid dead-cat bounce would require pattern detection not available in indicator set. Success rates (62% bull, 34% bear) and average rise (27%) noted but not encoded as they are statistical outcomes. Default stop loss set to 5% and max hold to 30 days based on pattern characteristics."
+    "reason": "DSL translation of BULKOWSKI_DRY_0"
   },
   "source_rule_text": "Broadening Bottom: A breakout occurs when prices rise above the highest high in the formation"
 }

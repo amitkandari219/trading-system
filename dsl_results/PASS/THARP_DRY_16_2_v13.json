@@ -1,0 +1,128 @@
+{
+  "signal_id": "THARP_DRY_16_2",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_16_2",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_10"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "15"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_10"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "15"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_10"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "15"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_10"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "15"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is context-dependent (bidirectional). Entry triggers on MA crossover with ADX confirmation (>15). Exit on MA crossover in opposite direction OR ADX trend exhaustion (<15). Stop loss set to 4% account risk as specified. Confirmation bars set to 0 means immediate entry on signal. Using sma_10 (10-period MA) and adx_14 (standard ADX indicator) from allowed list."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 15.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 15.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 15.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 15.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is context-dependent (bidirectional). Entry triggers on MA crossover with ADX confirmation (>15). Exit on MA crossover in opposite direction OR ADX trend exhaustion (<15). Stop loss set to 4% account risk as specified. Confirmation bars set to 0 means immediate entry on signal. Using sma_10 (10-period MA) and adx_14 (standard ADX indicator) from allowed list."
+  },
+  "source_rule_text": "Identify a trend criterion, enter in the direction of the trend, and exit when the trend ends or the signal fails."
+}

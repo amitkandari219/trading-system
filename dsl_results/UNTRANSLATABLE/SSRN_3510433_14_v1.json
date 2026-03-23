@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking-based momentum selection (top decile by 12-month returns with 1-month skip) and equal-weight portfolio construction across multiple stocks from NIFTY100 universe. The backtest engine rules support only single-indicator conditions per entry/exit, not cross-sectional ranking, relative momentum scoring across a stock universe, or portfolio-level equal weighting logic. This signal fundamentally requires a factor ranking and selection engine, not condition-based entry/exit rules.",
+  "translation_notes": "This is a sophisticated multi-stock momentum factor strategy requiring: (1) universe filtering (NIFTY100), (2) momentum calculation with skip-period (12M return, skip 1M), (3) cross-sectional ranking and top-decile selection, (4) monthly rebalancing, and (5) equal-weight portfolio construction. These operations fall outside the scope of the condition-based rule engine which is designed for single-stock technical signal translation. The strategy would require a dedicated factor backtester with ranking, sorting, and portfolio-construction capabilities."
+}

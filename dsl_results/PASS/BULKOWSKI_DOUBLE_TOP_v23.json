@@ -1,0 +1,104 @@
+{
+  "signal_id": "BULKOWSKI_DOUBLE_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Double Tops, Adam & Eve",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DOUBLE_TOP",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "dc_upper"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.75"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": ">",
+        "right": "0.06"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.75
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": ">",
+        "value": 0.06
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_50"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_DOUBLE_TOP"
+  },
+  "source_rule_text": "Double Tops, Adam & Eve: Two well-defined peaks with the first narrow and pointed, the second wide and rounded, separated in time but topping near the same price, with a downward breakout"
+}

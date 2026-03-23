@@ -1,0 +1,46 @@
+{
+  "signal_id": "THARP_DRY_32_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "DRAWDOWN_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "drawdown_from_peak_pct",
+      "threshold": 0.25,
+      "direction": "below",
+      "leed_threshold": 0.35
+    },
+    "max_risk_pct": 0.35,
+    "min_risk_pct": null,
+    "scaling_schedule": [
+      {
+        "drawdown_range": "0-15%",
+        "position_size_multiplier": 1.0,
+        "description": "Full size"
+      },
+      {
+        "drawdown_range": "15-28%",
+        "position_size_multiplier": 0.75,
+        "description": "Reduced by 25%"
+      },
+      {
+        "drawdown_range": "28-33%",
+        "position_size_multiplier": 0.5,
+        "description": "Reduced by 50%"
+      }
+    ],
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Scale positions inversely to current drawdown from peak relative to max tolerable LEED (35%). Full size below 15% drawdown; reduce 25% at 15-28% drawdown; reduce 50% at 28-33% drawdown. Based on Van Tharp's LEED framework.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should size positions inversely to their maximum tolerable equity drawdown\u2014reducing position size when drawdown risk is high and scaling positions according to the largest expected equity drop (LEED) they can endure."
+}

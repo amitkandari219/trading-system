@@ -1,0 +1,105 @@
+{
+  "signal_id": "BULKOWSKI_PIPE_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Pipe Top",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_PIPE_TOP",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.7"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "60"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "40"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.7
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 60.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 40.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_PIPE_TOP"
+  },
+  "source_rule_text": "Pipe Top: A pattern that signals potential trend reversal, particularly at the end of long-term uptrends or during downtrends where prices bounce upward before resuming downward movement"
+}

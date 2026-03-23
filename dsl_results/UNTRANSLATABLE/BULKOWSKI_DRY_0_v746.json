@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Gap pattern detection requires identifying gaps between bars (open > prev_high or open < prev_low), gap type classification (exhaustion/breakaway/continuation), proximity to yearly highs, and gap size comparison\u2014none of which can be precisely expressed with the available indicators. Gap closure rate (90% within a week) is a statistical outcome, not an entry/exit condition. The signal is qualitative and context-dependent, requiring domain-specific gap analysis logic not available in standard indicators.",
+  "translation_notes": "Attempted proxy using price gaps (open/close jumps) and ATR as a volatility threshold, with a 7-day max hold to approximate the 'nearly 90% closure within a week' observation. However, this does not capture the core signal: gap type classification and proximity to yearly highs. True implementation requires a gap detector that identifies gap formation, classifies gap type, and measures distance to yearly_high."
 }

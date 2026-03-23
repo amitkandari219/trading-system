@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The WML (Winners Minus Losers) strategy requires explicit momentum ranking and portfolio construction (long top performers, short bottom performers) across size segments. The allowed indicators do not include a direct 'momentum_rank' or 'relative_performance_percentile' metric needed to classify stocks as winners vs losers. The signal also requires segmentation logic (Big vs Small cap classification) and weighted portfolio construction (0.5*Winner - 0.5*Loser) which cannot be expressed with simple indicator conditions. This is a portfolio-level construction rule rather than a single-stock entry/exit rule.",
+  "translation_notes": "WML is a cross-sectional factor strategy requiring ranking across a universe of stocks. Standard backtesting condition syntax (single indicator thresholds) cannot capture the relative performance classification, size segmentation, and portfolio weighting inherent to this strategy. Implementation requires: (1) momentum calculation (e.g., 12-month returns), (2) percentile/decile ranking within each size segment, (3) long position in top decile, short position in bottom decile, (4) monthly rebalance. Consider using a factor backtest engine or custom implementation."
+}

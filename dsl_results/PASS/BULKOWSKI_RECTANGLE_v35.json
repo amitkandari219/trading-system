@@ -1,0 +1,151 @@
+{
+  "signal_id": "BULKOWSKI_RECTANGLE",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Rectangle pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_RECTANGLE",
+    "entry_long": [
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.04"
+      },
+      {
+        "left": "range",
+        "operator": "<",
+        "right": "atr_14"
+      },
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "prev_volume"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.04"
+      },
+      {
+        "left": "range",
+        "operator": "<",
+        "right": "atr_14"
+      },
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "prev_volume"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING",
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.04
+      },
+      {
+        "indicator": "range",
+        "op": "<",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.04
+      },
+      {
+        "indicator": "range",
+        "op": "<",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "RANGING",
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "DSL translation of BULKOWSKI_RECTANGLE"
+  },
+  "source_rule_text": "Rectangle pattern: A price consolidation pattern with both tall and narrow characteristics performing best, with volume trending down within the rectangle before breakout"
+}

@@ -1,0 +1,105 @@
+{
+  "signal_id": "BULKOWSKI_HEAD_SHOULDERS_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Head and Shoulders Top (HST)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_HEAD_SHOULDERS_TOP",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.3"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.7"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_50"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.8,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.3
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.7
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_50"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.048,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_HEAD_SHOULDERS_TOP"
+  },
+  "source_rule_text": "Head and Shoulders Top (HST): Pattern performance varies by height/width combination, volume trend, and volume shape characteristics"
+}

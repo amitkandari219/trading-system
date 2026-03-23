@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Gap-up detection requires comparing current open to previous close across session boundaries, which cannot be reliably expressed with available indicators in a single-candle context. Market regime detection (bull vs bear) is not directly available\u2014only TRENDING_UP/DOWN/RANGING/HIGH_VOL/ANY are allowed. The 'most common in bull markets' contextual filter requires external regime classification beyond standard technical indicators.",
+  "translation_notes": "Doji approximated as small body_pct (<5%) with near-equal open/close. Gap-up approximated as open > prev_close, but true gap detection across sessions is untranslatable. Pattern shows 6.19% continuation performance in bull markets with median 2-day hold to breakout; set hold_days_max=6 per trend_end_median. Entry direction set to LONG based on breakout_direction=UP. Exit set to reversal (close < open) per AUTHOR_SILENT guidance."
 }

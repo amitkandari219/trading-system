@@ -1,0 +1,71 @@
+{
+  "signal_id": "BULKOWSKI_PLACE_A_BUY_ORDER",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Place a buy order just below the confirmation line",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_PLACE_A_BUY_ORDER",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_lower"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_lower"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_PLACE_A_BUY_ORDER"
+  },
+  "source_rule_text": "Place a buy order just below the confirmation line to enter before a gap occurs and reduce risk of pattern failure"
+}

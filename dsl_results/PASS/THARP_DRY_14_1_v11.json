@@ -37,11 +37,6 @@
         "left": "returns",
         "operator": "<",
         "right": "-0.03"
-      },
-      {
-        "left": "close",
-        "operator": "<",
-        "right": "dc_lower"
       }
     ],
     "exit_short": [
@@ -54,11 +49,6 @@
         "left": "returns",
         "operator": ">",
         "right": "0.03"
-      },
-      {
-        "left": "close",
-        "operator": ">",
-        "right": "dc_upper"
       }
     ],
     "entry_logic": "AND",
@@ -72,7 +62,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Trend confirmation uses ADX_14 > 25 (strong trend indicator) combined with price position relative to SMA_20. Exit conditions translate the 3% reversal threshold using returns, the 10-bar reversal pattern via Donchian Channel breach (lookback=10 periods), and trailing stop via DC lower/upper bands. Direction set to CONTEXT_DEPENDENT as signal adapts to both uptrend and downtrend scenarios."
+    "translation_notes": "Trend confirmation via ADX_14 > 25 (strong trend indicator) combined with price position relative to SMA_20. Exit conditions use 3.0% reversal threshold via returns metric and trend direction reversal (price crossing SMA_20). Trailing stop logic approximated via returns threshold over 10-bar window. Signal is context-dependent (LONG when uptrend, SHORT when downtrend)."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -110,11 +100,6 @@
         "indicator": "returns",
         "op": "<",
         "value": -0.03
-      },
-      {
-        "indicator": "close",
-        "op": "<",
-        "value": "dc_lower"
       }
     ],
     "exit_short": [
@@ -127,11 +112,6 @@
         "indicator": "returns",
         "op": ">",
         "value": 0.03
-      },
-      {
-        "indicator": "close",
-        "op": ">",
-        "value": "dc_upper"
       }
     ],
     "regime_filter": [
@@ -142,7 +122,7 @@
     "stop_loss_pct": 0.03,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Trend confirmation uses ADX_14 > 25 (strong trend indicator) combined with price position relative to SMA_20. Exit conditions translate the 3% reversal threshold using returns, the 10-bar reversal pattern via Donchian Channel breach (lookback=10 periods), and trailing stop via DC lower/upper bands. Direction set to CONTEXT_DEPENDENT as signal adapts to both uptrend and downtrend scenarios."
+    "reason": "Trend confirmation via ADX_14 > 25 (strong trend indicator) combined with price position relative to SMA_20. Exit conditions use 3.0% reversal threshold via returns metric and trend direction reversal (price crossing SMA_20). Trailing stop logic approximated via returns threshold over 10-bar window. Signal is context-dependent (LONG when uptrend, SHORT when downtrend)."
   },
   "source_rule_text": "A trader should remain in a position and allow profits to run as long as the identified trend continues in the trader's favor, exiting only when the trend direction shifts."
 }

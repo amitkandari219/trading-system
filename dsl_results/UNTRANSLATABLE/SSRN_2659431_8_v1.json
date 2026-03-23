@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of realized volatility of factor returns and inverse volatility scaling mechanism. These are portfolio-level factor construction operations, not price-based technical indicators. The allowed indicator set contains only single-instrument price and momentum indicators (RSI, ATR, moving averages, etc.), but cannot express: (1) multi-factor realized volatility measurement, (2) dynamic position sizing scaled inversely to volatility, or (3) factor-level rebalancing logic. This is a systematic factor management strategy that operates at the portfolio/factor construction layer, not a price-action entry/exit rule.",
+  "translation_notes": "Attempted proxy using hvol_20 (20-period historical volatility) to approximate the volatility scaling concept, but this misrepresents the original signal which operates on factor return volatility across a portfolio, not individual security price volatility. A proper implementation requires custom volatility-managed portfolio construction logic outside standard backtesting indicators."
+}

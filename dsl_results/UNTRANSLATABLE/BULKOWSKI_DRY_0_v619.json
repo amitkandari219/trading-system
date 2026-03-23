@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "The signal requires calculating a custom 20-day average daily volatility (high-low over prior month) and applying a 1.5x multiplier for stop placement. This requires a lookback window calculation not available in the allowed indicators. While atr_20 approximates volatility, the exact methodology (20-day average of daily swings multiplied by 1.5) cannot be precisely implemented. The pattern recognition itself (Double Top/Adam & Eve breakout detection) also requires chart pattern detection logic not available in the allowed indicator set.",
+  "translation_notes": "Attempted to use atr_20 as proxy for volatility-based stop management, and price direction as breakout indicator. However, the core requirement\u2014computing a 20-bar average of (high-low) range and multiplying by 1.5 to set a dynamic stop distance\u2014requires custom calculation logic. The 1.5 multiplier is preserved in stop_loss_pct, but without pattern detection and custom volatility calculation, this rule cannot be fully translated. Recommend implementing pattern detection module separately."
 }

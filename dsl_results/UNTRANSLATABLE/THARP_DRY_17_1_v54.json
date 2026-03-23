@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires meta-level instrument screening (market age, listing date, historical data availability) that cannot be expressed using price/technical indicators. Requires: (1) instrument age >= 12 months, (2) historical data points >= 250 days, (3) exclusion list of instruments introduced within past 12 months. These are pre-trade filters requiring instrument registry/metadata, not tradable conditions.",
+  "translation_notes": "This is a regime/instrument eligibility filter rather than a trading signal. It should be implemented as a pre-screening rule in the backtest engine at the portfolio/instrument selection layer, not as entry/exit conditions on individual price bars. The structural change and volume drop conditions are partially translatable (volume ratio < 0.75) but the core signal logic (instrument newness) requires external data sources unavailable in standard OHLCV indicators."
 }

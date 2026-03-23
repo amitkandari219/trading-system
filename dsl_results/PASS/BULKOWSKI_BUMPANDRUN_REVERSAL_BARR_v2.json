@@ -1,0 +1,105 @@
+{
+  "signal_id": "BULKOWSKI_BUMPANDRUN_REVERSAL_BARR",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Bump-and-Run Reversal (BARR)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_BUMPANDRUN_REVERSAL_BARR",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.7"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      },
+      {
+        "left": "body_pct",
+        "operator": ">",
+        "right": "0.02"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.7
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      },
+      {
+        "indicator": "body_pct",
+        "op": ">",
+        "value": 0.02
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_BUMPANDRUN_REVERSAL_BARR"
+  },
+  "source_rule_text": "Bump-and-Run Reversal (BARR): Stock climbs steadily, bumps up at resistance, rounds over and plunges back through an earlier trend line, completing a reversal pattern"
+}

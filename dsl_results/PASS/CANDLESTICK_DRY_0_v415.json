@@ -1,0 +1,144 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": "<=",
+        "right": "low"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "open"
+      },
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "lower_wick",
+        "operator": "<",
+        "right": "0.5"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "<=",
+        "right": "low"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "open"
+      },
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "lower_wick",
+        "operator": "<",
+        "right": "0.5"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Doji candle pattern translated using bar properties: open near/at low (open <= low), close at/near open (close >= open with small body), tall upper wick (upper_wick > body), minimal lower wick. Direction is CONTEXT_DEPENDENT as doji is a reversal pattern that signals potential directional movement either way. Exit conditions inferred as reversal (close moving away from open). Success rate and volume parameters from AUTHOR_SILENT not included in rule logic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": "<=",
+        "value": "low"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "open"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": "<",
+        "value": 0.5
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "<=",
+        "value": "low"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "open"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": "<",
+        "value": 0.5
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Doji candle pattern translated using bar properties: open near/at low (open <= low), close at/near open (close >= open with small body), tall upper wick (upper_wick > body), minimal lower wick. Direction is CONTEXT_DEPENDENT as doji is a reversal pattern that signals potential directional movement either way. Exit conditions inferred as reversal (close moving away from open). Success rate and volume parameters from AUTHOR_SILENT not included in rule logic."
+  },
+  "source_rule_text": "Doji candle pattern: Price opens at or very near the low for the day, bullish buying demand pushes stock up, bearish selling pressure overwhelms buying and sends price lower, ending day at opening price with tall upper shadow"
+}

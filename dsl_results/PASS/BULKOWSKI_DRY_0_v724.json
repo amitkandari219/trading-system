@@ -1,0 +1,82 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "1.0"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.05"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "bb_upper"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 10.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry conditions: (1) 100% price rise requirement translated as returns >= 1.0 (doubling = 100% return); (2) flag consolidation near the breakout high approximated by price staying above sma_20; (3) tight sideways movement (3-5 weeks, max 20% drift down) approximated by low Bollinger bandwidth indicating low volatility. Exit: breakout above upper Bollinger Band signals flag breakout completion. Stop loss set to 20% (the maximum allowed drift within the flag per author). Hold period set to 60 days (2 months) to capture the initial 100% rise plus flag formation window."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": 1.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.05
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "bb_upper"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.1,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Entry conditions: (1) 100% price rise requirement translated as returns >= 1.0 (doubling = 100% return); (2) flag consolidation near the breakout high approximated by price staying above sma_20; (3) tight sideways movement (3-5 weeks, max 20% drift down) approximated by low Bollinger bandwidth indicating low volatility. Exit: breakout above upper Bollinger Band signals flag breakout completion. Stop loss set to 20% (the maximum allowed drift within the flag per author). Hold period set to 60 days (2 months) to capture the initial 100% rise plus flag formation window."
+  },
+  "source_rule_text": "High, Tight Flag: A stock that doubles in price within 2 months or less, followed by a sideways consolidation (flag) lasting 3-5 weeks with price drifting down no more than 20%"
+}

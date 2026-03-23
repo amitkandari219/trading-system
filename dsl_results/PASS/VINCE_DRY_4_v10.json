@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_4",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "distribution_farthest_point_std_devs",
+      "threshold": null,
+      "direction": "absolute_value"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Use the absolute value of the farthest outlier in your trade distribution (measured in standard deviations from mean) as the bounding parameter for optimal f calculation. Derive cumulative probability using standard normal distribution equation (Equation 3.21) rather than assuming fixed sigma bounds. This is data-driven optimal f calibration based on actual trade distribution extremes.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Determine position sizing parameters by using the absolute value of the farthest point from the mean in standard deviations rather than assuming a fixed number of sigmas, then calculate associated probabilities using the standard normal distribution equation."
+}

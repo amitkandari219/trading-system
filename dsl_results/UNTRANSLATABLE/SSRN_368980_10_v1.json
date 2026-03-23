@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_368980_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires options market data (open buy volume on options contracts, minimum_open_buy_contracts threshold) which is not available in the allowed indicator list. The indicator set only contains equity price/volume indicators and derivatives thereof (moving averages, RSI, ATR, MACD, etc.) but lacks options-specific metrics such as open interest, put/call ratios, options volume, or implied volatility. Additionally, portfolio formation based on cross-market information transmission from options to underlying stocks cannot be accurately modeled with available indicators.",
+  "translation_notes": "The core signal requires: (1) options open buy volume data\u2014not available, (2) options contract counts\u2014not available, (3) size-group classification (market cap segmentation)\u2014not available, (4) cross-market regime detection (options\u2192equity transmission)\u2014not available. A proxy using equity volume alone would fundamentally misrepresent the signal. The 5-day holding period and day-1 effect emphasis are translatable, but without the foundational options data, the rule cannot be meaningfully implemented."
+}

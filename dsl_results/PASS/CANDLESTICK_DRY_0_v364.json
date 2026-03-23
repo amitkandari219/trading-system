@@ -1,0 +1,92 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "30"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "REVERSAL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Dragonfly doji detected via lower_wick > body (long lower shadow relative to body) combined with rsi_14 < 30 for oversold conditions. High volume confirmed via volume > hvol_20. Bullish engulfing approximated by close > prev_close on current candle. Exit uses SMA_20 as corrective phase target (AB phase). The 35% success rate within corrective phase and measured move patterns are pattern-recognition features not directly translatable to indicator conditions; they inform position management strategy rather than rule logic."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 30.0
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "REVERSAL"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Dragonfly doji detected via lower_wick > body (long lower shadow relative to body) combined with rsi_14 < 30 for oversold conditions. High volume confirmed via volume > hvol_20. Bullish engulfing approximated by close > prev_close on current candle. Exit uses SMA_20 as corrective phase target (AB phase). The 35% success rate within corrective phase and measured move patterns are pattern-recognition features not directly translatable to indicator conditions; they inform position management strategy rather than rule logic."
+  },
+  "source_rule_text": "Dragonfly Doji with bullish engulfing confirmation: Price drops to extended move down (oversold conditions preferred), forms dragonfly doji with long lower shadow and high volume suggesting accumulation, followed by bullish engulfing candle the next day confirming buying sentiment."
+}

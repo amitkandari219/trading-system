@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires external data inputs not available in the allowed indicator set: (1) meteorological alert/severe storm event detection requires real-time external weather data source, (2) lunar phase alignment (new/full moon dates) requires external astronomical calendar data. The core price-based condition (close > sma_20) is translatable, but the two primary entry triggers (severe weather event + lunar phase alignment with \u00b10 day tolerance) cannot be expressed using only the allowed technical indicators. This signal fundamentally depends on non-market data sources.",
+  "translation_notes": "The rule structure is CONTEXT_DEPENDENT with SHORT direction (anticipate declines). Only the trend confirmation condition (price above 20-day MA) maps to allowed indicators. The meteorological alert and exact lunar phase matching are external event-based triggers that fall outside the scope of technical indicators. Without access to weather APIs and lunar calendar data, this signal cannot be fully automated within a standard backtest engine. Exit condition specified as 3-day hold (hold_days_max: 3) per 'close of day +3 from storm onset' with 2% stop loss as specified."
 }

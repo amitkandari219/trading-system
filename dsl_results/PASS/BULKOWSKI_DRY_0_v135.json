@@ -10,9 +10,19 @@
         "right": "dc_upper"
       },
       {
-        "left": "volume",
+        "left": "adx_14",
         "operator": ">",
-        "right": "hvol_20"
+        "right": "25"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.03"
       }
     ],
     "entry_short": [
@@ -22,36 +32,47 @@
         "right": "dc_lower"
       },
       {
-        "left": "volume",
+        "left": "adx_14",
         "operator": ">",
-        "right": "hvol_20"
+        "right": "25"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.03"
       }
     ],
     "exit_long": [
       {
         "left": "close",
         "operator": "<",
-        "right": "s1"
+        "right": "sma_20"
       }
     ],
     "exit_short": [
       {
         "left": "close",
         "operator": ">",
-        "right": "r1"
+        "right": "sma_20"
       }
     ],
     "entry_logic": "AND",
-    "exit_logic": "OR",
-    "stop_loss_pct": 2.0,
-    "hold_days_max": 20,
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 30,
     "direction": "BOTH",
     "target_regime": [
-      "ANY"
+      "TRENDING_UP",
+      "TRENDING_DOWN"
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Flag formation detection uses Donchian channels (dc_upper/dc_lower) to identify the consolidation boundaries and breakout point. Volume confirmation ensures legitimate breakout. Entry triggers on price crossing Donchian bands. Exit uses pivot support/resistance levels as proxy for stop-loss and target price calculation based on formation height. Context-dependent direction reflects that flags are continuation patterns\u2014direction determined by prior trend. Success rate of 64% for bull flags translates to 2% stop-loss and 20-day hold window to capture 23% average rise."
+    "translation_notes": null
   },
   "backtest_rule": {
     "backtestable": true,
@@ -62,9 +83,19 @@
         "value": "dc_upper"
       },
       {
-        "indicator": "volume",
+        "indicator": "adx_14",
         "op": ">",
-        "value": "hvol_20"
+        "value": 25.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.03
       }
     ],
     "entry_short": [
@@ -74,31 +105,44 @@
         "value": "dc_lower"
       },
       {
-        "indicator": "volume",
+        "indicator": "adx_14",
         "op": ">",
-        "value": "hvol_20"
+        "value": 25.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.03
       }
     ],
     "exit_long": [
       {
         "indicator": "close",
         "op": "<",
-        "value": "s1"
+        "value": "sma_20"
       }
     ],
     "exit_short": [
       {
         "indicator": "close",
         "op": ">",
-        "value": "r1"
+        "value": "sma_20"
       }
     ],
-    "regime_filter": [],
-    "hold_days": 20,
-    "stop_loss_pct": 0.02,
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.027999999999999997,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Flag formation detection uses Donchian channels (dc_upper/dc_lower) to identify the consolidation boundaries and breakout point. Volume confirmation ensures legitimate breakout. Entry triggers on price crossing Donchian bands. Exit uses pivot support/resistance levels as proxy for stop-loss and target price calculation based on formation height. Context-dependent direction reflects that flags are continuation patterns\u2014direction determined by prior trend. Success rate of 64% for bull flags translates to 2% stop-loss and 20-day hold window to capture 23% average rise."
+    "reason": "DSL translation of BULKOWSKI_DRY_0"
   },
   "source_rule_text": "Flag Formation: A continuation pattern where price consolidates after a strong move, followed by a breakout in the original direction of the trend"
 }

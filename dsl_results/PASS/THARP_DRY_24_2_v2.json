@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_24_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "R_MULTIPLE",
+    "base_risk_pct": 0.02,
+    "r_multiple_target": 5.0,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "transaction_cost_ratio",
+      "threshold": 0.2,
+      "direction": "below"
+    },
+    "max_risk_pct": 0.02,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Set stop loss wide enough (1.0 ATR multiple) to avoid whipsaws while keeping total transaction costs \u2264 20% of expected profit. Risk 2% per trade (acceptable_loss_per_trade_pct) with minimum 5:1 profit-to-loss ratio requirement to ensure net profitability.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should set stop losses wide enough to avoid being whipsawed by normal market noise while keeping total transaction costs (slippage, commissions, and losses) proportional to expected profits, because tight stops increase the frequency of small losses and transaction costs that can exceed net profitability over time."
+}

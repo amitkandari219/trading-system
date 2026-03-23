@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_23",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires 'open-buy volume in options >10% OTM is in top decile', which is an options-specific metric (option order flow, open interest, and moneyness). The allowed indicators do not include options data (vol_ratio_20 is equity volume only). The moneyness_threshold parameter (-0.1) and slope coefficient (-44.7 bps) reference option Greeks/levels that cannot be derived from the equity price and volume indicators available. This signal cannot be accurately translated without options-chain data.",
+  "translation_notes": "Signal references deep OTM option open-buy volume (top decile threshold) as the primary entry signal. This requires real-time options order flow and open interest data stratified by moneyness levels, neither of which are available in the allowed equity-only indicator set. The holding period is 1 day (next-day returns). The statistical parameters (t=-29.6, slope=-44.7bps) confirm this is based on cross-sectional options analysis, not equity technicals."
+}

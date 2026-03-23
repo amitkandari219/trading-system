@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": 2.0,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "atr_percent_volatility_14",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": 2.0,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size inversely scaled to ATR-based volatility over 14 periods. Formula: (2.0% equity) / (ATR as % of price). All positions maintain equivalent risk exposure regardless of price movement magnitude.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Scale position size as a fixed percentage of equity inversely proportional to the volatility of the instrument, so that all positions carry equivalent risk exposure regardless of their underlying price movement magnitude."
+}

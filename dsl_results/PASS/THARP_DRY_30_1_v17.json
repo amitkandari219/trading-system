@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_30_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.65,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "portfolio_impact_pct",
+      "threshold": 0.25,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.25,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Reduce position size (0.65\u00d7 impact reduction factor) when instrument's portfolio impact exceeds 25% based on volatility \u00d7 contract notional \u00f7 total equity. Rebalance every 10 days. Inverse sizing: smaller positions in high-impact assets, larger in low-impact assets.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should allocate position size inversely to the portfolio impact of that instrument, sizing smaller in high-impact assets and larger in low-impact assets, based on the percentage of portfolio return driven by each position."
+}

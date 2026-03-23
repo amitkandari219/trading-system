@@ -1,0 +1,29 @@
+{
+  "signal_id": "THARP_DRY_32_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "simultaneous_positions_count",
+      "threshold": 1,
+      "direction": "above",
+      "reduction_formula": "base_capital / (1 + 0.15 * (N - 1))"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size reduces by ~13-15% per additional simultaneous position. Single position: $40k per 1000 range; Two positions: $32k per 1000 range (20% reduction); Four positions: $24k per 1000 range (40% reduction). Maintains constant portfolio risk control as market exposures increase.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size should be reduced as the number of simultaneous market exposures increases, maintaining constant risk control across portfolio complexity."
+}

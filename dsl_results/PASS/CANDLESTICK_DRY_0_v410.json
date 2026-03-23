@@ -1,0 +1,60 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires confirmation that price closes lower than the previous day to detect a downward reversal. Entry condition: close < prev_close (current day closes lower than previous day). Exit condition set as reversal logic: close > prev_close (price closes higher, indicating reversal of the short thesis). The 93% success rate mentioned in source is documented but not encoded as a hard constraint. Stop loss and hold_days_max set conservatively given the confirmation-based nature of this pattern."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal requires confirmation that price closes lower than the previous day to detect a downward reversal. Entry condition: close < prev_close (current day closes lower than previous day). Exit condition set as reversal logic: close > prev_close (price closes higher, indicating reversal of the short thesis). The 93% success rate mentioned in source is documented but not encoded as a hard constraint. Stop loss and hold_days_max set conservatively given the confirmation-based nature of this pattern."
+  },
+  "source_rule_text": "Closing price confirmation reversal: Wait for price to close lower the next day to detect a reversal"
+}

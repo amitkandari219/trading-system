@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "KELLY",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": 0.2,
+    "trigger_condition": {
+      "metric": "trades_to_wealth_goal",
+      "threshold": null,
+      "direction": "dynamic",
+      "formula": "N = ln(((Goal-1)/ACTV)+1)/ln(Geometric Mean)"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Dynamic fractional f positioning: Calculate expected trades (N) needed to reach wealth goal using geometric mean returns. Use fractional Kelly (0.2f, 0.1f, 0.05f) to reduce variance from full optimal f (GHPR 1.01933). Adjust position size inversely to risk proportional to selected Kelly fraction.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Use dynamic fractional f positioning by calculating the expected number of trades needed to reach a specific wealth goal based on geometric mean returns and active equity percentage."
+}

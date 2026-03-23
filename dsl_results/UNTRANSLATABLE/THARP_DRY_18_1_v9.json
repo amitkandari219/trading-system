@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of 'established uptrend for minimum 2-3 consecutive days' which cannot be expressed as a single bar comparison. This requires multi-bar trend validation logic (e.g., close[i] > close[i-1] > close[i-2]) that is not supported by the available indicator set. The entry condition also references 'entry on day pullback closes above prior low' which implies a specific sequence of events across multiple bars that cannot be encoded in the current rule structure.",
+  "translation_notes": "The core pattern elements were partially translated: (1) pullback occurrence detected via close < prev_close, (2) close above previous day's low via close > prev_low, (3) stop loss at pullback low via exit condition close < prev_low. However, the trend establishment requirement (3 consecutive up closes) requires multi-bar lookback that exceeds the current indicator scope. A full implementation would need a composite trend indicator or explicit multi-bar condition support."
 }

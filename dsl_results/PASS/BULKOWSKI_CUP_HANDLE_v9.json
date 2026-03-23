@@ -1,0 +1,95 @@
+{
+  "signal_id": "BULKOWSKI_CUP_HANDLE",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Cup and Handle",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_CUP_HANDLE",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.7"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.04"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.22"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING",
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.7
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.04
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.22
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING",
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_CUP_HANDLE"
+  },
+  "source_rule_text": "Cup and Handle: A cup pattern that gently rounds over, climbs just beyond the old high then pauses, followed by a handle formation with down-trending volume before breakout and volume surge on upside move."
+}

@@ -1,0 +1,95 @@
+{
+  "signal_id": "BULKOWSKI_EADT_BUSTED_PATTERN",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "EADT (Busted Pattern)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_EADT_BUSTED_PATTERN",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "-0.05"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": -0.05
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_EADT_BUSTED_PATTERN"
+  },
+  "source_rule_text": "EADT (Busted Pattern): Buy when price declines less than 5% after breakout and then soars as new trend establishes"
+}

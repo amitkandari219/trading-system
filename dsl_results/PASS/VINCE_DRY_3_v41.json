@@ -1,0 +1,24 @@
+{
+  "signal_id": "VINCE_DRY_3",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": null,
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Optimal f derived parametrically by testing f values (e.g., 0.001 increments) against historical worst-case P&L to maximize geometric mean returns. Example: f=0.001 yielded geometric mean of 1.0265. Uses HPR calculation: HPR = (1 + (WorstCasePnL / (f * WorstCasePnL)))^TradeCount. Trader must backtest to determine their specific optimal f value.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size is determined by testing various f values parametrically to find the optimal f that maximizes geometric mean returns, calculated through HPR and TWR interim steps."
+}

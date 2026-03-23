@@ -1,0 +1,23 @@
+{
+  "signal_id": "THARP_DRY_17_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.01,
+    "r_multiple_stop": 1.0,
+    "scale_factor": 0.5,
+    "trigger_condition": {
+      "metric": "win_loss_ratio",
+      "threshold": 1.5,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.01,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Dynamic position sizing using 1% risk per trade, scaled by 0.5 equity multiplier. Position size = (account_equity \u00d7 1% \u00d7 0.5) / average_loss. Only applies when win/loss ratio \u2265 1.5 based on last 20+ trades.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  }
+}

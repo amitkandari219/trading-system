@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_44",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of realized volatility against its own rolling historical average and dynamic portfolio rebalancing logic. The allowed indicators include hvol_20 (20-day historical volatility) but do not include: (1) a rolling 30-year average of volatility for comparison, (2) operators for 'below average' vs 'above average' calculations, (3) position sizing/allocation scaling mechanics. The signal is fundamentally about dynamic position sizing based on volatility regimes, which requires custom portfolio-level logic not expressible in point-in-time indicator comparisons.",
+  "translation_notes": "This signal describes a dynamic volatility-scaling strategy (volatility-targeting) that requires: (a) computing a rolling historical average of realized volatility over 30 years, (b) comparing current volatility to this moving average, and (c) adjusting portfolio weight inversely. While hvol_20 captures current realized volatility, the backtest engine does not support multi-timeframe rolling averages (30-year window) or position-sizing directives. The entry/exit conditions as shown are incomplete and circular. A proper translation would need custom portfolio allocation rules outside the scope of indicator-based signal logic."
+}

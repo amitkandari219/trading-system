@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Doji pattern detected via small body_pct (< 5%). Gap up condition: open > previous high. Black candle preference captured by close < open. Direction marked LONG (bullish breakout expectation from table references). Success rates (43% bull, 42% bear) inform modest 2% stop loss. Exit on reversal (close crossing below open) as author silent on explicit exit. Volume consideration noted but not quantifiable without specific thresholds."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Doji pattern detected via small body_pct (< 5%). Gap up condition: open > previous high. Black candle preference captured by close < open. Direction marked LONG (bullish breakout expectation from table references). Success rates (43% bull, 42% bear) inform modest 2% stop loss. Exit on reversal (close crossing below open) as author silent on explicit exit. Volume consideration noted but not quantifiable without specific thresholds."
+  },
+  "source_rule_text": "Doji, Gapping Up: A candlestick pattern where a doji forms with a gap up from the previous candle"
+}

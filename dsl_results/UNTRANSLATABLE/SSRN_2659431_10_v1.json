@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires construction of a mean-variance efficient (MVE) portfolio with static factor weights and dynamic inverse volatility scaling (f = c / \u03c3\u00b2_t). This is a portfolio-level optimization and rebalancing rule that cannot be expressed as simple price/indicator comparisons on a single asset. The backtesting engine would need multi-factor portfolio construction, Sharpe ratio optimization, and dynamic scaling mechanics not available in the allowed indicator set.",
+  "translation_notes": "Approximated with hvol_20 as a volatility estimator to trigger scaling decisions, but this does not capture: (1) MVE portfolio construction from multiple factors, (2) static weight optimization, (3) dynamic exposure scaling inversely to volatility, or (4) periodic rebalancing logic. A proper implementation requires portfolio-level optimization capabilities."
+}

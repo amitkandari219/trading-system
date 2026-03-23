@@ -72,7 +72,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal requires context-dependent direction (LONG/SHORT based on trend). Used rsi_14 as closest match for RSI threshold at 50. Vol_ratio_20 represents the 1.5x volume multiple. Fourth entry condition uses prev_close to confirm second consecutive bar in direction of move. ATR-based stop loss of 1.5x ATR converted to percentage equivalent (1.5%) as schema requires pct format. MA crossover serves as both entry trigger and trend reversal exit confirmation."
+    "translation_notes": "Signal uses CONTEXT_DEPENDENT direction, so both entry_long and entry_short conditions are provided. ATR stop loss (1.5x ATR) is converted to stop_loss_pct (1.5) as a multiplier approximation. Confirmation of second consecutive bar is implicit in the RSI cross and close beyond MA conditions. Used vol_ratio_20 for volume confirmation against 1.5x multiple. RSI_14 used as closest match to signal's RSI reference."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -142,7 +142,7 @@
     "stop_loss_pct": 0.015,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal requires context-dependent direction (LONG/SHORT based on trend). Used rsi_14 as closest match for RSI threshold at 50. Vol_ratio_20 represents the 1.5x volume multiple. Fourth entry condition uses prev_close to confirm second consecutive bar in direction of move. ATR-based stop loss of 1.5x ATR converted to percentage equivalent (1.5%) as schema requires pct format. MA crossover serves as both entry trigger and trend reversal exit confirmation."
+    "reason": "Signal uses CONTEXT_DEPENDENT direction, so both entry_long and entry_short conditions are provided. ATR stop loss (1.5x ATR) is converted to stop_loss_pct (1.5) as a multiplier approximation. Confirmation of second consecutive bar is implicit in the RSI cross and close beyond MA conditions. Used vol_ratio_20 for volume confirmation against 1.5x multiple. RSI_14 used as closest match to signal's RSI reference."
   },
   "source_rule_text": "Enter trades at the moment of trend change, when the reward-to-risk ratio is most favorable, rather than focusing on perfect entry mechanics."
 }

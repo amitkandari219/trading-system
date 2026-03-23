@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_7",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "portfolio_standard_deviation",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Position allocation adjusted via CML equation based on portfolio risk coordinate (standard deviation). Formula: ACML = (AT*P)+((1+RFR)*(1-P)) where allocation P adjusts inversely with risk. Requires tangent portfolio return (AT) and risk-free rate (RFR) inputs; optimal_f and kelly_fraction not specified by author.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position sizing should be determined by locating the portfolio on the Capital Market Line (CML) using the relationship between Average HPR and variance, where position size allocation adjusts based on the risk-free rate and the tangent portfolio coordinates."
+}

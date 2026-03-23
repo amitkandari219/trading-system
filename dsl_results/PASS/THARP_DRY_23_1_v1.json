@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_23_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.01,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "dollar_risk_vs_account_equity",
+      "threshold": 0.01,
+      "direction": "below_or_equal"
+    },
+    "max_risk_pct": 0.01,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Only enter a trade if the dollar risk (position_size \u00d7 stop_width) does not exceed 1% of account equity. This enforces a hard cap on absolute dollar risk per trade based on the required stop-loss width for the instrument.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should only trade an instrument if the minimum position size required to respect a wide stop-loss does not represent an unacceptably large dollar amount relative to their account or risk tolerance."
+}

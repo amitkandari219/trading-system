@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires portfolio-level variance scaling (conditional variance estimation over 22-day realized variance with inverse scaling and constant adjustment for volatility matching). This is a dynamic portfolio weighting strategy that cannot be expressed as simple price/indicator conditions. It requires: (1) computing realized variance of portfolio returns (not available in single-asset indicators), (2) inverse conditional variance scaling c/\u03c3\u00b2(f)_t, (3) calibrating constant c to match unconditional volatility. These are portfolio construction parameters, not entry/exit signals. The backtest engine needs portfolio variance estimation and dynamic weight adjustment capabilities beyond the allowed indicator set.",
+  "translation_notes": "Signal is a volatility management overlay strategy requiring portfolio-level calculations. The hvol_20 indicator captures historical volatility but does not provide the conditional variance estimation or inverse scaling mechanism described. Rebalance frequency is monthly (22 trading days). Recommend implementing as a separate portfolio weighting module rather than entry/exit rules."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1590784_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'futures_expiration_day' and 'price reversal effect' which are calendar/event-based triggers not available in the allowed indicator set. The signal also requires identifying when 'price pressure is released' which lacks a precise technical definition. A reversion-based proxy has been constructed using price direction reversal, but the core event-driven logic cannot be fully translated without a futures expiration calendar indicator.",
+  "translation_notes": "This is a calendar-driven, event-based strategy that requires knowledge of futures expiration dates. The allowed indicator set does not include event calendars or explicit reversal-day detection. The conditions above represent a simplified reversion logic (long when price rises, short when price falls, exit on reversal), but this does NOT capture the intended signal which trades specifically around expiration day liquidity effects. A proper backtest would require external calendar data marking futures expiration dates."
+}

@@ -1,0 +1,103 @@
+{
+  "signal_id": "BULKOWSKI_MMU_MULTIPLE_MOVING_AVERAGE",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "MMU (Multiple Moving Average pattern)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_MMU_MULTIPLE_MOVING_AVERAGE",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.7"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "s1"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.85"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.5,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.7
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "s1"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.85
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.035,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_MMU_MULTIPLE_MOVING_AVERAGE"
+  },
+  "source_rule_text": "MMU (Multiple Moving Average pattern): Price completes corrective phase and resumes uptrend; traders use corrective phase bottom as stop loss and target the second leg high"
+}

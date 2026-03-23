@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal contains incomplete specifications: (1) 'Last candle closes in highest third of range' requires custom range_third calculation not in allowed indicators; (2) Multiple parameters marked AUTHOR_SILENT including success rates, average returns, failure rates, volume trends, and throwback percentages\u2014cannot construct precise conditions without these values; (3) 'Opening gap confirmation' requires gap detection logic not directly available; (4) Exit conditions entirely marked AUTHOR_SILENT with no guidance. Constructed best-effort entry/exit based on available candlestick and moving average logic, but pattern is under-specified for production use.",
+  "translation_notes": "Interpreted entry as breakout confirmation: closing price above/below sma_50 with bullish/bearish candle color (close > open for long; close < open for short) and confirmation of breakout direction. Exit conditions set as reversal crossovers of sma_50 as reasonable alternative to AUTHOR_SILENT directive. The 'highest third of range' condition cannot be expressed without custom calculations. Original source text fragment insufficient to clarify specific pattern mechanics."
 }

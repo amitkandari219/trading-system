@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires: (1) Detection of 'Doji, Gravestone' candlestick pattern\u2014requires specific pattern recognition logic not available in indicator set; (2) 'Candles within a third of yearly low'\u2014requires yearly_high/yearly_low indicators not in allowed list; (3) 'Measure rule to predict price target'\u2014requires historical pattern measurement logic; (4) Gap type determination (exhaustion vs breakaway)\u2014requires gap detection not in allowed indicators; (5) Volume performance analysis from Table 25.4\u2014specific thresholds not provided. Translated core SHORT reversal logic with tall upper wick and 50-day MA breakout, but full pattern recognition and yearly-low-relative positioning cannot be expressed.",
+  "translation_notes": "Converted Gravestone Doji (bearish reversal) to: upper_wick > body (tall upper shadow indicator) AND close below sma_50 (breakout condition). Exit on close above prior high (reversal failure). Hardcoded regime to TRENDING_UP per target context. Missing: yearly-low proximity check, specific volume thresholds, pattern confirmation logic, and measure-rule price targets due to indicator limitations."
 }

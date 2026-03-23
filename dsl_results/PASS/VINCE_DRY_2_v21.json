@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_2",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": 2.0,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "equity_vs_geometric_threshold",
+      "threshold": null,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Geometric threshold technique (Vince method) scales from 1 to 2 contracts on equity growth. Asymmetric: scales up on equity growth but does NOT reduce back to 1 contract on drawdown when holding >2 contracts. Specific threshold values not provided by author.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Use geometric threshold technique to determine at what equity level to increase from 1 contract to 2 contracts, but do not trim back contracts on the downside when below the geometric threshold if trading more than 2 contracts."
+}

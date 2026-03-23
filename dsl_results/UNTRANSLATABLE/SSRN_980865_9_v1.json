@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by volatility and selecting bottom decile within a universe (FTSE World Developed Index constituents). This is a cross-sectional portfolio construction rule that requires universe-relative ranking and decile selection logic, which cannot be expressed as a single-stock technical indicator condition. The backtest engine would need portfolio-level ranking and selection capabilities not captured by the allowed indicators (which are all single-bar, single-stock metrics). The entry condition attempted to approximate 'low volatility' using hvol_20 below its mean, but this does not replicate the decile-ranking logic required.",
+  "translation_notes": "The signal describes a factor-based stock selection strategy (low-volatility anomaly) requiring: (1) universe definition (FTSE World Developed), (2) cross-sectional volatility ranking across all constituents, (3) decile selection (bottom 10%), and (4) periodic rebalancing. This is fundamentally a portfolio construction rule, not a time-series entry/exit signal. A proper implementation requires a multi-leg ranking system external to single-stock technical indicators. The source text does not provide explicit rebalancing frequency, and no regime filters are specified."
+}

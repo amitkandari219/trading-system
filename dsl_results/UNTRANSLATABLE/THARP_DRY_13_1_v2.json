@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "This signal is a meta-rule about backtesting validation thresholds (win_rate >= 55%, minimum 50 trades, 1-5 day timeframes) rather than a price-action entry/exit rule. It requires win_rate and sample_size metrics that are not available as real-time indicators in the allowed indicator list. This is a portfolio/concept acceptance filter, not a tradeable signal condition.",
-  "translation_notes": "THARP_DRY_13_1 defines a validation framework for accepting entry concepts based on historical performance statistics. The rule states: reject any entry concept with win_rate < 55% regardless of how sound it appears. This is a backtesting acceptance criterion (applied before live trading), not a condition that can be expressed as price/volume indicators crossing thresholds. Implementation requires: (1) backtest each concept over 50+ trades, (2) calculate win_rate across 1-5 day holds, (3) only proceed with concepts where win_rate >= 0.55, (4) monitor live win_rate and discard if it degrades below 55%. To use this rule, apply it as a pre-trading filter in the backtesting framework rather than as an indicator-based entry condition."
+  "untranslatable_reason": "Not a sizing rule. This is an entry filter/validation rule that specifies minimum statistical reliability (55% win rate over 50+ trades in 1-5 day timeframes) required to accept an entry concept. It describes which trading ideas to reject, not how to size positions once an entry is triggered. Position sizing rules specify dollar amounts, risk percentages, or position multipliers\u2014this rule is a gating criterion for concept acceptance.",
+  "translation_notes": null
 }

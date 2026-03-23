@@ -1,0 +1,42 @@
+{
+  "signal_id": "THARP_DRY_32_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "account_equity",
+      "threshold": null,
+      "direction": "tiered",
+      "thresholds": [
+        {
+          "equity_level": 1200,
+          "unit_count": 2
+        },
+        {
+          "equity_level": 4000,
+          "unit_count": 3
+        },
+        {
+          "equity_level": 8000,
+          "unit_count": 4
+        }
+      ]
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Scale equal-sized units proportionally with account equity. Unit count increases at $1,200 (2 units), $4,000 (3 units), $8,000 (4 units). Each unit = Account equity / number_of_units, with $1,000 minimum per unit. Risk per unit implicit in R-multiple framework.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Scale the number of equal-sized position units proportionally with account size, increasing unit count at defined capital thresholds to manage risk and optimize capital deployment."
+}

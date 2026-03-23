@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom put-call ratio calculation (put open-buy volume / (put open-buy volume + call open-buy volume)) and daily cross-sectional quintile sorting with extreme quintile assignments. These derived metrics and ranking operations are not available in the allowed indicator set. The 'volume' field used here is a placeholder and does not represent the actual put-call ratio logic required. This strategy requires a custom implementation at the portfolio construction level rather than individual position-level rules.",
+  "translation_notes": "SSRN_622869_6 is a sophisticated factor-based strategy requiring: (1) custom option flow calculation not in allowed indicators, (2) daily cross-sectional ranking across entire stock universe, (3) quintile-based portfolio construction with long Q5 / short Q1 positions. The daily rebalance frequency (hold_days_max=1) is captured, but the core put-call ratio sorting mechanism cannot be expressed within the individual-stock rule framework. This signal requires portfolio-level implementation with option volume data feeds."
+}

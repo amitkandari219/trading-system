@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit put-call ratio calculation from option volume (buyer-initiated positions), which is not available in the allowed indicators list. vol_ratio_20 is a proxy for volume analysis but does not capture the specific put-call ratio construction methodology described in the source paper (Pan & Poteshman 2004). A proper implementation would require custom option flow data and put-call ratio computation at decile/quintile level, which cannot be expressed using only price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, and standard volume indicators.",
+  "translation_notes": "The signal fundamentally depends on option market microstructure data (put-call ratio from option volume initiated by buyers opening new positions). Without access to options data or a pre-computed put-call ratio indicator, this signal cannot be accurately translated. The entry condition requires identifying the lowest put-call ratio decile/quintile, which is a percentile-rank operation on option data not available in the allowed indicator set. Exit conditions reference 40+ bps daily or 1%+ weekly outperformance, which could theoretically be captured by returns > 0.004 or returns > 0.01, but this oversimplifies the intended logic."
+}

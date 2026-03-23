@@ -1,0 +1,30 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "periodic_equity_reduction",
+      "threshold": null,
+      "direction": "formula_based",
+      "formula": "P = 1 - INACTIVE^(1/N)",
+      "description": "Reduce active equity by percentage P every N periods; INACTIVE = inactive_equity_ratio"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Dynamic periodic reduction rule: systematically withdraws P% of active equity every N periods to auto-exit losing programs at zero or lock profits. Formula-driven rather than fixed percentage\u2014requires calculation of INACTIVE ratio and review interval N.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Systematically reduce active equity by a periodic percentage P to automatically terminate a losing program when equity reaches zero after N periods, or to take profits from a winning program."
+}

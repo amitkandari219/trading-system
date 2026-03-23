@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Winner-Minus-Loser strategy requires cross-sectional ranking and portfolio construction across multiple stocks with percentile/decile grouping. This is a portfolio-level construction rule that cannot be expressed as a single-stock indicator condition. The signal requires: (1) ranking all stocks by momentum, (2) forming long/short portfolios from top/bottom deciles, and (3) tracking portfolio performance. Standard backtesting engines operating on individual bars require explicit momentum lookback period and ranking methodology not specified in source material.",
+  "translation_notes": "Signal appears to be a cross-sectional momentum strategy (WML factor) requiring multi-stock ranking logic. The entry conditions reference portfolio construction rather than price/indicator thresholds. Attempted translation uses returns as a proxy for recent momentum performance, but this does not capture the full decile/group construction methodology. Recommend: (1) specify momentum lookback period (e.g., 6-month, 12-month), (2) define decile boundaries, (3) clarify if single-stock or portfolio-level backtest is intended."
+}

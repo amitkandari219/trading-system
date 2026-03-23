@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires external data sources not in allowed indicators: (1) severe weather event detection/dates (not available as market indicator), (2) lunar cycle phase data (new/full moon timing). These require external calendars/APIs outside the OHLCV indicator set. Volume surge above 20-day average used as proxy for 'event awareness', and short-bias entry with 3-day hold approximates the decline window, but cannot validate actual storm occurrence or lunar alignment without external data feeds.",
+  "translation_notes": "This signal fundamentally depends on external physical event detection and astronomical data. The structured trading rules cannot be fully implemented using only price/volume-derived indicators. Approximated as: short entry when volume spikes above 20-day average (proxy for event awareness) with bearish candle close, exit after 3 days or +3% loss recovery. Original THARP research (1940-1964 storm analysis) cannot be mechanically reproduced without external weather event calendar and lunar almanac integration."
 }

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_368980_20",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires 'put_call_ratio' indicator which is not in the ALLOWED INDICATORS list. Put/call ratio is an options market indicator not available in the price/volume/technical indicator set provided. Decile ranking (lowest and highest deciles) also requires cross-sectional ranking logic not expressible with the allowed operators and single-bar indicators.",
+  "translation_notes": "Signal relies on options market data (put/call ratios) and cross-sectional decile ranking. The allowed indicator set contains only price, volume, and technical indicators. To implement this signal, the backtest engine would need to: (1) calculate put/call ratios from options data, (2) rank stocks into deciles, and (3) apply long/short positions accordingly. Expected returns: 40bps daily (t=24), 1% weekly (t=12). Stronger effect in small-cap stocks."
+}

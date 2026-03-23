@@ -1,0 +1,95 @@
+{
+  "signal_id": "BULKOWSKI_AEDT_ASCENDINGEXPANDING_PATTERN",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "AEDT (Ascending/Expanding pattern)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_AEDT_ASCENDINGEXPANDING_PATTERN",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "low",
+        "operator": "==",
+        "right": "s1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "low",
+        "op": "==",
+        "value": "s1"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_AEDT_ASCENDINGEXPANDING_PATTERN"
+  },
+  "source_rule_text": "AEDT (Ascending/Expanding pattern): Trade based on correct pattern identification and market conditions"
+}

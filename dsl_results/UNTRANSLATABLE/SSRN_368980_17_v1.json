@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_368980_17",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'option buyer (OB) volume' which is not available in the allowed indicators list. OB volume is a specialized options market metric (puts/calls ratio or options flow analysis) that cannot be derived from standard OHLCV, technical indicators, or volatility measures provided. The signal also references 'informed trading activity' which requires options order flow data not present in allowed indicators.",
+  "translation_notes": "The core signal logic (buy day after elevated volume, hold for 3 days) could theoretically be approximated using volume > sma_20 as a proxy for 'elevated volume', but this loses the critical 'option buyer volume' specificity. The source text appears to be numerical data without clear context linking to options metrics. To properly implement this signal, a custom OB_volume indicator would need to be added to the backtest engine, typically derived from options exchange data (open interest, put/call ratios, or options volume imbalance)."
+}

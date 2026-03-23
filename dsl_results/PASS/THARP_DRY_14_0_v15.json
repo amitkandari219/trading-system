@@ -62,7 +62,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Used sma_100 as the long-term trend-following indicator per the 100-period lookback parameter. Price move abnormality represented by returns crossing \u00b12% threshold (approximating >2 standard deviations). Regime shift detection uses ADX > 25 to confirm trend initiation. Exit on trend reversal when price crosses back below/above the 100-period MA. Stop loss set to 3% to account for transaction costs and volatility during regime shifts."
+    "translation_notes": "Used sma_100 as the 100-period trend-following indicator. Price move abnormality (>2 std devs) approximated with returns > \u00b10.02 (2%). Regime shift detection via ADX > 25 indicating strong trend initiation. Exit triggered by trend reversal (price crossing below/above SMA). Signal is bidirectional (both long and short entries based on trend direction reversal)."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -122,7 +122,7 @@
     "stop_loss_pct": 0.03,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Used sma_100 as the long-term trend-following indicator per the 100-period lookback parameter. Price move abnormality represented by returns crossing \u00b12% threshold (approximating >2 standard deviations). Regime shift detection uses ADX > 25 to confirm trend initiation. Exit on trend reversal when price crosses back below/above the 100-period MA. Stop loss set to 3% to account for transaction costs and volatility during regime shifts."
+    "reason": "Used sma_100 as the 100-period trend-following indicator. Price move abnormality (>2 std devs) approximated with returns > \u00b10.02 (2%). Regime shift detection via ADX > 25 indicating strong trend initiation. Exit triggered by trend reversal (price crossing below/above SMA). Signal is bidirectional (both long and short entries based on trend direction reversal)."
   },
   "source_rule_text": "A trader should use longer-term trend-following indicators to reduce transaction costs and capture abnormally large price moves that occur during major market shifts, rather than relying on shorter-term indicators that generate more frequent signals."
 }

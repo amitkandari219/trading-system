@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_39",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic portfolio construction with inverse conditional volatility scaling and factor decomposition (market vs volatility-managed market factor). This is a multi-asset allocation strategy, not a single-instrument technical signal. The allowed indicators cannot express: (1) conditional volatility estimation per asset, (2) factor-level weights that scale dynamically by inverse volatility, (3) replication of conditional mean-variance efficient portfolios, or (4) the mathematical formulation involving covariance matrix inversion (\u03a3_c^-1). This requires a custom portfolio optimizer, not rule-based entry/exit conditions.",
+  "translation_notes": "The signal SSRN_2659431_39 describes a volatility-managed portfolio construction strategy from academic research (equation IA.10 from the source). It allocates constant weights [0.14, 0.86] across market and volatility-scaled market factors. This is fundamentally incompatible with backtesting engines that operate on single-instrument price action rules. To implement this strategy requires: (1) explicit factor return streams, (2) dynamic volatility estimation (rolling conditional volatility), (3) portfolio optimization logic, and (4) multi-asset rebalancing logic that cannot be reduced to simple indicator-based entry/exit thresholds."
+}

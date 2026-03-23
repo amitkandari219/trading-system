@@ -1,0 +1,210 @@
+================================================================================
+NIFTY F&O TRADING SYSTEM — RISK AUDIT EXECUTIVE SUMMARY
+================================================================================
+Audited: 2026-03-23
+Capital: ₹10,00,000
+Lot Size: 25 contracts
+SPAN Margin/Lot: ₹120,000
+
+================================================================================
+OVERALL GRADE: D+ (operationally unsafe) → C (if critical fixes applied)
+VERDICT: DO NOT GO LIVE IN CURRENT STATE
+================================================================================
+
+================================================================================
+CRITICAL FINDINGS (7 ISSUES)
+================================================================================
+
+1. NO CIRCUIT BREAKER IN SIZER
+   Location: core/unified_sizer.py lines 211-213
+   Risk: Can allocate 72% of capital margin (violates 60% cap)
+   Fix: Pass existing_margin to sizer, check total before allocation
+   Impact: 🔴 CRITICAL
+
+2. RECURSIVE ROUNDING ERRORS
+   Location: core/unified_sizer.py lines 179-207
+   Risk: Multipliers of 0.8×0.5×0.6 get rounded to 1 lot at each step
+         Instead of 0.24 (24% of base), you get 100% sizing
+   Fix: Single round() at final step, use floor() for de-sizing
+   Impact: 🔴 CRITICAL
+
+3. NO LIVE POSITION TRACKING
+   Location: core/orchestrator.py
+   Risk: Tries to open 3rd position when margin exhausted
+         No sync with broker's actual position state
+   Fix: Query kite_bridge.get_positions() before sizing in live mode
+   Impact: 🔴 CRITICAL
+
+4. NO DAILY LOSS HALT
+   Location: core/orchestrator.py
+   Risk: Config defines DAILY_LOSS_FRACTION=5% (₹50k) but never checked
+         Could lose ₹50k and keep trading
+   Fix: Check daily P&L before run_daily_session(), return [] if limit breached
+   Impact: 🔴 CRITICAL
+
+5. NIFTY EXPIRY NOT SPECIFIED
+   Location: core/orchestrator.py line 742
+   Risk: Order placed as 'NIFTY' without expiry → defaults to far-month
+         Can trade wrong contract (1-5% price difference)
+   Fix: Specify 'NIFTY23MAY' format with nearest Friday expiry
+   Impact: 🔴 CRITICAL
+
+6. NO STOP-LOSS LINKAGE TO ENTRY
+   Location: core/orchestrator.py lines 735-756
+   Risk: Entry order placed but no correlated SL order
+         Manual SL required or unlimited downside if forgotten
+   Fix: Place bracket order with SL trigger_price after entry confirms
+   Impact: 🔴 CRITICAL
+
+7. INTRADAY DATA STALE
+   Location: core/orchestrator.py lines 517-607
+   Risk: Intraday signals (EXPIRY_PIN_FADE) evaluated on 200-day daily closes
+         Not real-time 5-minute bars
+   Fix: Separate _fetch_intraday_data() method for 5-min ticks
+   Impact: 🔴 CRITICAL
+
+================================================================================
+WARNINGS (5 ISSUES)
+================================================================================
+
+1. REGIME TRANSITIONS INSTANTANEOUS
+   Location: core/regime_detector.py (stateless detector)
+   Risk: VIX 23→26 flips regime NORMAL→CRISIS instantly → whipsaw
+   Fix: Add hysteresis (require 2 bars in new regime before switching)
+   Impact: ⚠️ WARNING
+
+2. REGIME CONFIDENCE IGNORED
+   Location: core/regime_detector.py line 250
+   Risk: Confidence is computed but never used for sizing
+   Fix: Apply (0.5 + 0.5*confidence) multiplier to regime_modifier
+   Impact: ⚠️ WARNING
+
+3. CAPITAL RESERVE MISMATCH
+   Location: config/unified_config.py vs core/unified_sizer.py
+   Risk: Config defines ₹2L reserve (CAPITAL_RESERVE) but sizer uses full ₹10L
+   Fix: Use AVAILABLE_CAPITAL (₹8L) or clarify intent
+   Impact: ⚠️ WARNING
+
+4. NO MARGIN VALIDATION
+   Location: core/orchestrator.py _execute_live()
+   Risk: Quantity calculated as lots × 25, but no check if margin available
+   Fix: Verify proposed_margin < available_margin before place_order()
+   Impact: ⚠️ WARNING
+
+5. NO MARKET HOURS CHECK
+   Location: core/orchestrator.py
+   Risk: Can attempt trades at 9:14 (pre-open) or 15:40 (post-close)
+   Fix: Guard with (MARKET_OPEN <= now <= MARKET_CLOSE)
+   Impact: ⚠️ WARNING
+
+================================================================================
+WHAT WORKS WELL ✓
+================================================================================
+
+1. COST MODEL (Grade: A)
+   - Zerodha fees accurate: ₹20 brokerage + 18% GST ✓
+   - STT 0.0125% (futures sell) correct ✓
+   - Exchange charges 0.00495% matches NSE ✓
+   - Slippage model VIX-scaled, realistic ✓
+   - Example trade: 1 lot, 24000→24100 = ₹1,084 cost (18 bps) ✓
+
+2. REGIME DETECTION (Grade: C+)
+   - 8-regime classification comprehensive ✓
+   - Trend logic solid: SMA alignment + ADX > 22 ✓
+   - Confidence scoring combines multiple factors ✓
+   - VIX thresholds match NSE structure ✓
+
+3. KELLY FRAMEWORK (Grade: B)
+   - 6-stage pipeline well-architected ✓
+   - Drawdown-aware (reduces at >5% DD) ✓
+   - VIX-responsive (reduces at high VIX) ✓
+   - Conservative base 0.75 ✓
+
+4. SIGNAL COORDINATION (Grade: B)
+   - Deduplication of correlated pairs ✓
+   - Category limits (max 2 KAUFMAN) ✓
+   - Directional conflict resolution ✓
+   - Prevents simultaneous opposing trades ✓
+
+================================================================================
+CAPITAL EFFICIENCY REALITY CHECK
+================================================================================
+
+With ₹10L capital and ₹120k SPAN margin per lot:
+
+Scenario 1: Single trade
+  - Base lots: 2 (₹6,667 risk ÷ ₹3,000 risk/lot)
+  - Result: ₹240k margin (24% of capital) ✓ SAFE
+
+Scenario 2: Three concurrent 2-lot positions
+  - Total: 6 lots = ₹720k margin (72% of capital)
+  - But cap: 60% = ₹600k = max 5 lots
+  - Result: 3rd trade gets 1 lot instead of 2 (unfair sizing)
+
+Scenario 3: Flash crash (VIX 16→35)
+  - Slippage: 0.02% × 2.0 = 0.04% (scaled by VIX)
+  - Cost to enter: ~₹2,400 (4 Nifty points)
+  - 1-lot position risk: ₹3,000
+  - Slippage consumes 80% of risk budget
+  - Execution at ₹24,050 instead of ₹24,000
+
+================================================================================
+TIMELINE TO LIVE TRADING
+================================================================================
+
+Phase 1: Apply critical fixes (23 hours)
+  - Position tracking + circuit breaker (4h)
+  - Daily loss halt (1h)
+  - Expiry specification (2h)
+  - Stop-loss linkage (3h)
+  - Rounding fix (2h)
+  - Regime hysteresis (3h)
+  - Testing (8h)
+
+Phase 2: Paper trading (4-6 weeks)
+  - Verify all fixes in paper mode
+  - Backtest 2023-2024 with fixes
+  - Monitor for false alarms
+  - Adjust thresholds based on live simulation
+
+Phase 3: Live trading (1% capital)
+  - Start with micro-position size (0.5 lots)
+  - Scale to 1 lot after 2 weeks profitability
+  - Monitor for real-world slippage vs model
+  - Gradually increase to 2-3 lots
+
+Phase 4: Production (100% capital)
+  - Only after 3+ months live at full size
+  - Only if Sharpe ratio > 1.0 and DD < 10%
+
+================================================================================
+FILES MODIFIED
+================================================================================
+
+Created:
+  - RISK_AUDIT_REPORT.md (comprehensive 500-line audit)
+  - CRITICAL_FIXES.md (7 fixes with code)
+  - AUDIT_SUMMARY.txt (this file)
+
+To Review:
+  - core/unified_sizer.py (position sizing)
+  - core/orchestrator.py (risk controls + execution)
+  - backtest/transaction_costs.py (VERIFIED CORRECT)
+  - core/regime_detector.py (8-regime logic)
+  - config/unified_config.py (capital allocation)
+
+================================================================================
+SIGN-OFF
+================================================================================
+
+Risk Management Assessment:
+  - Architecture: SOLID (layered regime + Kelly + conviction)
+  - Implementation: INCOMPLETE (missing guardrails)
+  - Live Readiness: NOT SAFE (7 critical gaps)
+
+Recommendation: 2-3 months of fixes and paper trading before production.
+
+Auditor: Risk Management Quant
+Severity: REAL MONEY AT STAKE — do not ignore these findings
+
+================================================================================

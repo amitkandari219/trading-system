@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "drawdown_reduction_via_filter",
+      "threshold": null,
+      "direction": "below"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "When filtering reduces per-unit drawdown, recalculate optimal f using only filtered trades. This yields higher f (larger positions) than the unfiltered series because maximum drawdown is lower on the filtered subset.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "When using filtering techniques that reduce drawdown on a per-unit basis, the optimal f increases (and f$ decreases) compared to trading the entire unfiltered series"
+}

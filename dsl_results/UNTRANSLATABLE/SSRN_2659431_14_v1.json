@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic portfolio weight scaling inversely proportional to realized variance (a custom computed metric), with position sizing tied to variance quantiles (median=1.0, 75th=1.6, 90th=2.6, 99th=6.4) and leverage constraints. This is a portfolio-level risk management rule, not a binary entry/exit signal. The backtest engine would need custom position-sizing logic and variance calculation mechanics not expressible through standard indicator comparisons.",
+  "translation_notes": "The signal describes a volatility-managed overlay that modulates leverage on a baseline market portfolio. Core concept: lower realized variance \u2192 higher position weight. While hvol_20 (historical volatility) could proxy variance, the true signal is a continuous scaling function (not a threshold-based trigger) with quantile-dependent position sizes and leverage caps. This requires custom implementation in the backtest engine's position-sizing module rather than standard rule-based entry/exit conditions."
+}

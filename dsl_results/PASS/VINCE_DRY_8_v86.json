@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "KELLY",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": 0.4167,
+    "trigger_condition": {
+      "metric": "multiple_correlated_systems",
+      "threshold": 2,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Fractional Kelly (41.67% of optimal f) applied to each market system's optimal f$ to reduce leverage and correlation risk across multiple simultaneous positions. Formula: New f$ = Optimal f$ \u00f7 1.4167",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size is calculated by multiplying the optimal f value for each market system by a fractional f of 0.4167 to reduce leverage and avoid margin calls while trading multiple correlated systems."
+}

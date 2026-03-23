@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_2",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.5,
+    "scale_factor": 0.5,
+    "trigger_condition": {
+      "metric": "volatility_and_drawdown_reduction_objective",
+      "threshold": null,
+      "direction": "below_full_optimal_f"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Half optimal f approach: reduce position sizing to 50% of full optimal f fraction to lower account volatility and maximum drawdown at cost of slower compounding. Formula: Account Multiple = (1 + 0.5*f)^N vs full f (1 + f)^N where f is optimal f value.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Use half of optimal f to reduce account volatility and drawdown, accepting slower growth for less portfolio commotion, though full optimal f continues to outperform over extended trade sequences."
+}

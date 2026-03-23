@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2284643_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation and ranking of trailing beta across a universe of securities (CRSP universe divided into quintiles by beta). This is a cross-sectional factor-based portfolio construction rule that cannot be expressed using single-security technical indicators. Beta is not in the allowed indicators list, and the rule requires universe-level sorting/ranking rather than individual security entry/exit conditions.",
+  "translation_notes": "This is a factor-based quintile rotation strategy (long low-beta, short high-beta) from academic research. It requires: (1) computing 5-year trailing beta for each security in the CRSP universe, (2) ranking securities into 5 quintiles, (3) constructing a long-only portfolio of the lowest beta quintile with periodic rebalancing. This fundamental portfolio construction logic cannot be translated into technical indicator conditions for a single-security backtest engine. The signal is structurally incompatible with the allowed indicator set which is designed for price-action and technical analysis rules, not cross-sectional factor rankings."
+}

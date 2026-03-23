@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_5367997_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of calendar date (last 7-10 trading days of month) and clustering bias across historical monthly peaks. Available indicators do not include calendar/date functions or statistical clustering metrics. The core logic\u2014'price peaks occur more frequently in late month'\u2014requires historical cross-sectional analysis of intra-monthly price patterns, which cannot be expressed as a single-bar technical condition. To implement properly would require: (1) day-of-month indicator, (2) historical peak frequency aggregation by calendar period, and (3) statistical clustering detection\u2014none of which are in the allowed indicator list.",
+  "translation_notes": "Attempted a generic breakout condition (close > prev_high) as a partial proxy for 'anticipate breakouts/highs', but this does not capture the calendar clustering bias or late-month timing requirement. Full signal translation is not feasible within current indicator constraints."
+}

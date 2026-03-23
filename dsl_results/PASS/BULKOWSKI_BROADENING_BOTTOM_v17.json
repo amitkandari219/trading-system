@@ -1,0 +1,105 @@
+{
+  "signal_id": "BULKOWSKI_BROADENING_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Broadening Bottom",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_BROADENING_BOTTOM",
+    "entry_long": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "0.02"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.3"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "prev_high"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.25,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": 0.02
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.3
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "prev_high"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.0225,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_BROADENING_BOTTOM"
+  },
+  "source_rule_text": "Broadening Bottom: Buy when price bounces off the lower trend line after identifying two minor highs and two minor lows"
+}

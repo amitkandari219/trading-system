@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_368980_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identifying 'underperforming' and 'overperforming' stocks relative to peer groups and customer order flow, which cannot be expressed as technical indicators from the allowed list. Specifically: (1) relative stock performance classification requires cross-sectional comparison not available in price/volume data, (2) customer behavior/order flow sentiment is not in allowed indicators, (3) fresh call/put selection logic requires option flow analysis not available. Entry conditions reference fundamental categorization ('underperforming stocks', 'over-performing stocks') that requires external data source beyond price/volume/technical indicators.",
+  "translation_notes": "This is a mean-reversion signal based on contrarian customer behavior from a research paper (SSRN_368980_2). The core logic suggests buying calls on relative underperformers and puts on relative outperformers. Attempted approximation using negative/positive returns, but this loses critical context: (1) the 'underperforming' and 'overperforming' classification is relative to peer/market groups, not absolute return direction, (2) the predictive edge depends on full-service broker customer sentiment/order flow, which is a data source outside this engine's technical indicators. To implement this signal, external data feeds for relative performance ranking and customer order flow sentiment would be required."
+}

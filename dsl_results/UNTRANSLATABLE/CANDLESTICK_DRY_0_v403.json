@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Doji candlestick formation detection requires pattern recognition (small body, long wicks) not fully expressible with single indicator conditions. Gap up condition approximated using open > prev_close. Exit conditions reference 'top of doji' and 'bottom of doji' which require high/low of the doji candle itself, not directional breakouts. Original exit logic is incomplete per source material (AUTHOR_SILENT on trend end timeframe).",
+  "translation_notes": "Approximated doji as small body_pct < 5%. Gap up represented as open > prev_close. Exit conditions cannot be fully specified without explicit doji high/low reference. Performance data suggests median hold of 1-5 days; set hold_days_max=5 based on candle_end+5days data. Target regime set to ANY since pattern works in both BULL_MARKET and BEAR_MARKET contexts. Median performance bull: +6.58% (12mo), bear: -6.40% (12mo); candle+1day: +1.36% (bull), -1.10% (bear)."
 }

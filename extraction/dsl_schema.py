@@ -21,8 +21,10 @@ ALLOWED_INDICATORS = [
     "rsi_7", "rsi_14", "rsi_21",
     # ATR
     "atr_7", "atr_14", "atr_20",
-    # Bollinger Bands
+    # Bollinger Bands (20-period default)
     "bb_upper", "bb_middle", "bb_lower", "bb_pct_b", "bb_bandwidth",
+    # Bollinger Bands (30-period — Chan quantitative)
+    "bb_upper_30", "bb_middle_30", "bb_lower_30", "bb_pct_b_30", "bb_bandwidth_30",
     # MACD
     "macd", "macd_signal", "macd_hist",
     # ADX
@@ -39,6 +41,8 @@ ALLOWED_INDICATORS = [
     "hvol_6", "hvol_20", "hvol_100", "india_vix",
     # Price position
     "price_pos_20",
+    # Mean reversion z-score (close vs 20d mean, normalized by 20d std)
+    "zscore_20", "zscore_50",
     # Previous bar
     "prev_close", "prev_high", "prev_low", "prev_open", "prev_volume",
     # Returns

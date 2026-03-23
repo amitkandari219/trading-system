@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "largest_historical_loss_magnitude_times_optimal_f_contracts",
+      "threshold": null,
+      "direction": "constraint_check",
+      "constraint": "must_not_exceed_active_equity"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Reduce position size when (largest historical loss \u00d7 optimal f contracts) exceeds active equity. Ensures Equation 8.08 result \u2265 highest portfolio weighting component to prevent catastrophic account loss from single worst-case scenario.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size must be reduced if the largest historical loss would exceed account equity when trading at optimal f, ensuring no single loss of maximum magnitude can wipe out the account."
+}

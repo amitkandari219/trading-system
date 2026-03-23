@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_23_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "mae_to_stop_ratio",
+      "threshold": 0.2,
+      "direction": "below"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Use full position size only when Maximum Adverse Excursion validates at <20% of initial stop distance. This is a conditional gate: position enters at full size if MAE < 20% \u00d7 stop_distance; otherwise reduce or skip. Acts as a stop-validation filter before sizing commitment.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should use Maximum Adverse Excursion (MAE) as a diagnostic metric to validate that initial stops are appropriately sized relative to normal price oscillation, ensuring stops are neither too tight (catching noise) nor misaligned with actual trade drawdowns."
+}

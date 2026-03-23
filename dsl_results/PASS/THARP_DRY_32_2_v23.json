@@ -1,0 +1,29 @@
+{
+  "signal_id": "THARP_DRY_32_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "ANTI_MARTINGALE",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "account_equity_per_unit_threshold",
+      "threshold": null,
+      "direction": "above",
+      "note": "Discrete step triggers: $500\u21921u, $1500\u21922u, $2500\u21923u, $7500\u21925u, $30000\u21926u, max 8u"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Add trading units progressively as equity crosses per-unit capital thresholds ($500, $1500, $2500, $7500, $30000). Requires positive track record (\u22651 winning trade) at previous unit count before scaling up. Max 8 units total.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Increase the number of trading units progressively as account equity grows, scaling position count in discrete steps tied to per-unit capital thresholds."
+}

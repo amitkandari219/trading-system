@@ -1,0 +1,148 @@
+{
+  "signal_id": "THARP_DRY_14_0",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_14_0",
+    "entry_long": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "macd",
+        "operator": ">",
+        "right": "macd_signal"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "macd",
+        "operator": "<",
+        "right": "macd_signal"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "macd",
+        "operator": "<",
+        "right": "macd_signal"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.05"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "macd",
+        "operator": ">",
+        "right": "macd_signal"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.05"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes accepting unfavorable periods to capture infrequent trends. Entry uses ADX > 25 (trend strength), price vs SMA_50 (direction), and MACD crossover (momentum confirmation) to satisfy 3+ indicator requirement. Exit triggered by trend reversal (MACD crossback) or 5% loss threshold. Drawdown monitoring (10% max) and 50-trade profitability check are backtest engine responsibilities, not rule conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "macd",
+        "op": ">",
+        "value": "macd_signal"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "macd",
+        "op": "<",
+        "value": "macd_signal"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "macd",
+        "op": "<",
+        "value": "macd_signal"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.05
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "macd",
+        "op": ">",
+        "value": "macd_signal"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.05
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes accepting unfavorable periods to capture infrequent trends. Entry uses ADX > 25 (trend strength), price vs SMA_50 (direction), and MACD crossover (momentum confirmation) to satisfy 3+ indicator requirement. Exit triggered by trend reversal (MACD crossback) or 5% loss threshold. Drawdown monitoring (10% max) and 50-trade profitability check are backtest engine responsibilities, not rule conditions."
+  },
+  "source_rule_text": "A trend follower must accept trading through unfavorable market periods to avoid missing major trends, because trends occur infrequently (15-25% of the time) and the cost of sitting out is missing the profitable moves."
+}

@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": 0.2,
+    "trigger_condition": {
+      "metric": "active_equity_percentage",
+      "threshold": 0.2,
+      "direction": "equal"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Fractional f method: Use 20% (0.2) of optimal f (1.01933 geometric mean) instead of full optimal f. Fractional geometric mean FG = 1.005. Solve for contract count N using: 1.005^N <= 1.01933^(N*0.2) + 1 - 0.2. This is Kelly criterion with 0.2 fractional scaling to reduce variance while maintaining mathematical optimization.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position sizing using fractional f method where active equity percentage (FRAC) determines the fraction of optimal f to use, with geometric mean calculations to find the appropriate number of contracts (N)."
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires dynamic regime classification (BULL/BEAR market detection and UP/DOWN breakout identification) that cannot be expressed with allowed indicators. The core pattern comparison requires normalized candle height ratios divided by 'breakout price' (undefined reference), and regime-dependent threshold switching (1.26%/1.60%/1.24%/1.50%) that needs external market regime detection unavailable in indicator list. Bar property 'range' is used as proxy for (high-low), but denominator 'breakout price' is not defined in source material.",
+  "translation_notes": "Attempted translation uses 'range' (equivalent to high-low) compared against median thresholds. Original signal requires: (1) Market regime classification engine, (2) Breakout direction detection, (3) Normalization by undefined 'breakout price' parameter. Exit conditions set to price action reversals (prev candle breach) as author provided no specific stop placement guidance. Stop loss and hold days are defaults due to missing specifications."
 }

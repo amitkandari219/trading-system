@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_36",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a factor-based cross-sectional portfolio strategy that requires: (1) calculation of historical beta for each stock via rolling regression, (2) ranking stocks by beta across entire country universe, (3) portfolio construction via ranked weighting and beta rescaling to 1.0, and (4) monthly rebalancing. These operations require custom portfolio-level aggregations, cross-sectional ranking, and regression-based metrics not available in the ALLOWED INDICATORS list (which contains only single-stock technical indicators). Beta calculation and portfolio rescaling cannot be expressed using close, sma_*, rsi_*, atr_*, bb_*, macd, adx_14, stoch_*, dc_*, pivot, vol_ratio_20, hvol_20, india_vix, price_pos_20, zscore_*, prev_*, returns, or bar properties alone.",
+  "translation_notes": "BAB is a systematic factor strategy requiring: (a) historical volatility/covariance matrix estimation per stock, (b) cross-sectional ranking across universe, (c) portfolio-level beta targeting and rescaling. The backtest engine must support custom beta calculation (e.g., via rolling window regression against country benchmark), cross-sectional portfolio formation, and constrained optimization. This signal should be implemented at the portfolio construction layer, not as individual entry/exit rules on bar-by-bar data."
+}

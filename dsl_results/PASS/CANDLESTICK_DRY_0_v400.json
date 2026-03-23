@@ -1,0 +1,83 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "0.01"
+      },
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gapping-Up Doji pattern requires: (1) upward gap from prior day detected via close > prev_high, (2) doji formation detected via minimal body (body < 0.01 or ~0% of range), (3) today's lower shadow above yesterday's upper shadow verified via low > prev_high. Exit on reversal when close falls below open. Direction marked CONTEXT_DEPENDENT per original signal to allow both continuation and reversal interpretations. Shadow length variations and doji types are captured by the body constraint. Success rates and volume trends marked AUTHOR_SILENT are not translatable to specific rule conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": 0.01
+      },
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Gapping-Up Doji pattern requires: (1) upward gap from prior day detected via close > prev_high, (2) doji formation detected via minimal body (body < 0.01 or ~0% of range), (3) today's lower shadow above yesterday's upper shadow verified via low > prev_high. Exit on reversal when close falls below open. Direction marked CONTEXT_DEPENDENT per original signal to allow both continuation and reversal interpretations. Shadow length variations and doji types are captured by the body constraint. Success rates and volume trends marked AUTHOR_SILENT are not translatable to specific rule conditions."
+  },
+  "source_rule_text": "Gapping-Up Doji: Price gaps upward and forms a doji candlestick where opening and closing prices are at or near the same value, with today's lower shadow above yesterday's upper shadow, creating a visible price gap on the chart."
+}

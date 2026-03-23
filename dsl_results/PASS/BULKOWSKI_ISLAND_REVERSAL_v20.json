@@ -1,0 +1,145 @@
+{
+  "signal_id": "BULKOWSKI_ISLAND_REVERSAL",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Island Reversal",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_ISLAND_REVERSAL",
+    "entry_long": [
+      {
+        "left": "bb_bandwidth",
+        "operator": ">",
+        "right": "0.06"
+      },
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "bb_bandwidth",
+        "operator": ">",
+        "right": "0.06"
+      },
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.8"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "bb_bandwidth",
+        "op": ">",
+        "value": 0.06
+      },
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "bb_bandwidth",
+        "op": ">",
+        "value": 0.06
+      },
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.8
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "DSL translation of BULKOWSKI_ISLAND_REVERSAL"
+  },
+  "source_rule_text": "Island Reversal: Short and wide pattern configuration"
+}

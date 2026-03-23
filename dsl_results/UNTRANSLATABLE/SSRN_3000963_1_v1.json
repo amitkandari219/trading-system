@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3000963_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a position management/rollover strategy, not a price-based trading signal. The rule requires: (1) detecting rollover period active status, (2) calculating position division (total_open_position / RAP_days_remaining), (3) executing equal daily rolls. These operations are portfolio-level management functions outside the scope of indicator-based entry/exit conditions. Requires: rollover calendar state, open position tracking, RAP day counter, and automated position adjustment logic\u2014none of which are expressible as technical indicator comparisons.",
+  "translation_notes": "Signal describes an event-driven position rebalancing strategy for futures contracts during rollover periods. This requires temporal state management, position accounting, and scheduled execution logic rather than price/technical condition evaluation. Recommend implementing as a separate portfolio management module outside the indicator-based backtest rule engine."
+}

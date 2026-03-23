@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "This is a regime filter/market selection rule based on absolute metrics (market age in months, historical data point count, and instrument listing date) that cannot be expressed using price/technical indicators. The rule requires: (1) minimum_market_age_months >= 24, (2) minimum_historical_data_points >= 500, and (3) instrument introduction date check >= 24 months ago. These are metadata/eligibility checks on the instrument itself, not trading conditions based on price action or technical indicators. The backtest engine must implement these as pre-trade filters at the instrument selection level, not as entry/exit conditions.",
+  "translation_notes": "Signal ID THARP_DRY_17_0 is a security/instrument eligibility filter from Van Tharp's work on avoiding newly-introduced markets. It requires: (1) market must have existed for 24+ months, (2) 500+ days of daily volume data available, (3) no trading of instruments listed within past 24 months. These are data sufficiency and instrument selection rules that belong in the backtest engine's instrument screening layer, not in the per-bar trading rule evaluation. Recommend implementing as: asset_age_months >= 24 AND bar_count >= 500 AND (current_date - listing_date) >= 24_months before any signal rules are evaluated."
 }

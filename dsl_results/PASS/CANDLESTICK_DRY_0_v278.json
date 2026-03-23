@@ -1,0 +1,72 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "0"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Pattern described as short black candlestick (bearish candle with negative body) at turning point of short-term retracement within uptrend. Entry uses black candle detection (body < 0 and close < open). Exit uses reversal confirmation above short-term moving average. Hold period set to 10 days per source text. Overall rank of 66/103 suggests moderate performance; stop-loss set to conservative 2% given limited author guidance."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": 0.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Pattern described as short black candlestick (bearish candle with negative body) at turning point of short-term retracement within uptrend. Entry uses black candle detection (body < 0 and close < open). Exit uses reversal confirmation above short-term moving average. Hold period set to 10 days per source text. Overall rank of 66/103 suggests moderate performance; stop-loss set to conservative 2% given limited author guidance."
+  },
+  "source_rule_text": "Short Black Candlestick: A reversal pattern that appears at the turning point of a short-term retracement within an uptrend"
+}

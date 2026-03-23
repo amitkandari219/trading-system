@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_27",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of realized variance (RV\u00b2_t) and dynamic portfolio weighting (w = 1/RV\u00b2_t) based on monthly variance estimates. Realized variance is a custom statistical measure computed from intraday or daily returns that is not among the allowed indicators. The strategy is a dynamic asset allocation/portfolio weighting scheme rather than a traditional entry/exit signal based on price action or standard technical indicators. This requires custom variance computation at the portfolio level, which cannot be expressed using only the allowed price, moving average, RSI, ATR, Bollinger Band, MACD, ADX, Stochastic, Donchian, Pivot, volume ratio, or Z-score indicators.",
+  "translation_notes": "This is a volatility-based portfolio timing strategy from academic research (SSRN 2659431) that scales exposure inversely to realized variance rather than a traditional entry/exit trading rule. Implementation requires: (1) computing realized variance from return series, (2) calculating portfolio weights as inverse function of variance, and (3) monthly rebalancing. The gross alpha of 4.86% and net alpha of 3.39% (at 10bps cost) with 0.73 average monthly weight change are parameters but not actionable trading conditions in standard technical indicator format."
+}

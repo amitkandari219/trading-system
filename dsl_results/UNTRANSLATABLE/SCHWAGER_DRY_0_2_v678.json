@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires multi-instrument peer group ranking and hierarchical timeframe comparison (1-year, 1-month, 1-week rankings across 3-5 related instruments). The backtest engine does not support: (1) cross-instrument relative strength ranking, (2) hierarchical timeframe weighting logic, (3) peer group comparative analysis, or (4) dynamic instrument selection. The rule is fundamentally a portfolio/instrument selection framework rather than a single-instrument price-action rule. Attempted partial translation using price_pos_20 as a proxy for relative strength, but this does not capture the multi-timeframe peer ranking requirement.",
+  "translation_notes": "This signal describes a systematic process for ranking and selecting among multiple related instruments across multiple timeframes. While price_pos_20 could loosely approximate 'relative ranking', it operates only on a single instrument over a single timeframe (20-bar window), and cannot replicate the required 1-year, 1-month, 1-week hierarchical comparison or peer group ranking logic. Implementation would require: (1) a multi-instrument data layer, (2) cross-timeframe aggregation logic, (3) relative strength ranking across peer groups, and (4) hierarchy-based filtering rules not supported by the single-instrument backtest schema."
 }

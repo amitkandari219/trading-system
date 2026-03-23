@@ -1,0 +1,121 @@
+{
+  "signal_id": "BULKOWSKI_HORN_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Horn pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_HORN_BOTTOM",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.37"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.65"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.33"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.37
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.65
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.33
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "DSL translation of BULKOWSKI_HORN_BOTTOM"
+  },
+  "source_rule_text": "Horn pattern: Breakout position in yearly trading range affects performance; best results when breakout occurs in middle of yearly range (bull market) or within a third of yearly low (bear market). Throwbacks on weekly scale are comparatively rare, typically occurring within one month (four bars) of breakout."
+}

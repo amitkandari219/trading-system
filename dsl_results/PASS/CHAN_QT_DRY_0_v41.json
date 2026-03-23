@@ -1,0 +1,86 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "book_id": "CHAN_QT",
+  "dsl_rule": {
+    "signal_id": "CHAN_QT_DRY_0",
+    "entry_long": [
+      {
+        "left": "zscore_20",
+        "operator": "<",
+        "right": "-1"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "zscore_20",
+        "operator": ">",
+        "right": "1"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "zscore_20",
+        "operator": ">=",
+        "right": "0"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "zscore_20",
+        "operator": "<=",
+        "right": "0"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mean reversion signal translated using z-score (zscore_20) to detect deviation from mean in stationary series. Entry triggered when price deviates >1 standard deviation from mean (positive z-score for short, negative for long). Exit when price reverts to mean (z-score crosses zero). Stop loss set conservatively at 2% as parameters were author-silent. Hold period set to 20 days for short-term mean reversion exploitation. Target regime set to RANGING as mean reversion works best in non-trending markets."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "zscore_20",
+        "op": "<",
+        "value": -1.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "zscore_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "zscore_20",
+        "op": ">=",
+        "value": 0.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "zscore_20",
+        "op": "<=",
+        "value": 0.0
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Mean reversion signal translated using z-score (zscore_20) to detect deviation from mean in stationary series. Entry triggered when price deviates >1 standard deviation from mean (positive z-score for short, negative for long). Exit when price reverts to mean (z-score crosses zero). Stop loss set conservatively at 2% as parameters were author-silent. Hold period set to 20 days for short-term mean reversion exploitation. Target regime set to RANGING as mean reversion works best in non-trending markets."
+  },
+  "source_rule_text": "Trade mean reversion in stationary price series or portfolios, exploiting short-term reversal opportunities even in nonstationary series."
+}

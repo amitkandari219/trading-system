@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_2",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": 0.25,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "daily_equity_rebalance",
+      "threshold": 1.0,
+      "direction": "recapitalize"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Daily recapitalization using optimal f: $1 per $4 of current equity (25% of capital per unit). Assumes 50% win rate and 2:1 payoff ratio. Position size scales continuously with account equity fluctuations.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size should be recapitalized daily based on account equity fluctuations, using optimal f to determine unit sizing relative to current capital."
+}

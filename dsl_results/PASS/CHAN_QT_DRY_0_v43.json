@@ -29,7 +29,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal uses previous period return (negative) as the primary entry factor for mean reversion. Translated using 'returns' indicator which captures period-over-period price change. Exit condition uses reversal logic (positive returns) as author provided no specific exit threshold. Mean reversion typically occurs in ranging/non-trending markets, so target_regime set to RANGING. Note: 'half_life', 'threshold', and backtest parameters marked AUTHOR_SILENT in source were not translatable to specific rule conditions."
+    "translation_notes": "Signal uses 'previous period return is negative' which maps to returns < 0. Exit condition was AUTHOR_SILENT, so a reasonable reversal is implemented: exit when returns turn positive (mean reversion completed). The 'mean-reverting behavior' requirement cannot be quantified without explicit threshold/half-life parameters (marked AUTHOR_SILENT), so entry relies on the negative return condition alone. Target regime set to RANGING as mean reversion is most effective in non-trending environments."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -56,7 +56,7 @@
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "LONG",
-    "reason": "Signal uses previous period return (negative) as the primary entry factor for mean reversion. Translated using 'returns' indicator which captures period-over-period price change. Exit condition uses reversal logic (positive returns) as author provided no specific exit threshold. Mean reversion typically occurs in ranging/non-trending markets, so target_regime set to RANGING. Note: 'half_life', 'threshold', and backtest parameters marked AUTHOR_SILENT in source were not translatable to specific rule conditions."
+    "reason": "Signal uses 'previous period return is negative' which maps to returns < 0. Exit condition was AUTHOR_SILENT, so a reasonable reversal is implemented: exit when returns turn positive (mean reversion completed). The 'mean-reverting behavior' requirement cannot be quantified without explicit threshold/half-life parameters (marked AUTHOR_SILENT), so entry relies on the negative return condition alone. Target regime set to RANGING as mean reversion is most effective in non-trending environments."
   },
   "source_rule_text": "Trade stocks exhibiting mean reversion by taking long positions when previous period returns are negative, betting on price recovery."
 }

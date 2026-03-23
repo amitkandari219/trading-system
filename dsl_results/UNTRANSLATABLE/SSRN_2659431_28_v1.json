@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_28",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of realized variance (RV_t^2) from daily returns and dynamic weight scaling (w_t = c / RV_t^2), which requires custom variance computation not available in standard indicator list. The weight capping mechanism and distribution table thresholds (P50=0.93, P75=1.59, P90=2.64, P99=6.39) also require custom portfolio weighting logic beyond entry/exit conditions. Substituted hvol_20 as volatility proxy, but this does not capture the inverse-weighting mechanics of the original signal.",
+  "translation_notes": "This is a volatility-managed portfolio rule that requires custom position sizing based on realized variance calculations. The entry conditions trigger when volatility is low (inverse of variance), and exit when volatility rises. However, the true implementation requires a custom volatility calculation engine and position-weighting module that scales exposure inversely by realized variance, capped at the distribution percentiles provided. Standard backtest engines cannot execute the full signal without custom code."
+}

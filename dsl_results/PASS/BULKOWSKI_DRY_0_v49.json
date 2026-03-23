@@ -7,29 +7,34 @@
     "entry_short": [
       {
         "left": "close",
-        "operator": "<",
+        "operator": "crosses_below",
         "right": "dc_lower"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
       }
     ],
     "exit_long": [],
     "exit_short": [
       {
         "left": "close",
-        "operator": ">",
-        "right": "dc_upper"
+        "operator": "crosses_above",
+        "right": "sma_20"
       }
     ],
     "entry_logic": "AND",
-    "exit_logic": "OR",
-    "stop_loss_pct": 2.0,
-    "hold_days_max": 10,
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 20,
     "direction": "SHORT",
     "target_regime": [
       "ANY"
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Pattern detection (Ascending Broadening Formation) cannot be directly operationalized from allowed indicators. Used Donchian channels as a proxy: entry requires price closing below the lower channel (confirmed downside breakout), exit on price crossing back above upper channel. The signal emphasizes waiting for confirmed breakout before entry, which is captured by the close < dc_lower condition. Stop loss and target rules were not specified by the author (AUTHOR_SILENT), so reasonable exit logic based on pattern reversal is applied."
+    "translation_notes": null
   },
   "backtest_rule": {
     "backtestable": true,
@@ -37,24 +42,29 @@
     "entry_short": [
       {
         "indicator": "close",
-        "op": "<",
+        "op": "crosses_below",
         "value": "dc_lower"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
       }
     ],
     "exit_long": [],
     "exit_short": [
       {
         "indicator": "close",
-        "op": ">",
-        "value": "dc_upper"
+        "op": "crosses_above",
+        "value": "sma_20"
       }
     ],
     "regime_filter": [],
-    "hold_days": 10,
-    "stop_loss_pct": 0.02,
+    "hold_days": 20,
+    "stop_loss_pct": 0.027999999999999997,
     "take_profit_pct": 0,
     "direction": "SHORT",
-    "reason": "Pattern detection (Ascending Broadening Formation) cannot be directly operationalized from allowed indicators. Used Donchian channels as a proxy: entry requires price closing below the lower channel (confirmed downside breakout), exit on price crossing back above upper channel. The signal emphasizes waiting for confirmed breakout before entry, which is captured by the close < dc_lower condition. Stop loss and target rules were not specified by the author (AUTHOR_SILENT), so reasonable exit logic based on pattern reversal is applied."
+    "reason": "DSL translation of BULKOWSKI_DRY_0"
   },
   "source_rule_text": "Ascending Broadening Formation: Wait for confirmed breakout below the lower trend line before entering a short position; do not trade prematurely before breakout confirmation"
 }

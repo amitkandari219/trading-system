@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_23",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires beta estimation and cross-sectional portfolio construction (ranking all stocks, forming long/short portfolios, weighting by beta, rescaling to target portfolio beta). These are factor-based portfolio optimization operations that cannot be expressed as simple indicator-based entry/exit conditions on individual securities. The backtest engine requires: (1) historical return data for all stocks to estimate beta via OLS regression, (2) cross-sectional ranking logic, (3) portfolio-level beta targeting, and (4) relative position weighting across multiple securities. None of the allowed indicators (price-based, momentum, volatility, technical) support beta calculations or multi-stock portfolio construction. This is a systematic factor strategy, not a technical signal.",
+  "translation_notes": "Signal SSRN_2049939_23 is a beta-neutral long-short factor strategy requiring: beta_estimation_window_years=[1,3,5], OLS beta estimation method, monthly rebalancing, target_portfolio_beta=1.0. Implementation requires a portfolio optimization engine with access to historical returns and cross-sectional ranking capabilities, not a technical indicator-based backtest engine."
+}

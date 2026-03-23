@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3000963_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires specialized futures rollover optimization logic that cannot be expressed using standard technical indicators. The rule requires: (1) Parkinson volatility calculation (Vpj) across a 15-day rollover acceptance period\u2014a custom volatility measure not in the allowed indicator set; (2) calendar spread volume percentage (\u03a6j) tracking\u2014requires multi-contract volume analysis; (3) dynamic weight parameter optimization (w between 5-20%); (4) constrained allocation optimization (Nj \u2264 w \u00d7 \u03a6j \u00d7 NT). These are quantitative portfolio execution parameters requiring custom optimization algorithms, not standard price/volume technical signals. The signal is fundamentally an execution strategy (EVENT category) rather than a tradeable entry/exit rule.",
+  "translation_notes": "SSRN_3000963_2 is a futures rollover execution algorithm designed to minimize weighted average volatility during the rollover acceptance period by optimizing daily contract allocation across 15 days. While hvol_20 exists as an allowed indicator, it does not capture Parkinson volatility across a rolling 15-day window, nor can standard indicators express the constrained optimization objective. This requires a custom execution module in the backtest engine that implements the mathematical formulation: minimize V\u0304p = \u03a3(Nj \u00d7 Vpj) / N subject to Nj \u2264 w \u00d7 \u03a6j \u00d7 NT."
+}

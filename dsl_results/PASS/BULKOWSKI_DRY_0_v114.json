@@ -6,65 +6,89 @@
     "entry_long": [
       {
         "left": "close",
-        "operator": ">",
+        "operator": "crosses_above",
         "right": "dc_upper"
       },
       {
-        "left": "volume",
+        "left": "high",
         "operator": ">",
-        "right": "hvol_20"
+        "right": "prev_high"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
       }
     ],
     "entry_short": [],
     "exit_long": [
       {
         "left": "close",
-        "operator": "<",
+        "operator": "crosses_below",
         "right": "dc_lower"
       }
     ],
     "exit_short": [],
     "entry_logic": "AND",
-    "exit_logic": "OR",
+    "exit_logic": "AND",
     "stop_loss_pct": 2.0,
     "hold_days_max": 30,
     "direction": "LONG",
     "target_regime": [
-      "ANY"
+      "TRENDING_UP",
+      "RANGING"
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Breakout pattern detected when price closes above Donchian upper band (trend-line boundary breakout). Volume condition uses hvol_20 to represent linear regression trending up relative to historical average. Linear regression of volume and U-shaped volume pattern cannot be directly expressed with allowed indicators, so volume breakout above 20-period historical volatility serves as proxy for volume confirmation. Exit when price closes below Donchian lower band (reversal signal). Pattern occurs in ANY regime as specified."
+    "translation_notes": null
   },
   "backtest_rule": {
     "backtestable": true,
     "entry_long": [
       {
         "indicator": "close",
-        "op": ">",
+        "op": "crosses_above",
         "value": "dc_upper"
       },
       {
-        "indicator": "volume",
+        "indicator": "high",
         "op": ">",
-        "value": "hvol_20"
+        "value": "prev_high"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
       }
     ],
     "entry_short": [],
     "exit_long": [
       {
         "indicator": "close",
-        "op": "<",
+        "op": "crosses_below",
         "value": "dc_lower"
       }
     ],
     "exit_short": [],
-    "regime_filter": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
     "hold_days": 30,
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "LONG",
-    "reason": "Breakout pattern detected when price closes above Donchian upper band (trend-line boundary breakout). Volume condition uses hvol_20 to represent linear regression trending up relative to historical average. Linear regression of volume and U-shaped volume pattern cannot be directly expressed with allowed indicators, so volume breakout above 20-period historical volatility serves as proxy for volume confirmation. Exit when price closes below Donchian lower band (reversal signal). Pattern occurs in ANY regime as specified."
+    "reason": "DSL translation of BULKOWSKI_DRY_0"
   },
   "source_rule_text": "Breakout pattern: Prices move outside trend-line boundaries or follow a trend line for an extended time, with breakout occurring at the highest peak in the formation"
 }

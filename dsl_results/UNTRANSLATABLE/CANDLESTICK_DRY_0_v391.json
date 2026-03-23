@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal references 'Table24.6 PerformanceIndicators' with specific success rates, average performance metrics (rise_pct, decline_pct, failure_rate_5pct), and confirmation methods (closing price, candle color, opening gap, moving average breakout) that are not fully specified in source text. Author did not provide numerical thresholds, specific confirmation criteria, or performance data. Breakout direction marked as BOTH but entry logic depends on market regime which requires dynamic rule selection not supported by static JSON structure.",
+  "translation_notes": "Pattern identified as bearish trend continuation candle with context-dependent direction. Implemented as dual entry logic: LONG entries on bullish breakouts above SMA20 with close > prev_close; SHORT entries on bearish breakouts below SMA20 with close < prev_close. Exit conditions use SMA20 crossover as reversal signal (reasonable default for trend continuation pattern). Volume trend, throwback/pullback thresholds, and specific confirmation method performance data marked AUTHOR_SILENT in source\u2014cannot be translated without explicit values. Applicable to all four market regimes as specified."
 }

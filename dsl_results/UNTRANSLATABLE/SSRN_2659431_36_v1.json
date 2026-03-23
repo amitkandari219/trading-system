@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_36",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic portfolio weight scaling inversely proportional to realized volatility with continuous rebalancing logic. The allowed indicators set lacks a direct 'realized volatility' measure and does not support dynamic position sizing calculations or continuous portfolio weight adjustments. The signal is conceptual (volatility-managed overlay) rather than a discrete entry/exit rule. hvol_20 used as volatility proxy only, but cannot replicate the inverse scaling and dynamic rebalancing mechanics described in the original signal.",
+  "translation_notes": "This signal describes a volatility management regime (risk_aversion=3, expected alpha=4.86%) that dynamically adjusts portfolio exposure. It is fundamentally a portfolio construction rule rather than a discrete trading signal. Approximated using hvol_20 (historical volatility) as a volatility indicator: low volatility triggers long exposure, high volatility triggers short/defensive exposure. However, the core mechanic\u2014inverse scaling of portfolio weights to volatility levels\u2014cannot be fully expressed in the 3-field condition format designed for entry/exit thresholds."
+}

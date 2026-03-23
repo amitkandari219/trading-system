@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires classification logic (short vs tall candle based on candle height vs shadow ratio comparison to median in lookup table) that cannot be expressed with simple 3-field condition syntax. Additionally, breakout_price and shadow ratio threshold comparisons to a dynamic median table are not directly available as indicators. The measure rule calculation and regime-specific target selection logic also require conditional logic beyond the allowed operator set.",
+  "translation_notes": "Dragonfly Doji pattern detection attempted using lower_wick > body and small range (range < 0.02 to approximate doji). Entry conditions CONTEXT_DEPENDENT per signal spec. Exit targets hardcoded from example (50.78 for upward, 48.23 for downward) but proper implementation requires: (1) candle height classification algorithm, (2) shadow ratio comparison to median table, (3) dynamic target calculation based on classified candle type and market regime, (4) conditional application of 78% vs 77% percentages. This signal is better suited for custom code or rule engine supporting lookup tables and conditional logic chains."
 }

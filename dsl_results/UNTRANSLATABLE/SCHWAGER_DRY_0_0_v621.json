@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "This signal requires multi-leg spread analysis with theoretical pricing models, relative valuation between two instruments, standard deviation calculations across instrument pairs, and percentile ranking of basis distributions. These capabilities are not available in the single-instrument indicator toolkit provided. The signal requires: (1) cross-instrument correlation and relative mispricing detection, (2) theoretical fair value computation using option pricing models (Black-Scholes or similar), (3) statistical analysis of spread convergence patterns, and (4) liquidity assessment across multiple legs simultaneously. The ALLOWED_INDICATORS set only supports single-instrument technical analysis.",
+  "translation_notes": "SCHWAGER_DRY_0_0 describes a sophisticated spread trading strategy that operates at a higher architectural level than indicator-based entry/exit rules. It requires portfolio-level logic (comparing two correlated instruments), derivatives pricing models (not available), and statistical regime detection across pairs. Recommend implementing as a separate spread-trading module outside the standard backtest engine rather than forcing it into incompatible condition-based rules."
 }

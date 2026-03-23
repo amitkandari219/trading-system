@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires (1) price deviation by 1.5 standard deviations from 20-period MA \u2014 price_pos_20 measures deviations from SMA but not specifically MA with 1.5\u03c3 scaling; (2) ATR comparison to 75th percentile of rolling 50-bar window \u2014 no built-in percentile indicator available; (3) partial position scaling at 66% of prior move amplitude \u2014 position sizing logic not expressible in entry/exit rules; (4) hard stop placement at 0.75 ATR beyond extreme \u2014 dynamic stop calculation not supported.",
+  "translation_notes": "Converted CONTEXT_DEPENDENT direction to bidirectional entry/exit rules. Used price_pos_20 (price position relative to 20-SMA) as approximation for extreme level, vol_ratio_20 for volume spike detection, bb_upper/bb_lower for reversal signals, and pivot points (r1/s1) for exit targets. ATR percentile comparison and position scaling logic cannot be directly expressed in the rule engine constraints."
 }

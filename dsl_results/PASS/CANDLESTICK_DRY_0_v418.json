@@ -1,0 +1,88 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "atr_14"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "atr_14"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 7,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Doji approximated using small body size relative to ATR. Entry is context-dependent (LONG in bull markets, SHORT in bear markets). Exit window set to 7 days (median of 6-7 days for bull, 6 days for bear). Used moving average crossover as reasonable reversal condition per AUTHOR_SILENT rule. Note: True Doji would require open==close with specific wick ratios, but body metric provides practical approximation within allowed indicators."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": "atr_14"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": "atr_14"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 7,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Doji approximated using small body size relative to ATR. Entry is context-dependent (LONG in bull markets, SHORT in bear markets). Exit window set to 7 days (median of 6-7 days for bull, 6 days for bear). Used moving average crossover as reasonable reversal condition per AUTHOR_SILENT rule. Note: True Doji would require open==close with specific wick ratios, but body metric provides practical approximation within allowed indicators."
+  },
+  "source_rule_text": "Doji candle pattern: A candlestick where the open and close are at or near the same price level, appearing more frequently in bull markets than bear markets"
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal specifies '10-day high' breakout which maps to Donchian 10-period upper band (dc_upper), but this exact indicator is not provided. Used dc_upper as closest equivalent. Additionally, the exact exit condition '100% of entry-to-recent-low distance' cannot be expressed without dynamic trade-relative calculations not supported by the indicator set. Stop loss specification '0.5 ATR' is approximated as 0.5% since ATR scaling context is unknown.",
+  "translation_notes": "Entry condition: Close breaks above 10-day high (approximated using Donchian upper band). Exit: Simplified to close below pivot as proxy for recent-low-based profit target due to lack of dynamic entry-relative distance calculation. Stop loss expressed as percentage rather than ATR points due to engine constraints. Confirmation_bars=0 means entry on same bar or next open as specified. Direction is context-dependent but defaulted to LONG for breakout interpretation."
 }

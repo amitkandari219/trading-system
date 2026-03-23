@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal references market regime classification (BULL_MARKET/BEAR_MARKET) and shadow/volume performance metrics that require regime detection logic not expressible with allowed indicators. Specific success rates, average rise/decline percentages, and failure rates are marked AUTHOR_SILENT. Volume preference rules (light vs. heavy based on breakout direction and market condition) require conditional logic beyond simple indicator comparisons.",
+  "translation_notes": "Mapped candlestick shadow lengths to upper_wick and lower_wick indicators. Used hvol_20 as proxy for volume characteristics. Entry conditions interpreted as: short upper shadow (bullish) with heavy volume, or tall upper shadow (bearish) with heavy volume. Exit conditions use basic reversal logic since AUTHOR_SILENT. Source data shows performance variation by shadow length and market condition, but exact regime-dependent thresholds cannot be expressed with available indicators."
 }

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_42",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires calculation and scaling of systematic factor exposures (Market, SMB, HML, Momentum, RMW, CMA) by inverse realized variance. The allowed indicator set contains only price-based technical indicators (RSI, ATR, Bollinger Bands, MACD, etc.) and does not include: (1) factor returns/exposures, (2) realized variance calculations, (3) factor scaling mechanics, or (4) multi-factor portfolio construction. This is a factor model rule requiring Fama-French factor data and portfolio-level transformations, not a price-action entry/exit rule. It cannot be expressed using the available technical indicators.",
+  "translation_notes": "Signal SSRN_2659431_42 is a volatility-adjusted factor exposure scaling rule designed for multi-factor systematic portfolios. It operates at the factor level (rescaling SMB, HML, Momentum, RMW, CMA exposures monthly based on prior-month realized variance), not at the price level. To implement this signal correctly requires: access to historical factor returns, monthly realized variance computation, and dynamic weighting of factor exposures\u2014none of which are supported by the price-based technical indicator library provided."
+}

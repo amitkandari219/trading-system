@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2089463_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires parameterized lookback period k and holding period h with rolling multi-portfolio management. The 'returns' indicator computes total returns but cannot be parameterized for arbitrary k-period lookback windows or h-month holding periods with rolling staggered entry/exit logic. The strategy's core requirement is to maintain h active portfolios (cohorts entered in different periods) and rotate based on k-period sign changes, which requires dynamic portfolio state management beyond single-condition rule evaluation.",
+  "translation_notes": "Approximated as basic momentum reversal using returns sign, but this loses the critical elements: (1) variable lookback period k, (2) variable holding period h, (3) rolling cohort management, (4) equal-weight averaging across h active positions. A proper implementation would need custom backtester logic for cohort tracking and rolling rebalancing."
+}

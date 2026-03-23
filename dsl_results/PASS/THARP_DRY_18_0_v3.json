@@ -1,0 +1,108 @@
+{
+  "signal_id": "THARP_DRY_18_0",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_0",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "s1"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "r1"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used Donchian channels (dc_upper/dc_lower) as proxy for 50-day new extremes; vol_ratio_20 confirms volume above 20-day average; Pivot levels (r1/s1) used for stop placement at swing points relative to breakout. Signal supports both long and short breakout directions based on new extreme direction. Contrarian entry option (Turtle Soup) not explicitly modeled as it requires conditional logic outside standard rule structure."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "s1"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "r1"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used Donchian channels (dc_upper/dc_lower) as proxy for 50-day new extremes; vol_ratio_20 confirms volume above 20-day average; Pivot levels (r1/s1) used for stop placement at swing points relative to breakout. Signal supports both long and short breakout directions based on new extreme direction. Contrarian entry option (Turtle Soup) not explicitly modeled as it requires conditional logic outside standard rule structure."
+  },
+  "source_rule_text": "A trader should enter breakout positions in the direction of new price extremes, but should be aware that obvious breakout setups become crowded and are subject to fakeouts; therefore, improve entry odds by either trading the breakout itself or contrarian entries that exploit the predictable failure of obvious breakouts."
+}

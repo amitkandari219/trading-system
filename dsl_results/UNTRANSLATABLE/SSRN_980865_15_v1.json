@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by historical volatility and allocating to deciles (D1 vs D10). This is a cross-sectional portfolio construction rule that cannot be expressed as a single-stock technical indicator condition. The rule needs decile-based portfolio formation logic (top/bottom 10% by hvol_20 across a universe), which is outside the scope of per-bar indicator comparisons. Backtest engine must implement custom decile ranking logic at the portfolio level rather than individual entry/exit conditions.",
+  "translation_notes": "SSRN_980865_15 is a volatility dispersion/low-vol anomaly strategy. The historical volatility calculations (shown in the source data) span 1986-1995 with decile rebalancing. Implementation requires: (1) Calculate hvol_20 or equivalent for all stocks in universe, (2) Rank by volatility, (3) Form long portfolio from D1 (lowest 10%), (4) Form short portfolio from D10 (highest 10%), (5) Rebalance monthly. The conditions shown are placeholder logic only and cannot capture true signal intent without custom portfolio ranking."
+}

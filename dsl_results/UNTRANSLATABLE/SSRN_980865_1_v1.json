@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks into volatility deciles and assigning positions based on decile membership (decile 1 for long, decile 10 for short). This requires cross-sectional ranking logic and decile-based portfolio construction, which cannot be expressed using point-in-time indicator conditions with the allowed operators. The available indicators (hvol_20, atr_14, etc.) measure volatility magnitude but not relative decile ranking across a universe of stocks. Lookback period and rebalance frequency are also unspecified in the abstract.",
+  "translation_notes": "The 'Volatility Effect' strategy is a cross-sectional decile-based factor strategy that requires: (1) calculating historical volatility for each stock, (2) ranking all stocks by volatility, (3) assigning to deciles 1-10, (4) going long decile 1 (lowest vol) and short decile 10 (highest vol), (5) periodic rebalancing. This portfolio construction approach cannot be translated into time-series indicator conditions for individual securities."
+}

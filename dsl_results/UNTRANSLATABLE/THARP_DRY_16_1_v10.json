@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires ATR-based position sizing and dynamic stop placement based on ATR multiples, which are risk management functions rather than entry/exit conditions. The core volatility-scaling logic cannot be fully expressed as simple indicator comparisons. Additionally, 'average true range over last 10 days' maps to atr_14 (closest available), but the exact 10-period ATR is not in the allowed indicator list.",
+  "translation_notes": "Converted to context-dependent directional logic using true_range relative to atr_14 as a volatility filter. Entry triggers on price moving away from previous close with volatility confirmation. Exit on support/resistance (pivot) reversal. Stop loss set to 1.5x ATR equivalent (1.5% as decimal). For full implementation, backtest engine should apply position sizing scaling inversely proportional to recent ATR values."
 }

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "The signal requires identifying the narrowest range bar over a 20-day lookback period and comparing current range to that minimum. This requires a derived indicator (minimum range over lookback) that is not available in the allowed indicator set. The 'range' indicator exists but cannot be compared to its 20-bar minimum without array indexing or a min() function. Additionally, the inside day condition (previous day's high/low contain current day's range) requires comparing prev_high > high AND prev_low < low, which is partially expressible but the narrowness ranking is not.",
+  "translation_notes": "Attempted partial translation using range and price_pos_20, but this does not accurately capture the core logic of identifying the narrowest range day in a 20-day window and confirming breakout beyond previous day's extremes. A custom indicator for range minimum over lookback period would be needed for proper implementation."
 }

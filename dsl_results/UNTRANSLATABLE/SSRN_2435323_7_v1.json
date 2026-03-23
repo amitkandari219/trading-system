@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2435323_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by 12-month past returns (excluding most recent month) and selecting top decile performers. This requires cross-sectional ranking across a universe of stocks, which is a portfolio construction rule rather than a single-stock technical indicator condition. The allowed indicators list contains only single-instrument technical indicators (RSI, MACD, moving averages, etc.) and cannot express relative ranking logic or decile selection across multiple securities.",
+  "translation_notes": "This is a factor/ranking-based momentum strategy that requires comparing each stock's 12-month return against peers to identify top performers. Such cross-sectional analysis requires either: (1) a custom ranking function or (2) pre-computed rank/percentile fields not in the allowed indicators list. The backtest engine would need portfolio-level logic rather than bar-by-bar technical conditions."
+}

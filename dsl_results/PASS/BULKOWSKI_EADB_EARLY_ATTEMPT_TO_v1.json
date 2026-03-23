@@ -1,0 +1,91 @@
+{
+  "signal_id": "BULKOWSKI_EADB_EARLY_ATTEMPT_TO",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "EADB (Early Attempt to Drive Back) or Busted Pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_EADB_EARLY_ATTEMPT_TO",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      },
+      {
+        "left": "body_pct",
+        "operator": ">",
+        "right": "0.01"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.6"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 10,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      },
+      {
+        "indicator": "body_pct",
+        "op": ">",
+        "value": 0.01
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.6
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_EADB_EARLY_ATTEMPT_TO"
+  },
+  "source_rule_text": "EADB (Early Attempt to Drive Back) or Busted Pattern: Price fails to continue in expected direction after pattern confirmation, reversing with strong downward movement"
+}

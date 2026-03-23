@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1590784_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires identification of futures contract expiration day (a calendar/contract-specific event) and GARCH variance equation coefficients (0.819), which are not available in the standard technical indicator set. The backtest engine lacks: (1) expiration_day dummy variable, (2) GARCH volatility model parameters. Cannot construct precise entry conditions without these structural/statistical indicators.",
+  "translation_notes": "The signal is fundamentally a volatility regime detection rule tied to specific calendar events (futures expiration) and estimated GARCH model coefficients from econometric analysis. This requires either: custom calendar logic for contract expiration dates, or pre-calculated GARCH variance features. Placeholder condition uses india_vix as a volatility proxy, but does not capture the expiration-day-specific effect or GARCH coefficient threshold (0.819). Hold period set to 1 day (expiration day + day after). Direction is BOTH because signal expects volatility increases regardless of price direction."
+}

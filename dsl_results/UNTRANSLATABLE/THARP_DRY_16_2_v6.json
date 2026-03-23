@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires external data inputs not available in the allowed indicator set: (1) Real-time weather event detection and severity classification ('severe storms', 'significant magnitude'), (2) Lunar phase calendar data (new moon/full moon dates), (3) Event timing correlation with price data. These are external reference data sources, not technical indicators. The entry condition 'Weather event of any significant magnitude is reported' cannot be expressed using only OHLCV-derived technical indicators. Similarly, lunar alignment filtering requires an external lunar calendar not present in the allowed indicators list.",
+  "translation_notes": "This signal is fundamentally dependent on external event data (weather/meteorological events) and astronomical data (lunar phases) that fall outside the scope of technical analysis indicators derived from price and volume. While the exit conditions could theoretically be expressed (3-day hold + 5% stop loss), the entry trigger is non-translatable to a rule-based technical system. A backtest engine would require integration with external weather/lunar databases to operationalize this signal."
 }

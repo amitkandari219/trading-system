@@ -219,9 +219,17 @@ def add_all_indicators(df: pd.DataFrame) -> pd.DataFrame:
     # True range
     df['true_range'] = true_range(df)
 
-    # Bollinger Bands
+    # Bollinger Bands (20-period default)
     bb = bollinger_bands(close)
     df = pd.concat([df, bb], axis=1)
+
+    # Bollinger Bands (30-period — Chan quantitative)
+    bb30 = bollinger_bands(close, period=30)
+    df['bb_upper_30'] = bb30['bb_upper']
+    df['bb_middle_30'] = bb30['bb_middle']
+    df['bb_lower_30'] = bb30['bb_lower']
+    df['bb_pct_b_30'] = bb30['bb_pct_b']
+    df['bb_bandwidth_30'] = bb30['bb_bandwidth']
 
     # Stochastic (14-period default)
     stoch = stochastic(df)
@@ -254,6 +262,12 @@ def add_all_indicators(df: pd.DataFrame) -> pd.DataFrame:
     # Price position in range
     df['price_pos_20'] = price_position_in_range(df)
 
+    # Mean reversion z-scores (Chan quantitative)
+    for p in [20, 50]:
+        roll_mean = close.rolling(p, min_periods=p).mean()
+        roll_std = close.rolling(p, min_periods=p).std()
+        df[f'zscore_{p}'] = (close - roll_mean) / roll_std.replace(0, np.nan)
+
     # Daily returns
     df['returns'] = close.pct_change()
     df['log_returns'] = np.log(close / close.shift(1))
@@ -272,4 +286,136 @@ def add_all_indicators(df: pd.DataFrame) -> pd.DataFrame:
     df['lower_wick'] = df[['open', 'close']].min(axis=1) - df['low']
     df['range'] = df['high'] - df['low']
 
+    # ================================================================
+    # TIER 1 ENHANCEMENTS
+    # ================================================================
+
+    # 1. Hurst Exponent (rolling 100-day, computed on 20-day windows)
+    df['hurst_100'] = hurst_exponent(close, window=100)
+
+    # 2. Connors RSI = (RSI(3) + RSI_streak(2) + PercentRank(100)) / 3
+    df['rsi_2'] = rsi(close, 2)
+    df['rsi_3'] = rsi(close, 3)
+    df['connors_rsi'] = connors_rsi(close)
+
+    # 5. ATR Chandelier trailing stop
+    df['chandelier_long'] = chandelier_stop(df, period=14, mult=2.5, direction='long')
+    df['chandelier_short'] = chandelier_stop(df, period=14, mult=2.5, direction='short')
+
+    # IV/RV spread (Tier 2 #7 — easy to add here)
+    if 'india_vix' in df.columns:
+        rv_20 = close.pct_change().rolling(20).std() * np.sqrt(252) * 100
+        df['rv_20'] = rv_20
+        df['iv_rv_spread'] = df['india_vix'] / rv_20.replace(0, np.nan)
+
     return df
+
+
+# ================================================================
+# TIER 1 INDICATOR FUNCTIONS
+# ================================================================
+
+def hurst_exponent(series: pd.Series, window: int = 100) -> pd.Series:
+    """
+    Rolling Hurst exponent using R/S analysis on LOG RETURNS (not prices).
+    H > 0.55 = trending, H < 0.45 = mean-reverting, ~0.5 = random walk.
+    """
+    result = pd.Series(np.nan, index=series.index)
+
+    # Must compute on returns, not prices — prices are non-stationary
+    log_returns = np.log(series / series.shift(1)).values
+
+    for i in range(window + 1, len(log_returns)):
+        segment = log_returns[i - window:i]
+        if np.any(np.isnan(segment)):
+            continue
+        result.iloc[i] = _rs_hurst(segment)
+
+    return result
+
+
+def _rs_hurst(ts):
+    """Compute Hurst exponent via rescaled range (R/S) method."""
+    n = len(ts)
+    if n < 20:
+        return np.nan
+
+    max_k = min(n // 2, 50)
+    sizes = []
+    rs_values = []
+
+    for k in [20, 30, 40, 50]:
+        if k > max_k:
+            break
+        n_chunks = n // k
+        if n_chunks < 1:
+            continue
+
+        rs_list = []
+        for j in range(n_chunks):
+            chunk = ts[j * k:(j + 1) * k]
+            mean_c = np.mean(chunk)
+            devs = np.cumsum(chunk - mean_c)
+            r = np.max(devs) - np.min(devs)
+            s = np.std(chunk, ddof=1)
+            if s > 0:
+                rs_list.append(r / s)
+
+        if rs_list:
+            sizes.append(np.log(k))
+            rs_values.append(np.log(np.mean(rs_list)))
+
+    if len(sizes) < 2:
+        return np.nan
+
+    # Linear regression: log(R/S) = H * log(n) + c
+    coeffs = np.polyfit(sizes, rs_values, 1)
+    return float(np.clip(coeffs[0], 0.0, 1.0))
+
+
+def connors_rsi(close: pd.Series, rsi_period: int = 3,
+                streak_period: int = 2, rank_period: int = 100) -> pd.Series:
+    """
+    Connors RSI = (RSI(3) + RSI_of_streak(2) + PercentRank(100)) / 3
+    Used as mean-reversion signal: < 5 = buy, > 95 = sell.
+    """
+    # Component 1: RSI(3)
+    rsi_val = rsi(close, rsi_period)
+
+    # Component 2: RSI of consecutive up/down streak length
+    streak = pd.Series(0, index=close.index)
+    diff = close.diff()
+    for i in range(1, len(close)):
+        if diff.iloc[i] > 0:
+            streak.iloc[i] = max(streak.iloc[i - 1], 0) + 1
+        elif diff.iloc[i] < 0:
+            streak.iloc[i] = min(streak.iloc[i - 1], 0) - 1
+        else:
+            streak.iloc[i] = 0
+    streak_rsi = rsi(streak, streak_period)
+
+    # Component 3: Percent rank of today's return over last 100 days
+    ret = close.pct_change()
+    pct_rank = ret.rolling(rank_period, min_periods=rank_period).apply(
+        lambda x: (x[:-1] < x[-1]).sum() / (len(x) - 1) * 100 if len(x) > 1 else 50,
+        raw=True
+    )
+
+    return (rsi_val + streak_rsi + pct_rank) / 3
+
+
+def chandelier_stop(df: pd.DataFrame, period: int = 14,
+                     mult: float = 2.5, direction: str = 'long') -> pd.Series:
+    """
+    Chandelier trailing stop.
+    Long: Highest High(period) - mult × ATR(period)
+    Short: Lowest Low(period) + mult × ATR(period)
+    """
+    atr_val = atr(df, period)
+
+    if direction == 'long':
+        highest = df['high'].rolling(period, min_periods=1).max()
+        return highest - mult * atr_val
+    else:
+        lowest = df['low'].rolling(period, min_periods=1).min()
+        return lowest + mult * atr_val

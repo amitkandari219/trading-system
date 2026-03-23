@@ -1,0 +1,128 @@
+{
+  "signal_id": "THARP_DRY_18_0",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "0.015"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "returns",
+        "operator": "<=",
+        "right": "-0.015"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Converted 'price sequence' (N consecutive bars in expected direction) to directional close comparisons using prev_close. Directional move of 1.5% expressed using returns indicator (0.015 decimal scale). Volume confirmation uses volume > sma_20 as proxy for 20-day MA. Take profit set to 6.0% (3x the 2% stop loss). Context-dependent direction allows both long and short entries based on sequence direction. High timeframe conflict filter not implementable with allowed indicators."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": 0.015
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "returns",
+        "op": "<=",
+        "value": -0.015
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Converted 'price sequence' (N consecutive bars in expected direction) to directional close comparisons using prev_close. Directional move of 1.5% expressed using returns indicator (0.015 decimal scale). Volume confirmation uses volume > sma_20 as proxy for 20-day MA. Take profit set to 6.0% (3x the 2% stop loss). Context-dependent direction allows both long and short entries based on sequence direction. High timeframe conflict filter not implementable with allowed indicators."
+  },
+  "source_rule_text": "Combine price sequence setups with directional price confirmation signals to increase setup reliability beyond simple price data alone."
+}

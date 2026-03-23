@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "Tick direction state (uptick, downtick, zero-tick variants) is not available in the allowed indicators list. The signal requires tracking tick classification (non_uptick, non_downtick, zero-uptick, zero-downtick) which requires historical tick-by-tick data and tick direction logic not present in standard OHLCV indicators. Additionally, 'dynamic limit price adjustment on every tick' cannot be expressed with the allowed operators and indicators.",
-  "translation_notes": "Signal requires tick-by-tick data and tick direction classification unavailable in standard candlestick indicators. The entry conditions reference specific tick types that would need a tick_direction indicator or similar market microstructure data. Exit condition interpreted as single-bar reversal (price crossing previous close)."
+  "untranslatable_reason": "Tick direction detection (uptick/downtick/zero-tick classification) is not available in the allowed indicators list. The signal requires real-time tick classification and dynamic limit price adjustment logic that cannot be expressed using only OHLCV-derived indicators. Tick type (non_uptick, non_downtick) and continuous limit price adjustment mechanics are order execution features, not price-based conditions.",
+  "translation_notes": "This signal is fundamentally about tick-sensitive order execution mechanics rather than price-level entry/exit conditions. The allowed indicators are based on OHLCV data and do not include tick-level direction information needed to implement the core rule. A proper implementation would require a custom tick data feed and order execution module outside the backtest engine's standard indicator framework."
 }

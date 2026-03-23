@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "quarterly_equity_transfer",
+      "threshold": null,
+      "direction": "dynamic"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Dynamic fractional f with periodic equity transfers. Quarterly transfer percentage P = 1 - (Initial_Inactive_Allocation)^(1/N). Example: P = 0.0220672315 for 80% inactive over 10 quarters. Equation (8.01) FG^N <= G^N*FRAC+1-FRAC must be satisfied with sufficiently high N. Adjusts quarterly based on program duration and initial inactive allocation.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Use dynamic fractional f with periodic equity transfers from active to inactive accounts, adjusting quarterly transfer percentages based on program duration and initial inactive equity allocation."
+}

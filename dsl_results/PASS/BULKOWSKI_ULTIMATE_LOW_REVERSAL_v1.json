@@ -1,0 +1,91 @@
+{
+  "signal_id": "BULKOWSKI_ULTIMATE_LOW_REVERSAL",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Ultimate low reversal",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_ULTIMATE_LOW_REVERSAL",
+    "entry_long": [
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "low"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "30"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.55"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "low"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.2
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 30.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.55
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_ULTIMATE_LOW_REVERSAL"
+  },
+  "source_rule_text": "Ultimate low reversal: Prices reach a low and rebound by at least 20% to mark a trend change, followed by continued rise"
+}

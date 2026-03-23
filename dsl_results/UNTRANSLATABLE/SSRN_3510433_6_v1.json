@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit ranking/sorting of securities into winner/loser buckets by historical returns within size segments (small-cap vs large-cap), equal-weight portfolio construction across segments, and calculation of factor returns (WB, LB, WS, LS). This is a cross-sectional factor construction rule that requires portfolio-level logic (ranking, segmentation, rebalancing) not expressible via single-security indicator conditions. The WML15 factor cannot be computed from OHLCV data alone\u2014it requires comparative performance ranking across the universe.",
+  "translation_notes": "This signal describes a sophisticated factor construction methodology (Winner-Minus-Loser momentum) that operates at the portfolio/cross-sectional level rather than on individual security technicals. The core formula (WB\u2212LB)+(WS\u2212LS)/2 requires: (1) segmenting the Indian equity universe by market cap, (2) ranking securities by 15-month historical returns within each segment, (3) forming long and short positions in winner/loser quintiles, and (4) equal-weighting across segments. A backtest engine using individual security indicator conditions cannot implement this without additional portfolio construction and ranking capabilities."
+}

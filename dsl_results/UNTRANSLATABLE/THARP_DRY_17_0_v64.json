@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires 'Kaufman Efficiency Ratio' (not in allowed indicators list). This is a custom indicator not provided in the standard set. Also requires regime detection logic that identifies TRENDING vs RANGING conditions, which requires external regime classification not expressible in simple indicator comparisons.",
+  "translation_notes": "Translated core trend-confirmation conditions (ADX > 25 for strong directional movement and ATR volatility filter) but the primary Kaufman Efficiency Ratio metric cannot be implemented. The signal's core logic\u2014avoid sideways/RANGING conditions and trade only during TRENDING regimes\u2014requires regime classification that should be handled separately by the backtest engine's regime detection module. The cash_allocation_in_sideways parameter (0.9) should be implemented as a position sizing rule outside this condition set."
 }

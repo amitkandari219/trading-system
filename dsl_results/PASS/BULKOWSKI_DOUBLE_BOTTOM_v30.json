@@ -1,0 +1,105 @@
+{
+  "signal_id": "BULKOWSKI_DOUBLE_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Adam & Eve Double Bottom (AEDB)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DOUBLE_BOTTOM",
+    "entry_long": [
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.03"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "30"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "15"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.03
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 30.0
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 15.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_DOUBLE_BOTTOM"
+  },
+  "source_rule_text": "Adam & Eve Double Bottom (AEDB): A double bottom pattern where the Adam bottom is narrow with few price spikes (usually one or two) and the Eve bottom is wide with several short price spikes"
+}

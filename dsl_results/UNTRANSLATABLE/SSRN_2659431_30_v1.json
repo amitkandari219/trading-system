@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_30",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires dynamic weight calculation using the formula w_t = (1/\u03b3\u03c3_t\u00b2) \u00d7 \u03bc with risk aversion parameter \u03b3 and expected returns \u03bc. This is a portfolio-level volatility timing overlay rather than a price-action rule. The allowed indicators lack the mathematical framework to express inverse volatility weighting, leverage constraints as dynamic functions, and rebalancing logic. hvol_20 is used as a volatility proxy but cannot capture the full nonlinear inverse weighting scheme specified.",
+  "translation_notes": "This signal describes a volatility-managed portfolio allocation strategy rather than entry/exit conditions on individual assets. The core concept (adjust weight inversely to volatility) has been approximated using hvol_20 thresholds: long when volatility is low, short (or reduce exposure) when volatility is high. However, the original formula-based dynamic weighting with leverage constraints cannot be faithfully represented in the allowed rule syntax. Implementation would require custom portfolio optimization code outside the backtest engine."
+}

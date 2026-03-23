@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires: (1) Verification of established seasonal trend direction using 20-bar comparison \u2014 no seasonal/cyclical indicators available; (2) Detection of pullback within 3-5 bar window against trend \u2014 requires look-back logic not supported by basic operators; (3) Counter-trend move within \u00b110 day seasonal reversal window \u2014 requires seasonal calendar data not in indicator set. Translated entry/exit using close vs sma_20 as proxy for trend direction and RSI extremes as proxy for counter-trend reversals, but this does not capture the core seasonal pattern mechanics.",
+  "translation_notes": "Signal is context-dependent (LONG on seasonal uptrends with downside pullbacks; SHORT on seasonal downtrends with upside pullbacks). Used sma_20 as proxy for 20-bar trend verification and rsi_14 extremes as proxy for oversold/overbought counter-trend signals. Stop loss calculated as 1.5 ATR \u2248 3% of typical price movement. Hold period set to 10 bars per exit condition. Critical semantic loss: the signal's predictive power depends on seasonal calendar alignment and multi-bar pullback structure, neither of which can be expressed in this rule engine without cyclical/temporal pattern indicators."
 }

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires bid-ask spread measurement (max 5 ticks) and market depth analysis at multiple price levels. These microstructure metrics are not available in the allowed indicator set. Volume-based proxies (vol_ratio_20) used as partial substitute, but true liquidity filtering cannot be fully implemented without tick-level data and order book depth indicators.",
+  "translation_notes": "This is a liquidity filter regime rule rather than a directional signal. CONTEXT_DEPENDENT direction used since entry applies to both long and short setups. Average daily volume requirement mapped to volume > 20000. Bid-ask spread (5 ticks max) approximated using vol_ratio_20 as a liquidity proxy, though this is imperfect. Exit condition widens stop-loss by 50% (1.5% base vs typical 1%) to accommodate slippage in lower-liquidity scenarios. Market depth requirement cannot be operationalized with available indicators."
 }

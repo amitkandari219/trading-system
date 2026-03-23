@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Winner-Minus-Loser (WML) momentum strategy requires cross-sectional portfolio ranking and construction (top/bottom quintiles or deciles by 60-month returns), which cannot be expressed as individual security conditions. This is a portfolio-level signal requiring: (1) ranking all stocks by 60-month returns, (2) constructing two separate portfolios (winner and loser), (3) simultaneous long/short positions across portfolios. The backtest engine rules support single-security entry/exit conditions only, not cross-sectional portfolio construction logic. The 60-month lookback is also unusually long for standard backtesting frameworks.",
+  "translation_notes": "The signal describes a cross-sectional momentum strategy that operates at the portfolio construction level rather than individual security level. Standard condition-based rules cannot capture the ranking and portfolio construction mechanics. A proper implementation requires: portfolio formation methodology, rebalancing schedule (monthly or quarterly recommended despite 60-month lookback), and long/short pair trading across winner/loser buckets."
+}

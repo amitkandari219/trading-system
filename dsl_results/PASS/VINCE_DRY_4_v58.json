@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_4",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "optimal_f_curve_position",
+      "threshold": 1.0,
+      "direction": "at_or_below"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size must not exceed the peak of the optimal f curve. Sizing beyond optimal f constitutes overleveraging; sizing below optimal f is suboptimal. Optimal f derived empirically from cumulative probability analysis with equal probability (1/N) assigned to each of N historical trades/scenarios.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Do not position size beyond the optimal f curve peak; traders with too many contracts relative to optimal f are overleveraged, analogous to having too few contracts when below optimal f."
+}

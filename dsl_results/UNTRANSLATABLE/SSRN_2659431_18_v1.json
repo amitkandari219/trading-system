@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_18",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic volatility-based position sizing and factor weighting adjustments that cannot be expressed as simple indicator crossovers. The rule demands: (1) continuous inverse scaling of exposure relative to 'total market volatility' (no single volatility metric provided), (2) maintenance of constant relative factor weights across multiple asset classes/factors, and (3) portfolio-level rebalancing logic. This is a portfolio construction/risk management framework rather than a tradeable entry/exit signal. Backtest engine requires multi-asset factor weighting capability and dynamic leverage/notional exposure controls not expressible in single-instrument conditions.",
+  "translation_notes": "This signal describes a volatility-managed portfolio allocation strategy (similar to risk parity or volatility targeting) rather than a discrete trading rule. It requires: tracking multiple factors, maintaining constant relative weights between them, and adjusting total notional exposure inversely to realized volatility. Standard backtesting rules cannot capture portfolio-level factor rebalancing. Recommend implementing as a separate position-sizing overlay using hvol_20 as volatility input and a reference leverage multiplier."
+}

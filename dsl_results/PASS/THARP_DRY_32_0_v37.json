@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "KELLY",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": 0.25,
+    "trigger_condition": {
+      "metric": "drawdown_std_devs",
+      "threshold": 1.0,
+      "direction": "below"
+    },
+    "max_risk_pct": 1.0,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Apply fractional Kelly (0.25) only when current drawdown < 1 std dev from mean AND expected return > +2 std devs from historical mean. Reduces position size during adverse statistical conditions.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should implement a position-sizing algorithm to avoid taking positions when market conditions or statistical risk measures indicate the trade should not be taken, rather than relying on signal generation alone."
+}

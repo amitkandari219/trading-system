@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1590784_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calendar-based condition ('Date is a futures contract expiration day on NSE') and GARCH volatility framework detection, neither of which are available in the allowed indicators set. GARCH volatility cannot be directly computed from the provided indicators (hvol_20 is historical volatility, not GARCH). Approximated using india_vix and hvol_20 as volatility proxies, but this is a functional substitute rather than true GARCH-based detection.",
+  "translation_notes": "Direction set to BOTH per signal specification. Entry conditions use india_vix (proxy for volatility pressure) and hvol_20 (20-period historical volatility) as substitutes for GARCH framework. Exit conditions use price direction reversal (end-of-day behavior typical on expiration days). Hold period set to 1 day to match expiration day duration. Calendar filtering must be implemented separately outside the rule engine."
+}

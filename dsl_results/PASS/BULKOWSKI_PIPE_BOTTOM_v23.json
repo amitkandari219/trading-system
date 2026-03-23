@@ -1,0 +1,69 @@
+{
+  "signal_id": "BULKOWSKI_PIPE_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Pipe Bottoms",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_PIPE_BOTTOM",
+    "entry_long": [
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.5"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.5
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_PIPE_BOTTOM"
+  },
+  "source_rule_text": "Pipe Bottoms: Heavy breakout volume performance"
+}

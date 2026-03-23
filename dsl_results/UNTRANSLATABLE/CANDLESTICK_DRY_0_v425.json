@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of: (1) Gravestone Doji candlestick pattern - requires specific wick/body ratio logic not available in indicator set; (2) Congestion region identification - requires pattern recognition of horizontal price movement clustering not expressible with point-in-time indicators. The rule is fundamentally a 'do not trade' filter (ignore doji in congestion) rather than a directional entry signal, and lacks exit conditions. Gravestone Doji pattern detection requires candlestick morphology analysis (upper wick very long, lower wick very short, small body) that cannot be reliably expressed using only the allowed indicators and operators.",
+  "translation_notes": "This is a CONTRARIAN/FILTER rule that tells traders to IGNORE gravestone doji signals when they occur in congestion zones. It is not a trade entry rule but rather a risk filter. To implement: (1) detect gravestone doji pattern (upper_wick >> lower_wick AND body << upper_wick), (2) detect congestion (low volatility, oscillating price, horizontal channel). Neither can be expressed with the allowed indicator set. Recommend implementing as custom pattern recognition logic outside the rules engine."
 }

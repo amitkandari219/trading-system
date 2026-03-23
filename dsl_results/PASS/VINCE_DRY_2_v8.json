@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_2",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": 0.25,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "account_equity_growth",
+      "threshold": null,
+      "direction": "above",
+      "note": "Transition from constant-contract (1 contract) to fixed fractional when equity grows"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Small accounts start with 1 contract constant-contract trading, then transition to optimal f fixed fractional sizing (optimal f = 0.25, or 1 bet per $4 equity). Formula: Position Size = Account Equity / (Biggest Historical Loss / -Optimal F). Sizing scales with account growth and historical drawdown rather than fixed dollar amounts.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Small accounts starting with constant-contract trading should trade 1 contract initially, then transition to fixed fractional trading based on optimal f as equity grows."
+}

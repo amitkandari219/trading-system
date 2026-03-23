@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of high-impact economic calendar events (NFP, CPI, FOMC releases) which are external fundamental news events not representable by technical indicators. Also requires pre-event planning logic and 10-15 second post-release reaction confirmation timing, which are execution/timing primitives outside the scope of indicator-based rule conditions. The core alpha capture mechanism (being first to trade new information) cannot be expressed using only price/volume technical indicators.",
+  "translation_notes": "This signal is fundamentally an event-driven news trading strategy that depends on: (1) external calendar data feeds, (2) pre-trade planning execution logic, and (3) precise sub-minute timing around news releases. While volume confirmation was attempted as a proxy for post-event volatility, the actual entry trigger is the news event itself, not a technical condition. This requires a custom event-handling framework rather than indicator-based rules."
 }

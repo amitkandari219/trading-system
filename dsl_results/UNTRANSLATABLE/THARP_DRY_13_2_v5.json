@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "This signal is a meta-rule about validating trading concepts through backtesting statistics (true-positive rate \u226550%, false-positive rate \u226430%, reliability ratio 1.67). These are backtesting performance metrics that cannot be expressed as real-time price/indicator conditions. The signal requires: (1) Historical occurrence frequency analysis across winning vs losing trades, (2) Statistical validation of concept reliability, and (3) Rolling window performance monitoring. These require pre-computed backtest statistics unavailable in standard real-time indicator format. The signal is a validation framework for other trading concepts, not a standalone tradeable rule.",
-  "translation_notes": "THARP_DRY_13_2 describes a validation methodology rather than a market entry/exit condition. It teaches that a trading concept should have true_positive_threshold \u22650.50, false_positive_max \u22640.30, and signal_reliability_ratio \u22651.67 before deployment. This requires custom backtesting infrastructure to compute these ratios during walkforward analysis, not real-time indicator monitoring. A partial placeholder rule using SMA crossover is provided for schema compliance, but the actual signal cannot be fully operationalized without backtesting statistics module."
+  "untranslatable_reason": "This is a validation/filtering rule for entry concept reliability (true-positive vs false-positive rates), not a position sizing rule. It determines whether to trade a concept at all, not how much to risk per trade. Should be extracted as an ENTRY_FILTER/PATTERN_VALIDATION signal instead.",
+  "translation_notes": null
 }

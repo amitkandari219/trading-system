@@ -1,0 +1,35 @@
+{
+  "signal_id": "SSRN_VOL_EFFECT_BLITZ",
+  "book_id": "SSRN-3442749",
+  "signal_type": "ENTRY_EXIT",
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.03
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "bb_bandwidth",
+        "op": ">",
+        "value": 0.06
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 15,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG"
+  },
+  "source_rule_text": "Low volatility anomaly: buy when ATR/close ratio is low, sell when high"
+}

@@ -1,0 +1,23 @@
+{
+  "signal_id": "THARP_DRY_32_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": 0.005,
+    "r_multiple_stop": 1.0,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "volatility_measure",
+      "direction": "inverse"
+    },
+    "max_risk_pct": 0.005,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position quantity inversely scaled to volatility/stop-loss distance to maintain consistent risk exposure. Formula: qty = (account_equity \u00d7 0.005) / (stop_loss_distance OR volatility_measure)",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Size positions as a fixed percentage of account risk (or volatility), scaling position quantity inversely with market volatility to maintain consistent risk exposure across trades."
+}

@@ -1,0 +1,104 @@
+{
+  "signal_id": "BULKOWSKI_FIBONACCI_RETRACEMENT_LEVELS_ACT",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Fibonacci retracement levels (38%, 50%, 62%) act a",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_FIBONACCI_RETRACEMENT_LEVELS_ACT",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "s1"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "pivot"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.4"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.3"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "40"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "r1"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING",
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "s1"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "pivot"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.4
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.3
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 40.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "r1"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_FIBONACCI_RETRACEMENT_LEVELS_ACT"
+  },
+  "source_rule_text": "Fibonacci retracement levels (38%, 50%, 62%) act as support/resistance zones where volume increases and price rebounds become more likely, particularly when prices approach whole dollar amounts"
+}

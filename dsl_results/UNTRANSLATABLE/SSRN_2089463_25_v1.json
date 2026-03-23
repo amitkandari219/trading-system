@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2089463_25",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'time series momentum' calculation across multiple futures contracts with equal-weighted portfolio aggregation. This is a portfolio-level construction rule, not a single-contract technical indicator. The allowed indicators list does not include: (1) a dedicated momentum indicator computed over user-specified lookback periods, (2) cross-contract weighting and aggregation logic, or (3) portfolio rebalancing logic. Time series momentum typically requires computing returns over a specific lookback period (e.g., 12 months) and ranking/weighting contracts, which exceeds single-indicator expression capability.",
+  "translation_notes": "This signal describes a systematic trend-following strategy operating at the portfolio construction level (equal-weighted diversification across asset classes with monthly/quarterly rebalancing). While a simplified proxy using log_returns direction has been provided, it does not capture the core mechanic: calculating momentum for each contract individually over a specified lookback window, then taking the equal-weighted average signal across all contracts. The strategy's power derives from cross-contract diversification and momentum ranking, which cannot be expressed as a simple indicator comparison on a single contract."
+}

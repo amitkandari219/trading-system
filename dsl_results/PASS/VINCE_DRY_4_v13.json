@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_4",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": 0.206,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "cumulative_probability_distribution_fitted",
+      "threshold": null,
+      "direction": "after_calculation"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Ralph Vince optimal f method: fit cumulative probability distribution (LOC, SCALE, SKEW, KURT) to historical trades, calculate optimal f (0.206 example), then size contracts as Account Equity / (Account Equity \u00d7 optimal_f). Distribution bounded \u00b13 sigmas with 100 data points.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size should be determined by calculating optimal f value based on cumulative probability distribution parameters, then divide total account equity by the f value to determine contracts to trade."
+}

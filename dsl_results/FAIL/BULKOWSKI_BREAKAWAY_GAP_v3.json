@@ -1,0 +1,77 @@
+{
+  "signal_id": "BULKOWSKI_BREAKAWAY_GAP",
+  "entry_long": [
+    {
+      "left": "open",
+      "operator": ">",
+      "right": "prev_close"
+    },
+    {
+      "left": "abs(open - prev_close)",
+      "operator": ">",
+      "right": "0.59"
+    },
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "sma_200"
+    },
+    {
+      "left": "price_pos_20",
+      "operator": ">",
+      "right": "0.8"
+    }
+  ],
+  "entry_short": [
+    {
+      "left": "open",
+      "operator": "<",
+      "right": "prev_close"
+    },
+    {
+      "left": "abs(open - prev_close)",
+      "operator": ">",
+      "right": "0.59"
+    },
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "sma_200"
+    },
+    {
+      "left": "price_pos_20",
+      "operator": "<",
+      "right": "0.2"
+    }
+  ],
+  "exit_long": [
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "sma_20"
+    }
+  ],
+  "exit_short": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "sma_20"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 4.0,
+  "hold_days_max": 30,
+  "direction": "BOTH",
+  "target_regime": [
+    "TRENDING_UP",
+    "TRENDING_DOWN"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": null,
+  "validation_issues": [
+    "entry_long: unknown indicator 'abs(open - prev_close)'",
+    "entry_short: unknown indicator 'abs(open - prev_close)'"
+  ]
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "The Deliberation pattern requires multi-candle sequence analysis: (1) progressively shorter white candles across multiple bars, (2) body-to-wick ratio comparisons across a series, and (3) black candles growing larger over time. These require historical bar comparisons (close[i-1], close[i-2], etc.) and sequential pattern matching that the allowed indicator set does not support. The indicator set lacks: multi-bar lookback comparisons beyond prev_* fields, candle color detection (white vs black), and sequence validation logic. A proper implementation would need custom pattern detection functions.",
+  "translation_notes": "Attempted to capture basic entry signals (short candle with wicks, smaller than previous), but the core pattern requirement\u2014a series of progressively shorter white candles followed by growing black candles\u2014cannot be fully expressed with the available indicators. The backtest engine would need native candlestick pattern recognition or extended indicator capabilities to properly detect the Deliberation pattern."
 }

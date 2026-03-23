@@ -1,0 +1,29 @@
+{
+  "signal_id": "THARP_DRY_31_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "KELLY",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": 1.0,
+    "trigger_condition": {
+      "metric": "estimated_win_probability",
+      "threshold": 0.5,
+      "direction": "above",
+      "formula": "position_units = base_units * (estimated_win_prob / 0.5)^1.5"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Probability-weighted Kelly-style sizing: allocate units proportionally to win probability raised to 1.5 power relative to 50% baseline. Min 0.25 units, max 3.0 units. Base unit = $10,000. Entry requires estimated_win_prob >= 45%.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Allocate position size proportionally to the estimated probability of success for each trade, concentrating larger positions on higher-confidence opportunities while maintaining equal risk exposure across the portfolio."
+}

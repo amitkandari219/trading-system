@@ -34,7 +34,7 @@
     "entry_logic": "AND",
     "exit_logic": "OR",
     "stop_loss_pct": 10.0,
-    "hold_days_max": 10,
+    "hold_days_max": 1,
     "direction": "BOTH",
     "target_regime": [
       "TRENDING_UP",
@@ -42,7 +42,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal emphasizes accepting trades during unfavorable periods to capture infrequent trends. Entry uses simple moving average crossover (minimum_trend_confirmation_indicators=1 satisfies single indicator requirement). Exit triggers on trend reversal (crossover) or 30% drawdown threshold. Direction is CONTEXT_DEPENDENT because rule applies to both trending up and trending down regimes. No lookback profitability check is enforced (lookback_trades_for_profitability_check=0). Position holding uses trend-following principle (let profits run on reversals)."
+    "translation_notes": "Signal emphasizes accepting unfavorable periods to capture infrequent trends. Entry uses minimal confirmation (single MA crossover). No lookback profitability check enforced (lookback_trades_for_profitability_check=0). Exit on trend reversal (MA crossover) or 30% drawdown. Position holding multiplier suggests no strict max days. Direction is CONTEXT_DEPENDENT as the signal applies to both long and short trend-following entries."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -78,11 +78,11 @@
       "TRENDING_UP",
       "TRENDING_DOWN"
     ],
-    "hold_days": 10,
+    "hold_days": 1,
     "stop_loss_pct": 0.1,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal emphasizes accepting trades during unfavorable periods to capture infrequent trends. Entry uses simple moving average crossover (minimum_trend_confirmation_indicators=1 satisfies single indicator requirement). Exit triggers on trend reversal (crossover) or 30% drawdown threshold. Direction is CONTEXT_DEPENDENT because rule applies to both trending up and trending down regimes. No lookback profitability check is enforced (lookback_trades_for_profitability_check=0). Position holding uses trend-following principle (let profits run on reversals)."
+    "reason": "Signal emphasizes accepting unfavorable periods to capture infrequent trends. Entry uses minimal confirmation (single MA crossover). No lookback profitability check enforced (lookback_trades_for_profitability_check=0). Exit on trend reversal (MA crossover) or 30% drawdown. Position holding multiplier suggests no strict max days. Direction is CONTEXT_DEPENDENT as the signal applies to both long and short trend-following entries."
   },
   "source_rule_text": "A trend follower must accept trading through unfavorable market periods to avoid missing major trends, because trends occur infrequently (15-25% of the time) and the cost of sitting out is missing the profitable moves."
 }

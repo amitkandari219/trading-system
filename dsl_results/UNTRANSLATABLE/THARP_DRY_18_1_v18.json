@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires: (1) Price-based filter (moving average or trend direction) \u2014 not explicitly specified which MA or trend indicator to use; (2) Volume > 60th percentile of last 15 periods \u2014 requires rolling percentile calculation unavailable in allowed operators; (3) Volatility above median of last 10 periods \u2014 requires rolling median calculation unavailable. Used vol_ratio_20 and atr_14 > atr_20 as best available proxies, but cannot precisely implement the percentile-based logic specified.",
+  "translation_notes": "Signal emphasizes multi-source confirmation (volume + volatility distinct from price filters). Translated volume condition using vol_ratio_20 (20-period volume ratio proxy). Volatility condition approximated by comparing atr_14 to atr_20 as a median proxy. Original requirement for explicit price filter condition (moving average or trend direction) was not specified in entry conditions \u2014 user must add preferred MA (sma_50, ema_20, etc.) or trend indicator. Exit uses volume decline below 40th percentile approximated by vol_ratio_20. Stop loss set to 1.5x initial stop distance as 1.5%."
 }

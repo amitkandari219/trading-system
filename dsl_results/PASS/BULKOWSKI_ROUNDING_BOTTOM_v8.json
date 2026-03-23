@@ -1,0 +1,105 @@
+{
+  "signal_id": "BULKOWSKI_ROUNDING_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Rounding Bottom",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_ROUNDING_BOTTOM",
+    "entry_long": [
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_low"
+      },
+      {
+        "left": "hvol_20",
+        "operator": "<",
+        "right": "0.02"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.3"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.7"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "hvol_20",
+        "op": "<",
+        "value": 0.02
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.3
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.7
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_ROUNDING_BOTTOM"
+  },
+  "source_rule_text": "Rounding Bottom: Price trend curves gently in a rounded bowl shape, usually over many months and usually after an upward price trend"
+}

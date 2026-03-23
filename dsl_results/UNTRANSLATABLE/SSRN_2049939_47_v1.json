@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_47",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Beta calculation and rolling beta percentile ranking are not available in the allowed indicator list. The signal requires computing historical betas for each instrument and ranking them within a universe, which is a portfolio-level factor construction task beyond point-in-time technical indicators. Additionally, zero-cost portfolio construction with dynamic rescaling to target beta=1.0 requires custom portfolio weighting logic not expressible through simple indicator comparisons.",
+  "translation_notes": "Betting Against Beta (BAB) is a factor model that requires: (1) calculation of rolling betas for each security, (2) ranking/binning into low/high beta groups, (3) weighting by relative beta ranks, and (4) rescaling to achieve target beta=1.0. These are structural portfolio operations requiring a specialized factor backtester with beta estimation capability, not a rules-based signal engine using technical indicators. The source data shows performance of low-beta vs high-beta portfolios across asset classes but does not provide entry/exit trigger conditions."
+}

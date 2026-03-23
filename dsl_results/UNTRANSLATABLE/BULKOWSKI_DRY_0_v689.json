@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires pattern recognition (EEDT identification via Table 20.1 guidelines) and market regime classification (bull vs bear market context) which cannot be expressed as numeric indicator conditions. Pattern detection requires candlestick morphology analysis and multi-bar structure recognition beyond available indicators. Exact breakout timing, 'ultimate low' identification, and pattern 'tall and narrow' classification are qualitative pattern properties not translatable to quantitative rules.",
+  "translation_notes": "Attempted partial translation based on available signals: heavy volume on left top (volume > hvol_20) and downward breakout direction (close < prev_close). Exit condition assumes reversal after ~30 days per Table 20.5. However, core signal logic\u2014pattern identification, bull/bear market selection, ultimate low detection\u2014requires candlestick pattern recognition unavailable in the indicator set. Recommend: (1) Pre-filter bars matching EEDT morphology externally, (2) Add market regime detector (bull/bear), (3) Use these rules only after pattern confirmation."
 }

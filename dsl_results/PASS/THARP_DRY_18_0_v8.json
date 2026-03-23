@@ -1,0 +1,128 @@
+{
+  "signal_id": "THARP_DRY_18_0",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_0",
+    "entry_long": [
+      {
+        "left": "prev_close",
+        "operator": ">",
+        "right": "prev_open"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "prev_close",
+        "operator": "<",
+        "right": "prev_open"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "vol_ratio_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_open"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 1,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal detects extreme trending days (open at one extreme, close at opposite extreme) and fades the reversal the next day. Entry logic: previous day was strong trending (prev_close vs prev_open directional), current day reverses beyond previous close with volume confirmation. Exit targets the previous day's open (opposite extreme). Stop loss set at 1.5 ATR equivalent using stop_loss_pct. Hold_days_max set to 1 since this is an intraday mean reversion setup. Context-dependent direction: LONG when previous day closes higher (reversal expected downward), SHORT when previous day closes lower (reversal expected upward)."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "prev_close",
+        "op": ">",
+        "value": "prev_open"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "prev_close",
+        "op": "<",
+        "value": "prev_open"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "vol_ratio_20"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_open"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_open"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal detects extreme trending days (open at one extreme, close at opposite extreme) and fades the reversal the next day. Entry logic: previous day was strong trending (prev_close vs prev_open directional), current day reverses beyond previous close with volume confirmation. Exit targets the previous day's open (opposite extreme). Stop loss set at 1.5 ATR equivalent using stop_loss_pct. Hold_days_max set to 1 since this is an intraday mean reversion setup. Context-dependent direction: LONG when previous day closes higher (reversal expected downward), SHORT when previous day closes lower (reversal expected upward)."
+  },
+  "source_rule_text": "When the market exhibits a strong trending day (opening at one extreme and closing at the other), expect mean reversion the following day; fade the opening direction momentum in favor of a reversal bias."
+}

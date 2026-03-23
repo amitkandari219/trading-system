@@ -1,0 +1,70 @@
+{
+  "signal_id": "SSRN_3510433_24",
+  "book_id": "SSRN_3510433",
+  "dsl_rule": {
+    "signal_id": "SSRN_3510433_24",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "0"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses off-the-shelf momentum ranking (not explicitly defined in source text). Translated entry conditions as: positive recent returns (momentum) AND above-average liquidity (vol_ratio_20). Exit triggered by negative returns or monthly rebalancing (30-day hold max). Strategy is long-only with no short positions. Parameters: NIFTY100 universe, monthly rebalancing frequency, 12-month lookback for persistence ranking."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": 0.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal uses off-the-shelf momentum ranking (not explicitly defined in source text). Translated entry conditions as: positive recent returns (momentum) AND above-average liquidity (vol_ratio_20). Exit triggered by negative returns or monthly rebalancing (30-day hold max). Strategy is long-only with no short positions. Parameters: NIFTY100 universe, monthly rebalancing frequency, 12-month lookback for persistence ranking."
+  },
+  "source_rule_text": "Monthly rebalanced long-only momentum portfolio using NIFTY100 constituents with near-term rebalancing"
+}

@@ -1,0 +1,113 @@
+{
+  "signal_id": "BULKOWSKI_MEASURED_MOVE_DOWN",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Measured Move Down",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_MEASURED_MOVE_DOWN",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": "<",
+        "right": "1.5"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.5"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": "<",
+        "value": 1.5
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.5
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_MEASURED_MOVE_DOWN"
+  },
+  "source_rule_text": "Measured Move Down: A correction pattern following a long price rise, where prices decline along a down trend line within a trend channel, followed by a corrective phase on volume"
+}

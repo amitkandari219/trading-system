@@ -51,7 +51,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal uses 12-day percent change (approximated with 'returns' indicator in decimal scale: 0.01 = +1%, -0.01 = -1%). '10-day moving low/high' mapped to Donchian Channel 10-period equivalents (dc_lower for 10-day low, dc_upper for 10-day high). Direction is CONTEXT_DEPENDENT since signal generates both long and short entries based on conditions. Exit conditions implemented as reversals per rule 8."
+    "translation_notes": "Signal requires 12-day percent change; mapped to 'returns' (which captures price change over lookback). 10-day moving low/high mapped to Donchian Channel dc_lower/dc_upper (10-period equivalent). Direction is CONTEXT_DEPENDENT: entry_long triggers on +1% threshold with price above moving low; entry_short triggers on -1% threshold with price below moving high. Exit conditions reverse the positions by default per signal specification."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -98,7 +98,7 @@
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal uses 12-day percent change (approximated with 'returns' indicator in decimal scale: 0.01 = +1%, -0.01 = -1%). '10-day moving low/high' mapped to Donchian Channel 10-period equivalents (dc_lower for 10-day low, dc_upper for 10-day high). Direction is CONTEXT_DEPENDENT since signal generates both long and short entries based on conditions. Exit conditions implemented as reversals per rule 8."
+    "reason": "Signal requires 12-day percent change; mapped to 'returns' (which captures price change over lookback). 10-day moving low/high mapped to Donchian Channel dc_lower/dc_upper (10-period equivalent). Direction is CONTEXT_DEPENDENT: entry_long triggers on +1% threshold with price above moving low; entry_short triggers on -1% threshold with price below moving high. Exit conditions reverse the positions by default per signal specification."
   },
   "source_rule_text": "Buy when 12-day percent change exceeds +1% and price is above the 10-day moving low; sell when 12-day percent change falls below -1% and price is below the 10-day moving high."
 }

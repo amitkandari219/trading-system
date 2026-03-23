@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2089463_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 12-month cumulative returns calculation, but the 'returns' indicator in the allowed list is single-period. The backtest engine needs a 252-bar (12-month) rolling return accumulator which is not available in the standard indicator set. Recommend adding 'returns_252' or 'cumulative_returns_12m' to indicator library.",
+  "translation_notes": "The signal logic (buy on positive 12-month returns, hold 1 month) is conceptually simple but operationally requires a lookback window calculation beyond single-period indicators. Used 'returns > 0' as a partial proxy, but this triggers on any positive single period rather than 12-month cumulative. Monthly rebalance frequency implies hold_days_max \u2248 21 calendar days."
+}

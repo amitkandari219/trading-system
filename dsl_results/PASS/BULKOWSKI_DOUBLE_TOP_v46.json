@@ -1,0 +1,91 @@
+{
+  "signal_id": "BULKOWSKI_DOUBLE_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Adam & Eve Double Top (AEDT)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DOUBLE_TOP",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "0.01"
+      },
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "0.02"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": 0.01
+      },
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": 0.02
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_DOUBLE_TOP"
+  },
+  "source_rule_text": "Adam & Eve Double Top (AEDT): Two peaks where Adam is narrow and composed of a one-day price spike, Eve is wider and more rounded. Pattern is confirmed when price closes below the confirmation line."
+}

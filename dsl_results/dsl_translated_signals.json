@@ -1,1 +1,906 @@
-[]
+[
+  {
+    "signal_id": "SSRN_2089463_1",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 30,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "Time Series Momentum signal from Moskowitz et al. Uses returns indicator calculated over 1-12 month lookback period. Entry logic is OR because signal can generate either long or short positions based on return sign. Exit conditions trigger on signal reversal (return crossing zero). Hold period set to ~1 year (252 trading days) to reflect typical 12-month momentum holding horizon. Applied across equity index, currency, commodity, and bond futures as specified."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_2",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [],
+      "regime_filter": [],
+      "hold_days": 30,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "LONG",
+      "reason": "Signal uses 12-month past excess return, which maps to the 'returns' indicator (0-1 scale decimal). Entry triggers when returns > 0 (positive excess return). Exit uses reversal logic: when returns < 0 (negative return). Hold period set to 252 trading days (~12 months). The signal applies broadly across asset classes, so target_regime is ANY. No stop-loss percentage specified in original signal."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_3",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        },
+        {
+          "indicator": "sma_200",
+          "op": "<",
+          "value": "close"
+        }
+      ],
+      "entry_short": [],
+      "exit_long": [
+        {
+          "indicator": "close",
+          "op": "<",
+          "value": "sma_200"
+        }
+      ],
+      "exit_short": [],
+      "regime_filter": [
+        "TRENDING_UP"
+      ],
+      "hold_days": 30,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "LONG",
+      "reason": "Signal specifies 12-month positive return trend. Entry uses log_returns > 0 (positive momentum) combined with close > sma_200 (uptrend confirmation). Exit triggers when price closes below sma_200, indicating trend reversal. Hold period set to 252 trading days (~12 months). Target regime set to TRENDING_UP as this is a momentum strategy. The 'speculators positioned' entry condition is qualitative and cannot be operationalized with available indicators."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_4",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 20,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "Time series momentum strategy implemented using recent returns as the primary momentum indicator. Positive returns trigger long entry; negative returns trigger short entry. Exit conditions are momentum reversals (opposite sign in returns). Roll yield effects cannot be directly measured from standard OHLCV data, so general price momentum via returns is used as proxy. Portfolio rebalancing period handled via hold_days_max of 20 bars as reasonable intermediate holding period."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_5",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 21,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "Signal uses 12-month momentum (returns > 0 for long, < 0 for short) with 1-month holding period. The 'returns' indicator with appropriate operators captures the 12-month lookback momentum rule. hold_days_max set to 21 (~1 month). Entry and exit conditions are inverse momentum signals, representing a monthly rebalance pattern where positions reverse based on return sign changes."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_10",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.02
+        },
+        {
+          "indicator": "adx_14",
+          "op": ">",
+          "value": 25.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": -0.02
+        },
+        {
+          "indicator": "adx_14",
+          "op": ">",
+          "value": 25.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [
+        "HIGH_VOL",
+        "TRENDING_UP",
+        "TRENDING_DOWN"
+      ],
+      "hold_days": 20,
+      "stop_loss_pct": 0.03,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "TSMOM detects major market moves via returns extremes combined with trend strength (ADX). Entry uses positive/negative returns thresholds (~2%) to identify upswings/crashes. Momentum reversal detected when returns cross back through zero. ADX ensures strong directional moves. Straddle-like payoff emerges from capturing both tail events."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_12",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 10,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "Time Series Momentum (TSMOM) strategy uses 12-month past returns to determine position direction. Entry conditions: long when 12-month returns are positive, short when 12-month returns are negative. Exit conditions: reverse positions when return sign flips (monthly rebalance). The 'returns' indicator captures the 12-month momentum lookback period implicitly in the backtest engine's calculation. Monthly rebalancing is handled by the backtest engine's frequency parameter rather than explicit exit timing."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_14",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<=",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">=",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 10,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "Time Series Momentum (TSMOM) strategy translated using past returns indicator. Entry conditions use sign of returns: long when positive, short when negative. Exit conditions rebalance when return signals reverse. The 'linear weighting of past returns (equation 7)' specification cannot be fully captured with allowed indicators, but the sign-based logic is preserved as the core trading mechanism. The strategy rebalances continuously based on updated return signals rather than fixed holding periods."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_15",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<=",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">=",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 20,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "TSMOM signal uses 12-month historical returns. The 'returns' indicator captures price performance over a lookback period. Entry triggers on sign of 12-month returns; exit triggers on reversal (sign change). Rebalancing occurs at next period (approximately 20 trading days per month = ~12 month cycle). Direction is BOTH as strategy goes long and short based on return sign."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_16",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<=",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">=",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 21,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "12-month momentum strategy translated using 'returns' indicator over 12-month lookback period. Entry conditions: go LONG when 12-month excess returns > 0, go SHORT when 12-month excess returns < 0. Exit conditions: rebalance monthly when momentum signal reverses. Hold period capped at ~21 days (monthly rebalance frequency approximation)."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_17",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [],
+      "regime_filter": [],
+      "hold_days": 30,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "LONG",
+      "reason": "Signal implements time-series momentum (TSMOM) strategy. Entry condition uses returns > 0 to capture positive 12-month cumulative returns. Exit uses a partial reversal condition (returns < 0) as observed in the source study, with hold_days_max set to 252 trading days (~12 months). The 12-month lookback and holding periods are controlled by strategy parameters external to the rule conditions."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_19",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<=",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">=",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 30,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "Signal uses 1-year lagged returns (252-day lookback period). Entry uses 'returns' indicator which captures price momentum; a positive lagged return triggers LONG, negative triggers SHORT. Exit conditions reverse positions when the sign of returns changes. Frequency set to daily rebalance capability with max hold of 252 days (1 year lookback period)."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_21",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 21,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "12-month momentum strategy: Entry long when 12-month returns are positive, short when negative. Uses 12-month lookback period (returns indicator captures price momentum). Monthly rebalancing implemented via hold_days_max of 21 days. Exit conditions reverse the entry logic\u2014long positions exit when 12-month returns turn negative (reranking), short positions exit when returns turn positive. The ranking mechanism within asset classes is handled by the portfolio construction/ranking layer outside this rule engine. Original source text about volume/liquidity ranking appears to be mismatched documentation and was disregarded in favor of the signal description which explicitly defines momentum-based ranking."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_22",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 30,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "Time Series Momentum strategy: 12-month lookback uses 'returns' indicator (log_returns would also be valid). Entry conditions use return sign to determine direction. Exit conditions trigger on return reversal OR at quarterly rebalance (\u224863 trading days). Portfolio is equally weighted across all asset classes (Commodities, Currencies, Equities, Fixed Income) with non-overlapping quarterly rebalancing."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_23",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 30,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "Time Series Momentum (TS-MOM) signal implemented using 12-month returns indicator. Entry conditions check sign of 12-month rolling returns (positive for long, negative for short). Exit conditions reverse the signal or rebalance monthly when rolling returns change sign. Hold period set to 1080 days (36 months). The signal uses a simple momentum reversal at month-end rebalancing based on rolling 12-month returns classification."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_27",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<=",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">=",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 30,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "12-month time series momentum strategy using returns indicator. Entry conditions check if 12-month returns are positive (long) or negative (short). Exit conditions rebalance monthly when return direction reverses. The 'returns' indicator captures cumulative price appreciation over the lookback period; a 12-month lookback is implicit in the signal design. Monthly rebalancing is enforced via hold_days_max of 30 days."
+    }
+  },
+  {
+    "signal_id": "SSRN_2089463_28",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<=",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">=",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 30,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "Time Series Momentum uses 12-month past returns (lookback_months=12). Entry conditions directly compare the 12-month returns indicator against zero. Exit conditions trigger on momentum reversal (returns crossing zero) or monthly rebalance. hold_days_max set to 30 days to align with monthly rebalance frequency. Strategy applies to BOTH long and short positions across all asset classes (commodities, equities, fixed_income, forex)."
+    }
+  },
+  {
+    "signal_id": "SSRN_2284643_8",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "hvol_20",
+          "op": "<",
+          "value": 0.15
+        }
+      ],
+      "entry_short": [],
+      "exit_long": [
+        {
+          "indicator": "hvol_20",
+          "op": ">",
+          "value": 0.3
+        }
+      ],
+      "exit_short": [],
+      "regime_filter": [],
+      "hold_days": 20,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "LONG",
+      "reason": "Signal requires selecting low volatility stocks and excluding high volatility. Mapped to hvol_20 (20-period historical volatility) as closest available indicator to \u03c3 (standard deviation). Entry condition: hvol_20 < 0.15 (low volatility threshold). Exit condition: hvol_20 > 0.30 (volatility expansion trigger). Note: The original signal is a stock selection/ranking rule rather than a time-series entry/exit signal; this translation assumes intra-security volatility monitoring."
+    }
+  },
+  {
+    "signal_id": "SSRN_2435323_4",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 30,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "UMD momentum factor operationalized using returns indicator. Entry conditions use returns > 0 for long (winners) and returns < 0 for short (losers). Exit conditions reverse the momentum signal. Hold period set to 1825 days (5 years max) based on the longer rolling period parameter. Win rates (0.81 for 1yr, 0.88 for 5yr) are documented but not directly translatable to backtest conditions."
+    }
+  },
+  {
+    "signal_id": "SSRN_2659431_16",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "hvol_20",
+          "op": "<",
+          "value": 0.1
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "hvol_20",
+          "op": ">",
+          "value": 0.2
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "hvol_20",
+          "op": ">",
+          "value": 0.15
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "hvol_20",
+          "op": "<",
+          "value": 0.12
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 10,
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "Signal uses 'realized volatility' (hvol_20 proxy) as primary trigger. Entry_long: increase leverage when hvol_20 is very low (<0.10). Entry_short: decrease leverage when hvol_20 is high (>0.20). Exit conditions rebalance based on volatility regime changes. Thresholds are representative; actual implementation should calibrate based on asset class and historical volatility distribution. The 60/40 portfolio allocation is a target structure, not a trading condition."
+    }
+  },
+  {
+    "signal_id": "SSRN_2659431_23",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "hvol_20",
+          "op": "<",
+          "value": 0.01
+        }
+      ],
+      "entry_short": [
+        {
+          "indicator": "hvol_20",
+          "op": ">",
+          "value": 0.03
+        }
+      ],
+      "exit_long": [
+        {
+          "indicator": "hvol_20",
+          "op": ">",
+          "value": 0.02
+        }
+      ],
+      "exit_short": [
+        {
+          "indicator": "hvol_20",
+          "op": "<",
+          "value": 0.02
+        }
+      ],
+      "regime_filter": [],
+      "hold_days": 1,
+      "stop_loss_pct": 0.03,
+      "take_profit_pct": 0,
+      "direction": "BOTH",
+      "reason": "Signal requires inverse volatility-based exposure adjustment. Used hvol_20 (20-period historical volatility) as the realized volatility metric. Entry conditions trigger exposure increases when volatility is low (<0.01 or 1%) and exposure decreases when volatility is high (>0.03 or 3%). Exit conditions trigger rebalancing when volatility crosses key thresholds (\u00b10.02 or 2%), simulating regime changes. Rebalancing frequency set to real-time via hold_days_max=0. Applied to both long and short directions per BOTH specification."
+    }
+  },
+  {
+    "signal_id": "SSRN_3510433_24",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        },
+        {
+          "indicator": "vol_ratio_20",
+          "op": ">",
+          "value": 1.0
+        }
+      ],
+      "entry_short": [],
+      "exit_long": [
+        {
+          "indicator": "returns",
+          "op": "<",
+          "value": 0.0
+        }
+      ],
+      "exit_short": [],
+      "regime_filter": [],
+      "hold_days": 30,
+      "stop_loss_pct": 0.03,
+      "take_profit_pct": 0,
+      "direction": "LONG",
+      "reason": "Signal uses off-the-shelf momentum ranking (not explicitly defined in source text). Translated entry conditions as: positive recent returns (momentum) AND above-average liquidity (vol_ratio_20). Exit triggered by negative returns or monthly rebalancing (30-day hold max). Strategy is long-only with no short positions. Parameters: NIFTY100 universe, monthly rebalancing frequency, 12-month lookback for persistence ranking."
+    }
+  },
+  {
+    "signal_id": "SSRN_5116091_4",
+    "backtestable": true,
+    "rules": {
+      "backtestable": true,
+      "entry_long": [
+        {
+          "indicator": "close",
+          "op": ">",
+          "value": "sma_50"
+        },
+        {
+          "indicator": "returns",
+          "op": ">",
+          "value": 0.0
+        }
+      ],
+      "entry_short": [],
+      "exit_long": [
+        {
+          "indicator": "close",
+          "op": "<",
+          "value": "sma_50"
+        }
+      ],
+      "exit_short": [],
+      "regime_filter": [
+        "TRENDING_UP"
+      ],
+      "hold_days": 30,
+      "stop_loss_pct": 0.03,
+      "take_profit_pct": 0,
+      "direction": "LONG",
+      "reason": "Interpreted 'positive price momentum' as price above sma_50 and positive returns. 'Bull run condition' mapped to TRENDING_UP regime. Exit triggers when momentum reverses (price crosses below sma_50). Strategy explicitly avoids short selling per source text. Stop loss and hold period set conservatively for momentum strategy."
+    }
+  }
+]

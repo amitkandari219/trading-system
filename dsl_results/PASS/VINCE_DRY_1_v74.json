@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_1",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "historical_trade_sequence_analysis",
+      "threshold": null,
+      "direction": "optimal_f_calculation"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size determined by optimal f value calculated from historical trade sequence using formula: f = (2*P*W - 1) / W, where P is win probability and W is win/loss ratio. Example shows f = 0.24 is optimal. Apply this fraction to total account equity per trade.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position sizing should be determined by calculating the optimal f value, which represents the fraction of account equity to risk per trade based on historical trade sequence performance."
+}

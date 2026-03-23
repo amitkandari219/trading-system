@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_30_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "ANTI_MARTINGALE",
+    "base_risk_pct": 1.0,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.75,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "drawdown_pct",
+      "threshold": 0.1,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Anti-martingale sizing: increase position as equity grows (1.0 * current_equity/initial_equity multiplier), reduce by 25% when drawdown exceeds 10%. Never increase risk during losing streaks.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size should increase as account equity grows, never decrease during losing streaks; use anti-martingale position sizing scaled to account size rather than martingale strategies that increase risk during drawdowns."
+}

@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_1",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "arithmetic_mean",
+      "threshold": 1.0,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Trade only when A > 1.0 (system expectation exceeds breakeven). Vince framework uses optimal f calculation via G^2 = A^2 - SD^2 to determine position sizing. Do NOT trade when A \u2264 1.0 as ruin is inevitable. Author does not specify numerical optimal_f or Kelly fraction values.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Only trade if arithmetic mean (A) is greater than 1; profitability increases with more trades (N) when this condition is met, but if A is less than 1, ruin is inevitable over time."
+}

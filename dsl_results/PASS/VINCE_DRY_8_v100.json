@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "portfolio_component_weighting_max",
+      "threshold": null,
+      "direction": "inverse",
+      "description": "Active Equity Upper Limit = 1 / (Highest Portfolio Component Weighting); apply only if result is less than Equation 8.08"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Portfolio concentration constraint derived from optimal f framework. Caps active equity at the reciprocal of largest component weight to prevent catastrophic loss concentration. Specific numerical thresholds and Equation 8.08 reference value not disclosed by author.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Divide 1 by the highest weighting of any portfolio component and use the result as the upper limit on active equity if it is less than the answer to Equation 8.08."
+}

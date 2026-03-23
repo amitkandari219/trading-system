@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires 'Realized volatility < 15th percentile' (statistical percentile calculation not in allowed indicators), 'IV Rank' (implied volatility rank not available), and options-specific metrics (wings delta, time decay, theta exposure, credit received on spreads). These are derivative/options market constructs not expressible with equity price/volume indicators alone.",
+  "translation_notes": "Attempted substitution: hvol_20 approximates realized volatility (20-day historical); india_vix approximates IV Rank proxy; price_pos_20 (price position within 20-day range) approximates 'within 2% of MA' constraint. However, the core signal is designed for options strategies (long wings, theta decay, credit spreads) which cannot be fully modeled in equity price-action rules. Parameters like wings_delta=0.15 and min_credit_received_pct_spread=0.3 are options-specific and have no equity equivalents. Hold period set to 23 days (30-day min expiration minus 7-day exit rule)."
 }

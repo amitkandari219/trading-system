@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of 10-20 day extreme (highest high or lowest low over lookback period) and gap-fill percentage calculation. Available Donchian channels use fixed periods and do not support dynamic 10-20 bar extreme detection. Gap closure percentage (30% threshold) cannot be expressed with allowed indicators and operators. ATR-based stop loss (1.8x 50-day ATR) and target (1.2x ATR) require custom calculation logic not supported by operator set.",
+  "translation_notes": "Approximated using Donchian channels (dc_upper, dc_lower) as proxy for extreme detection and pivot levels (r1, s1) for exit targets. Entry logic captures the reversal weakness signal via close at opposite end of previous extreme bar. Original signal's precise ATR-multiple exits and gap-fill detection require backtesting engine extensions."
 }

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_40",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires computing realized variance (RV) from a rolling 18-month historical window and dynamically scaling position sizing by the inverse of squared realized variance (f_managed = c / RV\u00b2_t-1 * f_t). This is a volatility-managed position sizing technique, not a price-action entry/exit rule. It requires: (1) custom variance calculation over a 18-month rolling window, (2) dynamic position scaling based on that calculation, and (3) monthly rebalancing logic. None of these operations can be expressed using the allowed indicators (which are price-derived technical indicators) and the simple comparison operators (>, <, >=, <=, ==, crosses_above, crosses_below, is). The backtest engine would need native support for custom volatility scaling and position management rules, not entry/exit conditions.",
+  "translation_notes": "Signal is a volatility management overlay applicable to any factor/strategy (DIRECTION: BOTH). The core mechanic is: measure realized variance from preceding 18 months of returns, then scale the factor position inversely with squared RV. This belongs in a position-sizing layer, not in entry/exit logic. Rebalance monthly with rolling 18-month window. To implement, the backtest engine requires a custom volatility scaling module or manual position sizing adjustment code rather than conditional trading rules."
+}

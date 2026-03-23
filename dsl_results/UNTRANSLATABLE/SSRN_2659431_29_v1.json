@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_29",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic quintile bucketing of realized volatility with regime-based position allocation (5 distinct buckets: low vol, medium-low, medium, medium-high, high vol). The backtest engine does not support: (1) percentile-rank bucketing logic that bins volatility into 5 regimes dynamically, (2) conditional entry/exit signals tied to which quintile bucket is active, (3) regime-aware position sizing based on volatility bucket assignment. The allowed indicators include hvol_20 but not a mechanism to stratify it into quintiles and route position direction/sizing accordingly. This requires custom bucketing logic not expressible with the allowed operators.",
+  "translation_notes": "The signal is fundamentally a quintile-based volatility regime classification strategy that varies position direction and properties based on which of 5 volatility buckets the asset falls into. Standard indicator-based rules cannot capture this; it needs a custom bucketing/regime module in the backtest engine. hvol_20 was referenced as the closest available volatility metric, but the rule structure is not translatable as specified."
+}

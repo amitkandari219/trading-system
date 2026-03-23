@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Double Top pattern detection requires multi-bar peak identification and valley tracking that cannot be expressed with single-bar indicators. The signal requires: (1) identification of two peaks at equal heights across multiple bars, (2) valley detection between peaks, and (3) breakout confirmation below the valley. These require custom pattern recognition logic beyond the allowed indicators and operators. The ATR, Donchian, and Pivot indicators were considered as proxies but do not capture the specific pattern geometry described by Bulkowski.",
+  "translation_notes": "This pattern requires custom candlestick pattern recognition. A simplified approximation using support level (s1/pivot) breakout is provided, but it does not capture the full Double Top mechanics (dual peak formation, valley pullback, equal heights). For production use, implement dedicated pattern detection for: peak1 \u2248 peak2 (within 2-3%), intervening valley low, and close < valley_low with volume confirmation."
 }

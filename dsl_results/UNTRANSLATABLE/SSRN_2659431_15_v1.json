@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires dynamic portfolio weight calculation based on realized volatility (\u03c3_t) and mean-variance optimization parameters (\u03bc, \u03b3). The rule involves: (1) computing realized volatility as a custom metric not in the allowed indicators list, (2) calculating optimal portfolio weights using the formula w_t = (1 * \u03bc) / (\u03b3 * \u03c3_t\u00b2), and (3) comparing weights across leverage constraint scenarios. These are portfolio-level optimization mechanics rather than price/indicator-based entry/exit conditions. The allowed indicators do not include custom realized volatility calculations or the ability to express mean-variance weight optimization formulas. This requires a custom portfolio rebalancing module, not a simple rule-based trading signal.",
+  "translation_notes": "Signal describes a volatility-managed asset allocation strategy (periodic rebalancing based on realized volatility estimates) rather than a discrete entry/exit trading rule. While hvol_20 (historical volatility) exists in the allowed indicators, it does not capture the specific realized volatility calculation methodology (\u03c3_t) nor enable weight optimization formulas required by the strategy. Implementation would require a custom portfolio optimization engine with leverage constraint handling."
+}

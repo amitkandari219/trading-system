@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires cross-sectional decile ranking and portfolio-level construction (long D1, short D10 based on historical volatility ranking across universe). This is a relative value/factor strategy that cannot be expressed as single-instrument technical conditions using only price-based indicators. Requires: (1) calculating hvol_20 for all stocks in universe, (2) ranking by hvol_20, (3) constructing long/short portfolios by decile. The backtest engine must support multi-asset ranking and decile construction logic, which exceeds single-condition rule translation.",
+  "translation_notes": "This is a volatility-based cross-sectional factor strategy (low volatility long / high volatility short). While hvol_20 is available as an indicator, the signal's core logic\u2014ranking all stocks and constructing decile portfolios\u2014is a portfolio construction rule, not a price-action rule. Recommend implementing as a separate factor_construction module in the backtest engine rather than as simple entry/exit conditions."
+}

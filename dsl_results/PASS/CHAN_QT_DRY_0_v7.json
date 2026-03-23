@@ -1,0 +1,106 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "book_id": "CHAN_QT",
+  "dsl_rule": {
+    "signal_id": "CHAN_QT_DRY_0",
+    "entry_long": [
+      {
+        "left": "zscore_20",
+        "operator": "<=",
+        "right": "-2"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "zscore_20",
+        "operator": ">=",
+        "right": "2"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "zscore_20",
+        "operator": "<=",
+        "right": "1"
+      },
+      {
+        "left": "zscore_20",
+        "operator": ">=",
+        "right": "-1"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "zscore_20",
+        "operator": "<=",
+        "right": "1"
+      },
+      {
+        "left": "zscore_20",
+        "operator": ">=",
+        "right": "-1"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Strategy uses z-score of a pairs spread (cl1 - hedgeRatio*cl2). Mapped to zscore_20 as the closest available z-score indicator. Long entry when zscore \u2264 -2, short entry when zscore \u2265 +2, exit when |zscore| \u2264 1 (mean reversion threshold). The exit condition for both directions requires zscore to be within \u00b11 standard deviations. Default stop loss and hold period applied as parameters were marked AUTHOR_SILENT."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "zscore_20",
+        "op": "<=",
+        "value": -2.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "zscore_20",
+        "op": ">=",
+        "value": 2.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "zscore_20",
+        "op": "<=",
+        "value": 1.0
+      },
+      {
+        "indicator": "zscore_20",
+        "op": ">=",
+        "value": -1.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "zscore_20",
+        "op": "<=",
+        "value": 1.0
+      },
+      {
+        "indicator": "zscore_20",
+        "op": ">=",
+        "value": -1.0
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Strategy uses z-score of a pairs spread (cl1 - hedgeRatio*cl2). Mapped to zscore_20 as the closest available z-score indicator. Long entry when zscore \u2264 -2, short entry when zscore \u2265 +2, exit when |zscore| \u2264 1 (mean reversion threshold). The exit condition for both directions requires zscore to be within \u00b11 standard deviations. Default stop loss and hold period applied as parameters were marked AUTHOR_SILENT."
+  },
+  "source_rule_text": "A mean-reversion pairs trading strategy that goes long the spread when it drops below -2 standard deviations and goes short when it rises above +2 standard deviations, exiting when it mean-reverts within \u00b11 standard deviation."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_4766370_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a DecisionTreeRegressor ML model trained on options Greeks (CE_ITMNESS, PE_ITMNESS, CallIV, CallDelta, CallVega, CallTheta, CallGamma, PutIV, PutDelta, PutVega, PutTheta, PutGamma) and custom strangle-specific features (Strangle_Price, Days_To_Expiry) to predict Strangle_Return. None of these options Greeks or strangle features are available in the ALLOWED_INDICATORS list. The backtest engine cannot execute ML model predictions or access options chain data. A proxy entry using standard technical indicators (RSI, ADX) has been provided as a fallback, but does not accurately represent the original ML-based signal logic.",
+  "translation_notes": "Original signal is ML-model dependent and cannot be fully translated to rule-based conditions. Provided entry_short conditions use RSI and ADX as technical indicator substitutes, but these do NOT replicate the DecisionTreeRegressor's prediction logic. Exit condition at expiration (Days_To_Expiry = 0) cannot be directly coded without a days-to-expiry indicator in the standard list. Manual position closure at strangle expiration is required."
+}

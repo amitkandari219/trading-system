@@ -1,0 +1,108 @@
+{
+  "signal_id": "THARP_DRY_18_0",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes retracement setups in trends using price action only (no additional momentum/volatility indicators). Entry detects pullback/retracement via price closing below/above recent extremes while remaining within trend direction (proximity to moving average). Exit triggers on retracement reversal (price breaking recent swing). Single data type (PRICE_ACTION) enforced per signal requirement. Stop loss kept tight at 1.5% for support/resistance placement flexibility. Context-dependent direction allows both long and short retracement trades based on primary trend direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes retracement setups in trends using price action only (no additional momentum/volatility indicators). Entry detects pullback/retracement via price closing below/above recent extremes while remaining within trend direction (proximity to moving average). Exit triggers on retracement reversal (price breaking recent swing). Single data type (PRICE_ACTION) enforced per signal requirement. Stop loss kept tight at 1.5% for support/resistance placement flexibility. Context-dependent direction allows both long and short retracement trades based on primary trend direction."
+  },
+  "source_rule_text": "A trader should use the simplest system possible, but add multiple indicators only when each is based on fundamentally different data types, to improve market trading performance without introducing noise."
+}

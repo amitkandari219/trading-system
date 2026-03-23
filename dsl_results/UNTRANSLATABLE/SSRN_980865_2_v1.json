@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires decile-based portfolio ranking and relative volatility comparison across universe of stocks. The allowed indicators list contains only single-stock technical metrics (hvol_20 for historical volatility). Decile construction requires: (1) calculating volatility for all stocks in universe, (2) ranking them, (3) selecting bottom decile. This is a cross-sectional portfolio construction rule, not a time-series technical indicator rule suitable for single-stock backtesting. hvol_20 exists but cannot operationalize 'lowest decile' without universe-wide ranking logic absent from the indicator set.",
+  "translation_notes": "Signal SSRN_980865_2 is a Fama-French style factor research rule designed for academic portfolio studies (1986-2006 period, 12% annual alpha spread). It requires: (1) decile-based sorting across stock universe by volatility, (2) long low-vol / short high-vol construction, (3) periodic rebalancing. Modern backtest engines need explicit decile ranking functions or percentile indicators. The entry condition 'lowest volatility decile (decile 1)' cannot be expressed as a direct comparison of single-stock indicators. Recommend: either mark untranslatable, or extend indicator set to include percentile_rank_hvol_20 or similar."
+}

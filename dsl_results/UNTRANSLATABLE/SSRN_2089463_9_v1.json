@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2089463_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Time Series Momentum (TSMOM) requires: (1) cross-asset class momentum calculation across commodities, equities, bonds, and currencies simultaneously; (2) equal ex-ante volatility normalization/scaling applied dynamically across heterogeneous asset classes; (3) momentum reversal detection during specific crisis periods. The allowed indicators list contains single-asset price/technical indicators only and lacks multi-asset momentum compositing, cross-asset volatility normalization, and crisis regime detection. The signal cannot be accurately translated to single-contract conditions without losing the core cross-asset equal-volatility weighting methodology.",
+  "translation_notes": "This is a sophisticated multi-asset class factor strategy that requires portfolio-level calculations (equal ex-ante vol weighting across 4+ asset classes) rather than individual contract logic. A proper implementation would need: (1) a momentum calculation function across asset universes, (2) dynamic volatility scaling per asset class, (3) regime-aware exit logic for crisis reversals. The simplified entry_long/entry_short using returns > 0 / < 0 captures direction but completely misses the equal vol-weighting and cross-asset portfolio construction that defines the strategy."
+}

@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_31_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "R_MULTIPLE",
+    "base_risk_pct": 0.015,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "cumulative_position_value_pct_of_buying_power",
+      "threshold": 1.0,
+      "direction": "below"
+    },
+    "max_risk_pct": 0.015,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Van Tharp 1R method: divide max acceptable risk per trade (1.5% of account) by stop-loss distance in dollars to determine position size. Enforce constraint that cumulative positions do not exceed available buying power or margin capacity. Max 3 concurrent positions, each capped at 40% of account value.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should calculate position size by dividing maximum acceptable risk per trade (as a dollar amount) by the stop-loss distance, and verify that cumulative position sizes do not exceed the account's actual buying power or margin capacity."
+}

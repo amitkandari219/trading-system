@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_1",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "optimal_f_value",
+      "threshold": 0.8,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.8,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Adjust position size via optimal f recalculation; enforce hard cap at f=0.8 to prevent account losses. f values exceeding 0.8 result in negative expectancy despite positive mathematical edge. Rebalance frequency should match optimal f update cadence.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Adjust position size frequently to align with optimal f value; avoid f values greater than 0.8 to prevent account losses despite positive mathematical expectation."
+}

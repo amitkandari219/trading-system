@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_38",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires beta calculation and ranking across bond universe, inverse weighting by beta rank, and portfolio-level beta rescaling to 1.0. These are factor/portfolio construction operations requiring custom beta metrics not available in standard price-action indicators. Beta calculation requires historical return covariance with market benchmark, which is not expressible through the allowed indicator set (price, MA, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Z-score, Returns). The signal also requires bond-specific maturity filtering (1-10 years) and cross-sectional asset classification not supported by the backtester.",
+  "translation_notes": "This is a sophisticated factor-based strategy (Betting Against Beta) that operates at the portfolio construction level with Greek letters (beta) and relative ranking mechanisms. It cannot be reduced to individual security entry/exit rules using price-action indicators. Implementation requires a factor library with beta estimation, bond universe with maturity metadata, and portfolio optimization engine."
+}

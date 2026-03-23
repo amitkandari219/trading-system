@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3442749_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a multi-factor composite strategy requiring simultaneous exposure to three custom-calculated factors: (1) 36-month historical volatility, (2) net payout yield, and (3) 12-minus-1-month price momentum. The allowed indicator set does not include: historical volatility calculations over 36-month periods, payout yield (fundamental data), or the specific momentum calculation (12m minus 1m skip). These require custom factor engineering and portfolio construction logic beyond point-in-time indicator comparisons. Additionally, rebalancing frequency is unspecified, making exit conditions incomplete.",
+  "translation_notes": "This signal describes a factor-based portfolio construction methodology rather than a traditional entry/exit rule set. It requires: (1) external data sources (payout yields), (2) factor calculation pipelines, and (3) portfolio-level construction logic. A proper backtest would need a custom multi-factor engine, not single-asset indicator conditions. Consider translating this as a factor exposure framework rather than a traditional signal."
+}

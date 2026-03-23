@@ -1,0 +1,67 @@
+{
+  "signal_id": "THARP_DRY_18_2",
+  "entry_long": [
+    {
+      "left": "close",
+      "operator": "crosses_above",
+      "right": "sma_20"
+    },
+    {
+      "left": "rsi_14",
+      "operator": ">",
+      "right": "40"
+    },
+    {
+      "left": "atr_14",
+      "operator": ">",
+      "right": "0"
+    }
+  ],
+  "entry_short": [
+    {
+      "left": "close",
+      "operator": "crosses_below",
+      "right": "sma_20"
+    },
+    {
+      "left": "rsi_14",
+      "operator": "<",
+      "right": "60"
+    },
+    {
+      "left": "atr_14",
+      "operator": ">",
+      "right": "0"
+    }
+  ],
+  "exit_long": [
+    {
+      "left": "rsi_14",
+      "operator": "<",
+      "right": "40"
+    }
+  ],
+  "exit_short": [
+    {
+      "left": "rsi_14",
+      "operator": ">",
+      "right": "60"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 20,
+  "direction": "BOTH",
+  "target_regime": [
+    "TRENDING_UP",
+    "TRENDING_DOWN"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Signal emphasizes retracement setups in trending markets with confirmation from three fundamentally different data types: (1) PRICE_ACTION via retracement and support/resistance detection using SMA crossovers, (2) MOMENTUM via RSI confirmation, and (3) VOLATILITY via ATR confirmation. Direction is context-dependent based on trend direction. Stop loss derived from reward-to-risk requirement of 1.5:1. Exit conditions use indicator reversal (RSI crosses back through midpoint) as proxy for 'two or more indicators reverse confirmation signal' per AUTHOR_SILENT guidance.",
+  "validation_issues": [
+    "entry_long: phantom condition 'atr_14 > 0' is always true",
+    "entry_short: phantom condition 'atr_14 > 0' is always true"
+  ]
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires: (1) Price at 1.0 SD from 20-period MA \u2014 no standard deviation indicator available; (2) ATR > 60th percentile of last 40 bars \u2014 percentile calculation over rolling window not supported; (3) Technical divergence detection \u2014 divergence patterns require historical comparison logic not expressible in simple 3-field conditions; (4) Precise 100% move amplitude exit \u2014 requires trade entry price memory and amplitude calculation unavailable",
+  "translation_notes": "Partially translated using available indicators: approximated 1.0 SD extreme as price distance from sma_20, used atr_14 with fixed threshold (60) as proxy for volatility elevation, mapped RSI extrema (>80 or <20) for momentum confirmation, approximated volume spike with vol_ratio_20 multiplier. True implementation requires custom divergence detection and percentile-based volatility measurement."
 }

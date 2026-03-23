@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires TED spread volatility as a conditioning variable and explicit funding liquidity risk measurement. TED spread is an external market indicator not available in the allowed indicator list. hvol_20 (historical volatility) is used as a proxy for general volatility conditions, but does not capture TED spread-specific dynamics or funding liquidity regime shifts. The original signal's causal mechanism (BAB factor conditional beta during liquidity crises) cannot be fully reconstructed from price-based technical indicators alone.",
+  "translation_notes": "Attempted partial translation using hvol_20 as volatility proxy with thresholds approximating high volatility conditions. Entry threshold set at 2% daily volatility (elevated condition) and exit at 1.5% (normalization). Monthly measurement frequency approximated with 21-day hold. Original signal references December 1984-2009 sample period and 'flight to quality' dynamics during funding crises, which require external TED spread data and liquidity regime classification not available in standard OHLCV indicators."
+}

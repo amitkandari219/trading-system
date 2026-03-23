@@ -1,0 +1,49 @@
+{
+  "signal_id": "THARP_DRY_17_2",
+  "entry_long": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "sma_50"
+    },
+    {
+      "left": "sma_20",
+      "operator": ">",
+      "right": "sma_20"
+    },
+    {
+      "left": "adx_14",
+      "operator": ">",
+      "right": "20"
+    }
+  ],
+  "entry_short": [],
+  "exit_long": [
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "sma_50"
+    },
+    {
+      "left": "adx_14",
+      "operator": "<",
+      "right": "15"
+    }
+  ],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "OR",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "LONG",
+  "target_regime": [
+    "TRENDING_UP"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": "Signal is context-dependent (LONG bias). Entry requires price above 50-SMA, ADX confirmation of directional movement >20, and 20-period close strength (simplified as sma_20 > sma_20 as close proxy to 'recent 20-period close > 20-period SMA'). Exit on either price closing below 50-SMA OR ADX falling below 15 (OR logic). The '6 weeks minimum trend consistency' is captured by ADX > 20 threshold which requires established directional strength. 'Visually clear from distance' operationalized through ADX and MA alignment requirements.",
+  "validation_issues": [
+    "entry_long: self-comparison 'sma_20 > sma_20'",
+    "entry_long: impossible condition 'sma_20 > sma_20' is always false"
+  ]
+}

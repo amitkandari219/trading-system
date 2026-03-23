@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_5367997_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal relies on calendar-based day-of-month filtering ('days 21-31') and index membership checking ('NIFTY 50 constituent'), neither of which are in the ALLOWED INDICATORS list. Additionally, the core logic compares monthly high concentration percentages (42.7% vs 35.7%) which requires historical aggregation across month periods\u2014this is a statistical property not available as a real-time indicator. The allowed indicators are price/technical only and do not support calendar operations or index membership queries.",
+  "translation_notes": "This signal is fundamentally a calendar/structural pattern that cannot be expressed with the provided technical indicators. It requires: (1) day-of-month extraction, (2) NIFTY 50 index membership lookup, and (3) aggregated monthly statistics. A practical implementation would need custom preprocessing layers outside the backtest engine's indicator set."
+}

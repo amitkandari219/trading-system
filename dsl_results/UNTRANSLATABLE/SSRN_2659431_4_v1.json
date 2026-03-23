@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires VAR (Value-at-Risk) model detection and variance shock measurement (1 standard deviation variance increase), which are not available in the allowed indicator set. The signal also requires mean-variance optimization rebalancing logic and dynamic 50% portfolio risk reduction that cannot be expressed as simple price/technical indicator conditions. hvol_20 and zscore_20 provide a volatility proxy, but the precise variance shock threshold and risk reduction mechanics are not translatable to this rule engine.",
+  "translation_notes": "Attempted approximation using hvol_20 (historical volatility) as a proxy for variance shocks and zscore_20 to detect when volatility is elevated beyond normal range. However, this does not capture the VAR model methodology, 1-sigma variance threshold, or the portfolio-level 50% risk reduction requirement specified in the original signal. Manual implementation of variance-based risk management would be required outside this rule engine."
+}

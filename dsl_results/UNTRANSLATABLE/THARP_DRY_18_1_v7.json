@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires prior day's range position and intraday 0.5\u00d7ATR move within first hour. The allowed indicators lack intraday time-series (first hour move) and prior_day_range context. price_pos_20 approximates close percentile but does not directly measure prior day's range position. true_range substituted for ATR directional move, but true intraday follow-through cannot be expressed without intrabar data.",
+  "translation_notes": "Attempted translation uses price_pos_20 (20-bar position proxy) for close percentile threshold (0.67 for top 33%), pivot as approximate opening position reference, and true_range as volatility measure. However, the core logic\u2014detecting prior day close + next day follow-through\u2014cannot be accurately captured without explicit prior_day_high, prior_day_low, and intraday move detection. The 'no gap down reversal' condition also cannot be expressed with available indicators."
 }

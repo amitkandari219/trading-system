@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "==",
+        "right": "low"
+      },
+      {
+        "left": "close",
+        "operator": "==",
+        "right": "low"
+      },
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "body"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gravestone Doji identified by: (1) open equals low, (2) close equals low, (3) upper_wick significantly larger than body. Exit when price closes above previous close (reversal signal). Pattern targets resistance in uptrends or ranging markets. 'At or near' equality approximated using exact equality operator; in practice, backtest engine should allow small tolerance (\u00b10.5% of bar range). Resistance level detection delegated to regime filter."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "==",
+        "value": "low"
+      },
+      {
+        "indicator": "close",
+        "op": "==",
+        "value": "low"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "body"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Gravestone Doji identified by: (1) open equals low, (2) close equals low, (3) upper_wick significantly larger than body. Exit when price closes above previous close (reversal signal). Pattern targets resistance in uptrends or ranging markets. 'At or near' equality approximated using exact equality operator; in practice, backtest engine should allow small tolerance (\u00b10.5% of bar range). Resistance level detection delegated to regime filter."
+  },
+  "source_rule_text": "Gravestone Doji: A single candlestick pattern where price opens and closes at or very near the daily low with a tall upper shadow, often appearing at resistance points"
+}

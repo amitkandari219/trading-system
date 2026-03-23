@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2284643_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires custom statistical computations not available in the standard indicator set: (1) trailing beta calculation over 60-month periods, (2) quintile ranking and sorting across the universe, (3) capitalization-weighted portfolio construction, and (4) dynamic rebalancing logic based on position weights. These are portfolio-level operations requiring external data (market cap, multi-stock beta calculations) and ranking logic that cannot be expressed using the allowed single-stock indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, z-scores, returns, and bar properties). The signal is a quantitative stock-selection and weighting rule, not a price-action trading rule.",
+  "translation_notes": "Signal is a factor-based equity strategy (low-volatility/low-beta quintile strategy with cap-weighting and monthly rebalance). This requires: (1) calculation of rolling 60-month beta for each stock, (2) universe-level quintile ranking, (3) portfolio construction by market cap weight within quintile, and (4) scheduled monthly rebalancing. None of these can be expressed as conditions on individual bar data using the allowed indicators. A backtest engine implementing this strategy would need custom portfolio-level logic and access to market capitalization and rolling beta calculations outside the standard technical indicator framework."
+}

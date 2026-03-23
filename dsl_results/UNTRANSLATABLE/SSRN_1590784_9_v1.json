@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1590784_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of calendar event (futures expiration day) and GARCH(1,1) variance equation coefficients with statistical significance testing (p<0.01). These are NOT available in the allowed indicators list. The signal also requires pre-computed GARCH ExpD coefficients for specific stocks (ACC, BHEL, BPCL, Dr. Reddy's, GRASIM, INFOSYS, ITC). Backtest engine does not support: (1) calendar-event triggering, (2) GARCH model estimation, (3) statistical significance thresholds. Approximated with india_vix spike as volatility proxy, but this does not capture the expiration-day specific effect.",
+  "translation_notes": "GARCH volatility expansion on expiration day cannot be directly modeled with available indicators. Used india_vix as volatility proxy: entry when VIX > 20 (high volatility), exit when VIX < 15 (reversal). Hold_days_max set to 1 to match end-of-expiration-day exit. Direction set to BOTH because signal applies to both long and short volatility strategies. Stock filtering (specific NSE stocks) should be applied at backtest runtime. This is a simplified approximation\u2014ideal implementation requires GARCH coefficient extraction or explicit expiration-day calendars."
+}

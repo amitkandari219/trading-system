@@ -1,0 +1,105 @@
+{
+  "signal_id": "BULKOWSKI_ROUNDING_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Rounding Bottom (RdB)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_ROUNDING_BOTTOM",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.04"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.3"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.7"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "15"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.04
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.3
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.7
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 15.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_ROUNDING_BOTTOM"
+  },
+  "source_rule_text": "Rounding Bottom (RdB): A bowl-shaped pattern with high sides (not shallow saucer) that appears in rising price trends as a pause before continuation"
+}

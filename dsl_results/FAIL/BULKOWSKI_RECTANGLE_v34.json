@@ -1,0 +1,76 @@
+{
+  "signal_id": "BULKOWSKI_RECTANGLE",
+  "entry_long": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "dc_upper"
+    },
+    {
+      "left": "bb_bandwidth",
+      "operator": "<",
+      "right": "0.05"
+    },
+    {
+      "left": "atr_14",
+      "operator": ">",
+      "right": "atr_14"
+    },
+    {
+      "left": "vol_ratio_20",
+      "operator": ">",
+      "right": "1.2"
+    }
+  ],
+  "entry_short": [
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "dc_lower"
+    },
+    {
+      "left": "bb_bandwidth",
+      "operator": "<",
+      "right": "0.04"
+    },
+    {
+      "left": "adx_14",
+      "operator": "<",
+      "right": "20"
+    },
+    {
+      "left": "vol_ratio_20",
+      "operator": ">",
+      "right": "1.2"
+    }
+  ],
+  "exit_long": [
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "dc_lower"
+    }
+  ],
+  "exit_short": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "dc_upper"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.8,
+  "hold_days_max": 30,
+  "direction": "BOTH",
+  "target_regime": [
+    "RANGING"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": null,
+  "validation_issues": [
+    "entry_long: self-comparison 'atr_14 > atr_14'",
+    "entry_long: impossible condition 'atr_14 > atr_14' is always false"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "signal_id": "BULKOWSKI_ROUNDING_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Rounding Top",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_ROUNDING_TOP",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "15"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.06"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 15.0
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.06
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_ROUNDING_TOP"
+  },
+  "source_rule_text": "Rounding Top: A pattern where price makes a single gentle curved turn from uptrend to downtrend, beginning at point A and rounding over to end near where it begins (point B), with irregular price moves (points C and D) often poking through the curve"
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_22",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a factor-based portfolio construction rule that cannot be expressed using point-in-time technical indicators. It requires: (1) cross-sectional beta estimation across multiple assets, (2) portfolio formation via ranking and weighting schemes, (3) beta rescaling to a target level, and (4) calendar-based rebalancing. The allowed indicator set contains only single-asset technical indicators (RSI, MACD, moving averages, etc.) and does not include beta calculations, cross-sectional ranking, portfolio weighting, or dynamic rescaling mechanics. This is a systematic factor strategy, not a technical trading signal.",
+  "translation_notes": "Betting Against Beta is a factor-based long/short equity strategy requiring portfolio-level construction logic (beta ranking, inverse weighting, rescaling) that is fundamentally incompatible with technical indicator-based backtest engines. Implementation requires: (1) rolling historical beta estimation via OLS or Scholes-Williams, (2) monthly cross-sectional ranking of all securities by beta, (3) portfolio formation with position sizing inversely proportional to beta ranking, (4) portfolio-level beta rescaling to 1.0, and (5) monthly calendar rebalancing. This belongs in a factors/smart-beta engine, not a technical signal engine."
+}

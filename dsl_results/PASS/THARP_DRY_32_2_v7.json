@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": 1.5,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "rolling_volatility_10",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": 0.08,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size = (Account Risk Budget / 10-day volatility) \u00d7 1.5, capped at 8% of portfolio. Volatility-scaled sizing equalizes risk exposure across assets and portfolio sizes.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should size positions based on volatility rather than equal units or fixed percentages, because volatility position sizing equalizes actual risk exposure across the portfolio and allows both large and small accounts to grow steadily."
+}

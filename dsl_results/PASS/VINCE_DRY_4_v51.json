@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_4",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": 0.01,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "worst_case_loss_across_scenarios",
+      "threshold": null,
+      "direction": "divisor_anchor"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Ralph Vince optimal f method. Position size divisor = f_value (0.01) \u00d7 $50,000,000. Calculate HPR for each scenario using (1 + scenario_result/divisor)^probability, then aggregate. Worst-case loss determines the denominator for loss ratio calculation.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size is determined by dividing the worst-case loss scenario by the f value multiplied by 50,000,000 to calculate the HPR (Holding Period Return) across all probability scenarios."
+}

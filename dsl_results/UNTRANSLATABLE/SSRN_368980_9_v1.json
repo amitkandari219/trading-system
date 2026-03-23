@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_368980_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'open buy volume in options market' which is not available in the allowed indicators list. The allowed volume indicators (volume, vol_ratio_20, hvol_20) measure underlying stock volume and volatility, not options market order flow or buy/sell volume discrimination. Options market microstructure data (bid/ask imbalance, options open interest by type, options order book flow) is not provided.",
+  "translation_notes": "The core signal logic is: buy stock when options market shows high buy volume, hold 1 day. This requires real-time options order flow data that is outside the scope of the provided technical indicators (price, volume, moving averages, oscillators). A proxy using underlying stock volume spike could be attempted, but would not capture the intended options market signal."
+}

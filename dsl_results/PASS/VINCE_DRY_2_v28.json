@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_2",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "KELLY",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": 1.325,
+    "scale_down_multiplier": 0.675,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "previous_trade_outcome",
+      "threshold": null,
+      "direction": "conditional"
+    },
+    "max_risk_pct": 0.325,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Kelly criterion with conditional probability. Apply f=0.325 (32.5% of capital) after wins with 55% win probability; apply reduced fraction after losses with 45% win probability. Payoff ratio 2:1. Scales position size based on trade momentum.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Adjust position sizing based on the outcome of the previous trade using Kelly formula with conditional probability distribution - size larger after wins (55% win probability) and smaller after losses (45% loss probability)."
+}

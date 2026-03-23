@@ -1,0 +1,84 @@
+{
+  "signal_id": "SSRN_2659431_16",
+  "book_id": "SSRN_2659431",
+  "dsl_rule": {
+    "signal_id": "SSRN_2659431_16",
+    "entry_long": [
+      {
+        "left": "hvol_20",
+        "operator": "<",
+        "right": "0.10"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "0.20"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "0.15"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "hvol_20",
+        "operator": "<",
+        "right": "0.12"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses 'realized volatility' (hvol_20 proxy) as primary trigger. Entry_long: increase leverage when hvol_20 is very low (<0.10). Entry_short: decrease leverage when hvol_20 is high (>0.20). Exit conditions rebalance based on volatility regime changes. Thresholds are representative; actual implementation should calibrate based on asset class and historical volatility distribution. The 60/40 portfolio allocation is a target structure, not a trading condition."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "hvol_20",
+        "op": "<",
+        "value": 0.1
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 0.2
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 0.15
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "hvol_20",
+        "op": "<",
+        "value": 0.12
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses 'realized volatility' (hvol_20 proxy) as primary trigger. Entry_long: increase leverage when hvol_20 is very low (<0.10). Entry_short: decrease leverage when hvol_20 is high (>0.20). Exit conditions rebalance based on volatility regime changes. Thresholds are representative; actual implementation should calibrate based on asset class and historical volatility distribution. The 60/40 portfolio allocation is a target structure, not a trading condition."
+  },
+  "source_rule_text": "Adjust portfolio leverage based on volatility levels - increase leverage when volatility is very low, decrease when volatility is high"
+}

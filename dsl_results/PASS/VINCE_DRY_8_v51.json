@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "DRAWDOWN_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.0,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "equity_progress_stalled_with_repeated_losses",
+      "threshold": 0,
+      "direction": "below_or_equal"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": 0.0,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Mechanical account-level stop-loss: reduce position size to 0 (cease trading) when repeated losses occur with no upward equity progress. This is a drawdown/equity stall trigger that scales position size down to zero as an emergency halt mechanism.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "When a trading program experiences repeated losses with no upward equity progress, automatically cease trading by converting all active equity to inactive equity, thereby implementing a mechanical stop-loss at the account level."
+}

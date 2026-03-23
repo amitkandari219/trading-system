@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "This signal is a meta-rule about system validation and sample collection methodology rather than a tradeable entry/exit condition. It requires: (1) tracking historical sample size across multiple market moves, (2) calculating directional distribution percentages from collected trades, and (3) gating live trading based on statistical sufficiency. These are backtesting/validation prerequisites, not real-time indicator conditions. The signal cannot be expressed as indicator-based entry/exit rules without custom metrics like 'samples_collected', 'pct_up_moves', and 'pct_down_moves' which are not in the ALLOWED INDICATORS list.",
-  "translation_notes": "THARP_DRY_12_2 is a risk management and system development principle (ensure sufficient market data before trading) rather than a trading signal. The parameters (minimum_sample_size: 50, minimum_directional_split_percent: 35, maximum_directional_skew_percent: 30) should be enforced in backtest configuration and walk-forward testing rather than as live trading conditions. Recommend implementing as pre-trading validation gate in backtest engine setup."
+  "untranslatable_reason": "This is a regime validation rule, not a position sizing rule. It describes prerequisites for deploying a system (sample size, directional balance, backtesting requirements) but contains no sizing logic, risk allocation method, or position scale adjustment mechanism. Belongs in entry conditions/system validation, not position sizing.",
+  "translation_notes": null
 }

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_368980_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires option-level data (put/call ratio of open buy volume, earnings announcement dates) which are not available in the ALLOWED INDICATORS list. The strategy operates on options Greeks and corporate event data, not price/technical indicators. Additionally, cross-sectional ranking and portfolio construction mechanics (quintile assignment, long-short weighting) cannot be expressed as simple conditional rules on OHLCV or standard technical indicators.",
+  "translation_notes": "This is a factor-based portfolio strategy requiring: (1) options volume data by contract type, (2) fundamental/event calendars (earnings dates), (3) cross-sectional ranking logic across a universe, and (4) portfolio construction mechanics. None of these can be mapped to the available price-action and technical indicators. Recommend implementing as a custom backtest module rather than a rule-based system."
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Pattern detection (Double Tops identification) requires multi-bar price structure analysis and peak/valley recognition that cannot be expressed using only single-bar indicators and allowed operators. Specifically: (1) detecting two peaks at approximately same height requires historical peak comparison beyond prev_* bars; (2) identifying valley low between peaks requires multi-bar lookback and relative extrema detection; (3) computing pattern height and target price requires storing and comparing multiple historical price levels. The signal relies on visual chart pattern recognition rather than indicator-based conditions.",
+  "translation_notes": "This is a candlestick/chart pattern signal that requires pattern detection logic. The entry conditions describe structural price formations (two peaks + valley) that require multi-bar analysis and peak/trough identification. Used Pivot points (s1/r1) as a proxy for support/resistance levels, but this does not capture the true Double Top pattern mechanics. For proper implementation, a dedicated pattern detection module or multi-bar condition evaluation framework would be required."
 }

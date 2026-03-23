@@ -1,0 +1,144 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "0"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      },
+      {
+        "left": "upper_wick",
+        "operator": "<",
+        "right": "body"
+      },
+      {
+        "left": "lower_wick",
+        "operator": "<",
+        "right": "body"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "0"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      },
+      {
+        "left": "upper_wick",
+        "operator": "<",
+        "right": "body"
+      },
+      {
+        "left": "lower_wick",
+        "operator": "<",
+        "right": "body"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "White Candle pattern: Single candle with white color (close > open), normal body size (positive body value), and both upper and lower wicks shorter than body height. Direction is context-dependent so both entry_long and entry_short contain the same pattern conditions. Exit when candle closes below open (reversal signal). Success rates and volume metrics marked AUTHOR_SILENT are not translatable to rule conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": 0.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": "<",
+        "value": "body"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": "<",
+        "value": "body"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": 0.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": "<",
+        "value": "body"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": "<",
+        "value": "body"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "White Candle pattern: Single candle with white color (close > open), normal body size (positive body value), and both upper and lower wicks shorter than body height. Direction is context-dependent so both entry_long and entry_short contain the same pattern conditions. Exit when candle closes below open (reversal signal). Success rates and volume metrics marked AUTHOR_SILENT are not translatable to rule conditions."
+  },
+  "source_rule_text": "White Candle: A single candle of normal size with white color and short shadows relative to body height"
+}

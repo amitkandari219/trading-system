@@ -5,26 +5,26 @@
     "signal_id": "THARP_DRY_14_0",
     "entry_long": [
       {
-        "left": "sma_5",
-        "operator": ">",
-        "right": "sma_20"
-      },
-      {
         "left": "adx_14",
         "operator": ">",
         "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
       }
     ],
     "entry_short": [
       {
-        "left": "sma_5",
-        "operator": "<",
-        "right": "sma_20"
-      },
-      {
         "left": "adx_14",
         "operator": ">",
         "right": "25"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
       }
     ],
     "exit_long": [
@@ -34,9 +34,9 @@
         "right": "prev_close"
       },
       {
-        "left": "close",
-        "operator": "crosses_below",
-        "right": "sma_5"
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.015"
       }
     ],
     "exit_short": [
@@ -46,9 +46,9 @@
         "right": "prev_close"
       },
       {
-        "left": "close",
-        "operator": "crosses_above",
-        "right": "sma_5"
+        "left": "returns",
+        "operator": ">",
+        "right": "0.015"
       }
     ],
     "entry_logic": "AND",
@@ -62,32 +62,32 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal uses trend-following logic with context-dependent direction. Entry conditions use SMA crossover (5-bar confirmation via ADX > 25 indicating strong trend). Exit conditions implement the 1.5% reversal threshold via price crossing below trend MA, plus 5-bar reversal signal via close crossing MA. Trailing stop conceptualized as SMA(5) breach. Direction set to CONTEXT_DEPENDENT to support both long and short trades based on trend direction. Target regime limited to TRENDING states per signal specification."
+    "translation_notes": "Used ADX_14 > 25 to confirm established trend direction. Entry conditions check trend direction via price relative to SMA_20. Exit conditions implement the 1.5% reversal threshold (returns < -0.015 for longs, > 0.015 for shorts) and 5-bar reversal signal via recent price direction. The trailing stop (5-period lookback) is approximated by monitoring close vs prev_close patterns and the 1.5% threshold. Signal is direction-agnostic, triggering long or short entries based on trend direction."
   },
   "backtest_rule": {
     "backtestable": true,
     "entry_long": [
       {
-        "indicator": "sma_5",
-        "op": ">",
-        "value": "sma_20"
-      },
-      {
         "indicator": "adx_14",
         "op": ">",
         "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
       }
     ],
     "entry_short": [
       {
-        "indicator": "sma_5",
-        "op": "<",
-        "value": "sma_20"
-      },
-      {
         "indicator": "adx_14",
         "op": ">",
         "value": 25.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
       }
     ],
     "exit_long": [
@@ -97,9 +97,9 @@
         "value": "prev_close"
       },
       {
-        "indicator": "close",
-        "op": "crosses_below",
-        "value": "sma_5"
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.015
       }
     ],
     "exit_short": [
@@ -109,9 +109,9 @@
         "value": "prev_close"
       },
       {
-        "indicator": "close",
-        "op": "crosses_above",
-        "value": "sma_5"
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.015
       }
     ],
     "regime_filter": [
@@ -122,7 +122,7 @@
     "stop_loss_pct": 0.015,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal uses trend-following logic with context-dependent direction. Entry conditions use SMA crossover (5-bar confirmation via ADX > 25 indicating strong trend). Exit conditions implement the 1.5% reversal threshold via price crossing below trend MA, plus 5-bar reversal signal via close crossing MA. Trailing stop conceptualized as SMA(5) breach. Direction set to CONTEXT_DEPENDENT to support both long and short trades based on trend direction. Target regime limited to TRENDING states per signal specification."
+    "reason": "Used ADX_14 > 25 to confirm established trend direction. Entry conditions check trend direction via price relative to SMA_20. Exit conditions implement the 1.5% reversal threshold (returns < -0.015 for longs, > 0.015 for shorts) and 5-bar reversal signal via recent price direction. The trailing stop (5-period lookback) is approximated by monitoring close vs prev_close patterns and the 1.5% threshold. Signal is direction-agnostic, triggering long or short entries based on trend direction."
   },
   "source_rule_text": "A trader should remain in a position and allow profits to run as long as the identified trend continues in the trader's favor, exiting only when the trend direction shifts."
 }

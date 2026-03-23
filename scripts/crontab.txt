@@ -1,0 +1,86 @@
+# ================================================================
+# Trading System Cron Schedule
+# All times in IST (machine timezone assumed IST)
+# Install: crontab /Users/amitkandari/Desktop/trading-system/scripts/crontab.txt
+# ================================================================
+
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+TRADING_DIR=/Users/amitkandari/Desktop/trading-system
+RUNNER=/Users/amitkandari/Desktop/trading-system/scripts/cron_runner.sh
+
+# ── Environment ──
+TELEGRAM_BOT_TOKEN=8771144258:AAG0oI-GlBQg3QKWm-mJ3QSBYhX1uYlLxa0
+TELEGRAM_CHAT_ID=6453685733
+
+# ================================================================
+# 0a. ENHANCED SIGNALS PRE-MARKET: 8:15 AM IST, Mon-Fri
+#     Fetch bond yields, sentiment, delivery data, FII OI
+# ================================================================
+15 8 * * 1-5  $RUNNER enhanced_signals scripts.enhanced_signal_pipeline
+
+# ================================================================
+# 0a2. TIER 3 ML/AI SIGNALS: 8:25 AM IST, Mon-Fri
+#      Mamba regime, TFT forecast, GNN sector, NLP sentiment,
+#      AMFI flows, CC spending, RL position sizer
+# ================================================================
+25 8 * * 1-5  $RUNNER tier3_signals scripts.tier3_signal_pipeline
+
+# ================================================================
+# 0b. GLOBAL PRE-MARKET: 8:30 AM IST, Mon-Fri
+#     Fetch S&P, VIX, DXY, Brent, GIFT Nifty; evaluate global composite
+# ================================================================
+30 8 * * 1-5  $RUNNER global_pre_market scripts.global_pre_market
+
+# ================================================================
+# 1. PRE-MARKET: 8:45 AM IST, Mon-Fri
+#    Fetch data, compute daily signals, generate orders
+# ================================================================
+45 8 * * 1-5  $RUNNER pre_market paper_trading.enhanced_daily_run
+
+# ================================================================
+# 2. MARKET OPEN: 9:14 AM IST, Mon-Fri
+#    Start intraday runner (runs until ~3:25 PM, self-terminating)
+# ================================================================
+14 9 * * 1-5  $RUNNER intraday paper_trading.intraday_runner
+
+# ================================================================
+# 2b. OPTIONS CHAIN FETCH: 9:30 AM + 2:30 PM IST, Mon-Fri
+#     Fetch Nifty options chain (OI, volume, LTP) from Kite Connect.
+#     Compute max pain, PCR, OI walls, IV skew, straddle premium.
+#     Two snapshots: after open (9:30) and before close (2:30).
+# ================================================================
+30 9 * * 1-5   $RUNNER options_chain_am data.options_chain_fetcher
+30 14 * * 1-5  $RUNNER options_chain_pm data.options_chain_fetcher
+
+# ================================================================
+# 3. POST-MARKET: 3:45 PM IST, Mon-Fri
+#    EOD reconciliation, P&L summary
+# ================================================================
+45 15 * * 1-5  $RUNNER post_market paper_trading.eod_reconciler
+
+# ================================================================
+# 4. EVENING: 6:30 PM IST, Mon-Fri
+#    FII/DII data download + analysis
+# ================================================================
+30 18 * * 1-5  $RUNNER fii_pipeline fii.daily_pipeline
+
+# ================================================================
+# 5. HEALTH CHECK: 9:00 AM IST, Mon-Fri
+#    Alert if pre-market didn't run
+# ================================================================
+0 9 * * 1-5  /Users/amitkandari/Desktop/trading-system/scripts/health_check.sh
+
+# ================================================================
+# 6. WEEKLY: Sunday 10:00 AM IST
+#    Decay scan, BN review, robustness suite
+# ================================================================
+0 10 * * 0  $RUNNER decay_scan paper_trading.decay_weekly_scan
+15 10 * * 0  $RUNNER bn_review paper_trading.bn_weekly_review
+30 10 * * 0  $RUNNER robustness backtest.run_robustness_suite
+
+# ================================================================
+# 7. DAILY KITE DATA REFRESH: 4:00 PM IST, Mon-Fri
+#    Refresh daily OHLCV + options chain
+# ================================================================
+0 16 * * 1-5  $RUNNER data_refresh data.kite_daily_refresh

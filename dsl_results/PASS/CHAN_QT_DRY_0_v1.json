@@ -20,14 +20,14 @@
     "exit_long": [
       {
         "left": "close",
-        "operator": ">",
+        "operator": ">=",
         "right": "bb_middle"
       }
     ],
     "exit_short": [
       {
         "left": "close",
-        "operator": "<",
+        "operator": "<=",
         "right": "bb_middle"
       }
     ],
@@ -41,7 +41,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Translated Bollinger Band strategy using available bb_upper, bb_middle, bb_lower indicators. Entry conditions: long when price falls below lower band (\u22122\u03c3), short when price exceeds upper band (+2\u03c3). Exit conditions: exit when price reverts to middle band (moving average), which approximates the \u00b11\u03c3 reversion zone. The exact lookback period and half-life parameters were not specified by the author, so standard Bollinger Band calculation is assumed. Sharpe ratio degradation from transaction costs is noted but not encoded in rules."
+    "translation_notes": "Signal uses Bollinger Bands (20-period, standard 2 SD) for entry extremes and reversion to middle band (1 SD equivalent). Mapped bb_lower/-2SD for long entries and bb_upper/+2SD for short entries. Exit conditions use bb_middle as the \u00b11 SD reversion target. The strategy is context-dependent: goes long on oversold (lower band) and short on overbought (upper band) conditions. Backtest performance note: Sharpe 3.0 without costs, -3.0 with 1bp slippage indicates high sensitivity to transaction costs."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -62,14 +62,14 @@
     "exit_long": [
       {
         "indicator": "close",
-        "op": ">",
+        "op": ">=",
         "value": "bb_middle"
       }
     ],
     "exit_short": [
       {
         "indicator": "close",
-        "op": "<",
+        "op": "<=",
         "value": "bb_middle"
       }
     ],
@@ -78,7 +78,7 @@
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Translated Bollinger Band strategy using available bb_upper, bb_middle, bb_lower indicators. Entry conditions: long when price falls below lower band (\u22122\u03c3), short when price exceeds upper band (+2\u03c3). Exit conditions: exit when price reverts to middle band (moving average), which approximates the \u00b11\u03c3 reversion zone. The exact lookback period and half-life parameters were not specified by the author, so standard Bollinger Band calculation is assumed. Sharpe ratio degradation from transaction costs is noted but not encoded in rules."
+    "reason": "Signal uses Bollinger Bands (20-period, standard 2 SD) for entry extremes and reversion to middle band (1 SD equivalent). Mapped bb_lower/-2SD for long entries and bb_upper/+2SD for short entries. Exit conditions use bb_middle as the \u00b11 SD reversion target. The strategy is context-dependent: goes long on oversold (lower band) and short on overbought (upper band) conditions. Backtest performance note: Sharpe 3.0 without costs, -3.0 with 1bp slippage indicates high sensitivity to transaction costs."
   },
   "source_rule_text": "A mean-reverting strategy on ES that enters on Bollinger Band extremes (\u00b12 standard deviations) and exits when price reverts toward the moving average (\u00b11 standard deviation)."
 }

@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_30_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "ANTI_MARTINGALE",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "account_equity",
+      "threshold": 250000,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Fixed-ratio position sizing (one-unit-per-$12,500) applies only when account >= $250K minimum threshold. Enables scaling of exposure during profitable cycles with 5% equity growth requirement. This is a gating condition for Anti-Martingale scaling logic.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should set a minimum account size threshold before implementing fixed-ratio position sizing, because accounts below that threshold cannot efficiently scale exposure during winning streaks."
+}

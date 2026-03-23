@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires 'ATR expansion vs. 20-period MA average' ratio calculation and 'range(high-low) < 0.75x average range' sideways detection logic, which cannot be expressed as simple indicator comparisons with allowed operators. These require custom computed fields (rolling range averages and multi-period ATR ratios) not available in the indicator set.",
+  "translation_notes": "Translated core ADX trend confirmation and price position relative to 50-MA. ATR expansion represented as atr_20 > 1.3 (approximation of expansion ratio). Sideways detection condition omitted due to complexity. Exit condition on ADX < 20 captures trend weakening. Signal is regime-adaptive (CONTEXT_DEPENDENT) supporting both long and short entries based on price position relative to MA."
 }

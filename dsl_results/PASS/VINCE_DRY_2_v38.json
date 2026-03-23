@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_2",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "correlation_coefficient",
+      "threshold": 1.0,
+      "direction": "below"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Position size adjusted via optimal f fraction; growth rate constant at perfect correlation (+1.00) but increases as correlation decreases. Formula: f = (AHPR - 1) / (ME / f$); demonstrated geometric mean 1.06066 growth factor ($100 \u2192 $126.56 over 4 plays). Applies when combining multiple correlated positions.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position sizing should be adjusted based on optimal f fraction, with growth rate remaining constant across perfectly correlated markets but increasing as correlation coefficient decreases below +1.00."
+}

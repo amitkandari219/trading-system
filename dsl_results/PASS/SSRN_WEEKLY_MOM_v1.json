@@ -1,0 +1,35 @@
+{
+  "signal_id": "SSRN_WEEKLY_MOM",
+  "book_id": "SSRN-3065621",
+  "signal_type": "ENTRY_EXIT",
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_5"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_5"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG"
+  },
+  "source_rule_text": "Weekly momentum: buy if last week return > 0 AND close > sma_5"
+}

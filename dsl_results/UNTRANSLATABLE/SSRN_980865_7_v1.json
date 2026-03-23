@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires decile-based cross-sectional sorting (long bottom volatility decile vs short top volatility decile). This is a portfolio-level ranking operation that cannot be expressed as point-in-time indicator conditions on individual securities. The available indicators only support univariate thresholds, not relative ranking across a universe. Backtest engine would need explicit decile construction logic at the portfolio level.",
+  "translation_notes": "SSRN_980865_7 is a classic low-volatility anomaly strategy requiring ex-ante volatility calculation and cross-sectional decile assignment. While hvol_20 (20-day historical volatility) is available, it cannot replicate the decile-sorting mechanism. Implementation requires: (1) calculating volatility for all stocks in universe, (2) assigning to deciles monthly, (3) longing D1 and shorting D10. Standard backtesting condition syntax is insufficient for this strategy."
+}

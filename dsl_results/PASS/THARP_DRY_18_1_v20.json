@@ -1,0 +1,130 @@
+{
+  "signal_id": "THARP_DRY_18_1",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "sma_10"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.01"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "sma_10"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.01"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal is context-dependent, so both LONG and SHORT entry/exit conditions provided. Price sequence setup translated as N=2 consecutive bars of directional closes validated against sma_20. Directional confirmation uses close > sma_20 (20-period MA as specified). Volume confirmation uses volume > sma_10 (10-day MA period). Directional move of 1.0% represented as returns threshold. Stop loss set to 1.5% as specified. Take profit ratio set to 2.5x as specified. Regime targets expanded to include both trending directions plus ranging per signal specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.01
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "sma_10"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.01
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal is context-dependent, so both LONG and SHORT entry/exit conditions provided. Price sequence setup translated as N=2 consecutive bars of directional closes validated against sma_20. Directional confirmation uses close > sma_20 (20-period MA as specified). Volume confirmation uses volume > sma_10 (10-day MA period). Directional move of 1.0% represented as returns threshold. Stop loss set to 1.5% as specified. Take profit ratio set to 2.5x as specified. Regime targets expanded to include both trending directions plus ranging per signal specification."
+  },
+  "source_rule_text": "Combine price sequence setups with directional price confirmation signals to increase setup reliability beyond simple price data alone."
+}

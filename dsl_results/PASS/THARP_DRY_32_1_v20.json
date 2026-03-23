@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "R_MULTIPLE",
+    "base_risk_pct": 0.015,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": 2.0,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "reward_to_risk_ratio_rank",
+      "threshold": 2.0,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.03,
+    "min_risk_pct": 0.015,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Base position size of 1.5% per trade; apply 2.0\u00d7 multiplier to highest-ranked reward-to-risk trades (minimum RR ratio 2.0); results in max 3% on top conviction trades within diversified portfolio framework",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Allocate larger position sizes to opportunities with the highest probability-weighted reward-to-risk ratio, concentrating capital in the highest-conviction trades within a diversified portfolio."
+}

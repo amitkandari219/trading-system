@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "DRAWDOWN_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "drawdown_pct",
+      "threshold": 0.2,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.25,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Tiered position scaling: full size if drawdown <10%, 67% size if 10-18%, 34% size if 18-23%. Max tolerable LEED is 25% of equity. Reduces position size inversely as drawdown risk increases.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should size positions inversely to their maximum tolerable equity drawdown\u2014reducing position size when drawdown risk is high and scaling positions according to the largest expected equity drop (LEED) they can endure."
+}

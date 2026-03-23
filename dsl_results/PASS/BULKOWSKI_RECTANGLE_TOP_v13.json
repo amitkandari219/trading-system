@@ -1,0 +1,95 @@
+{
+  "signal_id": "BULKOWSKI_RECTANGLE_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Rectangle Top",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_RECTANGLE_TOP",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.3"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.75"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "dc_middle"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.3
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.75
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "dc_middle"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_RECTANGLE_TOP"
+  },
+  "source_rule_text": "Rectangle Top: Trading a throwback/pullback to the rectangle formation after a breakaway gap, using formation height for price target calculation"
+}

@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "margin_call_threshold",
+      "threshold": null,
+      "direction": "below"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Split account into inactive equity (non-trading capital) and active equity (trading capital). Apply full optimal f sizing only to active equity portion. Monitor fractional f usage to remain below margin call threshold. Example: $70k account with $58.3k inactive (83%) and $11.67k active (17%) capital.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Allocate a split between inactive equity (non-trading capital) and active equity (trading capital), then trade the active portion at full optimal f values while monitoring for margin calls based on fractional f usage."
+}

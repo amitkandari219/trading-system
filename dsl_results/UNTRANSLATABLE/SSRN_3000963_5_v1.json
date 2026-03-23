@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3000963_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires time-based trigger (15 trading days before contract expiration) and calendar spread volume analysis, which are not expressible with available indicators. The allowed indicators do not include contract expiration tracking, trading day counting, or calendar spread-specific metrics. Volume can be approximated but the temporal mechanics of 'days before expiration' and 'peak volume window' require backtesting engine-level calendar and contract management features not available through indicator conditions alone.",
+  "translation_notes": "This is a portfolio/contract management signal rather than a price-action signal. It requires: (1) contract expiration calendar awareness, (2) trading day counting relative to expiration dates, (3) calendar spread volume (spread between two contract months), and (4) roll scheduling logic. The closest approximation would be a volume spike condition (volume > vol_ratio_20), but this loses the critical time-based and spread-specific components. Recommend implementing as custom event handler in backtesting engine with dedicated roll scheduling logic rather than as a standard indicator-based rule."
+}

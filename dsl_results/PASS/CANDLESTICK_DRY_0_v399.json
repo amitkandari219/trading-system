@@ -1,0 +1,80 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "hvol_20"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gapping-Up Doji SHORT signal. Entry: (1) Gap-up opening above previous high, (2) Doji candlestick characterized by small body (body_pct < 5%), (3) Strong volume on breakaway. Exit: Reversal close above open (doji indecision breaks upward). Exhaustion gap pattern implied by gap sequence but not explicitly measurable with available indicators; conservatively captured via gap-up opening + doji + volume confirmation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "hvol_20"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Gapping-Up Doji SHORT signal. Entry: (1) Gap-up opening above previous high, (2) Doji candlestick characterized by small body (body_pct < 5%), (3) Strong volume on breakaway. Exit: Reversal close above open (doji indecision breaks upward). Exhaustion gap pattern implied by gap sequence but not explicitly measurable with available indicators; conservatively captured via gap-up opening + doji + volume confirmation."
+  },
+  "source_rule_text": "Gapping-Up Doji: A doji candlestick that appears after a gap-up breakout from congestion, typically following an exhaustion gap, marking the end of an uptrend"
+}

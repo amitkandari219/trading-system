@@ -6,99 +6,79 @@
     "entry_long": [
       {
         "left": "returns",
-        "operator": "crosses_above",
+        "operator": ">",
         "right": "0.01"
-      },
-      {
-        "left": "returns",
-        "operator": "crosses_above",
-        "right": "0.03"
       }
     ],
     "entry_short": [
-      {
-        "left": "returns",
-        "operator": "crosses_below",
-        "right": "-0.01"
-      },
-      {
-        "left": "returns",
-        "operator": "crosses_below",
-        "right": "-0.03"
-      }
-    ],
-    "exit_long": [
       {
         "left": "returns",
         "operator": "<",
         "right": "-0.01"
       }
     ],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.03"
+      }
+    ],
     "exit_short": [
       {
         "left": "returns",
         "operator": ">",
-        "right": "0.01"
+        "right": "0.03"
       }
     ],
     "entry_logic": "OR",
     "exit_logic": "OR",
     "stop_loss_pct": 2.0,
-    "hold_days_max": 30,
+    "hold_days_max": 20,
     "direction": "BOTH",
     "target_regime": [
       "ANY"
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Mean reversion strategy using one-day returns (returns indicator) crossing \u00b11% and \u00b13% thresholds. Entry is context-dependent (long on positive crosses, short on negative crosses). Exit conditions use reversal logic: long positions exit when returns cross below -1%, short positions exit when returns cross above +1%. Hold period max set to 60 days per the longest specified exit horizon. Multiple holding periods (1, 5, 10, 20, 40, 60 days) should be tested separately in backtest engine as the rule engine structure uses a single max hold period."
+    "translation_notes": "Mean reversion strategy using one-day returns (GS) with \u00b11% and \u00b13% thresholds. Entry conditions trigger on crosses of these thresholds in either direction. Exit uses maximum holding period of 20 days (middle of specified range 1-60 days) combined with mean reversion exit logic where long positions exit on -3% drop and short positions exit on +3% rise. The 'returns' indicator represents one-day price change in decimal format (0.01 = 1%)."
   },
   "backtest_rule": {
     "backtestable": true,
     "entry_long": [
       {
         "indicator": "returns",
-        "op": "crosses_above",
+        "op": ">",
         "value": 0.01
-      },
-      {
-        "indicator": "returns",
-        "op": "crosses_above",
-        "value": 0.03
       }
     ],
     "entry_short": [
-      {
-        "indicator": "returns",
-        "op": "crosses_below",
-        "value": -0.01
-      },
-      {
-        "indicator": "returns",
-        "op": "crosses_below",
-        "value": -0.03
-      }
-    ],
-    "exit_long": [
       {
         "indicator": "returns",
         "op": "<",
         "value": -0.01
       }
     ],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.03
+      }
+    ],
     "exit_short": [
       {
         "indicator": "returns",
         "op": ">",
-        "value": 0.01
+        "value": 0.03
       }
     ],
     "regime_filter": [],
-    "hold_days": 30,
+    "hold_days": 20,
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Mean reversion strategy using one-day returns (returns indicator) crossing \u00b11% and \u00b13% thresholds. Entry is context-dependent (long on positive crosses, short on negative crosses). Exit conditions use reversal logic: long positions exit when returns cross below -1%, short positions exit when returns cross above +1%. Hold period max set to 60 days per the longest specified exit horizon. Multiple holding periods (1, 5, 10, 20, 40, 60 days) should be tested separately in backtest engine as the rule engine structure uses a single max hold period."
+    "reason": "Mean reversion strategy using one-day returns (GS) with \u00b11% and \u00b13% thresholds. Entry conditions trigger on crosses of these thresholds in either direction. Exit uses maximum holding period of 20 days (middle of specified range 1-60 days) combined with mean reversion exit logic where long positions exit on -3% drop and short positions exit on +3% rise. The 'returns' indicator represents one-day price change in decimal format (0.01 = 1%)."
   },
   "source_rule_text": "Mean reversion strategy that enters long or short positions when one-day returns of GS cross predefined percent-change thresholds, with exit after a specified holding period."
 }

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires 30-day forward-looking expected price move estimation and directional bias detection, which are not available as indicators in the allowed set. The signal is inherently predictive (expecting future moves) rather than based on historical price/technical data. Volatility regime filtering and option greeks (premium decay, theta) also cannot be expressed with available indicators.",
+  "translation_notes": "This is a regime-adaptive option strategy signal that cannot be fully translated using only historical price-based indicators. The core logic requires: (1) forecasted volatility and expected move calculations (typically from implied vol/ATM straddle width), (2) directional bias from external analysis, and (3) option-specific metrics (theta, vega, gamma). The attempted translation uses returns as a proxy for realized move detection, but this does not capture the forward-looking expected move that triggers strategy switches. A proper implementation would need: expected_move_30d, implied_volatility, or option pricing indicators not in the allowed set."
 }

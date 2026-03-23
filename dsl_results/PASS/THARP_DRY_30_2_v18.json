@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_30_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "ANTI_MARTINGALE",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": 2.0,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "equity_growth_pct",
+      "threshold": 0.01,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.4,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Anti-martingale: increase position size by 2x contract increment after winning trades when account equity grows \u22651%. Max exposure capped at 40% of account equity. Applies across multiple instruments with relative impact adjustment.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Adjust position size across multiple instruments based on their relative impact on account equity, increasing exposure during winning periods using an anti-martingale approach."
+}

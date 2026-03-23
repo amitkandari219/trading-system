@@ -1,0 +1,167 @@
+{
+  "signal_id": "BULKOWSKI_RECTANGLE",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Rectangle",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_RECTANGLE",
+    "entry_long": [
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.03"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.4"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.6"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "25"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": "<",
+        "right": "1.2"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.03"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.4"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.6"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "25"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": "<",
+        "right": "1.2"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "dc_lower"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.03
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.4
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.6
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 25.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": "<",
+        "value": 1.2
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.03
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.4
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.6
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 25.0
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": "<",
+        "value": 1.2
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "dc_lower"
+      }
+    ],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "DSL translation of BULKOWSKI_RECTANGLE"
+  },
+  "source_rule_text": "Rectangle: A congestion pattern where prices oscillate between two horizontal or nearly horizontal trend lines, with distinct touches on both the upper and lower boundaries."
+}

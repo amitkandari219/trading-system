@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_5116091_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires portfolio-level momentum ranking with exponential weighting scheme applied across 3-month formation period. This is a cross-sectional ranking strategy that operates at the portfolio construction level, not a bar-by-bar indicator-based rule. The 'exponential weighting scheme' for portfolio construction and '3-month price momentum ranking' cannot be expressed using single-bar indicator conditions. This requires custom portfolio rebalancing logic outside standard backtest engine rule syntax.",
+  "translation_notes": "SSRN_5116091_6 is a time-series momentum strategy with fixed rebalancing intervals (formation: 3 months, holding: 12 months). While the signal intent is clear (long momentum-ranked portfolio, rebalance annually), the specific construction methodology (exponential weighting scheme, momentum ranking procedure) requires implementation at the strategy/portfolio level rather than as indicator-based entry/exit rules. Source data provided appears to be performance table (monthly returns) rather than price series."
+}

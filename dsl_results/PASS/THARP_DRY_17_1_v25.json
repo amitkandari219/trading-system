@@ -1,0 +1,27 @@
+{
+  "signal_id": "THARP_DRY_17_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "KELLY",
+    "base_risk_pct": 2.0,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": 0.5,
+    "trigger_condition": {
+      "metric": "opportunity_frequency_trades_per_month",
+      "threshold": 12,
+      "direction": "between_5_20"
+    },
+    "max_risk_pct": 2.0,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Scale position size based on system expectancy and opportunity frequency. Apply 50% Kelly (0.5 scale_factor) on 2% base risk per trade when trading 5\u201320 times per month. Higher expectancy with lower opportunity requires larger positions; frequent opportunities allow smaller sizes.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  }
+}

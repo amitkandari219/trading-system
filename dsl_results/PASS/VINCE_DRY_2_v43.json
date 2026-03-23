@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_2",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "num_simultaneous_systems",
+      "threshold": 10,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Reduce position size proportionally when trading multiple correlated systems simultaneously. Position size = base_size / num_systems. Example: trading 10 systems with perfect correlation reduces individual position to 1/10 of single-system size. Uses FAHPR/FGHPR framework with fractional f (e.g., 0.5 \u00d7 optimal_f) to control correlation drawdown risk.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size should be reduced proportionally when multiple market systems are traded simultaneously to account for correlation risk, as simultaneous losses across systems could be terminal to the account."
+}

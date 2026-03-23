@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a portfolio-level volatility scaling rule, not a price-action trading rule. It requires: (1) multi-asset factor portfolio construction (fMVE), (2) time-series conditional volatility estimation on portfolio returns (\u03c3\u0302\u00b2), and (3) dynamic position sizing via inverse volatility weighting. None of these operations are expressible using single-instrument price indicators (close, RSI, ATR, etc.). The signal operates at the portfolio optimization layer, not the individual bar/candle level. Requires custom portfolio backtester with factor model and GARCH/rolling volatility estimation.",
+  "translation_notes": "Signal SSRN_2659431_11 describes a volatility-managed portfolio construction methodology from academic research. Entry/exit conditions reference factor portfolio returns and conditional volatility estimates that cannot be computed from standard OHLCV indicators. This is a position-sizing/rebalancing rule for a multi-factor strategy, not a directional trading signal suitable for traditional bar-by-bar backtesting."
+}

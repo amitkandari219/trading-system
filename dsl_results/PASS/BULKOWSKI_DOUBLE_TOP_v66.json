@@ -1,0 +1,91 @@
+{
+  "signal_id": "BULKOWSKI_DOUBLE_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Double Tops (Eve & Eve)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DOUBLE_TOP",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "high",
+        "operator": "==",
+        "right": "prev_high"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": ">",
+        "right": "0.06"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.75"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "60"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "high",
+        "op": "==",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": ">",
+        "value": 0.06
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.75
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 60.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_DOUBLE_TOP"
+  },
+  "source_rule_text": "Double Tops (Eve & Eve): Two peaks at about the same price level, both with wide rounded looking tops, forming a short-term bearish reversal pattern"
+}

@@ -1,0 +1,61 @@
+{
+  "signal_id": "BULKOWSKI_DOUBLE_BOTTOM",
+  "entry_long": [
+    {
+      "left": "low",
+      "operator": "<",
+      "right": "prev_low"
+    },
+    {
+      "left": "low",
+      "operator": ">",
+      "right": "prev_low * 0.95"
+    },
+    {
+      "left": "low",
+      "operator": "<",
+      "right": "prev_low * 1.05"
+    },
+    {
+      "left": "price_pos_20",
+      "operator": "<",
+      "right": "0.2"
+    },
+    {
+      "left": "lower_wick",
+      "operator": ">",
+      "right": "body * 1.5"
+    },
+    {
+      "left": "close",
+      "operator": "crosses_above",
+      "right": "dc_upper"
+    }
+  ],
+  "entry_short": [],
+  "exit_long": [
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "sma_20"
+    }
+  ],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 4.0,
+  "hold_days_max": 30,
+  "direction": "LONG",
+  "target_regime": [
+    "RANGING",
+    "ANY"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": null,
+  "validation_issues": [
+    "entry_long: unknown right value 'prev_low * 0.95'",
+    "entry_long: unknown right value 'prev_low * 1.05'",
+    "entry_long: unknown right value 'body * 1.5'"
+  ]
+}

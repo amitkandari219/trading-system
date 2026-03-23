@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires: (1) 'Failed-test setup' detection (price tests level and reverses) \u2014 this is a pattern recognition concept not available in allowed indicators; (2) ATR ratio comparison between two different lookback periods (5-day vs 50-day ATR) \u2014 allowed indicators only include atr_7, atr_14, atr_20 with fixed periods, not custom 5-day and 50-day ATR calculations; (3) Mean-reversion target detection \u2014 not expressible with available indicators. The core volatility expansion logic (ATR expansion multiplier) cannot be properly implemented with the constrained indicator set.",
+  "translation_notes": "This signal is primarily untranslatable due to missing pattern-detection capabilities and inability to compute ATR ratios across arbitrary lookback windows. A partial implementation could use atr_14 >= 2.5 \u00d7 baseline, but this loses the 5-day vs 50-day period specificity and the failed-test setup requirement that is central to the strategy."
 }

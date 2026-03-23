@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_32",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Beta estimation and decile ranking are fundamental factor construction steps that cannot be expressed using only the allowed price-action and technical indicators (close, sma, rsi, atr, macd, etc.). Beta requires multi-period returns correlation to a market benchmark, which is not available in the indicator set. The signal requires a custom beta calculation module and portfolio construction layer outside the scope of technical indicator conditions.",
+  "translation_notes": "This is a factor-based statistical arbitrage signal requiring: (1) beta estimation from historical returns vs benchmark, (2) dynamic ranking/decile assignment, (3) portfolio-level long/short construction. Standard backtest engines with only price-action indicators cannot execute this rule. A custom factor module with beta calculation and decile binning capability is required."
+}

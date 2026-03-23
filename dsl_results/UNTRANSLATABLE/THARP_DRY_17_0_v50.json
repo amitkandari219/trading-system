@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires 'Average Daily Volume (ADV)', 'Bid-ask spread in ticks', and 'Market depth (aggregate volume at best 5 levels)' \u2014 none of which are available in the allowed indicator set. Volume and hvol_20 used as proxies for liquidity, but exact ADV calculation, bid-ask spread measurement, and order book depth are not supported.",
+  "translation_notes": "THARP_DRY_17: Liquidity-based regime filter. Mapped ADV threshold to volume >= 500000 contracts and bid-ask spread to hvol_20 < 0.01 (volatility proxy). Entry requires both conditions; exit triggers when volume drops below threshold. Direction is context-dependent (applies to both LONG and SHORT). Market depth condition could not be translated without order book data."
 }

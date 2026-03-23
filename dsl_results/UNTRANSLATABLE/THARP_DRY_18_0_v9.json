@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires multi-bar lookback validation: (1) confirming 4 consecutive up closes requires comparing close[i], close[i-1], close[i-2], close[i-3] sequentially, which cannot be expressed with single prev_* references; (2) 'pullback occurs (lower close than prior day)' must be validated on bar i-1 before entry on bar i, requiring conditional logic across multiple bars; (3) stop loss at 'pullback low' requires storing the pullback bar's low value, which is not available as a static parameter. The schema supports single-bar conditions only.",
+  "translation_notes": "The pattern setup requires sequential multi-bar validation that exceeds the capability of single-condition comparisons. Recommend: (a) create a separate indicator that flags 4-bar uptrends, or (b) extend the rule engine to support multi-bar pattern matching with stored state across bars. The core logic (close > prev_low with volume confirmation) is translatable, but the trend-confirmation and pullback-identification layers are not."
 }

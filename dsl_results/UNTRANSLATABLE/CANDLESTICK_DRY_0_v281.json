@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires regime classification ('BULL_MARKET', 'BEAR_MARKET') which are not in ALLOWED_REGIMES list. Allowed regimes are: TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY. Additionally, the source text is corrupted/incomplete, making precise parameter extraction impossible. Author has marked all quantitative parameters as 'AUTHOR_SILENT' (success rates, average returns, failure rates, volume trends, throwback percentages).",
+  "translation_notes": "Pattern interpreted as: black candle (close < open, detected via body < 0) followed by breakout above/below previous candle extremes. Exit conditions derived from source: 1-2 days to breakout confirmation, median 6-8 days to trend end. Hold_days_max set to 8 (upper bound of trend end window). Direction is CONTEXT_DEPENDENT: long entry triggers on upward breakout, short entry on downward breakout. Regime mapping requires clarification: BULL_MARKET and BEAR_MARKET should map to TRENDING_UP/TRENDING_DOWN respectively for engine compatibility."
 }

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_299107_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by returns over a 3-12 month formation period and selecting top/bottom performers. This requires cross-sectional relative ranking logic and dynamic portfolio construction (long top decile, short bottom decile) which cannot be expressed as point-in-time indicator conditions on a single security. The backtest engine would need portfolio-level ranking, percentile bucketing, and multi-asset selection logic not supported by single-instrument condition rules.",
+  "translation_notes": "Momentum ranking strategies require: (1) calculating returns over variable 3-12 month lookback windows, (2) ranking across entire stock universe, (3) selecting top N% for long, bottom N% for short, (4) dynamic rebalancing. This is a portfolio construction rule, not a single-security technical rule. A proper implementation requires a custom portfolio optimizer or ranking module, not condition-based entry/exit logic."
+}

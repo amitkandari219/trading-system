@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by 'off-the-shelf momentum criteria' and selecting top decile from NIFTY100 universe. This is a cross-sectional portfolio construction task (relative ranking across 100 stocks) that cannot be expressed as single-stock indicator conditions. The backtest engine would need to: (1) calculate momentum scores for all 100 stocks, (2) rank them, (3) select top 10%, (4) rebalance monthly. This requires portfolio-level logic and multi-stock comparison, not single-bar indicator thresholds.",
+  "translation_notes": "The signal describes a quantitative ranking and selection strategy rather than a technical indicator rule. To implement this properly, the backtest engine would need custom portfolio construction logic that ranks all NIFTY100 constituents by momentum (e.g., 12-month total return, 6-month return, or similar) and dynamically selects the top 10% each month. A placeholder momentum condition using 'returns > 0' has been added but does not capture the true decile-ranking mechanism described in the paper."
+}

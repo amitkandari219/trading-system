@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_4",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.0,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "geometric_mean",
+      "threshold": 0.0,
+      "direction": "below"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": 0.0,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Ralph Vince optimal f: search f values (0.01\u20131.0) via iteration/parabolic interpolation to maximize Equation 4.17 (real TWR using geometric mean). When geometric mean \u2264 0, allocate zero position size. When positive, allocate optimal f fraction of capital.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Do not allocate any resources when the geometric mean is negative; optimize position sizing by searching through f values to maximize the equation while accounting for 99% of possible outcomes."
+}

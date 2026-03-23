@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_5",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "sample_variance_20day",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size scaled inversely to 20-day sample variance (calculated as \u03a3(deviation\u00b2)/19). Higher variance = smaller position; lower variance = larger position. Variance used as volatility input for optimal f determination.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Calculate sample variance over a 20-day period by squaring the differences from mean, summing positive values, and dividing by 19 to determine volatility for position sizing."
+}

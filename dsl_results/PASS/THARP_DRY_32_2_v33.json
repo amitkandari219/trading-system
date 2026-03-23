@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.03,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "num_simultaneous_positions",
+      "threshold": null,
+      "direction": "inverse_divisor"
+    },
+    "max_risk_pct": 0.03,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Fixed 3% risk per trade divided by number of active positions. Capital allocation = (account_equity \u00d7 0.03) / (stop_loss_amount \u00d7 num_positions). Scales position size inversely with concurrent positions held.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should scale position size inversely with the number of simultaneous positions held, allocating capital per unit based on a fixed risk percentage of total account equity divided by the number of active instruments."
+}

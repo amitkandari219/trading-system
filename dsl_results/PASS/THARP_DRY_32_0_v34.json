@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "rolling_volatility_20_relative_to_baseline",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": 0.75,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size = (base_equity / $4000) \u00d7 (baseline_vol / current_vol)^0.5. Scales inversely with 20-period historical volatility to equalize risk contribution across instruments with different volatility profiles. Max position ratio 0.75.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Adjust position size according to instrument volatility rather than using a fixed unit-per-equity ratio, so that different instruments with different risk profiles contribute equally to portfolio risk."
+}

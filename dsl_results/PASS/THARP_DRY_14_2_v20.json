@@ -7,14 +7,14 @@
       {
         "left": "adx_14",
         "operator": ">",
-        "right": "25"
+        "right": "20"
       }
     ],
     "entry_short": [
       {
         "left": "adx_14",
         "operator": ">",
-        "right": "25"
+        "right": "20"
       }
     ],
     "exit_long": [
@@ -31,7 +31,7 @@
         "right": "20"
       }
     ],
-    "entry_logic": "AND",
+    "entry_logic": "OR",
     "exit_logic": "OR",
     "stop_loss_pct": 2.0,
     "hold_days_max": 10,
@@ -42,7 +42,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal emphasizes equal priority for both long and short entries in trending conditions with no directional bias. Used ADX_14 > 25 to confirm trending regime applies to both directions. Exit uses trend strength deterioration (ADX < 20). The core logic is regime-based activation of bidirectional signal generation rather than specific technical entry conditions; this translation captures the 'always active in trends' concept through trend confirmation. No quality score ranking mechanism available in standard indicator set, so allocation prioritizes whichever direction is in confirmed trend."
+    "translation_notes": "Signal emphasizes bidirectional opportunity generation (long and short with equal priority) in trending conditions. Entry conditions use ADX_14 > 20 to confirm trending regime exists, allowing both long and short signals to generate simultaneously. No specific technical entry filters provided in source material\u2014the core directive is directional neutrality and equal signal priority. Exit uses trend strength decay (ADX < 20) as regime exit. Long_short_priority_ratio of 1.0 is enforced by dual entry_long/entry_short with identical conditions and OR logic, forcing equal evaluation. Position selection by 'signal quality score' (external backtest engine responsibility) rather than directional bias."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -50,14 +50,14 @@
       {
         "indicator": "adx_14",
         "op": ">",
-        "value": 25.0
+        "value": 20.0
       }
     ],
     "entry_short": [
       {
         "indicator": "adx_14",
         "op": ">",
-        "value": 25.0
+        "value": 20.0
       }
     ],
     "exit_long": [
@@ -81,7 +81,7 @@
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal emphasizes equal priority for both long and short entries in trending conditions with no directional bias. Used ADX_14 > 25 to confirm trending regime applies to both directions. Exit uses trend strength deterioration (ADX < 20). The core logic is regime-based activation of bidirectional signal generation rather than specific technical entry conditions; this translation captures the 'always active in trends' concept through trend confirmation. No quality score ranking mechanism available in standard indicator set, so allocation prioritizes whichever direction is in confirmed trend."
+    "reason": "Signal emphasizes bidirectional opportunity generation (long and short with equal priority) in trending conditions. Entry conditions use ADX_14 > 20 to confirm trending regime exists, allowing both long and short signals to generate simultaneously. No specific technical entry filters provided in source material\u2014the core directive is directional neutrality and equal signal priority. Exit uses trend strength decay (ADX < 20) as regime exit. Long_short_priority_ratio of 1.0 is enforced by dual entry_long/entry_short with identical conditions and OR logic, forcing equal evaluation. Position selection by 'signal quality score' (external backtest engine responsibility) rather than directional bias."
   },
   "source_rule_text": "A trader should expand market exposure to include both long and short opportunities rather than restricting themselves to one direction, because trending opportunities exist in both directions and constraining oneself eliminates half of available profitable setups."
 }

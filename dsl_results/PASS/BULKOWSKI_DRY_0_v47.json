@@ -6,99 +6,121 @@
     "entry_long": [
       {
         "left": "close",
-        "operator": "crosses_above",
+        "operator": ">",
         "right": "dc_upper"
       },
       {
-        "left": "volume",
+        "left": "vol_ratio_20",
         "operator": ">",
-        "right": "hvol_20"
+        "right": "1.5"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.8"
       }
     ],
     "entry_short": [
       {
         "left": "close",
-        "operator": "crosses_below",
+        "operator": "<",
         "right": "dc_lower"
       },
       {
-        "left": "volume",
+        "left": "vol_ratio_20",
         "operator": ">",
-        "right": "hvol_20"
+        "right": "1.5"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.2"
       }
     ],
     "exit_long": [
       {
         "left": "close",
-        "operator": "crosses_below",
+        "operator": "<",
         "right": "dc_lower"
       }
     ],
     "exit_short": [
       {
         "left": "close",
-        "operator": "crosses_above",
+        "operator": ">",
         "right": "dc_upper"
       }
     ],
     "entry_logic": "AND",
-    "exit_logic": "OR",
+    "exit_logic": "AND",
     "stop_loss_pct": 2.0,
     "hold_days_max": 30,
     "direction": "BOTH",
     "target_regime": [
-      "ANY"
+      "RANGING"
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Horizontal trend line pattern translated using Donchian channels (dc_upper/dc_lower) to represent support/resistance levels. Entry triggered by breakout above/below with volume confirmation (surge requirement). Exit triggered by reversal back through the breakout level. Hold period extended to 120 days to account for months-long horizontal consolidation before breakout. Pattern is bidirectional (both upside and downside breakouts valid per source)."
+    "translation_notes": null
   },
   "backtest_rule": {
     "backtestable": true,
     "entry_long": [
       {
         "indicator": "close",
-        "op": "crosses_above",
+        "op": ">",
         "value": "dc_upper"
       },
       {
-        "indicator": "volume",
+        "indicator": "vol_ratio_20",
         "op": ">",
-        "value": "hvol_20"
+        "value": 1.5
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.8
       }
     ],
     "entry_short": [
       {
         "indicator": "close",
-        "op": "crosses_below",
+        "op": "<",
         "value": "dc_lower"
       },
       {
-        "indicator": "volume",
+        "indicator": "vol_ratio_20",
         "op": ">",
-        "value": "hvol_20"
+        "value": 1.5
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.2
       }
     ],
     "exit_long": [
       {
         "indicator": "close",
-        "op": "crosses_below",
+        "op": "<",
         "value": "dc_lower"
       }
     ],
     "exit_short": [
       {
         "indicator": "close",
-        "op": "crosses_above",
+        "op": ">",
         "value": "dc_upper"
       }
     ],
-    "regime_filter": [],
+    "regime_filter": [
+      "RANGING"
+    ],
     "hold_days": 30,
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Horizontal trend line pattern translated using Donchian channels (dc_upper/dc_lower) to represent support/resistance levels. Entry triggered by breakout above/below with volume confirmation (surge requirement). Exit triggered by reversal back through the breakout level. Hold period extended to 120 days to account for months-long horizontal consolidation before breakout. Pattern is bidirectional (both upside and downside breakouts valid per source)."
+    "reason": "DSL translation of BULKOWSKI_DRY_0"
   },
   "source_rule_text": "Horizontal trend line (support and resistance) breakout pattern. Prices move horizontally for extended periods before breaking above resistance or below support."
 }

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "This signal is a meta-rule about entry concept validation and backtesting thresholds (win_rate >= 60%, min 100 trades, 1-5 day timeframes), not a direct price/indicator condition. It requires backtesting statistics (reliability/win rate) that are not available as real-time indicators in the allowed set. The rule operates at the strategy validation level, not the bar-level entry/exit level. It cannot be expressed as indicator conditions using price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, Volume, or other allowed indicators.",
-  "translation_notes": "THARP_DRY_13_0 is a risk management / concept validation rule, not a tradeable signal. It prescribes: (1) minimum sample size of 100 trades, (2) win rate threshold of 60% (original signal says 55%, but entry_conditions specify 60%), (3) evaluation window of 1-5 days. This is meta-analysis guidance for strategy developers, not executable entry/exit logic. To implement, use a separate backtesting harness that filters strategies by historical win rate before paper/live trading, rather than encoding as chart-based conditions."
+  "untranslatable_reason": "This is an entry filter rule, not a position sizing rule. It specifies acceptance criteria for entry concepts (win rate >= 55-60%, minimum 100 trades, 1-5 day timeframe) based on statistical reliability. These are entry validation conditions and expectancy filters, not rules for sizing positions. Use standard DSL ENTRY_FILTER for this signal.",
+  "translation_notes": null
 }

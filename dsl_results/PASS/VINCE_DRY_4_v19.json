@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_4",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": 0.206,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "empirical_trade_distribution",
+      "threshold": 3.0,
+      "direction": "lower_bound_sigmas"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": 0.03,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Optimal f derived parametrically from generating function of historical trade data, bounded at 3 standard deviations on lower end. Position size = optimal_f \u00d7 account_size / largest_loss. Example optimal_f = 0.206 when lower bound = 3 sigmas. Uses 100 equally spaced data points across bounded range.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position sizing should be determined by optimal f derived from a generating function bounded by parametric limits (lower bound at 3 sigmas, upper bound variable), using empirical trade data to calculate the optimal fraction for sizing subsequent trades."
+}

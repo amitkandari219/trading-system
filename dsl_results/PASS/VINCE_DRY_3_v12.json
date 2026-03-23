@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_3",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "standardized_trade_data",
+      "threshold": null,
+      "direction": "conversion_preprocessing"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Standardize individual trade P&L using z-score transformation (X - \u03bc) / \u03c3 before binning for optimal f calculation. This is a data preprocessing step for Vince's optimal f method to equalize trade magnitudes.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Standardize individual trade profits and losses to standard units by subtracting the mean and dividing by standard deviation before binning data for optimal f calculation."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_368980_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires put-call ratio (P/(P+C)) which is not in the allowed indicators list. vol_ratio_20 (option volume to stock volume ratio) is a proxy but does not directly measure put-call skew. A true implementation requires custom option-derived indicators tracking put vs call volume/open interest separately.",
+  "translation_notes": "Attempted mapping: low P/(P+C) ratio (~0.1%) interpreted as vol_ratio_20 < 0.001; high P/(P+C) ratio (~79.7%) interpreted as vol_ratio_20 > 0.797. Exit on next day (hold_days_max=1) with minimal return threshold. Expected return difference of 51 bps noted but not encoded in conditions. This is a partial translation; production implementation should use actual put-call ratio data."
+}

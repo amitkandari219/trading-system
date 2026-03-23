@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "This signal requires comparative ranking analysis across multiple instruments and timeframes (5-year, 1-year, 3-month hierarchies with peer group rankings). The allowed indicator set contains only single-instrument price/technical metrics. Implementing this rule requires: (1) cross-instrument relative strength ranking logic not supported by available operators, (2) multi-timeframe hierarchical comparison with veto logic ('medium_term_mandatory'), and (3) peer group ranking calculations (top 1, top 2, top 3 positioning). These are portfolio-level analytical functions that cannot be expressed as simple condition tuples on individual instrument indicators.",
+  "translation_notes": "SCHWAGER_DRY_0_1 is a meta-strategy rule requiring portfolio analysis engine capabilities beyond single-instrument technical conditions. To implement: create a separate ranking module that scores instruments across the specified timeframe hierarchy, applies the 66% alignment threshold, enforces medium-term mandatory veto, and maintains peer group comparisons. This signal belongs in a higher-level portfolio orchestration layer rather than a single-instrument backtest engine."
 }

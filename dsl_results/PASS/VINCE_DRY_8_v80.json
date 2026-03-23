@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "portfolio_margin_constraint",
+      "threshold": null,
+      "direction": "constrained"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Multi-component portfolio optimal f aggregation. Calculate upper limit fraction U by summing component-level optimal f values (converted to dollars) and normalizing by total margin requirements across N components. Ensures aggressive sizing while respecting aggregate margin constraints. Formula: U = \u03a3[f$_i / \u03a3(margin$_i)] / N",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Calculate the upper limit fraction (U) of optimal f for a portfolio by dividing the sum of individual optimal f values adjusted for margin by the product of total margin requirements and number of components, ensuring aggressive trading within margin constraints."
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Flag pattern detection requires multi-bar pattern recognition (consolidation within a trend, duration measurement, volatility contraction, and slope analysis). The allowed indicators cannot directly detect: (1) the preceding steep trend segment, (2) the midpoint location within that trend, (3) precise pattern duration in bars, (4) price consolidation/range narrowing as a pattern shape. These require custom pattern detection logic beyond indicator-based rules.",
+  "translation_notes": "Attempted proxy: Used SMA crossover to detect trend direction and hvol_20 < current volume to detect volume decline. However, this does NOT capture the essential flag pattern characteristics: the consolidation shape, duration constraint (3-21 days), midpoint positioning, and the relationship to a preceding steep move. A true flag pattern detector requires bar-by-bar shape analysis unavailable in the indicator set. Success rate (64% bull, 23% avg rise) and failure rate (11% at 5%) noted from source but cannot be encoded without pattern recognition."
 }

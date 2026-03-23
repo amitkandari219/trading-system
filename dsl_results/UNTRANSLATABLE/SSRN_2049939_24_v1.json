@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_24",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires historical beta calculation and stock partitioning by beta percentile, which are not available in the allowed indicator list. Beta is a portfolio-level metric requiring rolling covariance with market returns over a lookback window, and stock cross-sectional ranking/partitioning. These require custom pre-processing and are not expressible using only the allowed OHLCV, technical, and simple return indicators.",
+  "translation_notes": "This is a factor-based cross-sectional strategy (low-beta vs high-beta arbitrage) that fundamentally requires: (1) rolling beta estimation for each stock, (2) cross-sectional ranking and partitioning, (3) portfolio-level beta rescaling to 1.0, and (4) zero-cost pairing. The rebalance_frequency is monthly and position_type is zero-cost as specified. Entry/exit conditions reference beta_percentile and monthly rebalance, but these calculations cannot be expressed with the available bar-level technical indicators."
+}

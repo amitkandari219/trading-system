@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2785541_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a pure ranking/decile-based momentum strategy that cannot be expressed as indicator thresholds. The core logic requires: (1) computing 12-month raw returns for all BSE-500 stocks, (2) ranking them, (3) selecting the top decile by percentile rank. This requires portfolio-level ranking logic, not individual stock technical indicators. The allowed indicator set does not support relative ranking across a universe of stocks or decile selection mechanics.",
+  "translation_notes": "Signal SSRN_2785541_5 is a 12x12 momentum strategy (12-month lookback, 12-month hold). Entry is defined by ranking into top decile, which is a cross-sectional operation unavailable in a single-stock rule engine. Recommend implementing as a custom portfolio ranking module rather than as threshold-based conditions on individual indicators."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "BULKOWSKI_MEASURE_RULE",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Measure rule requires multi-leg historical calculation: (1) identify first leg high-low range dynamically, (2) locate corrective phase lowest low, (3) calculate target as lowest_low + (0.5 \u00d7 first_leg_range). This requires lookback state tracking and custom calculation logic not expressible in single-bar indicator conditions. The pattern is fundamentally structural/multi-timeframe rather than indicator-based. Recommend: implement as custom pattern detector or use external indicator that outputs the calculated target price as a separate series.",
+  "translation_notes": null
+}

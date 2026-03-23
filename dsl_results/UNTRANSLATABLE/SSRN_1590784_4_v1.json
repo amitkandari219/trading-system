@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1590784_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires access to ARMA-GARCH model coefficients (\u03a61, \u03b21) and futures expiration day dummy variable (ExpD_t, NextD_t) which are not available in the allowed indicator list. These are econometric model parameters derived from statistical regression, not standard technical indicators. The signal logic cannot be expressed using only the allowed price-based, momentum, volatility, and volume indicators.",
+  "translation_notes": "The original signal is based on conditional mean/variance analysis using a fitted ARMA-GARCH model with event dummies for futures expiration. This requires: (1) real-time coefficient estimates from a rolling regression model, (2) calendar-based event identification (futures expiration dates), and (3) statistical significance testing. A practical backtest would need custom code to compute these coefficients or access to external data feeds providing expiration calendars and pre-computed ARMA-GARCH parameters. The placeholder conditions using returns direction represent directional pressure but do not capture the nuanced conditional volatility and mean reversion logic of the original signal."
+}

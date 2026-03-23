@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires bid-ask spread measurement (not in allowed indicators) and liquidity absorption capacity analysis (market depth/slippage testing not directly available). Volume and volatility proxies used as substitutes, but the full liquidity filtering logic cannot be precisely replicated with allowed indicators.",
+  "translation_notes": "Interpreted 'ADV exceeds 100,000' as volume > 100000. Bid-ask spread requirement cannot be directly expressed. Used hvol_20 < 0.02 (2% volatility) as inverse proxy for tight spread environment. Market absorption capacity (50% ADV without 2% slippage) requires order book depth data unavailable in indicator set. Stop-loss trigger set to volume < 25000 matching intraday liquidity drop condition."
 }

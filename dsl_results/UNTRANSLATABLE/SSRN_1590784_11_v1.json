@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1590784_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of GARCH model ExpD coefficient from variance equation (p < 0.01), which is an econometric parameter not available in the allowed indicator list. The signal is fundamentally based on statistical estimation from a fitted GARCH model, not on real-time price/volume indicators. hvol_20 (historical volatility) is the closest proxy but does not capture the specific ExpD coefficient significance test required by the original rule.",
+  "translation_notes": "Original signal identifies volatility spikes around futures expiration dates using GARCH variance equation coefficients. This requires backtesting engine access to fitted GARCH models and their parameters, which are not supported. The direction is BOTH because the rule applies to both long and short positions when volatility increases. Exit condition 'After futures expiration date' would require calendar-aware logic or explicit date input. Recommended approach: implement external GARCH model fitting pipeline or use hvol_20 > percentile(hvol_20, 75) as empirical substitute."
+}

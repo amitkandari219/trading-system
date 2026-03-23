@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires implied volatility percentile calculation, expected underlying move percentage forecast, and days-to-expiration (DTE) tracking - these are options-specific derivatives not available in the base indicator set. Additionally, the signal describes constructing spread positions (long wings) with specific risk-reward ratios and position sizing rules that require options pricing engine integration, not available in equity/futures backtest engine. Approximated IV percentile using india_vix range and ATR as move proxy, but this is NOT equivalent to the original signal intent.",
+  "translation_notes": "This is an options volatility signal that cannot be accurately translated to an equity/futures backtest engine. The core strategy requires: (1) IV percentile computation, (2) probability-weighted expected move calculation, (3) days-to-expiration tracking, (4) options spread construction and greeks management. Provided approximate translation uses india_vix as volatility regime proxy and ATR as move magnitude proxy, but loses the essential time-decay and spread construction logic. Recommend implementing this signal in an options-specific backtester with proper Greeks and extrinsic value tracking."
 }

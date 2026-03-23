@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of 'yearly high/low position' and 'candle end to breakout timing in days' which are not available in the allowed indicator set. Breakout timing (few days) cannot be precisely expressed without bar offset indexing. Success rates by market direction and specific performance metrics are marked AUTHOR_SILENT and cannot be translated.",
+  "translation_notes": "Approximated candlestick shadow breakout using upper_wick and lower_wick presence, with close breaking prev_high (long) or prev_low (short). Used 5-8 day hold window via hold_days_max=8. Exit conditions use 5% return threshold as proxy for trend end since specific exit criteria were author-silent. Context-dependent direction preserved. Cannot encode yearly position regime detection (bull candle in upper third vs bear candle in lower third) without additional indicator."
 }

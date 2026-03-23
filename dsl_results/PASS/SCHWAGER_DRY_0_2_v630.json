@@ -1,0 +1,72 @@
+{
+  "signal_id": "SCHWAGER_DRY_0_2",
+  "book_id": "SCHWAGER",
+  "dsl_rule": {
+    "signal_id": "SCHWAGER_DRY_0_2",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.25"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 2,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal detects Friday weakness after multi-day deterioration. Entry conditions: Friday close in lower 25% of range (price_pos_20 < 0.25) AND close below support level (s1). Short position captures downside hedge with 3% position size. Exit on Monday rally above Friday close (invalidates thesis) or 2-hour window + 2-day hold max. Prior day deterioration not directly expressible but captured by support test. Regime set to TRENDING_DOWN as signal is bearish continuation play."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.25
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 2,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Signal detects Friday weakness after multi-day deterioration. Entry conditions: Friday close in lower 25% of range (price_pos_20 < 0.25) AND close below support level (s1). Short position captures downside hedge with 3% position size. Exit on Monday rally above Friday close (invalidates thesis) or 2-hour window + 2-day hold max. Prior day deterioration not directly expressible but captured by support test. Regime set to TRENDING_DOWN as signal is bearish continuation play."
+  },
+  "source_rule_text": "A trader should use Friday's market action as a predictive signal for Monday's opening direction and magnitude, and hedge downside risk when Friday confirms weakness after prior days of deterioration."
+}

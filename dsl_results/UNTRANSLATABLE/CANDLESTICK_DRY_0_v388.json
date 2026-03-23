@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires explicit Doji pattern detection and gap-down identification. Doji requires body_pct close to 0 and roughly equal upper/lower wicks\u2014approximated via body_pct threshold. Gap-down (prev_close vs current open) cannot be directly expressed with allowed operators. Volume confirmation parameters are directional/regime-specific percentages (7.63%, 7.90%, etc.) that represent expected returns rather than entry thresholds; these appear to be statistical backtests results rather than entry conditions, making them untranslatable to rule format.",
+  "translation_notes": "Doji approximated as very small body (body_pct < 0.05). Breakout direction split into entry_long (breakout above) and entry_short (breakout below). Gap-down occurrence cannot be detected with allowed operators. Volume confirmation translated as volume > 20-period high volume. Exit conditions reversed as countertrend close. The percentage parameters in original signal represent historical performance metrics, not actionable thresholds."
 }

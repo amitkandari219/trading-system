@@ -1,0 +1,34 @@
+{
+  "signal_id": "VINCE_DRY_2",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "equity_daily",
+      "threshold": null,
+      "direction": "above_threshold_T",
+      "note": "T = optimal_f / abs(biggest_loss / -optimal_f)"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Ralph Vince optimal f method: Contracts = floor(Equity / (Biggest Loss / -optimal_f)) + 1. Requires optimal_f parameter (e.g., 0.4, 0.50) and absolute value of biggest historical loss. Recalculated daily after equity updates.",
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "formula": "floor(Equity / (abs(Biggest_Loss) / optimal_f)) + 1",
+    "required_parameters": [
+      "optimal_f",
+      "biggest_historical_loss"
+    ]
+  },
+  "source_rule_text": "Position size is calculated by dividing remaining equity by the ratio of biggest historical loss to optimal f, rounding down to integer and adding 1"
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires market regime detection (BULL/BEAR) and breakout direction detection (UP/DOWN) that are not available in the allowed indicators list. The rule also requires dynamic threshold selection from Table 23.3 based on 4 different regime combinations, which cannot be expressed as static conditions. Additionally, the candle height calculation requires context-dependent reference points (candle's high for upward breakouts vs candle's low for downward breakouts) that cannot be conditionally selected with the allowed operators.",
+  "translation_notes": "This is a context-dependent pattern recognition rule that requires: (1) prior detection of market regime (BULL vs BEAR), (2) prior detection of breakout direction (UP vs DOWN), and (3) conditional logic to select different thresholds. The 'range' indicator represents (high - low) but the normalization by 'breakout price' and regime-dependent threshold selection cannot be implemented without additional indicators or conditional branching logic."
 }

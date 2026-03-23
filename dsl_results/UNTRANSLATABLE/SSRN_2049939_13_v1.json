@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a fixed-income multi-leg factor strategy requiring: (1) beta calculation across Treasury bond maturity buckets (1Y vs >10Y), (2) portfolio-level construction and weighting, (3) relative positioning (long vs short different maturity instruments). The allowed indicators are equity price/technical indicators and do not include bond-specific metrics (duration, yield curve positioning, beta by maturity bucket, Treasury excess returns). The strategy cannot be expressed as simple price/indicator thresholds on a single instrument.",
+  "translation_notes": "BAB strategy requires constructing two separate Treasury bond portfolios with different maturity/beta characteristics and executing a pairs trade. This is a portfolio-construction and asset-allocation strategy, not a single-instrument technical signal. Implementation requires: (1) daily/monthly beta estimation on Treasury bond indices by maturity, (2) portfolio weighting optimization, (3) cross-asset relative value logic. Recommended approach: implement as a separate module using Treasury bond index data (e.g., 1Y and 10Y+ Treasury indices) with explicit beta calculations rather than technical indicators."
+}

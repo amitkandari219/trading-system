@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_31",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires factor-based portfolio construction (beta ranking, low-beta vs high-beta portfolio formation, cross-sectional ranking, and volatility rescaling) which cannot be expressed using single-instrument technical indicators. The backtest engine requires: (1) calculation of rolling 36-month beta estimates across multiple instruments, (2) ranking instruments by beta quintiles, (3) portfolio-level rebalancing with rescaling to target volatility, and (4) simultaneous long/short positions across portfolios. This is a systematic factor strategy requiring multi-asset portfolio logic, not a single-instrument entry/exit rule.",
+  "translation_notes": "Signal SSRN_2049939_31 ('Betting Against Beta') is a well-known academic factor strategy that requires portfolio-level construction and rebalancing. It cannot be translated into the single-instrument condition format of this backtest engine. Implementation requires: monthly rebalancing at calendar month start, rolling beta estimation window of 36 months, target portfolio volatility of 10% annualized, and dual portfolio formation (long low-beta, short high-beta). Consider implementing as a separate portfolio-level strategy module or multi-leg derivative strategy with dynamic hedging."
+}

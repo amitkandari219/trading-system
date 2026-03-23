@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_5",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "volatility_adjusted_time_decay",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Position sizing for options scales inversely to volatility and adjusts for time decay using formula U*EXP(X*(V*T^(1/2))). Account for probability of underlying reaching strike using option pricing models. Author silent on optimal_f, Kelly fraction, and max drawdown tolerance thresholds.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position sizing for options should account for time to expiration (T) and probability of underlying reaching strike price, calculated using option pricing models with volatility adjustment."
+}

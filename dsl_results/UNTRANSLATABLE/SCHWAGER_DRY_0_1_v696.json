@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires IV Rank (percentile-based implied volatility ranking) and expected price move forecast (30-day directional move prediction), neither of which are available in the allowed indicator set. India VIX used as proxy for volatility level only, but does not capture IV Rank percentile or expected directional move magnitude. Option strategy selection logic (sell vs buy calls/puts based on regime) cannot be fully encoded in entry/exit rules.",
+  "translation_notes": "This is a regime-dependent meta-strategy rather than a mechanical entry/exit signal. The core logic requires: (1) IV Rank percentile calculation (not available), (2) Expected move forecasting (not available), and (3) Dynamic strategy selection based on regime. Partial translation uses India VIX as volatility proxy and ADX for trend detection, but the signal's premium-selling vs directional-buying decision cannot be fully mechanized without IV percentile rank and expected move forecasts. Entry/exit shown for sell-premium regime only (sideways market). User should treat this as a framework requiring manual regime assessment."
 }

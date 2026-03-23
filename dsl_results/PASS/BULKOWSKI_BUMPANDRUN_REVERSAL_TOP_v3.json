@@ -1,0 +1,105 @@
+{
+  "signal_id": "BULKOWSKI_BUMPANDRUN_REVERSAL_TOP",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Bump-and-run reversal top",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_BUMPANDRUN_REVERSAL_TOP",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.75"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "65"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      },
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "body"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.5,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.75
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 65.0
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      },
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "body"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.035,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_BUMPANDRUN_REVERSAL_TOP"
+  },
+  "source_rule_text": "Bump-and-run reversal top: A pattern showing increasing momentum with steeper sloping trend lines that eventually fails to make a significant new high, signaling a trend change and reversal opportunity"
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires ranking constituents by a custom 12-month momentum metric (log(price_t-1 / price_t-12)) and selecting top-ranked stocks. This cross-sectional ranking and relative selection logic cannot be expressed using point-in-time indicator comparisons. The backtest engine would need portfolio construction and ranking capabilities beyond single-instrument indicator conditions. The signal also requires: (1) measuring momentum over a 12-month period excluding the last month, (2) ranking NIFTY100 constituents against each other, and (3) selecting a portfolio based on that ranking\u2014none of which are expressible with the allowed operators and indicators.",
+  "translation_notes": "This is a factor-based, cross-sectional momentum strategy that requires portfolio-level ranking logic. The allowed indicator set is designed for single-instrument technical analysis (RSI, moving averages, etc.) and cannot express: (a) custom lookback calculations like log(price_t-1 / price_t-12), (b) relative ranking across a universe of stocks, or (c) portfolio selection by rank. A proper implementation would require access to a ranking/sorting function at the portfolio construction level, not condition-based entry/exit rules."
+}

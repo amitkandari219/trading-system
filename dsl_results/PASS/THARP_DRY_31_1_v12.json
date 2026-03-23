@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_31_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "R_MULTIPLE",
+    "base_risk_pct": 0.025,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "cumulative_position_value_vs_margin",
+      "threshold": 1.0,
+      "direction": "below"
+    },
+    "max_risk_pct": 0.025,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size = max acceptable risk ($) / stop-loss distance ($). Based on 2.5% risk per trade. Must verify cumulative positions do not exceed margin capacity.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should calculate position size by dividing maximum acceptable risk per trade (as a dollar amount) by the stop-loss distance, and verify that cumulative position sizes do not exceed the account's actual buying power or margin capacity."
+}

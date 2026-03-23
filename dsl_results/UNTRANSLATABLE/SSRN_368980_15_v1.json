@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_368980_15",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires put/call ratio derived from options open sell volume data. This is not a price-based technical indicator and cannot be calculated from OHLCV price data alone. The signal depends on external options market microstructure data (put/call ratio by investor class) which is not available in the standard indicator set.",
+  "translation_notes": "The core signal logic (sort by put/call ratio, long top decile, short bottom decile) is fundamentally untranslatable within a price-based backtester. A placeholder rule using volume > 50 contracts is provided as a structural template, but this does NOT capture the actual put/call ratio sorting mechanism. To implement this signal properly, the backtester would need access to: (1) options open sell volume aggregated by investor class, (2) put/call ratio calculations, and (3) cross-sectional decile ranking by this metric."
+}

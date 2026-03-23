@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "This signal is a meta-rule about backtesting methodology and sample validation, not a tradeable technical condition. It requires tracking historical sample statistics (minimum 100 market moves with directional split validation) and system performance metrics across collected data. These are backtesting framework requirements, not indicator-based entry/exit conditions. The signal describes pre-trading validation steps rather than real-time price/indicator thresholds that can be expressed with allowed indicators and operators.",
-  "translation_notes": "THARP_DRY_12_0 is a portfolio construction and due diligence rule from 'Trade Your Way to Financial Freedom'. It mandates: (1) select timeframe, (2) collect \u2265100 market samples, (3) ensure \u226545% up moves AND \u226545% down moves (max 10% skew), (4) backtest system against collected moves, (5) only then deploy live. This is a framework constraint, not a signal expression. Implementation requires custom backtesting logic to validate sample adequacy before any position entry rules apply."
+  "untranslatable_reason": "Not a sizing rule. This is a regime validation/filter rule that establishes preconditions for system deployment (statistical sample adequacy). It describes when a system is ready to trade, not how to size positions. Position sizing rules specify dollar amounts, percentages, or multiplicative adjustments per trade. This rule is an entry condition (system readiness check) and belongs in standard DSL, not position sizing.",
+  "translation_notes": null
 }

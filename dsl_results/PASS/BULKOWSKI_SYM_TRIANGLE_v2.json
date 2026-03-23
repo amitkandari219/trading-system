@@ -1,0 +1,95 @@
+{
+  "signal_id": "BULKOWSKI_SYM_TRIANGLE",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Symmetrical Triangle - Partial Rise in Bear Market",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_SYM_TRIANGLE",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_200"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.7"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_200"
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.7
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "DSL translation of BULKOWSKI_SYM_TRIANGLE"
+  },
+  "source_rule_text": "Symmetrical Triangle - Partial Rise in Bear Market: When a partial rise occurs within the formation (not touching or coming too close to the upper trend line) and price begins heading back down, short the stock for a downward breakout."
+}

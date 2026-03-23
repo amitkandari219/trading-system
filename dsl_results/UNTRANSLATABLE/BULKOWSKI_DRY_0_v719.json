@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires identifying: (1) a prior doubling of price (requires historical price comparison not available in standard indicators), (2) explicit consolidation region detection (requires pattern recognition beyond point-in-time indicators), (3) falling volume trend over consolidation period (requires multi-bar trend analysis). The 'consolidation lasts several days to several weeks' duration requirement and 'stock doubles in price' prerequisite cannot be expressed using only the allowed point-in-time indicators and operators. Price target and stop loss placement are marked AUTHOR_SILENT in source. Regime labels BULL_MARKET/BEAR_MARKET are not in ALLOWED_REGIMES list.",
+  "translation_notes": "Attempted approximation: Entry uses close price breakout above Donchian upper (proxy for upward breakout), combined with volume condition (vol < hvol_20 approximates light/falling volume). Exit uses Donchian lower crossing. However, the core pattern requirement (post-doubling consolidation) cannot be detected without historical multi-bar analysis. Success rates (64% bull, 42% bear move) and failure rates are informational only and not encoded in rules. This translation is incomplete and should not be used without manual pattern detection overlay."
 }

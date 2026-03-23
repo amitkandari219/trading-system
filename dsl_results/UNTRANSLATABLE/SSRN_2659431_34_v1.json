@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_34",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic volatility regime detection and position sizing/exposure scaling based on volatility levels. The available indicators (hvol_20) can detect volatility changes, but the rule semantically requires: (1) calculation of volatility mean/threshold for 'above average' vs 'below average' determination, and (2) continuous exposure adjustment (not binary entry/exit), which cannot be expressed as discrete entry/exit conditions. The signal is volatility-scaling logic (continuous risk management) rather than a traditional entry/exit rule.",
+  "translation_notes": "This signal describes a volatility-responsive portfolio management strategy rather than discrete trading signals. It would require a custom position-sizing module that adjusts leverage/exposure inversely to hvol_20 levels, not traditional binary entry/exit rules. Consider implementing as a separate risk management overlay rather than backtest entry/exit conditions."
+}

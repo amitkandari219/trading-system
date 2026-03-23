@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires tracking of multi-leg options structures (long volatility back months vs short volatility front months) with specific time-to-expiration monitoring and profit targets by leg. The backtesting engine does not support: (1) options Greeks tracking (implied volatility, calendar spread positioning), (2) multi-leg position management with separate profit targets per leg, (3) theta decay monitoring by month, (4) asymmetric volatility structure construction. Additionally, the 3-day rolling range comparison (vs 20-day ATR average) and 75% theta decay exit condition cannot be expressed with allowed indicators and operators. This is a complex derivatives strategy requiring options-specific backtesting infrastructure.",
+  "translation_notes": "Attempted to capture volatility spike entry (3-day range > 1x ATR via true_range comparison, 1.8% intraday swing via range check) and decay exit (hvol_20 decay signal), but core signal logic is options structure-dependent and unmappable to equity/price-based indicators alone."
 }

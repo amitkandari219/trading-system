@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires multi-day (3-day) sequential pattern analysis: (1) Day 1 decline, (2) Day 2 no bounce/churn, (3) Day 3 crack, (4) no intraday bounce above Day 1 close. The allowed indicators lack explicit multi-bar lookback with relative comparisons (e.g., close[i] vs close[i-1] vs close[i-2]). The entry condition 'No intraday bounce on Friday above Day 1 close' cannot be expressed without access to intraday data or indexed bar arrays. Additionally, the hedge instruction (buy OTM puts) is a portfolio action, not a price-based signal, and option Greeks are not in the allowed indicator set.",
+  "translation_notes": "This is a complex 3-day deterioration pattern with options hedging. The core logic attempts a SHORT entry when recent closes decline without recovery, but the full semantics of: (a) confirming exact 3-day sequence, (b) detecting 'no intraday bounce' relative to a specific prior bar's close, and (c) executing put protection cannot be fully captured with the current indicator vocabulary. The signal is better suited for event-driven or rule-engine systems with explicit bar-by-bar state tracking and options pricing."
 }

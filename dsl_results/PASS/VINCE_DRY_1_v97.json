@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_1",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": 0.4,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "equity_change_pct",
+      "threshold": "variable_by_account_size",
+      "direction": "above",
+      "note": "Smaller accounts ($50k) trigger at 50% equity change; larger accounts ($500k) trigger at 1% equity change"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Fixed fractional position sizing using optimal f=0.4 with adjustment frequency inversely proportional to account size. Adjustment threshold scales with account magnitude: smaller accounts rebalance less frequently (50% equity swings), larger accounts rebalance more frequently (1% equity swings). Formula: Adjustment_Frequency = Base_Account_Size / Current_Account_Size.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Adjust position size based on equity changes using fixed fractional trading, where larger accounts require adjustments at smaller percentage equity changes than smaller accounts"
+}

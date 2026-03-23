@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "BAB (Betting Against Beta) is a cross-sectional factor strategy requiring: (1) historical beta calculation across the entire stock universe, (2) ranking stocks by beta deciles/terciles, (3) portfolio-level construction with leverage constraints (long $1.5 low-beta financed by short $1.5 risk-free; short $0.7 high-beta earning $0.7 risk-free). The allowed indicators set contains only single-stock technical measures (RSI, MACD, Bollinger Bands, etc.) and does not include: beta calculation, cross-sectional ranking, portfolio weighting, leverage mechanics, or risk-free rate incorporation. This strategy cannot be expressed as bar-by-bar entry/exit rules on individual instruments.",
+  "translation_notes": "This is a smart-beta/factor premium strategy operating at the portfolio construction level, not a price-action or technical indicator-based entry/exit system. Implementation requires a factor model engine, not a standard backtest rule engine. Consider: (1) Pre-calculate historical rolling beta for each stock in universe, (2) Implement custom portfolio rebalancing logic with leverage constraints, (3) Use a multi-leg execution engine for long/short positions with financing mechanics."
+}

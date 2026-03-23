@@ -1,0 +1,108 @@
+{
+  "signal_id": "THARP_DRY_18_1",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "50"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "50"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "50"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "50"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal emphasizes multi-indicator confirmation across different data types (PRICE_ACTION + MOMENTUM). Implemented as: (1) Price-action via MA crossover on close/sma_20 detecting retracement setup in trend, (2) Momentum confirmation via RSI_14 (different data type). Tight stops enforced via 2.0% stop_loss_pct constraint (aligns with 2:1 RR requirement). Exit triggers on momentum reversal (RSI crossing 50). Regime limited to TRENDING states per signal specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 50.0
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 50.0
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 50.0
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 50.0
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal emphasizes multi-indicator confirmation across different data types (PRICE_ACTION + MOMENTUM). Implemented as: (1) Price-action via MA crossover on close/sma_20 detecting retracement setup in trend, (2) Momentum confirmation via RSI_14 (different data type). Tight stops enforced via 2.0% stop_loss_pct constraint (aligns with 2:1 RR requirement). Exit triggers on momentum reversal (RSI crossing 50). Regime limited to TRENDING states per signal specification."
+  },
+  "source_rule_text": "A trader should use the simplest system possible, but add multiple indicators only when each is based on fundamentally different data types, to improve market trading performance without introducing noise."
+}

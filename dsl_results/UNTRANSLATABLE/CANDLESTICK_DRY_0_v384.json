@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires comparison of current candle position relative to yearly low/high (52-week range), which requires dc_upper and dc_lower Donchian indicators for yearly extremes. Also requires market regime detection (Bull vs Bear market) and conditional logic based on breakout direction that cannot be fully expressed with single AND/OR logic. The performance varies by regime and breakout direction in ways that require multi-leg conditional branching not supported by the schema.",
+  "translation_notes": "Translated gapping down doji pattern as: small body (body_pct < 0.1), lower wick longer than upper wick, and gap down (close < prev_close). Exit conditions use reversal logic. However, the critical position-relative-to-yearly-low/high context and regime-dependent performance metrics cannot be properly encoded without yearly high/low indicators and conditional regime logic. Parameters show average returns by regime: bull up +7.35-7.64%, bull down -5.66-6.01%, bear up +9.68-10.10%. Recommend implementing as multi-condition rule set with separate entries for each regime."
 }

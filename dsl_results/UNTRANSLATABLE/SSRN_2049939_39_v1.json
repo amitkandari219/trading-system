@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_39",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a factor-based multi-asset portfolio construction signal requiring: (1) beta calculation across a universe of corporate bonds, (2) portfolio ranking and partitioning by beta quintiles, (3) inverse-beta weighting scheme, (4) portfolio-level beta rescaling to target of 1.0. These require cross-sectional bond universe operations, systematic beta estimation, and dynamic weight allocation that cannot be expressed using single-asset technical indicators (close, sma_50, rsi_14, etc.). The signal also references corporate bond indices rather than equities, outside typical OHLCV price-based indicator scope.",
+  "translation_notes": "BAB (Betting Against Beta) is a systematic factor strategy that requires: aggregated beta calculations across a bond universe, ranking/sorting operations, inverse weighting by beta, and portfolio normalization. This exceeds the capabilities of the allowed indicator set, which is designed for single-instrument price/momentum/volatility analysis. To implement this signal, the backtest engine would need custom bond beta estimators, cross-sectional portfolio construction methods, and multi-asset rebalancing logic."
+}

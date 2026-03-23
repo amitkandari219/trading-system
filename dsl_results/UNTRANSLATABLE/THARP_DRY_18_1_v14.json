@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires identification of pullback retracement depth (38.2-50% of prior trend move) and swing highs, which require multi-bar lookback logic and relative price comparison not expressible with single-bar indicators. ATR-based stop loss calculation (0.7 ATR below pullback low) requires prior swing low tracking.",
+  "translation_notes": "Translated core logic: (1) trend direction via SMA_20 (25-period MA proxy), (2) resumption confirmation via price close in trend direction, (3) volume filter via volume >= SMA_10. Exit conditions use MA crossover and reversal bar formation (body_pct > 50%). Direction marked CONTEXT_DEPENDENT per signal specification. Stop loss scaled to 0.7 as proportional ATR multiple; actual implementation requires dynamic swing low calculation."
 }

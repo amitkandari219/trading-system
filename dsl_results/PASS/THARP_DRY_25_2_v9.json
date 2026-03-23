@@ -1,0 +1,24 @@
+{
+  "signal_id": "THARP_DRY_25_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.05,
+    "r_multiple_stop": 1.0,
+    "max_risk_pct": 0.05,
+    "scale_down_multiplier": null,
+    "trigger_condition": {
+      "metric": "drawdown_pct",
+      "threshold": 0.08,
+      "direction": "above"
+    },
+    "applies_to": "VOLATILE",
+    "confidence": "HIGH",
+    "note": "Risk maximum 5% per trade (max_loss_per_trade_percent). The rule emphasizes protective stops at entry (volatility, MAE, channel-based) rather than periodic reassessment, implying fixed fractional sizing with strict per-trade risk limits. The 8% MAE stop indicates a reasonable stop placement for sizing calibration.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should establish multiple protective stop mechanisms at entry\u2014such as volatility stops, MAE stops, or channel-based stops\u2014rather than relying on periodic portfolio reassessment alone, to avoid serious drawdowns in volatile or illiquid positions."
+}

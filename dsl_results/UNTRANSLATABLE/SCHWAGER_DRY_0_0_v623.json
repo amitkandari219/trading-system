@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires precise IV percentile calculation, DTE measurement, straddle pricing, and wing boundary monitoring \u2014 none of which are directly available in the allowed indicator set. India_vix and hvol_20 are proxies but cannot replicate IV percentile, expected move %, DTE-based entry/exit, or wings-specific exit conditions. Position sizing rule (1-2% per spread) and 50% max-profit exit also require trade-level tracking not available in bar-based indicators.",
+  "translation_notes": "Attempted proxy mapping: 'IV percentile < 25' \u2192 india_vix < 25; 'Expected move < 1%' \u2192 hvol_20 < 0.01 + atr_14 < 0.01; 'IV > 50th percentile' \u2192 india_vix > 50. However, this is a significant oversimplification. The original signal is designed for options spread construction with time-decay and volatility regime context that cannot be faithfully reproduced using only price-bar and generic volatility indicators. Recommend: (1) add explicit IV percentile rank indicator, (2) add DTE counter, (3) add options-chain pricing capability, or (4) mark signal as OPTIONS_ONLY and exclude from equity backtest engine."
 }

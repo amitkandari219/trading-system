@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'open-buy put-call ratio' calculated from option volume data. This is an options-market derived metric not available in the standard equity price/volume indicators list. The signal also requires explicit tracking of put vs. call volume shifts and directional transitions, which cannot be constructed from the allowed indicators (price, moving averages, RSI, ATR, Bollinger, MACD, ADX, Stochastic, Donchian, Pivots, vol_ratio_20, hvol_20, india_vix, etc.). A proxy using vol_ratio_20 has been provided but does not capture the put-call dynamics.",
+  "translation_notes": "The core logic (bullish shift = long entry, bearish shift = short entry) has been approximated using vol_ratio_20 as a volume sentiment proxy. However, this does NOT replicate the put-call ratio mechanic. Holding period set to 1-5 days with exponential decay conceptually applied via standard exit conditions. For accurate implementation, a custom put-call ratio indicator must be added to the backtest engine."
+}

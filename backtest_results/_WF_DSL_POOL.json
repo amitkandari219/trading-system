@@ -1,0 +1,2506 @@
+{
+  "summary": {
+    "total_tested": 7,
+    "tier_a": 0,
+    "tier_b": 2,
+    "dropped": 5,
+    "window_regimes": {
+      "RANGING": 14,
+      "TRENDING_UP": 8,
+      "HIGH_VOL": 4
+    }
+  },
+  "tier_a": [],
+  "tier_b": [
+    {
+      "signal_id": "SSRN_WEEKLY_MOM",
+      "book_id": "SSRN-3065621",
+      "tier": "TIER_B",
+      "reason": null,
+      "windows_passed": 21,
+      "total_windows": 26,
+      "pass_rate": 0.8076923076923077,
+      "last4_passed": 4,
+      "last4_rate": 1.0,
+      "aggregate_sharpe": 1.694619691638005,
+      "active_windows": 26,
+      "mean_sharpe": 2.09,
+      "median_sharpe": 2.42,
+      "worst_dd": 0.233,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 13,
+          "pass_rate": 0.9285714285714286,
+          "avg_sharpe": 2.69,
+          "total_trades": 505
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 6,
+          "pass_rate": 0.75,
+          "avg_sharpe": 1.6,
+          "total_trades": 318
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 2,
+          "pass_rate": 0.5,
+          "avg_sharpe": 0.98,
+          "total_trades": 164
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_5"
+          },
+          {
+            "indicator": "returns",
+            "op": ">",
+            "value": 0
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_5"
+          }
+        ],
+        "exit_short": [],
+        "regime_filter": [],
+        "hold_days": 5,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "LONG"
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "test_start": "2018-11-16",
+          "test_end": "2019-11-16",
+          "sharpe": 3.914,
+          "max_dd": 0.073,
+          "win_rate": 0.471,
+          "trades": 34,
+          "passed": true
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-02-15",
+          "test_end": "2020-02-15",
+          "sharpe": 1.115,
+          "max_dd": 0.073,
+          "win_rate": 0.432,
+          "trades": 37,
+          "passed": true
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-05-16",
+          "test_end": "2020-05-16",
+          "sharpe": -5.142,
+          "max_dd": 0.223,
+          "win_rate": 0.342,
+          "trades": 38,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-08-16",
+          "test_end": "2020-08-16",
+          "sharpe": -1.043,
+          "max_dd": 0.233,
+          "win_rate": 0.425,
+          "trades": 40,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-11-15",
+          "test_end": "2020-11-15",
+          "sharpe": -0.22,
+          "max_dd": 0.216,
+          "win_rate": 0.405,
+          "trades": 42,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-02-14",
+          "test_end": "2021-02-14",
+          "sharpe": 2.017,
+          "max_dd": 0.183,
+          "win_rate": 0.452,
+          "trades": 42,
+          "passed": true
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-05-15",
+          "test_end": "2021-05-15",
+          "sharpe": 3.151,
+          "max_dd": 0.177,
+          "win_rate": 0.5,
+          "trades": 40,
+          "passed": true
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "test_start": "2020-08-14",
+          "test_end": "2021-08-14",
+          "sharpe": 2.941,
+          "max_dd": 0.144,
+          "win_rate": 0.487,
+          "trades": 39,
+          "passed": true
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "test_start": "2020-11-16",
+          "test_end": "2021-11-16",
+          "sharpe": 1.834,
+          "max_dd": 0.128,
+          "win_rate": 0.45,
+          "trades": 40,
+          "passed": true
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "test_start": "2021-02-16",
+          "test_end": "2022-02-16",
+          "sharpe": 0.372,
+          "max_dd": 0.111,
+          "win_rate": 0.436,
+          "trades": 39,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "test_start": "2021-05-14",
+          "test_end": "2022-05-14",
+          "sharpe": 3.076,
+          "max_dd": 0.097,
+          "win_rate": 0.472,
+          "trades": 36,
+          "passed": true
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "test_start": "2021-08-16",
+          "test_end": "2022-08-16",
+          "sharpe": 4.663,
+          "max_dd": 0.089,
+          "win_rate": 0.529,
+          "trades": 34,
+          "passed": true
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "test_start": "2021-11-16",
+          "test_end": "2022-11-16",
+          "sharpe": 3.133,
+          "max_dd": 0.074,
+          "win_rate": 0.472,
+          "trades": 36,
+          "passed": true
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "test_start": "2022-02-16",
+          "test_end": "2023-02-16",
+          "sharpe": 2.082,
+          "max_dd": 0.077,
+          "win_rate": 0.368,
+          "trades": 38,
+          "passed": true
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "test_start": "2022-05-16",
+          "test_end": "2023-05-16",
+          "sharpe": 3.137,
+          "max_dd": 0.085,
+          "win_rate": 0.359,
+          "trades": 39,
+          "passed": true
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-08-16",
+          "test_end": "2023-08-16",
+          "sharpe": 0.468,
+          "max_dd": 0.074,
+          "win_rate": 0.279,
+          "trades": 43,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-11-16",
+          "test_end": "2023-11-16",
+          "sharpe": 1.743,
+          "max_dd": 0.071,
+          "win_rate": 0.326,
+          "trades": 43,
+          "passed": true
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-02-16",
+          "test_end": "2024-02-16",
+          "sharpe": 4.122,
+          "max_dd": 0.035,
+          "win_rate": 0.405,
+          "trades": 42,
+          "passed": true
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-05-16",
+          "test_end": "2024-05-16",
+          "sharpe": 3.992,
+          "max_dd": 0.034,
+          "win_rate": 0.439,
+          "trades": 41,
+          "passed": true
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "test_start": "2023-08-16",
+          "test_end": "2024-08-16",
+          "sharpe": 1.872,
+          "max_dd": 0.084,
+          "win_rate": 0.487,
+          "trades": 39,
+          "passed": true
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "test_start": "2023-11-16",
+          "test_end": "2024-11-16",
+          "sharpe": 2.511,
+          "max_dd": 0.082,
+          "win_rate": 0.472,
+          "trades": 36,
+          "passed": true
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "test_start": "2024-02-16",
+          "test_end": "2025-02-16",
+          "sharpe": 0.998,
+          "max_dd": 0.073,
+          "win_rate": 0.441,
+          "trades": 34,
+          "passed": true
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "test_start": "2024-05-16",
+          "test_end": "2025-05-16",
+          "sharpe": 2.339,
+          "max_dd": 0.071,
+          "win_rate": 0.471,
+          "trades": 34,
+          "passed": true
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "test_start": "2024-08-16",
+          "test_end": "2025-08-16",
+          "sharpe": 3.061,
+          "max_dd": 0.045,
+          "win_rate": 0.382,
+          "trades": 34,
+          "passed": true
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "test_start": "2024-11-15",
+          "test_end": "2025-11-15",
+          "sharpe": 4.173,
+          "max_dd": 0.046,
+          "win_rate": 0.455,
+          "trades": 33,
+          "passed": true
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "test_start": "2025-02-14",
+          "test_end": "2026-02-14",
+          "sharpe": 4.103,
+          "max_dd": 0.036,
+          "win_rate": 0.471,
+          "trades": 34,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "signal_id": "SSRN_JANUARY_EFFECT",
+      "book_id": "SSRN-1150080",
+      "tier": "TIER_B",
+      "reason": null,
+      "windows_passed": 19,
+      "total_windows": 26,
+      "pass_rate": 0.7307692307692307,
+      "last4_passed": 4,
+      "last4_rate": 1.0,
+      "aggregate_sharpe": 1.0640249860420077,
+      "active_windows": 26,
+      "mean_sharpe": 3.36,
+      "median_sharpe": 2.72,
+      "worst_dd": 0.359,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 11,
+          "pass_rate": 0.7857142857142857,
+          "avg_sharpe": 3.38,
+          "total_trades": 187
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 6,
+          "pass_rate": 0.75,
+          "avg_sharpe": 3.86,
+          "total_trades": 108
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 2,
+          "pass_rate": 0.5,
+          "avg_sharpe": 2.34,
+          "total_trades": 66
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "returns",
+            "op": ">",
+            "value": -0.99
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [],
+        "exit_short": [],
+        "regime_filter": [],
+        "hold_days": 22,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0,
+        "direction": "LONG"
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "test_start": "2018-11-16",
+          "test_end": "2019-11-16",
+          "sharpe": 3.146,
+          "max_dd": 0.103,
+          "win_rate": 0.615,
+          "trades": 13,
+          "passed": true
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-02-15",
+          "test_end": "2020-02-15",
+          "sharpe": 2.831,
+          "max_dd": 0.104,
+          "win_rate": 0.571,
+          "trades": 14,
+          "passed": true
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-05-16",
+          "test_end": "2020-05-16",
+          "sharpe": -4.335,
+          "max_dd": 0.356,
+          "win_rate": 0.278,
+          "trades": 18,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-08-16",
+          "test_end": "2020-08-16",
+          "sharpe": -1.609,
+          "max_dd": 0.359,
+          "win_rate": 0.353,
+          "trades": 17,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-11-15",
+          "test_end": "2020-11-15",
+          "sharpe": -0.092,
+          "max_dd": 0.336,
+          "win_rate": 0.389,
+          "trades": 18,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-02-14",
+          "test_end": "2021-02-14",
+          "sharpe": 1.783,
+          "max_dd": 0.305,
+          "win_rate": 0.421,
+          "trades": 19,
+          "passed": true
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-05-15",
+          "test_end": "2021-05-15",
+          "sharpe": 9.281,
+          "max_dd": 0.107,
+          "win_rate": 0.667,
+          "trades": 12,
+          "passed": true
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "test_start": "2020-08-14",
+          "test_end": "2021-08-14",
+          "sharpe": 8.396,
+          "max_dd": 0.084,
+          "win_rate": 0.615,
+          "trades": 13,
+          "passed": true
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "test_start": "2020-11-16",
+          "test_end": "2021-11-16",
+          "sharpe": 8.548,
+          "max_dd": 0.074,
+          "win_rate": 0.615,
+          "trades": 13,
+          "passed": true
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "test_start": "2021-02-16",
+          "test_end": "2022-02-16",
+          "sharpe": 2.599,
+          "max_dd": 0.081,
+          "win_rate": 0.643,
+          "trades": 14,
+          "passed": true
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "test_start": "2021-05-14",
+          "test_end": "2022-05-14",
+          "sharpe": 0.418,
+          "max_dd": 0.176,
+          "win_rate": 0.5,
+          "trades": 16,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "test_start": "2021-08-16",
+          "test_end": "2022-08-16",
+          "sharpe": -0.573,
+          "max_dd": 0.216,
+          "win_rate": 0.375,
+          "trades": 16,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "test_start": "2021-11-16",
+          "test_end": "2022-11-16",
+          "sharpe": 0.089,
+          "max_dd": 0.161,
+          "win_rate": 0.5,
+          "trades": 16,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "test_start": "2022-02-16",
+          "test_end": "2023-02-16",
+          "sharpe": 0.735,
+          "max_dd": 0.122,
+          "win_rate": 0.4,
+          "trades": 15,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "test_start": "2022-05-16",
+          "test_end": "2023-05-16",
+          "sharpe": 4.496,
+          "max_dd": 0.102,
+          "win_rate": 0.583,
+          "trades": 12,
+          "passed": true
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-08-16",
+          "test_end": "2023-08-16",
+          "sharpe": 2.499,
+          "max_dd": 0.075,
+          "win_rate": 0.583,
+          "trades": 12,
+          "passed": true
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-11-16",
+          "test_end": "2023-11-16",
+          "sharpe": 2.481,
+          "max_dd": 0.054,
+          "win_rate": 0.583,
+          "trades": 12,
+          "passed": true
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-02-16",
+          "test_end": "2024-02-16",
+          "sharpe": 8.556,
+          "max_dd": 0.035,
+          "win_rate": 0.75,
+          "trades": 12,
+          "passed": true
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-05-16",
+          "test_end": "2024-05-16",
+          "sharpe": 10.847,
+          "max_dd": 0.034,
+          "win_rate": 0.727,
+          "trades": 11,
+          "passed": true
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "test_start": "2023-08-16",
+          "test_end": "2024-08-16",
+          "sharpe": 8.111,
+          "max_dd": 0.037,
+          "win_rate": 0.667,
+          "trades": 12,
+          "passed": true
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "test_start": "2023-11-16",
+          "test_end": "2024-11-16",
+          "sharpe": 5.218,
+          "max_dd": 0.078,
+          "win_rate": 0.615,
+          "trades": 13,
+          "passed": true
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "test_start": "2024-02-16",
+          "test_end": "2025-02-16",
+          "sharpe": 2.258,
+          "max_dd": 0.099,
+          "win_rate": 0.385,
+          "trades": 13,
+          "passed": true
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "test_start": "2024-05-16",
+          "test_end": "2025-05-16",
+          "sharpe": 2.833,
+          "max_dd": 0.145,
+          "win_rate": 0.5,
+          "trades": 14,
+          "passed": true
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "test_start": "2024-08-16",
+          "test_end": "2025-08-16",
+          "sharpe": 1.165,
+          "max_dd": 0.116,
+          "win_rate": 0.5,
+          "trades": 12,
+          "passed": true
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "test_start": "2024-11-15",
+          "test_end": "2025-11-15",
+          "sharpe": 3.36,
+          "max_dd": 0.049,
+          "win_rate": 0.583,
+          "trades": 12,
+          "passed": true
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "test_start": "2025-02-14",
+          "test_end": "2026-02-14",
+          "sharpe": 4.438,
+          "max_dd": 0.049,
+          "win_rate": 0.667,
+          "trades": 12,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "signal_id": "SSRN_CONTRARIAN_INDIA",
+      "book_id": "SSRN-2785541",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_69%_OF_WINDOWS",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 1.8295918575172596,
+      "active_windows": 8,
+      "mean_sharpe": 3.33,
+      "median_sharpe": 2.38,
+      "worst_dd": 0.205,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 4.89,
+          "total_trades": 26
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 2.29,
+          "total_trades": 12
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -2.41,
+          "total_trades": 5
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "price_pos_20",
+            "op": "<",
+            "value": 0.1
+          },
+          {
+            "indicator": "rsi_14",
+            "op": "<",
+            "value": 35
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [
+          {
+            "indicator": "price_pos_20",
+            "op": ">",
+            "value": 0.5
+          }
+        ],
+        "exit_short": [],
+        "regime_filter": [],
+        "hold_days": 10,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0,
+        "direction": "LONG"
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "test_start": "2018-11-16",
+          "test_end": "2019-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-02-15",
+          "test_end": "2020-02-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-05-16",
+          "test_end": "2020-05-16",
+          "sharpe": -3.298,
+          "max_dd": 0.203,
+          "win_rate": 0.429,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-08-16",
+          "test_end": "2020-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-11-15",
+          "test_end": "2020-11-15",
+          "sharpe": -2.412,
+          "max_dd": 0.205,
+          "win_rate": 0.4,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-02-14",
+          "test_end": "2021-02-14",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-05-15",
+          "test_end": "2021-05-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "test_start": "2020-08-14",
+          "test_end": "2021-08-14",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "test_start": "2020-11-16",
+          "test_end": "2021-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "test_start": "2021-02-16",
+          "test_end": "2022-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "test_start": "2021-05-14",
+          "test_end": "2022-05-14",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "test_start": "2021-08-16",
+          "test_end": "2022-08-16",
+          "sharpe": 7.869,
+          "max_dd": 0.029,
+          "win_rate": 0.8,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "test_start": "2021-11-16",
+          "test_end": "2022-11-16",
+          "sharpe": 5.788,
+          "max_dd": 0.03,
+          "win_rate": 0.8,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "test_start": "2022-02-16",
+          "test_end": "2023-02-16",
+          "sharpe": 2.208,
+          "max_dd": 0.037,
+          "win_rate": 0.8,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "test_start": "2022-05-16",
+          "test_end": "2023-05-16",
+          "sharpe": 13.424,
+          "max_dd": 0.006,
+          "win_rate": 0.8,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-08-16",
+          "test_end": "2023-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-11-16",
+          "test_end": "2023-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-02-16",
+          "test_end": "2024-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-05-16",
+          "test_end": "2024-05-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "test_start": "2023-08-16",
+          "test_end": "2024-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "test_start": "2023-11-16",
+          "test_end": "2024-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "test_start": "2024-02-16",
+          "test_end": "2025-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "test_start": "2024-05-16",
+          "test_end": "2025-05-16",
+          "sharpe": 0.485,
+          "max_dd": 0.013,
+          "win_rate": 0.4,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "test_start": "2024-08-16",
+          "test_end": "2025-08-16",
+          "sharpe": 2.562,
+          "max_dd": 0.013,
+          "win_rate": 0.5,
+          "trades": 6,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "test_start": "2024-11-15",
+          "test_end": "2025-11-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "test_start": "2025-02-14",
+          "test_end": "2026-02-14",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "SSRN_INDIA_MOM",
+      "book_id": "SSRN-5116091",
+      "tier": "DROP",
+      "reason": "LAST_4_ALL_FAIL",
+      "windows_passed": 5,
+      "total_windows": 26,
+      "pass_rate": 0.19230769230769232,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.6749738751805214,
+      "active_windows": 24,
+      "mean_sharpe": 1.93,
+      "median_sharpe": 1.93,
+      "worst_dd": 0.132,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 1,
+          "pass_rate": 0.07142857142857142,
+          "avg_sharpe": 0.74,
+          "total_trades": 88
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 2,
+          "pass_rate": 0.25,
+          "avg_sharpe": 1.83,
+          "total_trades": 67
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 2,
+          "pass_rate": 0.5,
+          "avg_sharpe": 5.71,
+          "total_trades": 36
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_50"
+          },
+          {
+            "indicator": "adx_14",
+            "op": ">",
+            "value": 20
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_50"
+          }
+        ],
+        "exit_short": [],
+        "regime_filter": [],
+        "hold_days": 20,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0,
+        "direction": "LONG"
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "test_start": "2018-11-16",
+          "test_end": "2019-11-16",
+          "sharpe": 1.289,
+          "max_dd": 0.05,
+          "win_rate": 0.5,
+          "trades": 6,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-02-15",
+          "test_end": "2020-02-15",
+          "sharpe": -1.379,
+          "max_dd": 0.054,
+          "win_rate": 0.429,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-05-16",
+          "test_end": "2020-05-16",
+          "sharpe": -0.742,
+          "max_dd": 0.072,
+          "win_rate": 0.6,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-08-16",
+          "test_end": "2020-08-16",
+          "sharpe": 4.784,
+          "max_dd": 0.048,
+          "win_rate": 0.667,
+          "trades": 6,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-11-15",
+          "test_end": "2020-11-15",
+          "sharpe": 5.87,
+          "max_dd": 0.057,
+          "win_rate": 0.714,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-02-14",
+          "test_end": "2021-02-14",
+          "sharpe": 10.486,
+          "max_dd": 0.076,
+          "win_rate": 0.7,
+          "trades": 10,
+          "passed": true
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-05-15",
+          "test_end": "2021-05-15",
+          "sharpe": 1.716,
+          "max_dd": 0.132,
+          "win_rate": 0.385,
+          "trades": 13,
+          "passed": true
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "test_start": "2020-08-14",
+          "test_end": "2021-08-14",
+          "sharpe": 2.156,
+          "max_dd": 0.117,
+          "win_rate": 0.455,
+          "trades": 11,
+          "passed": true
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "test_start": "2020-11-16",
+          "test_end": "2021-11-16",
+          "sharpe": 1.799,
+          "max_dd": 0.092,
+          "win_rate": 0.417,
+          "trades": 12,
+          "passed": true
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "test_start": "2021-02-16",
+          "test_end": "2022-02-16",
+          "sharpe": 1.872,
+          "max_dd": 0.087,
+          "win_rate": 0.5,
+          "trades": 8,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "test_start": "2021-05-14",
+          "test_end": "2022-05-14",
+          "sharpe": 0.553,
+          "max_dd": 0.1,
+          "win_rate": 0.333,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "test_start": "2021-08-16",
+          "test_end": "2022-08-16",
+          "sharpe": -8.462,
+          "max_dd": 0.09,
+          "win_rate": 0.143,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "test_start": "2021-11-16",
+          "test_end": "2022-11-16",
+          "sharpe": -5.458,
+          "max_dd": 0.045,
+          "win_rate": 0.286,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "test_start": "2022-02-16",
+          "test_end": "2023-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "test_start": "2022-05-16",
+          "test_end": "2023-05-16",
+          "sharpe": 5.773,
+          "max_dd": 0.028,
+          "win_rate": 0.667,
+          "trades": 6,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-08-16",
+          "test_end": "2023-08-16",
+          "sharpe": 9.067,
+          "max_dd": 0.027,
+          "win_rate": 0.714,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-11-16",
+          "test_end": "2023-11-16",
+          "sharpe": 3.192,
+          "max_dd": 0.067,
+          "win_rate": 0.444,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-02-16",
+          "test_end": "2024-02-16",
+          "sharpe": 7.206,
+          "max_dd": 0.06,
+          "win_rate": 0.545,
+          "trades": 11,
+          "passed": true
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-05-16",
+          "test_end": "2024-05-16",
+          "sharpe": 3.938,
+          "max_dd": 0.061,
+          "win_rate": 0.333,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "test_start": "2023-08-16",
+          "test_end": "2024-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "test_start": "2023-11-16",
+          "test_end": "2024-11-16",
+          "sharpe": 7.526,
+          "max_dd": 0.014,
+          "win_rate": 0.6,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "test_start": "2024-02-16",
+          "test_end": "2025-02-16",
+          "sharpe": 4.167,
+          "max_dd": 0.037,
+          "win_rate": 0.429,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "test_start": "2024-05-16",
+          "test_end": "2025-05-16",
+          "sharpe": 1.992,
+          "max_dd": 0.041,
+          "win_rate": 0.222,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "test_start": "2024-08-16",
+          "test_end": "2025-08-16",
+          "sharpe": 0.051,
+          "max_dd": 0.035,
+          "win_rate": 0.167,
+          "trades": 6,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "test_start": "2024-11-15",
+          "test_end": "2025-11-15",
+          "sharpe": -0.847,
+          "max_dd": 0.077,
+          "win_rate": 0.286,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "test_start": "2025-02-14",
+          "test_end": "2026-02-14",
+          "sharpe": -10.185,
+          "max_dd": 0.078,
+          "win_rate": 0.286,
+          "trades": 7,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "SSRN_LOW_VOL",
+      "book_id": "SSRN-980865",
+      "tier": "DROP",
+      "reason": "LAST_4_ALL_FAIL",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 4.293868537767046,
+      "active_windows": 15,
+      "mean_sharpe": 4.05,
+      "median_sharpe": 4.11,
+      "worst_dd": 0.078,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 3.35,
+          "total_trades": 54
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 5.09,
+          "total_trades": 43
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "hvol_20",
+            "op": "<",
+            "value": 0.12
+          },
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_50"
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [
+          {
+            "indicator": "hvol_20",
+            "op": ">",
+            "value": 0.2
+          }
+        ],
+        "exit_short": [],
+        "regime_filter": [],
+        "hold_days": 20,
+        "stop_loss_pct": 0.03,
+        "take_profit_pct": 0,
+        "direction": "LONG"
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "test_start": "2018-11-16",
+          "test_end": "2019-11-16",
+          "sharpe": 1.699,
+          "max_dd": 0.051,
+          "win_rate": 0.2,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-02-15",
+          "test_end": "2020-02-15",
+          "sharpe": -8.135,
+          "max_dd": 0.061,
+          "win_rate": 0.4,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-05-16",
+          "test_end": "2020-05-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-08-16",
+          "test_end": "2020-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-11-15",
+          "test_end": "2020-11-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-02-14",
+          "test_end": "2021-02-14",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-05-15",
+          "test_end": "2021-05-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "test_start": "2020-08-14",
+          "test_end": "2021-08-14",
+          "sharpe": 6.794,
+          "max_dd": 0.042,
+          "win_rate": 0.6,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "test_start": "2020-11-16",
+          "test_end": "2021-11-16",
+          "sharpe": 16.202,
+          "max_dd": 0.001,
+          "win_rate": 0.8,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "test_start": "2021-02-16",
+          "test_end": "2022-02-16",
+          "sharpe": 7.87,
+          "max_dd": 0.035,
+          "win_rate": 0.667,
+          "trades": 6,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "test_start": "2021-05-14",
+          "test_end": "2022-05-14",
+          "sharpe": 2.617,
+          "max_dd": 0.078,
+          "win_rate": 0.6,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "test_start": "2021-08-16",
+          "test_end": "2022-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "test_start": "2021-11-16",
+          "test_end": "2022-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "test_start": "2022-02-16",
+          "test_end": "2023-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "test_start": "2022-05-16",
+          "test_end": "2023-05-16",
+          "sharpe": 3.936,
+          "max_dd": 0.034,
+          "win_rate": 0.5,
+          "trades": 6,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-08-16",
+          "test_end": "2023-08-16",
+          "sharpe": 8.961,
+          "max_dd": 0.032,
+          "win_rate": 0.714,
+          "trades": 7,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-11-16",
+          "test_end": "2023-11-16",
+          "sharpe": 6.136,
+          "max_dd": 0.048,
+          "win_rate": 0.75,
+          "trades": 8,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-02-16",
+          "test_end": "2024-02-16",
+          "sharpe": 4.108,
+          "max_dd": 0.053,
+          "win_rate": 0.667,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-05-16",
+          "test_end": "2024-05-16",
+          "sharpe": 3.242,
+          "max_dd": 0.042,
+          "win_rate": 0.444,
+          "trades": 9,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "test_start": "2023-08-16",
+          "test_end": "2024-08-16",
+          "sharpe": 4.749,
+          "max_dd": 0.042,
+          "win_rate": 0.625,
+          "trades": 8,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "test_start": "2023-11-16",
+          "test_end": "2024-11-16",
+          "sharpe": 5.078,
+          "max_dd": 0.037,
+          "win_rate": 0.667,
+          "trades": 6,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "test_start": "2024-02-16",
+          "test_end": "2025-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "test_start": "2024-05-16",
+          "test_end": "2025-05-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "test_start": "2024-08-16",
+          "test_end": "2025-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "test_start": "2024-11-15",
+          "test_end": "2025-11-15",
+          "sharpe": -1.801,
+          "max_dd": 0.06,
+          "win_rate": 0.667,
+          "trades": 6,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "test_start": "2025-02-14",
+          "test_end": "2026-02-14",
+          "sharpe": -0.77,
+          "max_dd": 0.041,
+          "win_rate": 0.571,
+          "trades": 7,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "SSRN_TSMOM_12M",
+      "book_id": "SSRN-2089463",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_81%_OF_WINDOWS",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 1.501,
+      "active_windows": 5,
+      "mean_sharpe": -4.32,
+      "median_sharpe": -3.11,
+      "worst_dd": 0.102,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": -4.32,
+          "total_trades": 25
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_200"
+          }
+        ],
+        "entry_short": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_200"
+          }
+        ],
+        "exit_long": [
+          {
+            "indicator": "close",
+            "op": "<",
+            "value": "sma_200"
+          }
+        ],
+        "exit_short": [
+          {
+            "indicator": "close",
+            "op": ">",
+            "value": "sma_200"
+          }
+        ],
+        "regime_filter": [],
+        "hold_days": 0,
+        "stop_loss_pct": 0.05,
+        "take_profit_pct": 0,
+        "direction": "BOTH"
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "test_start": "2018-11-16",
+          "test_end": "2019-11-16",
+          "sharpe": -3.362,
+          "max_dd": 0.084,
+          "win_rate": 0.2,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-02-15",
+          "test_end": "2020-02-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-05-16",
+          "test_end": "2020-05-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-08-16",
+          "test_end": "2020-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-11-15",
+          "test_end": "2020-11-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-02-14",
+          "test_end": "2021-02-14",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-05-15",
+          "test_end": "2021-05-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "test_start": "2020-08-14",
+          "test_end": "2021-08-14",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "test_start": "2020-11-16",
+          "test_end": "2021-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "test_start": "2021-02-16",
+          "test_end": "2022-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "test_start": "2021-05-14",
+          "test_end": "2022-05-14",
+          "sharpe": 1.501,
+          "max_dd": 0.057,
+          "win_rate": 0.2,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "test_start": "2021-08-16",
+          "test_end": "2022-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "test_start": "2021-11-16",
+          "test_end": "2022-11-16",
+          "sharpe": -2.099,
+          "max_dd": 0.099,
+          "win_rate": 0.2,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "test_start": "2022-02-16",
+          "test_end": "2023-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "test_start": "2022-05-16",
+          "test_end": "2023-05-16",
+          "sharpe": -3.112,
+          "max_dd": 0.063,
+          "win_rate": 0.2,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-08-16",
+          "test_end": "2023-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-11-16",
+          "test_end": "2023-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-02-16",
+          "test_end": "2024-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-05-16",
+          "test_end": "2024-05-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "test_start": "2023-08-16",
+          "test_end": "2024-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "test_start": "2023-11-16",
+          "test_end": "2024-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "test_start": "2024-02-16",
+          "test_end": "2025-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "test_start": "2024-05-16",
+          "test_end": "2025-05-16",
+          "sharpe": -14.522,
+          "max_dd": 0.102,
+          "win_rate": 0.2,
+          "trades": 5,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "test_start": "2024-08-16",
+          "test_end": "2025-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "test_start": "2024-11-15",
+          "test_end": "2025-11-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "test_start": "2025-02-14",
+          "test_end": "2026-02-14",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "signal_id": "SSRN_VOL_EFFECT_BLITZ",
+      "book_id": "SSRN-3442749",
+      "tier": "DROP",
+      "reason": "ZERO_TRADES_100%_OF_WINDOWS",
+      "windows_passed": 0,
+      "total_windows": 26,
+      "pass_rate": 0.0,
+      "last4_passed": 0,
+      "last4_rate": 0.0,
+      "aggregate_sharpe": 0.0,
+      "active_windows": 0,
+      "mean_sharpe": 0,
+      "median_sharpe": 0,
+      "worst_dd": 1.0,
+      "regime_profile": {
+        "RANGING": {
+          "windows": 14,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "TRENDING_UP": {
+          "windows": 8,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        },
+        "HIGH_VOL": {
+          "windows": 4,
+          "passed": 0,
+          "pass_rate": 0.0,
+          "avg_sharpe": 0,
+          "total_trades": 0
+        }
+      },
+      "rules": {
+        "backtestable": true,
+        "entry_long": [
+          {
+            "indicator": "bb_bandwidth",
+            "op": "<",
+            "value": 0.03
+          },
+          {
+            "indicator": "adx_14",
+            "op": "<",
+            "value": 20
+          }
+        ],
+        "entry_short": [],
+        "exit_long": [
+          {
+            "indicator": "bb_bandwidth",
+            "op": ">",
+            "value": 0.06
+          }
+        ],
+        "exit_short": [],
+        "regime_filter": [],
+        "hold_days": 15,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0,
+        "direction": "LONG"
+      },
+      "per_window": [
+        {
+          "idx": 0,
+          "regime": "RANGING",
+          "test_start": "2018-11-16",
+          "test_end": "2019-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 1,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-02-15",
+          "test_end": "2020-02-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 2,
+          "regime": "TRENDING_UP",
+          "test_start": "2019-05-16",
+          "test_end": "2020-05-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 3,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-08-16",
+          "test_end": "2020-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 4,
+          "regime": "HIGH_VOL",
+          "test_start": "2019-11-15",
+          "test_end": "2020-11-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 5,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-02-14",
+          "test_end": "2021-02-14",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 6,
+          "regime": "HIGH_VOL",
+          "test_start": "2020-05-15",
+          "test_end": "2021-05-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 7,
+          "regime": "RANGING",
+          "test_start": "2020-08-14",
+          "test_end": "2021-08-14",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 8,
+          "regime": "TRENDING_UP",
+          "test_start": "2020-11-16",
+          "test_end": "2021-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 9,
+          "regime": "RANGING",
+          "test_start": "2021-02-16",
+          "test_end": "2022-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 10,
+          "regime": "RANGING",
+          "test_start": "2021-05-14",
+          "test_end": "2022-05-14",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 11,
+          "regime": "TRENDING_UP",
+          "test_start": "2021-08-16",
+          "test_end": "2022-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 12,
+          "regime": "RANGING",
+          "test_start": "2021-11-16",
+          "test_end": "2022-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 13,
+          "regime": "RANGING",
+          "test_start": "2022-02-16",
+          "test_end": "2023-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 14,
+          "regime": "RANGING",
+          "test_start": "2022-05-16",
+          "test_end": "2023-05-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 15,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-08-16",
+          "test_end": "2023-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 16,
+          "regime": "TRENDING_UP",
+          "test_start": "2022-11-16",
+          "test_end": "2023-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 17,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-02-16",
+          "test_end": "2024-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 18,
+          "regime": "TRENDING_UP",
+          "test_start": "2023-05-16",
+          "test_end": "2024-05-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 19,
+          "regime": "RANGING",
+          "test_start": "2023-08-16",
+          "test_end": "2024-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 20,
+          "regime": "RANGING",
+          "test_start": "2023-11-16",
+          "test_end": "2024-11-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 21,
+          "regime": "RANGING",
+          "test_start": "2024-02-16",
+          "test_end": "2025-02-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 22,
+          "regime": "RANGING",
+          "test_start": "2024-05-16",
+          "test_end": "2025-05-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 23,
+          "regime": "RANGING",
+          "test_start": "2024-08-16",
+          "test_end": "2025-08-16",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 24,
+          "regime": "RANGING",
+          "test_start": "2024-11-15",
+          "test_end": "2025-11-15",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        },
+        {
+          "idx": 25,
+          "regime": "RANGING",
+          "test_start": "2025-02-14",
+          "test_end": "2026-02-14",
+          "sharpe": 0.0,
+          "max_dd": 1.0,
+          "win_rate": 0.0,
+          "trades": 0,
+          "passed": false
+        }
+      ]
+    }
+  ]
+}

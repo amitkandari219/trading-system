@@ -1,0 +1,108 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "open"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "open"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 6,
+    "direction": "BOTH",
+    "target_regime": [
+      "BULL",
+      "BEAR"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Dragonfly Doji identified by: (1) long lower wick relative to body, (2) close at or near open price. Entry is bidirectional based on market context (bullish close vs bearish close). Exit uses simple reversal logic since author provided no specific exit criteria. Hold period set to median_days_to_trend_end_L value of 6 days. Pattern is context-dependent, triggering long or short depending on candle close direction relative to open."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "open"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "open"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [
+      "BULL",
+      "BEAR"
+    ],
+    "hold_days": 6,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Dragonfly Doji identified by: (1) long lower wick relative to body, (2) close at or near open price. Entry is bidirectional based on market context (bullish close vs bearish close). Exit uses simple reversal logic since author provided no specific exit criteria. Hold period set to median_days_to_trend_end_L value of 6 days. Pattern is context-dependent, triggering long or short depending on candle close direction relative to open."
+  },
+  "source_rule_text": "Dragonfly Doji candlestick pattern: A candle with a long lower wick and close at or near the open, indicating potential reversal or continuation"
+}

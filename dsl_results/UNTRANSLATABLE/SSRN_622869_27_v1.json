@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_27",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires a custom 'put-call ratio from discount broker open-buy volume' indicator which is not available in the ALLOWED INDICATORS list. vol_ratio_20 is used as a proxy for elevated volume ratios, but it does not capture the specific put-call ratio from discount brokers that drives the predictive signal. The exact coefficients (43.7 bps for OEX, 46.5 bps for NDX) and t-statistics cannot be operationalized without access to the actual put-call ratio data.",
+  "translation_notes": "Signal is based on proprietary put-call ratio from discount broker order flow (SSRN paper 622869). The entry condition 'elevated put-call ratio' has been approximated using vol_ratio_20 as a volume proxy, but this is NOT equivalent to the actual signal. The 1-day holding period and next-day close exit are captured in hold_days_max=1. Without the actual put-call ratio indicator, this rule cannot be accurately backtested and should not be used in production without access to the original data source."
+}

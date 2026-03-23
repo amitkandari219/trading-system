@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_227016_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fundamental classification of stocks as 'value' vs 'glamour' based on historical growth rates (cash flow growth, operating income growth, earnings growth), cross-sectional comparison of expected growth rates between stock groups, and ranking/sorting logic. These fundamental metrics and multi-stock comparative analysis are not available in the allowed technical indicators list, which contains only price-based, volatility-based, and momentum indicators. The core logic\u2014'buy underperforming value stocks, short outperforming glamour stocks'\u2014requires a factor model or fundamental screening step that cannot be expressed using only OHLCV technical indicators.",
+  "translation_notes": "Attempted proxy: zscore_20 < -1 (price below mean, representing 'value'/underperformance) for entry, and zscore_20 > 0 (reversion to mean) for exit. However, this is a weak technical proxy that does not capture the intended fundamental contrarian reversion signal. A proper implementation requires access to growth rate metrics (earnings growth, cash flow growth, operating income growth) and the ability to classify and compare stocks by these fundamentals."
+}

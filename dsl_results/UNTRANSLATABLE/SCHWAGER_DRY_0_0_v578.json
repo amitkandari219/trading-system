@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of 'herd behavior', 'crowd synchronization', 'correlated traders entering simultaneously', and 'dealer short positions'. These are behavioral/market microstructure concepts that cannot be reliably detected from the allowed price/volume/technical indicators. Specifically: (1) 'crowd_synchronization_threshold' (3+ correlated participants) has no measurable proxy in allowed indicators; (2) 'dealer_short_coverage_signal' requires commitment of traders data not available; (3) 'multiple correlated traders' requires cross-market or order flow data unavailable. The signal is fundamentally about recognizing crowd psychology and dealer activity, which requires data sources beyond OHLCV and standard technical indicators.",
+  "translation_notes": "This is a regime/behavioral signal about avoiding herd-driven tops. The core actionable element is 'exit on dealer covering demand' and 'reduce on crowd momentum detected', but these require dealer positioning data and multi-participant correlation analysis that cannot be constructed from allowed indicators alone. A partial proxy using volume surge on price highs was attempted in exit condition, but this does not capture the actual signal intent."
 }

@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.005,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": 0.5,
+    "trigger_condition": {
+      "metric": "account_equity_growth",
+      "threshold": 0.1,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Scale shares per $100k unit (5 shares per unit) with 0.5x leverage multiplier. Rebalance quarterly or when equity grows 10%+. Maintains consistent leverage across different account sizes.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Scale position size proportionally to account equity growth, adjusting share quantity per unit of capital to maintain consistent leverage across different account sizes."
+}

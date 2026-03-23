@@ -1,0 +1,74 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "0"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "White candle formation detected by: (1) positive body (close > open), and (2) close above previous candle's high. Exit condition set to close below previous close as reasonable reversal signal since AUTHOR_SILENT. Success rates (60-65%) noted in parameters but applied as regime context rather than probabilistic threshold. Pattern applies across both bull and bear markets per source."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": 0.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "White candle formation detected by: (1) positive body (close > open), and (2) close above previous candle's high. Exit condition set to close below previous close as reasonable reversal signal since AUTHOR_SILENT. Success rates (60-65%) noted in parameters but applied as regime context rather than probabilistic threshold. Pattern applies across both bull and bear markets per source."
+  },
+  "source_rule_text": "Candle Pattern: White candlesticks predict upward breakout direction; regardless of existing trend, expect upward breakout between 60% (bear market) and 65% (bull market) of the time."
+}

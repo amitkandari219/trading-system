@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "daily_price_range_pct_of_account",
+      "threshold": 0.015,
+      "direction": "inverse"
+    },
+    "max_risk_pct": 0.03,
+    "min_risk_pct": 0.005,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size scales inversely to daily price range relative to account size. Range between 0.5%-3% of account triggers scaling. Maintains consistent risk exposure across volatility regimes.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size should be scaled based on the daily price range of the instrument relative to account size, such that risk exposure remains consistent across different volatility environments and account sizes."
+}

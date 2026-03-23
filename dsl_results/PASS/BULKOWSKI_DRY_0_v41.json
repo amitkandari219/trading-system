@@ -6,65 +6,99 @@
     "entry_long": [],
     "entry_short": [
       {
-        "left": "close",
-        "operator": ">=",
-        "right": "pivot"
+        "left": "high",
+        "operator": "<=",
+        "right": "prev_high"
       },
       {
-        "left": "high",
+        "left": "low",
         "operator": ">",
-        "right": "prev_high"
+        "right": "prev_low"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_upper"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.7"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.0"
       }
     ],
     "exit_long": [],
     "exit_short": [
       {
         "left": "close",
-        "operator": ">",
-        "right": "sma_20"
+        "operator": "crosses_above",
+        "right": "dc_upper"
       }
     ],
     "entry_logic": "AND",
-    "exit_logic": "OR",
-    "stop_loss_pct": 5.0,
-    "hold_days_max": 30,
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.5,
+    "hold_days_max": 20,
     "direction": "SHORT",
     "target_regime": [
-      "ANY"
+      "RANGING",
+      "TRENDING_DOWN"
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Ascending triangle is a bearish reversal/continuation pattern with flat base and rising tops. Entry conditions detect the pattern structure: price at pivot (flat support level) combined with rising highs. Exit uses 20-SMA crossover as a reasonable reversal condition since author provided no specific exit guidance (AUTHOR_SILENT). Stop loss set to 5% based on the 8% failure rate within 5% move. Average decline metric was unavailable (AUTHOR_SILENT) so conservative 5% stop used. Pattern breakout occurs upward but signal trades short on pattern completion, betting on the bearish 51% success rate."
+    "translation_notes": null
   },
   "backtest_rule": {
     "backtestable": true,
     "entry_long": [],
     "entry_short": [
       {
-        "indicator": "close",
-        "op": ">=",
-        "value": "pivot"
+        "indicator": "high",
+        "op": "<=",
+        "value": "prev_high"
       },
       {
-        "indicator": "high",
+        "indicator": "low",
         "op": ">",
-        "value": "prev_high"
+        "value": "prev_low"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.7
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.0
       }
     ],
     "exit_long": [],
     "exit_short": [
       {
         "indicator": "close",
-        "op": ">",
-        "value": "sma_20"
+        "op": "crosses_above",
+        "value": "dc_upper"
       }
     ],
-    "regime_filter": [],
-    "hold_days": 30,
-    "stop_loss_pct": 0.05,
+    "regime_filter": [
+      "RANGING",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.035,
     "take_profit_pct": 0,
     "direction": "SHORT",
-    "reason": "Ascending triangle is a bearish reversal/continuation pattern with flat base and rising tops. Entry conditions detect the pattern structure: price at pivot (flat support level) combined with rising highs. Exit uses 20-SMA crossover as a reasonable reversal condition since author provided no specific exit guidance (AUTHOR_SILENT). Stop loss set to 5% based on the 8% failure rate within 5% move. Average decline metric was unavailable (AUTHOR_SILENT) so conservative 5% stop used. Pattern breakout occurs upward but signal trades short on pattern completion, betting on the bearish 51% success rate."
+    "reason": "DSL translation of BULKOWSKI_DRY_0"
   },
   "source_rule_text": "Ascending triangle: A bearish formation with flat base and upsloping top trendline; minor highs rise over time"
 }

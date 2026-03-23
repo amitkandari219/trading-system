@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_299107_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The Jegadeesh-Titman momentum strategy requires ranking securities across a universe, decile portfolio construction, and multi-month formation/holding periods with dynamic rebalancing. This cannot be expressed as simple indicator-based entry/exit conditions on a single security. The strategy operates at the portfolio construction and relative ranking level, not at the individual price/indicator level. Formation period J and holding period K parameters (3-12 months each) require explicit portfolio management logic outside the scope of indicator-based rules.",
+  "translation_notes": "This is a cross-sectional, relative-value strategy requiring universe-level ranking and portfolio construction. The backtest engine would need dedicated portfolio management logic to (1) rank all securities by returns over J months, (2) form decile portfolios, (3) allocate to top/bottom deciles, and (4) rebalance every K months. A single-security rule set cannot capture this strategy."
+}

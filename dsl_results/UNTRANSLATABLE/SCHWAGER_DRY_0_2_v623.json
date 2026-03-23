@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires: (1) Implied Volatility Percentile (not available in indicator list; approximated with india_vix), (2) Days To Expiration tracking (not available; requires external calendar logic), (3) Option spread wing construction and time decay modeling (requires derivatives pricing engine, not supported by price/technical indicators alone), (4) Position sizing relative to max profit/loss of spread legs (requires options payoff calculation), (5) Pyramid entry logic based on spread profitability (requires options P&L tracking). The core strategy is options-specific and cannot be fully expressed using only equity price and technical indicators.",
+  "translation_notes": "Attempted partial translation using volatility proxy (india_vix for IV percentile) and trend strength (adx_14 for ranging confirmation), but core options mechanics (wings, time decay, spread Greeks, multi-leg coordination) require a derivatives-aware backtest engine. This signal is fundamentally incompatible with equity-only technical indicator rules."
 }

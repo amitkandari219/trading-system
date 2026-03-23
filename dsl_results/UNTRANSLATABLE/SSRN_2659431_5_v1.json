@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic leverage scaling inversely proportional to volatility magnitude, which is a portfolio weighting mechanism rather than a binary entry/exit condition. The allowed operators (>, <, >=, <=, ==, crosses_above, crosses_below, is) cannot express continuous inverse scaling functions. Additionally, 'rebalancing_period' and volatility-based position sizing require portfolio-level calculations beyond single-bar conditional logic. Translated entry/exit as volatility threshold crossovers, but this does NOT capture the core inverse-scaling exposure adjustment mechanic.",
+  "translation_notes": "Used hvol_20 (20-period historical volatility) as proxy for current realized volatility. Entry triggered when volatility is low (opportunity to increase exposure); exit when volatility rises (reduce exposure). However, this is a simplified threshold-based approximation. The original signal's intent\u2014to continuously scale position size inversely to volatility across a rebalancing period\u2014requires portfolio-level leverage/weight adjustments that fall outside the scope of entry/exit rule conditions. Implement as leverage/position-sizing multiplier at portfolio construction level rather than signal rules."
+}

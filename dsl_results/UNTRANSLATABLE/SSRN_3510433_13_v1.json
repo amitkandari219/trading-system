@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by prior period returns and selecting top N performers (Winner portfolio). This is a cross-sectional/portfolio-level selection strategy that cannot be expressed as a single-stock technical rule using the allowed indicators. The entry condition 'rank stocks by prior period returns' and 'select top performing stocks' requires: (1) universe-wide ranking/sorting logic not supported by point-in-time technical comparisons, and (2) portfolio construction rules rather than entry/exit trigger conditions. Additionally, 'Focus on Big cap stocks for liquidity' requires market cap filtering which is not in the allowed indicator set.",
+  "translation_notes": "This signal is a factor-based/momentum portfolio strategy designed for cross-sectional stock selection and rebalancing, not a single-security entry/exit rule. It requires: (1) returns ranking across a universe of stocks, (2) percentile-based selection (top X%), and (3) market cap screening. These are portfolio management operations rather than technical indicator conditions. To backtest this properly, use a portfolio optimization/ranking engine with universe filtering rather than a bar-by-bar technical rule engine."
+}

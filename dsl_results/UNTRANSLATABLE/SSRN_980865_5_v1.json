@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires ranking stocks by 3-year historical volatility and constructing decile portfolios\u2014a cross-sectional comparative analysis across ~2000 stocks. The backtest engine indicators are designed for single-stock time-series analysis. No allowed indicator can express 'rank all stocks by volatility and select top decile'. This requires portfolio-level construction logic outside the scope of individual condition evaluation.",
+  "translation_notes": "Signal SSRN_980865_5 is a factor-based portfolio construction rule, not a traditional entry/exit signal. It requires: (1) computing 3-year weekly volatility for all FTSE World Developed constituents, (2) ranking them cross-sectionally, (3) selecting the lowest-volatility decile, (4) equal-weighting and monthly rebalancing. This is fundamentally a portfolio selection rule that cannot be reduced to indicator thresholds on individual securities. A proper backtest would need portfolio-construction hooks or a separate ranking/selection module."
+}

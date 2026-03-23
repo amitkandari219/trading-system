@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_26",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires multi-factor realized volatility calculation and inverse scaling across factor exposures (Fama-French factors, HXZ model factors). This is a portfolio-level construction rule requiring calculation of volatility for each factor and dynamic position scaling by 1/volatility ratio. Standard OHLCV technical indicators cannot express factor-based volatility management or cross-asset exposure scaling. The signal operates at factor model level, not price-action level.",
+  "translation_notes": "Attempted proxy using hvol_20 as realized volatility measure, with entry when volatility is low (scaling up) and exit when volatility rises (scaling down). However, this oversimplifies the original signal which specifically scales individual factor exposures inversely to their realized volatility within multi-factor models (FF3, FF5, HXZ). Rebalancing frequency is not specified; assumed 20-day frequency as reasonable default."
+}

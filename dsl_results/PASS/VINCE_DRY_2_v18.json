@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_2",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "equity_reaches_converted_threshold",
+      "threshold": null,
+      "direction": "above",
+      "formula": "Converted_T = Starting_EQ + T - (Biggest_Loss / -f)"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Vince optimal f geometric progression rule. Advance from 1 to 2 contracts when account equity reaches converted threshold. Threshold conversion accounts for starting equity, base threshold T, largest historical loss, and optimal f value. Position size scales geometrically via optimal f framework.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Convert threshold for geometric progression of contracts from 1 to 2 based on starting equity, threshold level, biggest historical loss, and optimal f value."
+}

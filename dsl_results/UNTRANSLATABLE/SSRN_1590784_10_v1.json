@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1590784_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of futures expiration day (ExpD) as a calendar event and GARCH(1,1) volatility coefficient modeling with Student-t distribution. The backtest engine lacks: (1) calendar event detection for NSE futures expiration dates, (2) GARCH model-derived volatility coefficients, (3) statistical significance testing framework at 1% level. hvol_20 is used as a proxy for elevated volatility, but cannot capture the specific ExpD effect or model-based coefficient significance documented in the empirical results.",
+  "translation_notes": "Direction set to BOTH per original signal specification. Entry conditions simplified to elevated historical volatility (hvol_20 > 2%) as a volatility proxy, though this does not capture the calendar-specific ExpD effect or GARCH-modeled significance. Exit set to end-of-day (hold_days_max=1) per 'end of expiration day' requirement. Stocks (ACC, BHEL, BPCL, DRREDDY, GRASIM, INFOSYS, ITC) should be applied as symbol filters outside this rule engine. Original signal is fundamentally untranslatable without calendar event detection and econometric model integration."
+}

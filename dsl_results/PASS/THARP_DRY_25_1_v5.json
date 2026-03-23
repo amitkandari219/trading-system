@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_25_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "R_MULTIPLE",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "stock_price",
+      "threshold": 50,
+      "direction": "tiered"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Use tiered stop losses based on stock price: $1.00-$1.50 for stocks <$50, $2.00-$2.50 for stocks $50-$100, looser stops for stocks >$100. Tighter stops reduce reliability but increase transaction costs; looser stops on high-priced stocks capture bigger R gains with better reliability. Requires well-planned breakout entries per O'Neil methodology.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should use tight stops only when entry is well-planned, because tight stops reduce reliability and increase transaction costs despite creating large R-multiples; conversely, looser stops on high-priced stocks can capture bigger R gains with better reliability."
+}

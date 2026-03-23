@@ -1,0 +1,93 @@
+{
+  "signal_id": "BULKOWSKI_HORN_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Horn pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_HORN_BOTTOM",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.05"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "pivot"
+      },
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.32"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.05
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "pivot"
+      },
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.32
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_HORN_BOTTOM"
+  },
+  "source_rule_text": "Horn pattern: Price climbs then drops after breakout, with specific retracement and timing characteristics"
+}

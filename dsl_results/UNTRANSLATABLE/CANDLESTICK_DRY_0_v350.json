@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires computing a custom candle height metric (high - low) / breakout_price and comparing against median of this metric across historical candles. The 'breakout_price' reference is undefined in source material, and dynamic median calculation across candle pattern history is not supported by the allowed indicators. The signal also references specific performance statistics (4.80%, 5.17%, etc.) tied to upper/lower shadow classifications that cannot be operationalized into entry/exit rules without additional context on shadow thresholds and breakout price definition.",
+  "translation_notes": "This is a deliberation pattern analysis signal focused on candle morphology (tall vs short candles based on height-to-breakout ratio). The core logic cannot be translated because: (1) 'breakout_price' is not defined, (2) the allowed indicators do not include a way to compute rolling medians of custom metrics, (3) the source table shows performance statistics but lacks actionable entry/exit thresholds. A proxy using simple range comparison to moving average was attempted but does not capture the intended deliberation pattern logic."
 }

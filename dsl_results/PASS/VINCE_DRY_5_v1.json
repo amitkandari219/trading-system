@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_5",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "rolling_volatility_20_log_returns",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size scaled inversively to 20-day rolling volatility calculated from log price changes adjusted by mean return. Volatility = sqrt(H), where H = sum of last 20 squared adjusted log changes divided by 19. Higher volatility \u2192 smaller position; lower volatility \u2192 larger position.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Calculate volatility using a 20-day rolling standard deviation of log price changes adjusted by mean return, squared and averaged, to establish the basis for position sizing decisions."
+}

@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": 0.5,
+    "trigger_condition": {
+      "metric": "compounding_advantage_vs_trade_variance",
+      "threshold": null,
+      "direction": "when_2.09c_less_than_2.09b"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Use dynamic fractional f (e.g., 0.1\u20130.2 of full optimal f) adjusted on trade-by-trade basis instead of daily basis. Apply when equation 2.09c (compounding advantage) < equation 2.09b (trade-by-trade variance). Geometric mean calculated per trade rather than per day yields faster portfolio doubling.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Use dynamic fractional f trading instead of static fractional f to achieve faster portfolio doubling times, as dynamic fractional f benefits portfolios when the compounding advantage (2.09c) is less than the trade-by-trade variance (2.09b)."
+}

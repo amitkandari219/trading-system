@@ -6,55 +6,55 @@
     "entry_long": [
       {
         "left": "close",
-        "operator": "crosses_above",
+        "operator": ">",
         "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
       },
       {
         "left": "adx_14",
         "operator": ">",
-        "right": "25"
-      },
-      {
-        "left": "sma_50",
-        "operator": "<",
-        "right": "sma_200"
+        "right": "20"
       }
     ],
     "entry_short": [
       {
         "left": "close",
-        "operator": "crosses_below",
+        "operator": "<",
         "right": "dc_lower"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
       },
       {
         "left": "adx_14",
         "operator": ">",
-        "right": "25"
-      },
-      {
-        "left": "sma_50",
-        "operator": ">",
-        "right": "sma_200"
+        "right": "20"
       }
     ],
     "exit_long": [
       {
         "left": "close",
         "operator": "<",
-        "right": "sma_20"
+        "right": "dc_lower"
       }
     ],
     "exit_short": [
       {
         "left": "close",
         "operator": ">",
-        "right": "sma_20"
+        "right": "dc_upper"
       }
     ],
     "entry_logic": "AND",
-    "exit_logic": "OR",
-    "stop_loss_pct": 2.5,
-    "hold_days_max": 20,
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
     "direction": "BOTH",
     "target_regime": [
       "TRENDING_UP",
@@ -62,67 +62,67 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal requires identification of chart pattern breakouts in direction of prevailing trend. Used Donchian breakouts (dc_upper/dc_lower) as proxy for pattern breakout detection. ADX > 25 confirms trending market. Trend direction determined by SMA 50/200 crossover: uptrend when SMA50 < SMA200 for long entries, downtrend when SMA50 > SMA200 for short entries. Exit on reversal through SMA 20. Author silent on exits, so reversal-based exits applied. Parameters note: actual success rates from source (32%, 20%, 21%) are reference metrics only and not directly translatable to rules engine."
+    "translation_notes": null
   },
   "backtest_rule": {
     "backtestable": true,
     "entry_long": [
       {
         "indicator": "close",
-        "op": "crosses_above",
+        "op": ">",
         "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
       },
       {
         "indicator": "adx_14",
         "op": ">",
-        "value": 25.0
-      },
-      {
-        "indicator": "sma_50",
-        "op": "<",
-        "value": "sma_200"
+        "value": 20.0
       }
     ],
     "entry_short": [
       {
         "indicator": "close",
-        "op": "crosses_below",
+        "op": "<",
         "value": "dc_lower"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
       },
       {
         "indicator": "adx_14",
         "op": ">",
-        "value": 25.0
-      },
-      {
-        "indicator": "sma_50",
-        "op": ">",
-        "value": "sma_200"
+        "value": 20.0
       }
     ],
     "exit_long": [
       {
         "indicator": "close",
         "op": "<",
-        "value": "sma_20"
+        "value": "dc_lower"
       }
     ],
     "exit_short": [
       {
         "indicator": "close",
         "op": ">",
-        "value": "sma_20"
+        "value": "dc_upper"
       }
     ],
     "regime_filter": [
       "TRENDING_UP",
       "TRENDING_DOWN"
     ],
-    "hold_days": 20,
-    "stop_loss_pct": 0.025,
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal requires identification of chart pattern breakouts in direction of prevailing trend. Used Donchian breakouts (dc_upper/dc_lower) as proxy for pattern breakout detection. ADX > 25 confirms trending market. Trend direction determined by SMA 50/200 crossover: uptrend when SMA50 < SMA200 for long entries, downtrend when SMA50 > SMA200 for short entries. Exit on reversal through SMA 20. Author silent on exits, so reversal-based exits applied. Parameters note: actual success rates from source (32%, 20%, 21%) are reference metrics only and not directly translatable to rules engine."
+    "reason": "DSL translation of BULKOWSKI_DRY_0"
   },
   "source_rule_text": "Pattern: Chart pattern with breakout performance context. Trade in direction of prevailing market trend - upward breakouts in bull markets and downward breakouts in bear markets. Up breakouts in bull markets show strong performance with 25% climbing over 45%."
 }

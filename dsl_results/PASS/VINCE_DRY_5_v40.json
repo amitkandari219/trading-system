@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_5",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "max_drawdown_stddev",
+      "threshold": 8.0,
+      "direction": "below"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Ralph Vince optimal f method: test multiple f values using Black commodity option formula, calculate HPR for each f, select f that maximizes GHPR (Geometric Average HPR). Position size is proportional to optimal f constrained by 8 standard deviations of price movement. Formula: HPR(T,U) = (1+f*(Z(T,U-Y)/S-1))^P(T,U)",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size is determined by testing different f values using the Black commodity option formula to calculate Holding Period Returns (HPR), selecting the f value that maximizes the geometric average HPR (GHPR)."
+}

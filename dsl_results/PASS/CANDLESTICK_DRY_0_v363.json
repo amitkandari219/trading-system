@@ -1,0 +1,108 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "open"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": "<=",
+        "right": "open"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Dragonfly Doji characterized by: (1) long lower_wick relative to body size indicating rejection of lower prices, (2) close at or near open price. Entry is bidirectional\u2014LONG when bulls close near open (bullish reversal), SHORT when bears close near open (bearish continuation). Exit triggers are simple reversals of the closing condition. Body size threshold not specified by author, so using relative wick-to-body comparison. Parameters marked AUTHOR_SILENT mapped to reasonable defaults."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "open"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": "<=",
+        "value": "open"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "open"
+      }
+    ],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Dragonfly Doji characterized by: (1) long lower_wick relative to body size indicating rejection of lower prices, (2) close at or near open price. Entry is bidirectional\u2014LONG when bulls close near open (bullish reversal), SHORT when bears close near open (bearish continuation). Exit triggers are simple reversals of the closing condition. Body size threshold not specified by author, so using relative wick-to-body comparison. Parameters marked AUTHOR_SILENT mapped to reasonable defaults."
+  },
+  "source_rule_text": "Dragonfly Doji: A candlestick with a long lower shadow, where bears try to hold price underwater but bulls bounce off the bottom, ending at or near the opening price"
+}

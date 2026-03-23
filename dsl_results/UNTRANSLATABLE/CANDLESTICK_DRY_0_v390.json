@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Gap detection requires comparing current open to previous close across bar boundaries, which cannot be reliably expressed with allowed operators. The signal requires: (1) Detection of gap down (open < prev_close by a margin), (2) Doji body size quantification, (3) Context-dependent reversal probability (46% bull vs 54% bear) that cannot be encoded as deterministic rules, (4) Body color distinction (black vs white) affecting reversal tendency. Exit conditions marked AUTHOR_SILENT in original source.",
+  "translation_notes": "This pattern is inherently probabilistic (near 50% success) and context-dependent, making it unsuitable for deterministic rule-based backtesting. A proper implementation would require: (1) explicit gap threshold parameter, (2) doji body size threshold (currently 'a few pennies apart'), (3) regime detection to apply correct probability weights, (4) Monte Carlo or probabilistic simulation rather than deterministic conditions."
 }

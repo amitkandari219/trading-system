@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_5116091_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Momentum ranking selection and hold period timer (1-12 months) cannot be expressed using only the allowed indicators and operators. The signal requires: (1) a momentum-based stock selection/ranking mechanism not available in indicator list, and (2) a time-based exit trigger parameterized by hold_period_months (1-12). The exit condition 'at end of holding period H' requires explicit time-based logic unavailable in the allowed operators.",
+  "translation_notes": "This is a portfolio construction and holding period strategy rather than a technical indicator-based signal. The core logic involves selecting stocks by momentum rank and holding without rebalancing for H months (1-12). This requires a portfolio management layer and ranking system beyond the scope of single-bar technical indicators. Parameters provided (holding_period_months_min: 1, holding_period_months_max: 12, portfolio_size_max: 20, rebalancing_frequency: none) indicate this should be implemented as a custom portfolio strategy rather than a standard backtest rule."
+}

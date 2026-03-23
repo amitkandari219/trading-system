@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "rolling_volatility_20_daily_range_pct",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": 0.35,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position units scaled inversely to 20-day average daily range volatility. Baseline: $15,000 equity per 1 unit at median volatility. Units = (Baseline Capital / Current Daily Range Volatility) / $15,000. Maintains constant 35% max drawdown exposure across volatility regimes.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Adjust position size inversely to the daily volatility of the instrument being traded, using a baseline unit size tied to account equity such that maximum drawdown exposure remains constant across different volatility regimes."
+}

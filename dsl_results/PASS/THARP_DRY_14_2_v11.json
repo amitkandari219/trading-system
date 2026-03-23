@@ -62,7 +62,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal uses trend-following principle: ADX_14 > 25 confirms trend presence; price vs SMA_20 determines trend direction. Exit triggers on trend reversal (price crosses SMA) or trailing stop breach approximated via ATR expansion. The 15-bar reversal pattern and 20-period trailing stop are operationalized through price-to-moving-average crossover logic and ATR volatility thresholds. The 5% reversal threshold is implemented as stop_loss_pct."
+    "translation_notes": "ADX_14 > 25 used to confirm trend presence. Price vs SMA_20 determines trend direction (long if above, short if below). Exit triggered by trend reversal (price crossing SMA_20) or when trailing stop breached via ATR spike. The 15-bar reversal pattern and 20-period trailing stop are approximated using ADX confirmation and ATR-based volatility detection. Exit reversal threshold of 5% incorporated into stop_loss_pct."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -122,7 +122,7 @@
     "stop_loss_pct": 0.05,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal uses trend-following principle: ADX_14 > 25 confirms trend presence; price vs SMA_20 determines trend direction. Exit triggers on trend reversal (price crosses SMA) or trailing stop breach approximated via ATR expansion. The 15-bar reversal pattern and 20-period trailing stop are operationalized through price-to-moving-average crossover logic and ATR volatility thresholds. The 5% reversal threshold is implemented as stop_loss_pct."
+    "reason": "ADX_14 > 25 used to confirm trend presence. Price vs SMA_20 determines trend direction (long if above, short if below). Exit triggered by trend reversal (price crossing SMA_20) or when trailing stop breached via ATR spike. The 15-bar reversal pattern and 20-period trailing stop are approximated using ADX confirmation and ATR-based volatility detection. Exit reversal threshold of 5% incorporated into stop_loss_pct."
   },
   "source_rule_text": "A trader should remain in a position and allow profits to run as long as the identified trend continues in the trader's favor, exiting only when the trend direction shifts."
 }

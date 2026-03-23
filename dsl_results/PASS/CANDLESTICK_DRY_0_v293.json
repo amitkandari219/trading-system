@@ -1,0 +1,128 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "atr_14"
+      },
+      {
+        "left": "upper_wick",
+        "operator": "<",
+        "right": "body"
+      },
+      {
+        "left": "lower_wick",
+        "operator": "<",
+        "right": "body"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "body",
+        "operator": "<",
+        "right": "atr_14"
+      },
+      {
+        "left": "upper_wick",
+        "operator": "<",
+        "right": "body"
+      },
+      {
+        "left": "lower_wick",
+        "operator": "<",
+        "right": "body"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "BULL",
+      "BEAR"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Short White Candle pattern identified by: (1) small body relative to ATR; (2) upper shadow shorter than body; (3) lower shadow shorter than body. Color validation (white candle = close > open) is implicit in entry conditions. Direction is CONTEXT_DEPENDENT per signal specification, so both entry_long and entry_short are populated with identical conditions. Exit conditions use simple reversal logic since AUTHOR_SILENT. Sample size of 4,886 candles noted but not encoded as testable condition."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": "<",
+        "value": "body"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": "<",
+        "value": "body"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "body",
+        "op": "<",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": "<",
+        "value": "body"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": "<",
+        "value": "body"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "BULL",
+      "BEAR"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Short White Candle pattern identified by: (1) small body relative to ATR; (2) upper shadow shorter than body; (3) lower shadow shorter than body. Color validation (white candle = close > open) is implicit in entry conditions. Direction is CONTEXT_DEPENDENT per signal specification, so both entry_long and entry_short are populated with identical conditions. Exit conditions use simple reversal logic since AUTHOR_SILENT. Sample size of 4,886 candles noted but not encoded as testable condition."
+  },
+  "source_rule_text": "Short White Candle: A single white candlestick with a short body and both upper and lower shadows shorter than the body height"
+}

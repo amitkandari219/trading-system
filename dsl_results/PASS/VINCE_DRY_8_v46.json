@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": 0.2,
+    "trigger_condition": {
+      "metric": "scenario_probability_equation",
+      "threshold": null,
+      "direction": "inequality_satisfaction",
+      "description": "1.005^n <= 1.01933^n * 0.2 + 1 - 0.2"
+    },
+    "max_risk_pct": 0.5,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Dynamic fractional f based on Ralph Vince scenario analysis with 20% kelly weighting. Reallocate quarterly when inequality equation satisfied. Three scenarios: worst case (50% prob, -100% loss), neutral (25% prob), best case (25% prob). Max drawdown tolerance 50%.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Use dynamic fractional f position sizing and reallocate on a quarterly basis when the equation 1.005^n <= 1.01933^n*.2+1-.2 is satisfied, allowing for continuous optimization of active equity based on scenario probability analysis."
+}

@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_30_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.05,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "equity_change",
+      "threshold": 5000,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.5,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Scale position size to account equity (1 contract per $20,000) with max 50% drawdown tolerance. Recalculate whenever equity changes by $5,000. Derived base_risk_pct of 5% from 1 contract per $20k equity ratio with typical 1% risk per trade.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should scale position size proportionally to account equity and risk tolerance to ensure drawdowns remain within acceptable limits and avoid catastrophic losses."
+}

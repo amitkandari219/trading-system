@@ -1,0 +1,82 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Dragonfly doji pattern approximated using: lower_wick > body (long lower shadow), body_pct < 0.05 (near-identical open/close), and close > prev_high (upward breakout). Entry restricted to bull market regime. Exit on breakout failure (close below prior low). Success rate of 57% in bull market noted in source but not directly encoded as statistical threshold. Hold period set conservatively at 20 days."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Dragonfly doji pattern approximated using: lower_wick > body (long lower shadow), body_pct < 0.05 (near-identical open/close), and close > prev_high (upward breakout). Entry restricted to bull market regime. Exit on breakout failure (close below prior low). Success rate of 57% in bull market noted in source but not directly encoded as statistical threshold. Hold period set conservatively at 20 days."
+  },
+  "source_rule_text": "Dragonfly Doji Pattern: A candlestick with opening and closing prices at or near the same level (allowing a few pennies difference), forming a doji shape. Entry signal occurs on breakout from the pattern."
+}

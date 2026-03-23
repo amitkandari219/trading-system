@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of 'established seasonal trend' via historical seasonal reversal dates and calendar-based seasonal window analysis (\u00b115 days from historical seasonal reversal). This requires external seasonal calendar data and historical pattern recognition not available in the standard indicator set. The 10-bar comparison reference is vague and cannot be precisely coded without explicit seasonal data. Current engine supports only price-action and technical indicators, not seasonal/calendar rules.",
+  "translation_notes": "Attempted to proxy the counter-trend logic using price vs SMA_10 to represent mean reversion within trend context, but this loses the core seasonal pattern and historical reversal date mechanics. The rule fundamentally depends on out-of-sample seasonal calendar data that must be provided separately. Entry on 'market_open_of_window_start' and position_size_pct_risk of 3.5% should be configured at backtest engine level. Stop loss of 2.0 ATR multiples maps to stop_loss_pct approximation but requires ATR_14 input at runtime."
 }

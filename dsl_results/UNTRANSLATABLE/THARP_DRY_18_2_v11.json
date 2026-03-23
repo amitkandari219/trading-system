@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "The signal requires tracking 5-bar extrema (highest_of_5_bars, lowest_of_5_bars) which are not in the allowed indicators list. ATR-based stop loss and target calculation requires dynamic entry price arithmetic (entry_price \u00b1 ATR multiples), which cannot be expressed using only the allowed operators and static indicators. The Donchian channel (dc_upper, dc_lower) could approximate 5-bar extrema but uses different lookback periods. A proper implementation requires custom indicator support for N-bar lookback extrema and price-relative ATR calculations.",
+  "translation_notes": "This is a failed-test reversal signal requiring: (1) detection of new 5-bar extreme, (2) failure to extend on next bar, (3) ATR-based dynamic stops. The entry conditions cannot be fully expressed without a highest/lowest-of-N-bars indicator. Consider using Donchian channels as partial substitute, or implementing custom 5-bar lookback indicator."
 }

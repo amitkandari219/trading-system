@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_2",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "KELLY",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.5,
+    "scale_factor": 0.5,
+    "trigger_condition": {
+      "metric": "drawdown_reduction_objective",
+      "threshold": null,
+      "direction": "smoothing"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Use fractional Kelly (half f or smaller) to reduce maximum drawdown by ~50% and smooth equity curves. Position Size = (fraction of f) \u00d7 (Account Equity / Largest Historical Loss). Trade-off: slower capital accumulation for reduced variance.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Use a fraction of optimal f (half f or smaller) to reduce drawdown and variance, accepting longer time to reach goals in exchange for smoother equity curves."
+}

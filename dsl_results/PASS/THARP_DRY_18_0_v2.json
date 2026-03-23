@@ -1,0 +1,108 @@
+{
+  "signal_id": "THARP_DRY_18_0",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_0",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_high"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_low"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal uses false breakouts (new highs/lows) as confirmation. Used Donchian channels (dc_upper/dc_lower) over a 20-bar lookback to identify new highs/lows. Entry requires price closing beyond the breakout level (2 consecutive bars approximated by checking current close vs previous high/low). Stop loss set to 2\u00d7 risk at 2.0% per exit condition ('2\u00d7 risk stop loss'). Direction is CONTEXT_DEPENDENT because the signal can trigger either long (false high breakout) or short (false low breakout). Penetration threshold (0.5% of range) is implicit in Donchian breakout detection and not explicitly encoded as a separate condition."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_high"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_low"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal uses false breakouts (new highs/lows) as confirmation. Used Donchian channels (dc_upper/dc_lower) over a 20-bar lookback to identify new highs/lows. Entry requires price closing beyond the breakout level (2 consecutive bars approximated by checking current close vs previous high/low). Stop loss set to 2\u00d7 risk at 2.0% per exit condition ('2\u00d7 risk stop loss'). Direction is CONTEXT_DEPENDENT because the signal can trigger either long (false high breakout) or short (false low breakout). Penetration threshold (0.5% of range) is implicit in Donchian breakout detection and not explicitly encoded as a separate condition."
+  },
+  "source_rule_text": "A trader should wait for confirmation that an anticipated market move has actually begun before entering, rather than entering at the time of initial prediction; use false breakouts (moves to new highs/lows) as confirmation signals to set up trades."
+}

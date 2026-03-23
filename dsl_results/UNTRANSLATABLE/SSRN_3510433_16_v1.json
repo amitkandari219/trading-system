@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by custom momentum metric and selecting top/bottom deciles, which cannot be expressed as point-in-time indicator conditions. This is a cross-sectional ranking strategy that requires portfolio construction logic, not individual stock entry/exit rules. The backtest engine would need custom portfolio ranking and decile selection functionality.",
+  "translation_notes": "Original signal is a decile-based momentum portfolio strategy with monthly rebalancing on India market (Jan 2011-Sep 2019). Entry conditions require ranking all stocks and selecting top 10% (long) and bottom 10% (short) by momentum. This cannot be translated to standard technical indicator rules. Suggested approach: implement custom ranking module in backtest engine or use external ranking system. Hold period is 1 month (~22 trading days)."
+}

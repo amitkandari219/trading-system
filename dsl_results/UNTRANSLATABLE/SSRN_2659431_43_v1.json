@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_43",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires realized variance (RV) calculation and dynamic scaling factor (c * f / RV\u00b2_{t-1}) which cannot be expressed using only the allowed indicators. Realized variance is a custom statistical computation over a rolling lookback period that requires direct return series analysis, not available in the indicator set. The scaling mechanism is a portfolio weighting adjustment applied at rebalance time, not a price-level entry/exit condition.",
+  "translation_notes": "This is a volatility management overlay signal rather than a traditional entry/exit rule. It operates by: (1) Computing realized variance of factor returns over the preceding month, (2) Scaling exposure inversely to that variance measure at monthly rebalance. This requires backtesting infrastructure that supports dynamic position sizing based on custom volatility metrics, not condition-based entry/exit logic. Implementation would need a custom module accepting returns stream and outputting scaled positions monthly."
+}

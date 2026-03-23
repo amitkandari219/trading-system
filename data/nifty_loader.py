@@ -248,7 +248,11 @@ def _safe_int(row, col_hint):
 
 
 def _bulk_insert(db, df):
-    """Insert merged OHLCV+VIX DataFrame into nifty_daily. Skip existing rows."""
+    """Insert merged OHLCV+VIX DataFrame into nifty_daily.
+
+    On conflict, update OHLCV and backfill india_vix if currently NULL.
+    This ensures VIX data that arrives later (e.g. yfinance lag) gets filled in.
+    """
     from psycopg2.extras import execute_values
 
     rows = []
@@ -268,7 +272,13 @@ def _bulk_insert(db, df):
         cur,
         """INSERT INTO nifty_daily (date, open, high, low, close, volume, india_vix)
            VALUES %s
-           ON CONFLICT (date) DO NOTHING""",
+           ON CONFLICT (date) DO UPDATE SET
+               open = COALESCE(EXCLUDED.open, nifty_daily.open),
+               high = COALESCE(EXCLUDED.high, nifty_daily.high),
+               low = COALESCE(EXCLUDED.low, nifty_daily.low),
+               close = COALESCE(EXCLUDED.close, nifty_daily.close),
+               volume = COALESCE(EXCLUDED.volume, nifty_daily.volume),
+               india_vix = COALESCE(EXCLUDED.india_vix, nifty_daily.india_vix)""",
         rows
     )
     db.commit()
@@ -304,9 +314,82 @@ def _populate_market_calendar(db, start_year):
     db.commit()
 
 
+def _fetch_vix_from_kite(from_date, to_date):
+    """
+    Fetch India VIX daily close via Kite historical data API.
+
+    Uses instrument token 264969 (India VIX on NSE).
+    Returns DataFrame with columns: [date (datetime), india_vix (float)].
+    """
+    try:
+        from data.kite_auth import get_kite
+        kite = get_kite()
+        if not kite:
+            print("  VIX via Kite: not authenticated, skipping")
+            return pd.DataFrame(columns=['date', 'india_vix'])
+
+        VIX_TOKEN = 264969
+        from datetime import datetime
+        from_dt = datetime.combine(from_date, datetime.min.time())
+        to_dt = datetime.combine(to_date, datetime.min.time()) + timedelta(hours=23)
+
+        data = kite.historical_data(
+            instrument_token=VIX_TOKEN,
+            from_date=from_dt,
+            to_date=to_dt,
+            interval='day',
+        )
+
+        if not data:
+            print("  VIX via Kite: no data returned")
+            return pd.DataFrame(columns=['date', 'india_vix'])
+
+        records = []
+        for candle in data:
+            dt = candle['date']
+            if hasattr(dt, 'tzinfo') and dt.tzinfo:
+                dt = dt.replace(tzinfo=None)
+            records.append({
+                'date': pd.to_datetime(dt).normalize(),
+                'india_vix': float(candle['close']),
+            })
+
+        df = pd.DataFrame(records)
+        print(f"  VIX via Kite: {len(df)} records fetched")
+        return df
+
+    except Exception as e:
+        print(f"  VIX via Kite failed: {e}")
+        return pd.DataFrame(columns=['date', 'india_vix'])
+
+
+def _fetch_vix_best_effort(from_date, to_date):
+    """
+    Fetch India VIX data, trying Kite first, then yfinance as fallback.
+
+    Returns DataFrame with columns: [date (datetime), india_vix (float)].
+    """
+    # Try Kite first (more reliable for recent dates)
+    vix_df = _fetch_vix_from_kite(from_date, to_date)
+    if not vix_df.empty:
+        return vix_df
+
+    # Fall back to yfinance
+    print("  Trying yfinance for VIX...")
+    vix_df = _download_vix_history()
+    if not vix_df.empty:
+        # Filter to requested date range
+        vix_df = vix_df[
+            (vix_df['date'] >= pd.to_datetime(from_date)) &
+            (vix_df['date'] <= pd.to_datetime(to_date))
+        ]
+    return vix_df
+
+
 def incremental_update(db):
     """
     Nightly update: download yesterday's Bhavcopy and VIX, insert if missing.
+    Also backfills VIX for any recent rows that have NULL india_vix.
     Called by cron at 6:00 PM daily.
     """
     yesterday = date.today() - timedelta(days=1)
@@ -314,22 +397,83 @@ def incremental_update(db):
     # Skip weekends
     if yesterday.weekday() >= 5:
         print(f"Skipping {yesterday} (weekend)")
+        # Still try to backfill VIX for recent NULL rows
+        backfill_vix(db, days=10)
         return
 
     cur = db.cursor()
     cur.execute("SELECT 1 FROM nifty_daily WHERE date = %s", (yesterday,))
     if cur.fetchone():
-        print(f"Data for {yesterday} already loaded.")
+        print(f"OHLCV for {yesterday} already loaded.")
+    else:
+        ohlcv = _download_bhavcopy_range(yesterday, yesterday)
+        vix = _fetch_vix_best_effort(yesterday, yesterday)
+        if not ohlcv.empty:
+            merged = ohlcv.merge(vix, on='date', how='left')
+            inserted = _bulk_insert(db, merged)
+            print(f"Inserted {inserted} row(s) for {yesterday}")
+        else:
+            print(f"No data available for {yesterday} (likely holiday)")
+
+    # Always try to backfill VIX for recent rows with NULL india_vix
+    backfill_vix(db, days=10)
+
+
+def backfill_vix(db, days=10):
+    """
+    Backfill india_vix for recent nifty_daily rows where it is NULL.
+
+    Tries Kite historical API first, then yfinance as fallback.
+    Updates existing rows in-place (does not insert new rows).
+
+    Parameters
+    ----------
+    db : psycopg2 connection
+    days : int
+        Look back this many calendar days for NULL VIX rows.
+    """
+    cur = db.cursor()
+    cur.execute(
+        """SELECT date FROM nifty_daily
+           WHERE india_vix IS NULL AND date >= %s
+           ORDER BY date""",
+        (date.today() - timedelta(days=days),)
+    )
+    null_dates = [r[0] for r in cur.fetchall()]
+
+    if not null_dates:
+        print("VIX backfill: no NULL rows found — nothing to do.")
         return
 
-    ohlcv = _download_bhavcopy_range(yesterday, yesterday)
-    vix = _download_vix_history()
-    if not ohlcv.empty:
-        merged = ohlcv.merge(vix, on='date', how='left')
-        inserted = _bulk_insert(db, merged)
-        print(f"Inserted {inserted} row(s) for {yesterday}")
-    else:
-        print(f"No data available for {yesterday} (likely holiday)")
+    print(f"VIX backfill: {len(null_dates)} rows with NULL india_vix: "
+          f"{null_dates[0]} to {null_dates[-1]}")
+
+    from_date = null_dates[0] - timedelta(days=1)  # one extra day for safety
+    to_date = null_dates[-1] + timedelta(days=1)
+
+    vix_df = _fetch_vix_best_effort(from_date, to_date)
+
+    if vix_df.empty:
+        print("VIX backfill: no VIX data available from any source.")
+        return
+
+    # Normalize dates for matching
+    vix_df['date_norm'] = pd.to_datetime(vix_df['date']).dt.date
+    vix_map = dict(zip(vix_df['date_norm'], vix_df['india_vix']))
+
+    updated = 0
+    for d in null_dates:
+        vix_val = vix_map.get(d)
+        if vix_val is not None and not pd.isna(vix_val) and float(vix_val) > 0:
+            cur.execute(
+                "UPDATE nifty_daily SET india_vix = %s WHERE date = %s",
+                (float(vix_val), d)
+            )
+            updated += 1
+            print(f"  Updated {d}: india_vix = {float(vix_val):.2f}")
+
+    db.commit()
+    print(f"VIX backfill: updated {updated}/{len(null_dates)} rows.")
 
 
 def check_status(db):
@@ -368,6 +512,9 @@ if __name__ == '__main__':
                         help='Incremental update (run nightly)')
     parser.add_argument('--status', action='store_true',
                         help='Check loaded data status')
+    parser.add_argument('--backfill-vix', type=int, nargs='?', const=10,
+                        metavar='DAYS',
+                        help='Backfill NULL india_vix for last N days (default 10)')
     parser.add_argument('--dsn', default=DATABASE_DSN,
                         help='PostgreSQL DSN')
     args = parser.parse_args()
@@ -379,6 +526,8 @@ if __name__ == '__main__':
         initial_load(conn)
     elif args.update:
         incremental_update(conn)
+    elif args.backfill_vix is not None:
+        backfill_vix(conn, days=args.backfill_vix)
     elif args.status:
         check_status(conn)
     else:

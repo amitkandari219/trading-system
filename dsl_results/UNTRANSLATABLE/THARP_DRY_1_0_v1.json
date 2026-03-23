@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "Signal requires calculating 'Yesterday's High + 1.5 \u00d7 Yesterday's Range' as a composite threshold, which cannot be expressed as a single indicator comparison. The exact breakout level (prev_high + 1.5 \u00d7 range) requires arithmetic expression capability not supported by the three-field condition schema. Gap opening condition also requires comparing open vs prev_close with a threshold, not available as a direct indicator.",
-  "translation_notes": "Simplified to core concept: price closes above previous high with volume confirmation. Profit target (Entry + 2\u00d7 risk) and no-gap conditions could not be translated to allowed operators. Stop-loss set to prev_high level. Gap tolerance and exact multiplier thresholds require custom indicator engineering."
+  "untranslatable_reason": "This is an entry/exit signal (volatility breakout rule with price, volume, and gap conditions), not a position sizing rule. Entry conditions should be extracted using standard entry DSL, not position sizing extraction.",
+  "translation_notes": null
 }

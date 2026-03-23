@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires real-time realized volatility calculation per factor and dynamic position sizing inversely proportional to volatility. The allowed indicator set contains only historical volatility measures (hvol_20, atr_*) and does not include realized volatility estimation, factor decomposition, or dynamic position scaling logic. This is a portfolio-level volatility adaptation rule, not a single-instrument entry/exit signal that can be expressed as threshold comparisons on OHLCV data.",
+  "translation_notes": "SSRN_2659431_7 describes a volatility-responsive position sizing framework rather than a traditional trading signal. Implementation requires: (1) factor return decomposition, (2) real-time realized volatility estimation per factor, (3) inverse scaling of notional exposure. This falls outside the scope of indicator-based threshold rules. A partial proxy using hvol_20 as a volatility proxy could reduce position size when hvol_20 is elevated, but this would not capture the multi-factor realized volatility structure described in the source material."
+}

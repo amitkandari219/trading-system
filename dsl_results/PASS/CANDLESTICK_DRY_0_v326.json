@@ -1,0 +1,92 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "low"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Dark Cloud Cover pattern operationalized as: (1) price above SMA_50 indicating uptrend, (2) gap up from prior high (close > prev_high), (3) large body relative to volatility suggesting strong prior candle, (4) close near day's low (lower_wick minimal). Exit on reversal when close crosses above prior close. Pattern rank 22/103 suggests moderate reliability; conservative hold of 5 days and 2% stop loss applied."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "low"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Dark Cloud Cover pattern operationalized as: (1) price above SMA_50 indicating uptrend, (2) gap up from prior high (close > prev_high), (3) large body relative to volatility suggesting strong prior candle, (4) close near day's low (lower_wick minimal). Exit on reversal when close crosses above prior close. Pattern rank 22/103 suggests moderate reliability; conservative hold of 5 days and 2% stop loss applied."
+  },
+  "source_rule_text": "Dark Cloud Cover: Pattern begins in upward price trend with a tall white candle, followed by a gap open higher than prior day's peak, then bears take over with selling pressure closing price near day's low"
+}

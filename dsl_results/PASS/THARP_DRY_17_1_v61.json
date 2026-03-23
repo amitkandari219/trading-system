@@ -1,0 +1,102 @@
+{
+  "signal_id": "THARP_DRY_17_1",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_17_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_100"
+      },
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "sma_50",
+        "operator": ">",
+        "right": "sma_100"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_100"
+      },
+      {
+        "left": "adx_14",
+        "operator": "<",
+        "right": "20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires 'trend established over minimum 3 months' which cannot be directly encoded as a single condition; this should be enforced at backtest initialization via lookback_period_months=90. All other entry conditions (price > 100-SMA, SMA alignment, ADX > 25) are directly translatable. Exit conditions use standard trend reversal signals. Direction is LONG as the rule focuses on entering obvious uptrends."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_100"
+      },
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "sma_50",
+        "op": ">",
+        "value": "sma_100"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_100"
+      },
+      {
+        "indicator": "adx_14",
+        "op": "<",
+        "value": 20.0
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal requires 'trend established over minimum 3 months' which cannot be directly encoded as a single condition; this should be enforced at backtest initialization via lookback_period_months=90. All other entry conditions (price > 100-SMA, SMA alignment, ADX > 25) are directly translatable. Exit conditions use standard trend reversal signals. Direction is LONG as the rule focuses on entering obvious uptrends."
+  },
+  "source_rule_text": "A trader should only enter a trade when the dominant long-term market trend is obvious and unambiguous, operationalized as a trend strong enough to be visually clear from distance."
+}

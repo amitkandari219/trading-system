@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "DRAWDOWN_SCALED",
+    "base_risk_pct": 3.0,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "drawdown_std_devs",
+      "threshold": 3.0,
+      "direction": "below"
+    },
+    "max_risk_pct": 3.0,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position sizing algorithm that reduces/eliminates positions when current drawdown exceeds 3 standard deviations from mean. Max position size 3% of capital when conditions met. Uses statistical risk measures as gating mechanism before position entry.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should implement a position-sizing algorithm to avoid taking positions when market conditions or statistical risk measures indicate the trade should not be taken, rather than relying on signal generation alone."
+}

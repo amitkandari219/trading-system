@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2435323_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires cross-sectional ranking across the entire stock universe and construction of size-stratified momentum portfolios. The backtest engine indicators provided are single-stock technical indicators (RSI, moving averages, ATR, etc.) and cannot implement multi-stock ranking, percentile stratification, size classification, or portfolio aggregation. To translate this UMD factor properly would require: (1) a universe-wide momentum ranking function, (2) size quintile/group classification across all stocks, (3) portfolio formation and equal-weighting logic across groups, and (4) cross-sectional long/short aggregation. These are factor/portfolio-construction operations, not single-instrument trading conditions.",
+  "translation_notes": "Signal SSRN_2435323_3 is a well-known academic factor (Carhart's UMD momentum factor) designed for cross-sectional portfolio analysis, not single-stock entry/exit signals. The 'returns' indicator was used as a proxy for momentum ranking, but this does not capture the required stratification by market cap, percentile bucketing, or portfolio averaging logic. Recommend implementing this as a separate factor construction module rather than a rule-based backtest condition."
+}

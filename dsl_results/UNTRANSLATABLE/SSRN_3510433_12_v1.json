@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires factor-based stock ranking (WML: Winner-Minus-Loser momentum factor) and cross-sectional portfolio construction across a large-cap Indian stock universe with monthly rebalancing. The allowed indicators are price-based technical indicators only\u2014there is no support for: (1) factor scoring/ranking, (2) percentile/quintile/decile selection across a universe, (3) market-cap filtering, or (4) multi-leg portfolio weighting. A true implementation requires portfolio construction logic beyond single-security condition evaluation.",
+  "translation_notes": "This is a factor-based, cross-sectional stock selection strategy (long-only momentum portfolio with WML tilt), not a time-series technical signal on individual securities. It cannot be expressed using the allowed technical indicators. A backtest engine supporting this signal would need: (i) factor library with WML calculation, (ii) universe filtering by market cap, (iii) ranking/sorting across N stocks, (iv) quintile/decile selection, and (v) portfolio-level rebalancing logic. The 7.34%-7.75% annualized alpha suggests strong historical outperformance on Indian large-caps (2013-2019), but implementation requires a factor/cross-sectional backtester, not a technical rule engine."
+}

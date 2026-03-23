@@ -1,0 +1,128 @@
+{
+  "signal_id": "THARP_DRY_18_1",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_1",
+    "entry_long": [
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.25"
+      },
+      {
+        "left": "prev_close",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "price_pos_20",
+        "operator": ">",
+        "right": "0.75"
+      },
+      {
+        "left": "prev_close",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_open"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_open"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 1,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used price_pos_20 (Donchian-based position metric) to identify extreme opening/closing positions within a 20-bar window. Entry requires extreme positioning on prior day AND reversal pullback within prior day range on current day. Exit targets previous day's open level. Hard stop of 2.0 ATR equivalent encoded in stop_loss_pct. Signal is context-dependent (long/short) based on which extreme triggered. Time window constraint (4 hours) not encoded as backtest engine typically processes daily bars; operator would need intraday data for precise enforcement."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.25
+      },
+      {
+        "indicator": "prev_close",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "price_pos_20",
+        "op": ">",
+        "value": 0.75
+      },
+      {
+        "indicator": "prev_close",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_open"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_open"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 1,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used price_pos_20 (Donchian-based position metric) to identify extreme opening/closing positions within a 20-bar window. Entry requires extreme positioning on prior day AND reversal pullback within prior day range on current day. Exit targets previous day's open level. Hard stop of 2.0 ATR equivalent encoded in stop_loss_pct. Signal is context-dependent (long/short) based on which extreme triggered. Time window constraint (4 hours) not encoded as backtest engine typically processes daily bars; operator would need intraday data for precise enforcement."
+  },
+  "source_rule_text": "When the market exhibits a strong trending day (opening at one extreme and closing at the other), expect mean reversion the following day; fade the opening direction momentum in favor of a reversal bias."
+}

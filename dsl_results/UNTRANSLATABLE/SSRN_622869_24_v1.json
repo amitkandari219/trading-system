@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_24",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'open-buy put-call ratio' and 'open-buy volume' metrics which are specific derivatives/options order flow indicators not present in the allowed indicator set. The allowed indicators lack options-specific volume decomposition (open-buy calls, open-sell puts). Substituted vol_ratio_20 as a proxy for volume momentum, but this does not accurately capture the informed trader signal from options order flow.",
+  "translation_notes": "Original signal depends on options market microstructure data (open interest buy/sell decomposition by call/put) which is not available in standard OHLCV indicators. The core concept is 'volume-based informed trading signal' but the specific implementation requires options flow data. Used vol_ratio_20 as a reasonable approximation for 'volume increase' but this is a significant degradation from the intended signal."
+}

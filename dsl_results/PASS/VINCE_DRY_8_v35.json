@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "DRAWDOWN_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.0,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "active_equity_depletion",
+      "threshold": 1.0,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Quarterly reallocation of account between active trading (X%) and inactive risk-free assets (100-X%). When active portion reaches 100% drawdown, trading halts until next quarterly reallocation. This is a portfolio-level drawdown-triggered position reduction rule that scales active equity to zero.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Reallocate portfolio between active trading equity and inactive risk-free assets on a quarterly basis, with option to cease trading if active portion is completely depleted until next quarter reallocation."
+}

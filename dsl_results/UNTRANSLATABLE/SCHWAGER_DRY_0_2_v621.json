@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires multi-instrument spread analysis (correlation, relative pricing between two legs, standard deviation of spread, mispricing thresholds). Available indicators are single-instrument only. Standard spread metrics (z-score of spread, spread mean/std deviation, bid-ask relative positioning) are not in the allowed indicator set. The signal fundamentally requires pair trading framework unavailable in single-leg backtest engine.",
+  "translation_notes": "Attempted proxy using price_pos_20 (price position in 20-bar range) to approximate relative valuation extremes at 60th+ percentile (>0.6 for long, <0.4 for short). Exit approximates mean reversion at 0.5 SD within mean. However, this loses critical spread-specific logic around correlation, dual-leg mispricing detection, and relative basis analysis. Direct implementation requires spread construction capability."
 }

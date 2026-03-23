@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_299107_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a cross-sectional ranking strategy requiring decile formation (top 10% vs bottom 10% by historical returns across the universe). Standard technical indicators cannot express portfolio-level ranking and rebalancing logic. The signal requires: (1) universe-wide ranking by past returns, (2) portfolio construction (long decile P1, short decile P10), and (3) periodic rebalancing\u2014all of which are portfolio/factor construction operations, not bar-by-bar conditions. A backtest engine would need custom portfolio ranking logic to implement this momentum factor properly.",
+  "translation_notes": "SSRN_299107_5 is a classic Fama-French momentum factor (winner-loser spread). It cannot be meaningfully translated to technical indicator conditions on individual bars. Implementation requires: (a) historical return ranking over a ranking period, (b) decile classification, (c) long/short portfolio construction, (d) hold through measurement period, (e) rebalance on new ranking. This is a fundamental portfolio strategy, not a price-action signal."
+}

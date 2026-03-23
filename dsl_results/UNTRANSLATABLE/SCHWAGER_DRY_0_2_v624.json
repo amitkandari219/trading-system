@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires: (1) Realized volatility 1-year lookback percentile ranking (not available; used hvol_20 as proxy), (2) IV Rank metric (not in allowed indicators; attempted india_vix as volatility proxy), (3) Time-to-expiration tracking (not available in price/technical indicator set), (4) Options-specific metrics (delta, credit received, spread mechanics) which are derivative instruments outside the scope of OHLCV technical analysis. The signal is fundamentally an options strategy requiring volatility term structure and derivative pricing inputs.",
+  "translation_notes": "Attempted partial translation using available volatility proxies: hvol_20 for realized volatility regime, india_vix for IV Rank, and price_pos_20 (price position vs 20-day MA) to approximate the 4% MA proximity rule. However, core logic (wings, time decay theta, credit spreads, delta targeting, multi-leg expirations) cannot be expressed in technical indicator space. This signal requires an options-aware backtest engine with IV surface, Greeks, and expirations support."
 }

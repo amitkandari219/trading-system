@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_30_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.015,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": 1.15,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "equity_increase_pct",
+      "threshold": 0.025,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.03,
+    "min_risk_pct": 0.015,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Risk 1.5% of equity per trade (1-R units). Scale position size up by 15% multiplier when portfolio equity increases by 2.5% or more. Cap max position at 3% of equity. Equalizes risk exposure across portfolio positions.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should adjust position size proportionally to account equity changes and risk per trade, equalizing risk exposure across all portfolio positions to maintain consistent 1-R risk units."
+}

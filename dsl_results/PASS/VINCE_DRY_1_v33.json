@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_1",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "closed_trades_count",
+      "threshold": 30,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Do not compute position sizing metrics or adjust positions until minimum 30 closed trades completed. Requires Z-score analysis of trade streaks to confirm non-random dependency before applying optimal f or other Kelly-based sizing. Parameters not specified by author.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Require a minimum of 30 closed trades before computing position sizing metrics and assessing trade dependency to determine if a trading system has non-random characteristics that warrant position adjustment."
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires 'IV Rank' (Implied Volatility Rank percentile), 'Expected price move next 30 days', and comparison to '1% of current price' \u2014 none of which are available in the allowed indicator set. IV Rank is a specific options metric requiring market data not provided. Expected directional move magnitude cannot be computed from price/volume indicators alone. Substituted hvol_20 (20-day historical volatility) as closest proxy for low volatility environment, but this is not equivalent to IV Rank percentile.",
+  "translation_notes": "Signal is context-dependent (sell premium in ranging/low-vol, buy directional in high-vol). Translated entry conditions as SHORT (sell calls/puts) when volatility is low (hvol_20 < 0.30 as proxy for IV Rank < 30th percentile) and ATR contracting (atr_14 < sma_20 approximates volatility contraction). Exit when volatility rises (hvol_20 > 0.50 as proxy for IV Rank > 50th percentile). LONG entry conditions left empty due to lack of objective thresholds for 'large directional moves with open-ended profit potential.' Expected move threshold (1% of price) cannot be implemented without forward-looking expectation data or options market input."
 }

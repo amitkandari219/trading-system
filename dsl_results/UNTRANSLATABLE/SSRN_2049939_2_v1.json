@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "BAB (Betting Against Beta) factor strategy requires explicit beta calculations and cross-asset beta-relative positioning that cannot be expressed using only technical price-based indicators. The strategy fundamentally requires: (1) Beta estimation per asset, (2) Leverage/de-leverage calculations to target beta=1.0, (3) Cross-sectional ranking and portfolio construction across multiple assets with correlated offsetting positions. None of the ALLOWED INDICATORS support direct beta measurement, leverage application, or multi-asset factor decomposition. This is a portfolio-level factor strategy, not a single-asset technical signal.",
+  "translation_notes": "Signal describes a statistical arbitrage factor strategy that operates at the portfolio construction level with beta-relative hedging. Attempted zscore-based proxy (assuming low-beta ~ negative residual, high-beta ~ positive residual) but this does not capture the true mechanism. Recommend implementing via custom beta calculation module rather than technical indicator framework."
+}

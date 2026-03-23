@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "Signal requires pattern recognition (Broadening Tops identification) and volume trend classification (Rising/Falling/U-shaped/Dome-shaped) which cannot be expressed using only OHLCV and standard indicators. The performance outcomes are contingent on both pattern type and volume trend category, which require multi-bar pattern analysis beyond allowed operators.",
-  "translation_notes": "This signal fundamentally relies on: (1) identifying a specific candlestick pattern (Broadening Tops) over multiple bars, (2) classifying volume trends into discrete categories (Rising/Falling/U-shaped/Dome-shaped), and (3) applying different statistical outcomes based on market regime + breakout direction + volume trend. A partial implementation using volume breakout (volume > prev_volume) is provided, but misses the critical pattern recognition and volume trend classification logic that drives the rule. The performance statistics (27%, -14%, -21%, 32%, etc.) are regime and trend-dependent outputs that cannot be encoded as simple entry/exit rules."
+  "untranslatable_reason": "Pattern requires volume trend classification (Rising/Falling/U-shaped/Dome-shaped/Neither) which cannot be fully expressed with available point-in-time indicators. Only basic vol_ratio_20 confirmation is possible. Broadening Tops formation detection (expanding range with higher highs/lows) would require multi-bar pattern analysis not available in single-bar indicator set.",
+  "translation_notes": null
 }

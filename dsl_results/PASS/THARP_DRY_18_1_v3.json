@@ -1,0 +1,110 @@
+{
+  "signal_id": "THARP_DRY_18_1",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_1",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "price_pos_20"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">=",
+        "right": "0.9"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "price_pos_20"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<=",
+        "right": "0.1"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "price_pos_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "price_pos_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.5,
+    "hold_days_max": 2,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "HIGH_VOL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used price_pos_20 (20-day price position) to identify new 20-day highs (>=0.9) and lows (<=0.1). Stop loss placed at opposite extreme using price_pos_20 thresholds. Hold period limited to 2 days per signal requirement to capture early breakout and avoid crowding slippage. Risk-reward ratio of 1.5:1 encoded in stop_loss_pct as a proportional rule."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "price_pos_20"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">=",
+        "value": 0.9
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "price_pos_20"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<=",
+        "value": 0.1
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "price_pos_20"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "price_pos_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN",
+      "HIGH_VOL"
+    ],
+    "hold_days": 2,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used price_pos_20 (20-day price position) to identify new 20-day highs (>=0.9) and lows (<=0.1). Stop loss placed at opposite extreme using price_pos_20 thresholds. Hold period limited to 2 days per signal requirement to capture early breakout and avoid crowding slippage. Risk-reward ratio of 1.5:1 encoded in stop_loss_pct as a proportional rule."
+  },
+  "source_rule_text": "A trader should enter breakout positions in the direction of new price extremes, but should be aware that obvious breakout setups become crowded and are subject to fakeouts; therefore, improve entry odds by either trading the breakout itself or contrarian entries that exploit the predictable failure of obvious breakouts."
+}

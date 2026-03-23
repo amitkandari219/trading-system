@@ -1,0 +1,101 @@
+{
+  "signal_id": "BULKOWSKI_HEAD_SHOULDERS_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Head-and-Shoulders Bottom (HSB)",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_HEAD_SHOULDERS_BOTTOM",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": "<",
+        "right": "1.2"
+      },
+      {
+        "left": "rsi_14",
+        "operator": "<",
+        "right": "50"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.4"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "rsi_14",
+        "operator": ">",
+        "right": "70"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": "<",
+        "value": 1.2
+      },
+      {
+        "indicator": "rsi_14",
+        "op": "<",
+        "value": 50.0
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.4
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "rsi_14",
+        "op": ">",
+        "value": 70.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_HEAD_SHOULDERS_BOTTOM"
+  },
+  "source_rule_text": "Head-and-Shoulders Bottom (HSB): A reversal pattern that forms after an extended downtrend, characterized by a left shoulder, head, and right shoulder formation, typically showing little volume increase during the rise from head to right shoulder and unexciting volume on breakout."
+}

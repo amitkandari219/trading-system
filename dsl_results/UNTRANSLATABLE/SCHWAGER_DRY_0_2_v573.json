@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "The signal requires detection of volatility regime anomalies and divergence persistence tracking over 5+ bars, which cannot be expressed using only the allowed point-in-time indicators. 'IV rank' is not available (only hvol_20 as proxy). Divergence detection and multi-bar persistence counting require custom logic beyond the allowed operators.",
+  "translation_notes": "Attempted partial translation: Used atr_14 crossing sma_10 as proxy for volatility directional change anomaly, and hvol_20 > 40th percentile (0.40) to detect elevated volatility. However, the core requirement\u2014detecting divergence between volatility and price regime changes, and tracking unchanged divergence for 5+ consecutive bars\u2014cannot be captured with allowed operators. Early directional bias detection also requires pattern recognition beyond available tools."
 }

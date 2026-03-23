@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of 'crowd synchronization' and 'dealer short coverage' \u2014 neither can be quantified from allowed price/volume/technical indicators. These require order flow analysis, positioning data, or market microstructure metrics not available in the allowed indicator set. The conceptual framework (resist herd behavior at tops, exit on reversal) is translatable, but the core detection mechanism ('1+ correlated participants detected', 'heavy covering at market tops') cannot be operationalized with standard OHLCV indicators.",
+  "translation_notes": "Attempted proxy: Entry uses price above moving average + volume confirmation to detect synchronized upward participation; Exit uses moving average crossbelow as reversal signal. However, this does not capture the psychological/behavioral essence of the signal (identifying herds systematically buying at tops) or the dealer-covering refinement. A proper implementation would require tick-level order flow, large trader position tracking, or put/call skew data."
 }

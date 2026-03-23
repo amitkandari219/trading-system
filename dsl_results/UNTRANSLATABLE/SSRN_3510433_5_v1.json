@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires cross-sectional ranking and percentile-based stock selection (top/bottom 30% by momentum return), which cannot be expressed as single-stock indicator conditions. The rule requires comparing a stock's returns against the peer universe to determine percentile rank\u2014this is a portfolio-level ranking operation, not a time-series technical indicator condition. Standard backtest engines using single-bar conditions cannot directly implement this without custom ranking logic.",
+  "translation_notes": "Signal uses 'momentum return' which maps to 'returns' indicator, but the core logic (rank universe \u2192 select top 30% \u2192 select bottom 30%) is a cross-sectional portfolio construction rule, not a per-stock entry/exit signal. Rebalance frequency is monthly (approximately 21 trading days)."
+}

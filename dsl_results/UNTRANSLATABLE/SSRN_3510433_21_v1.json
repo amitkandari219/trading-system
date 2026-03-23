@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_21",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires explicit 'momentum metric' for ranking stocks in NIFTY100 universe (e.g., past N-month returns), but no specific momentum lookback period is defined in parameters. The strategy logic involves cross-sectional ranking and portfolio construction (select top 10 from 100), which cannot be expressed as simple price-based conditions on individual securities. Allowed indicators are single-stock technical indicators; cross-sectional ranking logic and portfolio-level rebalancing are beyond the scope of condition-based rules.",
+  "translation_notes": "This is a systematic portfolio selection strategy requiring: (1) ranking mechanism across universe members by momentum, (2) portfolio construction logic, and (3) monthly rebalancing discipline. These are portfolio-management operations, not entry/exit conditions on individual candles. A proper implementation requires a portfolio optimizer module, not condition rules. Placeholder conditions use returns > 0 for conceptual entry, but this does not capture the actual momentum-ranking logic described in the signal."
+}

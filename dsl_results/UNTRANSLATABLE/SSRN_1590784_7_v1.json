@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1590784_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of futures contract expiration day (calendar-based event) and identification of specific affected instruments (Nifty + 17 individual stocks, excluding CIPLA, HDFC, M&M, ONGC). These require external data sources and pre-filtering logic not available in the indicator-based rule engine. The core volatility expansion can be captured via india_vix, but the expiration day trigger and stock-level filtering must be implemented at the backtest engine level as separate event handlers.",
+  "translation_notes": "Used india_vix as proxy for volatility expansion expected on expiration day (HIGH_VOL regime). Entry triggered on elevated volatility. Exit set to close on same trading day or next day with minimal reversal threshold (\u00b12% returns). Direction set to BOTH since signal applies to both long and short volatility positioning. This is a PARTIAL translation \u2014 the calendar event and stock filtering logic must be implemented separately in the backtest engine as a pre-filter on entry conditions."
+}

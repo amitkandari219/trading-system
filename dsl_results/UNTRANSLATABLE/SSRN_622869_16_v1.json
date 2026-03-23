@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires put-call ratio data which is not available in the allowed indicators list. The put-call ratio (put volume / call volume) is an options market metric not present in price/technical indicator set. Used vol_ratio_20 as a proxy for elevated volume relative to normal, combined with RSI < 30 to detect excessive bearishness, but this is not a true put-call ratio implementation.",
+  "translation_notes": "Attempted translation using vol_ratio_20 (volume ratio) as a proxy for relative bearish volume and rsi_14 < 30 to detect oversold/excessive bearish sentiment. Exit uses RSI mean reversion (>50). However, this is fundamentally incomplete without actual options volume data (put volume vs call volume). The original signal is contrarian-based requiring derivatives market data unavailable in the backtest engine."
+}

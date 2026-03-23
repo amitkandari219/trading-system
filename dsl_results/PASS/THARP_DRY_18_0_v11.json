@@ -1,0 +1,128 @@
+{
+  "signal_id": "THARP_DRY_18_0",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_0",
+    "entry_long": [
+      {
+        "left": "high",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.5"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "dc_lower"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.5"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.5,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used Donchian channels (dc_upper/dc_lower) to detect new multi-day extremes. Entry long: price tests new high then closes lower (reversal). Entry short: price tests new low then closes higher (reversal). Small body_pct indicates reversal exhaustion. Exit conditions trigger on continuation through previous bar extremes. Stop loss set at 2.5x ATR equivalent (2.5%) as specified. Hold max 5 bars per signal specification. Gap closure percentage (50% minimum) cannot be directly encoded without lookback indexing, so reversal structure detection via body_pct and close positioning against prev_close/prev_high/prev_low serves as proxy."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "high",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.5
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.5
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used Donchian channels (dc_upper/dc_lower) to detect new multi-day extremes. Entry long: price tests new high then closes lower (reversal). Entry short: price tests new low then closes higher (reversal). Small body_pct indicates reversal exhaustion. Exit conditions trigger on continuation through previous bar extremes. Stop loss set at 2.5x ATR equivalent (2.5%) as specified. Hold max 5 bars per signal specification. Gap closure percentage (50% minimum) cannot be directly encoded without lookback indexing, so reversal structure detection via body_pct and close positioning against prev_close/prev_high/prev_low serves as proxy."
+  },
+  "source_rule_text": "A trader should enter a trade expecting a reversal when the market tests a new extreme, then fails that test by closing at the opposite end of the range or showing weakness on a subsequent bar, signaling exhaustion of the trend."
+}

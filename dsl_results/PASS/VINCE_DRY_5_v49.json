@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_5",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "historical_pld_std_dev",
+      "threshold": 8,
+      "direction": "equals"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Ralph Vince optimal f method: derive position size from P&L distribution using 8 standard deviations; adjust for bias in underlying asset movement (e.g., 0.01 points/day drift); apply minimum tick increment (e.g., 0.1) in calculations; optimal f is calculated from AME (Arithmetic Mathematical Expectation) where Y = AME - Current Price",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Calculate optimal f using 8 standard deviations from the underlying asset's P&L distribution with bias adjustment for expected daily movement."
+}

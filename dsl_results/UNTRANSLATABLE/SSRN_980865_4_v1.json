@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by volatility across a universe and selecting deciles (bottom 10% and top 10%), which is a cross-sectional portfolio construction rule, not a single-instrument technical indicator condition. The allowed indicators are designed for single-security analysis. Decile-based long/short portfolio construction requires universe-level ranking logic not expressible with the provided indicator set.",
+  "translation_notes": "This is a statistical arbitrage / low-volatility anomaly signal that requires: (1) computing volatility for all stocks in the universe, (2) ranking by volatility, (3) selecting bottom decile for long and top decile for short positions, and (4) monthly rebalancing. This cross-sectional approach cannot be translated into condition-based rules for individual securities. Implementation requires a portfolio optimizer or ranking engine, not indicator-based entry/exit logic."
+}

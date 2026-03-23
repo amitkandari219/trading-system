@@ -1,0 +1,84 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "0"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "prev_close",
+        "operator": ">",
+        "right": "prev_open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 6.61,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal describes a two-day bullish candle pattern: (1) Day 1 has a white/bullish candle (close > open), (2) Day 2 (after point 2) continues with another white candle above the prior day's close. Entry conditions check: white candle body (body > 0), current close above current open (bullish), and previous close above previous open (prior day bullish). Exit uses reversal signal when price closes below prior day's low. Stop loss set to 6.61% based on bear_market_down_breakout performance statistic. Hold period set to 5 days based on typical pattern completion timeframe."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": 0.0
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "prev_close",
+        "op": ">",
+        "value": "prev_open"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "BULL_MARKET",
+      "BEAR_MARKET"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.0661,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Signal describes a two-day bullish candle pattern: (1) Day 1 has a white/bullish candle (close > open), (2) Day 2 (after point 2) continues with another white candle above the prior day's close. Entry conditions check: white candle body (body > 0), current close above current open (bullish), and previous close above previous open (prior day bullish). Exit uses reversal signal when price closes below prior day's low. Stop loss set to 6.61% based on bear_market_down_breakout performance statistic. Hold period set to 5 days based on typical pattern completion timeframe."
+  },
+  "source_rule_text": "White Candle: A white (bullish) candle appears the day after point 2, completing a two-day above-the-stomach candle formation, indicating a price trend change from down to up"
+}

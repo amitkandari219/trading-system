@@ -1,0 +1,82 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "open",
+        "operator": "==",
+        "right": "close"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 20,
+    "direction": "SHORT",
+    "target_regime": [
+      "BEARISH"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gap Down Doji pattern: (1) Doji condition: open equals close (doji body); (2) Gap down: current close below prior low confirms downward gap with no overlap; (3) Upper shadow below prior low: current high below prior low ensures no overlap between current upper shadow and prior day's lower shadow. Exit when price closes above 20-day SMA indicating reversal. Hold period set to 20 days based on typical gap recovery timeframe mentioned in source material."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "open",
+        "op": "==",
+        "value": "close"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "BEARISH"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Gap Down Doji pattern: (1) Doji condition: open equals close (doji body); (2) Gap down: current close below prior low confirms downward gap with no overlap; (3) Upper shadow below prior low: current high below prior low ensures no overlap between current upper shadow and prior day's lower shadow. Exit when price closes above 20-day SMA indicating reversal. Hold period set to 20 days based on typical gap recovery timeframe mentioned in source material."
+  },
+  "source_rule_text": "Pattern name: Gap Down Doji - A bearish reversal pattern where price gaps lower from the prior day with no overlap between today's upper shadow and the prior day's lower shadow, and a doji forms with open and close at or near the same price."
+}

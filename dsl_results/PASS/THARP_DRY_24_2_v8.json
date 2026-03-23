@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_24_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": 0.015,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.5,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "volatility_std_dev",
+      "threshold": 1.0,
+      "direction": "inverse"
+    },
+    "max_risk_pct": 0.015,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size scaled by 1-std-dev volatility band with 1.1x skew correction factor. Risk 1.5% of account equity per trade. Stop placement derived from statistical volatility, not fixed dollar distance.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should calculate position size based on statistical volatility and risk tolerance, not by simply placing a stop at a fixed dollar amount away from entry price."
+}

@@ -1,0 +1,148 @@
+{
+  "signal_id": "THARP_DRY_18_2",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_2",
+    "entry_long": [
+      {
+        "left": "dc_upper",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "price_pos_20"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">=",
+        "right": "0.5"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<=",
+        "right": "0.786"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "dc_lower",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "price_pos_20"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">=",
+        "right": "0.214"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<=",
+        "right": "0.5"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "true_range",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "true_range",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 20,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Climax day identified using Donchian breakout (new extreme); retracement zone defined using price_pos_20 (0-1 scale) between 50-78.6%; entry on reversal signal from zone (price crossing price_pos_20 threshold); exit at 3 ATR using true_range expansion; no filters applied per THARP principle (filter_count_allowed=0)"
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "dc_upper",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "price_pos_20"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">=",
+        "value": 0.5
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<=",
+        "value": 0.786
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "dc_lower",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "price_pos_20"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">=",
+        "value": 0.214
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<=",
+        "value": 0.5
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "true_range",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "true_range",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Climax day identified using Donchian breakout (new extreme); retracement zone defined using price_pos_20 (0-1 scale) between 50-78.6%; entry on reversal signal from zone (price crossing price_pos_20 threshold); exit at 3 ATR using true_range expansion; no filters applied per THARP principle (filter_count_allowed=0)"
+  },
+  "source_rule_text": "A trader should focus on setups (objective market conditions) rather than filters (predictive hindsight tools), because filters create illusion of control and lead to lotto bias, whereas setups provide repeatable, present-time entry opportunities."
+}

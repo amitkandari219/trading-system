@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_21",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires dynamic inverse volatility weighting of factor position sizes across multiple time horizons (monthly to 12-month), which is a portfolio-level position scaling rule rather than a simple entry/exit condition. The signal cannot be translated into discrete buy/sell conditions using point-in-time indicator comparisons. It requires: (1) multi-horizon volatility forecasting (not supported), (2) factor exposure sizing logic (not a price action rule), and (3) dynamic position scaling mechanisms (outside backtest engine scope). The 'scaling_mechanism: inverse volatility weighting' and 'horizon_applicability' parameters describe portfolio construction methodology, not tradeable signals.",
+  "translation_notes": "Signal SSRN_2659431_21 is a risk management overlay for factor portfolios, not a directional trading rule. To implement this in a backtest engine, you would need: (a) multi-timeframe volatility forecasts, (b) factor exposure tracking, (c) position sizing logic, and (d) rebalancing automation at the portfolio level. Recommend implementing as a separate risk management module outside the backtest engine's entry/exit condition framework."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2785541_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires ranking stocks by 3-12 month relative returns (winners vs losers) and relative positioning within a universe. The ALLOWED INDICATORS list only contains 'returns' (current bar returns), not a lookback period return comparison metric or rank-based selection. A proper implementation requires: (1) calculation of cumulative returns over 3-12 month lookback windows, (2) cross-sectional ranking/percentile logic, and (3) universe-relative positioning. These portfolio-level operations are not expressible with single-indicator point-in-time conditions.",
+  "translation_notes": "Momentum strategy requiring relative performance ranking across multiple lookback periods cannot be fully translated into point-in-time indicator conditions. The 'returns' indicator provided measures single-bar returns, not the 3-12 month formation period returns needed for winners/losers classification. Implementation would require custom ranking logic external to the JSON rule engine."
+}

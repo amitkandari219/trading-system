@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_31_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": 0.01,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "volatility_atr_percent",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": 0.015,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Risk 1% per trade but scale position size inversely to market volatility (ATR/Close). Tighter stops in low volatility, smaller positions in high volatility. Max drawdown tolerance is 15% of account equity.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should adjust position size based on the tightness of their stop loss and market volatility to avoid excessive drawdown while optimizing reward-to-risk ratios, rather than using a fixed equal-units model."
+}

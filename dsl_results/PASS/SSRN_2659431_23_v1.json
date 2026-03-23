@@ -1,0 +1,84 @@
+{
+  "signal_id": "SSRN_2659431_23",
+  "book_id": "SSRN_2659431",
+  "dsl_rule": {
+    "signal_id": "SSRN_2659431_23",
+    "entry_long": [
+      {
+        "left": "hvol_20",
+        "operator": "<",
+        "right": "0.01"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "0.03"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "hvol_20",
+        "operator": ">",
+        "right": "0.02"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "hvol_20",
+        "operator": "<",
+        "right": "0.02"
+      }
+    ],
+    "entry_logic": "OR",
+    "exit_logic": "OR",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 1,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Signal requires inverse volatility-based exposure adjustment. Used hvol_20 (20-period historical volatility) as the realized volatility metric. Entry conditions trigger exposure increases when volatility is low (<0.01 or 1%) and exposure decreases when volatility is high (>0.03 or 3%). Exit conditions trigger rebalancing when volatility crosses key thresholds (\u00b10.02 or 2%), simulating regime changes. Rebalancing frequency set to real-time via hold_days_max=0. Applied to both long and short directions per BOTH specification."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "hvol_20",
+        "op": "<",
+        "value": 0.01
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 0.03
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "hvol_20",
+        "op": ">",
+        "value": 0.02
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "hvol_20",
+        "op": "<",
+        "value": 0.02
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 1,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Signal requires inverse volatility-based exposure adjustment. Used hvol_20 (20-period historical volatility) as the realized volatility metric. Entry conditions trigger exposure increases when volatility is low (<0.01 or 1%) and exposure decreases when volatility is high (>0.03 or 3%). Exit conditions trigger rebalancing when volatility crosses key thresholds (\u00b10.02 or 2%), simulating regime changes. Rebalancing frequency set to real-time via hold_days_max=0. Applied to both long and short directions per BOTH specification."
+  },
+  "source_rule_text": "Adjust portfolio risk exposure inversely to realized volatility: decrease exposure when volatility is high, increase exposure when volatility is low"
+}

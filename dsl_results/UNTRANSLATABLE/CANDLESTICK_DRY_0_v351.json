@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "This signal requires pattern recognition (identifying 'deliberation candlestick pattern') and dynamic target calculation based on candle height percentages (36% for upside, 31% for downside). The backtesting engine lacks: (1) a candlestick pattern detection indicator, (2) the ability to compute and store pattern-specific measurements, and (3) dynamic price target calculation based on pattern geometry. The entry conditions require pattern identification not available as a standard indicator. The exit conditions require computing targets as '(high - low) \u00d7 percentage + high' which cannot be expressed with allowed indicators.",
+  "translation_notes": "Signal describes a measure rule pattern that requires custom pattern detection. Deliberation patterns are multi-candle formations that must be identified by their specific structure (consolidation with defined highs/lows followed by breakout). Standard OHLC indicators cannot detect this pattern. The measure rule calculates targets dynamically based on pattern height, which would require custom scripting or a dedicated pattern library in the backtest engine."
 }

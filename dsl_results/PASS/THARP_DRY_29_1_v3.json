@@ -1,0 +1,37 @@
+{
+  "signal_id": "THARP_DRY_29_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "DRAWDOWN_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": [
+      {
+        "metric": "drawdown_pct",
+        "threshold": 0.1,
+        "direction": "above",
+        "scale_down_multiplier": 0.75
+      },
+      {
+        "metric": "drawdown_pct",
+        "threshold": 0.25,
+        "direction": "above",
+        "scale_down_multiplier": 0.5
+      }
+    ],
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Reduce position size to 75% during 10-25% drawdowns and 50% during drawdowns exceeding 25%. Base sizing assumes 1.0x standard position when no drawdown is present. Trade acceptance rate of 85% indicates psychological factor monitoring.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should take high-probability trades when they occur, because skipping trades due to psychological discouragement reduces realized opportunity and annual returns."
+}

@@ -1,0 +1,27 @@
+{
+  "signal_id": "THARP_DRY_16_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "ANTI_MARTINGALE",
+    "base_risk_pct": 3.0,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "win_rate_and_sharpe_ratio",
+      "threshold": null,
+      "direction": "above"
+    },
+    "max_risk_pct": 3.0,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Performance-adjusted fractional sizing: base 3% of account scaled by recent win rate and Sharpe ratio (50-period lookback). Position size increases after winning trades and periods of strong risk-adjusted performance. Partial exits scaled to R-multiples (1R, 2R, 3R, 5R). Exit priority via 1.0x ATR dynamic volatility stops.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  }
+}

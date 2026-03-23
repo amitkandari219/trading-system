@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires market regime identification (BULL_MARKET vs BEAR_MARKET distinction) which is not available as a real-time indicator in the allowed list. Additionally, volume trend direction within candle formation and specific breakout-day volume thresholds relative to one-month average require lookback logic not expressible with current operators. Pattern requires adaptive logic based on market context that cannot be statically encoded.",
+  "translation_notes": "Attempted to capture core shadow and volume characteristics using bar_props (upper_wick, lower_wick) and volume ratio indicators. However, the signal's core value derives from conditional logic that inverts based on market regime (bull vs bear, upbreakout vs downbreakout) which requires dynamic regime detection beyond current operator set. Used hvol_20 as proxy for above-average volume comparison and sma_20 for reversal detection as reasonable substitutes."
 }

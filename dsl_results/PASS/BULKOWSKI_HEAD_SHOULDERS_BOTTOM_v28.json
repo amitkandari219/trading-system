@@ -1,0 +1,81 @@
+{
+  "signal_id": "BULKOWSKI_HEAD_SHOULDERS_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Head-and-shoulders bottom",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_HEAD_SHOULDERS_BOTTOM",
+    "entry_long": [
+      {
+        "left": "low",
+        "operator": "==",
+        "right": "dc_lower"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "pivot"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "low",
+        "op": "==",
+        "value": "dc_lower"
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "pivot"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_HEAD_SHOULDERS_BOTTOM"
+  },
+  "source_rule_text": "Head-and-shoulders bottom: A reversal pattern with a left shoulder, head (lowest point), right shoulder, and neckline. Price breaks out above the neckline after formation completion."
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires option-specific metrics (realized volatility percentile ranking, IV Rank, time-to-expiration, option Greeks delta, credit received on spreads, wing structure) which are not available in the allowed indicator set. The core concept of buying out-of-the-money options and monitoring theta decay cannot be accurately translated using only price/technical indicators. Approximated entry conditions using hvol_20 as proxy for realized volatility and india_vix as proxy for IV, but exit conditions (75% max profit on spread, 5 days before expiration) require options data.",
+  "translation_notes": "Attempted partial translation: (1) hvol_20 < 0.30 approximates 'realized volatility < 30th percentile' assuming 30% threshold; (2) price_pos_20 near 0.50 approximates 'price within 3% of 20-day MA'; (3) india_vix < 50 approximates 'IV Rank < 50%'; (4) hold_days_max=16 approximates 'time to expiration >= 21 days' from entry; (5) stop_loss_pct=4.0 matches max position sizing. However, options Greeks (delta 0.2), spread credit thresholds, and theta decay monitoring cannot be replicated without options-specific indicators."
 }

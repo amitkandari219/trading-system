@@ -1,0 +1,124 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "body",
+        "operator": "==",
+        "right": "0"
+      },
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "body",
+        "operator": "==",
+        "right": "0"
+      },
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "atr_14"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Long-Legged Doji pattern identified by: (1) body near zero (open \u2248 close), (2) upper_wick exceeding average ATR_14, (3) lower_wick exceeding average ATR_14. Direction is CONTEXT_DEPENDENT per signal specification. Entry applies to both long and short since pattern indicates indecision/reversal. Exit conditions inferred from author silence: reverse direction on next candle close indicates reversal confirmation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "body",
+        "op": "==",
+        "value": 0.0
+      },
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "body",
+        "op": "==",
+        "value": 0.0
+      },
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "atr_14"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Long-Legged Doji pattern identified by: (1) body near zero (open \u2248 close), (2) upper_wick exceeding average ATR_14, (3) lower_wick exceeding average ATR_14. Direction is CONTEXT_DEPENDENT per signal specification. Entry applies to both long and short since pattern indicates indecision/reversal. Exit conditions inferred from author silence: reverse direction on next candle close indicates reversal confirmation."
+  },
+  "source_rule_text": "Long-Legged Doji: A reversal pattern where opening and closing prices are the same or very close, with both upper and lower shadows taller than average shadow length"
+}

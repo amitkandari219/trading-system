@@ -11,8 +11,8 @@
       },
       {
         "left": "close",
-        "operator": "crosses_above",
-        "right": "sma_50"
+        "operator": ">",
+        "right": "prev_close"
       },
       {
         "left": "adx_14",
@@ -28,8 +28,8 @@
       },
       {
         "left": "close",
-        "operator": "crosses_below",
-        "right": "sma_50"
+        "operator": "<",
+        "right": "prev_close"
       },
       {
         "left": "adx_14",
@@ -72,7 +72,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal requires trend confirmation via 2 consecutive bars beyond MA. The 'crosses_above/crosses_below' operators approximate this requirement. ADX(14) > 20 confirms trend strength. Exit triggers on MA cross or ADX weakness. Direction is context-dependent (LONG or SHORT based on price position relative to MA)."
+    "translation_notes": "Signal requires trend confirmation via price position relative to SMA and ADX strength. The '2 consecutive bars beyond MA' requirement is approximated by checking current close vs previous close in the same direction as the MA cross. Entry conditions use close > sma_50 (long) and close < sma_50 (short) with directional confirmation. Exits triggered by crosses or ADX weakness (OR logic allows early exit if trend weakens). Both entry and exit conditions require ADX > 20 for trend presence."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -84,8 +84,8 @@
       },
       {
         "indicator": "close",
-        "op": "crosses_above",
-        "value": "sma_50"
+        "op": ">",
+        "value": "prev_close"
       },
       {
         "indicator": "adx_14",
@@ -101,8 +101,8 @@
       },
       {
         "indicator": "close",
-        "op": "crosses_below",
-        "value": "sma_50"
+        "op": "<",
+        "value": "prev_close"
       },
       {
         "indicator": "adx_14",
@@ -142,7 +142,7 @@
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal requires trend confirmation via 2 consecutive bars beyond MA. The 'crosses_above/crosses_below' operators approximate this requirement. ADX(14) > 20 confirms trend strength. Exit triggers on MA cross or ADX weakness. Direction is context-dependent (LONG or SHORT based on price position relative to MA)."
+    "reason": "Signal requires trend confirmation via price position relative to SMA and ADX strength. The '2 consecutive bars beyond MA' requirement is approximated by checking current close vs previous close in the same direction as the MA cross. Entry conditions use close > sma_50 (long) and close < sma_50 (short) with directional confirmation. Exits triggered by crosses or ADX weakness (OR logic allows early exit if trend weakens). Both entry and exit conditions require ADX > 20 for trend presence."
   },
   "source_rule_text": "A trader must only enter positions when a trend exists in the direction of the intended trade, because without a trend following entry, the position cannot be exited profitably."
 }

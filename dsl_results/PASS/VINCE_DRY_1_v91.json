@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_1",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "ANTI_MARTINGALE",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "cumulative_profits",
+      "threshold": 0,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Fixed unit exposure (1 contract) per trade with geometric compounding via reinvestment of all profits into subsequent position sizing. Position size grows with cumulative profits, implementing anti-martingale logic. Author silent on optimal_f, kelly_fraction, and max_drawdown_tolerance.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size is independent of margin requirements; profits and losses are determined by exposure per unit (1 contract), not by margin amount, enabling geometric compounding through reinvestment of all profits."
+}

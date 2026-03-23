@@ -1,0 +1,64 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "lower_wick",
+        "operator": "<",
+        "right": "body"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Short Black Candle pattern translated using lower_wick < body to represent 'shadow shorter than body height'. Shadow interpreted as lower wick for short candles. Pattern is context-dependent per source material - performs as reversal in bull markets with upward breakout (7.98%) and downward breakout (11.86%). Entry triggered on pattern formation (short candle with small lower shadow). Exit uses close reversal above previous close as reasonable default for author-silent exit condition. Direction set to CONTEXT_DEPENDENT as performance varies significantly by market regime and breakout direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "lower_wick",
+        "op": "<",
+        "value": "body"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Short Black Candle pattern translated using lower_wick < body to represent 'shadow shorter than body height'. Shadow interpreted as lower wick for short candles. Pattern is context-dependent per source material - performs as reversal in bull markets with upward breakout (7.98%) and downward breakout (11.86%). Entry triggered on pattern formation (short candle with small lower shadow). Exit uses close reversal above previous close as reasonable default for author-silent exit condition. Direction set to CONTEXT_DEPENDENT as performance varies significantly by market regime and breakout direction."
+  },
+  "source_rule_text": "Short Black Candle: A candlestick pattern where the shadow should be shorter than the height of the body"
+}

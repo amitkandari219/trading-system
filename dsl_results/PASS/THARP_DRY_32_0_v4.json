@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": 0.005,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "atr_20",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": 0.02,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size = Fixed Dollar Risk ($500) / (20-day ATR \u00d7 1.0). Inverse volatility scaling: higher ATR \u2192 smaller position, lower ATR \u2192 larger position. Capped at 2% max position size per instrument.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should scale position size according to the volatility of each portfolio element, measured by average true range, to normalize risk exposure across instruments with different price fluctuations."
+}

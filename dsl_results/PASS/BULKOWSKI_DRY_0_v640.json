@@ -1,0 +1,72 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 11,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "EADT pattern cannot be directly identified from available indicators; used proxies: uptrend confirmation (close > prev_close) + strong directional momentum (ADX > 25) to simulate EADT breakout context. Exit targets pullback completion within 10-11 days (hold_days_max=11) when price returns toward moving average support. Throwback rate of 67% is noted but not directly encoded as it's a probabilistic metric rather than a deterministic condition. Short entry anticipates pullback as per Bulkowski's description."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 11,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "EADT pattern cannot be directly identified from available indicators; used proxies: uptrend confirmation (close > prev_close) + strong directional momentum (ADX > 25) to simulate EADT breakout context. Exit targets pullback completion within 10-11 days (hold_days_max=11) when price returns toward moving average support. Throwback rate of 67% is noted but not directly encoded as it's a probabilistic metric rather than a deterministic condition. Short entry anticipates pullback as per Bulkowski's description."
+  },
+  "source_rule_text": "EADT (Pullback Trading): In a bull market, EADTs exhibit high pullback rates. Enter short on breakout anticipating pullback, exit within days/week at bottom, re-enter when pullback completes."
+}

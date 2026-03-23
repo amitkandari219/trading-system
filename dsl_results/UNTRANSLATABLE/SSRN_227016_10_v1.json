@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_227016_10",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires fundamental valuation metrics (Price-to-Earnings, Price-to-Cash-Flow, Price-to-Sales, Book-to-Market ratios, and growth rate expectations) that are NOT available in the allowed indicator list. The core logic\u2014classifying stocks as 'value' (low multiples) vs 'glamour' (high multiples) and identifying expectation gaps between forecasted and historical growth\u2014cannot be expressed using only price-action and technical indicators. A zscore_20-based proxy was provided as a fallback, but this does NOT capture the fundamental mean-reversion pattern described in the signal.",
+  "translation_notes": "This signal fundamentally requires a fundamental/valuation data feed (P/E, P/CF, P/S, B/M ratios, analyst growth forecasts vs historical growth) which is outside the scope of technical indicators. The entry/exit conditions shown above use zscore_20 as a weak technical proxy for relative valuation extremes, but this is NOT equivalent to the intended glamour/value classification. To properly implement this signal, a backtester would need to integrate fundamental/earnings data and compute explicit valuation ratio z-scores."
+}

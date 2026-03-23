@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks into volatility deciles/quintiles and selecting the lowest decile while excluding the highest decile. This requires cross-sectional relative ranking across a universe of stocks, which cannot be expressed as a single-stock technical indicator condition. The allowed indicators (hvol_20, atr_14, bb_bandwidth) measure absolute volatility for a single stock but do not provide decile/quintile bucket assignment or relative peer ranking functionality needed for proper portfolio construction.",
+  "translation_notes": "The signal is fundamentally a portfolio construction rule requiring relative volatility ranking across multiple stocks (lowest volatility decile vs highest decile exclusion). While hvol_20 measures historical volatility, it cannot encode the decile-ranking logic. A proper implementation would require: (1) cross-sectional volatility calculation across the stock universe, (2) decile/quintile bucketing, and (3) position weighting based on rank. The exit condition 'rebalance at regular intervals' is vague; interpreted as rebalancing every ~9 weeks (63 days). Backtesting periods 1985-1995 and 1996-2005 noted but not encoded in JSON structure."
+}

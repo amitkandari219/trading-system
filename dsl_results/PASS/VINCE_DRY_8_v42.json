@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "initial_active_equity_allocation",
+      "threshold": 0.1,
+      "direction": "below"
+    },
+    "max_risk_pct": 0.25,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Dynamic fractional f applied to active equity portion. Lower initial active allocation (e.g., 0.1 vs 0.2) accelerates convergence to optimal f. Max drawdown tolerance example: 25% equity retracement. Uses account segmentation (active/inactive equity) with dynamic optimization.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Divide account equity into active and inactive portions, with dynamic fractional f overtaking static fractional f faster when initial active equity allocation is lower (e.g., 0.1 vs 0.2)."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_16",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires decile-based ranking and sorting of entire stock universe by 3-year historical volatility, which cannot be expressed as simple indicator conditions on individual securities. Backtest engine lacks: (1) cross-sectional decile formation logic, (2) dynamic portfolio construction (long D1/short D10 pairs), (3) 3-year lookback period for volatility calculation (only hvol_20 available for 20-day volatility). This is a statistical arbitrage/factors strategy requiring portfolio-level rebalancing, not a single-security technical rule.",
+  "translation_notes": "The signal is a classic low-volatility minus high-volatility factor strategy (LVG anomaly). It requires: (a) calculating realized volatility over 3 years for each stock, (b) ranking all stocks into 10 deciles, (c) longing the bottom decile (D1), shorting the top decile (D10), and (d) periodic rebalancing. This is fundamentally incompatible with a single-security indicator-based rule engine. Recommend implementing as a portfolio-level factor backtest with custom universe decile formation rather than converting to entry/exit conditions."
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "This signal requires meta-level backtesting logic (testing win rate across multiple timeframes and aggregating results) that cannot be expressed as a single set of indicator conditions. The rule demands: (1) Calculate win rate for the same signal across 6 different timeframes independently, (2) Aggregate results (4 of 6 must exceed 55%), (3) Validate no timeframe falls below 45%. This is a system validation framework, not a tradeable entry/exit condition. It requires multi-timeframe statistical analysis outside the scope of single-bar indicator rules.",
-  "translation_notes": "THARP_DRY_13_1 is a meta-rule for validating signal reliability rather than a direct market entry signal. It should be applied at the strategy development phase to filter candidate signals before implementation, not executed as a live trading rule. The backtest engine would need to: (1) Run the candidate signal across all 6 timeframes, (2) Collect win rate statistics, (3) Apply the aggregation logic (4+ timeframes \u226555%, none <45%), (4) Only deploy signals passing this validation gate."
+  "untranslatable_reason": "Not a sizing rule. THARP_DRY_13_1 describes signal validation and reliability filtering (entry condition testing across timeframes), not position sizing methodology. It determines whether to USE a signal, not how much capital to risk on it.",
+  "translation_notes": null
 }

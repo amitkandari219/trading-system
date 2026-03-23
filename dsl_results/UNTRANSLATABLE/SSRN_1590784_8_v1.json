@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1590784_8",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detecting 'futures expiration days (ED)' as a calendar event and comparing intraday mean returns on ED vs non-ED days. The allowed indicators do not include calendar event detection, market microstructure data, or statistical aggregation of returns across ED/non-ED cohorts. The rule fundamentally depends on external calendar metadata and cross-sectional return analysis that cannot be expressed using the available price/technical indicators. A valid implementation would require: (1) a calendar data source identifying expiration dates, and (2) capability to compute conditional mean returns stratified by event type.",
+  "translation_notes": "Attempted translation uses returns > 1% as a weak proxy for positive return differential, but this does not capture the core statistical requirement (ED mean vs non-ED mean comparison) or the event trigger (futures expiration calendar). The signal is event-driven and regime-dependent on market structure, not on technical indicators."
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires Stochastic > 90 (stoch_k or stoch_d available but signal specifies exact indicator 'Stochastic' without clarity on K vs D line); 3+ std dev detection requires custom calculation not available in indicator list; volatility_floor comparison '> 50th percentile of 60-bar history' requires percentile ranking function not in allowed indicators; exact climactic extreme + 0.5 ATR stop loss calculation unavailable",
+  "translation_notes": "Attempted partial translation using RSI > 80 as climactic extreme proxy and ATR > 20th percentile (approximated as ATR > hvol_20) for volatility confirmation. Exit conditions simplified to recent price extremes as proxy for tight stop loss. Full implementation of 3-standard deviation moves, Stochastic thresholds, and percentile-based volatility floors would require extended indicator library. Reversal entry logic (entry SHORT when RSI < 20) added for CONTEXT_DEPENDENT direction as signal suggests counter-move trading intent. Position leverage (1.5x) noted in parameters but not translatable to JSON schema."
 }

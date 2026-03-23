@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_9",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires dynamic position sizing/scaling factor exposure (inverse volatility weighting across multiple factor exposures including market, momentum, HML, profitability, carry, ROE, investment, BAB). The allowed indicators list does not include multi-factor positioning controls or exposure scaling mechanisms. hvol_20 provides volatility measurement for entry/exit triggers, but the core mechanic of scaling factor exposure inversely to realized volatility across 8 different factors cannot be expressed in simple indicator-based conditions.",
+  "translation_notes": "Translated the volatility-based entry/exit logic using hvol_20 (20-period historical volatility) as a proxy for realized volatility. Low volatility (hvol_20 < 0.15) triggers increased risk-taking (entry_long), while high volatility (hvol_20 > 0.25) triggers reduced risk (entry_short/exit_long). However, the signal's sophisticated factor scaling and multi-asset exposure adjustment mechanism requires portfolio-level position sizing logic beyond the scope of single-indicator rules."
+}

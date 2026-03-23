@@ -1,0 +1,88 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 9,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Deliberation candlestick pattern with bidirectional breakouts. Entry conditions use prev_high/prev_low to detect breakouts above/below the prior candle formation. Exit conditions trigger on trend reversal (close crossing back through entry level). Hold period set to 9 days (midpoint of 7-11 day range cited in source). Pattern is context-dependent: upward breakouts in existing uptrends, downward breakouts initiating new trends. Success rates and volume metrics marked AUTHOR_SILENT were not translatable to specific conditions."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 9,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Deliberation candlestick pattern with bidirectional breakouts. Entry conditions use prev_high/prev_low to detect breakouts above/below the prior candle formation. Exit conditions trigger on trend reversal (close crossing back through entry level). Hold period set to 9 days (midpoint of 7-11 day range cited in source). Pattern is context-dependent: upward breakouts in existing uptrends, downward breakouts initiating new trends. Success rates and volume metrics marked AUTHOR_SILENT were not translatable to specific conditions."
+  },
+  "source_rule_text": "Deliberation candlestick pattern: A robust candle pattern with directional breakouts (upward or downward) from a candle formation"
+}

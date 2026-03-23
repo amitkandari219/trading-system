@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_368980_19",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires 'put_call_ratio_buyer_initiated', which is a custom options-market microstructure indicator not available in the standard price-action and technical indicator set. This metric measures option volume initiated by buyers opening new positions and requires real-time option flow data that is not present in the ALLOWED INDICATORS list (which contains only price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, and derived metrics). Decile-sorting across a universe based on this custom metric also cannot be expressed with point-in-time conditions.",
+  "translation_notes": "This is a sophisticated options-market microstructure signal that relies on order-flow analysis from option buyers. To implement this signal, the backtest engine would need to: (1) source intraday or daily option volume data segregated by buyer-initiated vs seller-initiated orders, (2) calculate put/call ratios from this filtered volume, (3) rank securities into deciles, (4) execute long positions in the lowest decile and short positions in the highest decile, and (5) hold for either 1 day (40 bps target) or 1 week (100 bps target). The signal has been marked untranslatable because these capabilities exceed the standard technical indicator vocabulary provided."
+}

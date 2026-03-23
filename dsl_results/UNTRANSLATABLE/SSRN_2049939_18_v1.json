@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_18",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'beta' indicator which is not in the allowed indicators list. Beta is a statistical measure computed from historical returns relative to a benchmark index and cannot be derived from the available price-action, momentum, and volatility indicators (OHLCV, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume ratios, Z-scores, returns). This is a fundamental factor-based signal that requires external factor data or a custom beta calculation module outside the standard backtest engine.",
+  "translation_notes": "This is a factor-based pairs trading strategy (long low-beta/short high-beta with leverage) that requires explicit beta calculations per security. The signal cannot be mechanically translated into price-action rules without access to rolling beta estimates. Recommend: (1) Pre-compute rolling betas for all securities in your universe, (2) Create a separate factor-ranking module, or (3) Use a dedicated factor backtesting framework."
+}

@@ -1,0 +1,27 @@
+{
+  "signal_id": "THARP_DRY_7_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "ANTI_MARTINGALE",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.5,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.85,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "consecutive_same_direction_bars",
+      "threshold": 2,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Decay position size by 0.85^ factor for consecutive same-direction bars >= 2, capping consecutive bars at 4. Protective stop set at 1.5\u00d7 ATR. Implements anti-martingale reduction (inverse) to reduce exposure during momentum continuation, protecting against false trend assumptions.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_31",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires dynamic portfolio weight scaling inversely proportional to realized volatility with monthly rebalancing. The allowed indicator set includes hvol_20 (historical volatility) but does not include: (1) realized variance calculation from previous month's returns, (2) portfolio weighting/position sizing logic, (3) dynamic scaling functions that adjust exposure continuously based on volatility ratios. The backtest engine requires explicit entry/exit price conditions, but this strategy operates at the portfolio allocation level rather than individual entry/exit signals. This is a risk management overlay strategy, not a discrete entry/exit rule.",
+  "translation_notes": "Signal describes a volatility-managed portfolio rebalancing strategy that requires: computing 1-month realized variance from log_returns, then scaling position sizes inversely (e.g., weight = 1/volatility). This requires algorithmic position sizing not expressible as binary entry/exit conditions. The closest translatable element would be hvol_20 as a volatility proxy, but the inverse scaling and monthly rebalancing logic cannot be captured in the allowed rule structure. Recommend implementing as a separate portfolio allocation module outside the event-driven backtest engine."
+}

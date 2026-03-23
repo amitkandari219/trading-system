@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_18",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires PUT-CALL RATIO (not in allowed indicators), MARKET CAP / SIZE RANKING (not available), and PIN (Probability of Informed Trading, not in allowed indicators). The size effect and PIN concentration cannot be expressed using only the provided indicators. Vol_ratio_20 is used as a proxy for option market activity, but this is a weak substitute.",
+  "translation_notes": "The original signal depends on three custom indicators not available in the backtest engine: (1) put-call ratio data, (2) market cap quantiles for small-cap filtering, and (3) PIN scores. Vol_ratio_20 was used as a partial proxy for elevated options activity, but cannot capture the directional bias (high puts relative to calls). Without direct access to option prices or PIN calculations, this rule cannot be accurately translated. Recommend adding put-call ratio and market cap fields to the data pipeline."
+}

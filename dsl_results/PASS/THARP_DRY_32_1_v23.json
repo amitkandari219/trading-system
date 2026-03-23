@@ -1,0 +1,29 @@
+{
+  "signal_id": "THARP_DRY_32_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "ANTI_MARTINGALE",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "account_equity_threshold",
+      "threshold": null,
+      "direction": "above",
+      "note": "Discrete unit count increases at equity milestones: $1K\u21921u, $2.5K\u21922u, $4K\u21923u, $10K\u21925u, $50K\u21926u (max 7u)"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Tharp's equity-scaled unit pyramiding: increase discrete trading units (not size-per-unit) as account grows through predefined equity thresholds, contingent on consistent profitability at current unit count. This is anti-martingale scaled on account growth.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Increase the number of trading units progressively as account equity grows, scaling position count in discrete steps tied to per-unit capital thresholds."
+}

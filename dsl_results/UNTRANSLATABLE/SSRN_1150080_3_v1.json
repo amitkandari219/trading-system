@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1150080_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Calendar-based month filtering (January entry, avoid March/April) requires a calendar/date indicator not in the ALLOWED INDICATORS list. The operator 'is' is only defined for regime comparisons, not for calendar month matching. To implement this rule, a month() or calendar_month indicator would be required.",
+  "translation_notes": "Signal is fundamentally calendar-based (seasonal January Effect pattern) rather than technical indicator-based. The rule cannot be expressed using only price, volume, and technical indicators from the allowed list. Implementation would require: (1) A calendar/date function to filter by month, or (2) Pre-filtered data that only includes January bars. The historical mean return of 0.103% is provided for reference but cannot be used as a forward-looking entry signal in a backtest."
+}

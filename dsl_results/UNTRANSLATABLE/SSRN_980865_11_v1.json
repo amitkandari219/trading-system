@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires custom decile-based portfolio sorting by 3-year historical volatility (63 weeks of weekly return data), which is not expressible using point-in-time indicator comparisons. The strategy requires: (1) calculation of 3-year rolling volatility across a universe, (2) ranking/sorting into deciles, (3) portfolio-level construction (long decile 1, short decile 10). This is a cross-sectional ranking strategy that requires universe aggregation and relative positioning, not single-stock technical conditions. Available hvol_20 indicator only provides 20-period volatility, not 3-year lookback.",
+  "translation_notes": "This signal describes a cross-sectional volatility factor strategy requiring decile-based portfolio construction across a stock universe. Standard backtest engines with point-in-time technical indicators cannot natively express this logic. Implementation requires: (1) custom volatility calculation module for 63-week windows using weekly returns, (2) universe ranking/sorting mechanism, (3) portfolio-level long/short construction. The alpha spreads by region (US: 4%, Europe: 7.1%, Japan: 10.5%) should be tracked separately by market. Rebalancing frequency is unspecified and should be defined separately."
+}

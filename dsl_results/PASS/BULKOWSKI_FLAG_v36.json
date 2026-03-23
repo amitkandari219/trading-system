@@ -1,0 +1,95 @@
+{
+  "signal_id": "BULKOWSKI_FLAG",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "HTF (High-Then-Flag) Pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_FLAG",
+    "entry_long": [
+      {
+        "left": "returns",
+        "operator": ">=",
+        "right": "1.0"
+      },
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": ">",
+        "right": "1.2"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_below",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.6,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "returns",
+        "op": ">=",
+        "value": 1.0
+      },
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": ">",
+        "value": 1.2
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_below",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.046,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_FLAG"
+  },
+  "source_rule_text": "HTF (High-Then-Flag) Pattern: A substantial quick price rise followed by a consolidation area"
+}

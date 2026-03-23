@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3510433_19",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires ranking by 'momentum score' which is not defined in the allowed indicators list. Momentum score is a composite metric not available as a direct indicator (would need to compute from returns/price data). Additionally, the rule requires portfolio-level ranking and decile selection across NIFTY100 constituents, which is a cross-sectional portfolio construction rule rather than a time-series technical indicator condition. The backtest engine would need custom scoring logic and ranking functionality to implement this signal.",
+  "translation_notes": "This is a factor-based portfolio ranking strategy (quantile/decile selection) rather than a technical indicator-based entry/exit rule. It requires: (1) definition of momentum_score metric, (2) cross-sectional ranking of universe constituents, (3) portfolio-level operations (not single-stock conditions). Standard technical indicators cannot express this signal type."
+}

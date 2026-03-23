@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_46",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires ranking instruments by beta and constructing decile portfolios, which is a cross-sectional factor/asset allocation strategy, not a price-action or technical indicator-based entry/exit rule. Beta estimation, instrument ranking, and portfolio construction are portfolio-level operations that cannot be expressed using the allowed indicators (which are all single-instrument, price-based or volatility-based technical metrics). The backtest engine as specified handles single-instrument technical rules only.",
+  "translation_notes": "Signal SSRN_2049939_46 is a fundamental factor-based portfolio construction strategy (low-beta vs high-beta long-short). It requires: (1) beta estimation over a lookback period, (2) cross-sectional ranking across all instruments, (3) decile portfolio assignment, (4) position sizing by decile. None of these operations map to the allowed indicator set, which contains only price, volume, and technical derivative indicators. To implement this strategy, the backtest engine would need to support: custom factor calculation (beta), cross-sectional ranking operators, and portfolio-level position logic."
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires absolute market age tracking (minimum_market_age_months: 6) and instrument listing date validation (lookback_exclusion_window_months: 6), which cannot be expressed using only price/technical indicators. These are meta-level instrument eligibility filters that require external data sources (symbol inception date, listing history) outside the allowed indicator set. Additionally, the requirement to track 'daily volume data available for 125+ trading days' requires temporal metadata rather than a computable technical indicator.",
+  "translation_notes": "This signal is fundamentally a liquidity and data maturity filter rather than a trading rule. It requires: (1) Symbol-level metadata (listing date), (2) Historical data availability checks (not a price indicator), and (3) Temporal eligibility validation. These must be implemented as pre-trade validation logic in the backtest engine, not as conditional rules on price/volume/volatility indicators. Recommended implementation: Add a pre-trade filter that checks symbol_age_days >= 126 and trading_days_available >= 125 before any signal evaluation."
 }

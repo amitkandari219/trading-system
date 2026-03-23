@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_7",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires put-call ratio calculation and quintile partitioning logic, which are not available in the allowed indicator set. Put-call ratio is a derived metric from option market data (put volume / call volume) that requires access to options data not present in the standard OHLCV price/volume indicators. Quintile construction and binding probability thresholds (25%, 30%, 32%) are portfolio-construction operations requiring cross-sectional ranking across multiple stocks, not translatable to single-instrument entry/exit conditions.",
+  "translation_notes": "This is a cross-sectional factor signal that operates at the portfolio construction level rather than individual security level. It requires: (1) options market data (put/call volumes), (2) ranking/partitioning logic across a universe of stocks, (3) monitoring of conditional probabilities within quintile buckets. Standard backtest engines using only price/volume data cannot execute this signal without significant extension to handle options data and multi-stock ranking logic."
+}

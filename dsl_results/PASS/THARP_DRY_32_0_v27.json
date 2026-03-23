@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "DRAWDOWN_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.5,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "cumulative_trading_days",
+      "threshold": 30,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": 0.25,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Time-decay based position sizing: reduce exposure by half every 30 days of cumulative market exposure using exponential decay formula. Floor at 25% of base size. Reassess daily.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should reduce position size or exposure when cumulative trading time increases, because longer market exposure compounds the probability of experiencing catastrophic price shocks regardless of per-trade risk management."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3000963_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a contract rolling optimization strategy (Minimum Volatility Roll Strategy during RAP periods) rather than a price-based entry/exit trading rule. It requires: (1) identification of RAP trade days within announcement periods, (2) volatility calculation across multiple potential roll dates, (3) liquidity constraint evaluation on executable volumes, and (4) selection logic to minimize cumulative average volatility across the RAP window. These are portfolio/futures management operations that cannot be expressed as simple indicator-based entry/exit conditions on individual bars. The strategy requires cross-temporal optimization across an entire period and access to contract metadata (roll dates, liquidity by contract month) not available in the standard OHLCV indicator set.",
+  "translation_notes": "Signal requires strategic contract rolling logic and multi-day optimization framework rather than technical indicator conditions. This is better implemented as a custom roll scheduler in the backtest engine with RAP period detection and volatility minimization algorithms, rather than as standard bar-by-bar trading rules."
+}

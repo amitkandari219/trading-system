@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires calendar spread construction (long back-month volatility vs short front-month volatility) and explicit theta-decay monitoring across specific expiration windows (0-30 days front, 60-120 days back). The backtest engine indicators do not support: (1) multi-leg volatility position sizing by expiration bucket, (2) front/back month volatility term structure comparison, (3) theta decay calculation as % of expected gain. Entry condition '10-day price range exceeds 150% of 20-day ATR' is approximated but 'intraday swing as % of close' lacks a direct indicator match. Exit condition 'front-month theta reaches 50% of expected gain' cannot be calculated from available indicators.",
+  "translation_notes": "Approximated high-volatility entry using ATR expansion (true_range > atr_20) combined with intraday range expansion (range > close) and low ADX to confirm no directional trend. Donchian breakout (close crossing 20-day high) triggers directional exit. Volatility compression exit uses historical volatility falling below 100% baseline (hvol_20 < 0.01). This translation captures the volatility regime trigger but cannot fully model the asymmetric calendar spread execution across expiration months."
 }

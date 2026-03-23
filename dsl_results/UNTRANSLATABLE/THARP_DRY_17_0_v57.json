@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires multi-year historical regime detection (3 of last 5 years), monthly consistency analysis, and pattern occurrence tracking. These macro-level regime classification features cannot be expressed using single-bar indicators and standard OHLCV operators. The rule is about market selection and suitability analysis rather than entry/exit conditions for individual trades.",
+  "translation_notes": "Attempted a proxy using ADX (trend strength) and ATR (volatility) to approximate market characteristic detection, but the original signal's core logic\u2014evaluating whether a market has demonstrated required characteristics over multiple years at monthly frequencies\u2014requires backtesting framework support for rolling regime statistics that fall outside the scope of bar-level indicator conditions. The exit condition (ceases pattern for 2 consecutive months) also requires monthly-level aggregation not available in this schema."
 }

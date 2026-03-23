@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires put-call ratio computed from option trade data (buyer-initiated new positions), which is not available in the ALLOWED INDICATORS list. The allowed indicators are limited to price, technical indicators (RSI, MACD, ATR, Bollinger Bands, etc.) and volume-based metrics. Put-call ratios require real-time option market data and classification logic (buyer vs seller, opening vs closing) that cannot be derived from these price/volume indicators alone.",
+  "translation_notes": "This is an options-market-microstructure signal that fundamentally requires derivative trading data unavailable in standard OHLCV backtesting. To implement this signal, the backtest engine would need to integrate live option trade feeds and compute put-call ratios from filtered option orders (buyers opening new positions only)."
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires identifying 'previous significant swing high or low' and detecting when price 'tests that level within 2.0%' \u2014 this requires dynamic swing point detection and price proximity logic not available in indicator-based rule engine. The core logic of identifying prior swings, measuring distance to test, and triggering on reversal candles cannot be expressed using only static indicators and basic operators. Would need custom swing detection function or array-based lookback capability.",
+  "translation_notes": "Attempted partial translation using wick rejection (lower_wick for long, upper_wick for short) as reversal signal proxy, and pivot levels (s1/r1) as support/resistance approximation. However, this misses the critical failed-test setup logic: identifying which prior swing to test, measuring exact test proximity (within 2%), and differentiating a failed test from a successful breakout. The signal is fundamentally a pattern-recognition setup that requires swing point tracking \u2014 a structural limitation of this rules engine."
 }

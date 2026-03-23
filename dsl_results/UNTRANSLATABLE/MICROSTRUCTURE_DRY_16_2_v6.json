@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "Signal requires dealer inventory percentile tracking, fundamental value estimation, bid-ask spread baseline comparison, and uninformed trader net buying pressure detection. These microstructure metrics are not available in the allowed indicator set. The rule relies on order flow and inventory data that would require external data sources or custom calculations not in the standard technical indicator toolkit.",
-  "translation_notes": "Attempted proxy mapping: used returns (log_returns) for price discount to fundamental value approximation; used vol_ratio_20 as proxy for bid-ask spread widening. However, core dealer inventory percentile and uninformed buying pressure conditions cannot be expressed with available indicators. This signal is fundamentally untranslatable without access to order book microstructure data."
+  "untranslatable_reason": "Signal requires dealer inventory position data (55th percentile threshold), bid-ask spread baseline tracking (110% expansion), and uninformed trader pressure detection \u2014 none of which are available in the allowed indicator set. These are microstructure variables not present in standard OHLCV/technical indicator data.",
+  "translation_notes": "Attempted proxy mapping: (1) 'Price discount to fundamental value >= 0.75%' mapped to returns < -0.75% as a price weakness indicator; (2) 'Dealer long inventory' and 'spread widened' mapped to volume > sma_20 and atr_14 > 1.1 as rough proxies for dealer activity and market friction; (3) Exit at 3 trading days honored; (4) Cannot accurately represent dealer inventory percentiles or bid-ask spread mechanics with available indicators. Direction set to CONTEXT_DEPENDENT per signal specification."
 }

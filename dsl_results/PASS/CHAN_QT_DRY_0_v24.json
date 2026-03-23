@@ -1,0 +1,72 @@
+{
+  "signal_id": "CHAN_QT_DRY_0",
+  "book_id": "CHAN_QT",
+  "dsl_rule": {
+    "signal_id": "CHAN_QT_DRY_0",
+    "entry_long": [
+      {
+        "left": "zscore_20",
+        "operator": "<",
+        "right": "-1"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Mean-reversion detected via zscore_20 < -1 (price below mean). Entry requires price below SMA_20 reference level. Exit when price reverts and crosses back above the mean reference (SMA_20). Lookback, threshold, half_life, and backtest parameters were AUTHOR_SILENT so reasonable defaults applied: zscore with 20-period lookback, -1\u03c3 threshold, 30-day max hold window."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "zscore_20",
+        "op": "<",
+        "value": -1.0
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "sma_20"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Mean-reversion detected via zscore_20 < -1 (price below mean). Entry requires price below SMA_20 reference level. Exit when price reverts and crosses back above the mean reference (SMA_20). Lookback, threshold, half_life, and backtest parameters were AUTHOR_SILENT so reasonable defaults applied: zscore with 20-period lookback, -1\u03c3 threshold, 30-day max hold window."
+  },
+  "source_rule_text": "Buy securities that are mean-reverting when their prices are currently low relative to a reference price, planning to sell higher when prices revert to the mean."
+}

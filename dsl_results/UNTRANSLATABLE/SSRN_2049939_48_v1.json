@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_48",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a factor-based strategy that requires beta calculation across the entire universe of instruments and dynamic portfolio construction (ranking by beta, weighting, rescaling). The BAB (Betting Against Beta) factor involves: (1) Computing beta for each instrument (not available in indicator list), (2) Ranking all instruments by beta, (3) Constructing two separate portfolios with specific beta-weighted allocations, (4) Rescaling both to unit beta. These operations require cross-sectional analysis, beta estimation models, and portfolio-level mechanics that cannot be expressed as per-instrument entry/exit conditions using the available indicators. The backtest engine would need to support factor construction, cross-sectional ranking, and portfolio rebalancing logic rather than traditional technical signal rules.",
+  "translation_notes": "Signal requires beta-based factor construction which is outside the scope of single-instrument technical indicator rules. Implementation would require: (1) A beta calculation module, (2) A ranking engine to sort instruments by beta, (3) Portfolio construction logic to allocate to long low-beta and short high-beta baskets, (4) Monthly rebalancing scheduling at the portfolio level. This is fundamentally different from condition-based entry/exit rules and requires a dedicated factor engine."
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal direction is CONTEXT_DEPENDENT (not strictly LONG/SHORT), requires market regime classification logic not expressible in simple indicator rules. Bull/Bear market regimes not in ALLOWED_REGIMES list (only TRENDING_UP, TRENDING_DOWN, RANGING, HIGH_VOL, ANY available). Specific exit conditions marked AUTHOR_SILENT with no clear reversal pattern defined. Pattern success rates (52%/51%) suggest weak predictive power and would require statistical validation outside rule engine.",
+  "translation_notes": "Short white candle approximated using body size < ATR_14 and range < ATR_14 as proxies for small body and short height. Breakout direction BOTH suggests context-dependent entries. Attempted exit rule uses 50-day MA breakout per source text reference. Original regime names (BULL_MARKET/BEAR_MARKET) do not map to ALLOWED_REGIMES."
 }

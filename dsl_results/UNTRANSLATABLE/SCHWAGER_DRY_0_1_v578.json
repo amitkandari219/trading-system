@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of 'crowd synchronization' (2+ correlated participants), 'dealer short positions', and 'dealer covering acceleration' \u2014 these are market microstructure concepts requiring order flow or positioning data not available in the standard OHLCV+technical indicator set. The trailing stop rule at '2x ATR when crowd synchronized' also requires real-time crowd detection logic unavailable from price/volume data alone.",
+  "translation_notes": "Attempted translation using proxy indicators: (1) Price above SMA_20 + ADX>25 as heuristic for 'trending up with multiple participants', (2) Volume spike relative to 20-period average + price break below SMA_20 as exit signals approximating 'dealer covering acceleration'. However, this is a weak approximation of the original intent, which is fundamentally about market behavior and positioning that cannot be inferred from price action alone. Position sizing rule ('50% of normal') cannot be encoded in backtest rules. Manual interpretation recommended."
 }

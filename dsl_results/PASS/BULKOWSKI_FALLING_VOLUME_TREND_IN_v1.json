@@ -1,0 +1,71 @@
+{
+  "signal_id": "BULKOWSKI_FALLING_VOLUME_TREND_IN",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Falling volume trend in AEDB pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_FALLING_VOLUME_TREND_IN",
+    "entry_long": [
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "prev_volume"
+      },
+      {
+        "left": "vol_ratio_20",
+        "operator": "<",
+        "right": "1.0"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "prev_volume"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 2.8,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "prev_volume"
+      },
+      {
+        "indicator": "vol_ratio_20",
+        "op": "<",
+        "value": 1.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "prev_volume"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 20,
+    "stop_loss_pct": 0.027999999999999997,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_FALLING_VOLUME_TREND_IN"
+  },
+  "source_rule_text": "Falling volume trend in AEDB pattern: Volume declines as price forms the pattern"
+}

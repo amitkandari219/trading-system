@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires comparison of realized volatility against its own historical average (dynamic threshold), which cannot be expressed with static allowed indicators. hvol_20 is a point-in-time volatility measure, not a comparison operator against a rolling mean of itself. A proper implementation would require a custom volatility regime detector or a rolling mean of hvol_20 values, neither of which are in the allowed indicator set.",
+  "translation_notes": "The core logic (reduce risk when vol high, increase when vol low) is bidirectional and applies to multiple asset classes/factors. However, without a true 'historical volatility average' indicator or regime detection mechanism, this cannot be precisely translated. Recommend: (1) implement custom hvol_20_sma indicator, or (2) use HIGH_VOL regime detection and reduce position sizing accordingly."
+}

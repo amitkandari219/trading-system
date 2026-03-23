@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_1",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.0,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "arithmetic_average_hpr",
+      "threshold": 1.0,
+      "direction": "below_or_equal"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": 0.0,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size = 0 (no trading) when A \u2264 1. This is a hard floor rule: if arithmetic mean HPR does not exceed 1.0, expected value is non-positive and trading should not occur regardless of other factors.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Do not trade if arithmetic average HPR (A) is less than or equal to 1, as mathematical expectation will be non-positive and profits approach zero regardless of standard deviation or number of trades."
+}

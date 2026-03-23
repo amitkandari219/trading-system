@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_30_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.005,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.5,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "consecutive_losses",
+      "threshold": 3,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.005,
+    "min_risk_pct": 0.0025,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Risk 0.5% per trade; reduce to 0.25% after 3 consecutive losses. Formula: position_size = (account_equity \u00d7 max_loss_pct) / stop_loss_distance",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader must use position-sizing models to limit the absolute dollar loss per trade, preventing catastrophic loss spirals where recovery requires risking disproportionately large amounts relative to potential profit."
+}

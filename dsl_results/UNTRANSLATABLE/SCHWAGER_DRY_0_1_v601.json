@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "This signal requires external event-driven triggers (economic calendar releases with specific timestamps and pre-determined directional bias) that cannot be expressed using price-based technical indicators. The core logic depends on: (1) real-time detection of scheduled economic events, (2) pre-market directional planning, (3) sub-5-second execution latency upon news release, and (4) tick-level volume confirmation\u2014none of which are available in the allowed indicator set. The signal is fundamentally an event-driven alpha capture strategy, not a technical indicator-based rule.",
+  "translation_notes": "Signal SCHWAGER_DRY_0_1 describes a news-event trading methodology requiring: external news feed integration, order pre-staging infrastructure, and microsecond-level execution capabilities. Parameters like 'execution_window_seconds', 'impact_level_filter', and 'directional_bias_confirmation' reference market microstructure and calendar data not present in standard OHLCV indicators. To implement this signal would require: (1) custom event connector for economic calendar data, (2) order template system for pre-execution, (3) system clock synchronization with news feeds. Recommend creating a separate EVENT class handler outside the technical indicator backtest engine."
 }

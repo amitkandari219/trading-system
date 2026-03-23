@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_17",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'open-buy put-call ratio' and 'PIN measure' (Probability of Informed Trading), neither of which are in the allowed indicator list. The signal also requires contract volume data and put-call specific metrics that are not available. vol_ratio_20 was used as a proxy for volume concentration, but this does not accurately capture the put-call ratio or PIN dynamics described in the original academic research.",
+  "translation_notes": "This signal is fundamentally based on options market microstructure (put-call ratios, open-buy volume, PIN) which requires options chain data and informed trading probability calculations not present in standard OHLCV indicator sets. The entry condition was approximated using vol_ratio_20 as a volume concentration proxy, but this is a weak substitute. The -35 basis point slope coefficient was converted to a -0.35% next-day return threshold for exit. A proper implementation would require custom options-based indicators."
+}

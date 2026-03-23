@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of Doji candlestick pattern (body = 0 approximated, but precise Doji detection with specific wick ratio thresholds not available). Volume comparison to 'average' requires hvol_20 as proxy but source specifies context-dependent thresholds (heavy vs light relative to breakout direction). Exact success rate parameters (success_rate_bull, success_rate_bear, average_rise_pct, etc.) are marked AUTHOR_SILENT and cannot be quantified. Breakout direction detection logic is implicit and cannot be explicitly coded with available indicators.",
+  "translation_notes": "Approximated Doji as body \u2248 0 using body indicator. Used hvol_20 as proxy for 'average volume'. Long entry assumes upward breakout (close > prev_close) with heavy volume; short entry assumes downward breakout (close < prev_close) with light volume. Exit conditions use reversal logic (breakout fails). Many pattern-specific parameters from source are AUTHOR_SILENT and therefore non-quantifiable."
 }

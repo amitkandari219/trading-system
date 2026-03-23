@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_17",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires direct access to asset-level beta calculations, portfolio construction with inverse-beta weighting, and TED spread volatility regime classification. These are multi-asset factor construction mechanics that cannot be expressed as single-instrument technical indicator conditions. Required inputs: (1) beta estimates per asset, (2) TED spread volatility regimes, (3) long/short portfolio weighting schemes. Only hvol_20 used as proxy for credit volatility regime detection, but actual signal requires quantitative portfolio construction at the strategy level rather than entry/exit rules.",
+  "translation_notes": "BAB is a factor strategy requiring portfolio-level construction across multiple assets with dynamic rebalancing based on beta regimes. The 3 entry conditions (long low-beta, short high-beta, exposure adjustment) and exit conditions (rebalance on beta updates, exit on regime change) cannot be decomposed into single-instrument technical rules. This requires: (a) a separate beta calculation module, (b) TED spread data ingestion, (c) multi-asset position sizing logic, and (d) regime detection outside the backtest engine's indicator framework. Consider implementing as a separate factor module with custom portfolio construction rather than rule-based entry/exit."
+}

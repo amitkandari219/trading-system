@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires multi-day lookback logic (Day 2 decline, Day 3 non-bounce, Friday close < Thursday close) and intraday range comparison (Friday intraday rally > 50% of prior day range). The allowed indicator set supports single-bar comparisons and prev_close/prev_high/prev_low, but not: (1) explicit 2-day prior close references, (2) intraday range calculations (high-low of specific prior day), or (3) 'MONDAY_OPEN' regime trigger. The signal is context-dependent on sequence and magnitude over a 3-day window with specific intraday dynamics that cannot be fully expressed in the constraint framework.",
+  "translation_notes": "Attempted partial translation using prev_close comparisons to capture Friday weakness relative to Thursday, but this loses critical information: the requirement for prior Thursday decline, the 50% intraday rally break condition, and the Monday opening harvest signal. The hedge component (downside protection via OTM options) is also not representable as entry/exit conditions in this schema."
 }

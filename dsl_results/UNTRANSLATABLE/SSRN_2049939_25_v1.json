@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_25",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires calculation of idiosyncratic volatility (residual standard deviation from rolling beta regression), beta estimation, and multi-decile conditional sorting with dynamic portfolio construction. These are factor-model computations that cannot be expressed using the allowed indicators (technical price/volume indicators only). The signal requires: (1) rolling beta regression for each stock, (2) extraction of residuals and calculation of idiosyncratic volatility, (3) cross-sectional ranking and decile assignment, (4) within-decile sorting by beta, (5) portfolio-level beta rescaling to unit beta. None of these custom factor calculations are available in the allowed indicator set.",
+  "translation_notes": "This is a systematic factor/quant strategy from academic research (Betting Against Beta by Frazzini et al., SSRN 2049939) designed for portfolio construction across many securities with rolling factor exposures. It requires custom factor computation infrastructure beyond technical indicators and is better implemented in a dedicated factor backtesting engine (e.g., Quantopian, FactSet, or custom framework) rather than a technical rule-based system."
+}

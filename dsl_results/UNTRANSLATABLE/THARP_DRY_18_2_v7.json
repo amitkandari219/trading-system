@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires ATR-based position sizing and dynamic trailing stops (2.0x ATR trigger, 3.0x ATR profit target, 1.5x ATR stop loss). The backtest engine does not support ATR multipliers as exit conditions or dynamic trailing stop mechanisms. Additionally, 'entry on first pullback within 5 minutes' requires intrabar logic not expressible in daily/bar-level conditions. Price position approximates prior close percentile, but ATR mechanics cannot be fully translated.",
+  "translation_notes": "Approximated 'prior close in top 50% of range' using price_pos_20 > 0.5. Approximated 'opens higher' with open > prev_close. Stop loss pct set to 1.5 to reflect 1.5x ATR intent, but true ATR scaling is not supported. Exit at 3.0 close approximates profit target but loses ATR multiplier context. Regime filtered to TRENDING_UP and HIGH_VOL per original signal. CONTEXT_DEPENDENT direction simplified to LONG based on entry conditions showing upside bias."
 }

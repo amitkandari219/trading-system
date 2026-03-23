@@ -52,7 +52,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal requires confirmation of trend shift by price moving 3+ bars in new direction and closing beyond 20-period MA. Interpreted as: entry occurs when price crosses the sma_20 in the new direction (indicating both shift and MA breach). Exit occurs on reversal (MA crossback). The 3-bar minimum movement is implicitly captured by requiring a crossover event rather than a single bar close. CONTEXT_DEPENDENT direction allows rules to work for both long and short entries based on market conditions."
+    "translation_notes": "Signal emphasizes entering AFTER trend shift confirmation, not anticipating it. Entry requires price to cross the 20-period MA (trend shift confirmation) AND continue moving in that direction (minimum 1 bar in new direction used as proxy for '3 bars' requirement which cannot be precisely encoded without bar indexing). Exit triggers on MA crossover in opposite direction, indicating trend reversal. The 10-bar trend shift lookback is implicit in the MA crossover logic. Direction is CONTEXT_DEPENDENT as signal applies to both uptrends and downtrends."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -102,7 +102,7 @@
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal requires confirmation of trend shift by price moving 3+ bars in new direction and closing beyond 20-period MA. Interpreted as: entry occurs when price crosses the sma_20 in the new direction (indicating both shift and MA breach). Exit occurs on reversal (MA crossback). The 3-bar minimum movement is implicitly captured by requiring a crossover event rather than a single bar close. CONTEXT_DEPENDENT direction allows rules to work for both long and short entries based on market conditions."
+    "reason": "Signal emphasizes entering AFTER trend shift confirmation, not anticipating it. Entry requires price to cross the 20-period MA (trend shift confirmation) AND continue moving in that direction (minimum 1 bar in new direction used as proxy for '3 bars' requirement which cannot be precisely encoded without bar indexing). Exit triggers on MA crossover in opposite direction, indicating trend reversal. The 10-bar trend shift lookback is implicit in the MA crossover logic. Direction is CONTEXT_DEPENDENT as signal applies to both uptrends and downtrends."
   },
   "source_rule_text": "A trader should enter a position only after the trend has already shifted and begun moving in the desired direction, not in anticipation of a trend change."
 }

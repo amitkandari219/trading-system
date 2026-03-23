@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_1150080_5",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calendar-based month filtering (Month == January) and index selection logic ([CNX Nifty, CNX Jr, CNX Midcap, CNX IT, Bank Nifty]). These are data-level filters, not technical indicators. The 'operator' is used for 'is' comparison, but the allowed indicators list does not include month/calendar fields or index identifiers. The statistical significance level (0.1) and mean January coefficient (0.01) cannot be operationalized as entry conditions without direct access to regression coefficients or statistical test results, which are not in the allowed indicators. This signal requires preprocessing at the data/asset selection layer before the backtest engine executes technical rule logic.",
+  "translation_notes": "This is a calendar anomaly/January effect study based on statistical regression analysis. Implementation requires: (1) asset filtering to the specified indices, (2) date filtering to January only, and (3) a buy-and-hold through month-end approach. These are portfolio construction rules rather than technical indicator-based entry/exit conditions. Recommend implementing as a separate calendar filter in the backtest harness before applying indicator-based rules."
+}

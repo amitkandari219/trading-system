@@ -1,0 +1,92 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "open"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "prev_high"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Gapping-Up Doji pattern: (1) Doji body detected via body_pct < 5% (open \u2248 close), (2) Lower shadow above prior upper shadow via low > prev_high (creates gap), (3) Upward trend confirmed via close > prev_close. Exit on close below prior day's low (gap fill/reversal). Pattern is directionally LONG in uptrend context."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "open"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Gapping-Up Doji pattern: (1) Doji body detected via body_pct < 5% (open \u2248 close), (2) Lower shadow above prior upper shadow via low > prev_high (creates gap), (3) Upward trend confirmed via close > prev_close. Exit on close below prior day's low (gap fill/reversal). Pattern is directionally LONG in uptrend context."
+  },
+  "source_rule_text": "Gapping-Up Doji: A single candleline that opens and closes at or near the same price (doji), with today's lower shadow remaining above the prior day's upper shadow, creating a price gap on an upward price trend."
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Pattern detection requires candlestick morphology analysis (tall body identification, upper/lower wick ratio analysis) which cannot be fully expressed using only the allowed indicators. The 'tall candle body' concept requires comparing body size to historical distributions or ATR multiples, but the precise thresholds and context-dependent breakout direction determination are not explicitly defined in the source material. Upper shadow percentages (0.44%-0.71% of breakout price) require price-relative calculations not available in the indicator set. Stop placement guidance is marked AUTHOR_SILENT.",
+  "translation_notes": "Attempted to capture tall candle body as body > atr_14 (a common proxy for 'tall'). Entry is CONTEXT_DEPENDENT as signal applies to both long and short depending on market regime (BULL_MARKET_UP/DOWN vs BEAR_MARKET_UP/DOWN). Exit conditions use price reversal as reasonable default per RULE 8 since AUTHOR_SILENT on stop placement. Success rates and performance metrics provided (81%/78% success, 9-10% bull performance, -7-13% bear performance) are informational but not directly translatable to rule conditions."
 }

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires: (1) abstract price-based filter condition (any trend or support/resistance) which cannot be expressed without knowing specific filter method, (2) volume percentile calculation across 10-period lookback window (available indicators are pre-calculated vol_ratio_20 only, not custom percentile ranks), and (3) requirement to verify setup uses different calculation than filter (METHOD-BASED independence), which is a meta-rule requiring execution context knowledge rather than indicator values. The signal is a meta-pattern about combining independent data sources rather than a specific entry/exit rule.",
+  "translation_notes": "This signal describes a principle (using volume as confirmation for price-based setups with different calculation methods) rather than a concrete entry condition. A valid translation would require: explicit filter specification (MA crossover, breakout, etc.), explicit setup specification, and custom volume percentile indicator not in the standard allowed list. The volume threshold shown (40th percentile) cannot be operationalized without a rolling percentile-rank indicator."
 }

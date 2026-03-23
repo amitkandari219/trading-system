@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires buyer-initiated put and call option volume decomposition derived from CBOE tick data using Ready (1991) algorithm. This is not a directly observable market indicator and cannot be constructed from standard OHLCV price/volume or technical indicators. The allowed indicator set does not include option order flow analysis or order-side classification (buyer vs seller initiated). Volume proxies like vol_ratio_20 are insufficient substitutes for the underlying signal's granular option order flow logic.",
+  "translation_notes": "Attempted to use volume ratio as a proxy, but this fundamentally misrepresents the signal. The signal's edge depends on distinguishing buyer-initiated vs seller-initiated option orders, which requires tick-level option trade data and algorithmic decomposition\u2014neither available in standard OHLCV backtesting. Exit condition interpreted as price reversal over 1-2 day holding period based on returns cross below zero (long) or above zero (short)."
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_29",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Beta calculation and ranking require cross-sectional asset comparison and portfolio construction logic not available in the allowed indicator set. 'beta' and 'rebalance_signal' are not in the ALLOWED INDICATORS list. The signal requires systematic ranking of assets by historical beta, formation of quantile portfolios, and position scaling to achieve net beta=1.0 \u2014 all operations beyond point-in-time indicator values. This is a portfolio-level factor strategy that requires custom portfolio construction logic outside the backtest engine's scope.",
+  "translation_notes": "BAB is a classic factor-based long-short strategy requiring asset-level beta estimation and portfolio weighting optimization. Standard backtesting engines with indicator-based rules cannot natively support this. Implementation requires: (1) beta estimation window, (2) asset ranking mechanism, (3) portfolio formation with position sizing, and (4) monthly rebalancing. Consider implementing as custom portfolio builder module rather than indicator-based rule engine."
+}

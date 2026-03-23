@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_35",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal describes a portfolio-level volatility scaling strategy (inverse volatility weighting with dynamic rebalancing) rather than a price-based entry/exit signal. It requires: (1) calculation of realized volatility over a lookback period, (2) dynamic position sizing inversely proportional to volatility estimates, and (3) periodic rebalancing logic. The allowed indicators include hvol_20 (historical volatility proxy) but the signal demands: custom realized volatility calculation, factor portfolio weight optimization, and rebalancing triggers based on volatility regime changes. This is a risk management overlay, not a discretionary trading signal expressible as entry/exit conditions on price action indicators.",
+  "translation_notes": "Signal ID SSRN_2659431_35 is fundamentally a portfolio construction rule requiring systematic risk allocation across multiple factors with time-varying exposures. A backtest engine expecting entry_long/entry_short conditions cannot directly implement volatility-scaled factor exposure weighting. To implement this signal would require: (a) a multi-asset factor framework, (b) volatility state estimation module, (c) position sizing engine tied to vol regimes, and (d) rebalancing schedule logic. Consider implementing as a separate portfolio optimization module rather than a single-signal rule."
+}

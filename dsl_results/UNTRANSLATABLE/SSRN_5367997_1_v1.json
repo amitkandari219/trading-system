@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_5367997_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires detection of 'monthly high concentration bias' which is a statistical pattern that cannot be expressed using the allowed technical indicators. The entry logic depends on identifying whether the current bar's high is part of a concentration cluster (defined by chi-square analysis of 5,781 historical observations), which would require a custom statistical indicator not available in the allowed indicator set. Additionally, 'day_of_month' is not in the allowed indicators list.",
+  "translation_notes": "The signal is based on a statistical/calendar pattern (late-month clustering of monthly highs) rather than traditional technical indicators. While the calendar condition (days 21-31) is straightforward, the critical 'concentration bias' condition cannot be reliably translated without: (1) a monthly_high_concentration or similar custom indicator, (2) access to day_of_month calendar function, or (3) rolling chi-square statistical testing capabilities. The source paper (SSRN_5367997_1) demonstrates statistical significance (\u03c7\u00b2 = 400.6, p < 2.2e-16) but this requires backtesting infrastructure beyond standard OHLCV + technical indicators."
+}

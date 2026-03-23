@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_21",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires put-call ratio data from full-service broker customer orders, which is not available in the standard OHLCV indicator set. The source uses proprietary broker data (put-call volume ratio by investor class) that cannot be reconstructed from price/volume indicators alone. Additionally, 'minimum 10 contracts' requires options contract volume data not present in allowed indicators.",
+  "translation_notes": "Original signal is based on options market microstructure (put-call ratios segmented by broker type and customer class). This requires: (1) options volume data by strike/expiration, (2) customer classification by broker type, (3) contract-level volume tracking. Standard equity price/volume indicators cannot replicate this analysis. The expected 'next-day risk-adjusted returns' suggests a 1-day holding period, but without the core put-call ratio metric, entry conditions cannot be properly translated."
+}

@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_2",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": 0.4,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "max_drawdown_absolute",
+      "threshold": 6000,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Ralph Vince optimal f method: initial allocation = MAX{(-largest_historical_loss / -optimal_f), (margin + ABS(max_drawdown))}; remaining equity divided by optimal f in dollars to determine additional contracts. Example: optimal_f=0.4, max_drawdown=$6,000",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Allocate initial contract size based on the maximum of either the largest historical loss divided by optimal f, or margin plus absolute maximum drawdown; then calculate additional contracts by dividing remaining equity by optimal f in dollars and rounding down to integer."
+}

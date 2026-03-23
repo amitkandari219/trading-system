@@ -1,0 +1,24 @@
+{
+  "signal_id": "VINCE_DRY_4",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": null,
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Position multiplier C derived from cumulative probability function incorporating skewness, location, scale, and kurtosis of trade distribution. Formula: C = (1+(ABS(SKEW)^ABS(1/(X-LOC))*sign(X)*-sign(SKEW)))^0.5; Y = (1/(ABS((X-LOC)*SCALE)^KURT+1))^C. Multiplier adjusts based on statistical moments of system's trade distribution rather than fixed percentage. Author does not disclose specific optimal_f value.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position sizing is determined by a cumulative probability function that adjusts position multiplier C based on skewness, location, scale, and kurtosis parameters of the trade distribution."
+}

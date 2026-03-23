@@ -1,0 +1,72 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "upper_wick",
+        "operator": "<",
+        "right": "0.01"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.95,
+    "hold_days_max": 10,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Short upper shadow approximated as upper_wick < 1% of range. Bull market context represented by close > sma_50. Exit condition set to bearish reversal (close below SMA_50) as original exit conditions were marked AUTHOR_SILENT. Success rate of 5.79% in bull markets used to set conservative stop loss at 5.95% average decline."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "upper_wick",
+        "op": "<",
+        "value": 0.01
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_50"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_50"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 10,
+    "stop_loss_pct": 0.059500000000000004,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Short upper shadow approximated as upper_wick < 1% of range. Bull market context represented by close > sma_50. Exit condition set to bearish reversal (close below SMA_50) as original exit conditions were marked AUTHOR_SILENT. Success rate of 5.79% in bull markets used to set conservative stop loss at 5.95% average decline."
+  },
+  "source_rule_text": "Short Upper Shadow: A candle with a short upper shadow in bull market conditions"
+}

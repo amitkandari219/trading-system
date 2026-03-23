@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_41",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of beta coefficient per instrument and rank-weighted portfolio construction with beta normalization. These are portfolio-level factor calculations not supported by the allowed indicator list. Indicators like 'beta_rank', 'rebalance_trigger', and portfolio construction logic are not in the ALLOWED INDICATORS. The signal requires a factor analysis engine capable of computing rolling beta estimates and dynamic portfolio weighting, which is beyond the scope of the price/technical indicator framework.",
+  "translation_notes": "This is a factor-based (BAB - Beta Arbitrage) strategy requiring: (1) beta estimation for each security, (2) portfolio formation by beta ranking, (3) rank-weighted position sizing, (4) portfolio-level beta normalization to 1.0, (5) monthly rebalancing. The backtest engine would need custom factor calculation modules, not just technical indicators. Recommend implementing as a custom factor rule in the backtester rather than through the JSON condition syntax."
+}

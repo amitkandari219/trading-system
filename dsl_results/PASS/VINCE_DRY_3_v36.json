@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_3",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "z_score_cumulative_probability",
+      "threshold": null,
+      "direction": "positive"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Position size scaled by N(Z) \u2014 cumulative normal distribution probability derived from Z-score of historical trade data. Uses approximation formula for N(Z). Author (Vince) did not disclose optimal_f, kelly_fraction, or max_drawdown_tolerance parameters. Scaling factor is the probability output from N(Z), which ranges [0,1].",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position sizing is determined by calculating the probability associated with a standard normal distribution value (Z-score) using the cumulative normal distribution function N(Z), which converts parametric data into probability-weighted position adjustments."
+}

@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_7",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "portfolio_composition",
+      "threshold": null,
+      "direction": "geometric_optimization"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Multi-system portfolio allocation using geometric optimal f with equalized data across all systems. Each component levered to meet required expectancy E=0.2457. Position sizes derived from solving portfolio matrix equations (7.06a-7.06d). Geometric mean calculated as HPR\u2081 \u00d7 HPR\u2082 \u00d7 ... \u00d7 HPR\u2099. Implementation requires custom matrix solver\u2014cannot reduce to single base_risk_pct parameter.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "When combining multiple market systems in a portfolio, equalize all market systems' data and optimal f values before calculating position sizes, then use the geometric optimal portfolio allocation where each component is levered to meet the required expectancy E."
+}

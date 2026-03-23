@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires options-specific metrics (intrinsic value %, time value premium %, implied volatility percentile, realized-to-IV ratio) that are not available in the allowed indicator set. The allowed indicators are equity/futures price-action based and do not include options Greeks or volatility surface analysis. Entry condition 'Position is profitable with intrinsic value >= 95% of total option value' cannot be expressed with allowed indicators. Exit condition 'Time value premium recovers to >= 20% of option value' is also not translatable.",
+  "translation_notes": "This is an options volatility thesis signal that requires direct access to option chain data (IV percentiles, time value decomposition, realized vs implied vol spreads). The signal logic involves holding an existing profitable options position based on vol regimes, which requires options-specific state tracking not present in price-action indicators. Best practice: implement this rule in a specialized options backtest engine with access to IV term structure and Greeks."
 }

@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_3",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "normal_distribution_truncation_sigma",
+      "threshold": 1.743232,
+      "direction": "bilateral"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Parametric optimal f applied to normally distributed P&L data. Requires truncating continuous normal distribution at specified sigma levels (e.g., \u00b11.743232\u03c3) to create discrete distribution suitable for optimal f calculation. Actual position size depends on optimal f derived from truncated distribution boundaries.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "To apply optimal f technique to normally distributed trade data, first determine at how many standard deviations from the mean the distribution should be truncated to convert continuous normal distribution into discrete distribution suitable for position sizing calculations."
+}

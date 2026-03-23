@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by 3-year historical volatility and selecting decile/quintile buckets (portfolio construction across universe), which requires cross-sectional ranking logic not supported by single-instrument indicator conditions. hvol_20 is only 20-day volatility. The 1095-day lookback and minimum variance portfolio approach cannot be expressed as simple indicator threshold rules on individual securities.",
+  "translation_notes": "This signal describes a cross-sectional ranking and portfolio weighting strategy (minimum variance portfolio construction) rather than a time-series entry/exit signal. A proper implementation would require: (1) calculating 3-year rolling volatility for all stocks in universe, (2) ranking and bucketing by volatility deciles/quintiles, (3) constructing long/short portfolios from extreme buckets, and (4) periodic rebalancing. Standard backtesting engines typically require per-instrument conditions, not universe-wide ranking and weighting logic."
+}

@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_1",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "R_MULTIPLE",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "daily_equity_recalculation",
+      "threshold": 1.0,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Daily recapitalization of subaccounts using fixed risk unit per market system. Position size = Floor(Current_Subaccount_Equity / Fixed_Risk_Per_System). Trade zero contracts if result is below 1.0. This is a fixed dollar risk approach (R-multiple style) where the 'fixed_risk_per_system' serves as the constant risk unit.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Recapitalize subaccounts daily based on current account equity, then allocate position size by dividing available capital by the fixed risk unit per market system"
+}

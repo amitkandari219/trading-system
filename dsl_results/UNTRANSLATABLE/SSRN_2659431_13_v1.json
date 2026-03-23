@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_13",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic leverage adjustment inversely proportional to realized/expected volatility with monthly rebalancing and portfolio weighting logic. This requires portfolio-level volatility calculations, dynamic position sizing, and multi-asset correlation analysis that cannot be expressed as simple indicator conditions. The allowed indicators lack: (1) direct realized variance/covariance measures, (2) expected volatility forecasts (GARCH, implied vol), (3) portfolio-level aggregation, (4) dynamic leverage/notional exposure adjustment mechanics. Only partial proxy translation possible using hvol_20.",
+  "translation_notes": "Attempted proxy: Used hvol_20 (20-day historical volatility) as a crude stand-in for volatility measurement. Entry when vol is low (leverage up), exit when vol spikes (leverage down). However, this misses: monthly rebalancing schedule, inverse weighting logic, leverage cap enforcement (1.0x or 1.5x), transaction cost modeling (1-14 bps), variance vs. standard deviation choice, and portfolio construction. Original signal is a volatility-managed dynamic allocation strategy requiring portfolio optimization, not a simple price-based entry/exit system."
+}

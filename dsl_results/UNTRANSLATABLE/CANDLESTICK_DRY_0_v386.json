@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "The signal requires calculating a dynamic 'median' of the candle height-to-breakout price ratio across a dataset, and classifying candles as 'tall' or 'short' relative to this median. The backtest engine does not support: (1) dynamic statistical median calculation across historical candles, (2) custom classification logic beyond indicator comparisons, or (3) the specific 'breakout price' reference point which is not a standard OHLC indicator. The exit conditions reference '90% success rate measurement' which requires post-hoc analysis rather than forward-looking conditions.",
+  "translation_notes": "Attempted to express context-dependent entry/exit using price relative to pivot point as a proxy for breakout direction, but this does not capture the core Doji pattern logic (height ratio to median). The signal requires custom statistical analysis unavailable in the allowed indicator set."
 }

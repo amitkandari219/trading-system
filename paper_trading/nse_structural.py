@@ -55,31 +55,11 @@ class NSEStructuralSignals:
 
     def _late_month_bias(self, today: date) -> list:
         """
-        SSRN IND_003 (p < 2.2e-16): Nifty peaks days 21-31.
-        Enter LONG day 18-19, exit day 28-29.
+        SSRN IND_003 (p < 2.2e-16): Late-month bias.
+        DISABLED — backtest on Nifty index shows -529 pts over 104 trades.
+        Paper was on individual stocks, not index. Does not work on Nifty.
         """
-        signals = []
-        dom = today.day
-
-        if dom in (18, 19):
-            signals.append({
-                'signal_id': 'NSE_LATE_MONTH_ENTRY',
-                'direction': 'LONG',
-                'confidence': 0.72,
-                'source': 'SSRN_IND_003',
-                'hold_days': 10,
-                'stop_pct': 0.015,
-            })
-
-        if dom in (28, 29):
-            signals.append({
-                'signal_id': 'NSE_LATE_MONTH_EXIT',
-                'direction': 'EXIT',
-                'confidence': 0.72,
-                'source': 'SSRN_IND_003',
-            })
-
-        return signals
+        return []  # DISABLED — failed backtest validation
 
     def _expiry_week_effect(self, today: date) -> list:
         """

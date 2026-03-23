@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_40",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires beta calculation and ranking across instruments, which is a portfolio-level factor construction methodology, not a technical indicator-based trading rule. Beta estimation, instrument ranking, portfolio weighting, and beta rescaling are not expressible using the allowed indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, z-scores, and bar properties). This is a systematic factor strategy that requires custom portfolio construction logic outside the scope of indicator-based rule expression.",
+  "translation_notes": "BAB (Betting Against Beta) is a multi-asset factor strategy published by Frazzini, Israel & Moskowitz. It requires: (1) calculating historical beta for each instrument, (2) partitioning instruments into low-beta and high-beta groups, (3) weighting by ranked betas, (4) rescaling to target portfolio beta of 1, and (5) monthly rebalancing. These operations are performed at the portfolio level and depend on cross-sectional ranking and optimization, not individual instrument technical conditions. Consider implementing this as a custom portfolio construction module rather than a condition-based backtest rule."
+}

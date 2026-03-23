@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires historical regime pattern matching (2-year lookback, 6+ occurrences per year, consistency threshold) which cannot be expressed as point-in-time indicator conditions. The core concept\u2014selecting markets matching historical characteristics\u2014requires regime backtesting or machine learning classification not available in the allowed indicator set. Used proxy indicators (hvol_20, adx_14) to approximate volatility/trend strength requirements, but cannot encode the frequency-of-occurrence or multi-year historical pattern matching logic.",
+  "translation_notes": "This is a market selection/regime compatibility rule rather than a traditional entry/exit signal. Translated qualitative requirements to quantitative proxies: 'high volatility' \u2192 hvol_20 \u2265 0.01 (1% annual volatility), 'trend strength' \u2192 adx_14 \u2265 25. Exit condition approximates 3-week deterioration. Direction set CONTEXT_DEPENDENT because suitability varies by strategy. Parameters show intended 2-year lookback and 6x/year frequency thresholds but cannot be operationalized within indicator constraints."
 }

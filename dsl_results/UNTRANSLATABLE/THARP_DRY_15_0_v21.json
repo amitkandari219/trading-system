@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires multi-leg spread trading (nearby vs. forward contract month comparison, backwardation detection, and spread inversion measurement). The allowed indicators operate on single-instrument OHLCV data and cannot express inter-contract relationships, spread ratios, term structure inversions, or fundamental market conditions (supply shortage confirmation). Backtesting engine appears designed for single-instrument technical analysis, not commodity spread strategies.",
+  "translation_notes": "This is an intercontract spread strategy requiring: (1) comparison of two different contract months simultaneously, (2) detection of backwardation (forward < nearby), (3) measurement of spread inversion magnitude as percentage of nearby price, and (4) confirmation of fundamental supply conditions. None of these can be expressed with single-instrument technical indicators. The closest approximation (directional long entry above SMA with 3% stop) loses the core spread logic and market condition requirement."
 }

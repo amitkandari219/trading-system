@@ -15,6 +15,15 @@ SIZING_METHODS = [
     'VOLATILITY_SCALED',  # Size inversely proportional to volatility
     'KELLY',              # Kelly criterion (or half-Kelly)
     'ANTI_MARTINGALE',    # Increase after wins, decrease after losses
+    'DRAWDOWN_SCALED',    # Reduce size during drawdowns
+]
+
+SIZING_METHOD_SET = set(SIZING_METHODS)
+
+ALLOWED_TRIGGERS = [
+    'consecutive_wins', 'consecutive_losses',
+    'drawdown_pct', 'rolling_profit_factor',
+    'rolling_win_rate', 'rolling_volatility_20',
 ]
 
 
@@ -82,6 +91,44 @@ class PositionSizingRule:
             d['kelly_fraction'] = self.kelly_fraction
         return d
 
+    def effective_risk_pct(self, consecutive_wins: int = 0,
+                           consecutive_losses: int = 0,
+                           drawdown_pct: float = 0.0,
+                           rolling_volatility: float = None) -> float:
+        """
+        Compute effective risk % after applying scaling conditions.
+        Returns clamped value between min_risk_pct and max_risk_pct.
+        """
+        risk = self.base_risk_pct
+
+        # Apply scale-up condition
+        if self.scale_up_condition:
+            sc = self.scale_up_condition
+            if sc.trigger == 'consecutive_wins' and consecutive_wins >= sc.threshold:
+                risk *= sc.multiplier
+
+        # Apply scale-down condition
+        if self.scale_down_condition:
+            sc = self.scale_down_condition
+            if sc.trigger == 'drawdown_pct' and drawdown_pct >= sc.threshold:
+                risk *= sc.multiplier
+            elif sc.trigger == 'consecutive_losses' and consecutive_losses >= sc.threshold:
+                risk *= sc.multiplier
+
+        # Volatility scaling: lower vol → bigger size, higher vol → smaller
+        if self.sizing_method == 'VOLATILITY_SCALED' and rolling_volatility is not None:
+            baseline_vol = 0.20  # 20% annualized as 1x baseline
+            if rolling_volatility > 0:
+                risk *= baseline_vol / rolling_volatility
+
+        # Kelly / optimal_f override
+        if self.sizing_method == 'KELLY' and self.kelly_fraction is not None:
+            risk = self.kelly_fraction
+        elif self.sizing_method == 'OPTIMAL_F' and self.optimal_f is not None:
+            risk = self.optimal_f
+
+        return max(self.min_risk_pct, min(self.max_risk_pct, risk))
+
     def compute_lots(self, capital: float, stop_pts: float,
                      lot_value: float, lot_size: int = 75) -> int:
         """
@@ -108,3 +155,100 @@ class PositionSizingRule:
         """
         loss_rate = 1 - win_rate
         return (win_rate * avg_win_r) - (loss_rate * avg_loss_r)
+
+    @classmethod
+    def from_dict(cls, d: dict) -> 'PositionSizingRule':
+        scale_up = None
+        if d.get('scale_up_condition'):
+            scale_up = ScaleCondition.from_dict(d['scale_up_condition'])
+        scale_down = None
+        if d.get('scale_down_condition'):
+            scale_down = ScaleCondition.from_dict(d['scale_down_condition'])
+
+        return cls(
+            signal_id=d.get('signal_id', 'unknown'),
+            sizing_method=d.get('sizing_method', 'FIXED_FRACTIONAL'),
+            base_risk_pct=float(d.get('base_risk_pct', 0.01)),
+            r_multiple_target=float(d.get('r_multiple_target', 3.0)),
+            r_multiple_stop=float(d.get('r_multiple_stop', 1.0)),
+            optimal_f=d.get('optimal_f'),
+            kelly_fraction=d.get('kelly_fraction'),
+            scale_up_condition=scale_up,
+            scale_down_condition=scale_down,
+            max_risk_pct=float(d.get('max_risk_pct', 0.02)),
+            min_risk_pct=float(d.get('min_risk_pct', 0.005)),
+            applies_to=d.get('applies_to', 'ALL'),
+            confidence=d.get('confidence', 'MEDIUM'),
+            source_text=d.get('source_text', ''),
+            book=d.get('book', ''),
+        )
+
+    @classmethod
+    def from_llm_response(cls, signal_id: str, resp: dict) -> 'PositionSizingRule':
+        """Parse an LLM sizing response into a PositionSizingRule."""
+        scale_up = None
+        scale_down = None
+        trigger = resp.get('trigger_condition')
+
+        if trigger and resp.get('scale_up_multiplier'):
+            scale_up = ScaleCondition(
+                trigger=trigger.get('metric', ''),
+                threshold=float(trigger.get('threshold', 0)),
+                multiplier=float(resp['scale_up_multiplier']),
+            )
+        if trigger and resp.get('scale_down_multiplier'):
+            scale_down = ScaleCondition(
+                trigger=trigger.get('metric', ''),
+                threshold=float(trigger.get('threshold', 0)),
+                multiplier=float(resp['scale_down_multiplier']),
+            )
+
+        return cls(
+            signal_id=signal_id,
+            sizing_method=resp.get('sizing_method', 'FIXED_FRACTIONAL'),
+            base_risk_pct=float(resp.get('base_risk_pct', 0.01)),
+            r_multiple_target=float(resp.get('r_multiple_target', 3.0)),
+            r_multiple_stop=float(resp.get('r_multiple_stop', 1.0)),
+            optimal_f=resp.get('base_risk_pct') if resp.get('sizing_method') == 'OPTIMAL_F' else None,
+            kelly_fraction=resp.get('scale_factor'),
+            scale_up_condition=scale_up,
+            scale_down_condition=scale_down,
+            max_risk_pct=float(resp.get('max_risk_pct', 0.02)),
+            min_risk_pct=float(resp.get('min_risk_pct', 0.005)),
+            applies_to=resp.get('applies_to', 'ALL'),
+            confidence=resp.get('confidence', 'MEDIUM'),
+        )
+
+
+def validate_sizing_rule(rule: PositionSizingRule) -> tuple:
+    """
+    Validate a PositionSizingRule for structural correctness.
+    Returns (passed: bool, issues: list[str])
+    """
+    issues = []
+
+    if rule.sizing_method not in SIZING_METHOD_SET:
+        issues.append(f"Unknown sizing_method: {rule.sizing_method}")
+
+    if rule.base_risk_pct < 0 or rule.base_risk_pct > 1.0:
+        issues.append(f"base_risk_pct={rule.base_risk_pct} outside [0, 1.0]")
+
+    if rule.max_risk_pct < rule.min_risk_pct:
+        issues.append(f"max_risk_pct ({rule.max_risk_pct}) < min_risk_pct ({rule.min_risk_pct})")
+
+    if rule.r_multiple_stop <= 0:
+        issues.append(f"r_multiple_stop must be positive, got {rule.r_multiple_stop}")
+
+    if rule.scale_up_condition and rule.scale_up_condition.multiplier <= 1.0:
+        issues.append(f"scale_up multiplier should be > 1.0, got {rule.scale_up_condition.multiplier}")
+
+    if rule.scale_down_condition and rule.scale_down_condition.multiplier >= 1.0:
+        issues.append(f"scale_down multiplier should be < 1.0, got {rule.scale_down_condition.multiplier}")
+
+    if rule.optimal_f is not None and (rule.optimal_f <= 0 or rule.optimal_f >= 1.0):
+        issues.append(f"optimal_f={rule.optimal_f} outside (0, 1.0)")
+
+    if rule.kelly_fraction is not None and (rule.kelly_fraction <= 0 or rule.kelly_fraction >= 1.0):
+        issues.append(f"kelly_fraction={rule.kelly_fraction} outside (0, 1.0)")
+
+    return len(issues) == 0, issues

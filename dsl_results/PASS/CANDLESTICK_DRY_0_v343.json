@@ -1,0 +1,72 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      },
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Deliberation Candle is a 3-bar continuation pattern in uptrends with >75% success rate. Entry requires uptrend confirmation (price above sma_20) and candle body formation. Exit uses the difficult reversal condition stated: close below the pattern's low. The three-candle pattern requirement cannot be explicitly encoded without multi-bar lookback syntax, so uptrend context via moving average proximity is used as proxy. Rare reversal condition (close below candlestick low) reflects the pattern's primarily continuation nature."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      },
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Deliberation Candle is a 3-bar continuation pattern in uptrends with >75% success rate. Entry requires uptrend confirmation (price above sma_20) and candle body formation. Exit uses the difficult reversal condition stated: close below the pattern's low. The three-candle pattern requirement cannot be explicitly encoded without multi-bar lookback syntax, so uptrend context via moving average proximity is used as proxy. Rare reversal condition (close below candlestick low) reflects the pattern's primarily continuation nature."
+  },
+  "source_rule_text": "Deliberation Candle: A three-day candle pattern that begins in an uptrend, functions primarily as a continuation pattern rather than a reversal despite its name"
+}

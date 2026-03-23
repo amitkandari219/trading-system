@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires spread-specific indicators (nearby-to-forward spread inversion detection, spread differential magnitude comparison, backwardation/contango detection) which are not available in the allowed indicator list. The rule requires tracking multiple contract months and their price relationships (nearby vs. forward contracts), spread inversions, and term structure changes\u2014none of which can be expressed with single-contract price/technical indicators like close, sma, rsi, etc. This is an intercontract spread strategy that cannot be accurately translated to single-contract indicators.",
+  "translation_notes": "THARP_DRY_15_2 is a commodity spread trading signal requiring multi-contract analysis. A simplified directional proxy using close > sma_20 was provided, but this does NOT capture the core logic of: (1) spread inversion detection, (2) nearby-to-forward ratio monitoring, (3) contango/backwardation term structure shifts, or (4) spread differential magnitude thresholds. To properly backtest this signal, the engine would need: spread price indicator, contract month differentials, and term structure analysis capabilities."
 }

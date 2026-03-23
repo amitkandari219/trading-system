@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires market selection logic based on: (1) system type identification (not measurable via price/technical indicators), (2) seasonal correlation coefficient (not available in allowed indicators), (3) Elliott Wave validity score (not available in allowed indicators), and (4) historical Sharpe ratio validation (requires meta-analysis outside single-bar technical conditions). This is a market filtering/regime qualification rule rather than an entry/exit signal. The 50th percentile volatility threshold and rolling 126-day window validation cannot be expressed with standard OHLCV indicators alone.",
+  "translation_notes": "THARP_DRY_17 describes market selection methodology requiring pre-trade analysis (Sharpe ratio backtests, seasonal correlation analysis, Elliott Wave pattern recognition) rather than real-time entry/exit signals. Attempting partial translation using volatility as proxy, but core logic is untranslatable. Recommend implementing as a market filter upstream of backtester rather than as an intra-signal condition."
 }

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2089463_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "TSMOM strategy requires ranking assets by 12-month momentum across multiple asset classes and portfolio-level position sizing proportional to rank relative to median. This is a portfolio construction and cross-asset ranking mechanism that cannot be fully expressed as single-asset entry/exit conditions. The allowed indicators lack: (1) multi-asset ranking capability, (2) portfolio-level aggregation logic, (3) relative position sizing based on cross-sectional rank. The backtest engine appears designed for single-asset technical rules, not cross-sectional portfolio strategies.",
+  "translation_notes": "Signal represents a sophisticated cross-sectional momentum strategy requiring simultaneous evaluation and ranking of multiple assets with dynamic portfolio construction. Basic momentum direction proxies (returns > 0 for long, returns < 0 for short) are provided but do NOT capture the full strategy logic including diversification, relative ranking, median-relative sizing, or the 12-month lookback rebalancing mechanism. Consider implementing this strategy in a separate portfolio backtester with multi-asset ranking capabilities."
+}

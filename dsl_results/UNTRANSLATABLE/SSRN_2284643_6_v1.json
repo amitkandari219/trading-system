@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2284643_6",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by volatility percentile (quintile Q1 vs Q5) across a universe. The allowed indicators include hvol_20 (historical volatility) but do NOT include cross-sectional percentile ranking or quintile bucketing functionality. To properly implement this signal, the backtest engine must support: (1) volatility_percentile or volatility_rank indicators, or (2) a quintile bucketing function that ranks all stocks in universe and assigns Q1-Q5 buckets. The entry/exit conditions as written are logically circular without the ranking mechanism.",
+  "translation_notes": "This is a cross-sectional, rank-based volatility strategy that cannot be expressed using only point-in-time indicators. hvol_20 measures individual stock volatility but cannot encode 'lowest quintile' vs 'highest quintile' without a ranking/bucketing layer. Recommend adding volatility_percentile or volatility_quintile indicators to the allowed list, or implementing a custom ranking function in the backtest engine."
+}

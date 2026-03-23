@@ -1,9 +1,43 @@
 """
 Scoring engine that combines 3 Kaufman signals into a weighted score
 for position sizing decisions.
+
+FIX 6: Added drawdown-based dynamic scaling. When the portfolio is in
+drawdown, position sizes are reduced progressively:
+  drawdown < 5%  -> 1.0x (no reduction)
+  drawdown 5-10% -> 0.75x
+  drawdown 10-15% -> 0.50x
+  drawdown > 15% -> 0.25x
+This prevents aggressive sizing during losing streaks.
 """
 
 from __future__ import annotations
+
+
+# Drawdown tiers: (max_drawdown_pct, size_multiplier)
+DRAWDOWN_TIERS = [
+    (5.0,  1.00),   # < 5% drawdown: full size
+    (10.0, 0.75),   # 5-10% drawdown: 75% size
+    (15.0, 0.50),   # 10-15% drawdown: 50% size
+    (100.0, 0.25),  # > 15% drawdown: 25% size (floor)
+]
+
+
+def drawdown_scale(current_drawdown_pct: float) -> float:
+    """
+    Compute position size multiplier based on current portfolio drawdown.
+
+    Args:
+        current_drawdown_pct: Current drawdown as positive percentage (e.g. 8.5 for -8.5%)
+
+    Returns:
+        Multiplier between 0.25 and 1.0
+    """
+    dd = abs(current_drawdown_pct)
+    for threshold, mult in DRAWDOWN_TIERS:
+        if dd < threshold:
+            return mult
+    return DRAWDOWN_TIERS[-1][1]  # Floor
 
 
 class ScoringEngine:
@@ -25,6 +59,9 @@ class ScoringEngine:
       |score| <= 1 -> no new position
 
     Exit: when score drops below entry threshold
+
+    Drawdown scaling: sizes are multiplied by drawdown_scale() when
+    current_drawdown_pct is provided to update().
     """
 
     def __init__(self) -> None:
@@ -32,8 +69,9 @@ class ScoringEngine:
         self.position: str | None = None  # 'LONG', 'SHORT', or None
         self.entry_threshold: int | None = None
         self.size: float = 0.0
+        self.drawdown_mult: float = 1.0  # Latest drawdown multiplier
 
-    def update(self, signals: dict) -> dict:
+    def update(self, signals: dict, current_drawdown_pct: float = 0.0) -> dict:
         """
         Process today's signals and return a trading decision.
 
@@ -45,6 +83,9 @@ class ScoringEngine:
               'DRY_12': {'action': 'ENTER_LONG'|'ENTER_SHORT'|'EXIT'|None},
               'DRY_16': {'action': 'ENTER_LONG'|'ENTER_SHORT'|'EXIT'|None},
             }
+        current_drawdown_pct : float
+            Current portfolio drawdown as positive percentage (e.g. 8.5 for -8.5%).
+            Used for dynamic position scaling.
 
         Returns
         -------
@@ -54,9 +95,12 @@ class ScoringEngine:
               'prev_score': int,
               'action': 'ENTER_LONG'|'ENTER_SHORT'|'EXIT'|None,
               'size': float,
+              'drawdown_mult': float,
               'reason': str,
             }
         """
+        # Compute drawdown-based scaling
+        self.drawdown_mult = drawdown_scale(current_drawdown_pct)
         prev_score = self.score
 
         # --- Compute fresh score for today ---
@@ -189,12 +233,19 @@ class ScoringEngine:
         size: float,
         reason: str,
     ) -> dict:
+        # Apply drawdown scaling to the raw size
+        scaled_size = round(size * self.drawdown_mult, 3)
+        dd_note = ""
+        if self.drawdown_mult < 1.0:
+            dd_note = f" [DD scale: {self.drawdown_mult:.2f}x]"
         return {
             "score": new_score,
             "prev_score": prev_score,
             "action": action,
-            "size": size,
-            "reason": reason,
+            "size": scaled_size,
+            "raw_size": size,
+            "drawdown_mult": self.drawdown_mult,
+            "reason": reason + dd_note,
         }
 
     def get_daily_summary(self) -> str:

@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.02,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "account_size",
+      "threshold": 10000,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.02,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Scale position size proportionally to account equity. Account must be at least $10k. Risk limit is 2% per trade (from account_risk_limit parameter). Position size decreases with smaller accounts, increases with larger accounts.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Scale position size to account size: traders with limited capital should trade smaller contract quantities to manage risk relative to their available funds."
+}

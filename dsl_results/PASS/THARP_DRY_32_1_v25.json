@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "rolling_std_dev_126_days",
+      "threshold": 1.5,
+      "direction": "inverse"
+    },
+    "max_risk_pct": 1.5,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size controlled by standard deviation of returns over 126-day lookback. Cap position at 1.5\u03c3. Trigger deleveraging when capital grows 50% or diversify to minimum 3 uncorrelated positions.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should adjust position sizing by diversifying and deleveraging as capital grows, or continue leveraging profits only if willing to accept complete loss risk; position size should be controlled by measuring worst-case risk through standard deviation of returns."
+}

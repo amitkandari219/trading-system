@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires IV percentile calculation and expected move comparison (straddle cost vs historical move range), which are not available in the allowed indicator set. Position delta tracking at entry and profit/loss level-based exits (50% at 50% max profit, etc.) also require options pricing calculations not in the allowed indicators.",
+  "translation_notes": "Approximated IV percentile < 30th with india_vix < 30 and low historical volatility (hvol_20 < 1.5%). Exit condition uses volatility expansion (india_vix > 45) as a proxy for the explosion position to realize profits. The core concept of 'limited risk, unlimited upside' with delta near zero at entry cannot be fully captured without explicit IV percentile and options greeks indicators. Parameters for OTM strike selection and max account loss provided in original signal but require options-specific execution logic."
 }

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_980865_12",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by volatility percentile/decile across a universe and selecting the lowest decile/quintile. This is a cross-sectional selection rule (relative ranking across multiple securities) that cannot be expressed as a single-security time-series condition. The backtest engine would need to: (1) calculate hvol_20 for all securities in the universe, (2) rank them, (3) select positions in the lowest volatility decile/quintile. Additionally, the exact lookback period for historical volatility is not specified in the source excerpt, and the rebalancing frequency is vague ('periodically'). A proxy condition using hvol_20 < threshold has been provided but does not capture the cross-sectional ranking requirement.",
+  "translation_notes": "Attempted approximation using hvol_20 (20-period historical volatility) with a low threshold (0.15 = 15% annualized), exiting when volatility rises significantly (0.25 = 25%). However, this treats volatility as absolute rather than relative rank. True implementation requires universe-level ranking logic outside single-security rule scope. Rebalancing frequency set to 30 days as a reasonable default for periodic rebalancing."
+}

@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_30_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 0.06,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "account_equity_state",
+      "threshold": 0,
+      "direction": "at_new_high"
+    },
+    "max_risk_pct": 0.06,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Risk fixed 6% of bankroll per trade. Position size derived from: bankroll / (6% \u00d7 1/entry_risk_ratio). Accounts for drawdown tolerance (60% max) and recovery math (150% gain needed to recover from -60% loss). Applies when account at new equity high.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should limit position size based on the maximum drawdown they can psychologically and financially tolerate, because larger losses require disproportionately larger gains to recover, and consecutive losses can occur more frequently than probability suggests."
+}

@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "Signal requires detection of bid/ask microstructure (consecutive alternating bid-to-ask and ask-to-bid jumps) and transitory spread component elevation. These microstructure features require tick-level order book data and cannot be expressed using only OHLCV candle-based indicators. The 'distance_from_midpoint_in_spreads' parameter also requires real-time spread data unavailable in standard backtest engines.",
-  "translation_notes": "Attempted partial translation using price_pos_20 (position within 20-bar range) as a proxy for mean reversion tendency and vol_ratio_20 to approximate low-liquidity conditions. However, the core signal logic (alternating bid/ask jumps) is fundamentally microstructure-based and cannot be reliably translated to OHLCV indicators. Recommend using a tick-data compatible backtest engine or adding bid/ask level indicators."
+  "untranslatable_reason": "Signal requires bid/ask spread tracking and detection of alternating bid-ask price jumps (microstructure-level data). No allowed indicators directly measure spread components, transitory spread widening, or bid/ask jump directionality. The 'consecutive alternating jumps' and 'distance from midpoint in spreads' conditions require order-flow microstructure data unavailable in the standard OHLCV indicator set.",
+  "translation_notes": "Attempted proxy: Used pivot as midpoint reference, volume below vol_ratio_20 as low-volume proxy, and ATR elevation as transitory volatility signal. However, this does NOT capture the core bid/ask bounce mechanic or mean reversion to true midpoint. A proper implementation requires Level 2 order book data or bid/ask tick data."
 }

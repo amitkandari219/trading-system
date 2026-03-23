@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires market selection logic based on system type identification, seasonal correlation measurement (0-1 scale), Elliott Wave validity scoring (0-1 scale), and historical Sharpe ratio calculation. These are portfolio-level meta-filters and performance metrics not expressible as intra-bar technical conditions. The signal is a market selection rule, not a tradeable entry/exit signal. ATR or hvol_20 can approximate volatility percentile, but seasonal_correlation and elliott_wave_validity_score are not available indicators.",
+  "translation_notes": "This signal describes a market selection/filtering framework rather than entry/exit conditions. It requires: (1) documented system specification, (2) market characteristic measurement (volatility percentile \u226575th OR seasonal_correlation \u22650.60 OR elliott_wave_validity \u22650.70), and (3) historical backtest validation (Sharpe \u22651.5). Only volatility can be approximated using hvol_20 as a proxy for the 75th percentile volatility threshold. Seasonal correlation and Elliott Wave scoring require external pre-computation outside the backtest engine. Recommend implementing this as a pre-filter stage before signal execution."
 }

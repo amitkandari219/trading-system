@@ -1,0 +1,41 @@
+{
+  "signal_id": "THARP_DRY_29_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": null,
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Scale out of winning position in three tranches: exit 50% at +15% profit, 33% at +25% profit, remaining 17% at +40% profit. This is a profit-target-based position reduction (scaling out) mechanic.",
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "exit_scaling": [
+      {
+        "profit_target_pct": 15,
+        "position_fraction_to_exit": 0.5,
+        "position_fraction_remaining": 0.5
+      },
+      {
+        "profit_target_pct": 25,
+        "position_fraction_to_exit": 0.33,
+        "position_fraction_remaining": 0.17
+      },
+      {
+        "profit_target_pct": 40,
+        "position_fraction_to_exit": 0.17,
+        "position_fraction_remaining": 0.0
+      }
+    ]
+  },
+  "source_rule_text": "A trader should scale out of winning positions at predetermined profit milestones rather than holding until reversal, treating profit-taking as an exit discipline mechanic."
+}

@@ -1,0 +1,80 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "sma_20",
+        "operator": ">",
+        "right": "sma_50"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      },
+      {
+        "left": "body",
+        "operator": ">",
+        "right": "0"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 5.0,
+    "hold_days_max": 10,
+    "direction": "SHORT",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Entry conditions: (1) Short-term trend up = SMA20 > SMA50; (2) Breakout down = close < prev_close; (3) White candles = positive body. Exit condition inferred as reversal (price crosses above SMA20). Success rates (38-40%) and other AUTHOR_SILENT parameters documented but not encoded as they are metadata. Pattern: Trend-up with Breakout-down Reversal predicts SHORT direction."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "sma_20",
+        "op": ">",
+        "value": "sma_50"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      },
+      {
+        "indicator": "body",
+        "op": ">",
+        "value": 0.0
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 10,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Entry conditions: (1) Short-term trend up = SMA20 > SMA50; (2) Breakout down = close < prev_close; (3) White candles = positive body. Exit condition inferred as reversal (price crosses above SMA20). Success rates (38-40%) and other AUTHOR_SILENT parameters documented but not encoded as they are metadata. Pattern: Trend-up with Breakout-down Reversal predicts SHORT direction."
+  },
+  "source_rule_text": "Trend-up with breakout-down: Predicts reversal direction based on short-term trend and breakout direction"
+}

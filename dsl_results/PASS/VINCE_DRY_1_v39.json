@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_1",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "trade_dependency_validation",
+      "threshold": null,
+      "direction": "confirmation_required"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Do not apply optimal f until trade dependency is empirically validated in live conditions. Using optimal f derived from dependent trades on independent sequences causes oversizing. Prerequisite: identify, exploit, and confirm dependency persistence before optimal f calculation.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "First stage of money management is to exploit and remove any dependency in trades before applying position sizing, as using optimal f based on dependency assumptions will result in oversizing if that dependency does not persist in live trading."
+}

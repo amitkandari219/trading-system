@@ -1,0 +1,81 @@
+{
+  "signal_id": "BULKOWSKI_BREAKUP_PATTERN",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Breakup pattern",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_BREAKUP_PATTERN",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": ">=",
+        "right": "0.2"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<=",
+        "right": "0.8"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 4.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": ">=",
+        "value": 0.2
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<=",
+        "value": 0.8
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_lower"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 30,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_BREAKUP_PATTERN"
+  },
+  "source_rule_text": "Breakup pattern: Price breaks upward from a consolidation formation near the 12-month low, center, or high"
+}

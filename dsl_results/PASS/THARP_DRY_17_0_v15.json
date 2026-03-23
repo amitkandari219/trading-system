@@ -1,0 +1,29 @@
+{
+  "signal_id": "THARP_DRY_17_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 1.0,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": 0.707,
+    "trigger_condition": {
+      "metric": "trade_frequency_per_period",
+      "threshold": null,
+      "direction": "inverse",
+      "note": "scaling_factor = 1 / sqrt(trade_frequency); applied over 20-day window"
+    },
+    "max_risk_pct": 1.0,
+    "min_risk_pct": null,
+    "max_concurrent_trades": 3,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size adjusted inversely to square root of expected trade frequency. Higher trade frequency \u2192 smaller positions. Base 1.0% scaled by 1/\u221a(frequency) to account for cumulative equity impact of multiple concurrent trades.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  }
+}

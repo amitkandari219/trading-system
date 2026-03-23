@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires: (1) price-based filter condition (trend/support/resistance) \u2014 these are pattern concepts not directly expressible as quantitative conditions; (2) volume percentile calculation across 20 periods \u2014 vol_ratio_20 exists but percentile thresholds (75th/50th) require dynamic statistical calculation not available as static operators; (3) constraint that price-based setup signal NOT be used \u2014 this is a meta-rule about signal combination logic, not a market condition; (4) 2 consecutive bars below 50th percentile \u2014 requires sequential bar counting logic not supported by available operators.",
+  "translation_notes": "The signal's core intent (use volume as independent confirmation separate from price filters) is sound but requires: dynamic percentile calculations relative to lookback windows, pattern recognition for price-based filters, and state tracking for consecutive bar conditions. Recommend implementing as custom rule engine or preprocessing volume percentile ranks separately."
 }

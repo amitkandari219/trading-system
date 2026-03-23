@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "This signal is a meta-rule about system composition and risk management rather than a pattern-based entry/exit condition. It requires validation that 3 system components (entry pattern, exit rule, position sizing) are documented and that max risk per trade \u2264 3%, with minimum 20 backtested trades. These are portfolio-level constraints and documentation requirements, not price/indicator conditions that can be expressed as entry_long/entry_short rules. The signal mandates a framework check rather than a tradeable condition.",
+  "translation_notes": "THARP_DRY_18_2 is a risk management and system design principle stating that isolated patterns are insufficient without integrated exit rules and position sizing rules (max 3% risk per trade). This requires pre-trade validation of system completeness rather than real-time entry/exit signals. Recommend implementing as a pre-backtest validation filter that checks: (1) entry pattern is defined, (2) exit rule exists, (3) position sizing rule with risk \u2264 3% is documented, (4) minimum 20 trades in backtest. Cannot be encoded as a standard entry/exit rule pair."
 }

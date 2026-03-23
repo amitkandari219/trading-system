@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_3",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "commissions_slippage_adjustment",
+      "threshold": null,
+      "direction": "deduct_from_pnl"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Recalculate optimal f using worst-case loss (W) derived from historical trades after deducting X dollars in commissions and slippage from each trade's P&L. Recompute arithmetic mean and population standard deviation on adjusted trade set, then apply Equation (3.34) with adjusted W variable (3.35) to determine contract count.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Adjust position sizing calculations when commissions and slippage are incorporated by deducting X dollars from each trade's P&L before calculating arithmetic mean and standard deviation, then recalculate optimal f using the adjusted parameters."
+}

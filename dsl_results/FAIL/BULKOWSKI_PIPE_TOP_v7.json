@@ -1,0 +1,53 @@
+{
+  "signal_id": "BULKOWSKI_PIPE_TOP",
+  "entry_long": [],
+  "entry_short": [
+    {
+      "left": "bb_bandwidth",
+      "operator": "<",
+      "right": "0.03"
+    },
+    {
+      "left": "bb_bandwidth",
+      "operator": ">",
+      "right": "prev_bb_bandwidth"
+    },
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "dc_lower"
+    },
+    {
+      "left": "vol_ratio_20",
+      "operator": "<",
+      "right": "1.0"
+    },
+    {
+      "left": "close",
+      "operator": "<",
+      "right": "sma_50"
+    }
+  ],
+  "exit_long": [],
+  "exit_short": [
+    {
+      "left": "close",
+      "operator": ">",
+      "right": "sma_20"
+    }
+  ],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 3.2,
+  "hold_days_max": 20,
+  "direction": "SHORT",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": false,
+  "untranslatable_reason": null,
+  "translation_notes": null,
+  "validation_issues": [
+    "entry_short: unknown right value 'prev_bb_bandwidth'"
+  ]
+}

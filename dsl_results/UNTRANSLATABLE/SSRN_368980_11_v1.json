@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_368980_11",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires two custom indicators not in ALLOWED INDICATORS: (1) 'open buy volume from full-service broker customers' \u2014 a broker-class-specific order flow metric not available in standard technical indicators, and (2) 'put/call ratio' \u2014 an options market metric. These are fundamental data inputs that cannot be derived from price, volume, or technical indicators. Additionally, the rule specifies ranking by deciles (top decile and bottom decile), which requires cross-sectional ranking logic across a universe of stocks, not a per-instrument threshold that a backtest engine typically evaluates.",
+  "translation_notes": "This signal is based on order flow and options sentiment data from institutional broker records, requiring external data sources beyond standard OHLCV and technical analysis. The decile-ranking mechanism would need custom data preprocessing and cross-sectional comparison logic. Recommend implementing as a separate data pipeline feeding pre-ranked stock lists into the backtest engine rather than as a real-time rule."
+}

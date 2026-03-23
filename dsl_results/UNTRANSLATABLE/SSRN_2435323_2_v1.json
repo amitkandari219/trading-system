@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2435323_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires multi-dimensional cross-sectional ranking (percentile-based selection within size/momentum groups and NYSE median-cap stratification) and custom portfolio construction logic that cannot be expressed using only single-indicator point-in-time conditions. The strategy requires: (1) ranking entire stock universe by 12-month returns excluding most recent month, (2) stratifying by NYSE median market cap, (3) creating six intersection portfolios, and (4) equal-weight rebalancing. These are portfolio-construction and weighting rules, not price-action entry/exit signals translatable to the allowed indicator operators.",
+  "translation_notes": "This is a classic Fama-French style factor model (likely the Jegadeesh & Titman momentum factor) that operates at the portfolio/asset-class level rather than single-instrument level. It requires a custom backtest engine with ranking, stratification, and portfolio construction capabilities beyond the scope of single-indicator rule conditions. Recommend implementing as a dedicated multi-asset portfolio strategy module rather than as individual entry/exit rules."
+}

@@ -1,0 +1,115 @@
+{
+  "signal_id": "BULKOWSKI_RECTANGLE_BOTTOM",
+  "book_id": "BULKOWSKI",
+  "pattern_name": "Rectangle Bottom",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_RECTANGLE_BOTTOM",
+    "entry_long": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "20"
+      },
+      {
+        "left": "price_pos_20",
+        "operator": "<",
+        "right": "0.3"
+      },
+      {
+        "left": "low",
+        "operator": ">",
+        "right": "s1"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "r1"
+      },
+      {
+        "left": "bb_bandwidth",
+        "operator": "<",
+        "right": "0.04"
+      },
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "s1"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "r1"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "AND",
+    "stop_loss_pct": 3.0,
+    "hold_days_max": 30,
+    "direction": "LONG",
+    "target_regime": [
+      "RANGING",
+      "RECOVERY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": null
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 20.0
+      },
+      {
+        "indicator": "price_pos_20",
+        "op": "<",
+        "value": 0.3
+      },
+      {
+        "indicator": "low",
+        "op": ">",
+        "value": "s1"
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "r1"
+      },
+      {
+        "indicator": "bb_bandwidth",
+        "op": "<",
+        "value": 0.04
+      },
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "s1"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "r1"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING",
+      "RECOVERY"
+    ],
+    "hold_days": 30,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "DSL translation of BULKOWSKI_RECTANGLE_BOTTOM"
+  },
+  "source_rule_text": "Rectangle Bottom: Price bounces between two horizontal levels after a downward trend, creating support at the bottom and resistance at the top"
+}

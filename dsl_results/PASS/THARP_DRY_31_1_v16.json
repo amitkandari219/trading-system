@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_31_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": 1.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.5,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "stop_loss_width_to_daily_range_ratio",
+      "threshold": 0.75,
+      "direction": "below"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size inversely scaled to stop-loss width relative to daily range. When stop width is tighter than 75% of daily range, reduce risk per trade by 50% multiplier to maintain consistent portfolio risk. Implements inverse volatility scaling principle.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Position size must be inversely scaled to stop-loss width: tighter stops require proportionally smaller risk per trade to maintain consistent portfolio risk management."
+}

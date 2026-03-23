@@ -1,0 +1,42 @@
+{
+  "signal_id": "SSRN_TSMOM_12M",
+  "book_id": "SSRN-2089463",
+  "signal_type": "ENTRY_EXIT",
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_200"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_200"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_200"
+      }
+    ],
+    "regime_filter": [],
+    "hold_days": 0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0,
+    "direction": "BOTH"
+  },
+  "source_rule_text": "Go long if 12-month return > 0, short if < 0 (Moskowitz TSMOM)"
+}

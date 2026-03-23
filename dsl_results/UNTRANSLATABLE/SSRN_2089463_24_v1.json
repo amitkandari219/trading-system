@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2089463_24",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires dynamic lookback and holding period selection (1, 3, 6, 9, 12, 24, 36, 48 months) with parameterized momentum calculation over variable time windows. The allowed indicators list contains only 'returns' (single period return) and 'log_returns', but does not support multi-period momentum calculations or rolling window specifications. A proper implementation requires a custom momentum indicator that computes returns over specified lookback periods and manages holding periods dynamically, which cannot be expressed using only the allowed indicator set.",
+  "translation_notes": "This is a sophisticated multi-asset time series momentum strategy with combinatorial parameter optimization across lookback and holding periods. The core concept (enter long on positive returns, short on negative returns) is expressible, but the signal's power lies in testing all combinations of lookback (1/3/6/9/12/24/36/48 months) and holding (1/3/6/9/12/24/36/48 months) pairs across multiple asset classes. A custom momentum indicator spanning user-defined periods would be required for full implementation."
+}

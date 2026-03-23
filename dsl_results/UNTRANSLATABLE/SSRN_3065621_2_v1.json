@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3065621_2",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking stocks by 26-week historical returns and selecting top/bottom performers. This requires cross-sectional ranking logic (relative outperformance) which cannot be expressed as a single-instrument rule set. The backtest engine needs portfolio-level ranking capability, not just indicator thresholds on individual instruments.",
+  "translation_notes": "Attempted proxy: used returns indicator as directional approximation. However, the core strategy is a cross-sectional momentum rank (long top quintile, short bottom quintile) rebalanced weekly over 26-week periods. This requires: (1) calculation of 26-week returns for entire universe, (2) percentile ranking across all stocks, (3) portfolio construction from ranked groups. Single-instrument conditions cannot capture this. Recommend implementing as custom ranking rule in backtest engine with parameters: lookback_weeks=26, holding_period_weeks=26, rebalance_frequency='weekly', position_type='long_short_ranked'."
+}

@@ -52,7 +52,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal emphasizes trend change and reward-to-risk optimization over perfect mechanics. Entry uses price crossing 5-period MA with RSI confirmation at 50 midpoint. Exit triggers on trend reversal (MA cross in opposite direction). Stop loss set to 0.5x ATR equivalent using standard 0.5% decimal scale for ATR-based stops. Direction marked CONTEXT_DEPENDENT per signal specification to allow both long and short entries based on trend direction. Volume confirmation explicitly not required per original conditions."
+    "translation_notes": "Signal emphasizes trend change detection via MA and momentum crosses. Used sma_5 per lookback_period parameter and rsi_14 as closest match to rsi_threshold of 50. Stop loss set to 0.5x ATR using atr_14 with 0.5 multiplier converted to percentage equivalent (0.5%). Entry is context-dependent (LONG on uptrend, SHORT on downtrend). Volume confirmation explicitly not required per signal. Exit triggers on trend reversal (MA cross in opposite direction)."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -102,7 +102,7 @@
     "stop_loss_pct": 0.005,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal emphasizes trend change and reward-to-risk optimization over perfect mechanics. Entry uses price crossing 5-period MA with RSI confirmation at 50 midpoint. Exit triggers on trend reversal (MA cross in opposite direction). Stop loss set to 0.5x ATR equivalent using standard 0.5% decimal scale for ATR-based stops. Direction marked CONTEXT_DEPENDENT per signal specification to allow both long and short entries based on trend direction. Volume confirmation explicitly not required per original conditions."
+    "reason": "Signal emphasizes trend change detection via MA and momentum crosses. Used sma_5 per lookback_period parameter and rsi_14 as closest match to rsi_threshold of 50. Stop loss set to 0.5x ATR using atr_14 with 0.5 multiplier converted to percentage equivalent (0.5%). Entry is context-dependent (LONG on uptrend, SHORT on downtrend). Volume confirmation explicitly not required per signal. Exit triggers on trend reversal (MA cross in opposite direction)."
   },
   "source_rule_text": "Enter trades at the moment of trend change, when the reward-to-risk ratio is most favorable, rather than focusing on perfect entry mechanics."
 }

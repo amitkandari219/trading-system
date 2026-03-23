@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_27",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a factor-based statistical arbitrage strategy requiring (1) beta calculation across a universe of stocks, (2) cross-sectional ranking and portfolio construction, and (3) leverage/rescaling to target portfolio beta. These operations are not expressible using point-in-time technical indicators (RSI, moving averages, etc.). The strategy requires: explicit beta estimation from returns history, dynamic stock grouping/ranking, and portfolio-level math. Standard backtesting rule engines designed for single-security technical conditions cannot implement this cross-sectional factor construction logic.",
+  "translation_notes": "BAB (Betting Against Beta) is a statistical factor strategy that requires: (1) estimating individual stock betas from historical returns, (2) sorting stocks into low-beta and high-beta deciles/quintiles at month-start, (3) weighting within each group by ranked beta, (4) rescaling both portfolios to unit beta, (5) going long low-beta and short high-beta. This is fundamentally different from technical rule-based trading and requires a custom factor engine, not a condition-based backtest rule interpreter."
+}

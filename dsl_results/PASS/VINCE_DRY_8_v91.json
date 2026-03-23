@@ -1,0 +1,29 @@
+{
+  "signal_id": "VINCE_DRY_8",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "active_equity_to_total_equity_ratio",
+      "threshold": null,
+      "direction": "below_or_equal",
+      "dynamic_rule": "max_ratio = 1 / sum_of_system_weights"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "note": "Maximum active equity ratio constrained by inverse of combined system weights to prevent margin calls at full f. If W=sum of weights, max active/total ratio = 1/W. Examples: W=3 \u2192 max 33.3%; W=2.4 \u2192 max 41.67%",
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Maximum position sizing is constrained by the ratio of active equity to total equity, which cannot exceed the level that would trigger a margin call when trading at full f levels across multiple correlated systems."
+}

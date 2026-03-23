@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_38",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires 'implied volatility spike detection' and 'portfolio weight inverse to realized volatility', which are portfolio-level risk management mechanisms and derivatives-based concepts. Available indicators (hvol_20, india_vix) provide realized/spot volatility proxies only. The signal also specifies 'dynamic rebalancing based on volatility regime' which requires position-sizing logic (multiplying exposure by volatility factors) not expressible in entry/exit condition syntax. Implied volatility curve skew ('volatility smirk') detection is not available in the allowed indicator set.",
+  "translation_notes": "This signal describes a sophisticated volatility-managed portfolio strategy with dynamic position sizing\u2014reducing notional exposure after vol spikes, increasing after vol compression. This is implementable as a risk management overlay (position size = base_size / volatility_ratio) but cannot be fully captured in condition-based entry/exit rules. Attempted translation uses hvol_20 as a proxy for realized volatility regime detection, but the core mechanism (inverse portfolio weight to volatility) requires external position-sizing logic outside the backtest condition framework."
+}

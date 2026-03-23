@@ -1,0 +1,92 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [],
+    "entry_short": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "high",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "low",
+        "operator": "<",
+        "right": "prev_low"
+      },
+      {
+        "left": "sma_200",
+        "operator": ">",
+        "right": "close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "SHORT",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Dark Cloud Cover pattern translated as: (1) Current close below previous high (cloud cover), (2) Current high below previous high (lower peak), (3) Current low below previous low (lower valley), (4) Price below 200-day SMA (longer-term downtrend). Exit when price recovers above 20-day SMA. Pattern is most reliable in downtrends; avoid in sustained uptrends. Success rate and volume parameters marked AUTHOR_SILENT in source were excluded as untranslatable without specific values."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [],
+    "entry_short": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "high",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "low",
+        "op": "<",
+        "value": "prev_low"
+      },
+      {
+        "indicator": "sma_200",
+        "op": ">",
+        "value": "close"
+      }
+    ],
+    "exit_long": [],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "SHORT",
+    "reason": "Dark Cloud Cover pattern translated as: (1) Current close below previous high (cloud cover), (2) Current high below previous high (lower peak), (3) Current low below previous low (lower valley), (4) Price below 200-day SMA (longer-term downtrend). Exit when price recovers above 20-day SMA. Pattern is most reliable in downtrends; avoid in sustained uptrends. Success rate and volume parameters marked AUTHOR_SILENT in source were excluded as untranslatable without specific values."
+  },
+  "source_rule_text": "Dark Cloud Cover: A bearish reversal pattern appearing at the peak of an upward move, characterized by lower peaks and lower valleys signaling a downward price trend. Most profitable when the longer-term price trend is downward despite a few days of upward price action leading to the pattern."
+}

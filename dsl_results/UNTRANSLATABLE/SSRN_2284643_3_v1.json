@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2284643_3",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires ranking all stocks by trailing volatility and constructing quintile portfolios, which is a cross-sectional portfolio construction operation. The allowed indicators list contains only time-series indicators (hvol_20, atr_14, etc.) and does not include a volatility ranking or percentile rank function. The signal also requires dividing a universe into 5 equal groups\u2014a universe-level operation not expressible with single-stock indicator conditions. This requires custom portfolio construction logic outside the scope of individual entry/exit conditions.",
+  "translation_notes": "The core signal is a low-volatility factor strategy that selects the lowest volatility quintile each month and rebalances monthly. While hvol_20 measures volatility for individual securities, the actual implementation requires: (1) computing trailing volatility for each stock in universe, (2) ranking across the universe, (3) selecting bottom 20% by volatility, (4) constructing equal-weight portfolio. This is portfolio-level logic, not individual trade signal logic. A proper implementation would use a custom portfolio construction module rather than entry/exit rules."
+}

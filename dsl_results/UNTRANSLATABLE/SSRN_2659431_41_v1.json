@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_41",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires calculation of realized variance (RV) and inverse-squared scaling of factor exposure (managed_factor = c * factor / RV\u00b2(t-1)). Realized variance is a derived metric not available in the allowed indicator set. The scaling operation and monthly rebalancing logic cannot be expressed as simple conditional rules with the allowed operators and indicators. This is a portfolio construction/position sizing rule rather than a directional entry/exit signal.",
+  "translation_notes": "This signal describes a volatility-managed factor strategy that requires: (1) computing realized variance from preceding month's returns, (2) applying inverse-squared variance scaling to position sizing, and (3) monthly rebalancing. These operations are incompatible with the condition-based rule engine which expects boolean entry/exit signals. The signal should be implemented as a custom portfolio weighting algorithm outside the standard backtest framework."
+}

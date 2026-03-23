@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_31_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "KELLY",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": 1.25,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "win_probability_differential",
+      "threshold": 0.15,
+      "direction": "above"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Scale position size by probability multiplier (1.0\u20131.25\u00d7) relative to win probability above 50% baseline. Higher confidence trades (\u226515% above baseline) receive up to 1.25\u00d7 base unit size, maintaining equal risk exposure across portfolio via probability weighting.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Allocate position size proportionally to the estimated probability of success for each trade, concentrating larger positions on higher-confidence opportunities while maintaining equal risk exposure across the portfolio."
+}

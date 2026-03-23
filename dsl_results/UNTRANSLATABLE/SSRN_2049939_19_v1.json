@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_19",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This is a factor-based systematic strategy that requires explicit beta calculation and cross-sectional ranking across a universe of securities. The BAB strategy operates by: (1) computing historical beta for each security relative to a market benchmark, (2) ranking securities by beta, (3) constructing weighted long and short portfolios. None of these operations can be expressed using the provided list of technical indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, z-scores, and bar properties). Beta calculation requires time-series regression and portfolio construction requires universe-level optimization, which are fundamentally different from single-security technical analysis. The 'ALLOWED INDICATORS' list contains no portfolio-level, cross-sectional, or regression-based metrics.",
+  "translation_notes": "Signal requires: (1) beta estimation per security, (2) cross-sectional ranking of beta across asset universe, (3) portfolio construction via sorting/weighting. This is a multi-asset factor strategy incompatible with single-bar technical indicator framework. Recommend implementing as a separate portfolio optimization module outside the backtest engine's technical indicator rule system."
+}

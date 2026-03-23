@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires explicit beta calculations (\u03b2_L, \u03b2_H) and leverage/de-leverage ratios based on realized volatility across asset partitions. The allowed indicators do not include beta, correlation matrices, or leverage multipliers. The strategy is market-neutral zero-cost construction requiring cross-sectional asset ranking by beta, which cannot be expressed using only single-asset technical indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, z-score, or bar properties). A proxy using zscore_20 (volatility proxy) has been provided but does not capture the true BAB factor mechanics.",
+  "translation_notes": "BAB factor requires portfolio-level beta estimation and dynamic leverage adjustment. This cannot be accurately translated to single-asset indicator rules. The z-score proxy attempts to identify low-volatility (long) and high-volatility (short) assets, but this is NOT equivalent to beta-neutral construction. Proper implementation requires a factor model with realized betas calculated over rolling windows and leverage applied to achieve target beta of 1.0 for both legs."
+}

@@ -1,0 +1,82 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "body"
+      },
+      {
+        "left": "close",
+        "operator": ">=",
+        "right": "high"
+      },
+      {
+        "left": "open",
+        "operator": ">=",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Dragonfly Doji pattern identified by: (1) long lower shadow significantly exceeding body size, (2) open and close at or very near the high (using close >= high as proxy for near-high positioning), (3) applied in downtrend context. Entry assumes reversal to upside. Exit on close below open signals pattern failure. Note: 'at or very near' the high was interpreted as close >= open to capture the essence without requiring exact high equality. Body indicator derived from (high - low) - abs(close - open). Author allows some flexibility in interpretation per source text."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "body"
+      },
+      {
+        "indicator": "close",
+        "op": ">=",
+        "value": "high"
+      },
+      {
+        "indicator": "open",
+        "op": ">=",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Dragonfly Doji pattern identified by: (1) long lower shadow significantly exceeding body size, (2) open and close at or very near the high (using close >= high as proxy for near-high positioning), (3) applied in downtrend context. Entry assumes reversal to upside. Exit on close below open signals pattern failure. Note: 'at or very near' the high was interpreted as close >= open to capture the essence without requiring exact high equality. Body indicator derived from (high - low) - abs(close - open). Author allows some flexibility in interpretation per source text."
+  },
+  "source_rule_text": "Dragonfly Doji: A single candleline where price opens and closes at or near the high for the day while having a long lower shadow, typically occurring in a downward price trend as a potential reversal signal."
+}

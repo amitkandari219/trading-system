@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "Signal requires calculation of 'trending_time_percentage' over 126 periods and regime-switching logic with dynamic 50% scaling exits based on mid-position regime changes. This requires custom composite indicators (trending_time_pct) and conditional position sizing that cannot be expressed using only the allowed indicators and binary operators. The regime-blend ratio (70% trend vs 70% reversion) requires multi-rule weighting logic not supported by standard backtest condition syntax.",
-  "translation_notes": "Attempted partial translation using ADX_14 as proxy for trend strength detection: entry when ADX>=30 (strong trend), exit when ADX<20 (trend weakening). However, this does NOT capture: (1) the 126-period trending_time_percentage calculation, (2) the conditional switch between trend-following and range-based rules, (3) the dynamic 50% scale-out on regime switches, or (4) the 70/30 blend ratios. The original signal is a meta-strategy framework requiring rule-switching logic, not a simple entry/exit condition. Recommend implementing as custom algorithm outside standard backtest engine."
+  "untranslatable_reason": "This is a regime-matching rule and entry/exit condition filter, not a position sizing method. It describes WHEN to use trend-following vs. range-based strategies based on market regime (trending_time_percentage), but does not specify HOW to size positions (no risk %, fractional allocation, volatility scaling, or Kelly calculation provided). The 'regime_blend_ratio' is a strategy selection weight, not a position sizing rule.",
+  "translation_notes": null
 }

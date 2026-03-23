@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires dynamic median thresholds that vary by market regime and breakout direction, and requires identification of breakout direction/market regime context. The 'range' indicator (high-low) is available but the signal's core logic of 'divide candle height by breakout price and compare to regime-specific medians' cannot be fully expressed with allowed operators and indicators. Breakout price and regime classification are external contextual inputs not available as indicators.",
+  "translation_notes": "Attempted to use 'range' (high-low) as proxy for candle height, but signal fundamentally requires: (1) dynamic median thresholds per regime, (2) normalization by breakout price, (3) regime/direction classification that must be pre-computed externally. The condition structure provided uses simplified static thresholds from bull_market_up_breakout median (2.19%) but this loses the context-dependent logic. A proper implementation would require either: custom regime detection indicators or external regime input as a parameter."
 }

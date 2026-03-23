@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_622869_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The signal requires the 'open-buy put-call ratio' derived from CBOE option trading volume data. This is an options market indicator not available in the allowed price/technical indicator set. The allowed indicators contain only equity price/volume data (OHLCV, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, volume ratios, z-scores, and bar properties). Options market data is not supported. As a proxy, vol_ratio_20 was used as a high-volume condition, but this does not capture the put-call ratio logic.",
+  "translation_notes": "Signal references CBOE open-buy put-call ratio which measures option market sentiment. This metric cannot be constructed from the allowed indicators. The 1-day holding period and reversal logic (short when ratio elevated, exit next day) have been preserved in the structure, but the core entry signal is untranslatable without options market data."
+}

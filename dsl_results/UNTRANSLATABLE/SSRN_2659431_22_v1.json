@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_22",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic portfolio weight scaling inversely proportional to realized volatility (e.g., weight = 1/volatility). The allowed indicators and operators do not support position sizing calculations or dynamic weight adjustments. hvol_20 can detect volatility levels for entry/exit timing, but the core requirement\u2014scaling portfolio exposure by 1/\u03c3\u2014cannot be expressed in the condition-based rule format.",
+  "translation_notes": "Attempted proxy: Used hvol_20 (20-period historical volatility) as a volatility measure. Entry when volatility is low (inverse weighting concept), exit when it rises. However, this is a simplified entry/exit timing rule and does NOT capture the true volatility-managed scaling mechanic where portfolio weight = k/\u03c3_mkt,t. The signal fundamentally requires position sizing logic outside the scope of this condition-based engine."
+}

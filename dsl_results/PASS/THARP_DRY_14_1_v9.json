@@ -52,7 +52,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal emphasizes entering after trend has shifted and price has moved in new direction for minimum 2 bars. Entry conditions use price crossing above/below the 10-period SMA (trend confirmation) combined with price moving in desired direction (close > prev_close for long, close < prev_close for short). Exit triggers on trend reversal (price crossing back through SMA). The 5-bar lookback parameter for prior trend direction is implicit in the cross logic. Direction is CONTEXT_DEPENDENT as the rule applies equally to long and short entries based on which way the trend has shifted."
+    "translation_notes": "Signal emphasizes entering after trend confirmation rather than anticipating reversals. Entry requires: (1) price crossing the 10-period MA in direction of trend, and (2) minimum 2 bars of movement in that direction (enforced by requiring price beyond previous close). Exit occurs when price reverses back through the MA, indicating trend shift. Direction is context-dependent as the signal applies to both uptrends and downtrends."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -102,7 +102,7 @@
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal emphasizes entering after trend has shifted and price has moved in new direction for minimum 2 bars. Entry conditions use price crossing above/below the 10-period SMA (trend confirmation) combined with price moving in desired direction (close > prev_close for long, close < prev_close for short). Exit triggers on trend reversal (price crossing back through SMA). The 5-bar lookback parameter for prior trend direction is implicit in the cross logic. Direction is CONTEXT_DEPENDENT as the rule applies equally to long and short entries based on which way the trend has shifted."
+    "reason": "Signal emphasizes entering after trend confirmation rather than anticipating reversals. Entry requires: (1) price crossing the 10-period MA in direction of trend, and (2) minimum 2 bars of movement in that direction (enforced by requiring price beyond previous close). Exit occurs when price reverses back through the MA, indicating trend shift. Direction is context-dependent as the signal applies to both uptrends and downtrends."
   },
   "source_rule_text": "A trader should enter a position only after the trend has already shifted and begun moving in the desired direction, not in anticipation of a trend change."
 }

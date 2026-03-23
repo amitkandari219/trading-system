@@ -1,0 +1,90 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "open",
+        "operator": "<",
+        "right": "close"
+      },
+      {
+        "left": "upper_wick",
+        "operator": "<",
+        "right": "body"
+      },
+      {
+        "left": "lower_wick",
+        "operator": "<",
+        "right": "body"
+      },
+      {
+        "left": "body_pct",
+        "operator": ">=",
+        "right": "0.4"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "open"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "LONG",
+    "target_regime": [
+      "ANY"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "White candle pattern expressed using bar properties: open < close (bullish), upper_wick and lower_wick both shorter than body (short shadows), body_pct >= 0.4 indicates normal body length relative to total range. Exit condition uses reversal (close < open) as original source was silent on exits. Exit stop_loss set to 2% as default prudent risk management."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "open",
+        "op": "<",
+        "value": "close"
+      },
+      {
+        "indicator": "upper_wick",
+        "op": "<",
+        "value": "body"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": "<",
+        "value": "body"
+      },
+      {
+        "indicator": "body_pct",
+        "op": ">=",
+        "value": 0.4
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "open"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "White candle pattern expressed using bar properties: open < close (bullish), upper_wick and lower_wick both shorter than body (short shadows), body_pct >= 0.4 indicates normal body length relative to total range. Exit condition uses reversal (close < open) as original source was silent on exits. Exit stop_loss set to 2% as default prudent risk management."
+  },
+  "source_rule_text": "White Candle: A bullish sentiment candlestick pattern where price opens below where it closes, with shorter shadows relative to body length and normal body length"
+}

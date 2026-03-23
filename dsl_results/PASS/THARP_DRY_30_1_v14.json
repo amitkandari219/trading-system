@@ -1,0 +1,29 @@
+{
+  "signal_id": "THARP_DRY_30_1",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "FIXED_FRACTIONAL",
+    "base_risk_pct": 3.0,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "position_size_accommodation",
+      "threshold": 1.0,
+      "direction": "above",
+      "note": "Required contract size must be accommodatable within max risk limit"
+    },
+    "max_risk_pct": 3.0,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Risk fixed 3% per trade; skip trade if position size required to respect stop loss cannot fit within this risk allocation. Implements Van Tharp's 3% risk rule with account accommodation filter.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "A trader should only enter a trade when the position size required to respect their maximum risk limit can be accommodated within their account; otherwise, the trade should be skipped."
+}

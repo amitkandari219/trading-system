@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_3442749_1",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal requires cross-sectional ranking and portfolio construction (sorting 1,000 stocks by 36-month volatility into deciles, then longing bottom decile and shorting top decile). This is a relative-value, factor-based strategy that cannot be expressed as single-instrument entry/exit conditions using the allowed indicators. The backtest engine requires: (1) multi-asset universe selection, (2) volatility calculation over 36-month lookback windows, (3) percentile ranking across the universe, and (4) decile portfolio construction logic. These are portfolio-level operations, not price/indicator-based entry signals.",
+  "translation_notes": "Signal SSRN_3442749_1 is a classic low-volatility anomaly strategy based on Falkenstein [1994] and related research. To implement this, the backtest engine would need: universe definition (top 1,000 US stocks by market cap), rolling 36-month volatility calculation (hvol_100 provides 100-day volatility but not 36-month), cross-sectional ranking mechanism, and portfolio construction at the decile level. Standard single-asset indicator conditions cannot capture this multi-asset relative-value logic."
+}

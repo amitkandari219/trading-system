@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of 2+ std dev from MA (Bollinger Band equivalent not directly available), and divergence signal detection which is a multi-bar pattern comparison requiring custom logic beyond single-bar indicator values. Volume spike threshold and climactic extreme pattern identification require composite logic.",
+  "translation_notes": "Approximated climactic detection using rsi_14 extremes (>75 for overbought, <25 for oversold) and volume confirmation via vol_ratio_20. Entry uses reversal signal (close crossing prev_high/low). Exit uses 3-bar max hold via hold_days_max parameter. Translated for BOTH long and short entries since direction is CONTEXT_DEPENDENT. True climactic setup (2 StdDev) and divergence confirmation remain untranslatable with allowed operators."
 }

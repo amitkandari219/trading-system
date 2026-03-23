@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_14",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The BAB strategy requires ranking securities by beta within asset classes and constructing long/short decile portfolios. Beta calculation (historical volatility of security relative to market) is not available in the allowed indicators list. Additionally, the strategy operates at the portfolio construction level (multi-security ranking and decile selection) rather than at the single-instrument technical indicator level. This requires custom beta computation, cross-security ranking logic, and portfolio-level rebalancing that cannot be expressed using only price-based technical indicators.",
+  "translation_notes": "Signal SSRN_2049939_14 is a factor-based portfolio construction strategy fundamentally incompatible with single-instrument technical rule translation. The core mechanic (beta ranking and decile sorting across asset classes) requires factor model inputs and portfolio-level logic outside the scope of the allowed indicator set. Recommend implementing as a separate factor-model backtest module rather than a technical rule engine rule."
+}

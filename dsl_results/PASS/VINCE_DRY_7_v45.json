@@ -1,0 +1,28 @@
+{
+  "signal_id": "VINCE_DRY_7",
+  "book_id": "VINCE",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "OPTIMAL_F",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "portfolio_weighting",
+      "threshold": 1.0,
+      "direction": "not_equal"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Adjust threshold by dividing by portfolio weighting to normalize optimal f across multi-position portfolios. Formula: Adjusted Threshold = Original Threshold / Portfolio Weighting (e.g., $5,100 / 1.025982 = $4,970.85). Triggers when position weighting differs from 1.0.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Adjust the threshold to the geometric mean by dividing the original threshold by the portfolio weighting to account for optimal f implementation across multiple positions."
+}

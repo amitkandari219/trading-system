@@ -1,0 +1,82 @@
+{
+  "signal_id": "THARP_DRY_18_0",
+  "book_id": "THARP",
+  "dsl_rule": {
+    "signal_id": "THARP_DRY_18_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "dc_upper"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_high"
+      },
+      {
+        "left": "volume",
+        "operator": ">",
+        "right": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "dc_upper"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 1.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Used dc_upper (Donchian Channel Upper) as proxy for 30-day high breakout. Entry condition 2 represents retracement back below breakout high within 2-3 bars using prev_high. Volume threshold uses sma_20 per parameters. Stop loss set to 1 ATR equivalent (approximately 1% on most assets). Exit after 5 bars uses hold_days_max. Take profit at 50% retracement distance is difficult to express in rule format without additional lookback data; exit prioritizes stop loss and time-based exit. Direction marked CONTEXT_DEPENDENT per signal specification, though entry_short remains empty pending directional confirmation."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "dc_upper"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_high"
+      },
+      {
+        "indicator": "volume",
+        "op": ">",
+        "value": "sma_20"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "dc_upper"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "RANGING"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.01,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Used dc_upper (Donchian Channel Upper) as proxy for 30-day high breakout. Entry condition 2 represents retracement back below breakout high within 2-3 bars using prev_high. Volume threshold uses sma_20 per parameters. Stop loss set to 1 ATR equivalent (approximately 1% on most assets). Exit after 5 bars uses hold_days_max. Take profit at 50% retracement distance is difficult to express in rule format without additional lookback data; exit prioritizes stop loss and time-based exit. Direction marked CONTEXT_DEPENDENT per signal specification, though entry_short remains empty pending directional confirmation."
+  },
+  "source_rule_text": "A trader should use short-term setups based on recent price breakouts to identify lower-risk entry conditions by compressing the timeframe of analysis."
+}

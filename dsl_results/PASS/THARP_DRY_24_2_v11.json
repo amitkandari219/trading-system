@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_24_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": null,
+    "r_multiple_target": null,
+    "r_multiple_stop": 2.0,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "atr_14",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": null,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Stop-loss distance scales with ATR volatility (2.0 \u00d7 ATR). Position sizing should be inversely scaled to volatility: higher ATR \u2192 smaller position; lower ATR \u2192 larger position. This preserves consistent risk per trade across varying market conditions.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Set stop-loss levels based on market volatility (measured by ATR or MAE) rather than arbitrary numbers, because volatility represents noise and stops should be placed beyond normal price fluctuation to preserve profit potential."
+}

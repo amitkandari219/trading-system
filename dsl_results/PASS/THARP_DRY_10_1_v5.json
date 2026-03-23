@@ -6,7 +6,7 @@
     "entry_long": [
       {
         "left": "close",
-        "operator": "crosses_above",
+        "operator": ">",
         "right": "sma_10"
       },
       {
@@ -28,7 +28,7 @@
     "entry_short": [
       {
         "left": "close",
-        "operator": "crosses_below",
+        "operator": "<",
         "right": "sma_10"
       },
       {
@@ -50,14 +50,14 @@
     "exit_long": [
       {
         "left": "close",
-        "operator": "crosses_below",
+        "operator": "<",
         "right": "sma_10"
       }
     ],
     "exit_short": [
       {
         "left": "close",
-        "operator": "crosses_above",
+        "operator": ">",
         "right": "sma_10"
       }
     ],
@@ -72,14 +72,14 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal uses context-dependent direction based on trend. Mapped 10-period MA to sma_10. RSI crosses 50 used as primary momentum confirmation (MACD momentum indicator not in allowed list, so RSI substituted). Volume confirmation uses vol_ratio_20 at 1.2x multiple. Stop loss set at 1.0x ATR expressed as 1.0% of entry price (atr_14 conversion). Entry requires one confirming bar represented by body direction. Exit on trend reversal (close crossing MA)."
+    "translation_notes": "Signal uses RSI crosses 50 OR momentum crosses zero. Momentum indicator not in allowed list, so translated primary RSI condition. Volume condition mapped to vol_ratio_20. One confirming bar represented by body direction matching trend. ATR-based stop loss set to 1.0x (1.0%). Price close beyond 10-period MA used as both entry trend confirmation and exit reversal signal."
   },
   "backtest_rule": {
     "backtestable": true,
     "entry_long": [
       {
         "indicator": "close",
-        "op": "crosses_above",
+        "op": ">",
         "value": "sma_10"
       },
       {
@@ -101,7 +101,7 @@
     "entry_short": [
       {
         "indicator": "close",
-        "op": "crosses_below",
+        "op": "<",
         "value": "sma_10"
       },
       {
@@ -123,14 +123,14 @@
     "exit_long": [
       {
         "indicator": "close",
-        "op": "crosses_below",
+        "op": "<",
         "value": "sma_10"
       }
     ],
     "exit_short": [
       {
         "indicator": "close",
-        "op": "crosses_above",
+        "op": ">",
         "value": "sma_10"
       }
     ],
@@ -142,7 +142,7 @@
     "stop_loss_pct": 0.01,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal uses context-dependent direction based on trend. Mapped 10-period MA to sma_10. RSI crosses 50 used as primary momentum confirmation (MACD momentum indicator not in allowed list, so RSI substituted). Volume confirmation uses vol_ratio_20 at 1.2x multiple. Stop loss set at 1.0x ATR expressed as 1.0% of entry price (atr_14 conversion). Entry requires one confirming bar represented by body direction. Exit on trend reversal (close crossing MA)."
+    "reason": "Signal uses RSI crosses 50 OR momentum crosses zero. Momentum indicator not in allowed list, so translated primary RSI condition. Volume condition mapped to vol_ratio_20. One confirming bar represented by body direction matching trend. ATR-based stop loss set to 1.0x (1.0%). Price close beyond 10-period MA used as both entry trend confirmation and exit reversal signal."
   },
   "source_rule_text": "Enter trades at the moment of trend change, when the reward-to-risk ratio is most favorable, rather than focusing on perfect entry mechanics."
 }

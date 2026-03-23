@@ -1,0 +1,128 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "hvol_20"
+      },
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "adx_14",
+        "operator": ">",
+        "right": "25"
+      },
+      {
+        "left": "volume",
+        "operator": "<",
+        "right": "hvol_20"
+      },
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "returns",
+        "operator": ">",
+        "right": "0.16"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "returns",
+        "operator": "<",
+        "right": "-0.25"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Small Flag pattern translated as: (1) Strong trend detected via ADX>25, (2) Pause indicated by volume below 20-bar historical volatility, (3) Breakout direction matched to preceding trend direction via close comparison. Entry conditions detect the fast-moving trend and pause. Exit targets calibrated to historical average gains (16% bull) and losses (25% bear). Stop-loss set to break-even failure rates (2% bull). Direction set to CONTEXT_DEPENDENT to allow both long and short entries based on trend direction. Hold period set to 5 days typical for short-term flag patterns."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "hvol_20"
+      },
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_close"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "adx_14",
+        "op": ">",
+        "value": 25.0
+      },
+      {
+        "indicator": "volume",
+        "op": "<",
+        "value": "hvol_20"
+      },
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_close"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "returns",
+        "op": ">",
+        "value": 0.16
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "returns",
+        "op": "<",
+        "value": -0.25
+      }
+    ],
+    "regime_filter": [
+      "TRENDING_UP",
+      "TRENDING_DOWN"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Small Flag pattern translated as: (1) Strong trend detected via ADX>25, (2) Pause indicated by volume below 20-bar historical volatility, (3) Breakout direction matched to preceding trend direction via close comparison. Entry conditions detect the fast-moving trend and pause. Exit targets calibrated to historical average gains (16% bull) and losses (25% bear). Stop-loss set to break-even failure rates (2% bull). Direction set to CONTEXT_DEPENDENT to allow both long and short entries based on trend direction. Hold period set to 5 days typical for short-term flag patterns."
+  },
+  "source_rule_text": "Small Flag: A brief price pause within a fast-moving trend, followed by continuation in the original trend direction"
+}

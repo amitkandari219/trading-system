@@ -10,9 +10,9 @@
         "right": "open"
       },
       {
-        "left": "adx_14",
+        "left": "close",
         "operator": ">",
-        "right": "25"
+        "right": "sma_20"
       }
     ],
     "entry_short": [
@@ -22,29 +22,29 @@
         "right": "open"
       },
       {
-        "left": "adx_14",
-        "operator": ">",
-        "right": "25"
+        "left": "close",
+        "operator": "<",
+        "right": "sma_20"
       }
     ],
     "exit_long": [
       {
-        "left": "adx_14",
+        "left": "close",
         "operator": "<",
-        "right": "20"
+        "right": "sma_20"
       }
     ],
     "exit_short": [
       {
-        "left": "adx_14",
-        "operator": "<",
-        "right": "20"
+        "left": "close",
+        "operator": ">",
+        "right": "sma_20"
       }
     ],
     "entry_logic": "AND",
     "exit_logic": "OR",
     "stop_loss_pct": 2.0,
-    "hold_days_max": 5,
+    "hold_days_max": 20,
     "direction": "BOTH",
     "target_regime": [
       "TRENDING_UP",
@@ -52,7 +52,7 @@
     ],
     "untranslatable": false,
     "untranslatable_reason": null,
-    "translation_notes": "Signal emphasizes waiting for technical indicator confirmation before entering on price movement alone. Interpreted 'primary technical indicator confirms trend initiation' as ADX >25 (trend strength confirmation). Price direction (close vs open) represents 'market has moved in intended direction.' ADX reversal below 20 indicates trend weakening for exit. CONTEXT_DEPENDENT direction preserved since rule applies to both long and short entries with same logic."
+    "translation_notes": "Signal emphasizes waiting for technical confirmation before entering with trend. Interpreted as: (1) price movement in intended direction (close above/below open for direction confirmation), and (2) at least one primary indicator confirms (price above/below SMA_20 as primary trend confirmation). Exit when confirming indicator reverses (price closes back through SMA_20). Used SMA_20 as accessible trend-following indicator. Direction set to CONTEXT_DEPENDENT as signal handles both long and short scenarios with same logic. Target regimes limited to TRENDING as signal specifies trend-confirmation methodology."
   },
   "backtest_rule": {
     "backtestable": true,
@@ -63,9 +63,9 @@
         "value": "open"
       },
       {
-        "indicator": "adx_14",
+        "indicator": "close",
         "op": ">",
-        "value": 25.0
+        "value": "sma_20"
       }
     ],
     "entry_short": [
@@ -75,34 +75,34 @@
         "value": "open"
       },
       {
-        "indicator": "adx_14",
-        "op": ">",
-        "value": 25.0
+        "indicator": "close",
+        "op": "<",
+        "value": "sma_20"
       }
     ],
     "exit_long": [
       {
-        "indicator": "adx_14",
+        "indicator": "close",
         "op": "<",
-        "value": 20.0
+        "value": "sma_20"
       }
     ],
     "exit_short": [
       {
-        "indicator": "adx_14",
-        "op": "<",
-        "value": 20.0
+        "indicator": "close",
+        "op": ">",
+        "value": "sma_20"
       }
     ],
     "regime_filter": [
       "TRENDING_UP",
       "TRENDING_DOWN"
     ],
-    "hold_days": 5,
+    "hold_days": 20,
     "stop_loss_pct": 0.02,
     "take_profit_pct": 0,
     "direction": "BOTH",
-    "reason": "Signal emphasizes waiting for technical indicator confirmation before entering on price movement alone. Interpreted 'primary technical indicator confirms trend initiation' as ADX >25 (trend strength confirmation). Price direction (close vs open) represents 'market has moved in intended direction.' ADX reversal below 20 indicates trend weakening for exit. CONTEXT_DEPENDENT direction preserved since rule applies to both long and short entries with same logic."
+    "reason": "Signal emphasizes waiting for technical confirmation before entering with trend. Interpreted as: (1) price movement in intended direction (close above/below open for direction confirmation), and (2) at least one primary indicator confirms (price above/below SMA_20 as primary trend confirmation). Exit when confirming indicator reverses (price closes back through SMA_20). Used SMA_20 as accessible trend-following indicator. Direction set to CONTEXT_DEPENDENT as signal handles both long and short scenarios with same logic. Target regimes limited to TRENDING as signal specifies trend-confirmation methodology."
   },
   "source_rule_text": "A trader should wait for technical indicators to confirm trend direction before entering, rather than entering impulsively based on market movement alone, to avoid losses from premature entry."
 }

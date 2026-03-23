@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_299107_4",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "The core signal requires cross-sectional analysis across a universe of stocks (calculating each stock's return minus cross-sectional average, then weighting by relative strength differences). This is a portfolio-level construction rule, not a single-stock entry/exit rule. The allowed indicators are designed for single-instrument technical analysis. To properly implement WRSS requires: (1) computing returns relative to an equally-weighted index for each stock in the universe, (2) ranking/weighting stocks by this relative performance metric, and (3) constructing a weighted portfolio. This cannot be expressed as simple indicator conditions on a single security. Additionally, the rebalancing frequency is not specified, making the exit condition incomplete.",
+  "translation_notes": "The signal fundamentally requires cross-sectional relative strength weighting across multiple stocks. The mathematical formulation E{(r_it - r\u0304_t)(r_it-1 - r\u0304_t-1)} > 0 describes a covariance relationship between relative returns that requires universe-level calculations. A single-stock backtest engine cannot implement this strategy meaningfully. A proper implementation would require a portfolio optimizer that ranks and weights all stocks in a universe by their relative strength versus the cross-sectional mean."
+}

@@ -1,0 +1,146 @@
+{
+  "signal_id": "CANDLESTICK_DRY_0",
+  "book_id": "CANDLESTICK",
+  "dsl_rule": {
+    "signal_id": "CANDLESTICK_DRY_0",
+    "entry_long": [
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "lower_wick"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "upper_wick"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "entry_short": [
+      {
+        "left": "upper_wick",
+        "operator": ">",
+        "right": "lower_wick"
+      },
+      {
+        "left": "lower_wick",
+        "operator": ">",
+        "right": "upper_wick"
+      },
+      {
+        "left": "body_pct",
+        "operator": "<",
+        "right": "0.05"
+      },
+      {
+        "left": "range",
+        "operator": ">",
+        "right": "atr_14"
+      }
+    ],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "left": "close",
+        "operator": ">",
+        "right": "prev_high"
+      }
+    ],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 2.0,
+    "hold_days_max": 5,
+    "direction": "BOTH",
+    "target_regime": [
+      "REVERSAL"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Long-Legged Doji pattern translated using candlestick components: upper_wick and lower_wick both tall (each greater than the other to ensure both are present and substantial), body_pct near zero (close near open), and range exceeding ATR to confirm intraday volatility. Direction is CONTEXT_DEPENDENT as pattern signals reversals in both directions. Exit conditions use previous bar extremes as reversal confirmation per AUTHOR_SILENT guidance."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "lower_wick"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "upper_wick"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "entry_short": [
+      {
+        "indicator": "upper_wick",
+        "op": ">",
+        "value": "lower_wick"
+      },
+      {
+        "indicator": "lower_wick",
+        "op": ">",
+        "value": "upper_wick"
+      },
+      {
+        "indicator": "body_pct",
+        "op": "<",
+        "value": 0.05
+      },
+      {
+        "indicator": "range",
+        "op": ">",
+        "value": "atr_14"
+      }
+    ],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "prev_low"
+      }
+    ],
+    "exit_short": [
+      {
+        "indicator": "close",
+        "op": ">",
+        "value": "prev_high"
+      }
+    ],
+    "regime_filter": [
+      "REVERSAL"
+    ],
+    "hold_days": 5,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0,
+    "direction": "BOTH",
+    "reason": "Long-Legged Doji pattern translated using candlestick components: upper_wick and lower_wick both tall (each greater than the other to ensure both are present and substantial), body_pct near zero (close near open), and range exceeding ATR to confirm intraday volatility. Direction is CONTEXT_DEPENDENT as pattern signals reversals in both directions. Exit conditions use previous bar extremes as reversal confirmation per AUTHOR_SILENT guidance."
+  },
+  "source_rule_text": "Long-Legged Doji: A candlestick pattern where price action during the day shows strong moves in both directions (bulls pushing price up, bears pushing price down) but closes near the opening price, leaving tall shadows on both sides"
+}

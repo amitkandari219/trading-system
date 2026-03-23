@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Gap down detection requires price action comparison across bar boundaries not directly available in standard indicators. The signal requires identifying a gap down occurrence (prev_close > open) which cannot be reliably expressed with allowed operators. Additionally, specific exit conditions marked as AUTHOR_SILENT lack definition, and exact doji quantification thresholds were not provided in source text.",
+  "translation_notes": "Translated doji as body_pct < 0.05 (small body relative to range). Gap down component incomplete due to indicator limitations. Performance statistics from source (2-8 median days, breakout counts) recorded but not actionable in rule conditions. Used conservative 5% stop-loss and 8-day max hold based on median candle_end_to_trend_end of 8 days."
 }

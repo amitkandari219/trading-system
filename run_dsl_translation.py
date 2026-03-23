@@ -124,9 +124,10 @@ def run_full_translation(translator, validator, compiler, args):
             continue
 
         # Pre-filter non-tradeable categories
+        # THARP and VINCE sizing/risk signals are routed to sizing DSL, not filtered
         cat = signal.get('signal_category', '')
         primary = cat.split('|')[0].strip()
-        if primary in NON_TRADEABLE_CATEGORIES:
+        if primary in NON_TRADEABLE_CATEGORIES and book_id not in ('THARP', 'VINCE'):
             book_stats[book_id]['untranslatable'] += 1
             variant_counter[sid] += 1
             results['UNTRANSLATABLE'].append({
@@ -136,7 +137,7 @@ def run_full_translation(translator, validator, compiler, args):
             untranslatable_reasons[f'NON_TRADEABLE:{primary}'] += 1
             continue
 
-        if not signal.get('entry_conditions'):
+        if not signal.get('entry_conditions') and book_id not in ('THARP', 'VINCE'):
             book_stats[book_id]['untranslatable'] += 1
             variant_counter[sid] += 1
             results['UNTRANSLATABLE'].append({
@@ -166,7 +167,37 @@ def run_full_translation(translator, validator, compiler, args):
                     json.dump(rule.to_dict(), f, indent=2)
             continue
 
-        # Validate
+        # POSITION_SIZING rules skip entry/exit validation and compilation
+        is_sizing = (rule.translation_notes and
+                     '"signal_type": "POSITION_SIZING"' in rule.translation_notes)
+
+        if is_sizing:
+            book_stats[book_id]['pass'] += 1
+            variant_counter[sid] += 1
+            vnum = variant_counter[sid]
+            results['PASS'].append({
+                'signal_id': sid,
+                'dsl_rule': rule.to_dict(),
+                'backtest_rule': json.loads(rule.translation_notes),
+            })
+
+            if not args.dry_run:
+                path = os.path.join(OUTPUT_DIR, 'PASS', f'{sid}_v{vnum}.json')
+                with open(path, 'w') as f:
+                    json.dump({
+                        'signal_id': sid,
+                        'book_id': book_id,
+                        'signal_type': 'POSITION_SIZING',
+                        'sizing_rule': json.loads(rule.translation_notes),
+                        'source_rule_text': signal.get('rule_text', ''),
+                    }, f, indent=2)
+
+            if args.dry_run:
+                sizing_data = json.loads(rule.translation_notes)
+                print(f"  PASS  {sid}: SIZING {sizing_data.get('sizing_method', '?')}")
+            continue
+
+        # Validate (standard entry/exit rules only)
         vresult = validator.validate(rule)
 
         if not vresult.passed:

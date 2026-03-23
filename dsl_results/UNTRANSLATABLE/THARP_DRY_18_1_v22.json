@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires: (1) detection of narrowest range over 10-day lookback period \u2014 no indicator available to rank historical ranges; (2) inside-day pattern recognition (current range contained within previous day's high/low) \u2014 no built-in pattern matcher; (3) 0.25% breakout threshold relative to previous day's extreme \u2014 ATR_14 used as proxy but does not capture 10-bar minimum requirement. Recommend custom preprocessing to calculate min_range_10d and implement inside_day_flag before rule evaluation.",
+  "translation_notes": "Attempted proxy: used range < atr_14 to approximate narrow-range detection, and pivot points (s1/r1) as approximate reversal extremes. However, the core logic requires multi-bar historical comparison and pattern recognition not available in the allowed indicator set. A proper implementation would need a lookback_range_rank indicator or min_range_n_bars function."
 }

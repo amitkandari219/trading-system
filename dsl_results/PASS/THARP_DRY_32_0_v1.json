@@ -1,0 +1,28 @@
+{
+  "signal_id": "THARP_DRY_32_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "VOLATILITY_SCALED",
+    "base_risk_pct": 0.005,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "atr_20_day",
+      "threshold": null,
+      "direction": "inverse"
+    },
+    "max_risk_pct": 0.005,
+    "min_risk_pct": null,
+    "applies_to": "ALL",
+    "confidence": "HIGH",
+    "note": "Position size inversely scaled to 20-day ATR volatility. Risk 0.5% per trade divided by volatility-adjusted stop distance (20-day ATR \u00d7 multiplier). Higher volatility \u2192 smaller positions; lower volatility \u2192 larger positions.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  },
+  "source_rule_text": "Size positions by dividing total account risk (as a percentage of equity) by the volatility-adjusted stop distance, scaled by the contract/instrument multiplier."
+}

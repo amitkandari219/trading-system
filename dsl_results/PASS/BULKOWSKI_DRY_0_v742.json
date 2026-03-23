@@ -1,0 +1,64 @@
+{
+  "signal_id": "BULKOWSKI_DRY_0",
+  "book_id": "BULKOWSKI",
+  "dsl_rule": {
+    "signal_id": "BULKOWSKI_DRY_0",
+    "entry_long": [
+      {
+        "left": "close",
+        "operator": "crosses_above",
+        "right": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "left": "close",
+        "operator": "<",
+        "right": "s1"
+      }
+    ],
+    "exit_short": [],
+    "entry_logic": "AND",
+    "exit_logic": "OR",
+    "stop_loss_pct": 0.5,
+    "hold_days_max": 20,
+    "direction": "LONG",
+    "target_regime": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "untranslatable": false,
+    "untranslatable_reason": null,
+    "translation_notes": "Flag pattern detection via Donchian upper band (upper trend line of flag). Entry on breakout above upper trend line. Stop loss set at 0.13 below formation low (normalized stop_loss_pct). Exit condition uses support level (s1) as proxy for formation low since exact flag low cannot be dynamically determined without pattern detection. Target measurement (half the preceding rise projected upward) cannot be directly expressed in indicator conditions and should be managed separately by position sizing or manual target calculation. Average rise of 23% suggests typical hold period of 10-20 days."
+  },
+  "backtest_rule": {
+    "backtestable": true,
+    "entry_long": [
+      {
+        "indicator": "close",
+        "op": "crosses_above",
+        "value": "dc_upper"
+      }
+    ],
+    "entry_short": [],
+    "exit_long": [
+      {
+        "indicator": "close",
+        "op": "<",
+        "value": "s1"
+      }
+    ],
+    "exit_short": [],
+    "regime_filter": [
+      "TRENDING_UP",
+      "RANGING"
+    ],
+    "hold_days": 20,
+    "stop_loss_pct": 0.005,
+    "take_profit_pct": 0,
+    "direction": "LONG",
+    "reason": "Flag pattern detection via Donchian upper band (upper trend line of flag). Entry on breakout above upper trend line. Stop loss set at 0.13 below formation low (normalized stop_loss_pct). Exit condition uses support level (s1) as proxy for formation low since exact flag low cannot be dynamically determined without pattern detection. Target measurement (half the preceding rise projected upward) cannot be directly expressed in indicator conditions and should be managed separately by position sizing or manual target calculation. Average rise of 23% suggests typical hold period of 10-20 days."
+  },
+  "source_rule_text": "High, Tight Flag: Buy when price pierces the upper trend line of the flag formation after a preceding rise"
+}

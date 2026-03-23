@@ -1,0 +1,27 @@
+{
+  "signal_id": "THARP_DRY_2_2",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "ANTI_MARTINGALE",
+    "base_risk_pct": 3.0,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": null,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "win_rate_vs_expectancy",
+      "threshold": 1.0,
+      "direction": "above"
+    },
+    "max_risk_pct": 3.0,
+    "min_risk_pct": null,
+    "applies_to": "TRENDING",
+    "confidence": "MEDIUM",
+    "note": "Performance-based sizing: increase position size when recent win rate (10-trade lookback) meets or exceeds system expectancy AND equity curve in confirmed uptrend. Base risk 3% per trade, scaled by win_rate_ratio. Capped at 5 concurrent positions; minimum $50k equity for maximum position size.",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2659431_32",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "Signal requires dynamic inverse scaling of position sizes based on realized or conditional variance calculations across multiple factors. This is a portfolio-level factor allocation rule that cannot be expressed as a simple entry/exit condition using single-indicator comparisons. The rule requires: (1) calculation of variance for each factor, (2) inverse scaling function (position_size \u221d 1/variance), and (3) rebalancing logic across a factor basket. The allowed indicator set lacks a 'conditional_variance' or 'realized_variance' indicator, and the condition syntax does not support dynamic position sizing formulas or multi-asset allocation logic.",
+  "translation_notes": "This signal is a volatility-scaled factor allocation strategy, not a directional trading signal. It requires portfolio-level logic beyond point-in-time entry/exit rules. Recommend implementing as a custom portfolio weighting module rather than a backtest engine rule."
+}

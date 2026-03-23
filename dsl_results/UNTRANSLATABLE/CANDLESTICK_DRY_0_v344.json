@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires multi-candle historical analysis (pattern recognition across 3 consecutive days with specific body/wick characteristics and momentum loss detection). The allowed indicators lack direct support for: (1) identifying 'long white candles' on days 1-2 with comparative sizing, (2) detecting 'small body' on day 3 relative to prior candles, (3) measuring 'loss of bullish momentum' across multiple periods, (4) evaluating 'tall shadows' vs body size ratios. Pattern requires candle[i-2], candle[i-1], candle[i] comparison logic not supported by indicator set. Recommendation: Implement as custom candlestick pattern detector external to this rule engine.",
+  "translation_notes": "Attempted to approximate with: uptrend context (close > sma_20), two large bodies (body > atr_14 for current and prior), and reversal trigger (close < prev_close on day 4). This is a simplified proxy and will not accurately capture the full deliberation candle semantics. Author provided no success rates or specific exit criteria, so exit uses reasonable reversal logic."
 }

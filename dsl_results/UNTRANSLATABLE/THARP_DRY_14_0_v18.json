@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "Signal requires measurement of 'trending_time_percentage' (% of time in trending conditions over 252 periods), which requires custom multi-period regime classification logic not expressible with single-bar indicators. ADX >= 25 approximates trend strength but cannot replicate the rolling percentage calculation specified in the rule.",
-  "translation_notes": "Used ADX_14 >= 25 as proxy for trend-following regime activation (signal's 'trending_condition_threshold >= 0.4'). Exit condition set to ADX < 20 as reasonable reversal indicator when trend strength weakens. The core regime-detection requirement (trending_time_percentage rolling calculation) cannot be expressed within allowed single-bar indicators and would require custom metric computation in backtest engine. Minimum 4-hour holding period maps to position holding constraint but specific timeframe validation cannot be enforced at indicator level."
+  "untranslatable_reason": "This is a regime filter and strategy-timeframe alignment rule, not a position sizing rule. It describes WHEN to trade (entry condition gating based on market regime), not HOW MUCH to risk per trade. The rule gates strategy activation but contains no sizing parameters (no risk %, multipliers, volatility scaling, Kelly fraction, or drawdown thresholds). Use standard entry condition DSL instead.",
+  "translation_notes": null
 }

@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_26",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "BAB (Betting Against Beta) is a portfolio-level factor strategy requiring cross-sectional beta calculation across the entire stock universe and portfolio construction/rebalancing logic that cannot be expressed using single-stock technical indicators. The strategy requires: (1) computing beta for each stock relative to market, (2) ranking all stocks by beta, (3) constructing two separate portfolios (low-beta and high-beta), (4) rescaling both to target beta of 1.0, and (5) taking long/short positions at portfolio level. None of the allowed indicators (price, moving averages, RSI, ATR, Bollinger Bands, MACD, ADX, Stochastic, Donchian, Pivots, Volume, Z-score, Returns) capture beta or enable cross-sectional ranking and portfolio construction. This signal requires a custom portfolio-level factor engine, not a per-bar technical indicator ruleset.",
+  "translation_notes": "This is a systematic factor strategy, not a technical signal. Implementation requires: (1) beta estimation module, (2) universe ranking/sorting capability, (3) portfolio construction and leverage/rescaling, (4) monthly rebalancing trigger. Recommend implementing as a separate portfolio optimization pipeline outside the standard backtest indicator framework."
+}

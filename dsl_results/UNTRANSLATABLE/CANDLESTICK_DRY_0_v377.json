@@ -13,6 +13,6 @@
     "ANY"
   ],
   "untranslatable": true,
-  "untranslatable_reason": "LLM returned no valid JSON",
-  "translation_notes": null
+  "untranslatable_reason": "Signal requires detection of 'gapping down' (price gap between doji and prior day close). Gap detection requires comparison of current open vs prev_close, which is measurable. However, the exact gap threshold percentage is not specified in source material (marked AUTHOR_SILENT). Doji pattern detection requires evaluating body_pct being very small relative to range, but precise thresholds vary by implementation. Breakout direction and volume confirmation details also marked AUTHOR_SILENT. Translation uses reasonable proxies but cannot fully capture author's intended parameters.",
+  "translation_notes": "Doji approximated as body_pct < 5% (very small body relative to range). Gap detection inferred as close differing from prev_close. Direction is CONTEXT_DEPENDENT: bullish doji gap (close > prev_close triggers entry_long) or bearish doji gap (close < prev_close triggers entry_short). Exit conditions use reasonable reversal logic since author provided AUTHOR_SILENT. Source mentions volume confirmation and 50-day MA breakouts but specific thresholds unavailable. Success rates (~56% bull, ~54% bear) noted but not encoded as they describe historical performance, not entry/exit logic."
 }

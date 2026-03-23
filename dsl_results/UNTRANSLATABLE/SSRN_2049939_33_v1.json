@@ -1,0 +1,18 @@
+{
+  "signal_id": "SSRN_2049939_33",
+  "entry_long": [],
+  "entry_short": [],
+  "exit_long": [],
+  "exit_short": [],
+  "entry_logic": "AND",
+  "exit_logic": "AND",
+  "stop_loss_pct": 2.0,
+  "hold_days_max": 10,
+  "direction": "BOTH",
+  "target_regime": [
+    "ANY"
+  ],
+  "untranslatable": true,
+  "untranslatable_reason": "This signal is a statistical factor model requiring bond-level beta ranking and cross-sectional portfolio construction (low-beta vs high-beta cohorts with zero-cost hedging). Standard OHLCV indicators cannot express: (1) beta calculation and ranking across bond universe, (2) cross-sectional asset sorting and weighting, (3) zero-cost portfolio hedging mechanics, (4) beta rescaling to 1.0. This requires a custom factor engine, not indicator-based rules.",
+  "translation_notes": "SSRN_2049939_33 is a statistical arbitrage/factor model signal designed for institutional portfolio construction. It requires: access to bond-specific beta estimates (typically computed from historical returns vs benchmark), ability to rank and segregate assets by beta quintile, dynamic hedging between long low-beta and short high-beta positions with notional rebalancing. The monthly rebalancing is mechanical (calendar-based) rather than price-triggered. This cannot be translated to a standard technical indicator ruleset and requires implementation in a dedicated factor backtest framework with bond pricing and beta calculation modules."
+}

@@ -1,0 +1,27 @@
+{
+  "signal_id": "THARP_DRY_7_0",
+  "book_id": "THARP",
+  "signal_type": "POSITION_SIZING",
+  "sizing_rule": {
+    "signal_type": "POSITION_SIZING",
+    "sizing_method": "DRAWDOWN_SCALED",
+    "base_risk_pct": 0.01,
+    "r_multiple_target": null,
+    "r_multiple_stop": null,
+    "scale_up_multiplier": null,
+    "scale_down_multiplier": 0.5,
+    "scale_factor": null,
+    "trigger_condition": {
+      "metric": "drawdown_pct",
+      "threshold": 0.1,
+      "direction": "above"
+    },
+    "max_risk_pct": 0.1,
+    "min_risk_pct": 0.01,
+    "applies_to": "ALL",
+    "confidence": "MEDIUM",
+    "note": "Reduce position size by 50% when cumulative loss reaches 10% of starting capital or when equity falls below 80% threshold. Additional reduction triggered after 2 consecutive losses. Prevents trading near statistical recovery impossibility zone (75% equity threshold).",
+    "untranslatable": false,
+    "untranslatable_reason": null
+  }
+}
